@@ -1,26 +1,225 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Pierson";
+  src: url("/font/pierson-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pierson";
+  src: url("/font/pierson-light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pierson";
+  src: url("/font/pierson-thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-sans: var(--font-inter);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-inter);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), "Noto Sans Thai", Arial, sans-serif;
+  margin: 0;
 }
+
+/* ── Infinite marquee ── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 22s linear infinite;
+}
+.marquee-container {
+  overflow-x: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.marquee-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Water-droplet rise animation ── */
+@keyframes droplet-sway {
+  0%,100% { transform: translateX(0); }
+  50%      { transform: translateX(18px); }
+}
+
+@keyframes droplet-rise {
+  0%   { transform: translateY(0)      scale(1);    opacity: 0;   }
+  8%   {                                             opacity: 0.55;}
+  50%  { transform: translateY(-45vh)  scale(1.08);              }
+  92%  {                                             opacity: 0.25;}
+  100% { transform: translateY(-105vh) scale(0.85); opacity: 0;   }
+}
+
+/* ── Section titles ── */
+.section-title {
+  color: #111827;
+  background: none;
+  -webkit-text-fill-color: #111827;
+}
+
+/* ── Primary button ── */
+.btn-primary {
+  background: #5f26e5;
+  border: none;
+  color: #ffffff;
+  transition: background 0.25s, color 0.25s;
+}
+.btn-primary:hover,
+.btn-primary:active {
+  background: #ffffff;
+  color: #5f26e5;
+}
+
+/* ── Outline variant ── */
+.btn-outline {
+  background-color: transparent;
+  color: #5f26e5;
+  border: 2px solid #5f26e5;
+  transition: background-color 0.2s, color 0.2s;
+}
+.btn-outline:hover {
+  background-color: #5f26e5;
+  color: #ffffff;
+}
+
+/* ── Hero ghost button (glassmorphism) ── */
+.btn-hero {
+  background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+  border: 1.5px solid rgba(255,255,255,0.55);
+  color: #ffffff;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 4px 24px rgba(0,0,0,0.2);
+  transition: background 0.25s, color 0.25s, border-color 0.25s, box-shadow 0.25s;
+  cursor: pointer;
+}
+.btn-hero:hover {
+  background: #ffffff;
+  color: #5f26e5;
+  border-color: #ffffff;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+}
+
+/* ── Hero purple variant (landing page header buttons) ── */
+.btn-hero-purple {
+  background: rgba(95,38,229,0.50);
+  border: 1.5px solid rgba(95,38,229,0.60);
+  color: #ffffff;
+  box-shadow: none;
+}
+.btn-hero-purple:hover {
+  background: rgba(95,38,229,0.50);
+  border-color: rgba(95,38,229,0.60);
+  color: #ffffff;
+  box-shadow: none;
+}
+
+/* ── Hero solid purple (100% opacity) ── */
+.btn-hero-solid-purple {
+  background: #5f26e5;
+  border: 1.5px solid #5f26e5;
+  color: #ffffff;
+  box-shadow: none;
+}
+.btn-hero-solid-purple:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #5f26e5;
+  box-shadow: none;
+}
+
+/* ── Contact form inputs ── */
+.contact-input {
+  background: rgba(255,255,255,0.20);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: #111827;
+  font-size: 16px;
+  width: 100%;
+  outline: none;
+  font-family: var(--font-kanit),'Noto Sans Thai',sans-serif;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color 0.2s, background 0.2s;
+  box-sizing: border-box;
+}
+.contact-input::placeholder { color: rgba(0,0,0,0.4); }
+.contact-input:focus { background: rgba(255,255,255,0.30); border-color: rgba(95,38,229,0.6); }
+
+/* ── Dark contact form inputs (for dark card) ── */
+.contact-input-dark {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: #ffffff;
+  font-size: 18px;
+  width: 100%;
+  outline: none;
+  font-family: var(--font-kanit),'Noto Sans Thai',sans-serif;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color 0.2s, background 0.2s;
+  box-sizing: border-box;
+}
+.contact-input-dark::placeholder { color: rgba(255,255,255,0.45); }
+.contact-input-dark:focus { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.6); }
+
+/* ── Ghost button — white glass default, purple on hover ── */
+.btn-ghost-purple {
+  background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+  border: 1.5px solid rgba(255,255,255,0.55);
+  color: #ffffff;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 4px 24px rgba(0,0,0,0.2);
+  transition: background 0.25s, color 0.25s, border-color 0.25s, box-shadow 0.25s;
+  cursor: pointer;
+}
+.btn-ghost-purple:hover {
+  background: #5f26e5;
+  color: #ffffff;
+  border-color: #5f26e5;
+  box-shadow: 0 4px 24px rgba(95,38,229,0.4);
+}
+
+/* ── Path to Partnership phone hover pop-up ── */
+.ptp-phone {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease;
+  cursor: pointer;
+}
+.ptp-phone:hover {
+  transform: scale(1.13) translateY(-10px);
+  filter: drop-shadow(0 24px 40px rgba(95,38,229,0.25));
+}
+
+/* ── Insight CTA button ── */
+.btn-insight {
+  background: #5f26e5;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+.btn-insight:hover {
+  background: #ffffff;
+  color: #5f26e5;
+}
+
