@@ -13,6 +13,7 @@ import FAQAccordion from "../components/FAQAccordion";
 import TestimonialsGrid from "../components/TestimonialsGrid";
 import LogoMarquee from "../components/LogoMarquee";
 import SuccessStoriesSlider from "../components/SuccessStoriesSlider";
+import ContactFormSection from "../components/ContactFormSection";
 
 const PTP_STEPS = [
   { step: "01", img: "/path-to-partnership/Step-1.png", title: "สมัครเป็นอินฟลูกับเรา", desc: "สมัครบัญชีอินฟลูเอนเซอร์ง่ายๆ แค่ 5 นาที พร้อมเชื่อมต่อช่องทางโซเชียลมีเดีย ให้เรารู้จักคุณมากขึ้นและเปิดโอกาสในการร่วมงานกับแบรนด์ชั้นนำ" },
@@ -516,6 +517,8 @@ export default function InfluencerPage() {
       {/* ── FAQs ── */}
       <FAQAccordion />
 
+      {/* ── Contact Form ── */}
+      <ContactFormSection lang="th" />
 
       {/* ── Footer ── */}
       <Footer />

@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FAQAccordion from "../components/FAQAccordion";
+import ContactFormSection from "../components/ContactFormSection";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -76,17 +77,8 @@ function FaqPageContent() {
         </div>
       </section>
 
-      {/* มีคำถามเพิ่มเติมไหม? */}
-      <section className="faq-cta-section" style={{ padding: "60px 48px 100px", textAlign: "center" }}>
-        <h2 style={{ ...KT, fontSize: "clamp(22px,2.2vw,32px)", fontWeight: 800, color: "#111827", margin: "0 0 24px" }}>
-          มีคำถามเพิ่มเติมไหม?
-        </h2>
-        <Link href={contactHref}
-          className="btn-hero-solid-purple faq-cta-btn"
-          style={{ ...KT, display: "inline-flex", alignItems: "center", borderRadius: "50px", padding: "14px 48px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
-          ติดต่อเรา
-        </Link>
-      </section>
+      {/* Contact Form */}
+      <ContactFormSection lang="th" />
 
       <Footer variant={fromInfluencer ? "influencer" : "home"} />
     </div>
