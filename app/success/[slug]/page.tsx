@@ -126,7 +126,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ s
     <div style={{ ...KT, minHeight: "100vh", backgroundImage: "url('/landing-bg6.jpg')", backgroundSize: "100% 100%", backgroundPosition: "center top", backgroundRepeat: "no-repeat" }}>
 
       {/* Top-left CTA */}
-      <div style={{ padding: "130px 48px 28px" }}>
+      <div className="success-back-row" style={{ padding: "130px 48px 28px" }}>
         <Link href="/influencer" style={{
           ...KT,
           display: "inline-flex", alignItems: "center", gap: "8px",
@@ -206,7 +206,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ s
         <h2 style={{ ...KT, color: "#111827", fontSize: "clamp(24px,2.5vw,36px)", fontWeight: 800, margin: "0 0 32px", textAlign: "center" }}>
           ผลลัพธ์
         </h2>
-        <div style={{ display: "grid", gridTemplateColumns: `repeat(${story.stats.length}, 1fr)`, gap: "24px" }}>
+        <div className="success-stats-grid" style={{ display: "grid", gridTemplateColumns: `repeat(${story.stats.length}, 1fr)`, gap: "24px" }}>
           {story.stats.map((s) => (
             <div key={s.label} style={{
               display: "flex", flexDirection: "column", alignItems: "center", gap: "12px",

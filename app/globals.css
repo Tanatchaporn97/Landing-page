@@ -40,8 +40,21 @@ body {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+@keyframes marquee-reverse {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
 .marquee-track {
   animation: marquee 22s linear infinite;
+}
+.marquee-track-reverse {
+  animation: marquee-reverse 22s linear infinite;
+}
+.marquee-track-slow {
+  animation: marquee 36s linear infinite;
+}
+.marquee-track-slow-reverse {
+  animation: marquee-reverse 36s linear infinite;
 }
 .marquee-container {
   overflow-x: scroll;
@@ -108,6 +121,7 @@ body {
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 4px 24px rgba(0,0,0,0.2);
   transition: background 0.25s, color 0.25s, border-color 0.25s, box-shadow 0.25s;
   cursor: pointer;
+  touch-action: manipulation;
 }
 .btn-hero:hover {
   background: #ffffff;
@@ -210,16 +224,477 @@ body {
   filter: drop-shadow(0 24px 40px rgba(95,38,229,0.25));
 }
 
+/* ── LINE CTA button ── */
+.btn-line {
+  background: rgba(6,199,85,0.08);
+  border: 1.5px solid #06C755;
+  color: #06C755;
+  transition: background 0.25s, color 0.25s;
+}
+.btn-line:hover {
+  background: #06C755;
+  color: #ffffff;
+}
+
+/* ── Pill auto-scroll ── */
+@keyframes pill-scroll {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+.pill-scroll-area {
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 28%, black 72%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 28%, black 72%, transparent 100%);
+}
+.pill-scroll-track {
+  animation: pill-scroll 8s linear infinite;
+}
+
+/* ── Case Study card hover zoom ── */
+.cs-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 28px;
+}
+/* Wrapper holds the clip-path circle — never moves */
+.cs-card-img-clip {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  clip-path: inset(78px 39px 130px 39px round 156px);
+  transition: clip-path 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.cs-card:hover .cs-card-img-clip {
+  clip-path: inset(0px 0px 0px 0px round 25px);
+}
+/* Image shifts up inside the fixed circle, resets on hover */
+.cs-card-img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform: translateY(-5%);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.cs-card:hover .cs-card-img {
+  transform: translateY(0);
+}
+.cs-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(95,38,229,1) 0%, rgba(95,38,229,0) 80%);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+.cs-card:hover .cs-card-overlay {
+  opacity: 1;
+}
+.cs-card-title h3 {
+  background: linear-gradient(45deg, #5f25e5 0%, #ff0089 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: background 0.3s ease, -webkit-text-fill-color 0.3s ease;
+}
+.cs-card-tagline {
+  color: #000000;
+  transition: color 0.3s ease;
+}
+.cs-stat-val {
+  background: linear-gradient(45deg, #5f25e5 0%, #ff0089 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: background 0.3s ease, -webkit-text-fill-color 0.3s ease;
+}
+.cs-stat-label {
+  color: #6b7280;
+  transition: color 0.3s ease;
+}
+.cs-cat-btn {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.cs-card:hover .cs-cat-btn {
+  background: #ffffff !important;
+  color: #5f26e5 !important;
+}
+.cs-arrow-btn {
+  transition: background 0.3s ease;
+}
+.cs-arrow-path {
+  transition: stroke 0.3s ease;
+}
+.cs-card:hover .cs-arrow-btn {
+  background: #ffffff !important;
+}
+.cs-card:hover .cs-arrow-path {
+  stroke: #5f26e5;
+}
+.cs-card:hover .cs-card-title h3 {
+  background: none;
+  -webkit-text-fill-color: #ffffff;
+}
+.cs-card:hover .cs-card-tagline {
+  color: rgba(255,255,255,0.8);
+}
+.cs-card:hover .cs-stat-val {
+  background: none;
+  -webkit-text-fill-color: #ffffff;
+}
+.cs-card:hover .cs-stat-label {
+  color: rgba(255,255,255,0.65);
+}
+
+/* ── Category page card hover ── */
+.cat-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 28px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.cat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(95,38,229,0.18);
+}
+.cat-card-img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  clip-path: inset(60px 32px 100px 32px round 128px);
+  transition: clip-path 0.55s cubic-bezier(0.4,0,0.2,1);
+}
+.cat-card:hover .cat-card-img {
+  clip-path: inset(0 round 25px);
+}
+
+/* ── Testimonial vertical scroll ── */
+@keyframes testimonial-up {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+@keyframes testimonial-down {
+  0%   { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+.testimonial-col {
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+.testimonial-track-up {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: testimonial-up 22s linear infinite;
+}
+.testimonial-track-down {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: testimonial-down 22s linear infinite;
+}
+.testimonial-track-up:hover,
+.testimonial-track-down:hover {
+  animation-play-state: paused;
+}
+
 /* ── Insight CTA button ── */
 .btn-insight {
   background: #5f26e5;
   border: none;
   color: #ffffff;
   cursor: pointer;
+  touch-action: manipulation;
   transition: background 0.25s, color 0.25s;
 }
 .btn-insight:hover {
   background: #ffffff;
   color: #5f26e5;
+}
+
+/* Hamburger: hidden on desktop, shown on mobile */
+.hamburger-btn { display: none; }
+.desktop-nav-btns { display: flex; }
+
+/* KOL packages: extra features always visible on desktop, show-more button hidden */
+.kol-extra-features { display: flex !important; flex-direction: column; gap: 14px; margin-top: 14px; }
+.kol-show-more-btn { display: none !important; }
+
+
+
+/* Hero subline: single line on desktop, wraps on mobile */
+.hero-subline-break { display: inline; }
+
+/* Footer grid — desktop 2-col */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 60px;
+  align-items: start;
+  max-width: 1294px;
+  margin: 0 auto;
+}
+
+/* ─────────────────────────────────────
+   Mobile Responsive  (max 767 px)
+───────────────────────────────────── */
+@media (max-width: 767px) {
+
+  /* Navbar */
+  .nav-landing-wrap {
+    left: 12px !important;
+    right: 12px !important;
+    top: 12px !important;
+  }
+  .nav-landing {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+  }
+  .nav-btn-contact { display: none !important; }
+  .desktop-nav-btns { display: none !important; }
+  .hamburger-btn { display: flex !important; }
+
+  /* Hero */
+  .hero-section  { padding-top: 96px !important; }
+  .hero-h1       { line-height: 1.2 !important; }
+  .hero-subline-break { display: block !important; }
+
+  /* Brand logos */
+  .brand-logos-section { padding-top: 60px !important; padding-bottom: 60px !important; }
+  .logo-marquee-img { height: 40px !important; }
+  .logo-marquee-item { height: 40px !important; }
+  .logo-marquee-track { gap: 28px !important; }
+  .logo-marquee-row-gap { height: 16px !important; }
+
+  /* Section headings with hard-coded line-height */
+  .section-h2-fixed { line-height: 1.3 !important; margin-bottom: 32px !important; }
+
+  /* Grid collapses */
+  .grid-4-col { grid-template-columns: 1fr !important; }
+  .grid-3-col { grid-template-columns: 1fr !important; }
+  .grid-2-col { grid-template-columns: 1fr !important; }
+
+  /* Success Stories — mobile: vertical cards, details always visible */
+  .mosaic-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+  .mosaic-grid > * {
+    width: 100% !important;
+    height: 260px !important;
+    min-height: unset !important;
+  }
+  /* Tall photo — full width on mobile */
+  .success-tall-photo { height: 300px !important; border-radius: 30px !important; overflow: hidden !important; }
+  /* Case study cards: always show details on mobile, tappable (iOS Safari fix) */
+  .success-brand-overlay { opacity: 1 !important; cursor: pointer !important; touch-action: manipulation; }
+  .success-brand-logo { opacity: 0 !important; }
+  /* Ensure brand-card Links are tappable on iOS */
+  .mosaic-grid a { touch-action: manipulation; -webkit-tap-highlight-color: rgba(95,38,229,0.15); }
+  /* Stat boxes: 2-column row */
+  .mosaic-grid .success-stat-box { height: 140px !important; }
+
+  /* FAQ 2-col → 1-col */
+  .faq-grid { grid-template-columns: 1fr !important; }
+
+  /* Contact section */
+  .contact-outer-grid { grid-template-columns: 1fr !important; }
+  .contact-form-panel { padding: 24px 20px !important; }
+
+  /* Footer logo size on mobile */
+  .footer-logo-img { height: 47px !important; }
+
+  /* Footer — single column centered on mobile */
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer-grid > div { display: flex !important; justify-content: center !important; align-items: center !important; }
+  .footer-contact-col { flex-direction: column !important; align-items: center !important; justify-content: flex-start !important; }
+  .footer-text { text-align: center !important; }
+  .footer-social-row { justify-content: center !important; }
+  .footer-legal { text-align: center !important; }
+
+  /* Photo card height */
+  .photo-card-h { height: 403px !important; }
+
+  /* Headings with hard-coded line-height (55px) */
+  .heading-lh-55 { line-height: 1.3 !important; }
+
+  /* Section description text */
+  .desc-text { font-size: 15px !important; }
+  .desc-text br { display: none; }
+
+  /* Solutions icon circle */
+  .icon-wrap-lg { width: 52px !important; height: 52px !important; }
+  .icon-wrap-lg > span { width: 30px !important; height: 30px !important; }
+
+  /* KOL price */
+  .kol-price-text { font-size: 26px !important; letter-spacing: 0 !important; }
+
+  /* Card / blog h3 titles at 24px */
+  .card-h3 { font-size: 18px !important; }
+
+  /* Blog card inner padding */
+  .blog-card-content { padding: 18px !important; }
+
+  /* Contact info icon circles */
+  .contact-icon-circle { width: 40px !important; height: 40px !important; }
+  .contact-icon-circle > span { width: 22px !important; height: 22px !important; }
+
+  /* Navbar logo */
+  .nav-logo { height: 36px !important; }
+
+  /* Hero buttons */
+  .hero-btn { min-width: unset !important; padding: 12px 24px !important; font-size: 15px !important; }
+
+  /* Section horizontal padding for inner containers */
+  .section-inner-pad { padding-left: 0 !important; padding-right: 0 !important; }
+
+  /* CTA buttons */
+  .btn-insight { padding: 12px 28px !important; font-size: 15px !important; }
+  .cta-submit  { padding: 14px 0 !important; width: 100% !important; font-size: 15px !important; }
+
+  /* Section vertical padding — py-20 (80px) → 48px */
+  section.py-20 { padding-top: 48px !important; padding-bottom: 48px !important; }
+
+  /* Hero bottom padding */
+  .hero-section { padding-bottom: 40px !important; }
+
+  /* Hero stats strip: stack vertically, dividers become horizontal */
+  .hero-stats-strip { flex-direction: column; align-items: stretch; width: 100% !important; padding: 20px 24px !important; gap: 16px !important; }
+  .hero-stat-item { justify-content: center; }
+  .hero-stat-divider { display: none !important; }
+
+  /* Trusted Partner inline padding */
+  .trusted-section { padding-top: 48px !important; padding-bottom: 48px !important; }
+
+  /* Testimonials carousel horizontal padding */
+  /* Trust Influencers: 1 card at a time with arrows on mobile */
+  .carousel-wrap { padding-left: 0 !important; padding-right: 0 !important; overflow: hidden; }
+  .marquee-container { overflow-x: auto !important; scroll-snap-type: x mandatory !important; -webkit-overflow-scrolling: touch !important; }
+  .testimonials-track { flex-direction: row !important; width: max-content !important; }
+  .testimonial-card {
+    width: calc(100vw - 48px) !important;
+    scroll-snap-align: center !important;
+    padding: 32px 20px 28px !important;
+  }
+  .testimonial-photo { width: 140px !important; height: 140px !important; }
+  .carousel-wrap > button {
+    display: flex !important;
+    z-index: 2;
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .carousel-dots { display: flex !important; }
+
+  /* Trust Influencers carousel: hide side peek cards, center card full-width */
+  .tc-wrap { padding: 0 44px !important; gap: 0 !important; }
+  .tc-side { display: none !important; }
+  .tc-center { width: 100% !important; }
+  .tc-card-active { width: 100% !important; box-sizing: border-box; padding: 28px 20px !important; }
+
+  /* KOL card inner padding — remove backdrop-filter on mobile (iOS Safari touch fix) */
+  .kol-card { padding: 24px 20px !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  /* FAQ items — remove backdrop-filter on mobile (iOS Safari touch fix) */
+  .faq-item { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  /* KOL extra features: hidden on mobile, shown when expanded */
+  .kol-extra-features { display: none !important; }
+  .kol-extra-features[data-expanded="true"] { display: flex !important; flex-direction: column; gap: 14px; }
+  .kol-show-more-btn { display: flex !important; justify-content: center !important; touch-action: manipulation; position: relative; z-index: 1; }
+
+  /* Mosaic grid cell inner padding */
+  .mosaic-grid > * { padding: 16px !important; }
+
+  /* Section title margin-bottom */
+  .mb-section { margin-bottom: 32px !important; }
+
+  /* Contact title margin */
+  .contact-title-wrap { margin-bottom: 32px !important; }
+
+  /* ── Influencer page ── */
+
+  /* Generic section padding (mirrors section.py-20 on landing) */
+  .inf-section { padding: 48px 20px !important; }
+
+  /* Hero */
+  .hero-section-inf { padding: 96px 20px 40px !important; }
+  .hero-grid-inf { grid-template-columns: 1fr !important; gap: 40px !important; }
+
+  /* Hero stat cards: scattered overlay → stacked column */
+  .hero-stat-cards { position: static !important; height: auto !important; display: flex !important; flex-direction: column !important; gap: 12px !important; margin-top: 24px !important; }
+  .hero-stat-card { position: static !important; transform: none !important; width: 100% !important; box-sizing: border-box; }
+
+  /* Hero right column: phone + pills → centered phone only */
+  .hero-right-col { transform: none !important; width: 100% !important; justify-content: center !important; margin-top: 8px !important; }
+  .hero-phone-img { height: 260px !important; }
+  .hero-pills-col { display: none !important; }
+
+  /* Path to Partnership carousel cards: 1-card-at-a-time, stacked content */
+  .ptp-card {
+    flex: 0 0 calc(100vw - 48px) !important;
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    padding: 32px 24px !important;
+    overflow: hidden;
+  }
+
+  /* Unlock Exclusive Opportunities: 3-col → stacked */
+  .unlock-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .unlock-phone-img { width: 100% !important; max-width: 280px !important; }
+  /* Icon badges: same size as Buddy Review Solutions section (icon-wrap-lg is shared) */
+  .unlock-icon-img { width: 115px !important; height: 115px !important; }
+
+  /* Case Studies header + cards */
+  .cs-header-row { flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; }
+  .cs-card-link { width: calc(100vw - 96px) !important; }
+  .cs-card-link .cs-card { height: 460px !important; }
+
+  /* Testimonials: title + masonry → stacked, single column */
+  .testimonials-outer { flex-direction: column !important; gap: 32px !important; }
+  .testimonials-title { padding-top: 0 !important; flex: none !important; }
+  .testimonials-masonry { flex-direction: column !important; }
+  .testimonials-col-2 { margin-top: 0 !important; }
+
+  /* Hero H1: reduce minimum size so it doesn't overpower small screens */
+  .hero-h1-inf { font-size: clamp(34px, 9vw, 48px) !important; }
+
+  /* Hero CTA row: allow wrap, buttons shrink like landing's .hero-btn */
+  .hero-cta-row-inf { gap: 12px !important; }
+  .hero-cta-btn-inf { padding: 12px 24px !important; font-size: 15px !important; }
+
+  /* Hero stat cards: smaller number/label text once stacked full-width */
+  .hero-stat-card p:first-of-type { font-size: 26px !important; }
+  .hero-stat-card p:last-of-type { font-size: 15px !important; }
+
+  /* Path to Partnership card description */
+  .ptp-desc { font-size: 15px !important; }
+
+  /* Unlock Exclusive item text */
+  .unlock-desc { font-size: 14px !important; }
+
+  /* Case Studies card title: fit narrower mobile card width */
+  .cs-card-title h3 { font-size: 22px !important; }
+
+  /* ── FAQ page (/faq) ── */
+  .faq-hero-section { padding: 96px 20px 48px !important; }
+  .faq-hero-section h1 { line-height: 1.3 !important; }
+  .faq-tabs-section { padding: 0 20px 48px !important; }
+  .faq-tabs-row { gap: 8px !important; margin-bottom: 32px !important; flex-wrap: wrap; }
+  .faq-tab-btn { padding: 10px 20px !important; font-size: 14px !important; }
+  .faq-cta-section { padding: 40px 20px 64px !important; }
+  .faq-cta-btn { padding: 12px 32px !important; font-size: 15px !important; }
+
+  /* ── Blog index page (/blog) ── */
+  .blog-back-row { padding: 100px 20px 20px !important; }
+
+  /* ── Success Stories pages (/success) ── */
+  .success-back-row { padding: 100px 20px 20px !important; }
+  .success-stats-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
 }
 

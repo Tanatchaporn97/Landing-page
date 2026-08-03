@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import BlogNavbar from "./BlogNavbar";
+import BlogFooter from "./BlogFooter";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const PINK_GRAD = "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)";
@@ -38,7 +40,6 @@ export default function BlogIndexPage() {
     const cat = searchParams.get("cat");
     return cat && CATS.includes(cat) ? cat : "ทั้งหมด";
   });
-
   useEffect(() => {
     const cat = searchParams.get("cat");
     if (cat && CATS.includes(cat)) setActiveCat(cat);
@@ -51,8 +52,10 @@ export default function BlogIndexPage() {
   return (
     <div style={{ ...KT, minHeight: "100vh", backgroundImage: "url('/landing-bg6.jpg')", backgroundSize: "100% 100%", backgroundPosition: "center top", backgroundRepeat: "no-repeat" }}>
 
+      <BlogNavbar />
+
       {/* Back button */}
-      <div style={{ padding: "28px 48px" }}>
+      <div className="blog-back-row" style={{ padding: "140px 48px 28px" }}>
         <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,255,255,0.12)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.25)", borderRadius: "50px", padding: "10px 22px", color: "#5f26e5", textDecoration: "none", fontSize: "15px", fontWeight: 500 }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M19 12H5M12 5l-7 7 7 7"/>
@@ -126,6 +129,8 @@ export default function BlogIndexPage() {
         </div>
 
       </div>
+
+      <BlogFooter />
     </div>
   );
 }

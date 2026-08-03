@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import BackButton from "./BackButton";
+import BlogNavbar from "../BlogNavbar";
+import BlogFooter from "../BlogFooter";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -364,8 +366,10 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
       backgroundPosition: "center top",
       backgroundRepeat: "no-repeat",
     }}>
+      <BlogNavbar />
+
       {/* Top-left CTA */}
-      <div style={{ padding: "28px 48px" }}>
+      <div className="blog-back-row" style={{ padding: "140px 48px 28px" }}>
         <Link href="/blog" style={{
           ...KT,
           display: "inline-flex", alignItems: "center", gap: "8px",
@@ -455,6 +459,8 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
           </Link>
         )}
       </div>
+
+      <BlogFooter />
     </div>
   );
 }
