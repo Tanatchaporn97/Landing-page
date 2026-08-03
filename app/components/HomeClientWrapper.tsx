@@ -247,7 +247,23 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                   desc: "เครือข่ายอินฟลูเอนเซอร์ที่หลากหลาย เชื่อมต่อให้เหมาะกับแบรนด์ของคุณ",
                   descEn: "A diverse influencer network, matched to fit your brand." },
               ].map(({ icon, title, desc, descEn }) => (
-                <div key={title} style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+                <div key={title} style={{ 
+                  display: "flex", flexDirection: "column", gap: "14px",
+                  background: "rgba(95,38,229,0.02)",
+                  border: "1px solid rgba(95,38,229,0.15)",
+                  borderRadius: "24px",
+                  padding: "32px 28px 40px",
+                  transition: "transform 0.3s, box-shadow 0.3s",
+                }}
+                className="solution-card"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-4px)";
+                  e.currentTarget.style.boxShadow = "0 12px 32px rgba(95,38,229,0.08)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}>
                   <div className="icon-wrap-lg" style={{ background: "#ede9f8", borderRadius: "50%",
                     width: "68px", height: "68px", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0, alignSelf: "flex-start" }}>
                     <span style={{ display: "inline-block", width: "40px", height: "40px",
