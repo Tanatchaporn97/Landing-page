@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import BackButton from "./BackButton";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -156,8 +157,8 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ s
         </div>
 
         {/* Hero image */}
-        <div style={{ borderRadius: "28px", overflow: "hidden", marginBottom: "40px" }}>
-          <img src={story.logo} alt={story.brand}
+        <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", marginBottom: "40px" }}>
+          <Image src={story.logo} alt={story.brand} width={1200} height={420}
             style={{ width: "100%", height: "420px", objectFit: "cover", display: "block" }} />
         </div>
 

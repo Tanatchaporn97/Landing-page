@@ -1,6 +1,7 @@
 "use client";
 import { useState, Suspense } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -69,12 +70,12 @@ function SharedFooter({ textColor, gradientEnd }: { textColor: string; gradientE
 
         {/* 1 — Logo */}
         <div>
-          <img src="/buddy-review-logo.png" alt="Buddy Review" className="footer-logo-img" style={{ height: "58px", width: "auto" }} />
+          <Image src="/buddy-review-logo.png" alt="Buddy Review" className="footer-logo-img" width={166} height={58} style={{ height: "58px", width: "auto" }} />
         </div>
 
         {/* 2 — Award */}
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
-          <img src="/award-mt2025.png" alt="MT Award 2025" style={{ height: "85px", width: "auto", objectFit: "contain" }} />
+          <Image src="/award-mt2025.png" alt="MT Award 2025" width={75} height={85} style={{ height: "85px", width: "auto", objectFit: "contain" }} />
         </div>
 
         {/* 3 — Contact info */}
@@ -105,8 +106,8 @@ function SharedFooter({ textColor, gradientEnd }: { textColor: string; gradientE
         {/* 5 — Social icons */}
         <div className="footer-social-row" style={{ display: "flex", gap: "12px" }}>
           {SOCIAL.map(s => (
-            <a key={s.name} href={s.href} title={s.name} target="_blank" rel="noopener noreferrer" style={{ width: "31px", height: "31px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-              <img src={s.icon} alt={s.name} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+            <a key={s.name} href={s.href} title={s.name} target="_blank" rel="noopener noreferrer" style={{ position: "relative", width: "31px", height: "31px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <Image src={s.icon} alt={s.name} fill sizes="31px" style={{ objectFit: "contain" }} />
             </a>
           ))}
         </div>
@@ -133,7 +134,7 @@ function LandingNavbar() {
       <nav style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(28px)", WebkitBackdropFilter: "blur(28px)", border: "1px solid rgba(255,255,255,0.25)", borderRadius: "100px", paddingLeft: "36px", paddingRight: "36px", paddingTop: "16px", paddingBottom: "16px" }}
         className="flex items-center justify-between nav-landing">
         <Link href="/" style={{ display: "flex", alignItems: "center", gap: "8px", textDecoration: "none" }}>
-          <img src="/buddy-review-purple-logo.png" alt="Buddy Review" className="nav-logo" style={{ height: "48px", width: "auto", transition: "opacity 0.3s" }} />
+          <Image src="/buddy-review-purple-logo.png" alt="Buddy Review" className="nav-logo" width={138} height={48} style={{ height: "48px", width: "auto", transition: "opacity 0.3s" }} />
         </Link>
         <div className="desktop-nav-btns flex items-center gap-3">
           <a href="/#contact"
@@ -192,7 +193,7 @@ function InfluencerNavbar() {
       <nav style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(28px)", WebkitBackdropFilter: "blur(28px)", border: "1px solid rgba(255,255,255,0.25)", borderRadius: "100px", paddingLeft: "36px", paddingRight: "36px", paddingTop: "16px", paddingBottom: "16px" }}
         className="flex items-center justify-between nav-landing">
         <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-          <img src="/buddy-review-purple-logo.png" alt="Buddy Review" className="nav-logo" style={{ height: "48px", width: "auto", transition: "opacity 0.3s" }} />
+          <Image src="/buddy-review-purple-logo.png" alt="Buddy Review" className="nav-logo" width={138} height={48} style={{ height: "48px", width: "auto", transition: "opacity 0.3s" }} />
         </Link>
         <div className="desktop-nav-btns flex items-center gap-3">
           <Link href="https://www.buddyreview.co/app/new-campaigns"

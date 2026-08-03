@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import BackButton from "./BackButton";
 import BlogNavbar from "../BlogNavbar";
 import BlogFooter from "../BlogFooter";
@@ -99,8 +100,8 @@ function TikTokContent() {
       ]} />
 
       <Divider />
-      <div style={{ borderRadius: "16px", overflow: "hidden", margin: "8px 0 32px" }}>
-        <img src="/blogs/blog-9techniques.avif" alt="9 เทคนิคทำคลิปให้ติด For You Page" style={{ width: "100%", height: "auto", display: "block" }} />
+      <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", margin: "8px 0 32px" }}>
+        <Image src="/blogs/blog-9techniques.avif" alt="9 เทคนิคทำคลิปให้ติด For You Page" width={800} height={450} style={{ width: "100%", height: "auto", display: "block" }} />
       </div>
 
       <H2>9 เทคนิคทำคลิปให้ติด For You Page (FYP)</H2>
@@ -397,8 +398,8 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
         </div>
 
         {/* Cover image */}
-        <div style={{ borderRadius: "20px", overflow: "hidden", marginBottom: "40px" }}>
-          <img src={post.image} alt={post.title} style={{ width: "100%", height: "420px", objectFit: "cover" }} />
+        <div style={{ position: "relative", borderRadius: "20px", overflow: "hidden", marginBottom: "40px" }}>
+          <Image src={post.image} alt={post.title} width={800} height={420} style={{ width: "100%", height: "420px", objectFit: "cover" }} />
         </div>
 
         {/* Content card */}

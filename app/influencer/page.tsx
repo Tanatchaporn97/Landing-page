@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
 
@@ -42,10 +43,10 @@ const LOGO_FILES_ROW2 = [
   "Clients Logo-21.png","Clients Logo-31.png",
 ];
 const LOGOS_ROW1 = LOGO_FILES_ROW1.map((f) => (
-  <img key={f} src={`/logos/${f}`} alt={f.replace(".png","")} className="logo-marquee-img" style={{ height:"86px", width:"auto", objectFit:"contain", display:"block" }} />
+  <Image key={f} src={`/logos/${f}`} alt={f.replace(".png","")} className="logo-marquee-img" width={200} height={86} style={{ height:"86px", width:"auto", objectFit:"contain", display:"block" }} />
 ));
 const LOGOS_ROW2 = LOGO_FILES_ROW2.map((f) => (
-  <img key={f} src={`/logos/${f}`} alt={f.replace(".png","")} className="logo-marquee-img" style={{ height:"86px", width:"auto", objectFit:"contain", display:"block" }} />
+  <Image key={f} src={`/logos/${f}`} alt={f.replace(".png","")} className="logo-marquee-img" width={200} height={86} style={{ height:"86px", width:"auto", objectFit:"contain", display:"block" }} />
 ));
 
 function LogoMarquee({ logos, direction }: { logos: React.ReactNode[], direction: "left"|"right" }) {
@@ -115,8 +116,8 @@ function TestimonialsGrid() {
       padding: "20px 22px",
     }}>
       <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "14px" }}>
-        <div style={{ width: "57px", height: "57px", borderRadius: "50%", overflow: "hidden", flexShrink: 0 }}>
-          <img src={t.photo} alt={t.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
+        <div style={{ position: "relative", width: "57px", height: "57px", borderRadius: "50%", overflow: "hidden", flexShrink: 0 }}>
+          <Image src={t.photo} alt={t.name} fill sizes="57px" style={{ objectFit: "cover", objectPosition: "center top" }} />
         </div>
         <p style={{ ...KT, fontWeight: 600, fontSize: "24px", color: "#5f26e5", margin: 0, lineHeight: 1.3 }}>{t.name}</p>
       </div>
@@ -219,10 +220,12 @@ export default function InfluencerPage() {
         }}
           className="flex items-center justify-between nav-landing">
           <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-            <img
+            <Image
               src={scrolled ? "/buddy-review-purple-logo.png" : "/buddy-review-logo.png"}
               alt="Buddy Review"
               className="nav-logo"
+              width={138}
+              height={48}
               style={{ height: "48px", width: "auto", transition: "opacity 0.3s" }}
             />
           </Link>
@@ -594,11 +597,13 @@ export default function InfluencerPage() {
                       background: "radial-gradient(circle, rgba(255,0,137,0.13) 0%, transparent 70%)",
                       bottom: "0px", right: "0px",
                     }} />
-                    <img
+                    <Image
                       src={s.img}
                       alt={s.title}
                       draggable={false}
                       className="ptp-phone"
+                      width={468}
+                      height={900}
                       style={{
                         position: "relative", zIndex: 1,
                         width: "100%", maxWidth: "468px",
@@ -663,8 +668,8 @@ export default function InfluencerPage() {
                 { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", title: "รีวิวได้ครบ", desc: "จบทุกแพลตฟอร์ม ให้คุณสามารถมีโอกาส รับงานรีวิวได้หลากหลายช่องทาง" },
               ].map((item) => (
                 <div key={item.title} style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
-                  <div className="icon-wrap-lg" style={{ width: "78px", height: "78px", borderRadius: "50%", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 4px 20px rgba(0,0,0,0.12)" }}>
-                    <img className="unlock-icon-img" src={item.img} alt={item.title} style={{ width: "172px", height: "172px", objectFit: "contain" }} />
+                  <div className="icon-wrap-lg" style={{ position: "relative", width: "78px", height: "78px", borderRadius: "50%", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 4px 20px rgba(0,0,0,0.12)" }}>
+                    <Image className="unlock-icon-img" src={item.img} alt={item.title} width={172} height={172} style={{ width: "172px", height: "172px", objectFit: "contain" }} />
                   </div>
                   <div style={{ maxWidth: "800px" }}>
                     <h3 className="card-h3 unlock-title" style={{ ...KT, fontSize: "22px", fontWeight: 700, color: "#5f26e5", margin: "0 0 8px", lineHeight: 1.3 }}>{item.title}</h3>
@@ -677,10 +682,12 @@ export default function InfluencerPage() {
             {/* Center — phone */}
             <div style={{ position: "relative", flexShrink: 0 }}>
               <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "520px", height: "520px", borderRadius: "50%", background: "radial-gradient(circle, rgba(95,38,229,0.18) 0%, transparent 70%)", pointerEvents: "none" }} />
-              <img
+              <Image
                 className="unlock-phone-img"
                 src="/buddy-rank-phone.png"
                 alt="Buddy Rank"
+                width={608}
+                height={1200}
                 style={{ width: "608px", height: "auto", display: "block", position: "relative", zIndex: 1 }}
               />
             </div>
@@ -693,8 +700,8 @@ export default function InfluencerPage() {
                 { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", title: "แมทช์งานที่ใช่", desc: "รู้งานใหม่ก่อนใคร ด้วยระบบคัดกรองที่แมทช์งานตรงใจ ให้คุณได้ทำงานที่ใช่จากสิ่งที่ชอบ" },
               ].map((item) => (
                 <div key={item.title} style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
-                  <div className="icon-wrap-lg" style={{ width: "78px", height: "78px", borderRadius: "50%", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 4px 20px rgba(0,0,0,0.12)" }}>
-                    <img className="unlock-icon-img" src={item.img} alt={item.title} style={{ width: "172px", height: "172px", objectFit: "contain" }} />
+                  <div className="icon-wrap-lg" style={{ position: "relative", width: "78px", height: "78px", borderRadius: "50%", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 4px 20px rgba(0,0,0,0.12)" }}>
+                    <Image className="unlock-icon-img" src={item.img} alt={item.title} width={172} height={172} style={{ width: "172px", height: "172px", objectFit: "contain" }} />
                   </div>
                   <div style={{ maxWidth: "800px" }}>
                     <h3 className="card-h3 unlock-title" style={{ ...KT, fontSize: "22px", fontWeight: 700, color: "#5f26e5", margin: "0 0 8px", lineHeight: 1.3 }}>{item.title}</h3>
@@ -745,8 +752,8 @@ export default function InfluencerPage() {
             ].map(card => (
               <Link key={card.href} href={card.href} className="cs-card-link" style={{ textDecoration: "none", flexShrink: 0, width: "390px", scrollSnapAlign: "start" }}>
                 <div className="cs-card" style={{ borderRadius: "28px", background: "#ffffff", height: "520px" }}>
-                  <div className="cs-card-img-clip">
-                    <img src={card.img} alt={card.title} className="cs-card-img" />
+                  <div className="cs-card-img-clip" style={{ position: "relative", width: "100%", height: "100%" }}>
+                    <Image src={card.img} alt={card.title} className="cs-card-img" fill sizes="(max-width: 768px) 100vw, 400px" style={{ objectFit: "cover" }} />
                   </div>
                   <div className="cs-card-overlay" />
                   {/* Arrow button — top right */}
@@ -949,12 +956,12 @@ export default function InfluencerPage() {
 
           {/* 1 — Logo */}
           <div>
-            <img src="/buddy-review-logo.png" alt="Buddy Review" className="footer-logo-img" style={{ height: "58px", width: "auto" }} />
+            <Image src="/buddy-review-logo.png" alt="Buddy Review" className="footer-logo-img" width={166} height={58} style={{ height: "58px", width: "auto" }} />
           </div>
 
           {/* 2 — Award */}
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <img src="/award-mt2025.png" alt="MT Award 2025" style={{ height: "85px", width: "auto", objectFit: "contain" }} />
+            <Image src="/award-mt2025.png" alt="MT Award 2025" width={75} height={85} style={{ height: "85px", width: "auto", objectFit: "contain" }} />
           </div>
 
           {/* 3 — Contact info */}
@@ -994,8 +1001,8 @@ export default function InfluencerPage() {
               { icon: "/social/Lemon8.png", name: "Lemon8",        href: "https://s.lemon8-app.com/s/GgNUhrhUMR" },
             ].map((s) => (
               <a key={s.name} href={s.href} title={s.name} target="_blank" rel="noopener noreferrer"
-                style={{ width: "31px", height: "31px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                <img src={s.icon} alt={s.name} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                style={{ position: "relative", width: "31px", height: "31px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <Image src={s.icon} alt={s.name} fill sizes="31px" style={{ objectFit: "contain" }} />
               </a>
             ))}
           </div>

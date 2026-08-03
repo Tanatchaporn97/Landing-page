@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -28,10 +29,12 @@ export default function SuccessLayout({ children }: { children: React.ReactNode 
           transition: "background 0.3s, border-color 0.3s",
         }} className="flex items-center justify-between nav-landing">
           <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-            <img
+            <Image
               src={scrolled ? "/buddy-review-purple-logo.png" : "/buddy-review-logo.png"}
               alt="Buddy Review"
               className="nav-logo"
+              width={138}
+              height={48}
               style={{ height: "48px", width: "auto", transition: "opacity 0.3s" }}
             />
           </Link>
@@ -78,10 +81,10 @@ export default function SuccessLayout({ children }: { children: React.ReactNode 
       <footer className="px-6" style={{ backgroundImage: "url('/hero-bg.png'), linear-gradient(160deg, #09071a 0%, #1c1256 30%, #3d2a90 55%, #7b5cf6 75%, #e8e0ff 90%, #ffffff 100%)", backgroundSize: "cover", backgroundPosition: "center", borderTop: "none", paddingTop: "80px", paddingBottom: "80px" }}>
         <div className="footer-grid">
           <div>
-            <img src="/buddy-review-logo.png" alt="Buddy Review" className="footer-logo-img" style={{ height: "58px", width: "auto" }} />
+            <Image src="/buddy-review-logo.png" alt="Buddy Review" className="footer-logo-img" width={166} height={58} style={{ height: "58px", width: "auto" }} />
           </div>
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <img src="/award-mt2025.png" alt="MT Award 2025" style={{ height: "85px", width: "auto", objectFit: "contain" }} />
+            <Image src="/award-mt2025.png" alt="MT Award 2025" width={75} height={85} style={{ height: "85px", width: "auto", objectFit: "contain" }} />
           </div>
           <div className="flex flex-col gap-8 footer-contact-col">
             <p className="font-medium footer-text" style={{ ...KT, fontSize: "16px", lineHeight: "160%", color: "#ffffff" }}>
@@ -117,8 +120,8 @@ export default function SuccessLayout({ children }: { children: React.ReactNode 
               { icon: "/social/Lemon8.png", name: "Lemon8",        href: "https://s.lemon8-app.com/s/GgNUhrhUMR" },
             ].map((s) => (
               <a key={s.name} href={s.href} title={s.name} target="_blank" rel="noopener noreferrer"
-                style={{ width: "31px", height: "31px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                <img src={s.icon} alt={s.name} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                style={{ position: "relative", width: "31px", height: "31px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <Image src={s.icon} alt={s.name} fill sizes="31px" style={{ objectFit: "contain" }} />
               </a>
             ))}
           </div>

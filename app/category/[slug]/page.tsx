@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
@@ -145,8 +146,8 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
               textDecoration: "none",
               cursor: "pointer",
             }}>
-              <div style={{ padding: "20px 20px 0", flexShrink: 0 }}>
-                <img src={story.image} alt={story.brand} style={{ width: "100%", height: "200px", objectFit: "cover", display: "block", borderRadius: "12px" }} />
+              <div style={{ position: "relative", padding: "20px 20px 0", flexShrink: 0 }}>
+                <Image src={story.image} alt={story.brand} width={400} height={200} style={{ width: "100%", height: "200px", objectFit: "cover", display: "block", borderRadius: "12px" }} />
               </div>
               <div style={{ padding: "24px 24px 28px", display: "flex", flexDirection: "column", gap: "12px", flex: 1 }}>
                 <span style={{ ...KT, background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.35)", borderRadius: "50px", fontSize: "13px", fontWeight: 600, padding: "4px 14px", display: "inline-block", width: "fit-content", color: "#111827" }}>

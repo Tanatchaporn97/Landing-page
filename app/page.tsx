@@ -36,21 +36,25 @@ const LOGO_FILES_ROW2 = [
 ];
 
 const LOGOS_ROW1 = LOGO_FILES_ROW1.map((file) => (
-  <img
+  <Image
     key={file}
     src={`/logos/${file}`}
     alt={file.replace(".png","")}
     className="logo-marquee-img"
+    width={200}
+    height={86}
     style={{ height:"86px", width:"auto", objectFit:"contain", display:"block" }}
   />
 ));
 
 const LOGOS_ROW2 = LOGO_FILES_ROW2.map((file) => (
-  <img
+  <Image
     key={file}
     src={`/logos/${file}`}
     alt={file.replace(".png","")}
     className="logo-marquee-img"
+    width={200}
+    height={86}
     style={{ height:"86px", width:"auto", objectFit:"contain", display:"block" }}
   />
 ));
@@ -86,9 +90,9 @@ function CatCard({ cat }: { cat: typeof INF_CATEGORIES[0] }) {
       border: "1px solid rgba(255,255,255,0.45)",
       borderRadius: "20px", boxSizing: "border-box",
     }}>
-      <div style={{ width: "62px", height: "62px", borderRadius: "50%", overflow: "hidden", flexShrink: 0 }}>
-        <img src={cat.photo} alt={cat.label}
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
+      <div style={{ position: "relative", width: "62px", height: "62px", borderRadius: "50%", overflow: "hidden", flexShrink: 0 }}>
+        <Image src={cat.photo} alt={cat.label} fill sizes="62px"
+          style={{ objectFit: "cover", objectPosition: "center top" }} />
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "10px", minWidth: 0 }}>
         <span style={{ color: "#111827", fontWeight: 700, fontSize: "18px", lineHeight: "1.2",
@@ -170,8 +174,8 @@ function TestimonialsCarousel({ items, lang }: { items: typeof TESTIMONIALS; lan
       filter: active ? "none" : "blur(0.5px)",
       transition: "opacity 0.4s ease, transform 0.4s ease",
     }}>
-      <div style={{ width: active ? "88px" : "72px", height: active ? "88px" : "72px", borderRadius: "50%", overflow: "hidden", flexShrink: 0, transition: "width 0.4s ease, height 0.4s ease" }}>
-        <img src={item.photo} alt={item.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
+      <div style={{ position: "relative", width: active ? "88px" : "72px", height: active ? "88px" : "72px", borderRadius: "50%", overflow: "hidden", flexShrink: 0, transition: "width 0.4s ease, height 0.4s ease" }}>
+        <Image src={item.photo} alt={item.name} fill sizes="88px" style={{ objectFit: "cover", objectPosition: "center top" }} />
       </div>
       <div style={{ textAlign: "center" }}>
         <p style={{ ...KT, color: "#5f26e5", fontSize: active ? "20px" : "17px", fontWeight: 700, margin: 0 }}>{item.name}</p>
@@ -419,7 +423,7 @@ export default function Home() {
             paddingLeft: "36px", paddingRight: "36px", paddingTop: "16px", paddingBottom: "16px" }}
           className="flex items-center justify-between nav-landing">
           <div className="flex items-center gap-3">
-            <img src={scrolled ? "/buddy-review-purple-logo.png" : "/buddy-review-logo.png"} alt="Buddy Review" className="nav-logo" style={{ height: "48px", width: "auto", transition: "opacity 0.3s" }} />
+            <Image src={scrolled ? "/buddy-review-purple-logo.png" : "/buddy-review-logo.png"} alt="Buddy Review" className="nav-logo" width={138} height={48} style={{ height: "48px", width: "auto", transition: "opacity 0.3s" }} />
           </div>
           {/* Desktop buttons */}
           <div className="desktop-nav-btns flex items-center gap-3">
@@ -491,10 +495,7 @@ export default function Home() {
         }}
       >
         {/* Background image */}
-        <img src="/header-landing-bg3.jpg" alt="" aria-hidden="true" style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0, bottom: 0,
-          width: "100%", height: "100%",
+        <Image src="/header-landing-bg3.jpg" alt="" aria-hidden="true" fill priority sizes="100vw" style={{
           objectFit: "cover", objectPosition: "center",
           zIndex: 0,
           pointerEvents: "none",
@@ -740,8 +741,8 @@ export default function Home() {
                   border: "1px solid rgba(255,255,255,0.45)",
                   boxSizing: "border-box",
                 }}>
-                  <div className="cs-card-img-clip">
-                    <img src={card.img} alt={card.title} className="cs-card-img" />
+                  <div className="cs-card-img-clip" style={{ position: "relative", width: "100%", height: "100%" }}>
+                    <Image src={card.img} alt={card.title} className="cs-card-img" fill sizes="(max-width: 768px) 100vw, 400px" style={{ objectFit: "cover" }} />
                   </div>
                   <div className="cs-card-overlay" />
                   {/* Arrow button — top right */}
@@ -1002,8 +1003,10 @@ export default function Home() {
               }}>
                 {/* Banner */}
                 <div style={{ padding: "20px 20px 0", flexShrink: 0 }}>
-                  <img src={post.image} alt={lang === "th" ? post.title : post.titleEn}
-                    style={{ width: "100%", height: "200px", objectFit: "cover", display: "block", borderRadius: "12px" }} />
+                  <div style={{ position: "relative", width: "100%", height: "200px" }}>
+                    <Image src={post.image} alt={lang === "th" ? post.title : post.titleEn} fill sizes="(max-width: 768px) 100vw, 400px"
+                      style={{ objectFit: "cover", display: "block", borderRadius: "12px" }} />
+                  </div>
                 </div>
 
                 {/* Content */}
@@ -1392,12 +1395,12 @@ export default function Home() {
 
           {/* 1 — Logo */}
           <div>
-            <img src="/buddy-review-logo.png" alt="Buddy Review" className="footer-logo-img" style={{ height: "58px", width: "auto" }} />
+            <Image src="/buddy-review-logo.png" alt="Buddy Review" className="footer-logo-img" width={166} height={58} style={{ height: "58px", width: "auto" }} />
           </div>
 
           {/* 2 — Award */}
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <img src="/award-mt2025.png" alt="MT Award 2025" style={{ height: "85px", width: "auto", objectFit: "contain" }} />
+            <Image src="/award-mt2025.png" alt="MT Award 2025" width={75} height={85} style={{ height: "85px", width: "auto", objectFit: "contain" }} />
           </div>
 
           {/* 3 — Contact info */}
@@ -1443,8 +1446,8 @@ export default function Home() {
               { icon: "/social/Lemon8.png", name: "Lemon8",        href: "https://s.lemon8-app.com/s/GgNUhrhUMR" },
             ].map((s) => (
               <a key={s.name} href={s.href} title={s.name} target="_blank" rel="noopener noreferrer"
-                style={{ width: "31px", height: "31px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                <img src={s.icon} alt={s.name} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                style={{ position: "relative", width: "31px", height: "31px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <Image src={s.icon} alt={s.name} fill sizes="31px" style={{ objectFit: "contain" }} />
               </a>
             ))}
           </div>
