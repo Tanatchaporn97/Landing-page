@@ -49,106 +49,106 @@
     "contactUsLink": "Contact Us",
     "faqsBrand": [
       {
-        "q": "Buddy Review ให้บริการอะไรบ้าง",
-        "a": "เราให้บริการทำ Influencer Marketing แบบครบวงจร ตั้งแต่การวางกลยุทธ์ เลือกอินฟลูเอนเซอร์ที่เหมาะสม ติดต่อประสานงาน ตรวจสอบงาน และวัดผลสัมฤทธิ์แคมเปญ"
+        "q": "What services does Buddy Review provide?",
+        "a": "We provide end-to-end Influencer Marketing services, from strategy planning, selecting the right influencers, coordinating, monitoring work, to measuring campaign success."
       },
       {
-        "q": "บริการของเราดีกว่าทำเองยังไง?",
-        "a": "การใช้บริการของเราช่วยให้คุณประหยัดเวลาและลดความยุ่งยากในการค้นหา คัดเลือก เจรจา และบริหารจัดการอินฟลูเอนเซอร์จำนวนมาก เรามีเครื่องมือและฐานข้อมูลที่แม่นยำ รวมถึงทีมงานมืออาชีพที่ดูแลให้คุณครบทุกขั้นตอน ตั้งแต่การวางแผนไปจนถึงการวัดผล ทำให้คุณมั่นใจได้ว่าจะได้อินฟลูเอนเซอร์ที่เหมาะสมและแคมเปญที่มีประสิทธิภาพสูงสุด"
+        "q": "How is your service better than doing it ourselves?",
+        "a": "Using our service saves you time and eliminates the hassle of finding, selecting, negotiating, and managing numerous influencers. We have precise data tools and a professional team taking care of every step from planning to measuring results, ensuring you get the most suitable influencers and highly effective campaigns."
       },
       {
-        "q": "คิดค่าบริการอย่างไร?",
-        "a": "ค่าบริการขึ้นกับขนาดแคมเปญ จำนวนอินฟลูเอนเซอร์ และบริการที่คุณต้องการ โดยเรามีขั้นต่ำในการทำแคมเปญอยู่ที่ 100,000 บาทต่อแคมเปญ"
+        "q": "How do you charge for your services?",
+        "a": "Service fees depend on campaign size, the number of influencers, and the services you need. Our minimum campaign budget starts at 100,000 THB per campaign."
       },
       {
-        "q": "ต้องเตรียมอะไรบ้างก่อนเริ่มแคมเปญ?",
-        "a": "แจ้งวัตถุประสงค์แคมเปญ งบประมาณ กลุ่มเป้าหมาย และรายละเอียดสินค้า/บริการ ส่วนที่เหลือเราจะดูแลให้ทั้งหมด"
+        "q": "What do I need to prepare before starting a campaign?",
+        "a": "Just let us know your campaign objectives, budget, target audience, and product/service details. We will take care of the rest."
       },
       {
-        "q": "ใช้อะไรในการคัดเลือกอินฟลูเอนเซอร์?",
-        "a": "เราใช้ระบบวิเคราะห์ข้อมูลเชิงลึก (Data-Driven Matching) ที่สามารถดูได้ทั้ง Demographic, Engagement, Unique Follower Overlap และประวัติการทำแคมเปญ เพื่อคัดเลือกอินฟลูเอนเซอร์ตรงกับเป้าหมายของแบรนด์และแมทช์กับกลุ่มผู้ติดตามของอินฟลูเอนเซอร์มากที่สุด"
+        "q": "What do you use to select influencers?",
+        "a": "We use a Data-Driven Matching system that analyzes Demographics, Engagement, Unique Follower Overlap, and past campaign performance. This helps us select influencers that align perfectly with your brand's goals and match the influencer's followers."
       },
       {
-        "q": "สามารถขอรีพอร์ตเมื่อจบแคมเปญได้หรือไม่?",
-        "a": "คุณจะได้รับรายงานผลแคมเปญที่ครอบคลุม เช่น ยอด Reach, Engagement, ROI, อินฟลูเอนเซอร์ที่ทำผลงานดีสุด และข้อมูลเชิงลึกสำหรับพัฒนาในการทำแคมเปญถัดไป"
+        "q": "Can I request a report at the end of the campaign?",
+        "a": "You will receive a comprehensive campaign performance report covering Reach, Engagement, ROI, top-performing influencers, and insights to improve your next campaigns."
       },
       {
-        "q": "สามารถเลือกอินฟลูเอนเซอร์เองได้ไหม?",
-        "a": "หากคุณมีอินฟลูเอนเซอร์ที่สนใจเป็นพิเศษ สามารถให้เราติดต่อหรือแนะนำอินฟลูเอนเซอร์ที่คล้ายคลึงกันได้ โดยเราจะเป็นคนติดต่อให้กับคุณเองทั้งหมด"
+        "q": "Can I choose the influencers myself?",
+        "a": "If you have specific influencers in mind, we can contact them for you or recommend similar ones. We will handle all communications on your behalf."
       },
       {
-        "q": "แคมเปญสามารถลงได้บนแพลตฟอร์มไหนบ้าง?",
-        "a": "เรารองรับทุกแพลตฟอร์มหลัก เช่น Instagram, Facebook, TikTok, YouTube, X (Twitter), และ Lemon8 โดยเราสามารถแนะนำความเหมาะสมกับกลุ่มเป้าหมาย คอนเทนต์และจุดประสงค์แคมเปญ"
+        "q": "Which platforms can campaigns run on?",
+        "a": "We support all major platforms such as Instagram, Facebook, TikTok, YouTube, X (Twitter), and Lemon8. We can recommend the best platforms based on your target audience, content, and campaign objectives."
       }
     ],
     "faqsInfluencer": [
       {
-        "q": "สมัครแล้วจะได้งานทันทีไหม?",
-        "a": "หลังจากสมัครเรียบร้อย ระบบจะพิจารณาความเหมาะสมของแคมเปญที่เข้ามา หากมีแคมเปญที่ตรงกับโปรไฟล์ของคุณ ระบบจะแจ้งเตือนเพื่อให้คุณเข้าร่วมได้ทันที"
+        "q": "Will I get jobs immediately after signing up?",
+        "a": "Once registered, our system evaluates incoming campaigns. If there is a campaign that matches your profile, you will receive a notification to join immediately."
       },
       {
-        "q": "ทำไมสมัครแล้วไม่มีงาน?",
-        "a": "งานแต่ละแคมเปญขึ้นอยู่กับกลุ่มเป้าหมายของแบรนด์ หากยังไม่มีงาน แนะนำให้คุณอัปเดตโปรไฟล์และเพิ่มช่องทางโซเชียลให้ครบถ้วน เพื่อเพิ่มโอกาสถูกจับคู่กับแคมเปญที่เหมาะสม"
+        "q": "Why haven't I received any jobs after signing up?",
+        "a": "Each campaign depends on the brand's target audience. If you haven't received jobs, we recommend updating your profile and linking all your social media channels to increase your chances of being matched."
       },
       {
-        "q": "ต้องเชื่อมบัญชีโซเชียลมีเดียหรือไม่?",
-        "a": "แนะนำให้เชื่อมบัญชีโซเชียลให้ครบเพื่อให้ระบบสามารถดึงสถิติ เพื่อจับคู่แคมเปญที่เหมาะสมได้อัตโนมัติ หากพบปัญหาในการเชื่อมต่อบัญชี สามารถติดต่อได้ที่ LINE @buddysupport"
+        "q": "Do I need to link my social media accounts?",
+        "a": "We recommend linking your social media accounts so the system can pull statistics and automatically match you with suitable campaigns. If you encounter any issues linking your accounts, contact us on LINE @buddysupport."
       },
       {
-        "q": "ค่าตอบแทนจ่ายเมื่อไหร่?",
-        "a": "ระบบจะจ่ายค่าตอบแทนเป็นระบบแต้ม โดย 10 แต้ม = 1 บาท โดยนักรีวิวต้องทำการถอนเงินด้วยตัวเองพร้อมยื่นเอกสารในการถอนเงิน เปิดให้แลกเงินในช่วงต้นของเดือน และโอนเงินให้ระหว่างวันที่ 15–20 ของเดือนถัดไป (หลังจากตรวจสอบเอกสารเรียบร้อย)"
+        "q": "When is the payment made?",
+        "a": "The system pays in points, where 10 points = 1 THB. Reviewers must initiate a withdrawal and submit required documents. Withdrawals are open at the beginning of the month, and transfers are made between the 15th–20th of the following month (after document verification)."
       },
       {
-        "q": "ทำไมมีแจ้งเตือนแล้ว เงินยังไม่เข้า?",
-        "a": "ก่อนที่เงินจะเข้าบัญชีธนาคารจริง จะมีการแจ้งเตือนล่วงหน้าจากธนาคาร ว่ากำลังจะมีเงินเข้า ซึ่งอาจทำให้เข้าใจว่าได้รับเงินแล้ว แต่เงินจะถูกโอนตามวันและเวลาที่ธนาคารได้ระบุในข้อความ"
+        "q": "Why did I receive a notification but the money hasn't arrived?",
+        "a": "Before the money is actually transferred to your bank account, you might receive an advance notification from the bank about an incoming transfer. The money will be transferred according to the date and time specified in the bank's message."
       },
       {
-        "q": "ต้องใช้เอกสารอะไรในการรับเงิน?",
-        "a": "ใช้สำเนาบัตรประชาชน เลขบัญชีธนาคาร และสำเนาบัญชีธนาคารเพื่อใช้ในการเบิกถอนเงิน"
+        "q": "What documents are required to receive payment?",
+        "a": "A copy of your ID card, bank account number, and a copy of your bank book are required for withdrawals."
       },
       {
-        "q": "มีค่าธรรมเนียมการแลกเงินหรือไม่?",
-        "a": "มีค่าธรรมเนียมในการโอนเงิน 8 บาทต่อครั้ง และจำเป็นต้องแลกแต้มขึ้นต่ำ 2,000 แต้มขึ้นไป (200 บาท) ตัวอย่าง: สมมติว่ามี 2,500 แต้ม ซึ่งเท่ากับ 250 บาท เมื่อต้องการแลกเงิน ระบบจะหักค่าธรรมเนียมในการโอนเงิน 8 บาท ดังนั้นคุณจะได้รับเงินเข้าบัญชีทั้งสิ้น 242 บาท"
+        "q": "Are there any withdrawal fees?",
+        "a": "There is an 8 THB transfer fee per transaction, and a minimum withdrawal of 2,000 points (200 THB) is required. Example: If you have 2,500 points (250 THB) and initiate a withdrawal, the system deducts an 8 THB fee, so you will receive 242 THB in your account."
       },
       {
-        "q": "ลืมอีเมลหรือเข้าระบบไม่ได้ ต้องทำยังไง?",
-        "a": "ติดต่อทีมซัพพอร์ตได้ทาง LINE: @buddysupport โดยแจ้งชื่อบัญชี เพื่อให้ทีมงานตรวจสอบและทำการรีเซ็ตรหัสผ่าน"
+        "q": "What should I do if I forget my email or can't log in?",
+        "a": "Contact our support team via LINE: @buddysupport and provide your account name so the team can verify and reset your password."
       }
     ]
   },
   "homeFaqs": [
-    {
-      "q": "Buddy Review ให้บริการอะไรบ้าง",
-      "a": "เราให้บริการทำ Influencer Marketing แบบครบวงจร ตั้งแต่การวางกลยุทธ์ เลือกอินฟลูเอนเซอร์ที่เหมาะสม ติดต่อประสานงาน ตรวจสอบงาน และวัดผลสัมฤทธิ์แคมเปญ"
-    },
-    {
-      "q": "บริการของเราดีกว่าทำเองยังไง?",
-      "a": "การใช้บริการของเราช่วยให้คุณประหยัดเวลาและลดความยุ่งยากในการค้นหา คัดเลือก เจรจา และบริหารจัดการอินฟลูเอนเซอร์จำนวนมาก เรามีเครื่องมือและฐานข้อมูลที่แม่นยำ รวมถึงทีมงานมืออาชีพที่ดูแลให้คุณครบทุกขั้นตอน ตั้งแต่การวางแผนไปจนถึงการวัดผล ทำให้คุณมั่นใจได้ว่าจะได้อินฟลูเอนเซอร์ที่เหมาะสมและแคมเปญที่มีประสิทธิภาพสูงสุด"
-    },
-    {
-      "q": "คิดค่าบริการอย่างไร?",
-      "a": "ค่าบริการขึ้นกับขนาดแคมเปญ จำนวนอินฟลูเอนเซอร์ และบริการที่คุณต้องการ โดยเรามีขั้นต่ำในการทำแคมเปญอยู่ที่ 100,000 บาทต่อแคมเปญ"
-    },
-    {
-      "q": "ต้องเตรียมอะไรบ้างก่อนเริ่มแคมเปญ?",
-      "a": "แจ้งวัตถุประสงค์แคมเปญ งบประมาณ กลุ่มเป้าหมาย และรายละเอียดสินค้า/บริการ ส่วนที่เหลือเราจะดูแลให้ทั้งหมด"
-    },
-    {
-      "q": "ใช้อะไรในการคัดเลือกอินฟลูเอนเซอร์?",
-      "a": "เราใช้ระบบวิเคราะห์ข้อมูลเชิงลึก (Data-Driven Matching) ที่สามารถดูได้ทั้ง Demographic, Engagement, Unique Follower Overlap และประวัติการทำแคมเปญ เพื่อคัดเลือกอินฟลูเอนเซอร์ตรงกับเป้าหมายของแบรนด์และแมทช์กับกลุ่มผู้ติดตามของอินฟลูเอนเซอร์มากที่สุด"
-    },
-    {
-      "q": "สามารถขอรีพอร์ตเมื่อจบแคมเปญได้หรือไม่?",
-      "a": "คุณจะได้รับรายงานผลแคมเปญที่ครอบคลุม เช่น ยอด Reach, Engagement, ROI, อินฟลูเอนเซอร์ที่ทำผลงานดีสุด และข้อมูลเชิงลึกสำหรับพัฒนาในการทำแคมเปญถัดไป"
-    },
-    {
-      "q": "สามารถเลือกอินฟลูเอนเซอร์เองได้ไหม?",
-      "a": "หากคุณมีอินฟลูเอนเซอร์ที่สนใจเป็นพิเศษ สามารถให้เราติดต่อหรือแนะนำอินฟลูเอนเซอร์ที่คล้ายคลึงกันได้ โดยเราจะเป็นคนติดต่อให้กับคุณเองทั้งหมด"
-    },
-    {
-      "q": "แคมเปญสามารถลงได้บนแพลตฟอร์มไหนบ้าง?",
-      "a": "เรารองรับทุกแพลตฟอร์มหลัก เช่น Instagram, Facebook, TikTok, YouTube, X (Twitter), และ Lemon8 โดยเราสามารถแนะนำความเหมาะสมกับกลุ่มเป้าหมาย คอนเทนต์และจุดประสงค์แคมเปญ"
-    }
+      {
+        "q": "What services does Buddy Review provide?",
+        "a": "We provide end-to-end Influencer Marketing services, from strategy planning, selecting the right influencers, coordinating, monitoring work, to measuring campaign success."
+      },
+      {
+        "q": "How is your service better than doing it ourselves?",
+        "a": "Using our service saves you time and eliminates the hassle of finding, selecting, negotiating, and managing numerous influencers. We have precise data tools and a professional team taking care of every step from planning to measuring results, ensuring you get the most suitable influencers and highly effective campaigns."
+      },
+      {
+        "q": "How do you charge for your services?",
+        "a": "Service fees depend on campaign size, the number of influencers, and the services you need. Our minimum campaign budget starts at 100,000 THB per campaign."
+      },
+      {
+        "q": "What do I need to prepare before starting a campaign?",
+        "a": "Just let us know your campaign objectives, budget, target audience, and product/service details. We will take care of the rest."
+      },
+      {
+        "q": "What do you use to select influencers?",
+        "a": "We use a Data-Driven Matching system that analyzes Demographics, Engagement, Unique Follower Overlap, and past campaign performance. This helps us select influencers that align perfectly with your brand's goals and match the influencer's followers."
+      },
+      {
+        "q": "Can I request a report at the end of the campaign?",
+        "a": "You will receive a comprehensive campaign performance report covering Reach, Engagement, ROI, top-performing influencers, and insights to improve your next campaigns."
+      },
+      {
+        "q": "Can I choose the influencers myself?",
+        "a": "If you have specific influencers in mind, we can contact them for you or recommend similar ones. We will handle all communications on your behalf."
+      },
+      {
+        "q": "Which platforms can campaigns run on?",
+        "a": "We support all major platforms such as Instagram, Facebook, TikTok, YouTube, X (Twitter), and Lemon8. We can recommend the best platforms based on your target audience, content, and campaign objectives."
+      }
   ],
   "successStories": [
     {
@@ -156,11 +156,11 @@
       "brand": "Nissin",
       "logo": "/success-nissin.webp",
       "logoOnWhite": false,
-      "tagline": "จากสายกินถึงสายเกม Buddy Review ปั้นต้มยำกุ้งซีสให้ Nissin ติดใจทุกเจน",
+      "tagline": "From foodies to gamers, Buddy Review made Nissin a hit across all generations.",
       "industry": "Food & Beverage",
       "paras": [
-        "Nissin ปล่อยแคมเปญออนไลน์สุดสนุก ดึงอินฟลูเอนเซอร์หลากสไตล์ สร้างคอนเทนต์กระตุ้นความหิวจนไวรัล",
-        "Nissin เปิดตัวรสชาติใหม่ \"ต้มยำกุ้งแซ่บซีส\" ผสมผสานความจัดจ้านของต้มยำกุ้งแบบไทยกับความนัวละมุนของซีส สร้างประสบการณ์รสชาติที่แปลกใหม่และชวนลอง โดย Buddy Review ออกแบบและวางแผนแคมเปญให้เข้าถึงทุกกลุ่ม ไล่ตั้งแต่สายดูหนัง เกมเมอร์ นักชิม ไปจนถึงสายไลฟ์สไตล์ เลือกใช้อินฟลูเอนเซอร์หลากหลายระดับ ตั้งแต่ Nano ถึง Mega KOL ในกลุ่ม Foodie, Gamer และ Lifestyle พร้อมสร้าง Snackable Content ที่ดูง่าย อร่อยเร็ว และมีภาพจำอย่างซีสเยิ้ม ยืดเบิร์นไฟ และคลุกไข่ออนเซ็น เพื่อกระตุ้นความอยากกินแบบทันที"
+        "Nissin launched a fun online campaign featuring influencers with diverse styles, creating mouth-watering content that went viral.",
+        "Nissin introduced its new 'Spicy Tom Yum Cheese' flavor, combining the bold taste of Thai Tom Yum with the smooth richness of cheese for a unique and tempting experience. Buddy Review designed and planned a campaign to reach every segment—from movie buffs and gamers to foodies and lifestyle enthusiasts. We engaged influencers ranging from Nano to Mega KOLs in the Foodie, Gamer, and Lifestyle categories, and created snackable content that is easy to watch, quick to enjoy, and visually memorable with melting cheese, blowtorched cheese, and onsen eggs to trigger immediate cravings."
       ],
       "stats": [
         {
@@ -182,11 +182,11 @@
       "brand": "Watsons",
       "logo": "/success-watsons.webp",
       "logoOnWhite": false,
-      "tagline": "ปั้นคอนเทนต์ 'งบ 500 ช้อปสินค้าวัตสัน' สร้างกระแสคอนเทนต์ความคุ้มค่าโซเชียล",
+      "tagline": "Creating 'Shop Watsons under 500' content to spark a value-shopping social trend.",
       "industry": "Beauty",
       "paras": [
-        "Watsons ต้องการตอกย้ำภาพลักษณ์แบรนด์ในฐานะแหล่งรวมสินค้าคุณภาพคุ้มราคา และผลักดัน House Brand Buddy Review จึงวางแคมเปญบน TikTok และ Lemon8 ชวนอินฟลูเอนเซอร์ทำคอนเทนต์ภายใต้โจทย์ \"งบ 500 บาท ซื้อสินค้า 'ตราวัตสัน' ได้กี่ชิ้น\" เพื่อสร้างบรรยากาศการช้อปที่สนุกและบอกต่อคุ้มค่า",
-        "Buddy Review ใช้กลยุทธ์เน้นการเล่าเรื่องแบบ \"เพื่อนแนะนำเพื่อน\" โดยให้ครีเอเตอร์โชว์การช้อปปิ้งจริงในร้านและการใช้งานสินค้าอย่างเป็นธรรมชาติ ใช้ TikTok สำหรับวิดีโอสั้นรีวิวที่สดใส และ Lemon8 สำหรับภาพสวยงามพร้อมคำแนะนำละเอียด"
+        "Watsons wanted to reinforce its brand image as the ultimate destination for quality and value products while promoting its House Brand. Buddy Review executed a campaign on TikTok and Lemon8, inviting influencers to create content around the challenge: 'How many Watsons-branded items can you buy with a 500 THB budget?' to create a fun and highly shareable shopping atmosphere.",
+        "Buddy Review used a 'friend-recommending-friend' storytelling strategy, having creators showcase real in-store shopping and natural product usage. We leveraged TikTok for vibrant short-form review videos and Lemon8 for aesthetic visuals paired with detailed recommendations."
       ],
       "stats": [
         {
@@ -208,11 +208,11 @@
       "brand": "LDC Dental",
       "logo": "/success-ldc.webp",
       "logoOnWhite": false,
-      "tagline": "โปรโมทบริการจัดฟันใส LDC จนกระแสแรง พร้อมกิจกรรมลุ้นบินอังกฤษ",
+      "tagline": "Boosting LDC's clear aligner services with strong buzz and a trip to England giveaway.",
       "industry": "Healthcare",
       "paras": [
-        "LDC Dental คลินิกทันตกรรมชั้นนำของไทย จับมือกับ Buddy Review เพื่อโปรโมทบริการจัดฟันใส (Invisalign) พร้อมสร้างแคมเปญที่ผสานการตลาดสร้างสรรค์และการส่งต่อคุณค่าทางสังคม ผ่านอินฟลูเอนเซอร์ที่คัดสรรมาอย่างเหมาะสม",
-        "Buddy Review คัดเลือกอินฟลูเอนเซอร์ที่เข้ากันกับแบรนด์ทั้งสายสุขภาพและครอบครัว มาสร้างคอนเทนต์รีวิวบริการที่เข้าถึงง่าย และออกแบบกิจกรรมพร้อมของรางวัลตั๋วไปเชียร์บอลที่อังกฤษ เพื่อกระตุ้นการมีส่วนร่วมของผู้ชม"
+        "LDC Dental, a leading dental clinic in Thailand, partnered with Buddy Review to promote its clear aligner (Invisalign) services and launch a campaign that blended creative marketing with social value through carefully selected influencers.",
+        "Buddy Review selected influencers that matched the brand in both the health and family categories to create highly accessible service reviews. We also designed interactive activities offering a chance to win tickets to watch a football match in England, driving massive audience engagement."
       ],
       "stats": [
         {
@@ -234,11 +234,11 @@
       "brand": "Viu",
       "logo": "/success-viu.webp",
       "logoOnWhite": false,
-      "tagline": "ผสานอินฟลูเอนเซอร์และคอนเทนต์ท้องถิ่น ยกระดับ Viu ในใจชาวอีสาน",
+      "tagline": "Combining influencers and local content to elevate Viu in the hearts of the Isan people.",
       "industry": "Entertainment & Streaming",
       "paras": [
-        "Viu แพลตฟอร์มสตรีมมิงซีรีส์เอเชียชั้นนำ ร่วมกับ Buddy Review สร้างแคมเปญ \"อีสานชมวิว\" นำประสบการณ์หนังกลางแปลงสุดคลาสสิกสู่ภาคอีสาน พร้อมแนะนำซีรีส์ยอดนิยมพากย์อีสาน เพื่อเข้าถึงและสร้างความผูกพันกับกลุ่มเป้าหมายท้องถิ่น แคมเปญนี้ไม่เพียงมอบความบันเทิง แต่ยังเป็นเครื่องมือสื่อสารแบรนด์ที่ทรงพลัง",
-        "Buddy Review เน้นการใช้อินฟลูเอนเซอร์ท้องถิ่น เพื่อสร้างความน่าเชื่อถือและถ่ายทอดประสบการณ์จากงานผ่านวิดีโอคอนเทนต์ที่กระตุ้นความสนใจ และสนับสนุนการสร้างคอนเทนต์ที่แชร์ง่ายในสไตล์ของอินฟลูเอนเซอร์แต่ละคน"
+        "Viu, a leading Asian streaming platform, collaborated with Buddy Review to create the 'Isan Watch Viu' campaign. This initiative brought the classic outdoor cinema experience to the Isan region while introducing popular series dubbed in the local Isan dialect. This approach effectively reached and built strong connections with the local target audience, making the campaign not just entertaining but also a powerful brand communication tool.",
+        "Buddy Review focused on utilizing local influencers to establish credibility and convey the event experience through engaging video content. We supported the creation of highly shareable content that perfectly captured the unique style of each influencer."
       ],
       "stats": [
         {
@@ -260,11 +260,11 @@
       "brand": "Guss Damn Good x ENO",
       "logo": "/success-stories/Success stories-03.webp",
       "logoOnWhite": false,
-      "tagline": "ENO และ Guss Damn Good ร่วมกันสร้างสรรค์ไอศกรีมรสชาติใหม่ชื่อ \"After Meal\"",
+      "tagline": "ENO and Guss Damn Good teamed up to create a new ice cream flavor called 'After Meal'.",
       "industry": "Food & Beverage",
       "paras": [
-        "ENO ผงฟู้คู่ใจหลังมื้ออาหารของใครหลายคน ก้าวข้ามข้อจำกัดเดิมๆ สู่แคมเปญสุดซ่า ครั้งนี้ ENO ไม่ได้มาแค่ในซอง แต่มาพร้อมกับรสชาติที่มีเรื่องราว และประสบการณ์ที่ใครก็อยากลองและเล่าต่อ",
-        "แคมเปญนี้ใช้กลยุทธ์ Influencer Marketing ร่วมกับ Buddy Review โดยคัดเลือกอินฟลูเอนเซอร์สายกิน สายฮา และสายครีเอทีฟ ทำให้คอนเทนต์สนุก น่าสนใจ และเล่าเรื่องรสชาติได้แบบไม่ซ้ำใคร สร้าง Talkability บนโซเชียลได้อย่างดี"
+        "ENO, everyone's favorite post-meal effervescent powder, stepped beyond its traditional boundaries for a highly refreshing campaign. This time, ENO didn't just come in a sachet—it came with a flavor that told a story and an experience everyone wanted to try and talk about.",
+        "This campaign utilized an Influencer Marketing strategy with Buddy Review by selecting foodies, comedians, and creative influencers. This made the content fun, engaging, and told the flavor story in a unique way, generating excellent talkability on social media."
       ],
       "stats": [
         {
@@ -286,11 +286,11 @@
       "brand": "AHC 'The Skin Game'",
       "logo": "/success-stories/Success stories-01.webp",
       "logoOnWhite": false,
-      "tagline": "ปลุกกระแสแบรนด์ด้วยอีเวนต์จากซีรีส์สุดไวรัล",
+      "tagline": "Igniting brand buzz with an event inspired by a viral series.",
       "industry": "Beauty & Skincare",
       "paras": [
-        "AHC แบรนด์สกินแคร์เกาหลี จัดอีเวนต์สุดสร้างสรรค์ 'AHC Skin Game THE T-SHOT' ที่ได้แรงบันดาลใจจากซีรีส์ดังบน Netflix อย่าง 'Squid Game' สร้างประสบการณ์โปรโมทแบรนด์แบบใหม่ เพื่อดึงดูดกลุ่มคนรุ่นใหม่และแฟนซีรีส์โดยเฉพาะ",
-        "Buddy Review วางแผนโดยดึง อินฟลูเอนเซอร์ตัวท็อป เสริมด้วย ข่าวประชาสัมพันธ์ จากสื่อชั้นนำ และ ปรับแต่งคอนเทนต์ให้เหมาะสมกับแต่ละแพลตฟอร์ม พร้อมทั้ง ติดตามผลแบบเรียลไทม์ เพื่อให้แคมเปญประสบความสำเร็จและเกิดกระแสไวรัล"
+        "AHC, a Korean skincare brand, hosted a highly creative event, 'AHC Skin Game THE T-SHOT', inspired by the hit Netflix series 'Squid Game'. This innovative brand promotion experience was designed specifically to attract younger audiences and series fans.",
+        "Buddy Review planned the strategy by bringing in top-tier influencers, amplifying the impact with PR from leading media outlets, and tailoring the content for each platform. We also monitored results in real time to ensure the campaign's success and viral reach."
       ],
       "stats": [
         {
@@ -311,30 +311,30 @@
   "blogPosts": [
     {
       "slug": "best-time-to-post-2025",
-      "title": "รวมวันและเวลาที่ดีที่สุดในการโพสต์บนโซเชียลมีเดีย ปี 2025",
-      "desc": "เคยสงสัยไหมว่า… \"ทำไมบางโพสต์แทบไม่มีคนเห็น แต่บางโพสต์กลับไวรัลขึ้นมาได้?\" ความลับไม่ได้อยู่ที่คอนเทนต์อย่างเดียว แต่ \"เวลา\" ก็เป็นอีกปัจจัยสำคัญที่กำหนดว่าคอนเทนต์ของคุณจะไปโผล่บนฟีดใครบ้าง",
+      "title": "The Best Days and Times to Post on Social Media in 2025",
+      "desc": "Ever wondered... \"Why do some posts get almost no views, while others go viral?\" The secret isn't just the content, but the \"timing\" is another crucial factor that determines who sees your posts.",
       "image": "/blogs/blog-best-time.png",
       "categories": [
-        "สำหรับอินฟลูเอนเซอร์"
+        "I'm an Influencer"
       ]
     },
     {
       "slug": "tiktok-algorithm-9-techniques",
-      "title": "ถอดรหัสอัลกอริทึม TikTok + 9 เทคนิคทำคลิปให้ดังแบบมืออาชีพ",
-      "desc": "หลายคนที่เล่น TikTok อาจสงสัยว่า \"ทำไมบางคลิปแทบไม่มีคนดู แต่บางคลิปกลับไวรัล?\" จริงๆ แล้วนี่ไม่ใช่เรื่องของโชค แต่คือการทำงานของอัลกอริทึม",
+      "title": "Decoding the TikTok Algorithm + 9 Pro Techniques to Go Viral",
+      "desc": "Many TikTok users might wonder, \"Why do some videos get no views while others go viral?\" The truth is, it's not about luck—it's about how the algorithm works.",
       "image": "/blogs/blog-2.png",
       "categories": [
-        "สำหรับแบรนด์",
-        "สำหรับอินฟลูเอนเซอร์"
+        "I'm a Brand",
+        "I'm an Influencer"
       ]
     },
     {
       "slug": "influencer-mapping-canvas",
-      "title": "วิธีเลือกอินฟลูเอนเซอร์ที่ใช่สำหรับแบรนด์ ด้วย Influencer Mapping Canvas",
-      "desc": "ยุคนี้อินฟลูเอนเซอร์ไม่ได้เป็นเพียงแค่ \"คนดังบนโลกออนไลน์\" แต่คือผู้ทรงอิทธิพลที่สามารถเปลี่ยนการตัดสินใจซื้อของผู้บริโภคได้จริง",
+      "title": "How to Choose the Right Influencers for Your Brand with the Influencer Mapping Canvas",
+      "desc": "In this era, influencers are no longer just \"famous people online\"—they are powerful voices capable of genuinely influencing consumer purchasing decisions.",
       "image": "/blogs/blog-influencer-mapping.png",
       "categories": [
-        "สำหรับแบรนด์"
+        "I'm a Brand"
       ]
     }
   ],
@@ -342,32 +342,32 @@
     {
       "photo": "/influencers/inf-cheese.jpg",
       "name": "ชีส",
-      "text": "ได้ร่วมงานกับ Buddy Review มาหลายปีแล้ว มีโอกาสได้รับงานที่หลากหลายและทีมงานน่ารักและใส่ใจทุกคน หวังว่าจะได้ร่วมงานกันไปนานๆ นะ ครับ Buddy Review Fighting!!"
+      "text": "I have been working with Buddy Review for many years. I've had the opportunity to receive a variety of jobs, and the team is lovely and attentive to everyone. I hope we can keep working together for a long time! Buddy Review Fighting!!"
     },
     {
       "photo": "/influencers/inf-yam.jpg",
       "name": "แยม",
-      "text": "รู้สึกดีใจที่ได้ร่วมงานกับทีมงานที่น่ารัก เป็นกันเองและมืออาชีพมากๆ อย่าง Buddy Review ภายใต้การร่วมงานดังกล่าว ทำให้แยมได้รับโอกาสร่วมงานกับแบรนด์ระดับประเทศที่มีความน่าเชื่อถือ ซึ่งนับว่าเป็นประสบการณ์ทำงานร่วมกันที่คุ้มค่ามากๆ ค่ะ"
+      "text": "I'm so glad to work with such a lovely, friendly, and highly professional team like Buddy Review. Working with them gave me the chance to collaborate with highly credible national brands, which is a truly rewarding experience."
     },
     {
       "photo": "/influencers/inf-riwago.jpg",
       "name": "ริวโกะ",
-      "text": "ชอบทำงานกับ Buddy Review มากๆเพราะบัดดี้คุยงานง่าย บรีฟเข้าใจ ทำงานไว เป็นระบบ ไม่เอาเปรียบอินฟลูและป้อนงานให้ริวโกะเยอะมากๆๆ🥺💖🙏🏻 รัก Buddy Review และอยากทำด้วยไปนานๆเลยค่ะ"
+      "text": "I love working with Buddy Review because they are easy to communicate with, provide clear briefs, work fast, and are highly systematic. They don't take advantage of influencers and constantly feed me lots of jobs! 🥺💖🙏🏻 Love Buddy Review and want to keep working with them for a long time."
     },
     {
       "photo": "/influencers/inf-maihom.jpg",
       "name": "ไม้หอม",
-      "text": "เราเริ่มต้นรีวิวต่างๆจาก Buddy review เลยค่ะ เพื่อนแนะนำมา จนตอนนี่ผ่านไปหลายปีแล้วเราก็ยังรับงานจาก Buddy review อยู่ มีงานให้เลือกตลอด และได้มีโอกาสทำงานร่วมกับแบรนด์ดังหลายแบรนด์เลย ต้องขอบคุณเพื่อนคนนั้นมากๆที่แนะนำให้เรารู้จักกับที่นี่เพราะมันดีสุดๆ แอดมินก็ดูแลดีมากๆค่ะ"
+      "text": "I started doing reviews right here with Buddy Review! A friend recommended it, and even after several years, I'm still accepting jobs from Buddy Review. There are always jobs to choose from, and I've had the chance to work with many famous brands. I really have to thank that friend for introducing me to this place because it's the best. The admins also take great care of us."
     },
     {
       "photo": "/influencers/inf-puifai.jpg",
       "name": "ปุยฝ้าย",
-      "text": "ชอบทำงานกับ Buddy review ทั้งเรื่องของแบรนด์ที่มาจากช่องทางนี้จะเป็นแบรนด์ที่น่าเชื่อถือและเป็นที่รู้จักค่ะ บรีฟงานและรายละเอียดมักจะชัดเจน และเคารพการตัดสินใจของ influencer ที่สำคัญแอดมินทุกท่านเต็มใจและเข้าใจในการทำงาน ทำให้ทุกอย่างง่ายและ flow ไปในทิศทางเดียวกัน ทำให้การทำงานสนุกมากขึ้นค่ะ"
+      "text": "I love working with Buddy Review. The brands from this platform are always credible and well-known. The job briefs and details are clear, and they respect the influencer's decisions. Most importantly, the admins are willing and understanding, making everything easy and smooth, which makes the work so much more fun."
     },
     {
       "photo": "/influencers/inf-may.jpg",
       "name": "มาย",
-      "text": "Buddy Review เป็นช่องทางที่ทำให้เราได้แสดงศักยภาพได้อย่างเต็มที่และอิสระ ทำให้เราได้รู้จักคำว่า การทำงานสามารถทำได้ทุกที่บนโลกใบนี้ นอกจากนี้ก็ยังได้เพื่อน สังคมใหม่ๆ และเข้าใจคำว่าทีม และการซัพพอร์ต"
+      "text": "Buddy Review is a platform that allows us to express our potential fully and freely, letting us realize that we can truly work from anywhere in the world. Plus, I've gained new friends, a new community, and truly understand the meaning of teamwork and support."
     }
   ],
   "categoriesMarquee": [
@@ -380,11 +380,11 @@
       "photo": "/inf-categories/cat-ommiew.jpeg"
     },
     {
-      "label": "สายกินสายเที่ยว",
+      "label": "Foodies & Travelers",
       "category": "Food & Travel",
       "emoji": "🍜",
       "color": "#4caf50",
-      "initial": "ส",
+      "initial": "F",
       "photo": "/inf-categories/cat-food.jpg"
     },
     {
@@ -404,19 +404,19 @@
       "photo": "/inf-categories/cat-tech.jpg"
     },
     {
-      "label": "สายเกมเมอร์",
+      "label": "Gamers",
       "category": "Gaming",
       "emoji": "🎮",
       "color": "#ff9800",
-      "initial": "ส",
+      "initial": "G",
       "photo": "/inf-categories/cat-gaming.jpg"
     },
     {
-      "label": "สายเฮลตี้",
+      "label": "Health & Fitness",
       "category": "Health & Fitness",
       "emoji": "🏋️",
       "color": "#f44336",
-      "initial": "ส",
+      "initial": "H",
       "photo": "/inf-categories/cat-health.jpg"
     },
     {
@@ -428,27 +428,27 @@
       "photo": "/inf-categories/cat-toeyprim.jpeg"
     },
     {
-      "label": "สายแม่และเด็ก",
+      "label": "Mom & Kids",
       "category": "Mom & Kids",
       "emoji": "👶",
       "color": "#e91e8c",
-      "initial": "ส",
+      "initial": "M",
       "photo": "/inf-categories/cat-mom.jpg"
     },
     {
-      "label": "สายแฟชั่น",
+      "label": "Fashion",
       "category": "Fashion",
       "emoji": "👗",
       "color": "#673ab7",
-      "initial": "ส",
+      "initial": "F",
       "photo": "/inf-categories/cat-fashion.jpg"
     },
     {
-      "label": "สัตว์เลี้ยงน่ารัก",
+      "label": "Cute Pets",
       "category": "Pets",
       "emoji": "🐶",
       "color": "#8bc34a",
-      "initial": "ส",
+      "initial": "C",
       "photo": "/inf-categories/cat-pets.jpg"
     }
   ],
