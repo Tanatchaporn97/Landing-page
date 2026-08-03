@@ -12,7 +12,7 @@ const SOCIAL = [
   { icon: "/social/Lemon8.png", name: "Lemon8",        href: "https://s.lemon8-app.com/s/GgNUhrhUMR" },
 ];
 
-export default function Footer({ variant = "influencer", lang = "th" }: { variant?: "home" | "influencer", lang?: "th" | "en" }) {
+export default function Footer({ variant = "influencer", lang = "th", dict }: { variant?: "home" | "influencer", lang?: "th" | "en", dict?: any }) {
   const textColor = variant === "home" ? "#ffffff" : "#F0E8FF";
   const bgGradient = variant === "home" 
     ? "url('/hero-bg.png'), linear-gradient(160deg, #09071a 0%, #1c1256 30%, #3d2a90 55%, #7b5cf6 75%, #e8e0ff 90%, #ffffff 100%)"
@@ -36,12 +36,12 @@ export default function Footer({ variant = "influencer", lang = "th" }: { varian
         {/* 3 — Contact info */}
         <div className="flex flex-col gap-8 footer-contact-col">
           <p className="font-medium footer-text" style={{ ...KT, fontSize: "16px", lineHeight: "160%", color: textColor }}>
-            ติดต่อเรา<br/>
-            <span style={{ fontWeight: 400 }}>General Inquiries:</span>{" "}
+            {dict?.footer?.contact || "ติดต่อเรา"}<br/>
+            <span style={{ fontWeight: 400 }}>{dict?.footer?.generalInquiries || "General Inquiries"}:</span>{" "}
             <a href="mailto:Info@buddyreview.co" style={{ color: textColor, textDecoration: "underline" }}>Info@buddyreview.co</a><br/>
-            <span style={{ fontWeight: 400 }}>Marketing Inquiries:</span>{" "}
+            <span style={{ fontWeight: 400 }}>{dict?.footer?.marketingInquiries || "Marketing Inquiries"}:</span>{" "}
             <a href="mailto:Marketing@buddyreview.co" style={{ color: textColor, textDecoration: "underline" }}>Marketing@buddyreview.co</a><br/>
-            <span style={{ fontWeight: 400 }}>Careers:</span>{" "}
+            <span style={{ fontWeight: 400 }}>{dict?.footer?.careers || "Careers"}:</span>{" "}
             <a href="mailto:Recruit@buddyreview.co" style={{ color: textColor, textDecoration: "underline" }}>Recruit@buddyreview.co</a>
           </p>
           <p className="font-normal footer-text" style={{ ...KT, fontSize: "16px", lineHeight: "160%", color: textColor }}>
@@ -56,7 +56,7 @@ export default function Footer({ variant = "influencer", lang = "th" }: { varian
         {/* 4 — Address */}
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
           <p className="font-normal text-right footer-text" style={{ ...KT, fontSize: "16px", lineHeight: "160%", color: textColor, maxWidth: "453px" }}>
-            บริษัท บับเบิลลี จำกัด<br/>1010, อาคารชินวัตรทาวเวอร์ 3, ห้อง 603<br/>ชั้น 6, ถนนวิภาวดีรังสิต,<br/>แขวงจตุจักร กรุงเทพฯ 10900
+            {dict?.footer?.address1 || "บริษัท บับเบิลลี จำกัด"}<br/>{dict?.footer?.address2 || "1010, อาคารชินวัตรทาวเวอร์ 3, ห้อง 603"}<br/>{dict?.footer?.address3 || "ชั้น 6, ถนนวิภาวดีรังสิต,"}<br/>{dict?.footer?.address4 || "แขวงจตุจักร กรุงเทพฯ 10900"}
           </p>
         </div>
 
@@ -73,11 +73,13 @@ export default function Footer({ variant = "influencer", lang = "th" }: { varian
         {/* 6 — Legal */}
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
           <p className="font-normal text-right footer-text footer-legal" style={{ ...KT, fontSize: "14px", lineHeight: "140%", color: textColor }}>
+            {dict?.footer?.copyright || "© 2025 Buddy Review. All rights reserved."}
+            <br />
             <a href="https://docs.google.com/viewer?url=https://business.buddyreview.co/document/privacy_policy.pdf" target="_blank" rel="noopener noreferrer"
-              style={{ color: textColor, textDecoration: "underline" }}>นโยบายความเป็นส่วนตัว</a>
+              style={{ color: textColor, textDecoration: "underline" }}>{dict?.footer?.privacyPolicy || "นโยบายความเป็นส่วนตัว"}</a>
             &nbsp;|&nbsp;
             <a href="https://docs.google.com/viewer?url=https://business.buddyreview.co/document/terms_and_conditions.pdf" target="_blank" rel="noopener noreferrer"
-              style={{ color: textColor, textDecoration: "underline" }}>ข้อตกลงการใช้งาน</a>
+              style={{ color: textColor, textDecoration: "underline" }}>{dict?.footer?.termsAndConditions || "ข้อตกลงการใช้งาน"}</a>
           </p>
         </div>
 

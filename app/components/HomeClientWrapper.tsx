@@ -36,24 +36,7 @@ const IconCheck = ({ color = "#5f26e5" }: { color?: string }) => (
 
 
 
-const FAQS_LANDING = [
-          { q: "Buddy Review ให้บริการอะไรบ้าง", a: "เราให้บริการทำ Influencer Marketing แบบครบวงจร ตั้งแต่การวางกลยุทธ์ เลือกอินฟลูเอนเซอร์ที่เหมาะสม ติดต่อประสานงาน ตรวจสอบงาน และวัดผลสัมฤทธิ์แคมเปญ",
-            qEn: "What services does Buddy Review offer?", aEn: "We provide full-service influencer marketing — from strategy planning and selecting the right influencers, to coordination, content review, and campaign performance measurement." },
-          { q: "บริการของเราดีกว่าทำเองยังไง?", a: "การใช้บริการของเราช่วยให้คุณประหยัดเวลาและลดความยุ่งยากในการค้นหา คัดเลือก เจรจา และบริหารจัดการอินฟลูเอนเซอร์จำนวนมาก เรามีเครื่องมือและฐานข้อมูลที่แม่นยำ รวมถึงทีมงานมืออาชีพที่ดูแลให้คุณครบทุกขั้นตอน ตั้งแต่การวางแผนไปจนถึงการวัดผล ทำให้คุณมั่นใจได้ว่าจะได้อินฟลูเอนเซอร์ที่เหมาะสมและแคมเปญที่มีประสิทธิภาพสูงสุด",
-            qEn: "How is your service better than doing it yourself?", aEn: "Using our service saves you time and removes the hassle of searching, vetting, negotiating with, and managing large numbers of influencers. We have precise tools and databases, plus a professional team handling every step from planning to measurement — so you can be confident you'll get the right influencers and the most effective campaign." },
-          { q: "คิดค่าบริการอย่างไร?", a: "ค่าบริการขึ้นกับขนาดแคมเปญ จำนวนอินฟลูเอนเซอร์ และบริการที่คุณต้องการ โดยเรามีขั้นต่ำในการทำแคมเปญอยู่ที่ 100,000 บาทต่อแคมเปญ",
-            qEn: "How is pricing calculated?", aEn: "Pricing depends on campaign size, number of influencers, and the services you need. Our minimum campaign budget is 100,000 THB per campaign." },
-          { q: "ต้องเตรียมอะไรบ้างก่อนเริ่มแคมเปญ?", a: "แจ้งวัตถุประสงค์แคมเปญ งบประมาณ กลุ่มเป้าหมาย และรายละเอียดสินค้า/บริการ ส่วนที่เหลือเราจะดูแลให้ทั้งหมด",
-            qEn: "What do I need to prepare before starting a campaign?", aEn: "Just share your campaign objective, budget, target audience, and product/service details — we'll take care of the rest." },
-          { q: "ใช้อะไรในการคัดเลือกอินฟลูเอนเซอร์?", a: "เราใช้ระบบวิเคราะห์ข้อมูลเชิงลึก (Data-Driven Matching) ที่สามารถดูได้ทั้ง Demographic, Engagement, Unique Follower Overlap และประวัติการทำแคมเปญ เพื่อคัดเลือกอินฟลูเอนเซอร์ตรงกับเป้าหมายของแบรนด์และแมทช์กับกลุ่มผู้ติดตามของอินฟลูเอนเซอร์มากที่สุด",
-            qEn: "How do you select influencers?", aEn: "We use a data-driven matching system that analyzes demographics, engagement, unique follower overlap, and campaign history — selecting influencers that align with your brand goals and best match their followers' audience." },
-          { q: "สามารถขอรีพอร์ตเมื่อจบแคมเปญได้หรือไม่?", a: "คุณจะได้รับรายงานผลแคมเปญที่ครอบคลุม เช่น ยอด Reach, Engagement, ROI, อินฟลูเอนเซอร์ที่ทำผลงานดีสุด และข้อมูลเชิงลึกสำหรับพัฒนาในการทำแคมเปญถัดไป",
-            qEn: "Can I get a report after the campaign ends?", aEn: "You'll receive a comprehensive campaign report covering Reach, Engagement, ROI, top-performing influencers, and insights to improve your next campaign." },
-          { q: "สามารถเลือกอินฟลูเอนเซอร์เองได้ไหม?", a: "หากคุณมีอินฟลูเอนเซอร์ที่สนใจเป็นพิเศษ สามารถให้เราติดต่อหรือแนะนำอินฟลูเอนเซอร์ที่คล้ายคลึงกันได้ โดยเราจะเป็นคนติดต่อให้กับคุณเองทั้งหมด",
-            qEn: "Can I choose my own influencers?", aEn: "If there's a specific influencer you're interested in, we can reach out on your behalf or recommend similar ones — we'll handle all the outreach for you." },
-          { q: "แคมเปญสามารถลงได้บนแพลตฟอร์มไหนบ้าง?", a: "เรารองรับทุกแพลตฟอร์มหลัก เช่น Instagram, Facebook, TikTok, YouTube, X (Twitter), และ Lemon8 โดยเราสามารถแนะนำความเหมาะสมกับกลุ่มเป้าหมาย คอนเทนต์และจุดประสงค์แคมเปญ",
-            qEn: "Which platforms can campaigns run on?", aEn: "We support all major platforms including Instagram, Facebook, TikTok, YouTube, X (Twitter), and Lemon8 — and can recommend the best fit based on your target audience, content, and campaign goals." },
-        ];
+
 
 import { type Locale } from "../../i18n-config";
 
@@ -425,10 +408,11 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       <BlogPostsSection lang={lang} />
 
       {/* ── FAQs ── */}
-      <FAQAccordion faqs={FAQS_LANDING} lang={lang} variant="home" />
+      <FAQAccordion faqs={t.homeFaqs} lang={lang} variant="home" dict={dict} />
 
-      {/* ── Contact Us ── */}
-      <ContactFormSection lang={lang} />
+      <div id="contact" style={{ padding: "80px 0", background: "#f8f9fa" }}>
+        <ContactFormSection lang={lang} dict={t.contactForm} />
+      </div>
 
       {/* ── Footer ── */}
       <Footer variant="home" />

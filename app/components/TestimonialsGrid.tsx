@@ -3,44 +3,12 @@ import Image from "next/image";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
-const TESTIMONIALS = [
-  {
-    photo: "/influencers/inf-cheese.jpg",
-    name: "ชีส",
-    text: "ได้ร่วมงานกับ Buddy Review มาหลายปีแล้ว มีโอกาสได้รับงานที่หลากหลายและทีมงานน่ารักและใส่ใจทุกคน หวังว่าจะได้ร่วมงานกันไปนานๆ นะ ครับ Buddy Review Fighting!!",
-  },
-  {
-    photo: "/influencers/inf-yam.jpg",
-    name: "แยม",
-    text: "รู้สึกดีใจที่ได้ร่วมงานกับทีมงานที่น่ารัก เป็นกันเองและมืออาชีพมากๆ อย่าง Buddy Review ภายใต้การร่วมงานดังกล่าว ทำให้แยมได้รับโอกาสร่วมงานกับแบรนด์ระดับประเทศที่มีความน่าเชื่อถือ ซึ่งนับว่าเป็นประสบการณ์ทำงานร่วมกันที่คุ้มค่ามากๆ ค่ะ",
-  },
-  {
-    photo: "/influencers/inf-riwago.jpg",
-    name: "ริวโกะ",
-    text: "ชอบทำงานกับ Buddy Review มากๆเพราะบัดดี้คุยงานง่าย บรีฟเข้าใจ ทำงานไว เป็นระบบ ไม่เอาเปรียบอินฟลูและป้อนงานให้ริวโกะเยอะมากๆๆ🥺💖🙏🏻 รัก Buddy Review และอยากทำด้วยไปนานๆเลยค่ะ",
-  },
-  {
-    photo: "/influencers/inf-maihom.jpg",
-    name: "ไม้หอม",
-    text: "เราเริ่มต้นรีวิวต่างๆจาก Buddy review เลยค่ะ เพื่อนแนะนำมา จนตอนนี่ผ่านไปหลายปีแล้วเราก็ยังรับงานจาก Buddy review อยู่ มีงานให้เลือกตลอด และได้มีโอกาสทำงานร่วมกับแบรนด์ดังหลายแบรนด์เลย ต้องขอบคุณเพื่อนคนนั้นมากๆที่แนะนำให้เรารู้จักกับที่นี่เพราะมันดีสุดๆ แอดมินก็ดูแลดีมากๆค่ะ",
-  },
-  {
-    photo: "/influencers/inf-puifai.jpg",
-    name: "ปุยฝ้าย",
-    text: "ชอบทำงานกับ Buddy review ทั้งเรื่องของแบรนด์ที่มาจากช่องทางนี้จะเป็นแบรนด์ที่น่าเชื่อถือและเป็นที่รู้จักค่ะ บรีฟงานและรายละเอียดมักจะชัดเจน และเคารพการตัดสินใจของ influencer ที่สำคัญแอดมินทุกท่านเต็มใจและเข้าใจในการทำงาน ทำให้ทุกอย่างง่ายและ flow ไปในทิศทางเดียวกัน ทำให้การทำงานสนุกมากขึ้นค่ะ",
-  },
-  {
-    photo: "/influencers/inf-may.jpg",
-    name: "มาย",
-    text: "Buddy Review เป็นช่องทางที่ทำให้เราได้แสดงศักยภาพได้อย่างเต็มที่และอิสระ ทำให้เราได้รู้จักคำว่า การทำงานสามารถทำได้ทุกที่บนโลกใบนี้ นอกจากนี้ก็ยังได้เพื่อน สังคมใหม่ๆ และเข้าใจคำว่าทีม และการซัพพอร์ต",
-  },
-];
+export default function TestimonialsGrid({ dict }: { dict?: any }) {
+  const TESTIMONIALS = dict?.testimonials || [];
+  const col1 = [0, 2, 4].map(i => TESTIMONIALS[i]).filter(Boolean);
+  const col2 = [1, 3, 5].map(i => TESTIMONIALS[i]).filter(Boolean);
 
-export default function TestimonialsGrid() {
-  const col1 = [0, 2, 4].map(i => TESTIMONIALS[i]);
-  const col2 = [1, 3, 5].map(i => TESTIMONIALS[i]);
-
-  const Card = ({ t }: { t: typeof TESTIMONIALS[0] }) => (
+  const Card = ({ t }: { t: any }) => (
     <div style={{
       background: "#ffffff",
       borderRadius: "16px",

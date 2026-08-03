@@ -20,11 +20,13 @@ export default function FAQAccordion({
   lang = "th",
   variant = "influencer",
   hideCta = false,
+  dict,
 }: {
   faqs?: Array<{ q: string; a: string; qEn?: string; aEn?: string }>;
   lang?: "th" | "en";
   variant?: "home" | "influencer";
   hideCta?: boolean;
+  dict?: any;
 }) {
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
 
@@ -71,8 +73,8 @@ export default function FAQAccordion({
         {/* Centered title */}
         <div style={{ textAlign: "center", marginBottom: "64px" }}>
           <h2 style={{ ...KT, fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, color: "#111827", margin: 0, lineHeight: 1.2 }}>
-            <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>Frequently Asked </span>
-            <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Questions</span>
+            <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>{dict?.faqPage?.title?.split(' ')[0] || "Frequently Asked"} </span>
+            <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{dict?.faqPage?.title?.split(' ').slice(1).join(' ') || "Questions"}</span>
           </h2>
         </div>
 
@@ -176,13 +178,13 @@ export default function FAQAccordion({
         {!hideCta && (
           <div style={{ textAlign: "center", marginTop: "64px", display: "flex", flexDirection: "column", alignItems: "center", gap: "24px" }}>
             <h3 style={{ ...KT, fontSize: "clamp(24px,2.5vw,36px)", fontWeight: 800, color: "#111827", margin: 0 }}>
-              {lang === "en" ? "Still have questions?" : "มีคำถามเพิ่มเติมไหม?"}
+              {dict?.home?.ctaTitle || (lang === "en" ? "Still have questions?" : "มีคำถามเพิ่มเติมไหม?")}
             </h3>
             <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              <Link href="/faq"
+              <Link href={`/${lang}/faq`}
                 className="btn-insight"
                 style={{ ...KT, borderRadius: "50px", fontSize: "16px", fontWeight: 600, padding: "14px 48px", textDecoration: "none", display: "inline-block" }}>
-                {lang === "en" ? "View More" : "ดูเพิ่มเติม"}
+                {dict?.home?.viewMore || (lang === "en" ? "View More" : "ดูเพิ่มเติม")}
               </Link>
             </div>
           </div>

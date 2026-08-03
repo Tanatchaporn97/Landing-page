@@ -17,8 +17,11 @@ const SuccessStoriesSlider = dynamic(() => import("../../components/SuccessStori
 const ContactFormSection = dynamic(() => import("../../components/ContactFormSection"));
 const FAQAccordion = dynamic(() => import("../../components/FAQAccordion"));
 
+import { getDictionary } from "../../../get-dictionary";
+
 export default async function InfluencerPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
+  const dict = await getDictionary(lang as Locale);
 
   return (
     <div style={{ ...KT, minHeight: "100vh", backgroundImage: "url('/light-purple-gradient-bg-3.jpg')", backgroundSize: "100% 100%", backgroundRepeat: "no-repeat", backgroundPosition: "top center", overflowX: "hidden" }}>
@@ -170,20 +173,20 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
           </div>
           {/* Right: masonry grid */}
           <div style={{ flex: 1 }}>
-            <TestimonialsGrid />
+            <TestimonialsGrid dict={dict} />
           </div>
         </div>
       </section>
 
 
       {/* ── FAQs ── */}
-      <FAQAccordion />
+      <FAQAccordion faqs={dict?.faqPage?.faqsInfluencer} lang={lang as Locale} variant="influencer" dict={dict} />
 
       {/* ── Contact Form ── */}
-      <ContactFormSection lang={lang as Locale} />
+      <ContactFormSection lang={lang as Locale} dict={dict?.contactForm} />
 
       {/* ── Footer ── */}
-      <Footer lang={lang as Locale} variant="influencer" />
+      <Footer lang={lang as Locale} variant="influencer" dict={dict} />
 
     </div>
   );

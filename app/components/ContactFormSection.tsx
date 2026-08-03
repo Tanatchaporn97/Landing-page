@@ -1,9 +1,11 @@
 "use client";
 import { useState } from "react";
+import { type Locale } from "../../i18n-config";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const DARK_BG = "transparent";
+const PINK_GRAD = "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)";
 
 const IconCheck = ({ color = "#5f26e5" }: { color?: string }) => (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -11,12 +13,12 @@ const IconCheck = ({ color = "#5f26e5" }: { color?: string }) => (
   </svg>
 );
 
-export default function ContactFormSection({ lang = "th" }: { lang?: "th" | "en" }) {
+export default function ContactFormSection({ lang = "th", dict }: { lang?: "th" | "en", dict: any }) {
   const [consented, setConsented] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", company: "", budget: "", position: "", brief: "" });
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   
-  const t = lang === "th" ? { contactUs: "ติดต่อเรา" } : { contactUs: "Contact Us" };
+  const t = dict || {};
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -54,10 +56,8 @@ export default function ContactFormSection({ lang = "th" }: { lang?: "th" | "en"
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
             <h2 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 900,
               margin: 0, lineHeight: "72px",
-              background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
               display: "inline-block" }}>
-              {t.contactUs}
+              <span style={{ background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{t.contactUs || "ติดต่อเรา"}</span>
             </h2>
           </div>
         </div>
@@ -76,16 +76,16 @@ export default function ContactFormSection({ lang = "th" }: { lang?: "th" | "en"
             <div className="grid-2-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
               <div>
                 <label style={{ ...KT, color: "#5f26e5", fontSize: "16px", fontWeight: 600,
-                  display: "block", marginBottom: "8px" }}>{lang === "th" ? "ชื่อ-สกุล *" : "Full Name *"}</label>
-                <input type="text" name="name" placeholder={lang === "th" ? "ชื่อ-นามสกุล" : "First and last name"} value={formData.name} onChange={handleFormChange}
+                  display: "block", marginBottom: "8px" }}>{t.fullName}</label>
+                <input type="text" name="name" placeholder={t.fullNamePlaceholder} value={formData.name} onChange={handleFormChange}
                   style={{ ...KT, width: "100%", background: "#f5f5f5", border: "none",
                     borderRadius: "10px", padding: "14px 16px", fontSize: "16px", color: "#111827",
                     outline: "none", boxSizing: "border-box" }} />
               </div>
               <div>
                 <label style={{ ...KT, color: "#5f26e5", fontSize: "16px", fontWeight: 600,
-                  display: "block", marginBottom: "8px" }}>{lang === "th" ? "อีเมล *" : "Email *"}</label>
-                <input type="email" name="email" placeholder="you@example.com" value={formData.email} onChange={handleFormChange}
+                  display: "block", marginBottom: "8px" }}>{t.email}</label>
+                <input type="email" name="email" placeholder={t.emailPlaceholder} value={formData.email} onChange={handleFormChange}
                   style={{ ...KT, width: "100%", background: "#f5f5f5", border: "none",
                     borderRadius: "10px", padding: "14px 16px", fontSize: "16px", color: "#111827",
                     outline: "none", boxSizing: "border-box" }} />
@@ -96,16 +96,16 @@ export default function ContactFormSection({ lang = "th" }: { lang?: "th" | "en"
             <div className="grid-2-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
               <div>
                 <label style={{ ...KT, color: "#5f26e5", fontSize: "16px", fontWeight: 600,
-                  display: "block", marginBottom: "8px" }}>{lang === "th" ? "เบอร์โทรศัพท์ *" : "Phone Number *"}</label>
-                <input type="tel" name="phone" placeholder="08X-XXX-XXXX" value={formData.phone} onChange={handleFormChange}
+                  display: "block", marginBottom: "8px" }}>{t.phone}</label>
+                <input type="tel" name="phone" placeholder={t.phonePlaceholder} value={formData.phone} onChange={handleFormChange}
                   style={{ ...KT, width: "100%", background: "#f5f5f5", border: "none",
                     borderRadius: "10px", padding: "14px 16px", fontSize: "16px", color: "#111827",
                     outline: "none", boxSizing: "border-box" }} />
               </div>
               <div>
                 <label style={{ ...KT, color: "#5f26e5", fontSize: "16px", fontWeight: 600,
-                  display: "block", marginBottom: "8px" }}>{lang === "th" ? "ชื่อบริษัท *" : "Company Name *"}</label>
-                <input type="text" name="company" placeholder={lang === "th" ? "บริษัท..." : "Company..."} value={formData.company} onChange={handleFormChange}
+                  display: "block", marginBottom: "8px" }}>{t.company}</label>
+                <input type="text" name="company" placeholder={t.companyPlaceholder} value={formData.company} onChange={handleFormChange}
                   style={{ ...KT, width: "100%", background: "#f5f5f5", border: "none",
                     borderRadius: "10px", padding: "14px 16px", fontSize: "16px", color: "#111827",
                     outline: "none", boxSizing: "border-box" }} />
@@ -116,16 +116,16 @@ export default function ContactFormSection({ lang = "th" }: { lang?: "th" | "en"
             <div className="grid-2-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
               <div>
                 <label style={{ ...KT, color: "#5f26e5", fontSize: "16px", fontWeight: 600,
-                  display: "block", marginBottom: "8px" }}>{lang === "th" ? "งบประมาณ" : "Budget"}</label>
-                <input type="text" name="budget" placeholder={lang === "th" ? "ระบุงบประมาณ" : "Enter your budget"} value={formData.budget} onChange={handleFormChange}
+                  display: "block", marginBottom: "8px" }}>{t.budget}</label>
+                <input type="text" name="budget" placeholder={t.budgetPlaceholder} value={formData.budget} onChange={handleFormChange}
                   style={{ ...KT, width: "100%", background: "#f5f5f5", border: "none",
                     borderRadius: "10px", padding: "14px 16px", fontSize: "16px", color: "#111827",
                     outline: "none", boxSizing: "border-box" }} />
               </div>
               <div>
                 <label style={{ ...KT, color: "#5f26e5", fontSize: "16px", fontWeight: 600,
-                  display: "block", marginBottom: "8px" }}>{lang === "th" ? "ตำแหน่งงาน *" : "Job Title *"}</label>
-                <input type="text" name="position" placeholder={lang === "th" ? "ระบุตำแหน่งงาน" : "Enter your job title"} value={formData.position} onChange={handleFormChange}
+                  display: "block", marginBottom: "8px" }}>{t.jobTitle}</label>
+                <input type="text" name="position" placeholder={t.jobTitlePlaceholder} value={formData.position} onChange={handleFormChange}
                   style={{ ...KT, width: "100%", background: "#f5f5f5", border: "none",
                     borderRadius: "10px", padding: "14px 16px", fontSize: "16px", color: "#111827",
                     outline: "none", boxSizing: "border-box" }} />
@@ -135,8 +135,8 @@ export default function ContactFormSection({ lang = "th" }: { lang?: "th" | "en"
             {/* บรีฟ */}
             <div>
               <label style={{ ...KT, color: "#5f26e5", fontSize: "16px", fontWeight: 600,
-                display: "block", marginBottom: "8px" }}>{lang === "th" ? "รายละเอียด / บรีฟ" : "Details / Brief"}</label>
-              <textarea rows={5} name="brief" placeholder={lang === "th" ? "รายละเอียดโปรเจกต์ที่ต้องการให้เราช่วย..." : "Details of the project you'd like help with..."} value={formData.brief} onChange={handleFormChange}
+                display: "block", marginBottom: "8px" }}>{t.brief}</label>
+              <textarea rows={5} name="brief" placeholder={t.briefPlaceholder} value={formData.brief} onChange={handleFormChange}
                 style={{ ...KT, width: "100%", background: "#f5f5f5", border: "none",
                   borderRadius: "10px", padding: "14px 16px", fontSize: "16px", color: "#111827",
                   outline: "none", resize: "none", boxSizing: "border-box", display: "block" }} />
@@ -152,38 +152,29 @@ export default function ContactFormSection({ lang = "th" }: { lang?: "th" | "en"
                 transition: "background 0.2s, border 0.2s" }}>
                 {consented && <IconCheck color="#ffffff" />}
               </div>
-              <p style={{ ...KT, color: "#6b7280", fontSize: "13px", lineHeight: "1.6", margin: 0, userSelect: "none" }}>
-                {lang === "th" ? (
-                  <>
-                    ยินดีให้ Buddy Review เก็บรวบรวมใช้และเปิดเผยข้อมูลส่วนบุคคล ตามนโยบายความเป็นส่วนตัว{" "}
-                    <a href="https://docs.google.com/viewer?url=https://business.buddyreview.co/document/terms_and_conditions.pdf"
-                      target="_blank" rel="noopener noreferrer" style={{ color: "#5f26e5", textDecoration: "underline" }}>อ่านข้อตกลง</a>{" "}
-                    และ{" "}
-                    <a href="https://docs.google.com/viewer?url=https://business.buddyreview.co/document/privacy_policy.pdf"
-                      target="_blank" rel="noopener noreferrer" style={{ color: "#5f26e5", textDecoration: "underline" }}>นโยบายความเป็นส่วนตัว</a>
-                  </>
-                ) : (
-                  <>
-                    I consent to Buddy Review collecting, using, and disclosing my personal data in accordance with the{" "}
-                    <a href="https://docs.google.com/viewer?url=https://business.buddyreview.co/document/terms_and_conditions.pdf"
-                      target="_blank" rel="noopener noreferrer" style={{ color: "#5f26e5", textDecoration: "underline" }}>Terms and Conditions</a>{" "}
-                    and{" "}
-                    <a href="https://docs.google.com/viewer?url=https://business.buddyreview.co/document/privacy_policy.pdf"
-                      target="_blank" rel="noopener noreferrer" style={{ color: "#5f26e5", textDecoration: "underline" }}>Privacy Policy</a>
-                  </>
-                )}
+              <p style={{ ...KT, margin: 0, fontSize: "14px", lineHeight: "1.6", color: "#666666" }}>
+                {t.consent2}{" "}
+                <a href="#" 
+                  target="_blank" rel="noopener noreferrer" style={{ color: "#5f26e5", textDecoration: "underline" }}>{t.terms}</a>{" "}
+                {t.and}{" "}
+                <a href="#" 
+                  target="_blank" rel="noopener noreferrer" style={{ color: "#5f26e5", textDecoration: "underline" }}>{t.privacy}</a>
               </p>
             </div>
+            
+            <p style={{ ...KT, margin: 0, fontSize: "14px", lineHeight: "1.6", color: "#666666" }}>
+              {t.consent1}
+            </p>
 
             {/* Status messages */}
             {formStatus === "success" && (
               <p style={{ ...KT, color: "#16a34a", fontSize: "15px", fontWeight: 600, margin: 0 }}>
-                {lang === "th" ? "✓ ส่งข้อมูลเรียบร้อยแล้ว ทีมงานจะติดต่อกลับโดยเร็ว" : "✓ Submitted successfully — our team will contact you soon."}
+                {t.successMessage || "✓ Submitted successfully"}
               </p>
             )}
             {formStatus === "error" && (
               <p style={{ ...KT, color: "#dc2626", fontSize: "15px", fontWeight: 600, margin: 0 }}>
-                {lang === "th" ? "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง" : "Something went wrong. Please try again."}
+                {t.errorMessage || "Something went wrong. Please try again."}
               </p>
             )}
 
