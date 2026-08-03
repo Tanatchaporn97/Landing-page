@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -90,7 +90,7 @@ const STORIES = [
   },
 ];
 
-export default function SuccessPage() {
+function SuccessPageContent() {
   const searchParams = useSearchParams();
   const [activeCat, setActiveCat] = useState(() => {
     const cat = searchParams.get("cat");
@@ -175,5 +175,13 @@ export default function SuccessPage() {
 
       </div>
     </div>
+  );
+}
+
+export default function SuccessPage() {
+  return (
+    <Suspense fallback={<div style={{ minHeight: "100vh" }} />}>
+      <SuccessPageContent />
+    </Suspense>
   );
 }

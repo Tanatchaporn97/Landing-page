@@ -1,12 +1,13 @@
 "use client";
 import { useState, Suspense } from "react";
-import Link from "next/link";
-import Image from "next/image";
+import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import FAQAccordion from "../components/FAQAccordion";
-import ContactFormSection from "../components/ContactFormSection";
+
+// Lazy load below-the-fold components
+const FAQAccordion = dynamic(() => import("../components/FAQAccordion"));
+const ContactFormSection = dynamic(() => import("../components/ContactFormSection"));
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 

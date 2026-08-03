@@ -3,16 +3,18 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { motion } from "motion/react";
+import dynamic from "next/dynamic";
 import Navbar from "./components/Navbar";
-import LogoMarquee from "./components/LogoMarquee";
-import CategoriesMarquee from "./components/CategoriesMarquee";
-import TestimonialsCarousel from "./components/TestimonialsCarousel";
-import KolPackagesSection from "./components/KolPackagesSection";
-import BlogPostsSection from "./components/BlogPostsSection";
-import FAQAccordion from "./components/FAQAccordion";
-import ContactFormSection from "./components/ContactFormSection";
 import Footer from "./components/Footer";
+
+// Lazy load below-the-fold components
+const LogoMarquee = dynamic(() => import("./components/LogoMarquee"));
+const CategoriesMarquee = dynamic(() => import("./components/CategoriesMarquee"));
+const TestimonialsCarousel = dynamic(() => import("./components/TestimonialsCarousel"));
+const KolPackagesSection = dynamic(() => import("./components/KolPackagesSection"));
+const BlogPostsSection = dynamic(() => import("./components/BlogPostsSection"));
+const FAQAccordion = dynamic(() => import("./components/FAQAccordion"));
+const ContactFormSection = dynamic(() => import("./components/ContactFormSection"));
 
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };

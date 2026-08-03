@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import BlogNavbar from "./BlogNavbar";
 import BlogFooter from "./BlogFooter";
@@ -35,7 +35,7 @@ const BLOG_POSTS = [
 
 const CATS = ["ทั้งหมด", "สำหรับแบรนด์", "สำหรับอินฟลูเอนเซอร์"];
 
-export default function BlogIndexPage() {
+function BlogPageContent() {
   const searchParams = useSearchParams();
   const [activeCat, setActiveCat] = useState(() => {
     const cat = searchParams.get("cat");
@@ -133,5 +133,13 @@ export default function BlogIndexPage() {
 
       <BlogFooter />
     </div>
+  );
+}
+
+export default function BlogPage() {
+  return (
+    <Suspense fallback={<div style={{ minHeight: "100vh" }} />}>
+      <BlogPageContent />
+    </Suspense>
   );
 }

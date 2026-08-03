@@ -7,13 +7,16 @@ import { motion } from "motion/react";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
+import dynamic from "next/dynamic";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import FAQAccordion from "../components/FAQAccordion";
-import TestimonialsGrid from "../components/TestimonialsGrid";
-import LogoMarquee from "../components/LogoMarquee";
-import SuccessStoriesSlider from "../components/SuccessStoriesSlider";
-import ContactFormSection from "../components/ContactFormSection";
+
+// Lazy load below-the-fold components
+const TestimonialsGrid = dynamic(() => import("../components/TestimonialsGrid"));
+const LogoMarquee = dynamic(() => import("../components/LogoMarquee"));
+const SuccessStoriesSlider = dynamic(() => import("../components/SuccessStoriesSlider"));
+const ContactFormSection = dynamic(() => import("../components/ContactFormSection"));
+const FAQAccordion = dynamic(() => import("../components/FAQAccordion"));
 
 const PTP_STEPS = [
   { step: "01", img: "/path-to-partnership/Step-1.png", title: "สมัครเป็นอินฟลูกับเรา", desc: "สมัครบัญชีอินฟลูเอนเซอร์ง่ายๆ แค่ 5 นาที พร้อมเชื่อมต่อช่องทางโซเชียลมีเดีย ให้เรารู้จักคุณมากขึ้นและเปิดโอกาสในการร่วมงานกับแบรนด์ชั้นนำ" },
