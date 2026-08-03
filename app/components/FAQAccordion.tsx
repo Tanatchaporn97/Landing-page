@@ -18,11 +18,13 @@ const DEFAULT_FAQS = [
 export default function FAQAccordion({
   faqs = DEFAULT_FAQS,
   lang = "th",
-  variant = "influencer"
+  variant = "influencer",
+  hideCta = false,
 }: {
   faqs?: Array<{ q: string; a: string; qEn?: string; aEn?: string }>;
   lang?: "th" | "en";
   variant?: "home" | "influencer";
+  hideCta?: boolean;
 }) {
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
 
@@ -171,18 +173,20 @@ export default function FAQAccordion({
         </div>
 
         {/* Still have a question */}
-        <div style={{ textAlign: "center", marginTop: "64px", display: "flex", flexDirection: "column", alignItems: "center", gap: "24px" }}>
-          <h3 style={{ ...KT, fontSize: "clamp(24px,2.5vw,36px)", fontWeight: 800, color: "#111827", margin: 0 }}>
-            {lang === "en" ? "Still have questions?" : "มีคำถามเพิ่มเติมไหม?"}
-          </h3>
-          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            <Link href="/faq"
-              className="btn-insight"
-              style={{ ...KT, borderRadius: "50px", fontSize: "16px", fontWeight: 600, padding: "14px 48px", textDecoration: "none", display: "inline-block" }}>
-              {lang === "en" ? "View More" : "ดูเพิ่มเติม"}
-            </Link>
+        {!hideCta && (
+          <div style={{ textAlign: "center", marginTop: "64px", display: "flex", flexDirection: "column", alignItems: "center", gap: "24px" }}>
+            <h3 style={{ ...KT, fontSize: "clamp(24px,2.5vw,36px)", fontWeight: 800, color: "#111827", margin: 0 }}>
+              {lang === "en" ? "Still have questions?" : "มีคำถามเพิ่มเติมไหม?"}
+            </h3>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <Link href="/faq"
+                className="btn-insight"
+                style={{ ...KT, borderRadius: "50px", fontSize: "16px", fontWeight: 600, padding: "14px 48px", textDecoration: "none", display: "inline-block" }}>
+                {lang === "en" ? "View More" : "ดูเพิ่มเติม"}
+              </Link>
+            </div>
           </div>
-        </div>
+        )}
 
       </div>
     </section>
