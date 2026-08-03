@@ -5,5 +5,5 @@ import { getDictionary } from "../../get-dictionary";
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   const dict = await getDictionary(lang as Locale);
-  return <HomeClientWrapper lang={lang as Locale} dict={dict.home} />;
+  return <HomeClientWrapper lang={lang as Locale} dict={dict} />;
 }

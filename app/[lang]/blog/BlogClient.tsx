@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import BlogNavbar from "./BlogNavbar";
-import BlogFooter from "./BlogFooter";
+import Footer from "../../components/Footer";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const PINK_GRAD = "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)";
@@ -114,7 +114,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
 
       </div>
 
-      <BlogFooter lang={lang} />
+      <Footer variant="home" lang={lang} dict={dict} />
     </div>
   );
 }

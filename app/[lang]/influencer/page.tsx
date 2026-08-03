@@ -24,7 +24,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
   const dict = await getDictionary(lang as Locale);
 
   return (
-    <div style={{ ...KT, minHeight: "100vh", backgroundImage: "url('/light-purple-gradient-bg-3.jpg')", backgroundSize: "100% 100%", backgroundRepeat: "no-repeat", backgroundPosition: "top center", overflowX: "hidden" }}>
+    <div style={{ ...KT, minHeight: "100vh", backgroundImage: "url('/light-purple-gradient-bg-3.jpg')", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "top center", overflowX: "hidden" }}>
 
       {/* ── Navbar ── */}
       <Navbar lang={lang as Locale} variant="influencer" />

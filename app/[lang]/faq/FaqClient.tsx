@@ -27,7 +27,7 @@ export default function FaqClient({ lang, dict }: { lang: Locale, dict: any }) {
   const contactHref = fromInfluencer ? "/influencer#contact" : "/#contact";
 
   return (
-    <div style={{ ...KT, minHeight: "100vh", backgroundImage: "url('/light-purple-gradient-bg-3.jpg')", backgroundSize: "100% 100%", backgroundRepeat: "no-repeat", backgroundPosition: "top center", overflowX: "hidden" }}>
+    <div style={{ ...KT, minHeight: "100vh", backgroundImage: "url('/light-purple-gradient-bg-3.jpg')", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "top center", overflowX: "hidden" }}>
       {fromInfluencer ? <Navbar lang={lang} variant="influencer" /> : <Navbar lang={lang} variant="home" />}
 
       {/* Hero */}
@@ -62,7 +62,7 @@ export default function FaqClient({ lang, dict }: { lang: Locale, dict: any }) {
       {/* Contact Form */}
       <ContactFormSection lang={lang} dict={dict?.contactForm} />
 
-      <Footer lang={lang} variant={fromInfluencer ? "influencer" : "home"} />
+      <Footer lang={lang} variant={fromInfluencer ? "influencer" : "home"} dict={dict} />
     </div>
   );
 }

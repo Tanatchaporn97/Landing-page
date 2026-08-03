@@ -183,12 +183,12 @@ export default function ContactFormSection({ lang = "th", dict }: { lang?: "th" 
               <button disabled={!consented || formStatus === "sending"}
                 onClick={handleFormSubmit}
                 className="cta-submit"
-                style={{ ...KT, background: consented ? "#5f26e5" : "#d1d5db",
-                  border: "none", borderRadius: "50px", color: "#ffffff",
+                style={{ ...KT, background: consented ? "#5f26e5" : "#e5e7eb",
+                  border: "none", borderRadius: "50px", color: consented ? "#ffffff" : "#9ca3af",
                   fontSize: "16px", fontWeight: 600, padding: "16px 36px",
                   cursor: consented && formStatus !== "sending" ? "pointer" : "not-allowed",
-                  transition: "background 0.2s" }}>
-                {formStatus === "sending" ? (lang === "th" ? "กำลังส่ง..." : "Sending...") : (lang === "th" ? "ยืนยัน" : "Submit")}
+                  transition: "background 0.2s, color 0.2s" }}>
+                {formStatus === "sending" ? (t.sendingBtn || (lang === "en" ? "Sending..." : "กำลังส่ง...")) : (t.submitBtn || (lang === "en" ? "Submit" : "ส่งข้อมูล"))}
               </button>
             </div>
 

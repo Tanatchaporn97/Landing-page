@@ -19,9 +19,17 @@ export default function Navbar({
   const router = useRouter();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      const currentScrollY = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      setScrolled(currentScrollY > 40);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    // Also try listening on document body just in case it's the scroll container
+    document.body.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      document.body.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   const toggleLang = () => {

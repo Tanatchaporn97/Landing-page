@@ -41,7 +41,7 @@ const IconCheck = ({ color = "#5f26e5" }: { color?: string }) => (
 import { type Locale } from "../../i18n-config";
 
 export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: any }) {
-  const t = dict;
+  const t = dict?.home || {};
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -408,14 +408,14 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       <BlogPostsSection lang={lang} />
 
       {/* ── FAQs ── */}
-      <FAQAccordion faqs={t.homeFaqs} lang={lang} variant="home" dict={dict} />
+      <FAQAccordion faqs={dict?.homeFaqs} lang={lang} variant="home" dict={dict} />
 
-      <div id="contact" style={{ padding: "80px 0", background: "#f8f9fa" }}>
-        <ContactFormSection lang={lang} dict={t.contactForm} />
+      <div id="contact" style={{ padding: "80px 0" }}>
+        <ContactFormSection lang={lang} dict={dict?.contactForm} />
       </div>
 
       {/* ── Footer ── */}
-      <Footer variant="home" />
+      <Footer variant="home" dict={dict} />
 
     </div>
   );
