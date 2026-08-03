@@ -12,9 +12,14 @@ const SOCIAL = [
   { icon: "/social/Lemon8.png", name: "Lemon8",        href: "https://s.lemon8-app.com/s/GgNUhrhUMR" },
 ];
 
-export default function Footer() {
+export default function Footer({ variant = "influencer" }: { variant?: "home" | "influencer" }) {
+  const textColor = variant === "home" ? "#ffffff" : "#F0E8FF";
+  const bgGradient = variant === "home" 
+    ? "url('/hero-bg.png'), linear-gradient(160deg, #09071a 0%, #1c1256 30%, #3d2a90 55%, #7b5cf6 75%, #e8e0ff 90%, #ffffff 100%)"
+    : "url('/hero-bg.png'), linear-gradient(160deg, #09071a 0%, #1c1256 30%, #3d2a90 55%, #7b5cf6 75%, #e8e0ff 90%, #F0E8FF 100%)";
+
   return (
-    <footer className="px-6" style={{ backgroundImage: "url('/hero-bg.png'), linear-gradient(160deg, #09071a 0%, #1c1256 30%, #3d2a90 55%, #7b5cf6 75%, #e8e0ff 90%, #F0E8FF 100%)", backgroundSize: "cover", backgroundPosition: "center", borderTop: "none", paddingTop: "80px", paddingBottom: "80px" }}>
+    <footer className="px-6" style={{ backgroundImage: bgGradient, backgroundSize: "cover", backgroundPosition: "center", borderTop: "none", paddingTop: "80px", paddingBottom: "80px" }}>
       {/* Flat 6-item grid: 2-col desktop, 1-col mobile (order: Logo,Award,Contact,Address,Social,Legal) */}
       <div className="footer-grid">
 
@@ -30,27 +35,27 @@ export default function Footer() {
 
         {/* 3 — Contact info */}
         <div className="flex flex-col gap-8 footer-contact-col">
-          <p className="font-medium footer-text" style={{ ...KT, fontSize: "16px", lineHeight: "160%", color: "#F0E8FF" }}>
+          <p className="font-medium footer-text" style={{ ...KT, fontSize: "16px", lineHeight: "160%", color: textColor }}>
             ติดต่อเรา<br/>
             <span style={{ fontWeight: 400 }}>General Inquiries:</span>{" "}
-            <a href="mailto:Info@buddyreview.co" style={{ color: "#F0E8FF", textDecoration: "underline" }}>Info@buddyreview.co</a><br/>
+            <a href="mailto:Info@buddyreview.co" style={{ color: textColor, textDecoration: "underline" }}>Info@buddyreview.co</a><br/>
             <span style={{ fontWeight: 400 }}>Marketing Inquiries:</span>{" "}
-            <a href="mailto:Marketing@buddyreview.co" style={{ color: "#F0E8FF", textDecoration: "underline" }}>Marketing@buddyreview.co</a><br/>
+            <a href="mailto:Marketing@buddyreview.co" style={{ color: textColor, textDecoration: "underline" }}>Marketing@buddyreview.co</a><br/>
             <span style={{ fontWeight: 400 }}>Careers:</span>{" "}
-            <a href="mailto:Recruit@buddyreview.co" style={{ color: "#F0E8FF", textDecoration: "underline" }}>Recruit@buddyreview.co</a>
+            <a href="mailto:Recruit@buddyreview.co" style={{ color: textColor, textDecoration: "underline" }}>Recruit@buddyreview.co</a>
           </p>
-          <p className="font-normal footer-text" style={{ ...KT, fontSize: "16px", lineHeight: "160%", color: "#F0E8FF" }}>
-            <a href="tel:+66886861676" style={{ color: "#F0E8FF", textDecoration: "none" }}>Tel.: 088-686-1676</a><br/>
-            <a href="https://line.me/R/ti/p/@buddysupport" target="_blank" rel="noopener noreferrer" style={{ color: "#F0E8FF", textDecoration: "none" }}>Line: @buddysupport</a>
+          <p className="font-normal footer-text" style={{ ...KT, fontSize: "16px", lineHeight: "160%", color: textColor }}>
+            <a href="tel:+66886861676" style={{ color: textColor, textDecoration: "none" }}>Tel.: 088-686-1676</a><br/>
+            <a href="https://line.me/R/ti/p/@buddysupport" target="_blank" rel="noopener noreferrer" style={{ color: textColor, textDecoration: "none" }}>Line: @buddysupport</a>
           </p>
-          <p className="font-medium footer-text" style={{ ...KT, fontSize: "16px", lineHeight: "160%", color: "#F0E8FF" }}>
-            <a href="/faq?from=influencer" style={{ color: "#F0E8FF", textDecoration: "none" }}>FAQs</a>
+          <p className="font-medium footer-text" style={{ ...KT, fontSize: "16px", lineHeight: "160%", color: textColor }}>
+            <a href="/faq?from=influencer" style={{ color: textColor, textDecoration: "none" }}>FAQs</a>
           </p>
         </div>
 
         {/* 4 — Address */}
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
-          <p className="font-normal text-right footer-text" style={{ ...KT, fontSize: "16px", lineHeight: "160%", color: "#F0E8FF" }}>
+          <p className="font-normal text-right footer-text" style={{ ...KT, fontSize: "16px", lineHeight: "160%", color: textColor, maxWidth: "453px" }}>
             บริษัท บับเบิลลี จำกัด<br/>1010, อาคารชินวัตรทาวเวอร์ 3, ห้อง 603<br/>ชั้น 6, ถนนวิภาวดีรังสิต,<br/>แขวงจตุจักร กรุงเทพฯ 10900
           </p>
         </div>
@@ -67,12 +72,12 @@ export default function Footer() {
 
         {/* 6 — Legal */}
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
-          <p className="font-normal text-right footer-text footer-legal" style={{ ...KT, fontSize: "14px", lineHeight: "140%", color: "#F0E8FF" }}>
+          <p className="font-normal text-right footer-text footer-legal" style={{ ...KT, fontSize: "14px", lineHeight: "140%", color: textColor }}>
             <a href="https://docs.google.com/viewer?url=https://business.buddyreview.co/document/privacy_policy.pdf" target="_blank" rel="noopener noreferrer"
-              style={{ color: "#F0E8FF", textDecoration: "underline" }}>นโยบายความเป็นส่วนตัว</a>
+              style={{ color: textColor, textDecoration: "underline" }}>นโยบายความเป็นส่วนตัว</a>
             &nbsp;|&nbsp;
             <a href="https://docs.google.com/viewer?url=https://business.buddyreview.co/document/terms_and_conditions.pdf" target="_blank" rel="noopener noreferrer"
-              style={{ color: "#F0E8FF", textDecoration: "underline" }}>ข้อตกลงการใช้งาน</a>
+              style={{ color: textColor, textDecoration: "underline" }}>ข้อตกลงการใช้งาน</a>
           </p>
         </div>
 

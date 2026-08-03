@@ -5,16 +5,36 @@ import Link from "next/link";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
-export default function Navbar() {
+export default function Navbar({
+  variant = "influencer",
+  lang = "th",
+  onLangChange,
+}: {
+  variant?: "home" | "influencer";
+  lang?: "th" | "en";
+  onLangChange?: (lang: "th" | "en") => void;
+}) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [lang, setLang] = useState<"th" | "en">("th");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const [localLang, setLocalLang] = useState<"th" | "en">(lang);
+  const currentLang = onLangChange ? lang : localLang;
+  const toggleLang = () => {
+    const nextLang = currentLang === "th" ? "en" : "th";
+    if (onLangChange) onLangChange(nextLang);
+    else setLocalLang(nextLang);
+    setMenuOpen(false);
+  };
+
+  const th = { contactUs: "ติดต่อเรา", imInfluencer: "ฉันคืออินฟลูเอนเซอร์" };
+  const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer" };
+  const t = currentLang === "th" ? th : en;
 
   return (
     <div style={{ position: "fixed", top: "20px", left: "40px", right: "40px", zIndex: 100 }} className="nav-landing-wrap">
@@ -39,30 +59,47 @@ export default function Navbar() {
         </Link>
         {/* Desktop buttons */}
         <div className="desktop-nav-btns flex items-center gap-3">
-          <Link href="https://www.buddyreview.co/app/new-campaigns"
-            className="btn-hero btn-hero-solid-purple px-6 py-3 rounded-full whitespace-nowrap"
-            style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
-            สมัครเลย
-          </Link>
-          <a href="https://line.me/ti/p/~@buddyreview"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
-            style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: "#5f26e5" }}>
-            สมัครผ่านไลน์
-          </a>
-          <button onClick={() => setLang(lang === "th" ? "en" : "th")}
+          {variant === "influencer" ? (
+            <>
+              <Link href="https://www.buddyreview.co/app/new-campaigns"
+                className="btn-hero btn-hero-solid-purple px-6 py-3 rounded-full whitespace-nowrap"
+                style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
+                สมัครเลย
+              </Link>
+              <a href="https://line.me/ti/p/~@buddyreview"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
+                style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: "#5f26e5" }}>
+                สมัครผ่านไลน์
+              </a>
+            </>
+          ) : (
+            <>
+              <a href="#contact"
+                className="btn-hero btn-hero-solid-purple px-6 py-3 rounded-full whitespace-nowrap"
+                style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
+                {t.contactUs}
+              </a>
+              <Link href="/influencer"
+                className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
+                style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", ...(scrolled ? { color: "#5f26e5" } : {}) }}>
+                {t.imInfluencer}
+              </Link>
+            </>
+          )}
+          <button onClick={toggleLang}
             className="btn-hero px-5 py-3 rounded-full ml-1"
-            style={{ ...KT, fontSize: "16px", fontWeight: 600, color: "#5f26e5" }}>
-            {lang === "th" ? "EN" : "TH"}
+            style={{ ...KT, fontSize: "16px", fontWeight: 600, ...(variant === "influencer" || scrolled ? { color: "#5f26e5" } : {}) }}>
+            {currentLang === "th" ? "EN" : "TH"}
           </button>
         </div>
         {/* Hamburger button — mobile only */}
         <button type="button" className="hamburger-btn" onClick={() => setMenuOpen(o => !o)}
           style={{ background: "none", border: "none", cursor: "pointer", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", width: "44px", height: "44px", flexShrink: 0, flexDirection: "column", gap: "5px", alignItems: "center", justifyContent: "center" }}>
-          <span className="hamburger-bar" style={{ display: "block", width: "22px", height: "2px", background: "#5f26e5", borderRadius: "2px", transition: "transform 0.25s, opacity 0.25s", ...(menuOpen ? { transform: "translateY(7px) rotate(45deg)" } : {}) }} />
-          <span className="hamburger-bar" style={{ display: "block", width: "22px", height: "2px", background: "#5f26e5", borderRadius: "2px", transition: "opacity 0.25s", ...(menuOpen ? { opacity: 0 } : {}) }} />
-          <span className="hamburger-bar" style={{ display: "block", width: "22px", height: "2px", background: "#5f26e5", borderRadius: "2px", transition: "transform 0.25s, opacity 0.25s", ...(menuOpen ? { transform: "translateY(-7px) rotate(-45deg)" } : {}) }} />
+          <span className="hamburger-bar" style={{ display: "block", width: "22px", height: "2px", background: variant === "home" && !scrolled ? "#ffffff" : "#5f26e5", borderRadius: "2px", transition: "transform 0.25s, opacity 0.25s", ...(menuOpen ? { transform: "translateY(7px) rotate(45deg)" } : {}) }} />
+          <span className="hamburger-bar" style={{ display: "block", width: "22px", height: "2px", background: variant === "home" && !scrolled ? "#ffffff" : "#5f26e5", borderRadius: "2px", transition: "opacity 0.25s", ...(menuOpen ? { opacity: 0 } : {}) }} />
+          <span className="hamburger-bar" style={{ display: "block", width: "22px", height: "2px", background: variant === "home" && !scrolled ? "#ffffff" : "#5f26e5", borderRadius: "2px", transition: "transform 0.25s, opacity 0.25s", ...(menuOpen ? { transform: "translateY(-7px) rotate(-45deg)" } : {}) }} />
         </button>
       </nav>
 
@@ -78,20 +115,37 @@ export default function Navbar() {
           padding: "20px 24px",
           display: "flex", flexDirection: "column", gap: "12px",
         }}>
-          <Link href="https://www.buddyreview.co/app/new-campaigns" onClick={() => setMenuOpen(false)}
-            className="btn-hero btn-hero-solid-purple rounded-full whitespace-nowrap"
-            style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", padding: "12px 20px", textAlign: "center" }}>
-            สมัครเลย
-          </Link>
-          <a href="https://line.me/ti/p/~@buddyreview" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}
-            className="btn-hero rounded-full whitespace-nowrap"
-            style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", padding: "12px 20px", textAlign: "center", color: "#ffffff" }}>
-            สมัครผ่านไลน์
-          </a>
-          <button onClick={() => { setLang(lang === "th" ? "en" : "th"); setMenuOpen(false); }}
+          {variant === "influencer" ? (
+            <>
+              <Link href="https://www.buddyreview.co/app/new-campaigns" onClick={() => setMenuOpen(false)}
+                className="btn-hero btn-hero-solid-purple rounded-full whitespace-nowrap"
+                style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", padding: "12px 20px", textAlign: "center" }}>
+                สมัครเลย
+              </Link>
+              <a href="https://line.me/ti/p/~@buddyreview" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}
+                className="btn-hero rounded-full whitespace-nowrap"
+                style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", padding: "12px 20px", textAlign: "center", color: "#ffffff" }}>
+                สมัครผ่านไลน์
+              </a>
+            </>
+          ) : (
+            <>
+              <a href="#contact" onClick={() => setMenuOpen(false)}
+                className="btn-hero btn-hero-solid-purple rounded-full whitespace-nowrap"
+                style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", padding: "12px 20px", textAlign: "center" }}>
+                {t.contactUs}
+              </a>
+              <Link href="/influencer" onClick={() => setMenuOpen(false)}
+                className="btn-hero rounded-full whitespace-nowrap"
+                style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", padding: "12px 20px", textAlign: "center", color: "#ffffff" }}>
+                {t.imInfluencer}
+              </Link>
+            </>
+          )}
+          <button onClick={toggleLang}
             className="btn-hero rounded-full"
             style={{ ...KT, fontSize: "15px", fontWeight: 600, padding: "12px 20px", background: "none", border: "1px solid rgba(255,255,255,0.3)", cursor: "pointer", color: "#ffffff" }}>
-            {lang === "th" ? "EN" : "TH"}
+            {currentLang === "th" ? "EN" : "TH"}
           </button>
         </div>
       )}
