@@ -12,7 +12,7 @@ const SOCIAL = [
   { icon: "/social/Lemon8.png", name: "Lemon8",        href: "https://s.lemon8-app.com/s/GgNUhrhUMR" },
 ];
 
-export default function Footer({ variant = "influencer" }: { variant?: "home" | "influencer" }) {
+export default function Footer({ variant = "influencer", lang = "th" }: { variant?: "home" | "influencer", lang?: "th" | "en" }) {
   const textColor = variant === "home" ? "#ffffff" : "#F0E8FF";
   const bgGradient = variant === "home" 
     ? "url('/hero-bg.png'), linear-gradient(160deg, #09071a 0%, #1c1256 30%, #3d2a90 55%, #7b5cf6 75%, #e8e0ff 90%, #ffffff 100%)"
@@ -49,7 +49,7 @@ export default function Footer({ variant = "influencer" }: { variant?: "home" | 
             <a href="https://line.me/R/ti/p/@buddysupport" target="_blank" rel="noopener noreferrer" style={{ color: textColor, textDecoration: "none" }}>Line: @buddysupport</a>
           </p>
           <p className="font-medium footer-text" style={{ ...KT, fontSize: "16px", lineHeight: "160%", color: textColor }}>
-            <a href="/faq?from=influencer" style={{ color: textColor, textDecoration: "none" }}>FAQs</a>
+            <a href={`/${lang}/faq?from=influencer`} style={{ color: textColor, textDecoration: "none" }}>FAQs</a>
           </p>
         </div>
 

@@ -35,7 +35,9 @@ const BLOG_POSTS = [
 
 const CATS = ["ทั้งหมด", "สำหรับแบรนด์", "สำหรับอินฟลูเอนเซอร์"];
 
-function BlogPageContent() {
+import { type Locale } from "../../../i18n-config";
+
+function BlogPageContent({ lang }: { lang: Locale }) {
   const searchParams = useSearchParams();
   const [activeCat, setActiveCat] = useState(() => {
     const cat = searchParams.get("cat");
@@ -53,11 +55,11 @@ function BlogPageContent() {
   return (
     <div style={{ ...KT, minHeight: "100vh", backgroundImage: "url('/landing-bg6.jpg')", backgroundSize: "100% 100%", backgroundPosition: "center top", backgroundRepeat: "no-repeat" }}>
 
-      <BlogNavbar />
+      <BlogNavbar lang={lang} />
 
       {/* Back button */}
       <div className="blog-back-row" style={{ padding: "140px 48px 28px" }}>
-        <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,255,255,0.12)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.25)", borderRadius: "50px", padding: "10px 22px", color: "#5f26e5", textDecoration: "none", fontSize: "15px", fontWeight: 500 }}>
+        <Link href={`/${lang}`} style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,255,255,0.12)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.25)", borderRadius: "50px", padding: "10px 22px", color: "#5f26e5", textDecoration: "none", fontSize: "15px", fontWeight: 500 }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M19 12H5M12 5l-7 7 7 7"/>
           </svg>
@@ -94,7 +96,7 @@ function BlogPageContent() {
         {/* Cards grid */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "28px" }}>
           {filtered.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`} style={{ display: "flex", flexDirection: "column", background: "rgba(255,255,255,0.22)", backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)", border: "1px solid rgba(255,255,255,0.45)", borderRadius: "24px", textDecoration: "none", cursor: "pointer" }}>
+            <Link key={post.slug} href={`/${lang}/blog/${post.slug}`} style={{ display: "flex", flexDirection: "column", background: "rgba(255,255,255,0.22)", backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)", border: "1px solid rgba(255,255,255,0.45)", borderRadius: "24px", textDecoration: "none", cursor: "pointer" }}>
 
               <div style={{ position: "relative", padding: "20px 20px 0", flexShrink: 0 }}>
                 <Image src={post.image} alt={post.title} width={400} height={200} style={{ width: "100%", height: "200px", objectFit: "cover", display: "block", borderRadius: "12px" }} />
@@ -131,15 +133,16 @@ function BlogPageContent() {
 
       </div>
 
-      <BlogFooter />
+      <BlogFooter lang={lang} />
     </div>
   );
 }
 
-export default function BlogPage() {
+export default async function BlogPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
   return (
     <Suspense fallback={<div style={{ minHeight: "100vh" }} />}>
-      <BlogPageContent />
+      <BlogPageContent lang={lang as Locale} />
     </Suspense>
   );
 }

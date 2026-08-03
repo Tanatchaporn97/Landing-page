@@ -2,13 +2,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { type Locale } from "../../../i18n-config";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
-export default function BlogNavbar() {
-  const [lang, setLang] = useState<"th" | "en">("th");
+export default function BlogNavbar({ lang = "th" }: { lang?: Locale }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -25,17 +28,21 @@ export default function BlogNavbar() {
           <Image src={scrolled ? "/buddy-review-purple-logo.png" : "/buddy-review-logo.png"} alt="Buddy Review" className="nav-logo" width={138} height={48} style={{ height: "48px", width: "auto", transition: "opacity 0.3s" }} />
         </Link>
         <div className="desktop-nav-btns flex items-center gap-3">
-          <a href="/#contact"
+          <a href={`/${lang}#contact`}
             className="btn-hero btn-hero-solid-purple px-6 py-3 rounded-full whitespace-nowrap"
             style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
             ติดต่อเรา
           </a>
-          <Link href="/influencer"
+          <Link href={`/${lang}/influencer`}
             className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
             style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", ...(scrolled ? { color: "#5f26e5" } : {}) }}>
             ฉันคืออินฟลูเอนเซอร์
           </Link>
-          <button onClick={() => setLang(lang === "th" ? "en" : "th")}
+          <button onClick={() => {
+            if (!pathname) return;
+            const nextLang = lang === "th" ? "en" : "th";
+            router.push(pathname.replace(`/${lang}`, `/${nextLang}`));
+          }}
             className="btn-hero px-5 py-3 rounded-full ml-1"
             style={{ ...KT, fontSize: "16px", fontWeight: 600, ...(scrolled ? { color: "#5f26e5" } : {}) }}>
             {lang === "th" ? "EN" : "TH"}
@@ -52,17 +59,22 @@ export default function BlogNavbar() {
       {/* Mobile dropdown menu */}
       {menuOpen && (
         <div style={{ marginTop: "10px", background: "rgba(15,10,40,0.92)", backdropFilter: "blur(28px)", WebkitBackdropFilter: "blur(28px)", border: "1px solid rgba(255,255,255,0.18)", borderRadius: "24px", padding: "20px 24px", display: "flex", flexDirection: "column", gap: "12px" }}>
-          <a href="/#contact" onClick={() => setMenuOpen(false)}
+          <a href={`/${lang}#contact`} onClick={() => setMenuOpen(false)}
             className="btn-hero btn-hero-solid-purple rounded-full whitespace-nowrap"
             style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", padding: "12px 20px", textAlign: "center" }}>
             ติดต่อเรา
           </a>
-          <Link href="/influencer" onClick={() => setMenuOpen(false)}
+          <Link href={`/${lang}/influencer`} onClick={() => setMenuOpen(false)}
             className="btn-hero rounded-full whitespace-nowrap"
             style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", padding: "12px 20px", textAlign: "center", color: "#ffffff" }}>
             ฉันคืออินฟลูเอนเซอร์
           </Link>
-          <button onClick={() => { setLang(lang === "th" ? "en" : "th"); setMenuOpen(false); }}
+          <button onClick={() => {
+            setMenuOpen(false);
+            if (!pathname) return;
+            const nextLang = lang === "th" ? "en" : "th";
+            router.push(pathname.replace(`/${lang}`, `/${nextLang}`));
+          }}
             className="btn-hero rounded-full"
             style={{ ...KT, fontSize: "15px", fontWeight: 600, padding: "12px 20px", background: "none", border: "1px solid rgba(255,255,255,0.3)", cursor: "pointer", color: "#ffffff" }}>
             {lang === "th" ? "EN" : "TH"}

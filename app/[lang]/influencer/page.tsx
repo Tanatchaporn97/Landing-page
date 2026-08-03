@@ -4,25 +4,27 @@ import Image from "next/image";
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 import dynamic from "next/dynamic";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import InfluencerHero from "../components/InfluencerHero";
-import PathToPartnership from "../components/PathToPartnership";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import InfluencerHero from "../../components/InfluencerHero";
+import PathToPartnership from "../../components/PathToPartnership";
+import { type Locale } from "../../../i18n-config";
 
 // Lazy load below-the-fold components
-const TestimonialsGrid = dynamic(() => import("../components/TestimonialsGrid"));
-const LogoMarquee = dynamic(() => import("../components/LogoMarquee"));
-const SuccessStoriesSlider = dynamic(() => import("../components/SuccessStoriesSlider"));
-const ContactFormSection = dynamic(() => import("../components/ContactFormSection"));
-const FAQAccordion = dynamic(() => import("../components/FAQAccordion"));
+const TestimonialsGrid = dynamic(() => import("../../components/TestimonialsGrid"));
+const LogoMarquee = dynamic(() => import("../../components/LogoMarquee"));
+const SuccessStoriesSlider = dynamic(() => import("../../components/SuccessStoriesSlider"));
+const ContactFormSection = dynamic(() => import("../../components/ContactFormSection"));
+const FAQAccordion = dynamic(() => import("../../components/FAQAccordion"));
 
-export default function InfluencerPage() {
+export default async function InfluencerPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
 
   return (
     <div style={{ ...KT, minHeight: "100vh", backgroundImage: "url('/light-purple-gradient-bg-3.jpg')", backgroundSize: "100% 100%", backgroundRepeat: "no-repeat", backgroundPosition: "top center", overflowX: "hidden" }}>
 
       {/* ── Navbar ── */}
-      <Navbar />
+      <Navbar lang={lang as Locale} variant="influencer" />
 
 
       {/* ── Hero ── */}
@@ -178,10 +180,10 @@ export default function InfluencerPage() {
       <FAQAccordion />
 
       {/* ── Contact Form ── */}
-      <ContactFormSection lang="th" />
+      <ContactFormSection lang={lang as Locale} />
 
       {/* ── Footer ── */}
-      <Footer />
+      <Footer lang={lang as Locale} variant="influencer" />
 
     </div>
   );

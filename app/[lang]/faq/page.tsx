@@ -2,12 +2,12 @@
 import { useState, Suspense } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 // Lazy load below-the-fold components
-const FAQAccordion = dynamic(() => import("../components/FAQAccordion"));
-const ContactFormSection = dynamic(() => import("../components/ContactFormSection"));
+const FAQAccordion = dynamic(() => import("../../components/FAQAccordion"));
+const ContactFormSection = dynamic(() => import("../../components/ContactFormSection"));
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -38,7 +38,9 @@ const CATEGORIES = [
   { key: "influencer", label: "สำหรับอินฟลูเอนเซอร์", faqs: FAQS_INFLUENCER },
 ];
 
-function FaqPageContent() {
+import { type Locale } from "../../../i18n-config";
+
+function FaqPageContent({ lang }: { lang: Locale }) {
   const searchParams = useSearchParams();
   const fromInfluencer = searchParams.get("from") === "influencer";
   const [activeTab, setActiveTab] = useState(fromInfluencer ? "influencer" : "brand");
@@ -47,7 +49,7 @@ function FaqPageContent() {
 
   return (
     <div style={{ ...KT, minHeight: "100vh", backgroundImage: "url('/light-purple-gradient-bg-3.jpg')", backgroundSize: "100% 100%", backgroundRepeat: "no-repeat", backgroundPosition: "top center", overflowX: "hidden" }}>
-      {fromInfluencer ? <Navbar variant="influencer" /> : <Navbar variant="home" />}
+      {fromInfluencer ? <Navbar lang={lang} variant="influencer" /> : <Navbar lang={lang} variant="home" />}
 
       {/* Hero */}
       <section className="faq-hero-section" style={{ padding: "160px 48px 80px", textAlign: "center" }}>
@@ -79,17 +81,18 @@ function FaqPageContent() {
       </section>
 
       {/* Contact Form */}
-      <ContactFormSection lang="th" />
+      <ContactFormSection lang={lang} />
 
-      <Footer variant={fromInfluencer ? "influencer" : "home"} />
+      <Footer lang={lang} variant={fromInfluencer ? "influencer" : "home"} />
     </div>
   );
 }
 
-export default function FaqPage() {
+export default async function FaqPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
   return (
     <Suspense fallback={<div style={{ minHeight: "100vh" }} />}>
-      <FaqPageContent />
+      <FaqPageContent lang={lang as Locale} />
     </Suspense>
   );
 }

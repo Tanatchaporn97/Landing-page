@@ -12,7 +12,7 @@ const SOCIAL = [
   { icon: "/social/Lemon8.png", name: "Lemon8",        href: "https://s.lemon8-app.com/s/GgNUhrhUMR" },
 ];
 
-export default function BlogFooter() {
+export default function BlogFooter({ lang = "th" }: { lang?: "th" | "en" }) {
   return (
     <footer className="px-6" style={{ backgroundImage: "url('/hero-bg.png'), linear-gradient(160deg, #09071a 0%, #1c1256 30%, #3d2a90 55%, #7b5cf6 75%, #e8e0ff 90%, #ffffff 100%)", backgroundSize: "cover", backgroundPosition: "center", borderTop: "none", paddingTop: "80px", paddingBottom: "80px" }}>
       <div className="footer-grid">
@@ -37,7 +37,7 @@ export default function BlogFooter() {
             <a href="https://line.me/R/ti/p/@buddysupport" target="_blank" rel="noopener noreferrer" style={{ color: "#ffffff", textDecoration: "none" }}>Line: @buddysupport</a>
           </p>
           <p className="font-medium footer-text" style={{ ...KT, fontSize: "16px", lineHeight: "160%", color: "#ffffff" }}>
-            <a href="/faq" style={{ color: "#ffffff", textDecoration: "none" }}>FAQs</a>
+            <a href={`/${lang}/faq`} style={{ color: "#ffffff", textDecoration: "none" }}>FAQs</a>
           </p>
         </div>
         <div style={{ display: "flex", justifyContent: "flex-end" }}>

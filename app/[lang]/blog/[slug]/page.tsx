@@ -351,8 +351,10 @@ export function generateStaticParams() {
   return BLOG_POSTS.map((post) => ({ slug: post.slug }));
 }
 
-export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+import { type Locale } from "../../../../i18n-config";
+
+export default async function BlogPostPage({ params }: { params: Promise<{ lang: string; slug: string }> }) {
+  const { lang, slug } = await params;
   const idx = BLOG_POSTS.findIndex((p) => p.slug === slug);
   if (idx === -1) notFound();
   const post = BLOG_POSTS[idx];
@@ -367,11 +369,11 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
       backgroundPosition: "center top",
       backgroundRepeat: "no-repeat",
     }}>
-      <BlogNavbar />
+      <BlogNavbar lang={lang as Locale} />
 
       {/* Top-left CTA */}
       <div className="blog-back-row" style={{ padding: "140px 48px 28px" }}>
-        <Link href="/blog" style={{
+        <Link href={`/${lang}/blog`} style={{
           ...KT,
           display: "inline-flex", alignItems: "center", gap: "8px",
           background: "rgba(255,255,255,0.12)",
@@ -444,7 +446,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "16px", padding: "48px 24px 80px" }}>
         <BackButton />
         {nextPost && (
-          <Link href={`/blog/${nextPost.slug}`} style={{
+          <Link href={`/${lang}/blog/${nextPost.slug}`} style={{
             ...KT,
             display: "inline-flex", alignItems: "center", gap: "8px",
             background: "#5f26e5",
@@ -461,7 +463,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
         )}
       </div>
 
-      <BlogFooter />
+      <BlogFooter lang={lang as Locale} />
     </div>
   );
 }

@@ -55,9 +55,10 @@ const FAQS_LANDING = [
             qEn: "Which platforms can campaigns run on?", aEn: "We support all major platforms including Instagram, Facebook, TikTok, YouTube, X (Twitter), and Lemon8 — and can recommend the best fit based on your target audience, content, and campaign goals." },
         ];
 
-export default function HomeClientWrapper() {
-  const [lang, setLang] = useState<"th" | "en">("th");
-  const t = lang === "th" ? th : en;
+import { type Locale } from "../../i18n-config";
+
+export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: any }) {
+  const t = dict;
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -84,7 +85,7 @@ export default function HomeClientWrapper() {
     }}>
 
       {/* ── Navbar ── */}
-      <Navbar variant="home" lang={lang} onLangChange={setLang} />
+      <Navbar variant="home" lang={lang} />
 
       {/* ── Hero ── */}
       <section
@@ -122,7 +123,7 @@ export default function HomeClientWrapper() {
               style={{ ...KT, fontSize: "16px", padding: "14px 32px", minWidth: "176px", borderRadius: "50px", textDecoration: "none", color: "#5f26e5" }}>
               {t.imBrand}
             </a>
-            <Link href="/influencer" className="btn-hero btn-hero-solid-purple font-semibold hero-btn"
+            <Link href={`/${lang}/influencer`} className="btn-hero btn-hero-solid-purple font-semibold hero-btn"
               style={{ ...KT, fontSize: "16px", padding: "14px 32px", minWidth: "176px", borderRadius: "50px", textDecoration: "none" }}>
               {t.imInfluencer}
             </Link>

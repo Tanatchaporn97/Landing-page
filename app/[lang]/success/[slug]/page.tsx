@@ -116,8 +116,8 @@ export function generateStaticParams() {
   return SUCCESS_STORIES.map((s) => ({ slug: s.slug }));
 }
 
-export default async function SuccessStoryPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function SuccessStoryPage({ params }: { params: Promise<{ lang: string; slug: string }> }) {
+  const { lang, slug } = await params;
   const idx = SUCCESS_STORIES.findIndex((s) => s.slug === slug);
   if (idx === -1) notFound();
   const story = SUCCESS_STORIES[idx];
@@ -128,7 +128,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ s
 
       {/* Top-left CTA */}
       <div className="success-back-row" style={{ padding: "130px 48px 28px" }}>
-        <Link href="/influencer" style={{
+        <Link href={`/${lang}/influencer`} style={{
           ...KT,
           display: "inline-flex", alignItems: "center", gap: "8px",
           background: "rgba(255,255,255,0.12)",
@@ -164,7 +164,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ s
 
         {/* Industry tag */}
         <div style={{ marginBottom: "16px" }}>
-          <Link href={`/success?cat=${encodeURIComponent(story.industry)}`} style={{
+          <Link href={`/${lang}/success?cat=${encodeURIComponent(story.industry)}`} style={{
             ...KT,
             background: "rgba(255,255,255,0.22)",
             backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
@@ -236,7 +236,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ s
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "16px", padding: "48px 24px 80px" }}>
         <BackButton />
         {nextStory && (
-          <Link href={`/success/${nextStory.slug}`} style={{
+          <Link href={`/${lang}/success/${nextStory.slug}`} style={{
             ...KT,
             display: "inline-flex", alignItems: "center", gap: "8px",
             background: "#5f26e5",

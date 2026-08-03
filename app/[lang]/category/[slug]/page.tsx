@@ -73,8 +73,10 @@ export function generateStaticParams() {
   return VALID_SLUGS.map((slug) => ({ slug }));
 }
 
-export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+import { type Locale } from "../../../../i18n-config";
+
+export default async function CategoryPage({ params }: { params: Promise<{ lang: string; slug: string }> }) {
+  const { lang, slug } = await params;
   if (!VALID_SLUGS.includes(slug)) notFound();
 
   const filtered = STORIES.filter((s) => s.catSlug === slug);
@@ -88,7 +90,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
       backgroundPosition: "center top",
       backgroundRepeat: "no-repeat",
     }}>
-      <Navbar />
+      <Navbar lang={lang as Locale} />
 
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "160px 24px 80px" }}>
 
@@ -112,7 +114,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
           {CHIPS.map((chip) => {
             const active = chip.slug === slug;
             return (
-              <Link key={chip.slug} href={chip.href} style={{
+              <Link key={chip.slug} href={`/${lang}${chip.href}`} style={{
                 ...KT,
                 background: active ? "#5f26e5" : "rgba(255,255,255,0.12)",
                 backdropFilter: "blur(12px)",
@@ -135,7 +137,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         {/* Cards grid */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "28px" }}>
           {filtered.map((story) => (
-            <Link key={story.slug} href={`/success/${story.slug}`} style={{
+            <Link key={story.slug} href={`/${lang}/success/${story.slug}`} style={{
               display: "flex",
               flexDirection: "column",
               background: "rgba(255,255,255,0.22)",
@@ -171,7 +173,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
 
       </div>
 
-      <Footer />
+      <Footer lang={lang as Locale} />
     </div>
   );
 }
