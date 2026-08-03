@@ -43,21 +43,26 @@ export default function Navbar({
   const th = { contactUs: "ติดต่อเรา", imInfluencer: "ฉันคืออินฟลูเอนเซอร์", applyNow: "สมัครเลย", applyLine: "สมัครผ่านไลน์" };
   const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", applyNow: "Apply Now", applyLine: "Apply via LINE" };
   const t = lang === "th" ? th : en;
+  const isFaqPage = pathname?.includes("/faq");
+  const forceDarkText = scrolled || variant === "influencer" || isFaqPage;
 
   return (
     <div style={{ position: "fixed", top: "20px", left: "40px", right: "40px", zIndex: 100 }} className="nav-landing-wrap">
       <nav style={{
-        background: "rgba(255,255,255,0.08)",
+        background: forceDarkText ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.08)",
         backdropFilter: "blur(28px)",
         WebkitBackdropFilter: "blur(28px)",
-        border: "1px solid rgba(255,255,255,0.25)",
+        border: forceDarkText ? "1px solid rgba(0,0,0,0.05)" : "1px solid rgba(255,255,255,0.25)",
         borderRadius: "100px",
-        paddingLeft: "36px", paddingRight: "36px", paddingTop: "16px", paddingBottom: "16px",
-      }}
-        className="flex items-center justify-between nav-landing">
-        <Link href={`/${lang}`} style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "10px 24px",
+        transition: "background 0.3s, border 0.3s",
+      }} className="nav-landing-inner">
+        <Link href={`/${lang}`}>
           <Image
-            src={scrolled ? "/buddy-review-purple-logo.png" : "/buddy-review-logo.png"}
+            src={forceDarkText ? "/buddy-review-purple-logo.png" : "/buddy-review-logo.png"}
             alt="Buddy Review"
             className="nav-logo"
             width={138}
@@ -78,7 +83,7 @@ export default function Navbar({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
-                style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: "#5f26e5" }}>
+                style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
                 {t.applyLine}
               </a>
             </>
@@ -91,23 +96,23 @@ export default function Navbar({
               </a>
               <Link href={`/${lang}/influencer`}
                 className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
-                style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", ...(scrolled ? { color: "#5f26e5" } : {}) }}>
+                style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
                 {t.imInfluencer}
               </Link>
             </>
           )}
           <button onClick={toggleLang}
             className="btn-hero px-5 py-3 rounded-full ml-1"
-            style={{ ...KT, fontSize: "16px", fontWeight: 600, ...(variant === "influencer" || scrolled ? { color: "#5f26e5" } : {}) }}>
+            style={{ ...KT, fontSize: "16px", fontWeight: 600, color: forceDarkText ? "#5f26e5" : undefined }}>
             {lang === "th" ? "EN" : "TH"}
           </button>
         </div>
         {/* Hamburger button — mobile only */}
         <button type="button" className="hamburger-btn" onClick={() => setMenuOpen(o => !o)}
           style={{ background: "none", border: "none", cursor: "pointer", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", width: "44px", height: "44px", flexShrink: 0, flexDirection: "column", gap: "5px", alignItems: "center", justifyContent: "center" }}>
-          <span className="hamburger-bar" style={{ display: "block", width: "22px", height: "2px", background: variant === "home" && !scrolled ? "#ffffff" : "#5f26e5", borderRadius: "2px", transition: "transform 0.25s, opacity 0.25s", ...(menuOpen ? { transform: "translateY(7px) rotate(45deg)" } : {}) }} />
-          <span className="hamburger-bar" style={{ display: "block", width: "22px", height: "2px", background: variant === "home" && !scrolled ? "#ffffff" : "#5f26e5", borderRadius: "2px", transition: "opacity 0.25s", ...(menuOpen ? { opacity: 0 } : {}) }} />
-          <span className="hamburger-bar" style={{ display: "block", width: "22px", height: "2px", background: variant === "home" && !scrolled ? "#ffffff" : "#5f26e5", borderRadius: "2px", transition: "transform 0.25s, opacity 0.25s", ...(menuOpen ? { transform: "translateY(-7px) rotate(-45deg)" } : {}) }} />
+          <span className="hamburger-bar" style={{ display: "block", width: "22px", height: "2px", background: forceDarkText ? "#5f26e5" : "#ffffff", borderRadius: "2px", transition: "transform 0.25s, opacity 0.25s", ...(menuOpen ? { transform: "translateY(7px) rotate(45deg)" } : {}) }} />
+          <span className="hamburger-bar" style={{ display: "block", width: "22px", height: "2px", background: forceDarkText ? "#5f26e5" : "#ffffff", borderRadius: "2px", transition: "opacity 0.25s", ...(menuOpen ? { opacity: 0 } : {}) }} />
+          <span className="hamburger-bar" style={{ display: "block", width: "22px", height: "2px", background: forceDarkText ? "#5f26e5" : "#ffffff", borderRadius: "2px", transition: "transform 0.25s, opacity 0.25s", ...(menuOpen ? { transform: "translateY(-7px) rotate(-45deg)" } : {}) }} />
         </button>
       </nav>
 
