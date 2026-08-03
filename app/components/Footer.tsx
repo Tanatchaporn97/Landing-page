@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const SOCIAL = [
@@ -18,12 +20,12 @@ export default function Footer() {
 
         {/* 1 — Logo */}
         <div>
-          <img src="/buddy-review-logo.png" alt="Buddy Review" className="footer-logo-img" style={{ height: "58px", width: "auto" }} />
+          <Image src="/buddy-review-logo.png" alt="Buddy Review" className="footer-logo-img" width={166} height={58} style={{ height: "58px", width: "auto" }} />
         </div>
 
         {/* 2 — Award */}
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
-          <img src="/award-mt2025.png" alt="MT Award 2025" style={{ height: "85px", width: "auto", objectFit: "contain" }} />
+          <Image src="/award-mt2025.png" alt="MT Award 2025" width={75} height={85} style={{ height: "85px", width: "auto", objectFit: "contain" }} />
         </div>
 
         {/* 3 — Contact info */}
@@ -57,8 +59,8 @@ export default function Footer() {
         <div className="footer-social-row" style={{ display: "flex", gap: "12px" }}>
           {SOCIAL.map((s) => (
             <a key={s.name} href={s.href} title={s.name} target="_blank" rel="noopener noreferrer"
-              style={{ width: "31px", height: "31px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-              <img src={s.icon} alt={s.name} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+              style={{ position: "relative", width: "31px", height: "31px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <Image src={s.icon} alt={s.name} fill sizes="31px" style={{ objectFit: "contain" }} />
             </a>
           ))}
         </div>

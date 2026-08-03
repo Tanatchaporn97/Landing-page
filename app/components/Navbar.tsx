@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -27,9 +28,11 @@ export default function Navbar() {
       display: "flex", alignItems: "center", justifyContent: "space-between",
     }}>
       <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-        <img
+        <Image
           src={scrolled ? "/buddy-review-purple-logo.png" : "/buddy-review-logo.png"}
           alt="Buddy Review"
+          width={138}
+          height={48}
           style={{ height: "48px", width: "auto", transition: "opacity 0.3s" }}
         />
       </Link>
