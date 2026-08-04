@@ -57,7 +57,7 @@ export default function BlogPostsSection({ lang = "th" }: { lang?: "th" | "en" }
 
         <div className="grid-3-col" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "28px" }}>
           {BLOG_POSTS.map((post) => (
-            <a key={post.title} href={`/blog/${post.slug}`} style={{
+            <a key={post.title} href={`/${lang}/blog/${post.slug}`} style={{
               background: "rgba(255,255,255,0.22)",
               backdropFilter: "blur(18px)",
               WebkitBackdropFilter: "blur(18px)",
