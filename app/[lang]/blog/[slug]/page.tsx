@@ -4,6 +4,7 @@ import Image from "next/image";
 import BackButton from "./BackButton";
 import BlogNavbar from "../BlogNavbar";
 import BlogFooter from "../BlogFooter";
+import ScrollProgressBar from "../../../components/ScrollProgressBar";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -369,6 +370,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ lang:
       backgroundPosition: "center top",
       backgroundRepeat: "no-repeat",
     }}>
+      <ScrollProgressBar />
       <BlogNavbar lang={lang as Locale} />
 
       {/* Top-left CTA */}

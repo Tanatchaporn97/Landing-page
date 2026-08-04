@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Kanit, Cantata_One, Playfair_Display } from "next/font/google";
 import { i18n, type Locale } from "../../i18n-config";
+import CtaPressEffect from "../components/CtaPressEffect";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -32,7 +33,10 @@ export default async function RootLayout({
   const { lang } = await params;
   return (
     <html lang={lang} className={`${inter.variable} ${kanit.variable} ${cantataOne.variable} ${playfair.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <CtaPressEffect />
+        {children}
+      </body>
     </html>
   );
 }

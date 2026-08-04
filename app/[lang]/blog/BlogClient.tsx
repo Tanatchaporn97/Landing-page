@@ -17,7 +17,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
   const catBrand = dict?.home?.imBrand || "สำหรับแบรนด์";
   const catInf = dict?.home?.imInfluencer || "สำหรับอินฟลูเอนเซอร์";
   const CATS = [catAll, catBrand, catInf];
-  
+
   const BLOG_POSTS = dict?.blogPosts || [];
 
   const [activeCat, setActiveCat] = useState(() => {

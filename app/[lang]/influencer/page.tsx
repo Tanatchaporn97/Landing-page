@@ -8,6 +8,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import InfluencerHero from "../../components/InfluencerHero";
 import PathToPartnership from "../../components/PathToPartnership";
+import UnlockIconHover from "../../components/UnlockIconHover";
 import { type Locale } from "../../../i18n-config";
 
 // Lazy load below-the-fold components
@@ -79,6 +80,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
       {/* ── Unlock Exclusive Opportunities ── */}
       <section className="inf-section" style={{ background: "transparent", padding: "100px 48px" }}>
+        <UnlockIconHover />
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           {/* Title */}
           <div style={{ textAlign: "center", marginBottom: "72px" }}>

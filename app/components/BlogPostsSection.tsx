@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -38,7 +39,7 @@ const BLOG_POSTS = [
 ];
 
 export default function BlogPostsSection({ lang = "th" }: { lang?: "th" | "en" }) {
-  const t = lang === "th" ? { readMore: "อ่านเพิ่มเติม" } : { readMore: "Read More" };
+  const t = lang === "th" ? { readMore: "อ่านเพิ่มเติม", viewMore: "ดูเพิ่มเติม" } : { readMore: "Read More", viewMore: "View More" };
 
   return (
     <section style={{ background: DARK_BG }} className="py-20 px-6">
@@ -121,6 +122,21 @@ export default function BlogPostsSection({ lang = "th" }: { lang?: "th" | "en" }
               </div>
             </a>
           ))}
+        </div>
+
+        {/* ดูเพิ่มเติม CTA */}
+        <div style={{ display: "flex", justifyContent: "center", marginTop: "48px" }}>
+          <Link href={`/${lang}/blog`} className="btn-insight" style={{
+            ...KT,
+            borderRadius: "50px",
+            fontSize: "16px",
+            fontWeight: 600,
+            padding: "14px 48px",
+            textDecoration: "none",
+            display: "inline-block",
+          }}>
+            {t.viewMore}
+          </Link>
         </div>
       </div>
     </section>

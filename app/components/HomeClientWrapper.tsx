@@ -1,11 +1,13 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import AnimatedCounter from "./AnimatedCounter";
 
 // Lazy load below-the-fold components
 const LogoMarquee = dynamic(() => import("./LogoMarquee"));
@@ -118,11 +120,11 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
             marginTop: "76px",
           }}>
             {[
-              { value: "1,000,000+", label: lang === "th" ? "เครือข่ายอินฟลูเอนเซอร์" : "Influencer Network" },
-              { value: "1,000+", label: lang === "th" ? "ลูกค้าที่ไว้วางใจ" : "Trusted Clients" },
-              { value: "4,000+", label: lang === "th" ? "แคมเปญที่ส่งมอบ" : "Campaigns Delivered" },
+              { target: 1000000, suffix: "+", label: lang === "th" ? "เครือข่ายอินฟลูเอนเซอร์" : "Influencer Network" },
+              { target: 1000, suffix: "+", label: lang === "th" ? "ลูกค้าที่ไว้วางใจ" : "Trusted Clients" },
+              { target: 4000, suffix: "+", label: lang === "th" ? "แคมเปญที่ส่งมอบ" : "Campaigns Delivered" },
             ].map((s) => (
-              <div key={s.label} className="hero-stat-item" style={{
+              <motion.div key={s.label} className="hero-stat-item" style={{
                 display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", gap: "6px",
                 background: "rgba(255,255,255,0.5)",
                 backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
@@ -132,7 +134,12 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                 padding: "26px 20px",
                 width: "280px",
                 boxSizing: "border-box",
-              }}>
+              }}
+              whileHover={{
+                scale: [null, 1.05, 1.08],
+                transition: { duration: 0.5, times: [0, 0.6, 1], ease: ["easeInOut", "easeOut"] },
+              }}
+              transition={{ duration: 0.3, ease: "easeOut" }}>
                 <span style={{
                   ...KT, fontSize: "clamp(20px,2.7vw,39px)", fontWeight: 800, lineHeight: 1, whiteSpace: "nowrap",
                   background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
@@ -140,12 +147,12 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
                 }}>
-                  {s.value}
+                  <AnimatedCounter target={s.target} suffix={s.suffix} />
                 </span>
                 <span style={{ ...KT, fontSize: "clamp(13px,1.3vw,20px)", fontWeight: 500, color: "#111827", lineHeight: 1.35, whiteSpace: "nowrap" }}>
                   {s.label}
                 </span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -194,9 +201,13 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
               { src: "/card2.jpg", title: "Teamwork with Intelligence", desc: "ทีมที่เข้าใจ ทำให้ทุกแคมเปญสำเร็จ",       descEn: "A team that understands you, making every campaign succeed." },
               { src: "/card3.png", title: "Data-Driven Precision",      desc: "เทคโนโลยีช่วยให้คุณตัดสินใจง่ายขึ้น",     descEn: "Technology that makes your decisions easier." },
               { src: "/card4.png", title: "Success Delivered",          desc: "ทุกแคมเปญ มุ่งสู่ความสำเร็จที่ชัดเจน",     descEn: "Every campaign, driven toward clear, measurable success." },
-            ].map((card) => (
-              <div key={card.title} className="relative overflow-hidden photo-card-h"
-                style={{ height: "403px", borderRadius: "24px" }}>
+            ].map((card, i) => (
+              <motion.div key={card.title} className="relative overflow-hidden photo-card-h"
+                style={{ height: "403px", borderRadius: "24px" }}
+                initial={{ scale: 0.4 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ ease: "circInOut", duration: 1, delay: i * 0.1 }}>
                 <Image src={card.src} alt={card.title} fill className="object-cover object-top" sizes="280px"/>
                 <div className="absolute bottom-0 left-0 right-0"
                   style={{ background: "linear-gradient(to top,rgba(95,38,229,1) 0%,rgba(95,38,229,0) 100%)",
@@ -211,7 +222,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                     {lang === "th" ? card.desc : card.descEn}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -247,23 +258,17 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                   desc: "เครือข่ายอินฟลูเอนเซอร์ที่หลากหลาย เชื่อมต่อให้เหมาะกับแบรนด์ของคุณ",
                   descEn: "A diverse influencer network, matched to fit your brand." },
               ].map(({ icon, title, desc, descEn }) => (
-                <div key={title} style={{ 
+                <motion.div key={title} style={{
                   display: "flex", flexDirection: "column", gap: "14px",
                   background: "rgba(95,38,229,0.02)",
                   border: "1px solid rgba(95,38,229,0.15)",
                   borderRadius: "24px",
                   padding: "32px 28px 40px",
-                  transition: "transform 0.3s, box-shadow 0.3s",
                 }}
                 className="solution-card"
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.boxShadow = "0 12px 32px rgba(95,38,229,0.08)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}>
+                whileHover={{ scale: 1.03, y: -4, boxShadow: "0 12px 32px rgba(95,38,229,0.08)" }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}>
                   <div className="icon-wrap-lg" style={{ background: "#ede9f8", borderRadius: "50%",
                     width: "68px", height: "68px", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0, alignSelf: "flex-start" }}>
                     <span style={{ display: "inline-block", width: "40px", height: "40px",
@@ -276,7 +281,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                   <h3 className="card-h3" style={{ ...KT, fontSize: "24px", fontWeight: 700, color: "#111827",
                     lineHeight: "1.3", margin: 0 }}>{title}</h3>
                   <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
-                </div>
+                </motion.div>
               ))}
           </div>
 
