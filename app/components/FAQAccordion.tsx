@@ -20,18 +20,22 @@ export default function FAQAccordion({
   lang = "th",
   variant = "influencer",
   hideCta = false,
+  oneColumn = false,
+  hideTitle = false,
   dict,
 }: {
   faqs?: Array<{ q: string; a: string; qEn?: string; aEn?: string }>;
   lang?: "th" | "en";
   variant?: "home" | "influencer";
   hideCta?: boolean;
+  oneColumn?: boolean;
+  hideTitle?: boolean;
   dict?: any;
 }) {
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
 
-  // Split into left and right columns
-  const half = Math.ceil(faqs.length / 2);
+  // Split into left and right columns (single column skips the split)
+  const half = oneColumn ? faqs.length : Math.ceil(faqs.length / 2);
   const leftFaqs = faqs.slice(0, half);
   const rightFaqs = faqs.slice(half);
 
@@ -71,15 +75,17 @@ export default function FAQAccordion({
       <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
 
         {/* Centered title */}
-        <div style={{ textAlign: "center", marginBottom: "64px" }}>
-          <h2 style={{ ...KT, fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, color: "#111827", margin: 0, lineHeight: 1.2 }}>
-            <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>{dict?.faqPage?.title?.split(' ')[0] || "Frequently Asked"} </span>
-            <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{dict?.faqPage?.title?.split(' ').slice(1).join(' ') || "Questions"}</span>
-          </h2>
-        </div>
+        {!hideTitle && (
+          <div style={{ textAlign: "center", marginBottom: "64px" }}>
+            <h2 style={{ ...KT, fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, color: "#111827", margin: 0, lineHeight: 1.2 }}>
+              <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>{dict?.faqPage?.title?.split(' ')[0] || "Frequently Asked"} </span>
+              <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{dict?.faqPage?.title?.split(' ').slice(1).join(' ') || "Questions"}</span>
+            </h2>
+          </div>
+        )}
 
-        {/* 2-column accordion grid */}
-        <div className="faq-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", alignItems: "start" }}>
+        {/* Accordion grid — 2 columns, or 1 when oneColumn is set */}
+        <div className="faq-grid" style={{ display: "grid", gridTemplateColumns: oneColumn ? "1fr" : "1fr 1fr", gap: "16px", alignItems: "start" }}>
 
           {/* Left column */}
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>

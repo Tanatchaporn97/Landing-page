@@ -7,7 +7,6 @@ import Footer from "../../components/Footer";
 
 // Lazy load below-the-fold components
 const FAQAccordion = dynamic(() => import("../../components/FAQAccordion"));
-const ContactFormSection = dynamic(() => import("../../components/ContactFormSection"));
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -24,7 +23,6 @@ export default function FaqClient({ lang, dict }: { lang: Locale, dict: any }) {
   ];
 
   const active = CATEGORIES.find(c => c.key === activeTab)!;
-  const contactHref = fromInfluencer ? "/influencer#contact" : "/#contact";
 
   return (
     <div style={{ ...KT, minHeight: "100vh", backgroundImage: "url('/light-purple-gradient-bg-3.jpg')", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "top center", overflowX: "hidden" }}>
@@ -55,12 +53,9 @@ export default function FaqClient({ lang, dict }: { lang: Locale, dict: any }) {
               </button>
             ))}
           </div>
-          <div style={{ marginTop: "-100px" }}><FAQAccordion faqs={active.faqs} variant="influencer" hideCta={true} lang={lang} dict={dict} /></div>
+          <div style={{ marginTop: "-100px" }}><FAQAccordion faqs={active.faqs} variant="influencer" hideCta={true} oneColumn={true} hideTitle={true} lang={lang} dict={dict} /></div>
         </div>
       </section>
-
-      {/* Contact Form */}
-      <ContactFormSection lang={lang} dict={dict?.contactForm} />
 
       <Footer lang={lang} variant={fromInfluencer ? "influencer" : "home"} dict={dict} />
     </div>

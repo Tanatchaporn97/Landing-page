@@ -114,7 +114,7 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
         </Link>
       </div>
 
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px 100px" }}>
+      <div style={{ maxWidth: "1294px", margin: "0 auto", padding: "0 24px 100px" }}>
 
         {/* Header */}
         <h1 style={{ ...KT, background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", fontSize: "clamp(32px,4vw,56px)", fontWeight: 800, margin: "0 0 24px", lineHeight: 1.2 }}>
@@ -136,8 +136,8 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
           ))}
         </div>
 
-        {/* Cards grid — same card design as the landing page's Success Stories carousel */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "28px" }}>
+        {/* Cards grid — identical card markup/styling to the landing page's Success Stories carousel */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, 390px)", justifyContent: "center", gap: "28px" }}>
           <AnimatePresence>
             {filtered.map((story) => (
               <motion.div
@@ -148,28 +148,22 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
                 exit={{ opacity: 0, scale: 0.85 }}
                 transition={{ type: "spring", visualDuration: 0.4, bounce: 0.18 }}
               >
-                <Link href={`/${lang}/success/${story.slug}`} className="success-card-link" style={{ textDecoration: "none", display: "block" }}>
-                  <div className="cs-card" style={{
-                    position: "relative", borderRadius: "28px", aspectRatio: "390 / 470",
-                    background: "rgba(255,255,255,0.22)",
-                    backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
-                    border: "1px solid rgba(255,255,255,0.45)",
-                    boxSizing: "border-box",
-                  }}>
-                    <div className="success-card-img-clip" style={{ position: "relative", width: "100%", height: "100%" }}>
+                <Link href={`/${lang}/success/${story.slug}`} className="cs-card-link" style={{ textDecoration: "none", width: "390px" }}>
+                  <div className="cs-card" style={{ borderRadius: "28px", background: "#ffffff", height: "520px" }}>
+                    <div className="cs-card-img-clip" style={{ position: "relative", width: "100%", height: "100%" }}>
                       <Image src={story.photo} alt={story.brand} className="cs-card-img" fill sizes="(max-width: 768px) 100vw, 400px" style={{ objectFit: "cover" }} />
                     </div>
                     <div className="cs-card-overlay" />
 
                     {/* Arrow button — top right */}
-                    <div style={{ position: "absolute", top: "24px", right: "24px", zIndex: 2 }}>
+                    <div style={{ position: "absolute", top: "28px", right: "28px", zIndex: 2 }}>
                       <div className="cs-arrow-btn" style={{ width: "40px", height: "40px", borderRadius: "50%", background: "#5f26e5", border: "none", display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path className="cs-arrow-path" d="M4 12L12 4M12 4H6M12 4V10" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       </div>
                     </div>
 
                     {/* Category pill */}
-                    <div style={{ position: "absolute", top: "24px", left: "24px", zIndex: 2 }}>
+                    <div style={{ position: "absolute", top: "28px", left: "28px", zIndex: 2 }}>
                       <span className="cs-cat-btn" style={{ fontFamily: "sans-serif", fontSize: "11px", fontWeight: 700, color: "#ffffff", background: "#5f26e5", borderRadius: "50px", padding: "6px 16px", letterSpacing: "0.08em", display: "inline-block" }}>
                         {story.industry.toUpperCase()}
                       </span>
@@ -177,7 +171,7 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
 
                     {/* Bottom info */}
                     <div className="cs-card-title" style={{ position: "absolute", bottom: "24px", left: "24px", right: "24px", zIndex: 2 }}>
-                      <h3 style={{ ...KT, fontSize: "26px", fontWeight: 600, margin: "0 0 6px", lineHeight: 1.2 }}>{story.brand}</h3>
+                      <h3 style={{ ...KT, fontSize: "29px", fontWeight: 600, margin: "0 0 6px", lineHeight: 1.2 }}>{story.brand}</h3>
                       <p className="cs-card-tagline" style={{ ...KT, fontSize: "16px", fontWeight: 400, lineHeight: 1.65, margin: 0, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{story.tagline}</p>
                     </div>
                   </div>
