@@ -3,11 +3,12 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
+import { getDictionary } from "../../../../get-dictionary";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const PINK_GRAD = "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)";
 
-const STORIES = [
+const STORIES_TH = [
   {
     slug: "nissin",
     catSlug: "food-beverage",
@@ -58,8 +59,68 @@ const STORIES = [
   },
 ];
 
-const CHIPS = [
+const STORIES_EN = [
+  {
+    slug: "nissin",
+    catSlug: "food-beverage",
+    brand: "Nissin",
+    image: "/success-nissin.webp",
+    desc: `Nissin sparks social media buzz with a bold new flavor, "spicy Tom Yum Goong cheese"`,
+    industry: "Food & Beverage",
+  },
+  {
+    slug: "watsons",
+    catSlug: "health-beauty",
+    brand: "Watsons",
+    image: "/success-watsons.webp",
+    desc: `House brand goes viral with influencer power on TikTok & Lemon8`,
+    industry: "Health & Beauty",
+  },
+  {
+    slug: "ldc-dental",
+    catSlug: "dental-care",
+    brand: "LDC Dental",
+    image: "/success-ldc.webp",
+    desc: `From influencer clear-braces reviews to an exclusive event by LDC Dental`,
+    industry: "Dental Care",
+  },
+  {
+    slug: "viu",
+    catSlug: "entertainment",
+    brand: "Viu",
+    image: "/success-viu.webp",
+    desc: `Local influencer power brings color to the "Isan Charm View" campaign`,
+    industry: "Entertainment",
+  },
+  {
+    slug: "guss-damn-good",
+    catSlug: "food-beverage",
+    brand: "Guss Damn Good x ENO",
+    image: "/success-stories/Success stories-03.webp",
+    desc: `A flavor with a story! When ice cream meets antacid powder`,
+    industry: "Food & Beverage",
+  },
+  {
+    slug: "ahc",
+    catSlug: "skincare",
+    brand: "AHC 'The Skin Game'",
+    image: "/success-stories/Success stories-01.webp",
+    desc: `Sparking brand buzz with an event inspired by the viral series 'AHC Skin Game THE T-SHOT'`,
+    industry: "Skincare",
+  },
+];
+
+const CHIPS_TH = [
   { label: "ทั้งหมด",            href: "/success",                  slug: "" },
+  { label: "Food & Beverage",    href: "/category/food-beverage",   slug: "food-beverage" },
+  { label: "Health & Beauty",    href: "/category/health-beauty",   slug: "health-beauty" },
+  { label: "Dental Care",        href: "/category/dental-care",     slug: "dental-care" },
+  { label: "Entertainment",      href: "/category/entertainment",   slug: "entertainment" },
+  { label: "Skincare",           href: "/category/skincare",        slug: "skincare" },
+];
+
+const CHIPS_EN = [
+  { label: "All",                href: "/success",                  slug: "" },
   { label: "Food & Beverage",    href: "/category/food-beverage",   slug: "food-beverage" },
   { label: "Health & Beauty",    href: "/category/health-beauty",   slug: "health-beauty" },
   { label: "Dental Care",        href: "/category/dental-care",     slug: "dental-care" },
@@ -78,18 +139,16 @@ import { type Locale } from "../../../../i18n-config";
 export default async function CategoryPage({ params }: { params: Promise<{ lang: string; slug: string }> }) {
   const { lang, slug } = await params;
   if (!VALID_SLUGS.includes(slug)) notFound();
+  const dict = await getDictionary(lang as Locale);
+
+  const STORIES = lang === "th" ? STORIES_TH : STORIES_EN;
+  const CHIPS = lang === "th" ? CHIPS_TH : CHIPS_EN;
+  const readMore = lang === "th" ? "อ่านเพิ่มเติม" : "Read More";
 
   const filtered = STORIES.filter((s) => s.catSlug === slug);
 
   return (
-    <div style={{
-      ...KT,
-      minHeight: "100vh",
-      backgroundImage: "url('/landing-bg6.jpg')",
-      backgroundSize: "100% 100%",
-      backgroundPosition: "center top",
-      backgroundRepeat: "no-repeat",
-    }}>
+    <div className="background" style={{ ...KT }}>
       <Navbar lang={lang as Locale} />
 
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "160px 24px 80px" }}>
@@ -163,7 +222,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ lang:
                 </p>
                 <div style={{ marginTop: "auto", paddingTop: "8px" }}>
                   <span style={{ ...KT, background: "#5f26e5", color: "#ffffff", borderRadius: "50px", fontSize: "14px", fontWeight: 600, padding: "8px 24px", display: "inline-block" }}>
-                    อ่านเพิ่มเติม
+                    {readMore}
                   </span>
                 </div>
               </div>
@@ -173,7 +232,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ lang:
 
       </div>
 
-      <Footer lang={lang as Locale} />
+      <Footer lang={lang as Locale} dict={dict} />
     </div>
   );
 }

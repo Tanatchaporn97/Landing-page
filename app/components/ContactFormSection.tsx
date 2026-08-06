@@ -169,12 +169,12 @@ export default function ContactFormSection({ lang = "th", dict }: { lang?: "th" 
             {/* Status messages */}
             {formStatus === "success" && (
               <p style={{ ...KT, color: "#16a34a", fontSize: "15px", fontWeight: 600, margin: 0 }}>
-                {t.successMessage || "✓ Submitted successfully"}
+                {t.successMsg || "✓ Submitted successfully"}
               </p>
             )}
             {formStatus === "error" && (
               <p style={{ ...KT, color: "#dc2626", fontSize: "15px", fontWeight: 600, margin: 0 }}>
-                {t.errorMessage || "Something went wrong. Please try again."}
+                {t.errorMsg || "Something went wrong. Please try again."}
               </p>
             )}
 

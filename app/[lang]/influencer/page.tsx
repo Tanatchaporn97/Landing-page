@@ -25,14 +25,14 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
   const dict = await getDictionary(lang as Locale);
 
   return (
-    <div style={{ ...KT, minHeight: "100vh", backgroundImage: "url('/light-purple-gradient-bg-3.jpg')", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "top center", overflowX: "hidden" }}>
+    <div className="hero" style={{ ...KT, overflowX: "hidden" }}>
 
       {/* ── Navbar ── */}
       <Navbar lang={lang as Locale} variant="influencer" />
 
 
       {/* ── Hero ── */}
-      <InfluencerHero />
+      <InfluencerHero lang={lang as Locale} />
 
       {/* ── Hero → Logos fade overlay ── */}
       <div style={{ height: "80px", marginTop: "-80px", background: "linear-gradient(to bottom, transparent 0%, #ffffff 100%)", position: "relative", zIndex: 6, pointerEvents: "none" }} />
@@ -56,10 +56,10 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             margin: "0 0 32px",
           }}>
             <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              โอกาสใหม่
+              {lang === "th" ? "โอกาสใหม่" : "New Opportunities,"}
             </span>
             <br />
-            <span style={{ color: "#111827" }}>เริ่มต้นได้ที่นี่</span>
+            <span style={{ color: "#111827" }}>{lang === "th" ? "เริ่มต้นได้ที่นี่" : "Start Here"}</span>
           </h2>
           <p className="desc-text" style={{
             ...KT,
@@ -69,14 +69,19 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             margin: 0,
             fontWeight: 400,
           }}>
-            Buddy Review ทำให้การเป็นอินฟลูเอนเซอร์เป็นเรื่องง่ายขึ้น ด้วยระบบที่เชื่อมคุณกับแบรนด์ชั้นนำ<br />
-            พร้อมทีมงานที่ช่วยเหลือในทุกขั้นตอน เพิ่มโอกาสสร้างรายได้จากการรีวิว
+            {lang === "th" ? (
+              <>Buddy Review ทำให้การเป็นอินฟลูเอนเซอร์เป็นเรื่องง่ายขึ้น ด้วยระบบที่เชื่อมคุณกับแบรนด์ชั้นนำ<br />
+              พร้อมทีมงานที่ช่วยเหลือในทุกขั้นตอน เพิ่มโอกาสสร้างรายได้จากการรีวิว</>
+            ) : (
+              <>Buddy Review makes being an influencer easier, with a system that connects you to leading brands<br />
+              and a team that supports you every step of the way — boosting your opportunities to earn from reviews.</>
+            )}
           </p>
         </div>
       </section>
 
       {/* ── Path to Partnership ── */}
-      <PathToPartnership />
+      <PathToPartnership lang={lang as Locale} />
 
       {/* ── Unlock Exclusive Opportunities ── */}
       <section className="inf-section" style={{ background: "transparent", padding: "100px 48px" }}>
@@ -95,11 +100,15 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
             {/* Left features */}
             <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
-              {[
+              {(lang === "th" ? [
                 { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", title: "แบรนด์เชื่อถือได้", desc: "ไม่มีแบรนด์เงียบ ไม่มีงานปลอม\nมีแต่ความโปร" },
                 { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", title: "จ่ายตรง ไม่มีเบี้ยว", desc: "งานจบ เงินไม่หาย กดเบิกเองได้ทุกเมื่อ รับตามรอบแบบตรงเวลา" },
                 { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", title: "รีวิวได้ครบ", desc: "จบทุกแพลตฟอร์ม ให้คุณสามารถมีโอกาส รับงานรีวิวได้หลากหลายช่องทาง" },
-              ].map((item) => (
+              ] : [
+                { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", title: "Trusted Brands", desc: "No ghosting, no fake jobs\nJust professionalism." },
+                { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", title: "Paid on Time, Every Time", desc: "Finish the job, keep your money — withdraw anytime and get paid on a reliable schedule." },
+                { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", title: "Review Anywhere", desc: "Covers every platform, giving you the chance to take on review work across multiple channels." },
+              ]).map((item) => (
                 <div key={item.title} style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
                   <div className="icon-wrap-lg" style={{ position: "relative", width: "78px", height: "78px", borderRadius: "50%", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 4px 20px rgba(0,0,0,0.12)" }}>
                     <Image className="unlock-icon-img" src={item.img} alt={item.title} width={172} height={172} style={{ width: "172px", height: "172px", objectFit: "contain" }} />
@@ -127,11 +136,15 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
             {/* Right features */}
             <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
-              {[
+              {(lang === "th" ? [
                 { img: "/unlocked-exclusive/Unlocked Exclusive-04.png", title: "สิทธิพิเศษเฉพาะคุณ", desc: "ร่วมกิจกรรมและรับรางวัลสุดเอ็กซ์คลูซีฟ" },
                 { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", title: "มืออาชีพที่อยู่เคียงข้างคุณ", desc: "ทำงานได้อย่างมั่นใจ ด้วยทีมงานมืออาชีพ และระบบที่ช่วยให้ทุกอย่างง่ายขึ้น" },
                 { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", title: "แมทช์งานที่ใช่", desc: "รู้งานใหม่ก่อนใคร ด้วยระบบคัดกรองที่แมทช์งานตรงใจ ให้คุณได้ทำงานที่ใช่จากสิ่งที่ชอบ" },
-              ].map((item) => (
+              ] : [
+                { img: "/unlocked-exclusive/Unlocked Exclusive-04.png", title: "Exclusive Perks for You", desc: "Join events and win exclusive rewards." },
+                { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", title: "Professionals By Your Side", desc: "Work with confidence, backed by a professional team and a system that makes everything easier." },
+                { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", title: "The Right Match", desc: "Be first to know about new jobs with a matching system that connects you to work you'll actually love." },
+              ]).map((item) => (
                 <div key={item.title} style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
                   <div className="icon-wrap-lg" style={{ position: "relative", width: "78px", height: "78px", borderRadius: "50%", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 4px 20px rgba(0,0,0,0.12)" }}>
                     <Image className="unlock-icon-img" src={item.img} alt={item.title} width={172} height={172} style={{ width: "172px", height: "172px", objectFit: "contain" }} />
@@ -150,7 +163,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
 
       {/* ── Case Studies ── */}
-      <SuccessStoriesSlider />
+      <SuccessStoriesSlider lang={lang as Locale} />
 
 
       {/* ── Testimonials ── */}
@@ -170,7 +183,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               </span>
             </h2>
             <p style={{ ...KT, fontSize: "16px", color: "#374151", lineHeight: 1.65, margin: 0 }}>
-              เสียงจริงจากอินฟลูเอนเซอร์ที่ร่วมงานกับ Buddy Review
+              {lang === "th" ? "เสียงจริงจากอินฟลูเอนเซอร์ที่ร่วมงานกับ Buddy Review" : "Real voices from influencers who've worked with Buddy Review"}
             </p>
           </div>
           {/* Right: masonry grid */}

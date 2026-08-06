@@ -24,6 +24,105 @@
 
 :root {
   --font-sans: var(--font-inter);
+  --purple: rgba(173, 166, 255, 0.45);
+  --pink: rgba(255, 184, 214, 0.45);
+  --white: #ffffff;
+}
+
+.hero-bg {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at bottom left, var(--purple), transparent 65%),
+    radial-gradient(circle at bottom right, var(--pink), transparent 65%),
+    linear-gradient(180deg, var(--white), #faf9ff 55%, var(--white));
+}
+
+.hero {
+  min-height: 100vh;
+  width: 100%;
+
+  background:
+    radial-gradient(
+      ellipse 130% 45% at bottom center,
+      rgba(144, 110, 255, 0.55) 0%,
+      rgba(178, 156, 255, 0.35) 35%,
+      rgba(225, 220, 255, 0.18) 60%,
+      transparent 85%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #fcfcff 20%,
+      #f5f3ff 45%,
+      #ece8ff 70%,
+      #e3dcff 100%
+    );
+}
+
+.hero-header-glow {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse 140% 50% at top center,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,.98) 18%,
+      rgba(10,5,20,.95) 28%,
+      rgba(60,35,120,.75) 42%,
+      rgba(120,85,255,.72) 55%,
+      rgba(185,165,255,.48) 72%,
+      rgba(255,255,255,0) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      #000000 0%,
+      #3a236d 26%,
+      #7b57f5 48%,
+      #c6b7ff 72%,
+      #ffffff 100%
+    );
+}
+
+.footer-hero-glow {
+  position: relative;
+  overflow: hidden;
+
+  background-image: url("/footer-bg.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+/* Cancels the FAQ accordion section's own top padding (100px desktop,
+   48px mobile) now that its internal heading was removed on this page. */
+.faq-accordion-wrap {
+  margin-top: -100px;
+}
+
+.background {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      ellipse 70% 70% at top right,
+      rgba(255, 200, 225, .75) 0%,
+      rgba(255, 210, 232, .45) 35%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 75% 75% at bottom left,
+      rgba(188, 165, 255, .75) 0%,
+      rgba(205, 186, 255, .45) 35%,
+      transparent 72%
+    ),
+    linear-gradient(
+      135deg,
+      #d9c5ff 0%,
+      #ecd7f9 45%,
+      #f7d5ea 100%
+    );
 }
 
 @theme inline {
@@ -265,7 +364,7 @@ body {
   clip-path: inset(78px 39px 130px 39px round 156px);
   transition: clip-path 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.cs-card:hover .cs-card-img-clip, .cs-card:active .cs-card-img-clip {
+.cs-card:hover .cs-card-img-clip {
   clip-path: inset(0px 0px 0px 0px round 25px);
 }
 /* Image shifts up inside the fixed circle, resets on hover */
@@ -277,7 +376,7 @@ body {
   transform: translateY(-5%);
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.cs-card:hover .cs-card-img, .cs-card:active .cs-card-img {
+.cs-card:hover .cs-card-img {
   transform: translateY(0);
 }
 .cs-card-overlay {
@@ -289,7 +388,7 @@ body {
   z-index: 1;
   pointer-events: none;
 }
-.cs-card:hover .cs-card-overlay, .cs-card:active .cs-card-overlay {
+.cs-card:hover .cs-card-overlay {
   opacity: 1;
 }
 .cs-card-title h3 {
@@ -317,7 +416,7 @@ body {
 .cs-cat-btn {
   transition: background 0.3s ease, color 0.3s ease;
 }
-.cs-card:hover .cs-cat-btn, .cs-card:active .cs-cat-btn {
+.cs-card:hover .cs-cat-btn {
   background: #ffffff !important;
   color: #5f26e5 !important;
 }
@@ -335,24 +434,24 @@ body {
 .cs-arrow-path {
   transition: stroke 0.3s ease;
 }
-.cs-card:hover .cs-arrow-btn, .cs-card:active .cs-arrow-btn {
+.cs-card:hover .cs-arrow-btn {
   background: #ffffff !important;
 }
-.cs-card:hover .cs-arrow-path, .cs-card:active .cs-arrow-path {
+.cs-card:hover .cs-arrow-path {
   stroke: #5f26e5;
 }
-.cs-card:hover .cs-card-title h3, .cs-card:active .cs-card-title h3 {
+.cs-card:hover .cs-card-title h3 {
   background: none;
   -webkit-text-fill-color: #ffffff;
 }
-.cs-card:hover .cs-card-tagline, .cs-card:active .cs-card-tagline {
+.cs-card:hover .cs-card-tagline {
   color: rgba(255,255,255,0.8);
 }
-.cs-card:hover .cs-stat-val, .cs-card:active .cs-stat-val {
+.cs-card:hover .cs-stat-val {
   background: none;
   -webkit-text-fill-color: #ffffff;
 }
-.cs-card:hover .cs-stat-label, .cs-card:active .cs-stat-label {
+.cs-card:hover .cs-stat-label {
   color: rgba(255,255,255,0.65);
 }
 
@@ -583,7 +682,7 @@ body {
 
   /* Hero stats strip: stack vertically, dividers become horizontal */
   .hero-stats-strip { flex-direction: column; align-items: stretch; width: 100% !important; padding: 20px 24px !important; gap: 16px !important; }
-  .hero-stat-item { justify-content: center; }
+  .hero-stat-item { justify-content: center; width: 100% !important; box-sizing: border-box; }
   .hero-stat-divider { display: none !important; }
 
   /* Trusted Partner inline padding */
@@ -669,6 +768,19 @@ body {
   .cs-header-row { flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; }
   .cs-card-link { width: calc(100vw - 96px) !important; }
   .cs-card-link .cs-card { height: 460px !important; }
+  /* No real :hover on touch — show the revealed state permanently instead of
+     tying it to :active, which can get stuck "on" after a tap navigates away
+     and the user returns via the back button. */
+  .cs-card .cs-card-img-clip { clip-path: inset(0px 0px 0px 0px round 25px) !important; }
+  .cs-card .cs-card-img { transform: translateY(0) !important; }
+  .cs-card .cs-card-overlay { opacity: 1 !important; }
+  .cs-card .cs-cat-btn { background: #ffffff !important; color: #5f26e5 !important; }
+  .cs-card .cs-arrow-btn { background: #ffffff !important; }
+  .cs-card .cs-arrow-path { stroke: #5f26e5 !important; }
+  .cs-card .cs-card-title h3 { background: none !important; -webkit-text-fill-color: #ffffff !important; }
+  .cs-card .cs-card-tagline { color: rgba(255,255,255,0.8) !important; }
+  .cs-card .cs-stat-val { background: none !important; -webkit-text-fill-color: #ffffff !important; }
+  .cs-card .cs-stat-label { color: rgba(255,255,255,0.65) !important; }
 
   /* Testimonials: title + masonry → stacked, single column */
   .testimonials-outer { flex-direction: column !important; gap: 32px !important; }
@@ -702,6 +814,7 @@ body {
   .faq-tabs-section { padding: 0 20px 48px !important; }
   .faq-tabs-row { gap: 8px !important; margin-bottom: 32px !important; flex-wrap: wrap; }
   .faq-tab-btn { padding: 10px 20px !important; font-size: 14px !important; }
+  .faq-accordion-wrap { margin-top: -48px !important; }
   .faq-cta-section { padding: 40px 20px 64px !important; }
   .faq-cta-btn { padding: 12px 32px !important; font-size: 15px !important; }
 

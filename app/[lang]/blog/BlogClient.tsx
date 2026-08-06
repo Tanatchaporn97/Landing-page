@@ -13,9 +13,9 @@ import { type Locale } from "../../../i18n-config";
 
 export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) {
   const searchParams = useSearchParams();
-  const catAll = dict?.home?.category || "ทั้งหมด";
-  const catBrand = dict?.home?.imBrand || "สำหรับแบรนด์";
-  const catInf = dict?.home?.imInfluencer || "สำหรับอินฟลูเอนเซอร์";
+  const catAll = dict?.home?.category || (lang === "th" ? "ทั้งหมด" : "All Categories");
+  const catBrand = lang === "th" ? "สำหรับแบรนด์" : "For Brands";
+  const catInf = lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Influencers";
   const CATS = [catAll, catBrand, catInf];
 
   const BLOG_POSTS = dict?.blogPosts || [];
@@ -34,7 +34,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
     : BLOG_POSTS.filter((p: any) => p.categories.includes(activeCat));
 
   return (
-    <div style={{ ...KT, minHeight: "100vh", backgroundImage: "url('/landing-bg6.jpg')", backgroundSize: "100% 100%", backgroundPosition: "center top", backgroundRepeat: "no-repeat" }}>
+    <div className="background" style={{ ...KT }}>
 
       <BlogNavbar lang={lang} />
 
@@ -44,7 +44,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M19 12H5M12 5l-7 7 7 7"/>
           </svg>
-          {dict?.blogPosts?.[0]?.back || "กลับหน้าหลัก"}
+          {lang === "th" ? "กลับหน้าหลัก" : "Back to Home"}
         </Link>
       </div>
 
@@ -71,7 +71,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
         </div>
 
         {filtered.length === 0 && (
-          <p style={{ ...KT, color: "#111827", fontSize: "16px" }}>ไม่มีบทความในหมวดนี้</p>
+          <p style={{ ...KT, color: "#111827", fontSize: "16px" }}>{lang === "th" ? "ไม่มีบทความในหมวดนี้" : "No articles in this category"}</p>
         )}
 
         {/* Cards grid */}
@@ -103,7 +103,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
 
                 <div style={{ marginTop: "auto", paddingTop: "8px" }}>
                   <span style={{ ...KT, background: "#5f26e5", color: "#ffffff", borderRadius: "50px", fontSize: "14px", fontWeight: 600, padding: "8px 24px", display: "inline-block" }}>
-                    อ่านเพิ่มเติม
+                    {lang === "th" ? "อ่านเพิ่มเติม" : "Read More"}
                   </span>
                 </div>
 

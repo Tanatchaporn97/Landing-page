@@ -25,7 +25,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
   const nextStory = SUCCESS_STORIES[idx + 1] ?? null;
 
   return (
-    <div style={{ ...KT, minHeight: "100vh", backgroundImage: "url('/landing-bg6.jpg')", backgroundSize: "100% 100%", backgroundPosition: "center top", backgroundRepeat: "no-repeat" }}>
+    <div className="background" style={{ ...KT }}>
 
       {/* Top-left CTA */}
       <div className="success-back-row" style={{ padding: "130px 48px 28px" }}>
@@ -106,7 +106,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
 
         {/* Results */}
         <h2 style={{ ...KT, color: "#111827", fontSize: "clamp(24px,2.5vw,36px)", fontWeight: 800, margin: "0 0 32px", textAlign: "center" }}>
-          ผลลัพธ์
+          {lang === "th" ? "ผลลัพธ์" : "Results"}
         </h2>
         <div className="success-stats-grid" style={{ display: "grid", gridTemplateColumns: `repeat(${story.stats.length}, 1fr)`, gap: "24px" }}>
           {story.stats.map((s) => (
@@ -133,9 +133,9 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
         </div>
       </div>
 
-      {/* Bottom nav — ย้อนกลับ + หน้าต่อไป */}
+      {/* Bottom nav — back + next */}
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "16px", padding: "48px 24px 80px" }}>
-        <BackButton />
+        <BackButton lang={lang as Locale} />
         {nextStory && (
           <Link href={`/${lang}/success/${nextStory.slug}`} style={{
             ...KT,
@@ -146,7 +146,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
             color: "#ffffff", textDecoration: "none",
             fontSize: "15px", fontWeight: 500,
           }}>
-            หน้าต่อไป
+            {lang === "th" ? "หน้าต่อไป" : "Next"}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>

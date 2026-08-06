@@ -3,7 +3,31 @@ import { motion } from "motion/react";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
-export default function InfluencerHero() {
+const TEXT = {
+  th: {
+    h1Line1: "แมทช์งานที่ใช่",
+    h1Line2: "ได้งานที่ชอบ",
+    subhead: "จบปัญหาความยุ่งยากในการรีวิวแบบเดิม ๆ เชื่อมต่อกับแบรนด์ชั้นนำและสร้างรายได้จากสิ่งที่คุณรัก",
+    applyNow: "สมัครเลย",
+    applyLine: "สมัครผ่านไลน์",
+    statTrustedClients: "ลูกค้าที่ไว้วางใจ",
+    statCampaigns: "แคมเปญที่ส่งมอบ",
+    statNetwork: "เครือข่ายอินฟลูเอนเซอร์",
+  },
+  en: {
+    h1Line1: "Match the Right Job,",
+    h1Line2: "Get Work You Love",
+    subhead: "No more hassle with reviewing the old way. Connect with leading brands and earn from the things you love.",
+    applyNow: "Apply Now",
+    applyLine: "Apply via LINE",
+    statTrustedClients: "Trusted Clients",
+    statCampaigns: "Campaigns Delivered",
+    statNetwork: "Influencer Network",
+  },
+};
+
+export default function InfluencerHero({ lang = "th" }: { lang?: "th" | "en" }) {
+  const t = lang === "th" ? TEXT.th : TEXT.en;
   return (
     <section className="hero-section-inf" style={{ padding: "120px 64px 80px", position: "relative", overflow: "hidden", background: "linear-gradient(135deg, #f3eeff 0%, #fdf0fb 60%, #f3eeff 100%)" }}>
 
@@ -20,25 +44,25 @@ export default function InfluencerHero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <h1 className="hero-h1-inf" style={{ ...KT, fontWeight: 900, lineHeight: 1.06, margin: "0 0 24px", fontSize: "clamp(48px,5.2vw,80px)", color: "#111827" }}>
-            แมทช์งานที่ใช่<br />
+            {t.h1Line1}<br />
             <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              ได้งานที่ชอบ
+              {t.h1Line2}
             </span>
           </h1>
           <h2 style={{ ...KT, color: "#111827", fontSize: "clamp(18px,2vw,26px)", fontWeight: 700, lineHeight: 1.55, margin: "0 0 32px", maxWidth: "460px" }}>
-            จบปัญหาความยุ่งยากในการรีวิวแบบเดิม ๆ เชื่อมต่อกับแบรนด์ชั้นนำและสร้างรายได้จากสิ่งที่คุณรัก
+            {t.subhead}
           </h2>
 
           <div className="hero-cta-row-inf" style={{ display: "flex", gap: "14px", marginBottom: "52px", flexWrap: "wrap" }}>
             <a href="https://www.buddyreview.co/app/new-campaigns" target="_blank" rel="noopener noreferrer"
               className="btn-hero-solid-purple hero-cta-btn-inf"
               style={{ ...KT, display: "inline-flex", alignItems: "center", borderRadius: "50px", padding: "14px 32px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
-              สมัครเลย
+              {t.applyNow}
             </a>
             <a href="https://line.me/ti/p/~@buddyreview" target="_blank" rel="noopener noreferrer"
               className="btn-line hero-cta-btn-inf"
               style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "10px", borderRadius: "50px", padding: "14px 28px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
-              สมัครผ่านไลน์
+              {t.applyLine}
             </a>
           </div>
 
@@ -54,7 +78,7 @@ export default function InfluencerHero() {
             >
               <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>🤝</span>
               <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>1,000+</p>
-              <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>ลูกค้าที่ไว้วางใจ</p>
+              <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>{t.statTrustedClients}</p>
             </motion.div>
             {/* Card 2 — on top of card 1's blank right edge */}
             <motion.div
@@ -66,7 +90,7 @@ export default function InfluencerHero() {
             >
               <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>🎯</span>
               <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>4,000+</p>
-              <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>แคมเปญที่ส่งมอบ</p>
+              <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>{t.statCampaigns}</p>
             </motion.div>
             {/* Card 3 — highest z, on top of card 2's blank right edge */}
             <motion.div
@@ -78,7 +102,7 @@ export default function InfluencerHero() {
             >
               <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>🌐</span>
               <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>95K+</p>
-              <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>เครือข่ายอินฟลูเอนเซอร์</p>
+              <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>{t.statNetwork}</p>
             </motion.div>
           </div>
         </motion.div>

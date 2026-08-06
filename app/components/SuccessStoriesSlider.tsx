@@ -6,18 +6,28 @@ import { useRouter } from "next/navigation";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
-export default function SuccessStoriesSlider() {
+export default function SuccessStoriesSlider({ lang = "th" }: { lang?: "th" | "en" }) {
   const csRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const catSlug = (cat: string) => cat.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-$/, "");
 
-  const stories = [
+  const subheading = lang === "th" ? "ผลลัพธ์จริงจากแคมเปญอินฟลูเอนเซอร์ที่เราภูมิใจ" : "Real results from influencer campaigns we're proud of";
+  const viewMore = lang === "th" ? "ดูเพิ่มเติม" : "View More";
+
+  const stories = lang === "th" ? [
     { href: "/success/nissin",         img: "/success-stories-2/Success stories-08.jpg", cat: "FOOD & BEVERAGE",  title: "Nissin",          tagline: "ปลุกกระแสคนหิวบนโซเชียลด้วยรสชาติใหม่ ต้มยำกุ้งแซ่บซีส",          stats: [{ val: "13",    label: "Posts" }, { val: "1.86M", label: "Reach" }, { val: "45K",  label: "Engagement" }] },
     { href: "/success/ldc-dental",     img: "/success-stories-2/Success stories-09.jpg", cat: "DENTAL CARE",      title: "LDC Dental",      tagline: "รีวิวจัดฟันใสจากอินฟลูฯ สู่กิจกรรมสุดเอ็กซ์คลูซีฟจาก LDC Dental", stats: [{ val: "43K",   label: "Reach" },  { val: "4.2K",  label: "Engagement" }, { val: "9.8%", label: "Eng. Rate" }] },
     { href: "/success/watsons",        img: "/success-stories-2/Success stories-10.jpg", cat: "HEALTH & BEAUTY",  title: "Watsons",         tagline: "House Brand ปังด้วยพลังอินฟลูฯ บน TikTok & Lemon8",               stats: [{ val: "220",   label: "Posts" }, { val: "1.2M",  label: "Reach" }, { val: "12K",  label: "Engagement" }] },
     { href: "/success/viu",            img: "/success-stories-2/Success stories-11.jpg", cat: "ENTERTAINMENT",    title: "Viu",             tagline: "อินฟลูเอนเซอร์พลังท้องถิ่น สร้างสีสันแคมเปญ อีสานชมวิว",          stats: [{ val: "239K",  label: "Reach" },  { val: "4.3K",  label: "Engagement" }, { val: "956K", label: "Followers" }] },
     { href: "/success/ahc",            img: "/success-stories-2/Success stories-12.jpg", cat: "SKINCARE",         title: "AHC",             tagline: "ปลุกกระแสแบรนด์ด้วยอีเวนต์จากซีรีส์สุดไวรัล 'AHC Skin Game'",   stats: [{ val: "14M",   label: "Views" }, { val: "9.2M",  label: "Reach" }, { val: "190K", label: "Engagement" }] },
     { href: "/success/guss-damn-good", img: "/success-stories-2/Success stories-13.jpg", cat: "FOOD & BEVERAGE",  title: "Guss Damn Good",  tagline: "รสชาติที่มีเรื่องเล่า เมื่อไอศครีมเจอกับผงฟู้คลายกรดลดแน่นเฟ้อ",   stats: [{ val: "5.9M",  label: "Views" }, { val: "4.4M",  label: "Reach" }, { val: "120K", label: "Engagement" }] },
+  ] : [
+    { href: "/success/nissin",         img: "/success-stories-2/Success stories-08.jpg", cat: "FOOD & BEVERAGE",  title: "Nissin",          tagline: "Sparking social media buzz with a bold new flavor — spicy Tom Yum Goong cheese",          stats: [{ val: "13",    label: "Posts" }, { val: "1.86M", label: "Reach" }, { val: "45K",  label: "Engagement" }] },
+    { href: "/success/ldc-dental",     img: "/success-stories-2/Success stories-09.jpg", cat: "DENTAL CARE",      title: "LDC Dental",      tagline: "From influencer clear-braces reviews to an exclusive event by LDC Dental", stats: [{ val: "43K",   label: "Reach" },  { val: "4.2K",  label: "Engagement" }, { val: "9.8%", label: "Eng. Rate" }] },
+    { href: "/success/watsons",        img: "/success-stories-2/Success stories-10.jpg", cat: "HEALTH & BEAUTY",  title: "Watsons",         tagline: "House brand goes viral with influencer power on TikTok & Lemon8",               stats: [{ val: "220",   label: "Posts" }, { val: "1.2M",  label: "Reach" }, { val: "12K",  label: "Engagement" }] },
+    { href: "/success/viu",            img: "/success-stories-2/Success stories-11.jpg", cat: "ENTERTAINMENT",    title: "Viu",             tagline: "Local influencer power brings the \"Isan Charm View\" campaign to life",          stats: [{ val: "239K",  label: "Reach" },  { val: "4.3K",  label: "Engagement" }, { val: "956K", label: "Followers" }] },
+    { href: "/success/ahc",            img: "/success-stories-2/Success stories-12.jpg", cat: "SKINCARE",         title: "AHC",             tagline: "Sparking brand buzz with an event inspired by the viral series \"AHC Skin Game\"",   stats: [{ val: "14M",   label: "Views" }, { val: "9.2M",  label: "Reach" }, { val: "190K", label: "Engagement" }] },
+    { href: "/success/guss-damn-good", img: "/success-stories-2/Success stories-13.jpg", cat: "FOOD & BEVERAGE",  title: "Guss Damn Good",  tagline: "A flavor with a story — when ice cream meets antacid powder",   stats: [{ val: "5.9M",  label: "Views" }, { val: "4.4M",  label: "Reach" }, { val: "120K", label: "Engagement" }] },
   ];
 
   return (
@@ -30,7 +40,7 @@ export default function SuccessStoriesSlider() {
             <h2 style={{ fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, color: "#111827", margin: "0 0 10px", lineHeight: 1.2 }}>
               <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>Success </span><span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Stories</span>
             </h2>
-            <p style={{ ...KT, fontSize: "16px", color: "#374151", margin: 0 }}>ผลลัพธ์จริงจากแคมเปญอินฟลูเอนเซอร์ที่เราภูมิใจ</p>
+            <p style={{ ...KT, fontSize: "16px", color: "#374151", margin: 0 }}>{subheading}</p>
           </div>
           <div style={{ display: "flex", gap: "10px" }}>
             <button onClick={() => csRef.current?.scrollBy({ left: -400, behavior: "smooth" })} style={{ width: "44px", height: "44px", borderRadius: "50%", background: "rgba(95,38,229,0.10)", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -91,7 +101,7 @@ export default function SuccessStoriesSlider() {
             textDecoration: "none",
             display: "inline-block",
           }}>
-            ดูเพิ่มเติม
+            {viewMore}
           </Link>
         </div>
       </div>

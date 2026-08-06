@@ -25,7 +25,7 @@ export default function FaqClient({ lang, dict }: { lang: Locale, dict: any }) {
   const active = CATEGORIES.find(c => c.key === activeTab)!;
 
   return (
-    <div style={{ ...KT, minHeight: "100vh", backgroundImage: "url('/light-purple-gradient-bg-3.jpg')", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "top center", overflowX: "hidden" }}>
+    <div className="hero" style={{ ...KT, overflowX: "hidden" }}>
       {fromInfluencer ? <Navbar lang={lang} variant="influencer" /> : <Navbar lang={lang} variant="home" />}
 
       {/* Hero */}
@@ -53,7 +53,7 @@ export default function FaqClient({ lang, dict }: { lang: Locale, dict: any }) {
               </button>
             ))}
           </div>
-          <div style={{ marginTop: "-100px" }}><FAQAccordion faqs={active.faqs} variant="influencer" hideCta={true} oneColumn={true} hideTitle={true} lang={lang} dict={dict} /></div>
+          <div className="faq-accordion-wrap"><FAQAccordion faqs={active.faqs} variant="influencer" hideCta={true} oneColumn={true} hideTitle={true} lang={lang} dict={dict} /></div>
         </div>
       </section>
 

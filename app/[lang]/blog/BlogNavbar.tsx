@@ -12,6 +12,9 @@ export default function BlogNavbar({ lang = "th" }: { lang?: Locale }) {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const t = lang === "th"
+    ? { contactUs: "ติดต่อเรา", imInfluencer: "ฉันคืออินฟลูเอนเซอร์" }
+    : { contactUs: "Contact Us", imInfluencer: "I'm an Influencer" };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -31,12 +34,12 @@ export default function BlogNavbar({ lang = "th" }: { lang?: Locale }) {
           <a href={`/${lang}#contact`}
             className="btn-hero btn-hero-solid-purple px-6 py-3 rounded-full whitespace-nowrap"
             style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
-            ติดต่อเรา
+            {t.contactUs}
           </a>
           <Link href={`/${lang}/influencer`}
             className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
             style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", ...(scrolled ? { color: "#5f26e5" } : {}) }}>
-            ฉันคืออินฟลูเอนเซอร์
+            {t.imInfluencer}
           </Link>
           <button onClick={() => {
             if (!pathname) return;
@@ -62,12 +65,12 @@ export default function BlogNavbar({ lang = "th" }: { lang?: Locale }) {
           <a href={`/${lang}#contact`} onClick={() => setMenuOpen(false)}
             className="btn-hero btn-hero-solid-purple rounded-full whitespace-nowrap"
             style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", padding: "12px 20px", textAlign: "center" }}>
-            ติดต่อเรา
+            {t.contactUs}
           </a>
           <Link href={`/${lang}/influencer`} onClick={() => setMenuOpen(false)}
             className="btn-hero rounded-full whitespace-nowrap"
             style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", padding: "12px 20px", textAlign: "center", color: "#ffffff" }}>
-            ฉันคืออินฟลูเอนเซอร์
+            {t.imInfluencer}
           </Link>
           <button onClick={() => {
             setMenuOpen(false);

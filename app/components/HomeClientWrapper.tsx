@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
+import { animate, stagger, inView } from "motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -51,6 +52,14 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const photoCardsRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!photoCardsRef.current) return;
+    return inView(photoCardsRef.current, () => {
+      animate(".photo-card-h", { opacity: [0, 1], y: [50, 0] }, { duration: 0.405, delay: stagger(0.135) });
+    }, { amount: 0.3 });
+  }, []);
+
 
 
   const csRef = useRef<HTMLDivElement>(null);
@@ -61,20 +70,14 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
 
 
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden" style={{
-      ...KT,
-      backgroundImage: "url('/light-gradient-landing-bg.jpg')",
-      backgroundSize: "100% 100%",
-      backgroundPosition: "center top",
-      backgroundRepeat: "no-repeat",
-    }}>
+    <div className="hero-bg min-h-screen flex flex-col overflow-x-hidden" style={{ ...KT }}>
 
       {/* ── Navbar ── */}
       <Navbar variant="home" lang={lang} />
 
       {/* ── Hero ── */}
       <section
-        className="flex flex-col items-center justify-center text-center px-6 relative hero-section"
+        className="flex flex-col items-center justify-center text-center px-6 relative hero-section hero-header-glow"
         style={{
           minHeight: "72vh",
           paddingTop: "128px",
@@ -141,7 +144,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
               }}
               transition={{ duration: 0.3, ease: "easeOut" }}>
                 <span style={{
-                  ...KT, fontSize: "clamp(20px,2.7vw,39px)", fontWeight: 800, lineHeight: 1, whiteSpace: "nowrap",
+                  ...KT, fontSize: "31px", fontWeight: 800, lineHeight: 1, whiteSpace: "nowrap",
                   background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -149,7 +152,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                 }}>
                   <AnimatedCounter target={s.target} suffix={s.suffix} />
                 </span>
-                <span style={{ ...KT, fontSize: "clamp(13px,1.3vw,20px)", fontWeight: 500, color: "#111827", lineHeight: 1.35, whiteSpace: "nowrap" }}>
+                <span style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", lineHeight: 1.35, whiteSpace: "nowrap" }}>
                   {s.label}
                 </span>
               </motion.div>
@@ -195,19 +198,15 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           </div>
 
           {/* 4 Photo Cards */}
-          <div className="grid-4-col" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "16px" }}>
+          <div ref={photoCardsRef} className="grid-4-col" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "16px" }}>
             {[
               { src: "/card1.jpg", title: "Built on Clarity",           desc: "ทำงานเป็นระบบที่ชัดเจนตามมาตรฐาน",       descEn: "Working within a clear, standardized system." },
               { src: "/card2.jpg", title: "Teamwork with Intelligence", desc: "ทีมที่เข้าใจ ทำให้ทุกแคมเปญสำเร็จ",       descEn: "A team that understands you, making every campaign succeed." },
               { src: "/card3.png", title: "Data-Driven Precision",      desc: "เทคโนโลยีช่วยให้คุณตัดสินใจง่ายขึ้น",     descEn: "Technology that makes your decisions easier." },
               { src: "/card4.png", title: "Success Delivered",          desc: "ทุกแคมเปญ มุ่งสู่ความสำเร็จที่ชัดเจน",     descEn: "Every campaign, driven toward clear, measurable success." },
             ].map((card, i) => (
-              <motion.div key={card.title} className="relative overflow-hidden photo-card-h"
-                style={{ height: "403px", borderRadius: "24px" }}
-                initial={{ scale: 0.4 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ ease: "circInOut", duration: 1, delay: i * 0.1 }}>
+              <div key={card.title} className="relative overflow-hidden photo-card-h"
+                style={{ height: "403px", borderRadius: "24px", opacity: 0 }}>
                 <Image src={card.src} alt={card.title} fill className="object-cover object-top" sizes="280px"/>
                 <div className="absolute bottom-0 left-0 right-0"
                   style={{ background: "linear-gradient(to top,rgba(95,38,229,1) 0%,rgba(95,38,229,0) 100%)",
@@ -222,7 +221,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                     {lang === "th" ? card.desc : card.descEn}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -436,7 +435,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       </div>
 
       {/* ── Footer ── */}
-      <Footer variant="home" dict={dict} />
+      <Footer variant="home" lang={lang} dict={dict} />
 
     </div>
   );

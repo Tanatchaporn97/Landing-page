@@ -120,7 +120,7 @@ export default function Navbar({
 
   return (
     <motion.div
-      style={{ position: "fixed", top: "20px", left: "40px", right: "40px", zIndex: 100 }}
+      style={{ position: "fixed", top: "20px", left: "40px", right: "40px", zIndex: 100, pointerEvents: "none" }}
       className="nav-landing-wrap"
       animate={{ y: hideNav ? -120 : 0, opacity: hideNav ? 0 : 1 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -136,6 +136,7 @@ export default function Navbar({
         justifyContent: "space-between",
         padding: "10px 24px",
         transition: "background 0.3s, border 0.3s",
+        pointerEvents: "auto",
       }} className="nav-landing-inner">
         <Link href={`/${lang}`}>
           <Image
