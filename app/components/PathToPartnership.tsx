@@ -34,6 +34,9 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
     if (!el) return;
     const onWheel = (e: WheelEvent) => {
       if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+      const atStart = el.scrollLeft <= 0;
+      const atEnd = el.scrollLeft >= el.scrollWidth - el.clientWidth - 1;
+      if ((e.deltaY < 0 && atStart) || (e.deltaY > 0 && atEnd)) return;
       e.preventDefault();
       el.scrollLeft += e.deltaY;
     };

@@ -10,8 +10,8 @@ import { type Locale } from "../../../../i18n-config";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
-const Tag = ({ label }: { label: string }) => (
-  <Link href={`/blog?cat=${encodeURIComponent(label)}`} style={{ ...KT, background: "rgba(255,255,255,0.15)", color: "#111827",
+const Tag = ({ label, lang }: { label: string; lang: string }) => (
+  <Link href={`/${lang}/blog?cat=${encodeURIComponent(label)}`} style={{ ...KT, background: "rgba(255,255,255,0.15)", color: "#111827",
     backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
     border: "1px solid rgba(255,255,255,0.35)", borderRadius: "50px",
     fontSize: "13px", fontWeight: 600, padding: "4px 14px",
@@ -645,7 +645,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ lang:
           boxSizing: "border-box", width: "100%",
         }}>
           <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "16px" }}>
-            {post.categories.map((cat: string) => <Tag key={cat} label={cat} />)}
+            {post.categories.map((cat: string) => <Tag key={cat} label={cat} lang={lang} />)}
           </div>
           <h1 style={{ ...KT, color: "#5f26e5", fontSize: "clamp(22px,3vw,34px)", fontWeight: 800, lineHeight: "1.4", margin: "0 0 24px", textAlign: "left" }}>
             {post.title}

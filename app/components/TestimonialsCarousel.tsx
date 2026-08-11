@@ -61,6 +61,17 @@ export default function TestimonialsCarousel({ lang = "th" }: { lang?: "th" | "e
     setTimeout(() => { wheelLocked.current = false; }, 500);
   };
 
+  const touchStartX = useRef<number | null>(null);
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) go(diff > 0 ? 1 : -1);
+    touchStartX.current = null;
+  };
+
   const TCCard = ({ item, active }: { item: typeof TESTIMONIALS[0]; active: boolean }) => (
     <div className={active ? "tc-card tc-card-active" : "tc-card tc-card-side"} style={{
       width: active ? "420px" : "380px",
@@ -93,7 +104,7 @@ export default function TestimonialsCarousel({ lang = "th" }: { lang?: "th" | "e
 
   return (
     <div>
-      <div className="tc-wrap" onWheel={onWheel} style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center", gap: "20px", padding: "20px 70px" }}>
+      <div className="tc-wrap" onWheel={onWheel} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center", gap: "20px", padding: "20px 70px" }}>
         {/* Prev arrow */}
         <button onClick={() => go(-1)} className="tc-arrow"
           style={{ position: "absolute", left: 0, top: "50%", transform: "translateY(-50%)",

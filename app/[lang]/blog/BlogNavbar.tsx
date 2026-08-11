@@ -27,7 +27,7 @@ export default function BlogNavbar({ lang = "th" }: { lang?: Locale }) {
     <div style={{ position: "fixed", top: "20px", left: "40px", right: "40px", zIndex: 100 }} className="nav-landing-wrap">
       <nav style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(28px)", WebkitBackdropFilter: "blur(28px)", border: "1px solid rgba(255,255,255,0.25)", borderRadius: "100px", paddingLeft: "36px", paddingRight: "36px", paddingTop: "16px", paddingBottom: "16px" }}
         className="flex items-center justify-between nav-landing">
-        <Link href="/" style={{ display: "flex", alignItems: "center", gap: "8px", textDecoration: "none" }}>
+        <Link href={`/${lang}`} style={{ display: "flex", alignItems: "center", gap: "8px", textDecoration: "none" }}>
           <Image src={scrolled ? "/buddy-review-purple-logo.png" : "/buddy-review-logo.png"} alt="Buddy Review" className="nav-logo" width={138} height={48} style={{ height: "48px", width: "auto", transition: "opacity 0.3s" }} />
         </Link>
         <div className="desktop-nav-btns flex items-center gap-3">

@@ -154,10 +154,10 @@ export default function ContactFormSection({ lang = "th", dict }: { lang?: "th" 
               </div>
               <p style={{ ...KT, margin: 0, fontSize: "14px", lineHeight: "1.6", color: "#666666" }}>
                 {t.consent2}{" "}
-                <a href="#" 
+                <a href="https://docs.google.com/viewer?url=https://business.buddyreview.co/document/terms_and_conditions.pdf"
                   target="_blank" rel="noopener noreferrer" style={{ color: "#5f26e5", textDecoration: "underline" }}>{t.terms}</a>{" "}
                 {t.and}{" "}
-                <a href="#" 
+                <a href="https://docs.google.com/viewer?url=https://business.buddyreview.co/document/privacy_policy.pdf"
                   target="_blank" rel="noopener noreferrer" style={{ color: "#5f26e5", textDecoration: "underline" }}>{t.privacy}</a>
               </p>
             </div>

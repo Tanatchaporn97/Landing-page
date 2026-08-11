@@ -29,7 +29,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
 
       {/* Top-left CTA */}
       <div className="success-back-row" style={{ padding: "130px 48px 28px" }}>
-        <Link href={`/${lang}/influencer`} style={{
+        <Link href={`/${lang}/success`} style={{
           ...KT,
           display: "inline-flex", alignItems: "center", gap: "8px",
           background: "rgba(255,255,255,0.12)",

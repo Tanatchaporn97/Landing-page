@@ -15,19 +15,19 @@ export default function SuccessStoriesSlider({ lang = "th" }: { lang?: "th" | "e
   const viewMore = lang === "th" ? "ดูเพิ่มเติม" : "View More";
 
   const stories = lang === "th" ? [
-    { href: "/success/nissin",         img: "/success-stories-2/Success stories-08.jpg", cat: "FOOD & BEVERAGE",  title: "Nissin",          tagline: "ปลุกกระแสคนหิวบนโซเชียลด้วยรสชาติใหม่ ต้มยำกุ้งแซ่บซีส",          stats: [{ val: "13",    label: "Posts" }, { val: "1.86M", label: "Reach" }, { val: "45K",  label: "Engagement" }] },
-    { href: "/success/ldc-dental",     img: "/success-stories-2/Success stories-09.jpg", cat: "DENTAL CARE",      title: "LDC Dental",      tagline: "รีวิวจัดฟันใสจากอินฟลูฯ สู่กิจกรรมสุดเอ็กซ์คลูซีฟจาก LDC Dental", stats: [{ val: "43K",   label: "Reach" },  { val: "4.2K",  label: "Engagement" }, { val: "9.8%", label: "Eng. Rate" }] },
-    { href: "/success/watsons",        img: "/success-stories-2/Success stories-10.jpg", cat: "HEALTH & BEAUTY",  title: "Watsons",         tagline: "House Brand ปังด้วยพลังอินฟลูฯ บน TikTok & Lemon8",               stats: [{ val: "220",   label: "Posts" }, { val: "1.2M",  label: "Reach" }, { val: "12K",  label: "Engagement" }] },
-    { href: "/success/viu",            img: "/success-stories-2/Success stories-11.jpg", cat: "ENTERTAINMENT",    title: "Viu",             tagline: "อินฟลูเอนเซอร์พลังท้องถิ่น สร้างสีสันแคมเปญ อีสานชมวิว",          stats: [{ val: "239K",  label: "Reach" },  { val: "4.3K",  label: "Engagement" }, { val: "956K", label: "Followers" }] },
-    { href: "/success/ahc",            img: "/success-stories-2/Success stories-12.jpg", cat: "SKINCARE",         title: "AHC",             tagline: "ปลุกกระแสแบรนด์ด้วยอีเวนต์จากซีรีส์สุดไวรัล 'AHC Skin Game'",   stats: [{ val: "14M",   label: "Views" }, { val: "9.2M",  label: "Reach" }, { val: "190K", label: "Engagement" }] },
-    { href: "/success/guss-damn-good", img: "/success-stories-2/Success stories-13.jpg", cat: "FOOD & BEVERAGE",  title: "Guss Damn Good",  tagline: "รสชาติที่มีเรื่องเล่า เมื่อไอศครีมเจอกับผงฟู้คลายกรดลดแน่นเฟ้อ",   stats: [{ val: "5.9M",  label: "Views" }, { val: "4.4M",  label: "Reach" }, { val: "120K", label: "Engagement" }] },
+    { href: `/${lang}/success/nissin`,         img: "/success-stories-2/Success stories-08.jpg", cat: "FOOD & BEVERAGE",  title: "Nissin",          tagline: "ปลุกกระแสคนหิวบนโซเชียลด้วยรสชาติใหม่ ต้มยำกุ้งแซ่บซีส",          stats: [{ val: "13",    label: "Posts" }, { val: "1.86M", label: "Reach" }, { val: "45K",  label: "Engagement" }] },
+    { href: `/${lang}/success/ldc-dental`,     img: "/success-stories-2/Success stories-09.jpg", cat: "DENTAL CARE",      title: "LDC Dental",      tagline: "รีวิวจัดฟันใสจากอินฟลูฯ สู่กิจกรรมสุดเอ็กซ์คลูซีฟจาก LDC Dental", stats: [{ val: "43K",   label: "Reach" },  { val: "4.2K",  label: "Engagement" }, { val: "9.8%", label: "Eng. Rate" }] },
+    { href: `/${lang}/success/watsons`,        img: "/success-stories-2/Success stories-10.jpg", cat: "HEALTH & BEAUTY",  title: "Watsons",         tagline: "House Brand ปังด้วยพลังอินฟลูฯ บน TikTok & Lemon8",               stats: [{ val: "220",   label: "Posts" }, { val: "1.2M",  label: "Reach" }, { val: "12K",  label: "Engagement" }] },
+    { href: `/${lang}/success/viu`,            img: "/success-stories-2/Success stories-11.jpg", cat: "ENTERTAINMENT",    title: "Viu",             tagline: "อินฟลูเอนเซอร์พลังท้องถิ่น สร้างสีสันแคมเปญ อีสานชมวิว",          stats: [{ val: "239K",  label: "Reach" },  { val: "4.3K",  label: "Engagement" }, { val: "956K", label: "Followers" }] },
+    { href: `/${lang}/success/ahc`,            img: "/success-stories-2/Success stories-12.jpg", cat: "SKINCARE",         title: "AHC",             tagline: "ปลุกกระแสแบรนด์ด้วยอีเวนต์จากซีรีส์สุดไวรัล 'AHC Skin Game'",   stats: [{ val: "14M",   label: "Views" }, { val: "9.2M",  label: "Reach" }, { val: "190K", label: "Engagement" }] },
+    { href: `/${lang}/success/guss-damn-good`, img: "/success-stories-2/Success stories-13.jpg", cat: "FOOD & BEVERAGE",  title: "Guss Damn Good",  tagline: "รสชาติที่มีเรื่องเล่า เมื่อไอศครีมเจอกับผงฟู้คลายกรดลดแน่นเฟ้อ",   stats: [{ val: "5.9M",  label: "Views" }, { val: "4.4M",  label: "Reach" }, { val: "120K", label: "Engagement" }] },
   ] : [
-    { href: "/success/nissin",         img: "/success-stories-2/Success stories-08.jpg", cat: "FOOD & BEVERAGE",  title: "Nissin",          tagline: "Sparking social media buzz with a bold new flavor — spicy Tom Yum Goong cheese",          stats: [{ val: "13",    label: "Posts" }, { val: "1.86M", label: "Reach" }, { val: "45K",  label: "Engagement" }] },
-    { href: "/success/ldc-dental",     img: "/success-stories-2/Success stories-09.jpg", cat: "DENTAL CARE",      title: "LDC Dental",      tagline: "From influencer clear-braces reviews to an exclusive event by LDC Dental", stats: [{ val: "43K",   label: "Reach" },  { val: "4.2K",  label: "Engagement" }, { val: "9.8%", label: "Eng. Rate" }] },
-    { href: "/success/watsons",        img: "/success-stories-2/Success stories-10.jpg", cat: "HEALTH & BEAUTY",  title: "Watsons",         tagline: "House brand goes viral with influencer power on TikTok & Lemon8",               stats: [{ val: "220",   label: "Posts" }, { val: "1.2M",  label: "Reach" }, { val: "12K",  label: "Engagement" }] },
-    { href: "/success/viu",            img: "/success-stories-2/Success stories-11.jpg", cat: "ENTERTAINMENT",    title: "Viu",             tagline: "Local influencer power brings the \"Isan Charm View\" campaign to life",          stats: [{ val: "239K",  label: "Reach" },  { val: "4.3K",  label: "Engagement" }, { val: "956K", label: "Followers" }] },
-    { href: "/success/ahc",            img: "/success-stories-2/Success stories-12.jpg", cat: "SKINCARE",         title: "AHC",             tagline: "Sparking brand buzz with an event inspired by the viral series \"AHC Skin Game\"",   stats: [{ val: "14M",   label: "Views" }, { val: "9.2M",  label: "Reach" }, { val: "190K", label: "Engagement" }] },
-    { href: "/success/guss-damn-good", img: "/success-stories-2/Success stories-13.jpg", cat: "FOOD & BEVERAGE",  title: "Guss Damn Good",  tagline: "A flavor with a story — when ice cream meets antacid powder",   stats: [{ val: "5.9M",  label: "Views" }, { val: "4.4M",  label: "Reach" }, { val: "120K", label: "Engagement" }] },
+    { href: `/${lang}/success/nissin`,         img: "/success-stories-2/Success stories-08.jpg", cat: "FOOD & BEVERAGE",  title: "Nissin",          tagline: "Sparking social media buzz with a bold new flavor — spicy Tom Yum Goong cheese",          stats: [{ val: "13",    label: "Posts" }, { val: "1.86M", label: "Reach" }, { val: "45K",  label: "Engagement" }] },
+    { href: `/${lang}/success/ldc-dental`,     img: "/success-stories-2/Success stories-09.jpg", cat: "DENTAL CARE",      title: "LDC Dental",      tagline: "From influencer clear-braces reviews to an exclusive event by LDC Dental", stats: [{ val: "43K",   label: "Reach" },  { val: "4.2K",  label: "Engagement" }, { val: "9.8%", label: "Eng. Rate" }] },
+    { href: `/${lang}/success/watsons`,        img: "/success-stories-2/Success stories-10.jpg", cat: "HEALTH & BEAUTY",  title: "Watsons",         tagline: "House brand goes viral with influencer power on TikTok & Lemon8",               stats: [{ val: "220",   label: "Posts" }, { val: "1.2M",  label: "Reach" }, { val: "12K",  label: "Engagement" }] },
+    { href: `/${lang}/success/viu`,            img: "/success-stories-2/Success stories-11.jpg", cat: "ENTERTAINMENT",    title: "Viu",             tagline: "Local influencer power brings the \"Isan Charm View\" campaign to life",          stats: [{ val: "239K",  label: "Reach" },  { val: "4.3K",  label: "Engagement" }, { val: "956K", label: "Followers" }] },
+    { href: `/${lang}/success/ahc`,            img: "/success-stories-2/Success stories-12.jpg", cat: "SKINCARE",         title: "AHC",             tagline: "Sparking brand buzz with an event inspired by the viral series \"AHC Skin Game\"",   stats: [{ val: "14M",   label: "Views" }, { val: "9.2M",  label: "Reach" }, { val: "190K", label: "Engagement" }] },
+    { href: `/${lang}/success/guss-damn-good`, img: "/success-stories-2/Success stories-13.jpg", cat: "FOOD & BEVERAGE",  title: "Guss Damn Good",  tagline: "A flavor with a story — when ice cream meets antacid powder",   stats: [{ val: "5.9M",  label: "Views" }, { val: "4.4M",  label: "Reach" }, { val: "120K", label: "Engagement" }] },
   ];
 
   return (
@@ -72,7 +72,7 @@ export default function SuccessStoriesSlider({ lang = "th" }: { lang?: "th" | "e
                 {/* Category pill */}
                 <div style={{ position: "absolute", top: "28px", left: "28px", zIndex: 2 }}>
                   <button
-                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); router.push(`/category/${catSlug(card.cat)}`); }}
+                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); router.push(`/${lang}/category/${catSlug(card.cat)}`); }}
                     className="cs-cat-btn" style={{ fontFamily: "sans-serif", fontSize: "11px", fontWeight: 700, color: "#ffffff", background: "#5f26e5", borderRadius: "50px", padding: "6px 16px", letterSpacing: "0.08em", border: "none", cursor: "pointer" }}
                   >
                     {card.cat}
@@ -92,7 +92,7 @@ export default function SuccessStoriesSlider({ lang = "th" }: { lang?: "th" | "e
 
         {/* ดูเพิ่มเติม CTA */}
         <div style={{ display: "flex", justifyContent: "center", marginTop: "48px" }}>
-          <Link href="/success" className="btn-insight" style={{
+          <Link href={`/${lang}/success`} className="btn-insight" style={{
             ...KT,
             borderRadius: "50px",
             fontSize: "16px",
