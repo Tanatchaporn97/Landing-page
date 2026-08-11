@@ -80,6 +80,7 @@ export default function TestimonialsCarousel({ lang = "th" }: { lang?: "th" | "e
       background: "rgba(255,255,255,0.22)",
       backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
       border: "1px solid rgba(255,255,255,0.45)",
+      boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
       padding: active ? "40px 32px" : "32px 24px",
       display: "flex", flexDirection: "column", alignItems: "center", gap: "16px",
       boxSizing: "border-box",

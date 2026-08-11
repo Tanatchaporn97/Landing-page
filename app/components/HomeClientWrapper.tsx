@@ -173,19 +173,17 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           {/* Heading */}
           <div className="text-center mb-12" style={{ maxWidth: "954px", margin: "0 auto 48px" }}>
-            <h2 className="font-bold mb-6 heading-lh-55"
-              style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "55px", textAlign: "center",
-                textTransform: "capitalize", fontFeatureSettings: "'pnum' on,'lnum' on",
-                background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}>
-              Your Trusted Partner in Thailand&apos;s<br/>Influencer Marketing Landscape
+            <h2 className="section-title font-bold mb-6 section-h2-fixed"
+              style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px", textAlign: "center",
+                fontFeatureSettings: "'pnum' on,'lnum' on" }}>
+              Your Trusted Partner in Thailand&apos;s<br/>
+              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                Influencer Marketing Landscape
+              </span>
             </h2>
             <p className="font-normal desc-text"
               style={{ fontSize: "18px", lineHeight: "1.7", textAlign: "center",
-                textTransform: "capitalize", fontFeatureSettings: "'pnum' on,'lnum' on",
                 color: "#111827" }}>
               {lang === "th" ? (
                 <>เอเจนซี่ Influencer Marketing ที่ผสานข้อมูล เทคโนโลยี และทีมผู้เชี่ยวชาญ<br/>
@@ -212,7 +210,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                   style={{ background: "linear-gradient(to top,rgba(95,38,229,1) 0%,rgba(95,38,229,0) 100%)",
                     padding: "29px 18px" }}>
                   <h3 className="text-white font-medium text-center"
-                    style={{ fontSize: "24px", lineHeight: "1.2", textTransform: "capitalize",
+                    style={{ fontSize: "24px", lineHeight: "1.2",
                       fontFeatureSettings: "'pnum' on,'lnum' on", marginBottom: "8px" }}>
                     {card.title}
                   </h3>
@@ -294,7 +292,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           {/* Heading — matches site-standard section heading style */}
           <h2 className="section-title text-center font-bold mb-12 section-h2-fixed"
             style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
-              textTransform: "capitalize", fontFeatureSettings: "'pnum' on,'lnum' on" }}>
+              fontFeatureSettings: "'pnum' on,'lnum' on" }}>
             Success{" "}
             <span style={{
               background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
@@ -332,6 +330,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                   background: "rgba(255,255,255,0.22)",
                   backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
                   border: "1px solid rgba(255,255,255,0.45)",
+                  boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
                   boxSizing: "border-box",
                 }}>
                   <div className="cs-card-img-clip" style={{ position: "relative", width: "100%", height: "100%" }}>
@@ -387,7 +386,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <h2 className="section-title text-center font-bold mb-12"
             style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "85px",
-              textTransform: "capitalize", fontFeatureSettings: "'pnum' on,'lnum' on" }}>
+              fontFeatureSettings: "'pnum' on,'lnum' on" }}>
             Trust{" "}
             <span style={{
               background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
@@ -407,7 +406,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
         <div style={{ maxWidth: "1294px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
           <h2 className="section-title text-center font-bold mb-12 section-h2-fixed"
             style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
-              textTransform: "capitalize", fontFeatureSettings: "'pnum' on,'lnum' on" }}>
+              fontFeatureSettings: "'pnum' on,'lnum' on" }}>
             Influencer{" "}
             <span style={{
               background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",

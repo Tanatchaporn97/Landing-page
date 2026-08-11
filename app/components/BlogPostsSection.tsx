@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -37,6 +39,7 @@ const BLOG_POSTS = [
 ];
 
 export default function BlogPostsSection({ lang = "th" }: { lang?: "th" | "en" }) {
+  const router = useRouter();
   const t = lang === "th" ? { readMore: "อ่านเพิ่มเติม", viewMore: "ดูเพิ่มเติม" } : { readMore: "Read More", viewMore: "View More" };
 
   return (
@@ -61,7 +64,7 @@ export default function BlogPostsSection({ lang = "th" }: { lang?: "th" | "en" }
               backdropFilter: "blur(18px)",
               WebkitBackdropFilter: "blur(18px)",
               border: "1px solid rgba(255,255,255,0.45)",
-              boxShadow: "none",
+              boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
               borderRadius: "24px",
               overflow: "hidden",
               display: "flex",
@@ -82,13 +85,15 @@ export default function BlogPostsSection({ lang = "th" }: { lang?: "th" | "en" }
                 {/* Category tags */}
                 <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
                   {(lang === "th" ? post.categories : post.categoriesEn).map((cat) => (
-                    <span key={cat} style={{ ...KT, background: "rgba(255,255,255,0.15)", color: "#111827",
-                      backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
-                      border: "1px solid rgba(255,255,255,0.35)", borderRadius: "50px",
-                      fontSize: "13px", fontWeight: 600, padding: "4px 14px",
-                      display: "inline-block" }}>
+                    <button key={cat}
+                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); router.push(`/${lang}/blog?cat=${encodeURIComponent(cat)}`); }}
+                      style={{ ...KT, background: "rgba(255,255,255,0.15)", color: "#111827",
+                        backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
+                        border: "1px solid rgba(255,255,255,0.35)", borderRadius: "50px",
+                        fontSize: "13px", fontWeight: 600, padding: "4px 14px",
+                        display: "inline-block", cursor: "pointer" }}>
                       {cat}
-                    </span>
+                    </button>
                   ))}
                 </div>
                 {/* Title */}

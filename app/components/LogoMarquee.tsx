@@ -35,7 +35,7 @@ function LogoMarqueeRow({ logos, direction }: { logos: React.ReactNode[], direct
   );
 }
 
-export default function LogoMarquee({ bgClassName }: { bgClassName?: string } = {}) {
+export default function LogoMarquee({ bgClassName, fadeColor = "#ffffff" }: { bgClassName?: string; fadeColor?: string } = {}) {
   return (
     <section className={`brand-logos-section ${bgClassName || "client-bg"}`} style={{
       padding: "120px 0 120px",
@@ -47,8 +47,8 @@ export default function LogoMarquee({ bgClassName }: { bgClassName?: string } = 
       <LogoMarqueeRow logos={LOGOS_ROW1} direction="left" />
       <div className="logo-marquee-row-gap" style={{ height: "32px" }} />
       <LogoMarqueeRow logos={LOGOS_ROW2} direction="right" />
-      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "80px", background: "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0) 100%)", zIndex: 2, pointerEvents: "none" }} />
-      <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "80px", background: "linear-gradient(to left, #ffffff 0%, rgba(255,255,255,0) 100%)", zIndex: 2, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "80px", background: `linear-gradient(to right, ${fadeColor} 0%, rgba(255,255,255,0) 100%)`, zIndex: 2, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "80px", background: `linear-gradient(to left, ${fadeColor} 0%, rgba(255,255,255,0) 100%)`, zIndex: 2, pointerEvents: "none" }} />
     </section>
   );
 }

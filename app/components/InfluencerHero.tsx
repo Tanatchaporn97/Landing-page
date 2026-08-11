@@ -33,7 +33,6 @@ export default function InfluencerHero({ lang = "th" }: { lang?: "th" | "en" }) 
 
       {/* Background glow blobs */}
       <div style={{ position: "absolute", top: "-140px", left: "-200px", width: "500px", height: "500px", borderRadius: "50%", background: "radial-gradient(circle, rgba(95,38,229,0.10) 0%, transparent 70%)", pointerEvents: "none" }} />
-      <div style={{ position: "absolute", bottom: "-100px", right: "-150px", width: "420px", height: "420px", borderRadius: "50%", background: "radial-gradient(circle, rgba(255,0,137,0.07) 0%, transparent 70%)", pointerEvents: "none" }} />
 
       <div className="hero-grid-inf" style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center" }}>
 

@@ -70,6 +70,7 @@ export default function ContactFormSection({ lang = "th", dict }: { lang?: "th" 
           <div className="contact-form-panel" style={{ display: "flex", flexDirection: "column", gap: "20px",
             background: "rgba(255,255,255,0.12)", backdropFilter: "blur(18px)",
             WebkitBackdropFilter: "blur(18px)", border: "1px solid rgba(255,255,255,0.30)",
+            boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
             borderRadius: "24px", padding: "36px 40px" }}>
 
             {/* ชื่อ-สกุล + อีเมล */}
@@ -197,7 +198,8 @@ export default function ContactFormSection({ lang = "th", dict }: { lang?: "th" 
           {/* Right: Info boxes */}
           <div style={{ display: "flex", flexDirection: "column", gap: "16px", alignSelf: "stretch",
             background: "rgba(255,255,255,0.12)", backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
-            border: "1px solid rgba(255,255,255,0.30)", borderRadius: "24px", padding: "24px" }}>
+            border: "1px solid rgba(255,255,255,0.30)", boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
+            borderRadius: "24px", padding: "24px" }}>
             {[
               {
                 icon: <span style={{ display: "inline-block", width: "32px", height: "32px", backgroundColor: "#ffffff", WebkitMaskImage: "url(/icon-location.png)", WebkitMaskSize: "contain", WebkitMaskRepeat: "no-repeat", WebkitMaskPosition: "center", maskImage: "url(/icon-location.png)", maskSize: "contain", maskRepeat: "no-repeat", maskPosition: "center" }} />,

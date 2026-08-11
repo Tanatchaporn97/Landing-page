@@ -20,6 +20,7 @@ function CatCard({ cat }: { cat: typeof INF_CATEGORIES[0] }) {
       background: "rgba(255,255,255,0.22)",
       backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
       border: "1px solid rgba(255,255,255,0.45)",
+      boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
       borderRadius: "20px", boxSizing: "border-box",
     }}>
       <div style={{ position: "relative", width: "62px", height: "62px", borderRadius: "50%", overflow: "hidden", flexShrink: 0 }}>

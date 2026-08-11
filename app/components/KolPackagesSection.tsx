@@ -67,6 +67,7 @@ export default function KolPackagesSection({ lang = "th" }: { lang?: "th" | "en"
               backdropFilter: featured ? "none" : "blur(18px)",
               WebkitBackdropFilter: featured ? "none" : "blur(18px)",
               border: featured ? "none" : "1px solid rgba(255,255,255,0.45)",
+              boxShadow: featured ? "none" : "0 8px 32px rgba(95,38,229,0.10)",
               borderRadius: "24px",
               padding: "36px 28px 32px",
               display: "flex", flexDirection: "column", gap: "0",

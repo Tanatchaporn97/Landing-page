@@ -35,11 +35,8 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       {/* ── Hero ── */}
       <InfluencerHero lang={lang as Locale} />
 
-      {/* ── Hero → Logos fade overlay ── */}
-      <div style={{ height: "80px", marginTop: "-80px", background: "linear-gradient(to bottom, transparent 0%, #ffffff 100%)", position: "relative", zIndex: 6, pointerEvents: "none" }} />
-
       {/* ── Brand Logos Marquee ── */}
-      <LogoMarquee bgClassName="inf-logo-bg" />
+      <LogoMarquee bgClassName="inf-logo-bg" fadeColor="#F7F1FC" />
 
 
       {/* ── Opportunity Banner ── */}

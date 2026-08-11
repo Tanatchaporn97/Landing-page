@@ -55,6 +55,7 @@ export default function FAQAccordion({
         backdropFilter: isOpen ? "none" : "blur(18px)",
         WebkitBackdropFilter: isOpen ? "none" : "blur(18px)",
         border: isOpen ? "none" : "1px solid rgba(255,255,255,0.45)",
+        boxShadow: isOpen ? "none" : "0 8px 32px rgba(95,38,229,0.10)",
         borderRadius: "24px",
       };
     }
@@ -85,9 +86,18 @@ export default function FAQAccordion({
         {/* Centered title */}
         {!hideTitle && (
           <div style={{ textAlign: "center", marginBottom: "64px" }}>
-            <h2 style={{ ...KT, fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, color: "#111827", margin: 0, lineHeight: 1.2 }}>
-              <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>{dict?.faqPage?.title?.split(' ')[0] || "Frequently Asked"} </span>
-              <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{dict?.faqPage?.title?.split(' ').slice(1).join(' ') || "Questions"}</span>
+            <h2 className="section-title font-bold section-h2-fixed" style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px", fontFeatureSettings: "'pnum' on,'lnum' on", margin: 0 }}>
+              {variant === "influencer" ? (
+                <>
+                  <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>Frequently Asked </span>
+                  <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Questions</span>
+                </>
+              ) : (
+                <>
+                  Frequently Asked{" "}
+                  <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Questions</span>
+                </>
+              )}
             </h2>
           </div>
         )}
