@@ -163,7 +163,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       </section>
 
       {/* ── Hero → Logos fade overlay ── */}
-      <div style={{ height: "120px", marginTop: "-120px", background: "linear-gradient(to bottom, transparent 0%, #ffffff 100%)", position: "relative", zIndex: 11, pointerEvents: "none" }} />
+      <div className="hero-logos-fade" style={{ height: "120px", marginTop: "-120px", background: "linear-gradient(to bottom, transparent 0%, #ffffff 100%)", position: "relative", zIndex: 11, pointerEvents: "none" }} />
 
       {/* ── Brand Logos Marquee ── */}
       <LogoMarquee />

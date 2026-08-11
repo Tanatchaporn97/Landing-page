@@ -638,8 +638,8 @@ body {
   .hero-subline-break { display: block !important; }
 
   /* Brand logos */
-  .brand-logos-section { padding-top: 60px !important; padding-bottom: 60px !important; }
-  .brand-logos-section.client-bg { background: linear-gradient(180deg, #F7F1FC 0%, #FFFFFF 100%) !important; }
+  .brand-logos-section { padding-top: 60px !important; padding-bottom: 60px !important; margin-top: 0 !important; }
+  .hero-logos-fade { display: none !important; }
   .logo-marquee-img { height: 40px !important; }
   .logo-marquee-item { height: 40px !important; }
   .logo-marquee-track { gap: 28px !important; }
