@@ -31,7 +31,7 @@ export default function Footer({ variant = "influencer", lang = "th", dict }: { 
   ];
 
   return (
-    <footer className="px-6 footer-hero-glow" style={{ borderTop: "none", paddingTop: "80px", paddingBottom: "48px" }}>
+    <footer className="px-6 footer-bg" style={{ borderTop: "none", paddingTop: "80px", paddingBottom: "48px" }}>
       {/* 3-column layout: Logo/Company/Social — Quick Links — Contact */}
       <div className="footer-grid-3col" style={{ position: "relative", zIndex: 2 }}>
 

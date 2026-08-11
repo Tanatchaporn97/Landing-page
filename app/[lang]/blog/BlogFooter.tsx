@@ -27,7 +27,7 @@ export default function BlogFooter({ lang = "th" }: { lang?: "th" | "en" }) {
         termsAndConditions: "Terms and Conditions",
       };
   return (
-    <footer className="px-6 footer-hero-glow" style={{ borderTop: "none", paddingTop: "80px", paddingBottom: "80px" }}>
+    <footer className="px-6 footer-bg" style={{ borderTop: "none", paddingTop: "80px", paddingBottom: "80px" }}>
       <div className="footer-grid" style={{ position: "relative", zIndex: 2 }}>
         <div>
           <Image src="/buddy-review-logo.png" alt="Buddy Review" className="footer-logo-img" width={166} height={58} loading="eager" style={{ height: "58px", width: "auto" }} />

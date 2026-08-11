@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   experimental: {
     turbopackFileSystemCacheForDev: false,
   },
-  allowedDevOrigins: ["192.168.0.31", "192.168.0.34", "localhost", "127.0.0.1"],
+  allowedDevOrigins: ["192.168.0.31", "192.168.0.34", "192.168.0.38", "localhost", "127.0.0.1"],
 };
 
 export default nextConfig;

@@ -3,8 +3,6 @@ import Link from "next/link";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
-const DARK_BG = "transparent";
-
 const BLOG_POSTS = [
   {
     slug: "best-time-to-post-2025",
@@ -42,7 +40,7 @@ export default function BlogPostsSection({ lang = "th" }: { lang?: "th" | "en" }
   const t = lang === "th" ? { readMore: "อ่านเพิ่มเติม", viewMore: "ดูเพิ่มเติม" } : { readMore: "Read More", viewMore: "View More" };
 
   return (
-    <section style={{ background: DARK_BG }} className="py-20 px-6">
+    <section className="py-20 px-6 blog-bg">
       <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
         <h2 className="section-title text-center font-bold mb-14 section-h2-fixed"
           style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",

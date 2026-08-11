@@ -169,7 +169,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       <LogoMarquee />
 
       {/* ── Your Trusted Partner ── */}
-      <section style={{ background: DARK_BG, paddingTop: "80px", paddingBottom: "80px" }} className="px-6 trusted-section">
+      <section style={{ paddingTop: "80px", paddingBottom: "80px" }} className="px-6 trusted-section partner-bg">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           {/* Heading */}
           <div className="text-center mb-12" style={{ maxWidth: "954px", margin: "0 auto 48px" }}>
@@ -228,7 +228,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       </section>
 
       {/* ── Buddy Review Solutions ── */}
-      <section id="solutions" style={{ background: DARK_BG }} className="py-20 px-6">
+      <section id="solutions" className="py-20 px-6 solution-bg">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
 
           {/* Heading */}
@@ -288,7 +288,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       </section>
 
       {/* ── Success Stories (card carousel, reference: ฉันคืออินฟลูเอนเซอร์ page) ── */}
-      <section style={{ background: DARK_BG }} className="py-20 px-6">
+      <section className="py-20 px-6 success-bg">
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
 
           {/* Heading — matches site-standard section heading style */}
@@ -383,7 +383,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       </section>
 
       {/* ── Trust Influencers ── */}
-      <section style={{ background: DARK_BG }} className="py-20 px-6">
+      <section className="py-20 px-6 influencer-bg">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <h2 className="section-title text-center font-bold mb-12"
             style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "85px",
@@ -403,7 +403,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       </section>
 
       {/* ── Influencer Categories ── */}
-      <section style={{ background: DARK_BG, overflow: "hidden" }} className="py-20">
+      <section style={{ overflow: "hidden" }} className="py-20 category-bg">
         <div style={{ maxWidth: "1294px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
           <h2 className="section-title text-center font-bold mb-12 section-h2-fixed"
             style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
@@ -430,7 +430,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       {/* ── FAQs ── */}
       <FAQAccordion faqs={dict?.homeFaqs} lang={lang} variant="home" dict={dict} />
 
-      <div id="contact" style={{ padding: "80px 0" }}>
+      <div id="contact" className="contact-bg" style={{ padding: "80px 0" }}>
         <ContactFormSection lang={lang} dict={dict?.contactForm} />
       </div>
 

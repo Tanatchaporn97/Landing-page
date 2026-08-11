@@ -25,10 +25,11 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
   const dict = await getDictionary(lang as Locale);
 
   return (
-    <div className="hero" style={{ ...KT, overflowX: "hidden" }}>
-
-      {/* ── Navbar ── */}
+    <>
+      {/* ── Navbar — outside overflow container so position:fixed works on iOS Safari ── */}
       <Navbar lang={lang as Locale} variant="influencer" />
+
+    <div className="hero" style={{ ...KT, overflowX: "hidden" }}>
 
 
       {/* ── Hero ── */}
@@ -38,12 +39,12 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <div style={{ height: "80px", marginTop: "-80px", background: "linear-gradient(to bottom, transparent 0%, #ffffff 100%)", position: "relative", zIndex: 6, pointerEvents: "none" }} />
 
       {/* ── Brand Logos Marquee ── */}
-      <LogoMarquee />
+      <LogoMarquee bgClassName="inf-logo-bg" />
 
 
       {/* ── Opportunity Banner ── */}
       <section className="inf-section" style={{
-        background: "transparent",
+        background: "linear-gradient(180deg, #FFFFFF 0%, #F9F6FE 100%)",
         padding: "100px 48px",
         textAlign: "center",
       }}>
@@ -84,7 +85,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <PathToPartnership lang={lang as Locale} />
 
       {/* ── Unlock Exclusive Opportunities ── */}
-      <section className="inf-section" style={{ background: "transparent", padding: "100px 48px" }}>
+      <section className="inf-section" style={{ background: "linear-gradient(180deg, #F5F0FC 0%, #F1EBFA 100%)", padding: "100px 48px" }}>
         <UnlockIconHover />
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           {/* Title */}
@@ -167,7 +168,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
 
       {/* ── Testimonials ── */}
-      <section className="inf-section" style={{ background: "transparent", padding: "100px 48px" }}>
+      <section className="inf-section" style={{ background: "linear-gradient(180deg, #EDE5F9 0%, #E9DFF7 100%)", padding: "100px 48px" }}>
         <div className="testimonials-outer" style={{ maxWidth: "1294px", margin: "0 auto", display: "flex", gap: "80px", alignItems: "flex-start" }}>
           {/* Left: title */}
           <div className="testimonials-title" style={{ flex: "0 0 320px", paddingTop: "160px" }}>
@@ -195,14 +196,19 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
 
       {/* ── FAQs ── */}
-      <FAQAccordion faqs={dict?.faqPage?.faqsInfluencer} lang={lang as Locale} variant="influencer" dict={dict} />
+      <div style={{ background: "linear-gradient(180deg, #E9DFF7 0%, #E5D9F5 100%)" }}>
+        <FAQAccordion faqs={dict?.faqPage?.faqsInfluencer} lang={lang as Locale} variant="influencer" dict={dict} />
+      </div>
 
       {/* ── Contact Form ── */}
-      <ContactFormSection lang={lang as Locale} dict={dict?.contactForm} />
+      <div style={{ background: "linear-gradient(180deg, #E5D9F5 0%, #D6C5EF 100%)" }}>
+        <ContactFormSection lang={lang as Locale} dict={dict?.contactForm} />
+      </div>
 
       {/* ── Footer ── */}
       <Footer lang={lang as Locale} variant="influencer" dict={dict} />
 
     </div>
+    </>
   );
 }

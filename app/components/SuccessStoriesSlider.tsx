@@ -31,7 +31,7 @@ export default function SuccessStoriesSlider({ lang = "th" }: { lang?: "th" | "e
   ];
 
   return (
-    <section className="inf-section" style={{ background: "transparent", padding: "100px 64px" }}>
+    <section className="inf-section" style={{ background: "linear-gradient(180deg, #F1EBFA 0%, #EDE5F9 100%)", padding: "100px 64px" }}>
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
 
         {/* Header row */}

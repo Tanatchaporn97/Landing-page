@@ -35,10 +35,9 @@ function LogoMarqueeRow({ logos, direction }: { logos: React.ReactNode[], direct
   );
 }
 
-export default function LogoMarquee() {
+export default function LogoMarquee({ bgClassName }: { bgClassName?: string } = {}) {
   return (
-    <section className="brand-logos-section" style={{
-      background: "linear-gradient(to bottom, rgba(255,255,255,0) 0px, rgba(255,255,255,0.06) 6px, rgba(255,255,255,0.2) 12px, rgba(255,255,255,0.42) 18px, rgba(255,255,255,0.64) 24px, rgba(255,255,255,0.82) 30px, rgba(255,255,255,0.93) 36px, rgba(255,255,255,0.98) 42px, #ffffff 48px, #ffffff calc(100% - 48px), rgba(255,255,255,0.97) calc(100% - 43px), rgba(255,255,255,0.88) calc(100% - 36px), rgba(255,255,255,0.72) calc(100% - 29px), rgba(255,255,255,0.52) calc(100% - 21px), rgba(255,255,255,0.3) calc(100% - 14px), rgba(255,255,255,0.1) calc(100% - 6px), rgba(255,255,255,0) 100%)",
+    <section className={`brand-logos-section ${bgClassName || "client-bg"}`} style={{
       padding: "120px 0 120px",
       overflow: "hidden",
       marginTop: "-90px",

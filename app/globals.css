@@ -29,12 +29,56 @@
   --white: #ffffff;
 }
 
+/* Single continuous page-wide background — flows behind every section below
+   the hero (white → lavender → near-black) so section boundaries never show
+   a hard seam. Section wrapper classes below are kept transparent on purpose
+   so this gradient reads as one uninterrupted surface. */
 .hero-bg {
-  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
   background:
-    radial-gradient(circle at bottom left, var(--purple), transparent 65%),
-    radial-gradient(circle at bottom right, var(--pink), transparent 65%),
-    linear-gradient(180deg, var(--white), #faf9ff 55%, var(--white));
+    radial-gradient(
+      ellipse 55% 30% at 0% 55%,
+      rgba(175, 125, 255, 0.10),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 55% 35% at 100% 75%,
+      rgba(255, 150, 215, 0.12),
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      #FFFFFF 0%,
+      #FEFDFF 12%,
+      #FCFAFF 22%,
+      #F9F4FC 32%,
+      #F6EDFB 42%,
+      #F3E9FA 52%,
+      #F1E5F9 63%,
+      #EEE0F7 73%,
+      #EBDDF6 82%,
+      #E6D3F3 94%,
+      #08030F 100%
+    );
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.inf-logo-bg {
+  background: linear-gradient(180deg, #F7F1FC 0%, #FFFFFF 100%);
+}
+
+.client-bg,
+.partner-bg,
+.solution-bg,
+.success-bg,
+.influencer-bg,
+.category-bg,
+.package-bg,
+.blog-bg,
+.contact-bg {
+  background: transparent;
 }
 
 .hero {
@@ -85,14 +129,27 @@
     );
 }
 
-.footer-hero-glow {
+.footer-bg {
   position: relative;
   overflow: hidden;
 
-  background-image: url("/footer-bg.png");
-  background-size: cover;
-  background-position: center top;
+  background:
+      /* Main vertical gradient — black at top, light violet at bottom */
+    linear-gradient(
+      180deg,
+      #000000 5%,
+      #000000 15%,
+      #030109 25%,
+      #100722 35%,
+      #32165F 45%,
+      #6F3AD0 58%,
+      #9566E8 70%,
+      #A98FE7 82%,
+      #B09ADB 100%
+    );
+
   background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 /* Cancels the FAQ accordion section's own top padding (100px desktop,

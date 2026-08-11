@@ -29,7 +29,7 @@ const TEXT = {
 export default function InfluencerHero({ lang = "th" }: { lang?: "th" | "en" }) {
   const t = lang === "th" ? TEXT.th : TEXT.en;
   return (
-    <section className="hero-section-inf" style={{ padding: "120px 64px 80px", position: "relative", overflow: "hidden", background: "linear-gradient(135deg, #f3eeff 0%, #fdf0fb 60%, #f3eeff 100%)" }}>
+    <section className="hero-section-inf" style={{ padding: "120px 64px 80px", position: "relative", overflow: "hidden", background: "linear-gradient(180deg, #FFFFFF 0%, #F7F1FC 100%)" }}>
 
       {/* Background glow blobs */}
       <div style={{ position: "absolute", top: "-140px", left: "-200px", width: "500px", height: "500px", borderRadius: "50%", background: "radial-gradient(circle, rgba(95,38,229,0.10) 0%, transparent 70%)", pointerEvents: "none" }} />
