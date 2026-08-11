@@ -347,9 +347,9 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                   <div style={{ position: "absolute", top: "28px", left: "28px", zIndex: 2 }}>
                     <button
                       onClick={(e) => { e.preventDefault(); e.stopPropagation(); router.push(`/${lang}/category/${catSlug(card.cat)}`); }}
-                      className="cs-cat-btn" style={{ fontFamily: "sans-serif", fontSize: "11px", fontWeight: 700, color: "#ffffff", background: "#5f26e5", borderRadius: "50px", padding: "6px 16px", letterSpacing: "0.08em", border: "none", cursor: "pointer" }}
+                      className="cs-cat-btn" style={{ ...KT, fontSize: "13px", fontWeight: 600, color: "#ffffff", background: "#5f26e5", borderRadius: "50px", padding: "6px 16px", letterSpacing: "0.08em", border: "none", cursor: "pointer" }}
                     >
-                      {card.cat}
+                      {card.cat.charAt(0) + card.cat.slice(1).toLowerCase()}
                     </button>
                   </div>
                   {/* Bottom info */}

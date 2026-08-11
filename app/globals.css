@@ -803,7 +803,7 @@ body {
 
   /* Hero right column: phone + pills → centered phone only */
   .hero-right-col { transform: none !important; width: 100% !important; justify-content: center !important; margin-top: 8px !important; }
-  .hero-phone-img { height: 260px !important; }
+  .hero-phone-img { width: calc(100vw - 80px) !important; height: auto !important; }
   .hero-pills-col { display: none !important; }
 
   /* Path to Partnership carousel cards: 1-card-at-a-time, stacked content */
