@@ -794,7 +794,7 @@ body {
   .inf-section { padding: 48px 20px !important; }
 
   /* Hero */
-  .hero-section-inf { padding: 96px 20px 60px !important; overflow: visible !important; }
+  .hero-section-inf { padding: 96px 20px 120px !important; }
   .hero-grid-inf { grid-template-columns: 1fr !important; gap: 40px !important; }
 
   /* Hero stat cards: scattered overlay → stacked column */
