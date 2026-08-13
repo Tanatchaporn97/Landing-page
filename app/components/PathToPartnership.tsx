@@ -140,6 +140,7 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
               background: "#ffffff",
               borderRadius: "28px",
               border: "1px solid rgba(95,38,229,0.08)",
+              boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
             }}>
                 {/* Left — phone mockup image */}
                 <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "center" }}>
