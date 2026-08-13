@@ -204,7 +204,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
               { src: "/card4.png", title: "Success Delivered",          desc: "ทุกแคมเปญ มุ่งสู่ความสำเร็จที่ชัดเจน",     descEn: "Every campaign, driven toward clear, measurable success." },
             ].map((card, i) => (
               <div key={card.title} className="relative overflow-hidden photo-card-h"
-                style={{ height: "403px", borderRadius: "24px", opacity: 0 }}>
+                style={{ height: "403px", borderRadius: "24px", opacity: 0, boxShadow: "0 8px 32px rgba(95,38,229,0.18)" }}>
                 <Image src={card.src} alt={card.title} fill className="object-cover object-top" sizes="280px"/>
                 <div className="absolute bottom-0 left-0 right-0"
                   style={{ background: "linear-gradient(to top,rgba(95,38,229,1) 0%,rgba(95,38,229,0) 100%)",
