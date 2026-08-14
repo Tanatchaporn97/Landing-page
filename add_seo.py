@@ -22,7 +22,7 @@ update_dict('dictionaries/en.json', {
 })
 
 update_dict('dictionaries/th.json', {
-    "title": "Buddy Review — การตลาดอินฟลูเอนเซอร์ที่ขับเคลื่อนด้วยข้อมูล (Influencer Marketing)",
+    "title": "Buddy Review | การตลาดอินฟลูเอนเซอร์ที่ขับเคลื่อนด้วยข้อมูล (Influencer Marketing)",
     "description": "จากกลยุทธ์สู่ข้อมูลเชิงลึก เราเปลี่ยนอิทธิพลอินฟลูเอนเซอร์ให้เป็นผลลัพธ์ทางธุรกิจที่วัดผลได้"
 })
 print("Dictionaries updated successfully")

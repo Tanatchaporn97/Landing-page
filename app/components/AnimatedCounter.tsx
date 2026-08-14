@@ -3,14 +3,16 @@ import { useEffect, useRef, useState } from "react";
 
 export default function AnimatedCounter({
   target,
+  startValue = 0,
   suffix = "",
-  duration = 1800,
+  duration = 300,
 }: {
   target: number;
+  startValue?: number;
   suffix?: string;
   duration?: number;
 }) {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(startValue);
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
 
@@ -23,11 +25,12 @@ export default function AnimatedCounter({
         if (!entry.isIntersecting || started.current) return;
         started.current = true;
 
-        const start = performance.now();
+        const startTime = performance.now();
         const tick = (now: number) => {
-          const progress = Math.min((now - start) / duration, 1);
+          const progress = Math.min((now - startTime) / duration, 1);
           const eased = 1 - Math.pow(1 - progress, 3);
-          setValue(Math.round(eased * target));
+          const currentValue = startValue + (target - startValue) * eased;
+          setValue(Math.round(currentValue));
           if (progress < 1) requestAnimationFrame(tick);
         };
         requestAnimationFrame(tick);
@@ -38,7 +41,7 @@ export default function AnimatedCounter({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [target, duration]);
+  }, [target, startValue, duration]);
 
   return (
     <span ref={ref}>

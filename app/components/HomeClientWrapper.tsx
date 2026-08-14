@@ -123,9 +123,9 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
             marginTop: "76px",
           }}>
             {[
-              { target: 1000000, suffix: "+", label: lang === "th" ? "เครือข่ายอินฟลูเอนเซอร์" : "Influencer Network" },
-              { target: 1000, suffix: "+", label: lang === "th" ? "ลูกค้าที่ไว้วางใจ" : "Trusted Clients" },
-              { target: 4000, suffix: "+", label: lang === "th" ? "แคมเปญที่ส่งมอบ" : "Campaigns Delivered" },
+              { target: 1000000, startValue: 900000, suffix: "+", label: lang === "th" ? "เครือข่ายอินฟลูเอนเซอร์" : "Influencer Network" },
+              { target: 1000, startValue: 900, suffix: "+", label: lang === "th" ? "ลูกค้าที่ไว้วางใจ" : "Trusted Clients" },
+              { target: 4000, startValue: 3000, suffix: "+", label: lang === "th" ? "แคมเปญที่ส่งมอบ" : "Campaigns Delivered" },
             ].map((s) => (
               <motion.div key={s.label} className="hero-stat-item" style={{
                 display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", gap: "6px",
@@ -150,7 +150,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
                 }}>
-                  <AnimatedCounter target={s.target} suffix={s.suffix} />
+                  <AnimatedCounter target={s.target} startValue={s.startValue} suffix={s.suffix} />
                 </span>
                 <span style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", lineHeight: 1.35, whiteSpace: "nowrap" }}>
                   {s.label}
