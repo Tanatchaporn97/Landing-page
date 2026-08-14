@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { i18n } from '../i18n-config';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://landing-page-bubblely.vercel.app';
+  const baseUrl = 'https://agency.buddyreview.co';
 
   // ใส่ชื่อ Path หน้าย่อยทั้งหมดที่มีในโปรเจกต์ (ไม่ต้องใส่ /th หรือ /en เพราะโค้ดจะวนลูปเพิ่มให้อัตโนมัติ)
   const staticRoutes = [

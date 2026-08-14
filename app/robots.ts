@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/_next/'],
     },
-    sitemap: 'https://landing-page-bubblely.vercel.app/sitemap.xml',
+    sitemap: 'https://agency.buddyreview.co/sitemap.xml',
   };
 }

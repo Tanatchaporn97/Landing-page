@@ -11,20 +11,20 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     title: dict.seo.title,
     description: dict.seo.description,
     alternates: {
-      canonical: `https://landing-page-bubblely.vercel.app/${lang}`,
+      canonical: `https://agency.buddyreview.co/${lang}`,
       languages: {
-        en: 'https://landing-page-bubblely.vercel.app/en',
-        th: 'https://landing-page-bubblely.vercel.app/th',
+        en: 'https://agency.buddyreview.co/en',
+        th: 'https://agency.buddyreview.co/th',
       },
     },
     openGraph: {
       title: dict.seo.title,
       description: dict.seo.description,
-      url: `https://landing-page-bubblely.vercel.app/${lang}`,
+      url: `https://agency.buddyreview.co/${lang}`,
       siteName: 'Buddy Review',
       images: [
         {
-          url: 'https://landing-page-bubblely.vercel.app/og-image.jpg',
+          url: 'https://agency.buddyreview.co/og-image.jpg',
           width: 1200,
           height: 630,
         },
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       card: 'summary_large_image',
       title: dict.seo.title,
       description: dict.seo.description,
-      images: ['https://landing-page-bubblely.vercel.app/og-image.jpg'],
+      images: ['https://agency.buddyreview.co/og-image.jpg'],
     },
   };
 }
