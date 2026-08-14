@@ -878,6 +878,9 @@ body {
   .hero-stat-cards { position: static !important; height: auto !important; display: flex !important; flex-direction: column !important; gap: 12px !important; margin-top: 24px !important; }
   .hero-stat-card { position: static !important; transform: none !important; width: 100% !important; box-sizing: border-box; }
 
+  /* Hero stat cards: scale to fit mobile viewport (cards use fixed px positions) */
+  .hero-stat-cards { transform: scale(0.62) !important; transform-origin: top left !important; height: 165px !important; }
+
   /* Hero right column: phone + pills → centered phone only */
   .hero-right-col { transform: none !important; width: 100% !important; justify-content: center !important; margin-top: 8px !important; }
   .hero-phone-img { width: calc(100vw - 80px) !important; height: auto !important; }
