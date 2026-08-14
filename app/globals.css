@@ -665,10 +665,9 @@ body {
   /* ── Influencer page ── */
 
   /* Hero */
-  .hero-section-inf { padding: 110px 40px 72px !important; overflow: visible !important; }
+  .hero-section-inf { padding: 110px 40px 72px !important; }
   .hero-grid-inf { gap: 32px !important; }
   .hero-h1-inf { font-size: clamp(36px, 5vw, 56px) !important; }
-  .hero-right-col { transform: none !important; }
   .hero-phone-img { height: 340px !important; }
   .hero-pills-col { display: none !important; }
   .hero-stat-cards { height: 220px !important; }
