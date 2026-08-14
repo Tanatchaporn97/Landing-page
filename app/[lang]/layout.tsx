@@ -15,8 +15,7 @@ const kanit = Kanit({
 });
 
 export const metadata: Metadata = {
-  title: "Buddy Review — Data-Powered Influencer Marketing",
-  description: "From Strategy To Insight, We Turn Influence Into Impact.",
+  // Title and description are dynamically generated in page.tsx
 };
 
 export async function generateStaticParams() {

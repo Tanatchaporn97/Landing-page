@@ -117,38 +117,38 @@
     ]
   },
   "homeFaqs": [
-      {
-        "q": "What services does Buddy Review provide?",
-        "a": "We provide end-to-end Influencer Marketing services, from strategy planning, selecting the right influencers, coordinating, monitoring work, to measuring campaign success."
-      },
-      {
-        "q": "How is your service better than doing it ourselves?",
-        "a": "Using our service saves you time and eliminates the hassle of finding, selecting, negotiating, and managing numerous influencers. We have precise data tools and a professional team taking care of every step from planning to measuring results, ensuring you get the most suitable influencers and highly effective campaigns."
-      },
-      {
-        "q": "How do you charge for your services?",
-        "a": "Service fees depend on campaign size, the number of influencers, and the services you need. Our minimum campaign budget starts at 100,000 THB per campaign."
-      },
-      {
-        "q": "What do I need to prepare before starting a campaign?",
-        "a": "Just let us know your campaign objectives, budget, target audience, and product/service details. We will take care of the rest."
-      },
-      {
-        "q": "What do you use to select influencers?",
-        "a": "We use a Data-Driven Matching system that analyzes Demographics, Engagement, Unique Follower Overlap, and past campaign performance. This helps us select influencers that align perfectly with your brand's goals and match the influencer's followers."
-      },
-      {
-        "q": "Can I request a report at the end of the campaign?",
-        "a": "You will receive a comprehensive campaign performance report covering Reach, Engagement, ROI, top-performing influencers, and insights to improve your next campaigns."
-      },
-      {
-        "q": "Can I choose the influencers myself?",
-        "a": "If you have specific influencers in mind, we can contact them for you or recommend similar ones. We will handle all communications on your behalf."
-      },
-      {
-        "q": "Which platforms can campaigns run on?",
-        "a": "We support all major platforms such as Instagram, Facebook, TikTok, YouTube, X (Twitter), and Lemon8. We can recommend the best platforms based on your target audience, content, and campaign objectives."
-      }
+    {
+      "q": "What services does Buddy Review provide?",
+      "a": "We provide end-to-end Influencer Marketing services, from strategy planning, selecting the right influencers, coordinating, monitoring work, to measuring campaign success."
+    },
+    {
+      "q": "How is your service better than doing it ourselves?",
+      "a": "Using our service saves you time and eliminates the hassle of finding, selecting, negotiating, and managing numerous influencers. We have precise data tools and a professional team taking care of every step from planning to measuring results, ensuring you get the most suitable influencers and highly effective campaigns."
+    },
+    {
+      "q": "How do you charge for your services?",
+      "a": "Service fees depend on campaign size, the number of influencers, and the services you need. Our minimum campaign budget starts at 100,000 THB per campaign."
+    },
+    {
+      "q": "What do I need to prepare before starting a campaign?",
+      "a": "Just let us know your campaign objectives, budget, target audience, and product/service details. We will take care of the rest."
+    },
+    {
+      "q": "What do you use to select influencers?",
+      "a": "We use a Data-Driven Matching system that analyzes Demographics, Engagement, Unique Follower Overlap, and past campaign performance. This helps us select influencers that align perfectly with your brand's goals and match the influencer's followers."
+    },
+    {
+      "q": "Can I request a report at the end of the campaign?",
+      "a": "You will receive a comprehensive campaign performance report covering Reach, Engagement, ROI, top-performing influencers, and insights to improve your next campaigns."
+    },
+    {
+      "q": "Can I choose the influencers myself?",
+      "a": "If you have specific influencers in mind, we can contact them for you or recommend similar ones. We will handle all communications on your behalf."
+    },
+    {
+      "q": "Which platforms can campaigns run on?",
+      "a": "We support all major platforms such as Instagram, Facebook, TikTok, YouTube, X (Twitter), and Lemon8. We can recommend the best platforms based on your target audience, content, and campaign objectives."
+    }
   ],
   "successStories": [
     {
@@ -471,5 +471,9 @@
     "address3": "6th Floor, Vibhavadi Rangsit Road,",
     "address4": "Chatuchak, Bangkok 10900",
     "copyright": "© 2025 Buddy Review. All rights reserved."
+  },
+  "seo": {
+    "title": "Buddy Review — Data-Powered Influencer Marketing",
+    "description": "From Strategy To Insight, We Turn Influence Into Impact."
   }
 }
