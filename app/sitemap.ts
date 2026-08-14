@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { i18n } from '../i18n-config';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://www.yourdomain.com'; // TODO: เปลี่ยนเป็น Domain จริงของคุณ
+  const baseUrl = 'https://landing-page-bubblely.vercel.app';
 
   // ใส่ชื่อ Path หน้าย่อยทั้งหมดที่มีในโปรเจกต์ (ไม่ต้องใส่ /th หรือ /en เพราะโค้ดจะวนลูปเพิ่มให้อัตโนมัติ)
   const staticRoutes = [

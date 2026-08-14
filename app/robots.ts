@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/_next/'],
     },
-    sitemap: 'https://www.yourdomain.com/sitemap.xml', // TODO: เปลี่ยนเป็น Domain จริงของคุณ
+    sitemap: 'https://landing-page-bubblely.vercel.app/sitemap.xml',
   };
 }

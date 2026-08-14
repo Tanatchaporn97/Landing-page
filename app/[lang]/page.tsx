@@ -11,20 +11,20 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     title: dict.seo.title,
     description: dict.seo.description,
     alternates: {
-      canonical: `https://www.yourdomain.com/${lang}`,
+      canonical: `https://landing-page-bubblely.vercel.app/${lang}`,
       languages: {
-        en: 'https://www.yourdomain.com/en',
-        th: 'https://www.yourdomain.com/th',
+        en: 'https://landing-page-bubblely.vercel.app/en',
+        th: 'https://landing-page-bubblely.vercel.app/th',
       },
     },
     openGraph: {
       title: dict.seo.title,
       description: dict.seo.description,
-      url: `https://www.yourdomain.com/${lang}`,
+      url: `https://landing-page-bubblely.vercel.app/${lang}`,
       siteName: 'Buddy Review',
       images: [
         {
-          url: 'https://www.yourdomain.com/og-image.jpg', // TODO: เปลี่ยนเป็น URL รูปจริงของคุณ
+          url: 'https://landing-page-bubblely.vercel.app/og-image.jpg',
           width: 1200,
           height: 630,
         },
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       card: 'summary_large_image',
       title: dict.seo.title,
       description: dict.seo.description,
-      images: ['https://www.yourdomain.com/og-image.jpg'], // TODO: เปลี่ยนเป็น URL รูปจริงของคุณ
+      images: ['https://landing-page-bubblely.vercel.app/og-image.jpg'],
     },
   };
 }
