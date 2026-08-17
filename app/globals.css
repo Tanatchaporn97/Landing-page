@@ -694,10 +694,10 @@ body {
   .tc-side .tc-card-side { width: 300px !important; }
 
   /* Testimonials scroll section — desktop layout, tighter padding */
-  .tss-outer  { padding: 56px 32px !important; }
-  .tss-layout { gap: 40px !important; }
-  .tss-title  { flex: 0 0 240px !important; }
-  .tss-viewport { height: 620px !important; overflow: hidden !important; position: relative !important; }
+  .tss-outer        { padding: 56px 32px !important; }
+  .tss-layout       { gap: 40px !important; }
+  .tss-title        { flex: 0 0 240px !important; }
+  .tss-viewport-multi { height: 620px !important; overflow: hidden !important; position: relative !important; }
 
   /* Influencer generic section padding */
   .inf-section { padding: 64px 32px !important; }
@@ -987,11 +987,12 @@ body {
   .br-hero { padding: 16px 20px 64px !important; }
   .br-cta-btn { padding: 16px 36px !important; font-size: 16px !important; }
 
-  /* Testimonials scroll section — single column, fade at card 3 */
-  .tss-outer    { padding: 48px 20px 24px !important; }
-  .tss-layout   { flex-direction: column !important; gap: 32px !important; }
-  .tss-title    { flex: none !important; text-align: center !important; width: 100% !important; }
-  .tss-viewport { height: 600px !important; overflow: hidden !important; position: relative !important; }
-  .tss-fade-bot { height: 80px !important; }
+  /* Testimonials scroll section — single merged column, 1.5 cards + fade */
+  .tss-outer           { padding: 40px 20px 0 !important; }
+  .tss-layout          { flex-direction: column !important; gap: 24px !important; }
+  .tss-title           { flex: none !important; text-align: center !important; width: 100% !important; }
+  .tss-viewport-multi  { display: none !important; }
+  .tss-viewport-single { display: flex !important; height: 460px !important; overflow: hidden !important; position: relative !important; }
+  .tss-fade-bot        { height: 100px !important; }
 }
 

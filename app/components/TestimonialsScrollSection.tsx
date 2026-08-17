@@ -228,9 +228,9 @@ export default function TestimonialsScrollSection({
           </p>
         </div>
 
-        {/* ── Right: 2 independent marquee columns ── */}
+        {/* ── Desktop/Tablet: 2 independent marquee columns ── */}
         <div
-          className="tss-viewport"
+          className="tss-viewport-multi"
           style={{
             flex: 1, display: "flex", gap: `${CARD_GAP}px`,
             height: `${VIEW_H}px`,
@@ -239,8 +239,19 @@ export default function TestimonialsScrollSection({
         >
           <MarqueeColumn items={col1} direction="up" duration={30} className="tss-col1" />
           <MarqueeColumn items={col2} direction="down" duration={38} style={{ marginTop: "48px" }} className="tss-col2" />
+          <div className="tss-fade-bot" style={{
+            position: "absolute", bottom: 0, left: 0, right: 0, height: "120px",
+            background: `linear-gradient(to top, ${BG_BOT} 0%, transparent 100%)`,
+            pointerEvents: "none", zIndex: 2,
+          }} />
+        </div>
 
-          {/* Fade — bottom only */}
+        {/* ── Mobile: single merged column (hidden on desktop/tablet via CSS) ── */}
+        <div
+          className="tss-viewport-single"
+          style={{ display: "none", width: "100%", height: `${VIEW_H}px`, position: "relative", overflow: "hidden" }}
+        >
+          <MarqueeColumn items={items} direction="up" duration={35} />
           <div className="tss-fade-bot" style={{
             position: "absolute", bottom: 0, left: 0, right: 0, height: "120px",
             background: `linear-gradient(to top, ${BG_BOT} 0%, transparent 100%)`,
