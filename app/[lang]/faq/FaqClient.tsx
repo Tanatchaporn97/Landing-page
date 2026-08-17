@@ -48,7 +48,7 @@ export default function FaqClient({ lang, dict }: { lang: Locale, dict: any }) {
             {CATEGORIES.map(cat => (
               <button key={cat.key} onClick={() => setActiveTab(cat.key)}
                 className="faq-tab-btn"
-                style={{ ...KT, fontSize: "16px", fontWeight: 600, borderRadius: "50px", padding: "12px 36px", cursor: "pointer", transition: "background 0.25s, color 0.25s, border-color 0.25s", background: activeTab === cat.key ? "#5f26e5" : "rgba(255,255,255,0.22)", backdropFilter: activeTab === cat.key ? "none" : "blur(18px)", WebkitBackdropFilter: activeTab === cat.key ? "none" : "blur(18px)", border: activeTab === cat.key ? "1px solid transparent" : "1px solid rgba(255,255,255,0.45)", color: activeTab === cat.key ? "#ffffff" : "#374151", boxShadow: activeTab === cat.key ? "0 4px 20px rgba(95,38,229,0.25)" : "0 2px 8px rgba(0,0,0,0.06)" }}>
+                style={{ ...KT, fontSize: "16px", fontWeight: 600, borderRadius: "50px", padding: "12px 36px", cursor: "pointer", transition: "background 0.25s, color 0.25s, border-color 0.25s", background: activeTab === cat.key ? "#5f26e5" : "rgba(255,255,255,0.22)", backdropFilter: activeTab === cat.key ? "none" : "blur(18px)", WebkitBackdropFilter: activeTab === cat.key ? "none" : "blur(18px)", border: activeTab === cat.key ? "1px solid transparent" : "1px solid rgba(255,255,255,0.45)", color: activeTab === cat.key ? "#ffffff" : "#111827", boxShadow: activeTab === cat.key ? "0 4px 20px rgba(95,38,229,0.25)" : "0 2px 8px rgba(0,0,0,0.06)" }}>
                 {cat.label}
               </button>
             ))}
