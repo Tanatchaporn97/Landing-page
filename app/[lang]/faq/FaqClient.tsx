@@ -25,7 +25,7 @@ export default function FaqClient({ lang, dict }: { lang: Locale, dict: any }) {
   const active = CATEGORIES.find(c => c.key === activeTab)!;
 
   return (
-    <div className="hero" style={{ ...KT, overflowX: "hidden" }}>
+    <div className="background" style={{ ...KT, overflowX: "hidden" }}>
       {fromInfluencer ? <Navbar lang={lang} variant="influencer" /> : <Navbar lang={lang} variant="home" />}
 
       {/* Hero */}
