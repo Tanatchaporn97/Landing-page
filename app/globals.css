@@ -693,6 +693,11 @@ body {
   .tc-card-active { width: 360px !important; }
   .tc-side .tc-card-side { width: 300px !important; }
 
+  /* Testimonials scroll section — stack title above columns, center title */
+  .tss-layout { flex-direction: column !important; gap: 40px !important; padding: 0 !important; }
+  .tss-title { flex: none !important; text-align: center !important; width: 100% !important; }
+  .tss-viewport { width: 100% !important; }
+
   /* Influencer generic section padding */
   .inf-section { padding: 64px 32px !important; }
 
