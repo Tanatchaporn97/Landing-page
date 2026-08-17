@@ -205,17 +205,6 @@ export default function TestimonialsScrollSection({
       >
         {/* ── Left: title panel ── */}
         <div className="tss-title" style={{ flex: "0 0 320px" }}>
-          <div style={{
-            display: "inline-block",
-            border: "1.5px solid rgba(95,38,229,0.35)",
-            borderRadius: "50px",
-            padding: "6px 18px", marginBottom: "20px",
-            background: "rgba(95,38,229,0.06)",
-          }}>
-            <span style={{ ...KT, fontSize: "14px", fontWeight: 600, color: "#5f26e5" }}>
-              / Testimonial
-            </span>
-          </div>
           <h2 style={{
             ...KT, fontSize: "clamp(36px,4vw,58px)", fontWeight: 800,
             color: "#111827", margin: "0 0 20px", lineHeight: 1.15,
