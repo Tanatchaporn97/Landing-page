@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useLayoutEffect, useCallback, useState } from "react";
+import { useRef, useLayoutEffect, useEffect, useCallback, useState } from "react";
 import { motion, useMotionValue, animate } from "motion/react";
 import Image from "next/image";
 
@@ -34,14 +34,8 @@ function Card({ t }: { t: { photo: string; name: string; text: string } }) {
       <p style={{ ...KT, fontSize: "15px", color: "#111827", lineHeight: "1.8", margin: 0 }}>
         {t.text}
       </p>
-      <div style={{
-        display: "flex", alignItems: "center", gap: "12px",
-        paddingTop: "12px", marginTop: "auto",
-      }}>
-        <div style={{
-          position: "relative", width: "44px", height: "44px",
-          borderRadius: "50%", overflow: "hidden", flexShrink: 0,
-        }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "12px", paddingTop: "12px", marginTop: "auto" }}>
+        <div style={{ position: "relative", width: "44px", height: "44px", borderRadius: "50%", overflow: "hidden", flexShrink: 0 }}>
           <Image src={t.photo} alt={t.name} fill sizes="44px"
             style={{ objectFit: "cover", objectPosition: "center top" }} />
         </div>
@@ -52,29 +46,34 @@ function Card({ t }: { t: { photo: string; name: string; text: string } }) {
 }
 
 // ── MarqueeColumn ────────────────────────────────────────────────────────────
-// Auto-scrolls continuously. Hover (desktop) or drag pauses the loop.
-// User can drag the column to scroll through cards manually.
-// Releasing resumes auto-scroll from the current position.
+// - Auto-scrolls in `direction` at `duration` seconds per loop.
+// - Mouse wheel over the column scrolls it manually (page scroll is not stolen
+//   unless the pointer is actually inside the column).
+// - Drag (touch / mouse drag) also works; releases resume auto-scroll.
 function MarqueeColumn({
   items,
   direction,
   duration,
+  style,
 }: {
   items: { photo: string; name: string; text: string }[];
   direction: "up" | "down";
   duration: number;
+  style?: React.CSSProperties;
 }) {
-  const origRef  = useRef<HTMLDivElement>(null);
-  const [step, setStep] = useState(0);
-  const y        = useMotionValue(0);
-  const loopRef  = useRef<ReturnType<typeof animate> | null>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const origRef    = useRef<HTMLDivElement>(null);
+  const stepRef    = useRef(0);          // always-current step, safe for closures
+  const [step, setStep] = useState(0);  // for dragConstraints render
+  const y          = useMotionValue(0);
+  const loopRef    = useRef<ReturnType<typeof animate> | null>(null);
 
-  // Kick off (or restart) the infinite loop from the current y position.
+  // Start (or restart) the infinite loop from currentY.
   const runLoop = useCallback((currentY: number, s: number) => {
     const target    = direction === "up" ? -s : 0;
     const loopStart = direction === "up" ?  0 : -s;
 
-    // Normalise currentY into one loop range so we never animate backwards.
+    // Normalise into one loop range to prevent backward animation.
     let from = currentY;
     if (direction === "up") {
       from = ((from % s) - s) % s;
@@ -99,11 +98,12 @@ function MarqueeColumn({
     });
   }, [direction, duration, y]);
 
-  // Measure cards on first paint and start the loop.
+  // Measure on first paint and kick off auto-scroll.
   useLayoutEffect(() => {
     const h = origRef.current?.offsetHeight ?? 0;
     if (!h) return;
     const s = h + CARD_GAP;
+    stepRef.current = s;
     setStep(s);
     const initial = direction === "up" ? 0 : -s;
     y.set(initial);
@@ -112,44 +112,70 @@ function MarqueeColumn({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Non-passive wheel listener so we can preventDefault (prevent page scroll)
+  // while the pointer is inside this column.
+  useEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
+
+    let wheelTimer: ReturnType<typeof setTimeout>;
+
+    const handleWheel = (e: WheelEvent) => {
+      const s = stepRef.current;
+      if (!s) return;
+      e.preventDefault();            // stop page from scrolling
+      loopRef.current?.stop();
+      y.set(y.get() - e.deltaY * 0.8);
+
+      // Resume auto-scroll ~900 ms after the user stops wheeling.
+      clearTimeout(wheelTimer);
+      wheelTimer = setTimeout(() => runLoop(y.get(), s), 900);
+    };
+
+    el.addEventListener("wheel", handleWheel, { passive: false });
+    return () => {
+      el.removeEventListener("wheel", handleWheel);
+      clearTimeout(wheelTimer);
+    };
+  }, [runLoop, y]);
+
   const pause  = useCallback(() => { loopRef.current?.stop(); }, []);
-  const resume = useCallback(() => { if (step > 0) runLoop(y.get(), step); }, [step, runLoop, y]);
+  const resume = useCallback(() => {
+    const s = stepRef.current;
+    if (s) runLoop(y.get(), s);
+  }, [runLoop, y]);
 
   const colStyle: React.CSSProperties = { display: "flex", flexDirection: "column", gap: `${CARD_GAP}px` };
 
   return (
-    <motion.div
-      style={{ y, cursor: "grab", userSelect: "none" }}
-      drag="y"
-      // generous constraints so users can freely browse all cards
-      dragConstraints={{ top: -(step * 3), bottom: step * 2 }}
-      dragElastic={0.08}
-      onDragStart={pause}
-      onDragEnd={resume}
-      onHoverStart={pause}
-      onHoverEnd={resume}
-      whileDrag={{ cursor: "grabbing" }}
-    >
-      {/* "down" direction: duplicate leads, original follows */}
-      {direction === "down" && (
-        <div style={colStyle}>
-          {items.map((t, i) => <Card key={`dup-${i}`} t={t} />)}
-          <div style={{ height: CARD_GAP }} />
-        </div>
-      )}
+    <div ref={wrapperRef} style={{ flex: 1, overflow: "hidden", ...style }}>
+      <motion.div
+        style={{ y, cursor: "grab", userSelect: "none" }}
+        drag="y"
+        dragConstraints={{ top: -(step * 3), bottom: step * 2 }}
+        dragElastic={0.08}
+        onDragStart={pause}
+        onDragEnd={resume}
+        whileDrag={{ cursor: "grabbing" }}
+      >
+        {direction === "down" && (
+          <div style={colStyle}>
+            {items.map((t, i) => <Card key={`dup-${i}`} t={t} />)}
+            <div style={{ height: CARD_GAP }} />
+          </div>
+        )}
 
-      {/* Original cards — measured for loop distance */}
-      <div ref={origRef} style={colStyle}>
-        {items.map((t, i) => <Card key={i} t={t} />)}
-      </div>
-
-      {/* "up" direction: duplicate follows original */}
-      {direction === "up" && (
-        <div style={{ ...colStyle, marginTop: CARD_GAP }}>
-          {items.map((t, i) => <Card key={`dup-${i}`} t={t} />)}
+        <div ref={origRef} style={colStyle}>
+          {items.map((t, i) => <Card key={i} t={t} />)}
         </div>
-      )}
-    </motion.div>
+
+        {direction === "up" && (
+          <div style={{ ...colStyle, marginTop: CARD_GAP }}>
+            {items.map((t, i) => <Card key={`dup-${i}`} t={t} />)}
+          </div>
+        )}
+      </motion.div>
+    </div>
   );
 }
 
@@ -209,7 +235,7 @@ export default function TestimonialsScrollSection({
               ? "เสียงจริงจากอินฟลูเอนเซอร์ที่ร่วมงานกับ Buddy Review"
               : "Real voices from influencers who've worked with Buddy Review"}
           </p>
-          {/* Hint for interactivity */}
+          {/* Interactivity hint */}
           <p style={{
             ...KT, fontSize: "13px", color: "#9b7fd4",
             display: "flex", alignItems: "center", gap: "6px", margin: 0,
@@ -217,7 +243,7 @@ export default function TestimonialsScrollSection({
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
             </svg>
-            {lang === "th" ? "ลากเพื่อย้อนอ่านได้" : "Drag to browse"}
+            {lang === "th" ? "เลื่อนล้อเมาส์ หรือลากเพื่อย้อนอ่าน" : "Scroll or drag to browse"}
           </p>
         </div>
 
@@ -226,19 +252,12 @@ export default function TestimonialsScrollSection({
           className="tss-viewport"
           style={{
             flex: 1, display: "flex", gap: `${CARD_GAP}px`,
-            height: `${VIEW_H}px`, overflow: "hidden",
+            height: `${VIEW_H}px`,
             position: "relative",
           }}
         >
-          {/* Col1 — scrolls up */}
-          <div style={{ flex: 1, overflow: "hidden" }}>
-            <MarqueeColumn items={col1} direction="up" duration={30} />
-          </div>
-
-          {/* Col2 — scrolls down, staggered start */}
-          <div style={{ flex: 1, overflow: "hidden", marginTop: "48px" }}>
-            <MarqueeColumn items={col2} direction="down" duration={38} />
-          </div>
+          <MarqueeColumn items={col1} direction="up" duration={30} />
+          <MarqueeColumn items={col2} direction="down" duration={38} style={{ marginTop: "48px" }} />
 
           {/* Fade — bottom only */}
           <div style={{
