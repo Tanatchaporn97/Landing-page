@@ -5,12 +5,12 @@ import Image from "next/image";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
-// Estimated average card height + gap for scroll distance calculation.
-// Cards have variable text length; this sets the "pace" of the animation.
-const CARD_H = 300;
+// Estimated average card height — Thai text is long so we go generous.
+const CARD_H = 320;
 const CARD_GAP = 16;
-const VISIBLE = 2; // cards fully shown at once
-const PEEK = 80;   // px of next card peeking at bottom edge
+const VISIBLE_ROWS = 2; // rows fully shown at once
+const STAGGER = 48;    // col-2 vertical offset (same as original masonry)
+const PEEK = 80;       // px of next row peeking at bottom edge
 
 const BG_TOP = "#EDE5F9";
 const BG_BOT = "#E9DFF7";
@@ -72,7 +72,11 @@ export default function TestimonialsScrollSection({
   lang: string;
 }) {
   const items: { photo: string; name: string; text: string }[] = dict?.testimonials ?? [];
-  const n = items.length;
+
+  // Split into 2 columns (even → col1, odd → col2) — same as original masonry
+  const col1 = items.filter((_, i) => i % 2 === 0);
+  const col2 = items.filter((_, i) => i % 2 !== 0);
+  const numRows = Math.max(col1.length, col2.length);
 
   // Only enable scroll-jacking on desktop (> 1080px)
   const [isDesktop, setIsDesktop] = useState(false);
@@ -90,15 +94,16 @@ export default function TestimonialsScrollSection({
     offset: ["start start", "end end"],
   });
 
-  // Total distance the card track travels on desktop
-  const scrollDist = isDesktop ? Math.max(0, n - VISIBLE) * (CARD_H + CARD_GAP) : 0;
+  // Scroll distance: reveal rows beyond the first VISIBLE_ROWS
+  const scrollDist = isDesktop
+    ? Math.max(0, numRows - VISIBLE_ROWS) * (CARD_H + CARD_GAP)
+    : 0;
 
   const rawY = useTransform(scrollYProgress, [0, 1], [0, -scrollDist]);
-  // Spring makes the scroll feel smooth and weighty
   const y = useSpring(rawY, { stiffness: 70, damping: 22, mass: 0.7 });
 
-  // Viewport height: 2 full cards + gap + bottom peek
-  const viewH = VISIBLE * CARD_H + (VISIBLE - 1) * CARD_GAP + PEEK;
+  // Viewport height: VISIBLE_ROWS rows + gap + stagger + bottom peek
+  const viewH = VISIBLE_ROWS * CARD_H + (VISIBLE_ROWS - 1) * CARD_GAP + STAGGER + PEEK;
 
   return (
     <div
@@ -175,7 +180,7 @@ export default function TestimonialsScrollSection({
             </p>
           </div>
 
-          {/* ── Right: card viewport ── */}
+          {/* ── Right: 2-column card viewport ── */}
           <div
             className="tss-viewport"
             style={{
@@ -186,14 +191,19 @@ export default function TestimonialsScrollSection({
             }}
           >
             <motion.div style={isDesktop ? { y } : {}}>
-              <div style={{ display: "flex", flexDirection: "column", gap: `${CARD_GAP}px` }}>
-                {items.map((t, i) => (
-                  <Card key={i} t={t} />
-                ))}
+              <div style={{ display: "flex", gap: `${CARD_GAP}px`, alignItems: "flex-start" }}>
+                {/* Column 1 */}
+                <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: `${CARD_GAP}px` }}>
+                  {col1.map((t, i) => <Card key={i} t={t} />)}
+                </div>
+                {/* Column 2 — staggered down */}
+                <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: `${CARD_GAP}px`, marginTop: `${STAGGER}px` }}>
+                  {col2.map((t, i) => <Card key={i} t={t} />)}
+                </div>
               </div>
             </motion.div>
 
-            {/* Fade — top (hides partially scrolled-off card) */}
+            {/* Fade — top */}
             {isDesktop && (
               <div style={{
                 position: "absolute", top: 0, left: 0, right: 0, height: "90px",
@@ -201,7 +211,7 @@ export default function TestimonialsScrollSection({
                 pointerEvents: "none", zIndex: 2,
               }} />
             )}
-            {/* Fade — bottom (hides peeking next card) */}
+            {/* Fade — bottom */}
             {isDesktop && (
               <div style={{
                 position: "absolute", bottom: 0, left: 0, right: 0, height: "90px",
