@@ -12,7 +12,7 @@ import UnlockIconHover from "../../components/UnlockIconHover";
 import { type Locale } from "../../../i18n-config";
 
 // Lazy load below-the-fold components
-const TestimonialsGrid = dynamic(() => import("../../components/TestimonialsGrid"));
+const TestimonialsScrollSection = dynamic(() => import("../../components/TestimonialsScrollSection"));
 const LogoMarquee = dynamic(() => import("../../components/LogoMarquee"));
 const SuccessStoriesSlider = dynamic(() => import("../../components/SuccessStoriesSlider"));
 const ContactFormSection = dynamic(() => import("../../components/ContactFormSection"));
@@ -164,42 +164,8 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <SuccessStoriesSlider lang={lang as Locale} />
 
 
-      {/* ── Testimonials ── */}
-      <section className="inf-section" style={{ background: "linear-gradient(180deg, #EDE5F9 0%, #E9DFF7 100%)", padding: "100px 48px" }}>
-        <div className="testimonials-outer" style={{ maxWidth: "1294px", margin: "0 auto", display: "flex", gap: "80px", alignItems: "flex-start" }}>
-          {/* Left: title */}
-          <div className="testimonials-title" style={{ flex: "0 0 320px", paddingTop: "160px" }}>
-            <div style={{
-              display: "inline-block",
-              border: "1.5px solid rgba(95,38,229,0.35)",
-              borderRadius: "50px",
-              padding: "6px 18px",
-              marginBottom: "20px",
-              background: "rgba(95,38,229,0.06)",
-            }}>
-              <span style={{ ...KT, fontSize: "14px", fontWeight: 600, color: "#5f26e5" }}>/ Testimonial</span>
-            </div>
-            <h2 style={{
-              ...KT,
-              fontSize: "clamp(36px,4vw,58px)", fontWeight: 800,
-              color: "#111827",
-              margin: "0 0 20px", lineHeight: 1.15,
-            }}>
-              <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>What </span>
-              <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", whiteSpace: "nowrap" }}>
-                They Say
-              </span>
-            </h2>
-            <p style={{ ...KT, fontSize: "16px", color: "#374151", lineHeight: 1.65, margin: 0 }}>
-              {lang === "th" ? "เสียงจริงจากอินฟลูเอนเซอร์ที่ร่วมงานกับ Buddy Review" : "Real voices from influencers who've worked with Buddy Review"}
-            </p>
-          </div>
-          {/* Right: masonry grid */}
-          <div style={{ flex: 1 }}>
-            <TestimonialsGrid dict={dict} />
-          </div>
-        </div>
-      </section>
+      {/* ── Testimonials — scroll-jacking section (desktop) / static (mobile) ── */}
+      <TestimonialsScrollSection dict={dict} lang={lang} />
 
 
       {/* ── FAQs ── */}
