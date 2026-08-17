@@ -693,11 +693,11 @@ body {
   .tc-card-active { width: 360px !important; }
   .tc-side .tc-card-side { width: 300px !important; }
 
-  /* Testimonials scroll section — stack title above columns, center title */
+  /* Testimonials scroll section — desktop layout, tighter padding */
   .tss-outer  { padding: 56px 32px !important; }
-  .tss-layout { flex-direction: column !important; gap: 36px !important; }
-  .tss-title  { flex: none !important; text-align: center !important; width: 100% !important; }
-  .tss-viewport { width: 100% !important; height: 620px !important; overflow: hidden !important; position: relative !important; }
+  .tss-layout { gap: 40px !important; }
+  .tss-title  { flex: 0 0 240px !important; }
+  .tss-viewport { height: 620px !important; overflow: hidden !important; position: relative !important; }
 
   /* Influencer generic section padding */
   .inf-section { padding: 64px 32px !important; }
