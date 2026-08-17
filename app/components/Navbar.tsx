@@ -1,6 +1,6 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
-import { motion, useScroll, useMotionValueEvent, stagger, type Variants } from "motion/react";
+import { useState } from "react";
+import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -8,67 +8,23 @@ import { usePathname, useRouter } from "next/navigation";
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const ACCENT = "#5f26e5";
 
-const navListVariants: Variants = {
-  open: { transition: { delayChildren: stagger(0.07, { startDelay: 0.15 }) } },
-  closed: { transition: { delayChildren: stagger(0.05, { from: "last" }) } },
-};
-
-const itemVariants: Variants = {
-  open: { y: 0, opacity: 1, transition: { y: { type: "spring", stiffness: 1000, velocity: -100 } } },
-  closed: { y: 24, opacity: 0, transition: { y: { type: "spring", stiffness: 1000 } } },
-};
-
-const panelVariants: Variants = {
-  open: (radius: number) => ({
-    clipPath: `circle(${radius}px at calc(100% - 28px) 0px)`,
-    transition: { type: "spring", stiffness: 20, restDelta: 2 },
-  }),
-  closed: {
-    clipPath: "circle(0px at calc(100% - 28px) 0px)",
-    transition: { delay: 0.15, type: "spring", stiffness: 400, damping: 40 },
-  },
-};
-
-function usePanelRadius(ref: React.RefObject<HTMLDivElement | null>) {
-  const [radius, setRadius] = useState(0);
-  useEffect(() => {
-    if (!ref.current) return;
-    const measure = () => {
-      if (!ref.current) return;
-      const { width, height } = ref.current.getBoundingClientRect();
-      setRadius(Math.hypot(width, height) + 40);
-    };
-    measure();
-    const observer = new ResizeObserver(measure);
-    observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [ref]);
-  return radius;
-}
-
 function MenuToggle({ isOpen, toggle, color }: { isOpen: boolean; toggle: () => void; color: string }) {
-  const pathProps = { fill: "transparent", strokeWidth: "2.2", stroke: color, strokeLinecap: "round" as const };
   return (
     <button type="button" className="hamburger-btn" onClick={toggle}
       style={{ background: "none", border: "none", cursor: "pointer", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", width: "44px", height: "44px", flexShrink: 0, alignItems: "center", justifyContent: "center" }}>
-      <svg width="22" height="22" viewBox="0 0 23 23">
-        <motion.path
-          {...pathProps}
-          animate={isOpen ? "open" : "closed"}
-          variants={{ closed: { d: "M 2 2.5 L 20 2.5" }, open: { d: "M 3 16.5 L 17 2.5" } }}
-        />
-        <motion.path
-          {...pathProps}
-          d="M 2 9.423 L 20 9.423"
-          animate={isOpen ? "open" : "closed"}
-          variants={{ closed: { opacity: 1 }, open: { opacity: 0 } }}
-          transition={{ duration: 0.1 }}
-        />
-        <motion.path
-          {...pathProps}
-          animate={isOpen ? "open" : "closed"}
-          variants={{ closed: { d: "M 2 16.346 L 20 16.346" }, open: { d: "M 3 2.5 L 17 16.346" } }}
-        />
+      <svg width="22" height="22" viewBox="0 0 23 23" fill="transparent" stroke={color} strokeWidth="2.2" strokeLinecap="round">
+        {isOpen ? (
+          <>
+            <path d="M 3 16.5 L 17 2.5" />
+            <path d="M 3 2.5 L 17 16.346" />
+          </>
+        ) : (
+          <>
+            <path d="M 2 2.5 L 20 2.5" />
+            <path d="M 2 9.423 L 20 9.423" />
+            <path d="M 2 16.346 L 20 16.346" />
+          </>
+        )}
       </svg>
     </button>
   );
@@ -86,8 +42,6 @@ export default function Navbar({
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const panelRef = useRef<HTMLDivElement>(null);
-  const radius = usePanelRadius(panelRef);
 
   const { scrollY } = useScroll();
 
@@ -193,73 +147,56 @@ export default function Navbar({
         />
       </nav>
 
-      {/* Mobile circle-reveal menu */}
-      <motion.div
-        ref={panelRef}
-        custom={radius}
-        initial={false}
-        animate={menuOpen ? "open" : "closed"}
-        variants={panelVariants}
-        style={{
-          marginTop: "10px",
-          background: "rgba(15,10,40,0.94)",
-          backdropFilter: "blur(28px)",
-          WebkitBackdropFilter: "blur(28px)",
-          border: "1px solid rgba(255,255,255,0.18)",
-          borderRadius: "24px",
-          padding: "20px 24px",
-          pointerEvents: menuOpen ? "auto" : "none",
-        }}
-      >
-        <motion.div
-          variants={navListVariants}
-          animate={menuOpen ? "open" : "closed"}
-          style={{ display: "flex", flexDirection: "column", gap: "12px" }}
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div
+          style={{
+            marginTop: "10px",
+            background: "rgba(15,10,40,0.94)",
+            backdropFilter: "blur(28px)",
+            WebkitBackdropFilter: "blur(28px)",
+            border: "1px solid rgba(255,255,255,0.18)",
+            borderRadius: "24px",
+            padding: "20px 24px",
+            pointerEvents: "auto",
+          }}
         >
-          {variant === "influencer" ? (
-            <>
-              <motion.div variants={itemVariants} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            {variant === "influencer" ? (
+              <>
                 <Link href="https://www.buddyreview.co/app/new-campaigns" onClick={() => setMenuOpen(false)}
                   className="btn-hero btn-hero-solid-purple rounded-full whitespace-nowrap"
                   style={itemStyle}>
                   {t.applyNow}
                 </Link>
-              </motion.div>
-              <motion.div variants={itemVariants} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a href="https://line.me/ti/p/~@buddyreview" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}
                   className="btn-hero rounded-full whitespace-nowrap"
                   style={{ ...itemStyle, color: "#ffffff" }}>
                   {t.applyLine}
                 </a>
-              </motion.div>
-            </>
-          ) : (
-            <>
-              <motion.div variants={itemVariants} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              </>
+            ) : (
+              <>
                 <a href={`/${lang}#contact`} onClick={() => setMenuOpen(false)}
                   className="btn-hero btn-hero-solid-purple rounded-full whitespace-nowrap"
                   style={itemStyle}>
                   {t.contactUs}
                 </a>
-              </motion.div>
-              <motion.div variants={itemVariants} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link href={`/${lang}/influencer`} onClick={() => setMenuOpen(false)}
                   className="btn-hero rounded-full whitespace-nowrap"
                   style={{ ...itemStyle, color: "#ffffff" }}>
                   {t.imInfluencer}
                 </Link>
-              </motion.div>
-            </>
-          )}
-          <motion.div variants={itemVariants} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              </>
+            )}
             <button onClick={toggleLang}
               className="btn-hero rounded-full"
               style={{ ...itemStyle, width: "100%", background: "none", border: "1px solid rgba(255,255,255,0.3)", cursor: "pointer", color: "#ffffff" }}>
               {lang === "th" ? "EN" : "TH"}
             </button>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+          </div>
+        </div>
+      )}
     </motion.div>
   );
 }
