@@ -697,7 +697,7 @@ body {
   .tss-outer  { padding: 56px 32px !important; }
   .tss-layout { flex-direction: column !important; gap: 36px !important; }
   .tss-title  { flex: none !important; text-align: center !important; width: 100% !important; }
-  .tss-viewport { width: 100% !important; height: 360px !important; }
+  .tss-viewport { width: 100% !important; height: 620px !important; overflow: hidden !important; position: relative !important; }
 
   /* Influencer generic section padding */
   .inf-section { padding: 64px 32px !important; }
