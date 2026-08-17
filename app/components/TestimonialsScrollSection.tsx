@@ -1,12 +1,12 @@
 "use client";
-import { useRef, useLayoutEffect } from "react";
-import { motion, useAnimationControls } from "motion/react";
+import { useRef, useLayoutEffect, useCallback, useState } from "react";
+import { motion, useMotionValue, animate } from "motion/react";
 import Image from "next/image";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const CARD_GAP = 16;
-const VIEW_H  = 720;  // visible window height (px) — shows ~2 cards per column
+const VIEW_H  = 720;
 const BG_TOP  = "#EDE5F9";
 const BG_BOT  = "#E9DFF7";
 
@@ -51,9 +51,10 @@ function Card({ t }: { t: { photo: string; name: string; text: string } }) {
   );
 }
 
-// ── Infinite auto-scroll marquee for one column ──────────────────────────────
-// direction "up"  → col scrolls upward   (DOM: [original][dup])
-// direction "down"→ col scrolls downward (DOM: [dup][original])
+// ── MarqueeColumn ────────────────────────────────────────────────────────────
+// Auto-scrolls continuously. Hover (desktop) or drag pauses the loop.
+// User can drag the column to scroll through cards manually.
+// Releasing resumes auto-scroll from the current position.
 function MarqueeColumn({
   items,
   direction,
@@ -63,41 +64,73 @@ function MarqueeColumn({
   direction: "up" | "down";
   duration: number;
 }) {
-  const origRef = useRef<HTMLDivElement>(null);
-  const controls = useAnimationControls();
+  const origRef  = useRef<HTMLDivElement>(null);
+  const [step, setStep] = useState(0);
+  const y        = useMotionValue(0);
+  const loopRef  = useRef<ReturnType<typeof animate> | null>(null);
 
-  useLayoutEffect(() => {
-    const origH = origRef.current?.offsetHeight ?? 0;
-    if (!origH) return;
+  // Kick off (or restart) the infinite loop from the current y position.
+  const runLoop = useCallback((currentY: number, s: number) => {
+    const target    = direction === "up" ? -s : 0;
+    const loopStart = direction === "up" ?  0 : -s;
 
-    // "step" = height of one set + gap between sets for seamless seam
-    const step = origH + CARD_GAP;
-
+    // Normalise currentY into one loop range so we never animate backwards.
+    let from = currentY;
     if (direction === "up") {
-      // start at 0, scroll to -step, then loop
-      controls.set({ y: 0 });
-      controls.start({
-        y: -step,
-        transition: { duration, ease: "linear", repeat: Infinity, repeatType: "loop" },
-      });
+      from = ((from % s) - s) % s;
+      if (from > 0) from -= s;
     } else {
-      // start at -step (showing original), scroll to 0 (showing dup = same), loop
-      controls.set({ y: -step });
-      controls.start({
-        y: 0,
-        transition: { duration, ease: "linear", repeat: Infinity, repeatType: "loop" },
-      });
+      from = ((from + s) % s) - s;
+      if (from > 0) from -= s;
     }
+    y.set(from);
+
+    const dist = Math.abs(from - target);
+    const dur  = (dist / s) * duration;
+
+    loopRef.current?.stop();
+    loopRef.current = animate(y, target, {
+      duration: dur,
+      ease: "linear",
+      onComplete: () => {
+        y.set(loopStart);
+        runLoop(loopStart, s);
+      },
+    });
+  }, [direction, duration, y]);
+
+  // Measure cards on first paint and start the loop.
+  useLayoutEffect(() => {
+    const h = origRef.current?.offsetHeight ?? 0;
+    if (!h) return;
+    const s = h + CARD_GAP;
+    setStep(s);
+    const initial = direction === "up" ? 0 : -s;
+    y.set(initial);
+    runLoop(initial, s);
+    return () => loopRef.current?.stop();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const colStyle: React.CSSProperties = {
-    display: "flex", flexDirection: "column", gap: `${CARD_GAP}px`,
-  };
+  const pause  = useCallback(() => { loopRef.current?.stop(); }, []);
+  const resume = useCallback(() => { if (step > 0) runLoop(y.get(), step); }, [step, runLoop, y]);
+
+  const colStyle: React.CSSProperties = { display: "flex", flexDirection: "column", gap: `${CARD_GAP}px` };
 
   return (
-    <motion.div animate={controls}>
-      {/* "down" direction needs duplicate FIRST so original comes into view from below */}
+    <motion.div
+      style={{ y, cursor: "grab", userSelect: "none" }}
+      drag="y"
+      // generous constraints so users can freely browse all cards
+      dragConstraints={{ top: -(step * 3), bottom: step * 2 }}
+      dragElastic={0.08}
+      onDragStart={pause}
+      onDragEnd={resume}
+      onHoverStart={pause}
+      onHoverEnd={resume}
+      whileDrag={{ cursor: "grabbing" }}
+    >
+      {/* "down" direction: duplicate leads, original follows */}
       {direction === "down" && (
         <div style={colStyle}>
           {items.map((t, i) => <Card key={`dup-${i}`} t={t} />)}
@@ -105,12 +138,12 @@ function MarqueeColumn({
         </div>
       )}
 
-      {/* Original track — measured for loop distance */}
+      {/* Original cards — measured for loop distance */}
       <div ref={origRef} style={colStyle}>
         {items.map((t, i) => <Card key={i} t={t} />)}
       </div>
 
-      {/* "up" direction needs duplicate AFTER original */}
+      {/* "up" direction: duplicate follows original */}
       {direction === "up" && (
         <div style={{ ...colStyle, marginTop: CARD_GAP }}>
           {items.map((t, i) => <Card key={`dup-${i}`} t={t} />)}
@@ -129,8 +162,6 @@ export default function TestimonialsScrollSection({
   lang: string;
 }) {
   const items: { photo: string; name: string; text: string }[] = dict?.testimonials ?? [];
-
-  // Even indices → col1 (scrolls up), odd indices → col2 (scrolls down)
   const col1 = items.filter((_, i) => i % 2 === 0);
   const col2 = items.filter((_, i) => i % 2 !== 0);
 
@@ -173,10 +204,20 @@ export default function TestimonialsScrollSection({
               They Say
             </span>
           </h2>
-          <p style={{ ...KT, fontSize: "16px", color: "#374151", lineHeight: 1.65, margin: 0 }}>
+          <p style={{ ...KT, fontSize: "16px", color: "#374151", lineHeight: 1.65, margin: "0 0 20px" }}>
             {lang === "th"
               ? "เสียงจริงจากอินฟลูเอนเซอร์ที่ร่วมงานกับ Buddy Review"
               : "Real voices from influencers who've worked with Buddy Review"}
+          </p>
+          {/* Hint for interactivity */}
+          <p style={{
+            ...KT, fontSize: "13px", color: "#9b7fd4",
+            display: "flex", alignItems: "center", gap: "6px", margin: 0,
+          }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
+            </svg>
+            {lang === "th" ? "ลากเพื่อย้อนอ่านได้" : "Drag to browse"}
           </p>
         </div>
 
@@ -199,9 +240,9 @@ export default function TestimonialsScrollSection({
             <MarqueeColumn items={col2} direction="down" duration={38} />
           </div>
 
-          {/* Fade — bottom */}
+          {/* Fade — bottom only */}
           <div style={{
-            position: "absolute", bottom: 0, left: 0, right: 0, height: "100px",
+            position: "absolute", bottom: 0, left: 0, right: 0, height: "120px",
             background: `linear-gradient(to top, ${BG_BOT} 0%, transparent 100%)`,
             pointerEvents: "none", zIndex: 2,
           }} />
