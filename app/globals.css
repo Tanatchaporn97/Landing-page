@@ -22,6 +22,9 @@
   font-display: swap;
 }
 
+/* Remove 300ms tap delay on all interactive elements (iOS Safari) */
+button, a, [role="button"] { touch-action: manipulation; }
+
 :root {
   --font-sans: var(--font-inter);
   --purple: rgba(173, 166, 255, 0.45);
@@ -619,6 +622,15 @@ body {
 
   /* Navbar */
   .nav-btn-contact { display: none !important; }
+
+  /* Remove backdrop-filter on tablet — same iOS Safari touch fix as mobile,
+     also prevents GPU overload (20+ simultaneous blur layers on a tablet GPU
+     causes the page to freeze and makes taps unresponsive) */
+  .faq-item { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  .kol-card { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  .hero-stat-item { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background: rgba(255,255,255,0.72) !important; }
+  .cs-card { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background: rgba(255,255,255,0.85) !important; }
+  .tc-card { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background: rgba(255,255,255,0.85) !important; }
 
   /* Hero — landing */
   .hero-section { padding-top: 110px !important; padding-left: 32px !important; padding-right: 32px !important; }

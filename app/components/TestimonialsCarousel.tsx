@@ -111,7 +111,7 @@ export default function TestimonialsCarousel({ lang = "th" }: { lang?: "th" | "e
           style={{ position: "absolute", left: 0, top: "50%", transform: "translateY(-50%)",
             width: "44px", height: "44px", borderRadius: "50%", border: "none",
             background: "rgba(95,38,229,0.10)", cursor: "pointer", display: "flex",
-            alignItems: "center", justifyContent: "center", zIndex: 3 }}>
+            alignItems: "center", justifyContent: "center", zIndex: 3, touchAction: "manipulation" }}>
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 5L7.5 10L12.5 15" stroke="#5f26e5" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
 
@@ -130,7 +130,7 @@ export default function TestimonialsCarousel({ lang = "th" }: { lang?: "th" | "e
           style={{ position: "absolute", right: 0, top: "50%", transform: "translateY(-50%)",
             width: "44px", height: "44px", borderRadius: "50%", border: "none",
             background: "#5f26e5", cursor: "pointer", display: "flex",
-            alignItems: "center", justifyContent: "center", zIndex: 3 }}>
+            alignItems: "center", justifyContent: "center", zIndex: 3, touchAction: "manipulation" }}>
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.5 5L12.5 10L7.5 15" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
       </div>
@@ -142,7 +142,8 @@ export default function TestimonialsCarousel({ lang = "th" }: { lang?: "th" | "e
             style={{ height: "10px", width: i === index ? "28px" : "10px",
               borderRadius: "5px", border: "none", cursor: "pointer",
               background: i === index ? "#5f26e5" : "rgba(95,38,229,0.25)",
-              transition: "width 0.3s ease, background 0.3s ease", padding: 0 }} />
+              transition: "width 0.3s ease, background 0.3s ease", padding: 0,
+              touchAction: "manipulation" }} />
         ))}
       </div>
     </div>
