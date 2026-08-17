@@ -967,7 +967,7 @@ body {
   /* ── FAQ page (/faq) ── */
   .faq-hero-section { padding: 96px 20px 48px !important; }
   .faq-hero-section h1 { line-height: 1.3 !important; }
-  .faq-tabs-section { padding: 0 20px 48px !important; }
+  .faq-tabs-section { padding: 0 0 48px !important; }
   .faq-tabs-row { gap: 8px !important; margin-bottom: 32px !important; flex-wrap: wrap; }
   .faq-tab-btn { padding: 10px 20px !important; font-size: 14px !important; }
   .faq-accordion-wrap { margin-top: -48px !important; }
