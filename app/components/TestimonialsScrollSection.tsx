@@ -192,7 +192,7 @@ export default function TestimonialsScrollSection({
   const col2 = items.filter((_, i) => i % 2 !== 0);
 
   return (
-    <div style={{
+    <div className="tss-outer" style={{
       background: `linear-gradient(180deg, ${BG_TOP} 0%, ${BG_BOT} 100%)`,
       padding: "80px 48px",
     }}>
