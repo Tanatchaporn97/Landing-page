@@ -986,5 +986,13 @@ body {
   .br-login-btn { padding: 8px 16px !important; font-size: 13px !important; }
   .br-hero { padding: 16px 20px 64px !important; }
   .br-cta-btn { padding: 16px 36px !important; font-size: 16px !important; }
+
+  /* Testimonials scroll section — single column, fade at card 3 */
+  .tss-outer  { padding: 48px 20px !important; }
+  .tss-layout { flex-direction: column !important; gap: 32px !important; }
+  .tss-title  { flex: none !important; text-align: center !important; width: 100% !important; }
+  .tss-col2   { display: none !important; }
+  .tss-col1   { flex: 1 !important; width: 100% !important; }
+  .tss-viewport { height: 740px !important; overflow: hidden !important; position: relative !important; }
 }
 

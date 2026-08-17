@@ -55,11 +55,13 @@ function MarqueeColumn({
   direction,
   duration,
   style,
+  className,
 }: {
   items: { photo: string; name: string; text: string }[];
   direction: "up" | "down";
   duration: number;
   style?: React.CSSProperties;
+  className?: string;
 }) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const origRef    = useRef<HTMLDivElement>(null);
@@ -148,7 +150,7 @@ function MarqueeColumn({
   const colStyle: React.CSSProperties = { display: "flex", flexDirection: "column", gap: `${CARD_GAP}px` };
 
   return (
-    <div ref={wrapperRef} style={{ flex: 1, overflow: "hidden", ...style }}>
+    <div ref={wrapperRef} className={className} style={{ flex: 1, overflow: "hidden", ...style }}>
       <motion.div
         style={{ y, cursor: "grab", userSelect: "none" }}
         drag="y"
@@ -235,8 +237,8 @@ export default function TestimonialsScrollSection({
             position: "relative",
           }}
         >
-          <MarqueeColumn items={col1} direction="up" duration={30} />
-          <MarqueeColumn items={col2} direction="down" duration={38} style={{ marginTop: "48px" }} />
+          <MarqueeColumn items={col1} direction="up" duration={30} className="tss-col1" />
+          <MarqueeColumn items={col2} direction="down" duration={38} style={{ marginTop: "48px" }} className="tss-col2" />
 
           {/* Fade — bottom only */}
           <div style={{
