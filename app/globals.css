@@ -988,11 +988,12 @@ body {
   .br-cta-btn { padding: 16px 36px !important; font-size: 16px !important; }
 
   /* Testimonials scroll section — single column, fade at card 3 */
-  .tss-outer  { padding: 48px 20px !important; }
-  .tss-layout { flex-direction: column !important; gap: 32px !important; }
-  .tss-title  { flex: none !important; text-align: center !important; width: 100% !important; }
-  .tss-col2   { display: none !important; }
-  .tss-col1   { flex: 1 !important; width: 100% !important; }
-  .tss-viewport { height: 740px !important; overflow: hidden !important; position: relative !important; }
+  .tss-outer    { padding: 48px 20px 24px !important; }
+  .tss-layout   { flex-direction: column !important; gap: 32px !important; }
+  .tss-title    { flex: none !important; text-align: center !important; width: 100% !important; }
+  .tss-col2     { display: none !important; }
+  .tss-col1     { flex: 1 !important; width: 100% !important; }
+  .tss-viewport { height: 600px !important; overflow: hidden !important; position: relative !important; }
+  .tss-fade-bot { height: 80px !important; }
 }
 

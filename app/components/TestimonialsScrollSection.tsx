@@ -241,7 +241,7 @@ export default function TestimonialsScrollSection({
           <MarqueeColumn items={col2} direction="down" duration={38} style={{ marginTop: "48px" }} className="tss-col2" />
 
           {/* Fade — bottom only */}
-          <div style={{
+          <div className="tss-fade-bot" style={{
             position: "absolute", bottom: 0, left: 0, right: 0, height: "120px",
             background: `linear-gradient(to top, ${BG_BOT} 0%, transparent 100%)`,
             pointerEvents: "none", zIndex: 2,
