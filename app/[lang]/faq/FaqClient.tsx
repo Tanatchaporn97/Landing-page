@@ -53,7 +53,7 @@ export default function FaqClient({ lang, dict }: { lang: Locale, dict: any }) {
               </button>
             ))}
           </div>
-          <div className="faq-accordion-wrap"><FAQAccordion faqs={active.faqs} variant="influencer" hideCta={true} oneColumn={true} hideTitle={true} lang={lang} dict={dict} /></div>
+          <div className="faq-accordion-wrap"><FAQAccordion faqs={active.faqs} variant="home" hideCta={true} oneColumn={true} hideTitle={true} lang={lang} dict={dict} /></div>
         </div>
       </section>
 
