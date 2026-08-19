@@ -75,15 +75,12 @@ export default async function SuccessStoriesPage({ params }: { params: Promise<{
             const img = CARD_IMGS[story.slug] ?? story.logo;
             return (
               <Link key={story.slug} href={`/${lang}/success/${story.slug}`} style={{ textDecoration: "none" }}>
-                <div style={{
+                <div className="ss-card" style={{
                   borderRadius: "28px", overflow: "hidden", height: "460px", position: "relative",
                   background: "rgba(255,255,255,0.22)", backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
                   border: "1px solid rgba(255,255,255,0.45)", boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
                   transition: "transform 0.25s, box-shadow 0.25s", cursor: "pointer",
-                }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(-4px)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 16px 48px rgba(95,38,229,0.18)"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px rgba(95,38,229,0.10)"; }}
-                >
+                }}>
                   <Image src={img} alt={story.brand} fill sizes="(max-width:768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
                   {/* Gradient overlay */}
                   <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.18) 55%, transparent 100%)" }} />
