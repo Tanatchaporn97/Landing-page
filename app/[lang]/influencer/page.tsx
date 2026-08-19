@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -10,6 +11,40 @@ import InfluencerHero from "../../components/InfluencerHero";
 import PathToPartnership from "../../components/PathToPartnership";
 import UnlockIconHover from "../../components/UnlockIconHover";
 import { type Locale } from "../../../i18n-config";
+
+const META = {
+  en: {
+    title: "For Influencers | Buddy Review",
+    description: "Join Buddy Review and connect with Thailand's top brands. Earn from reviews on Instagram, TikTok, YouTube, and more — with guaranteed on-time payments.",
+  },
+  th: {
+    title: "สำหรับอินฟลูเอนเซอร์ | Buddy Review",
+    description: "เข้าร่วม Buddy Review และเชื่อมต่อกับแบรนด์ชั้นนำ สร้างรายได้จากการรีวิวบน Instagram, TikTok, YouTube และอื่นๆ พร้อมการจ่ายเงินที่ตรงเวลาและมั่นใจได้",
+  },
+} as const;
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const m = META[lang as keyof typeof META] ?? META.en;
+  return {
+    title: m.title,
+    description: m.description,
+    alternates: {
+      canonical: `https://agency.buddyreview.co/${lang}/influencer`,
+      languages: { en: "https://agency.buddyreview.co/en/influencer", th: "https://agency.buddyreview.co/th/influencer" },
+    },
+    openGraph: {
+      title: m.title,
+      description: m.description,
+      url: `https://agency.buddyreview.co/${lang}/influencer`,
+      siteName: "Buddy Review",
+      images: [{ url: "https://agency.buddyreview.co/og-image.jpg", width: 1200, height: 630 }],
+      locale: lang === "th" ? "th_TH" : "en_US",
+      type: "website",
+    },
+    twitter: { card: "summary_large_image", title: m.title, description: m.description, images: ["https://agency.buddyreview.co/og-image.jpg"] },
+  };
+}
 
 // Lazy load below-the-fold components
 const TestimonialsScrollSection = dynamic(() => import("../../components/TestimonialsScrollSection"));
