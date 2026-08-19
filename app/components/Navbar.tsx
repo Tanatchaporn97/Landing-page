@@ -167,9 +167,9 @@ export default function Navbar({
                 {dropdownOpen && (
                   <div style={{
                     position: "absolute", top: "calc(100% + 16px)", right: 0,
-                    background: "rgba(255,255,255,0.92)", backdropFilter: "blur(28px)", WebkitBackdropFilter: "blur(28px)",
-                    border: "1px solid rgba(0,0,0,0.07)", borderRadius: "20px",
-                    padding: "8px", minWidth: "220px", boxShadow: "0 8px 32px rgba(95,38,229,0.12)",
+                    background: "rgba(255,255,255,0.18)", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)",
+                    border: "1px solid rgba(255,255,255,0.45)", borderRadius: "20px",
+                    padding: "8px", minWidth: "220px", boxShadow: "0 8px 32px rgba(95,38,229,0.15)",
                     zIndex: 200,
                   }}>
                     {[
@@ -178,21 +178,21 @@ export default function Navbar({
                       { label: t.imInfluencer, href: `/${lang}/influencer` },
                     ].map((item) => (
                       <Link key={item.href} href={item.href} onClick={() => setDropdownOpen(false)}
-                        style={{ ...KT, display: "block", padding: "12px 16px", fontSize: "15px", fontWeight: 600, color: "#111827", textDecoration: "none", borderRadius: "12px", transition: "background 0.15s" }}
-                        onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(95,38,229,0.08)")}
+                        style={{ ...KT, display: "block", padding: "12px 16px", fontSize: "15px", fontWeight: 600, color: "#ffffff", textDecoration: "none", borderRadius: "12px", transition: "background 0.15s" }}
+                        onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.18)")}
                         onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                       >
                         {item.label}
                       </Link>
                     ))}
-                    <div style={{ height: "1px", background: "rgba(0,0,0,0.07)", margin: "4px 8px" }} />
+                    <div style={{ height: "1px", background: "rgba(255,255,255,0.3)", margin: "4px 8px" }} />
                     <button onClick={() => { toggleLang(); setDropdownOpen(false); }}
-                      style={{ ...KT, display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: "12px 16px", fontSize: "15px", fontWeight: 600, color: "#5f26e5", background: "none", border: "none", cursor: "pointer", borderRadius: "12px", transition: "background 0.15s" }}
-                      onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(95,38,229,0.08)")}
+                      style={{ ...KT, display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: "12px 16px", fontSize: "15px", fontWeight: 600, color: "#ffffff", background: "none", border: "none", cursor: "pointer", borderRadius: "12px", transition: "background 0.15s" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.18)")}
                       onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                     >
                       <span>ภาษา</span>
-                      <span style={{ background: "rgba(95,38,229,0.1)", borderRadius: "8px", padding: "2px 10px", fontSize: "13px" }}>
+                      <span style={{ background: "rgba(255,255,255,0.22)", border: "1px solid rgba(255,255,255,0.45)", borderRadius: "8px", padding: "2px 10px", fontSize: "13px" }}>
                         {lang === "th" ? "TH | EN" : "EN | TH"}
                       </span>
                     </button>
