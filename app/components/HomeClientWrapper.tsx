@@ -288,7 +288,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       </section>
 
       {/* ── Success Stories (card carousel, reference: ฉันคืออินฟลูเอนเซอร์ page) ── */}
-      <section className="py-20 px-6 success-bg">
+      <section id="success-stories" className="py-20 px-6 success-bg">
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
 
           {/* Heading — matches site-standard section heading style */}

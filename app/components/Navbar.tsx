@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -40,6 +40,8 @@ export default function Navbar({
   const [scrolled, setScrolled] = useState(false);
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const router = useRouter();
 
@@ -64,8 +66,18 @@ export default function Navbar({
     setMenuOpen(false);
   };
 
-  const th = { contactUs: "ติดต่อเรา", imInfluencer: "ฉันคืออินฟลูเอนเซอร์", applyNow: "สมัครเลย", applyLine: "สมัครผ่านไลน์" };
-  const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", applyNow: "Apply Now", applyLine: "Apply via LINE" };
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  const th = { contactUs: "ติดต่อเรา", imInfluencer: "ฉันคืออินฟลูเอนเซอร์", applyNow: "สมัครเลย", applyLine: "สมัครผ่านไลน์", successStories: "เรื่องราวความสำเร็จ", blog: "บทความ" };
+  const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", applyNow: "Apply Now", applyLine: "Apply via LINE", successStories: "Success Stories", blog: "Blog" };
   const t = lang === "th" ? th : en;
   const isFaqPage = pathname?.includes("/faq");
   const forceDarkText = scrolled || variant === "influencer" || isFaqPage;
@@ -131,13 +143,71 @@ export default function Navbar({
                 style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
                 {t.imInfluencer}
               </Link>
+              {/* Desktop hamburger dropdown */}
+              <div ref={dropdownRef} style={{ position: "relative" }}>
+                <button
+                  onClick={() => setDropdownOpen((o) => !o)}
+                  style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", display: "flex", alignItems: "center", justifyContent: "center" }}
+                >
+                  <svg width="22" height="22" viewBox="0 0 23 23" fill="transparent" stroke={forceDarkText ? "#5f26e5" : "#ffffff"} strokeWidth="2.2" strokeLinecap="round">
+                    {dropdownOpen ? (
+                      <>
+                        <path d="M 3 16.5 L 17 2.5" />
+                        <path d="M 3 2.5 L 17 16.346" />
+                      </>
+                    ) : (
+                      <>
+                        <path d="M 2 2.5 L 20 2.5" />
+                        <path d="M 2 9.423 L 20 9.423" />
+                        <path d="M 2 16.346 L 20 16.346" />
+                      </>
+                    )}
+                  </svg>
+                </button>
+                {dropdownOpen && (
+                  <div style={{
+                    position: "absolute", top: "calc(100% + 16px)", right: 0,
+                    background: "rgba(255,255,255,0.92)", backdropFilter: "blur(28px)", WebkitBackdropFilter: "blur(28px)",
+                    border: "1px solid rgba(0,0,0,0.07)", borderRadius: "20px",
+                    padding: "8px", minWidth: "220px", boxShadow: "0 8px 32px rgba(95,38,229,0.12)",
+                    zIndex: 200,
+                  }}>
+                    {[
+                      { label: t.successStories, href: `/${lang}#success-stories` },
+                      { label: t.blog, href: `/${lang}/blog` },
+                      { label: t.imInfluencer, href: `/${lang}/influencer` },
+                    ].map((item) => (
+                      <Link key={item.href} href={item.href} onClick={() => setDropdownOpen(false)}
+                        style={{ ...KT, display: "block", padding: "12px 16px", fontSize: "15px", fontWeight: 600, color: "#111827", textDecoration: "none", borderRadius: "12px", transition: "background 0.15s" }}
+                        onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(95,38,229,0.08)")}
+                        onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                    <div style={{ height: "1px", background: "rgba(0,0,0,0.07)", margin: "4px 8px" }} />
+                    <button onClick={() => { toggleLang(); setDropdownOpen(false); }}
+                      style={{ ...KT, display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: "12px 16px", fontSize: "15px", fontWeight: 600, color: "#5f26e5", background: "none", border: "none", cursor: "pointer", borderRadius: "12px", transition: "background 0.15s" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(95,38,229,0.08)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                    >
+                      <span>ภาษา</span>
+                      <span style={{ background: "rgba(95,38,229,0.1)", borderRadius: "8px", padding: "2px 10px", fontSize: "13px" }}>
+                        {lang === "th" ? "TH | EN" : "EN | TH"}
+                      </span>
+                    </button>
+                  </div>
+                )}
+              </div>
             </>
           )}
-          <button onClick={toggleLang}
-            className="btn-hero px-5 py-3 rounded-full ml-1"
-            style={{ ...KT, fontSize: "16px", fontWeight: 600, color: forceDarkText ? "#5f26e5" : undefined }}>
-            {lang === "th" ? "EN" : "TH"}
-          </button>
+          {variant === "influencer" && (
+            <button onClick={toggleLang}
+              className="btn-hero px-5 py-3 rounded-full ml-1"
+              style={{ ...KT, fontSize: "16px", fontWeight: 600, color: forceDarkText ? "#5f26e5" : undefined }}>
+              {lang === "th" ? "EN" : "TH"}
+            </button>
+          )}
         </div>
         {/* Hamburger button — mobile only */}
         <MenuToggle
