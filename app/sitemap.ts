@@ -8,6 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes = [
     '', // หน้าแรก
     '/blog',
+    '/success-stories',
     '/buddy-ranks',
     '/category',
     '/faq',

@@ -655,6 +655,8 @@ body {
   .cs-card-link .cs-card { height: 480px !important; }
 
   /* FAQ 2-col stays on tablet */
+  .success-stories-grid { grid-template-columns: repeat(2,1fr) !important; }
+  .success-stories-grid-section { padding: 0 32px 80px !important; }
 
   /* Contact section — stack on narrow tablet */
   .contact-outer-grid { grid-template-columns: 1fr !important; }
@@ -980,6 +982,8 @@ body {
   /* ── Success Stories pages (/success) ── */
   .success-back-row { padding: 100px 20px 20px !important; }
   .success-stats-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .success-stories-grid-section { padding: 0 20px 64px !important; }
+  .success-stories-grid { grid-template-columns: 1fr !important; }
 
   /* ── Buddy Ranks page (/buddy-ranks) ── */
   .br-nav { padding: 20px 20px !important; }
