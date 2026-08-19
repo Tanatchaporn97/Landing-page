@@ -588,6 +588,10 @@ body {
 .hamburger-btn { display: none; }
 .desktop-nav-btns { display: flex; }
 
+/* Mobile expanding nav — hidden on desktop */
+.mobile-nav-circle  { display: none; }
+.mobile-nav-overlay { display: none; }
+
 /* KOL packages: extra features always visible on desktop, show-more button hidden */
 .kol-extra-features { display: flex !important; flex-direction: column; gap: 14px; margin-top: 14px; }
 .kol-show-more-btn { display: none !important; }
@@ -727,6 +731,8 @@ body {
   .nav-btn-contact { display: none !important; }
   .desktop-nav-btns { display: none !important; }
   .hamburger-btn { display: flex !important; }
+  .mobile-nav-circle  { display: block !important; }
+  .mobile-nav-overlay { display: flex !important; flex-direction: column; }
 
   /* Hero */
   .hero-section  { padding-top: 96px !important; }

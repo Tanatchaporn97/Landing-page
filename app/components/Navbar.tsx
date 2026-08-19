@@ -6,7 +6,6 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
-const ACCENT = "#5f26e5";
 
 function MenuToggle({ isOpen, toggle, color }: { isOpen: boolean; toggle: () => void; color: string }) {
   return (
@@ -76,6 +75,12 @@ export default function Navbar({
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  // Lock body scroll when mobile menu open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
   const th = { contactUs: "ติดต่อเรา", imInfluencer: "ฉันคืออินฟลูเอนเซอร์", applyNow: "สมัครเลย", applyLine: "สมัครผ่านไลน์", successStories: "เรื่องราวความสำเร็จ", blog: "บทความ" };
   const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", applyNow: "Apply Now", applyLine: "Apply via LINE", successStories: "Success Stories", blog: "Blog" };
   const t = lang === "th" ? th : en;
@@ -84,189 +89,250 @@ export default function Navbar({
 
   const itemStyle = { ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", padding: "12px 20px", textAlign: "center" as const, display: "block" };
 
-  return (
-    <motion.div
-      style={{ position: "fixed", top: "20px", left: "40px", right: "40px", zIndex: 100, pointerEvents: "none" }}
-      className="nav-landing-wrap"
-      animate={{ y: hideNav ? -120 : 0, opacity: hideNav ? 0 : 1 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-    >
-      <nav style={{
-        background: forceDarkText ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.08)",
-        backdropFilter: "blur(28px)",
-        WebkitBackdropFilter: "blur(28px)",
-        border: forceDarkText ? "1px solid rgba(0,0,0,0.05)" : "1px solid rgba(255,255,255,0.25)",
-        borderRadius: "100px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "10px 24px",
-        transition: "background 0.3s, border 0.3s",
-        pointerEvents: "auto",
-      }} className="nav-landing-inner">
-        <Link href={`/${lang}`}>
-          <Image
-            src={forceDarkText ? "/buddy-review-purple-logo.png" : "/buddy-review-logo.png"}
-            alt="Buddy Review"
-            className="nav-logo"
-            width={138}
-            height={48}
-            style={{ height: "48px", width: "auto", transition: "opacity 0.3s" }}
-          />
-        </Link>
-        {/* Desktop buttons */}
-        <div className="desktop-nav-btns flex items-center gap-3">
-          {variant === "influencer" ? (
-            <>
-              <Link href="https://www.buddyreview.co/app/new-campaigns"
-                className="btn-hero btn-hero-solid-purple px-6 py-3 rounded-full whitespace-nowrap"
-                style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
-                {t.applyNow}
-              </Link>
-              <a href="https://line.me/ti/p/~@buddyreview"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
-                style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
-                {t.applyLine}
-              </a>
-            </>
-          ) : (
-            <>
-              <a href={`/${lang}#contact`}
-                className="btn-hero btn-hero-solid-purple px-6 py-3 rounded-full whitespace-nowrap"
-                style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
-                {t.contactUs}
-              </a>
-              <Link href={`/${lang}/influencer`}
-                className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
-                style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
-                {t.imInfluencer}
-              </Link>
-              {/* Desktop hamburger dropdown */}
-              <div ref={dropdownRef} style={{ position: "relative" }}>
-                <button
-                  onClick={() => setDropdownOpen((o) => !o)}
-                  style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", display: "flex", alignItems: "center", justifyContent: "center" }}
-                >
-                  <svg width="22" height="22" viewBox="0 0 23 23" fill="transparent" stroke={forceDarkText ? "#5f26e5" : "#ffffff"} strokeWidth="2.2" strokeLinecap="round">
-                    {dropdownOpen ? (
-                      <>
-                        <path d="M 3 16.5 L 17 2.5" />
-                        <path d="M 3 2.5 L 17 16.346" />
-                      </>
-                    ) : (
-                      <>
-                        <path d="M 2 2.5 L 20 2.5" />
-                        <path d="M 2 9.423 L 20 9.423" />
-                        <path d="M 2 16.346 L 20 16.346" />
-                      </>
-                    )}
-                  </svg>
-                </button>
-                {dropdownOpen && (
-                  <div style={{
-                    position: "absolute", top: "calc(100% + 16px)", right: 0,
-                    background: "rgba(255,255,255,0.18)", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)",
-                    border: "1px solid rgba(255,255,255,0.45)", borderRadius: "20px",
-                    padding: "8px", minWidth: "220px", boxShadow: "0 8px 32px rgba(95,38,229,0.15)",
-                    zIndex: 200,
-                  }}>
-                    {[
-                      { label: t.successStories, href: `/${lang}/success` },
-                      { label: t.blog, href: `/${lang}/blog` },
-                      { label: t.imInfluencer, href: `/${lang}/influencer` },
-                    ].map((item) => (
-                      <Link key={item.href} href={item.href} onClick={() => setDropdownOpen(false)}
-                        style={{ ...KT, display: "block", padding: "12px 16px", fontSize: "15px", fontWeight: 600, color: "#ffffff", textDecoration: "none", borderRadius: "12px", transition: "background 0.15s" }}
-                        onMouseEnter={(e) => { e.currentTarget.style.background = "#ffffff"; e.currentTarget.style.color = "#5f26e5"; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#ffffff"; }}
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                    <div style={{ height: "1px", background: "rgba(255,255,255,0.3)", margin: "4px 8px" }} />
-                    <button onClick={() => { toggleLang(); setDropdownOpen(false); }}
-                      style={{ ...KT, display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: "12px 16px", fontSize: "15px", fontWeight: 600, color: "#ffffff", background: "none", border: "none", cursor: "pointer", borderRadius: "12px", transition: "background 0.15s" }}
-                      onMouseEnter={(e) => { e.currentTarget.style.background = "#ffffff"; e.currentTarget.style.color = "#5f26e5"; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#ffffff"; }}
-                    >
-                      <span>ภาษา</span>
-                      <span style={{ background: "rgba(255,255,255,0.22)", border: "1px solid rgba(255,255,255,0.45)", borderRadius: "8px", padding: "2px 10px", fontSize: "13px" }}>
-                        {lang === "th" ? "EN" : "TH"}
-                      </span>
-                    </button>
-                  </div>
-                )}
-              </div>
-            </>
-          )}
-          {variant === "influencer" && (
-            <button onClick={toggleLang}
-              className="btn-hero px-5 py-3 rounded-full ml-1"
-              style={{ ...KT, fontSize: "16px", fontWeight: 600, color: forceDarkText ? "#5f26e5" : undefined }}>
-              {lang === "th" ? "EN" : "TH"}
-            </button>
-          )}
-        </div>
-        {/* Hamburger button — mobile only */}
-        <MenuToggle
-          isOpen={menuOpen}
-          toggle={() => setMenuOpen((o) => !o)}
-          color={menuOpen ? "#ffffff" : forceDarkText ? "#5f26e5" : "#ffffff"}
-        />
-      </nav>
+  // Mobile nav links per variant
+  const mobileLinks = variant === "influencer"
+    ? [
+        { label: t.applyNow, href: "https://www.buddyreview.co/app/new-campaigns" },
+        { label: t.applyLine, href: "https://line.me/ti/p/~@buddyreview" },
+      ]
+    : [
+        { label: t.contactUs, href: `/${lang}#contact` },
+        { label: t.successStories, href: `/${lang}/success` },
+        { label: t.blog, href: `/${lang}/blog` },
+        { label: t.imInfluencer, href: `/${lang}/influencer` },
+      ];
 
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div
-          style={{
-            marginTop: "10px",
-            background: "rgba(15,10,40,0.94)",
-            backdropFilter: "blur(28px)",
-            WebkitBackdropFilter: "blur(28px)",
-            border: "1px solid rgba(255,255,255,0.18)",
-            borderRadius: "24px",
-            padding: "20px 24px",
-            pointerEvents: "auto",
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+  return (
+    <>
+      {/* ── Mobile expanding circle background ── */}
+      <div
+        className="mobile-nav-circle"
+        style={{
+          position: "fixed",
+          top: "2rem",
+          right: "2rem",
+          height: "3rem",
+          width: "3rem",
+          borderRadius: "50%",
+          background: "linear-gradient(135deg, #5f26e5 0%, #ff0089 100%)",
+          zIndex: 298,
+          transform: menuOpen ? "scale(80)" : "scale(0)",
+          transition: "transform 800ms cubic-bezier(0.86, 0, 0.07, 1)",
+        }}
+      />
+
+      {/* ── Mobile full-screen nav overlay ── */}
+      <div
+        className="mobile-nav-overlay"
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          height: "100vh",
+          width: "100%",
+          zIndex: 299,
+          opacity: menuOpen ? 1 : 0,
+          visibility: menuOpen ? "visible" : "hidden",
+          transition: menuOpen
+            ? "opacity 400ms 400ms, visibility 0s"
+            : "opacity 300ms, visibility 0s 300ms",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <ul style={{ listStyle: "none", padding: "0 24px", margin: 0, textAlign: "center", width: "100%" }}>
+          {mobileLinks.map((link, i) => (
+            <li key={link.href} style={{ margin: "0.4rem 0" }}>
+              <a
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  ...KT,
+                  display: "inline-block",
+                  padding: "0.8rem 2rem",
+                  color: "#ffffff",
+                  fontSize: "clamp(22px, 7vw, 38px)",
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.04em",
+                  transition: "color 200ms, transform 200ms",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.6)";
+                  (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1.08)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
+                  (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1)";
+                }}
+              >
+                <span style={{ marginRight: "1rem", color: "rgba(255,255,255,0.45)", fontSize: "0.6em", verticalAlign: "middle", fontWeight: 400 }}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {/* Language toggle */}
+        <div style={{ marginTop: "2rem", textAlign: "center" }}>
+          <button
+            onClick={toggleLang}
+            style={{
+              ...KT,
+              background: "rgba(255,255,255,0.15)",
+              border: "1px solid rgba(255,255,255,0.4)",
+              borderRadius: "50px",
+              padding: "10px 36px",
+              color: "#ffffff",
+              fontSize: "16px",
+              fontWeight: 600,
+              cursor: "pointer",
+              letterSpacing: "0.12em",
+            }}
+          >
+            {lang === "th" ? "EN" : "TH"}
+          </button>
+        </div>
+      </div>
+
+      {/* ── Navbar ── */}
+      <motion.div
+        style={{ position: "fixed", top: "20px", left: "40px", right: "40px", zIndex: menuOpen ? 300 : 100, pointerEvents: "none" }}
+        className="nav-landing-wrap"
+        animate={{ y: hideNav ? -120 : 0, opacity: hideNav ? 0 : 1 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      >
+        <nav style={{
+          background: forceDarkText ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.08)",
+          backdropFilter: "blur(28px)",
+          WebkitBackdropFilter: "blur(28px)",
+          border: forceDarkText ? "1px solid rgba(0,0,0,0.05)" : "1px solid rgba(255,255,255,0.25)",
+          borderRadius: "100px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "10px 24px",
+          transition: "background 0.3s, border 0.3s",
+          pointerEvents: "auto",
+        }} className="nav-landing-inner">
+          <Link href={`/${lang}`}>
+            <Image
+              src={forceDarkText ? "/buddy-review-purple-logo.png" : "/buddy-review-logo.png"}
+              alt="Buddy Review"
+              className="nav-logo"
+              width={138}
+              height={48}
+              style={{ height: "48px", width: "auto", transition: "opacity 0.3s" }}
+            />
+          </Link>
+
+          {/* Desktop buttons */}
+          <div className="desktop-nav-btns flex items-center gap-3">
             {variant === "influencer" ? (
               <>
-                <Link href="https://www.buddyreview.co/app/new-campaigns" onClick={() => setMenuOpen(false)}
-                  className="btn-hero btn-hero-solid-purple rounded-full whitespace-nowrap"
-                  style={itemStyle}>
+                <Link href="https://www.buddyreview.co/app/new-campaigns"
+                  className="btn-hero btn-hero-solid-purple px-6 py-3 rounded-full whitespace-nowrap"
+                  style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
                   {t.applyNow}
                 </Link>
-                <a href="https://line.me/ti/p/~@buddyreview" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}
-                  className="btn-hero rounded-full whitespace-nowrap"
-                  style={{ ...itemStyle, color: "#ffffff" }}>
+                <a href="https://line.me/ti/p/~@buddyreview"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
+                  style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
                   {t.applyLine}
                 </a>
               </>
             ) : (
               <>
-                <a href={`/${lang}#contact`} onClick={() => setMenuOpen(false)}
-                  className="btn-hero btn-hero-solid-purple rounded-full whitespace-nowrap"
-                  style={itemStyle}>
+                <a href={`/${lang}#contact`}
+                  className="btn-hero btn-hero-solid-purple px-6 py-3 rounded-full whitespace-nowrap"
+                  style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
                   {t.contactUs}
                 </a>
-                <Link href={`/${lang}/influencer`} onClick={() => setMenuOpen(false)}
-                  className="btn-hero rounded-full whitespace-nowrap"
-                  style={{ ...itemStyle, color: "#ffffff" }}>
+                <Link href={`/${lang}/influencer`}
+                  className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
+                  style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
                   {t.imInfluencer}
                 </Link>
+                {/* Desktop hamburger dropdown */}
+                <div ref={dropdownRef} style={{ position: "relative" }}>
+                  <button
+                    onClick={() => setDropdownOpen((o) => !o)}
+                    style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", display: "flex", alignItems: "center", justifyContent: "center" }}
+                  >
+                    <svg width="22" height="22" viewBox="0 0 23 23" fill="transparent" stroke={forceDarkText ? "#5f26e5" : "#ffffff"} strokeWidth="2.2" strokeLinecap="round">
+                      {dropdownOpen ? (
+                        <>
+                          <path d="M 3 16.5 L 17 2.5" />
+                          <path d="M 3 2.5 L 17 16.346" />
+                        </>
+                      ) : (
+                        <>
+                          <path d="M 2 2.5 L 20 2.5" />
+                          <path d="M 2 9.423 L 20 9.423" />
+                          <path d="M 2 16.346 L 20 16.346" />
+                        </>
+                      )}
+                    </svg>
+                  </button>
+                  {dropdownOpen && (
+                    <div style={{
+                      position: "absolute", top: "calc(100% + 16px)", right: 0,
+                      background: "rgba(255,255,255,0.18)", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)",
+                      border: "1px solid rgba(255,255,255,0.45)", borderRadius: "20px",
+                      padding: "8px", minWidth: "220px", boxShadow: "0 8px 32px rgba(95,38,229,0.15)",
+                      zIndex: 200,
+                    }}>
+                      {[
+                        { label: t.successStories, href: `/${lang}/success` },
+                        { label: t.blog, href: `/${lang}/blog` },
+                        { label: t.imInfluencer, href: `/${lang}/influencer` },
+                      ].map((item) => (
+                        <Link key={item.href} href={item.href} onClick={() => setDropdownOpen(false)}
+                          style={{ ...KT, display: "block", padding: "12px 16px", fontSize: "15px", fontWeight: 600, color: "#ffffff", textDecoration: "none", borderRadius: "12px", transition: "background 0.15s" }}
+                          onMouseEnter={(e) => { e.currentTarget.style.background = "#ffffff"; e.currentTarget.style.color = "#5f26e5"; }}
+                          onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#ffffff"; }}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                      <div style={{ height: "1px", background: "rgba(255,255,255,0.3)", margin: "4px 8px" }} />
+                      <button onClick={() => { toggleLang(); setDropdownOpen(false); }}
+                        style={{ ...KT, display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: "12px 16px", fontSize: "15px", fontWeight: 600, color: "#ffffff", background: "none", border: "none", cursor: "pointer", borderRadius: "12px", transition: "background 0.15s" }}
+                        onMouseEnter={(e) => { e.currentTarget.style.background = "#ffffff"; e.currentTarget.style.color = "#5f26e5"; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#ffffff"; }}
+                      >
+                        <span>ภาษา</span>
+                        <span style={{ background: "rgba(255,255,255,0.22)", border: "1px solid rgba(255,255,255,0.45)", borderRadius: "8px", padding: "2px 10px", fontSize: "13px" }}>
+                          {lang === "th" ? "EN" : "TH"}
+                        </span>
+                      </button>
+                    </div>
+                  )}
+                </div>
               </>
             )}
-            <button onClick={toggleLang}
-              className="btn-hero rounded-full"
-              style={{ ...itemStyle, width: "100%", background: "none", border: "1px solid rgba(255,255,255,0.3)", cursor: "pointer", color: "#ffffff" }}>
-              {lang === "th" ? "EN" : "TH"}
-            </button>
+            {variant === "influencer" && (
+              <button onClick={toggleLang}
+                className="btn-hero px-5 py-3 rounded-full ml-1"
+                style={{ ...KT, fontSize: "16px", fontWeight: 600, color: forceDarkText ? "#5f26e5" : undefined }}>
+                {lang === "th" ? "EN" : "TH"}
+              </button>
+            )}
           </div>
-        </div>
-      )}
-    </motion.div>
+
+          {/* Hamburger button — mobile only */}
+          <MenuToggle
+            isOpen={menuOpen}
+            toggle={() => setMenuOpen((o) => !o)}
+            color={menuOpen ? "#ffffff" : forceDarkText ? "#5f26e5" : "#ffffff"}
+          />
+        </nav>
+      </motion.div>
+    </>
   );
 }
