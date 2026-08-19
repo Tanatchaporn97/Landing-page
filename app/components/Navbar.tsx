@@ -173,7 +173,7 @@ export default function Navbar({
                     zIndex: 200,
                   }}>
                     {[
-                      { label: t.successStories, href: `/${lang}/success-stories` },
+                      { label: t.successStories, href: `/${lang}/success` },
                       { label: t.blog, href: `/${lang}/blog` },
                       { label: t.imInfluencer, href: `/${lang}/influencer` },
                     ].map((item) => (
