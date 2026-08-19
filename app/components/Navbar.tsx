@@ -179,8 +179,8 @@ export default function Navbar({
                     ].map((item) => (
                       <Link key={item.href} href={item.href} onClick={() => setDropdownOpen(false)}
                         style={{ ...KT, display: "block", padding: "12px 16px", fontSize: "15px", fontWeight: 600, color: "#ffffff", textDecoration: "none", borderRadius: "12px", transition: "background 0.15s" }}
-                        onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.18)")}
-                        onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                        onMouseEnter={(e) => { e.currentTarget.style.background = "#ffffff"; e.currentTarget.style.color = "#5f26e5"; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#ffffff"; }}
                       >
                         {item.label}
                       </Link>
@@ -188,8 +188,8 @@ export default function Navbar({
                     <div style={{ height: "1px", background: "rgba(255,255,255,0.3)", margin: "4px 8px" }} />
                     <button onClick={() => { toggleLang(); setDropdownOpen(false); }}
                       style={{ ...KT, display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: "12px 16px", fontSize: "15px", fontWeight: 600, color: "#ffffff", background: "none", border: "none", cursor: "pointer", borderRadius: "12px", transition: "background 0.15s" }}
-                      onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.18)")}
-                      onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                      onMouseEnter={(e) => { e.currentTarget.style.background = "#ffffff"; e.currentTarget.style.color = "#5f26e5"; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#ffffff"; }}
                     >
                       <span>ภาษา</span>
                       <span style={{ background: "rgba(255,255,255,0.22)", border: "1px solid rgba(255,255,255,0.45)", borderRadius: "8px", padding: "2px 10px", fontSize: "13px" }}>
