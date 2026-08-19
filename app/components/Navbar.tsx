@@ -193,7 +193,7 @@ export default function Navbar({
                     >
                       <span>ภาษา</span>
                       <span style={{ background: "rgba(255,255,255,0.22)", border: "1px solid rgba(255,255,255,0.45)", borderRadius: "8px", padding: "2px 10px", fontSize: "13px" }}>
-                        {lang === "th" ? "TH | EN" : "EN | TH"}
+                        {lang === "th" ? "EN" : "TH"}
                       </span>
                     </button>
                   </div>
