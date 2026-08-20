@@ -1,12 +1,69 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
 import BackButton from "./BackButton";
 import Navbar from "../../../components/Navbar";
 import BlogFooter from "../BlogFooter";
 import ScrollProgressBar from "../../../components/ScrollProgressBar";
 import { getDictionary } from "../../../../get-dictionary";
 import { type Locale } from "../../../../i18n-config";
+
+const BLOG_DESCRIPTIONS: Record<string, Record<string, string>> = {
+  "tiktok-algorithm-9-techniques": {
+    th: "เจาะลึกอัลกอริทึม TikTok 2025 พร้อม 9 เทคนิคทำคลิปให้ติด For You Page เพิ่ม Engagement และยอดวิวอย่างได้ผล",
+    en: "Decode the TikTok Algorithm 2025 with 9 proven techniques to get your videos on the For You Page and grow your reach.",
+  },
+  "best-time-to-post-2025": {
+    th: "รวมเวลาทองในการโพสต์บน Facebook Instagram TikTok YouTube และ Lemon8 ปี 2025 เพื่อเพิ่ม Reach และ Engagement",
+    en: "Best times to post on Facebook, Instagram, TikTok, YouTube, and Lemon8 in 2025 — maximize your reach and engagement.",
+  },
+  "influencer-mapping-canvas": {
+    th: "Influencer Mapping Canvas เครื่องมือวิเคราะห์ 5 ปัจจัยเลือกอินฟลูเอนเซอร์ที่ใช่ สำหรับแคมเปญ Influencer Marketing ปี 2025",
+    en: "The Influencer Mapping Canvas: a 5-factor framework for choosing the right influencer for your brand in 2025.",
+  },
+};
+
+export async function generateMetadata(
+  { params }: { params: Promise<{ lang: string; slug: string }> }
+): Promise<Metadata> {
+  const { lang, slug } = await params;
+  const dict = await getDictionary(lang as Locale);
+  const post = (dict?.blogPosts || []).find((p: any) => p.slug === slug);
+  if (!post) return {};
+
+  const title = `${post.title} | Buddy Review`;
+  const description = BLOG_DESCRIPTIONS[slug]?.[lang] ?? post.title;
+  const canonical = `https://agency.buddyreview.co/${lang}/blog/${slug}`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical,
+      languages: {
+        th: `https://agency.buddyreview.co/th/blog/${slug}`,
+        en: `https://agency.buddyreview.co/en/blog/${slug}`,
+        "x-default": `https://agency.buddyreview.co/th/blog/${slug}`,
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      siteName: "Buddy Review",
+      images: [{ url: "https://agency.buddyreview.co/og-image.jpg", width: 1200, height: 630 }],
+      type: "article",
+      locale: lang === "th" ? "th_TH" : "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["https://agency.buddyreview.co/og-image.jpg"],
+    },
+  };
+}
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
