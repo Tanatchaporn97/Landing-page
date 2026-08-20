@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +10,7 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 function MenuToggle({ isOpen, toggle, color }: { isOpen: boolean; toggle: () => void; color: string }) {
   return (
     <button type="button" className="hamburger-btn" onClick={toggle}
-      style={{ background: "none", border: "none", cursor: "pointer", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", width: "44px", height: "44px", flexShrink: 0, alignItems: "center", justifyContent: "center" }}>
+      style={{ background: "none", border: "none", cursor: "pointer", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", width: "44px", height: "44px", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
       <svg width="22" height="22" viewBox="0 0 23 23" fill="transparent" stroke={color} strokeWidth="2.2" strokeLinecap="round">
         {isOpen ? (
           <>
@@ -39,8 +39,6 @@ export default function Navbar({
   const [scrolled, setScrolled] = useState(false);
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const router = useRouter();
 
@@ -50,9 +48,7 @@ export default function Navbar({
     setScrolled(current > 40);
     const previous = scrollY.getPrevious() ?? current;
     const diff = current - previous;
-    if (Math.abs(diff) > 2) {
-      setScrollDirection(diff > 0 ? "down" : "up");
-    }
+    if (Math.abs(diff) > 2) setScrollDirection(diff > 0 ? "down" : "up");
   });
 
   const hideNav = scrollDirection === "down" && scrolled && !menuOpen;
@@ -60,22 +56,11 @@ export default function Navbar({
   const toggleLang = () => {
     const nextLang = lang === "th" ? "en" : "th";
     if (!pathname) return;
-    const newPath = pathname.replace(`/${lang}`, `/${nextLang}`);
-    router.push(newPath);
+    router.push(pathname.replace(`/${lang}`, `/${nextLang}`));
     setMenuOpen(false);
   };
 
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, []);
-
-  // Lock body scroll when mobile menu open
+  // Lock body scroll when menu open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -87,10 +72,7 @@ export default function Navbar({
   const isFaqPage = pathname?.includes("/faq");
   const forceDarkText = scrolled || variant === "influencer" || isFaqPage;
 
-  const itemStyle = { ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", padding: "12px 20px", textAlign: "center" as const, display: "block" };
-
-  // Mobile nav links per variant
-  const mobileLinks = variant === "influencer"
+  const navLinks = variant === "influencer"
     ? [
         { label: t.applyNow, href: "https://www.buddyreview.co/app/new-campaigns" },
         { label: t.applyLine, href: "https://line.me/ti/p/~@buddyreview" },
@@ -104,13 +86,11 @@ export default function Navbar({
 
   return (
     <>
-      {/* ── Mobile expanding circle background ── */}
+      {/* ── Expanding circle background ── */}
       <div
-        className="mobile-nav-circle"
+        className="nav-circle-bg"
         style={{
           position: "fixed",
-          top: "2rem",
-          right: "2rem",
           height: "3rem",
           width: "3rem",
           borderRadius: "50%",
@@ -121,9 +101,9 @@ export default function Navbar({
         }}
       />
 
-      {/* ── Mobile full-screen nav overlay ── */}
+      {/* ── Full-screen nav overlay ── */}
       <div
-        className="mobile-nav-overlay"
+        className="nav-full-overlay"
         style={{
           position: "fixed",
           top: 0,
@@ -133,15 +113,17 @@ export default function Navbar({
           zIndex: 299,
           opacity: menuOpen ? 1 : 0,
           visibility: menuOpen ? "visible" : "hidden",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
           transition: menuOpen
             ? "opacity 400ms 400ms, visibility 0s"
             : "opacity 300ms, visibility 0s 300ms",
-          alignItems: "center",
-          justifyContent: "center",
         }}
       >
         <ul style={{ listStyle: "none", padding: "0 24px", margin: 0, textAlign: "center", width: "100%" }}>
-          {mobileLinks.map((link, i) => (
+          {navLinks.map((link, i) => (
             <li key={link.href} style={{ margin: "0.4rem 0" }}>
               <a
                 href={link.href}
@@ -151,15 +133,15 @@ export default function Navbar({
                   display: "inline-block",
                   padding: "0.8rem 2rem",
                   color: "#ffffff",
-                  fontSize: "clamp(22px, 7vw, 38px)",
+                  fontSize: "clamp(22px, 5vw, 48px)",
                   fontWeight: 700,
                   textDecoration: "none",
-                  textTransform: "uppercase",
+                  textTransform: "uppercase" as const,
                   letterSpacing: "0.04em",
                   transition: "color 200ms, transform 200ms",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.6)";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.55)";
                   (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1.08)";
                 }}
                 onMouseLeave={(e) => {
@@ -167,7 +149,7 @@ export default function Navbar({
                   (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1)";
                 }}
               >
-                <span style={{ marginRight: "1rem", color: "rgba(255,255,255,0.45)", fontSize: "0.6em", verticalAlign: "middle", fontWeight: 400 }}>
+                <span style={{ marginRight: "1rem", color: "rgba(255,255,255,0.4)", fontSize: "0.55em", verticalAlign: "middle", fontWeight: 400 }}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 {link.label}
@@ -177,7 +159,7 @@ export default function Navbar({
         </ul>
 
         {/* Language toggle */}
-        <div style={{ marginTop: "2rem", textAlign: "center" }}>
+        <div style={{ marginTop: "2rem" }}>
           <button
             onClick={toggleLang}
             style={{
@@ -229,7 +211,7 @@ export default function Navbar({
             />
           </Link>
 
-          {/* Desktop buttons */}
+          {/* Desktop CTA buttons */}
           <div className="desktop-nav-btns flex items-center gap-3">
             {variant === "influencer" ? (
               <>
@@ -238,13 +220,16 @@ export default function Navbar({
                   style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
                   {t.applyNow}
                 </Link>
-                <a href="https://line.me/ti/p/~@buddyreview"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <a href="https://line.me/ti/p/~@buddyreview" target="_blank" rel="noopener noreferrer"
                   className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
                   style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
                   {t.applyLine}
                 </a>
+                <button onClick={toggleLang}
+                  className="btn-hero px-5 py-3 rounded-full"
+                  style={{ ...KT, fontSize: "16px", fontWeight: 600, color: forceDarkText ? "#5f26e5" : undefined }}>
+                  {lang === "th" ? "EN" : "TH"}
+                </button>
               </>
             ) : (
               <>
@@ -258,74 +243,11 @@ export default function Navbar({
                   style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
                   {t.imInfluencer}
                 </Link>
-                {/* Desktop hamburger dropdown */}
-                <div ref={dropdownRef} style={{ position: "relative" }}>
-                  <button
-                    onClick={() => setDropdownOpen((o) => !o)}
-                    style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", display: "flex", alignItems: "center", justifyContent: "center" }}
-                  >
-                    <svg width="22" height="22" viewBox="0 0 23 23" fill="transparent" stroke={forceDarkText ? "#5f26e5" : "#ffffff"} strokeWidth="2.2" strokeLinecap="round">
-                      {dropdownOpen ? (
-                        <>
-                          <path d="M 3 16.5 L 17 2.5" />
-                          <path d="M 3 2.5 L 17 16.346" />
-                        </>
-                      ) : (
-                        <>
-                          <path d="M 2 2.5 L 20 2.5" />
-                          <path d="M 2 9.423 L 20 9.423" />
-                          <path d="M 2 16.346 L 20 16.346" />
-                        </>
-                      )}
-                    </svg>
-                  </button>
-                  {dropdownOpen && (
-                    <div style={{
-                      position: "absolute", top: "calc(100% + 16px)", right: 0,
-                      background: "rgba(255,255,255,0.18)", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)",
-                      border: "1px solid rgba(255,255,255,0.45)", borderRadius: "20px",
-                      padding: "8px", minWidth: "220px", boxShadow: "0 8px 32px rgba(95,38,229,0.15)",
-                      zIndex: 200,
-                    }}>
-                      {[
-                        { label: t.successStories, href: `/${lang}/success` },
-                        { label: t.blog, href: `/${lang}/blog` },
-                        { label: t.imInfluencer, href: `/${lang}/influencer` },
-                      ].map((item) => (
-                        <Link key={item.href} href={item.href} onClick={() => setDropdownOpen(false)}
-                          style={{ ...KT, display: "block", padding: "12px 16px", fontSize: "15px", fontWeight: 600, color: "#ffffff", textDecoration: "none", borderRadius: "12px", transition: "background 0.15s" }}
-                          onMouseEnter={(e) => { e.currentTarget.style.background = "#ffffff"; e.currentTarget.style.color = "#5f26e5"; }}
-                          onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#ffffff"; }}
-                        >
-                          {item.label}
-                        </Link>
-                      ))}
-                      <div style={{ height: "1px", background: "rgba(255,255,255,0.3)", margin: "4px 8px" }} />
-                      <button onClick={() => { toggleLang(); setDropdownOpen(false); }}
-                        style={{ ...KT, display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: "12px 16px", fontSize: "15px", fontWeight: 600, color: "#ffffff", background: "none", border: "none", cursor: "pointer", borderRadius: "12px", transition: "background 0.15s" }}
-                        onMouseEnter={(e) => { e.currentTarget.style.background = "#ffffff"; e.currentTarget.style.color = "#5f26e5"; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#ffffff"; }}
-                      >
-                        <span>ภาษา</span>
-                        <span style={{ background: "rgba(255,255,255,0.22)", border: "1px solid rgba(255,255,255,0.45)", borderRadius: "8px", padding: "2px 10px", fontSize: "13px" }}>
-                          {lang === "th" ? "EN" : "TH"}
-                        </span>
-                      </button>
-                    </div>
-                  )}
-                </div>
               </>
-            )}
-            {variant === "influencer" && (
-              <button onClick={toggleLang}
-                className="btn-hero px-5 py-3 rounded-full ml-1"
-                style={{ ...KT, fontSize: "16px", fontWeight: 600, color: forceDarkText ? "#5f26e5" : undefined }}>
-                {lang === "th" ? "EN" : "TH"}
-              </button>
             )}
           </div>
 
-          {/* Hamburger button — mobile only */}
+          {/* Hamburger — all screen sizes */}
           <MenuToggle
             isOpen={menuOpen}
             toggle={() => setMenuOpen((o) => !o)}

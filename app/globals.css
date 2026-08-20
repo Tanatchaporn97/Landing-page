@@ -585,12 +585,14 @@ body {
 }
 
 /* Hamburger: hidden on desktop, shown on mobile */
-.hamburger-btn { display: none; }
+.hamburger-btn { display: flex; }
 .desktop-nav-btns { display: flex; }
 
-/* Mobile expanding nav — hidden on desktop */
-.mobile-nav-circle  { display: none; }
-.mobile-nav-overlay { display: none; }
+/* Expanding circle — top-right, responsive position */
+.nav-circle-bg { top: 2rem; right: 2rem; }
+@media (min-width: 768px) {
+  .nav-circle-bg { top: 3.2rem; right: 4.5rem; }
+}
 
 /* KOL packages: extra features always visible on desktop, show-more button hidden */
 .kol-extra-features { display: flex !important; flex-direction: column; gap: 14px; margin-top: 14px; }
@@ -730,9 +732,6 @@ body {
   }
   .nav-btn-contact { display: none !important; }
   .desktop-nav-btns { display: none !important; }
-  .hamburger-btn { display: flex !important; }
-  .mobile-nav-circle  { display: block !important; }
-  .mobile-nav-overlay { display: flex !important; flex-direction: column; }
 
   /* Hero */
   .hero-section  { padding-top: 96px !important; }
