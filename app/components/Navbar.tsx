@@ -114,7 +114,6 @@ export default function Navbar({
           {navLinks.map((link, i) => (
             <li key={link.href} style={{ margin: "0.55rem 0" }}>
               <a href={link.href} onClick={() => setMenuOpen(false)} className="nav-overlay-link">
-                <span className="nav-overlay-num">{String(i + 1).padStart(2, "0")}</span>
                 {link.label}
               </a>
             </li>
