@@ -60,7 +60,6 @@ export default function Navbar({
     setMenuOpen(false);
   };
 
-  // Lock body scroll when menu open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -89,83 +88,40 @@ export default function Navbar({
 
   return (
     <>
-      {/* ── Expanding circle background ── */}
+      {/* ── Fullscreen overlay (CodingNepal style) ── */}
       <div
-        className="nav-circle-bg"
+        className="nav-overlay-wrapper"
         style={{
           position: "fixed",
-          height: "3rem",
-          width: "3rem",
-          borderRadius: "50%",
-          background: "rgba(255, 255, 255, 0.22)",
-          backdropFilter: "blur(32px)",
-          WebkitBackdropFilter: "blur(32px)",
-          border: "1px solid rgba(255, 255, 255, 0.5)",
-          zIndex: 298,
-          transform: menuOpen ? "scale(80)" : "scale(0)",
-          transition: "transform 800ms cubic-bezier(0.86, 0, 0.07, 1)",
-        }}
-      />
-
-      {/* ── Full-screen nav overlay ── */}
-      <div
-        className="nav-full-overlay"
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          height: "100vh",
-          width: "100%",
+          inset: 0,
           zIndex: 299,
-          opacity: menuOpen ? 1 : 0,
-          visibility: menuOpen ? "visible" : "hidden",
+          background: `
+          radial-gradient(ellipse 70% 70% at top right, rgba(255,200,225,.75) 0%, rgba(255,210,232,.45) 35%, transparent 70%),
+          radial-gradient(ellipse 75% 75% at bottom left, rgba(188,165,255,.75) 0%, rgba(205,186,255,.45) 35%, transparent 72%),
+          linear-gradient(135deg, #d9c5ff 0%, #ecd7f9 45%, #f7d5ea 100%)
+        `,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          transition: menuOpen
-            ? "opacity 400ms 400ms, visibility 0s"
-            : "opacity 300ms, visibility 0s 300ms",
+          opacity: menuOpen ? 1 : 0,
+          visibility: menuOpen ? "visible" : "hidden",
+          transition: "opacity 0.4s ease, visibility 0.4s ease",
+          pointerEvents: menuOpen ? "auto" : "none",
         }}
       >
-        <ul style={{ listStyle: "none", padding: "0 24px", margin: 0, textAlign: "center", width: "100%" }}>
+        <ul style={{ listStyle: "none", padding: 0, margin: 0, textAlign: "center" }}>
           {navLinks.map((link, i) => (
-            <li key={link.href} style={{ margin: "0.4rem 0" }}>
-              <a
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                style={{
-                  ...KT,
-                  display: "inline-block",
-                  padding: "0.8rem 2rem",
-                  color: "#1a0a3d",
-                  fontSize: "clamp(22px, 5vw, 48px)",
-                  fontWeight: 700,
-                  textDecoration: "none",
-                  textTransform: "uppercase" as const,
-                  letterSpacing: "0.04em",
-                  transition: "color 200ms, transform 200ms",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.color = "#5f26e5";
-                  (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1.08)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.color = "#1a0a3d";
-                  (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1)";
-                }}
-              >
-                <span style={{ marginRight: "1rem", color: "rgba(95,38,229,0.4)", fontSize: "0.55em", verticalAlign: "middle", fontWeight: 400 }}>
-                  {String(i + 1).padStart(2, "0")}
-                </span>
+            <li key={link.href} style={{ margin: "0.55rem 0" }}>
+              <a href={link.href} onClick={() => setMenuOpen(false)} className="nav-overlay-link">
+                <span className="nav-overlay-num">{String(i + 1).padStart(2, "0")}</span>
                 {link.label}
               </a>
             </li>
           ))}
         </ul>
 
-        {/* Language toggle */}
-        <div style={{ marginTop: "2rem" }}>
+        <div style={{ marginTop: "2.5rem" }}>
           <button
             onClick={toggleLang}
             style={{
@@ -179,6 +135,7 @@ export default function Navbar({
               fontWeight: 600,
               cursor: "pointer",
               letterSpacing: "0.12em",
+              transition: "background 0.25s",
             }}
           >
             {lang === "th" ? "EN" : "TH"}
@@ -232,7 +189,7 @@ export default function Navbar({
                     style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
                     {t.applyLine}
                   </a>
-                  </>
+                </>
               ) : (
                 <>
                   <a href={`/${lang}#contact`}
@@ -249,11 +206,10 @@ export default function Navbar({
               )}
             </div>
 
-            {/* Hamburger — all screen sizes */}
             <MenuToggle
               isOpen={menuOpen}
               toggle={() => setMenuOpen((o) => !o)}
-              color={menuOpen ? "#ffffff" : forceDarkText ? "#5f26e5" : "#ffffff"}
+              color={menuOpen ? "#5f26e5" : forceDarkText ? "#5f26e5" : "#ffffff"}
             />
           </div>
         </nav>
