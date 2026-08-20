@@ -211,48 +211,50 @@ export default function Navbar({
             />
           </Link>
 
-          {/* Desktop CTA buttons */}
-          <div className="desktop-nav-btns flex items-center gap-3">
-            {variant === "influencer" ? (
-              <>
-                <Link href="https://www.buddyreview.co/app/new-campaigns"
-                  className="btn-hero btn-hero-solid-purple px-6 py-3 rounded-full whitespace-nowrap"
-                  style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
-                  {t.applyNow}
-                </Link>
-                <a href="https://line.me/ti/p/~@buddyreview" target="_blank" rel="noopener noreferrer"
-                  className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
-                  style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
-                  {t.applyLine}
-                </a>
-                <button onClick={toggleLang}
-                  className="btn-hero px-5 py-3 rounded-full"
-                  style={{ ...KT, fontSize: "16px", fontWeight: 600, color: forceDarkText ? "#5f26e5" : undefined }}>
-                  {lang === "th" ? "EN" : "TH"}
-                </button>
-              </>
-            ) : (
-              <>
-                <a href={`/${lang}#contact`}
-                  className="btn-hero btn-hero-solid-purple px-6 py-3 rounded-full whitespace-nowrap"
-                  style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
-                  {t.contactUs}
-                </a>
-                <Link href={`/${lang}/influencer`}
-                  className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
-                  style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
-                  {t.imInfluencer}
-                </Link>
-              </>
-            )}
-          </div>
+          {/* Right-side group: CTA buttons + Hamburger */}
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <div className="desktop-nav-btns flex items-center gap-3">
+              {variant === "influencer" ? (
+                <>
+                  <Link href="https://www.buddyreview.co/app/new-campaigns"
+                    className="btn-hero btn-hero-solid-purple px-6 py-3 rounded-full whitespace-nowrap"
+                    style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
+                    {t.applyNow}
+                  </Link>
+                  <a href="https://line.me/ti/p/~@buddyreview" target="_blank" rel="noopener noreferrer"
+                    className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
+                    style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
+                    {t.applyLine}
+                  </a>
+                  <button onClick={toggleLang}
+                    className="btn-hero px-5 py-3 rounded-full"
+                    style={{ ...KT, fontSize: "16px", fontWeight: 600, color: forceDarkText ? "#5f26e5" : undefined }}>
+                    {lang === "th" ? "EN" : "TH"}
+                  </button>
+                </>
+              ) : (
+                <>
+                  <a href={`/${lang}#contact`}
+                    className="btn-hero btn-hero-solid-purple px-6 py-3 rounded-full whitespace-nowrap"
+                    style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
+                    {t.contactUs}
+                  </a>
+                  <Link href={`/${lang}/influencer`}
+                    className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
+                    style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
+                    {t.imInfluencer}
+                  </Link>
+                </>
+              )}
+            </div>
 
-          {/* Hamburger — all screen sizes */}
-          <MenuToggle
-            isOpen={menuOpen}
-            toggle={() => setMenuOpen((o) => !o)}
-            color={menuOpen ? "#ffffff" : forceDarkText ? "#5f26e5" : "#ffffff"}
-          />
+            {/* Hamburger — all screen sizes */}
+            <MenuToggle
+              isOpen={menuOpen}
+              toggle={() => setMenuOpen((o) => !o)}
+              color={menuOpen ? "#ffffff" : forceDarkText ? "#5f26e5" : "#ffffff"}
+            />
+          </div>
         </nav>
       </motion.div>
     </>
