@@ -74,17 +74,17 @@ export default function Navbar({
 
   const navLinks = variant === "influencer"
     ? [
-        { label: t.contactUs, href: `/${lang}#contact` },
         { label: t.successStories, href: `/${lang}/success` },
         { label: t.blog, href: `/${lang}/blog` },
         { label: t.applyNow, href: "https://www.buddyreview.co/app/new-campaigns" },
         { label: t.applyLine, href: "https://line.me/ti/p/~@buddyreview" },
+        { label: t.contactUs, href: `/${lang}#contact` },
       ]
     : [
-        { label: t.contactUs, href: `/${lang}#contact` },
         { label: t.successStories, href: `/${lang}/success` },
         { label: t.blog, href: `/${lang}/blog` },
         { label: t.imInfluencer, href: `/${lang}/influencer` },
+        { label: t.contactUs, href: `/${lang}#contact` },
       ];
 
   return (
