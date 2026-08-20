@@ -600,9 +600,33 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  transition: color 0.25s ease;
+  transition: color 0.25s ease, font-weight 0.25s ease;
 }
 .nav-overlay-link:hover { color: #5f26e5; }
+
+/* Touch (mobile/tablet): scrollable snap list */
+@media (hover: none) and (pointer: coarse) {
+  .nav-overlay-list {
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+    max-height: 65vh;
+    padding: 26vh 0;
+    width: 100%;
+    scrollbar-width: none;
+  }
+  .nav-overlay-list::-webkit-scrollbar { display: none; }
+  .nav-overlay-item {
+    scroll-snap-align: center;
+    padding: 0.6rem 0;
+  }
+  .nav-overlay-link {
+    font-size: clamp(28px, 8vw, 44px);
+    padding: 10px 28px;
+    color: rgba(26, 10, 61, 0.35);
+    transition: color 0.2s ease;
+  }
+}
 
 /* KOL packages: extra features always visible on desktop, show-more button hidden */
 .kol-extra-features { display: flex !important; flex-direction: column; gap: 14px; margin-top: 14px; }

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -39,6 +39,8 @@ export default function Navbar({
   const [scrolled, setScrolled] = useState(false);
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState<number | null>(null);
+  const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const pathname = usePathname();
   const router = useRouter();
 
@@ -63,6 +65,26 @@ export default function Navbar({
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
+  // Touch device: highlight whichever link is scrolled into the center zone
+  useEffect(() => {
+    if (!menuOpen) { setActiveLink(null); return; }
+    const isTouch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+    if (!isTouch) return;
+
+    setActiveLink(0); // default first item highlighted on open
+    const observers: IntersectionObserver[] = [];
+    linkRefs.current.forEach((ref, i) => {
+      if (!ref) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveLink(i); },
+        { rootMargin: "-38% 0px -38% 0px", threshold: 0.1 }
+      );
+      obs.observe(ref);
+      observers.push(obs);
+    });
+    return () => observers.forEach((o) => o.disconnect());
   }, [menuOpen]);
 
   const th = { contactUs: "ติดต่อเรา", imInfluencer: "ฉันคืออินฟลูเอนเซอร์", applyNow: "สมัครเลย", applyLine: "สมัครผ่านไลน์", successStories: "เรื่องราวความสำเร็จ", blog: "บทความ" };
@@ -110,10 +132,16 @@ export default function Navbar({
           pointerEvents: menuOpen ? "auto" : "none",
         }}
       >
-        <ul style={{ listStyle: "none", padding: 0, margin: 0, textAlign: "center" }}>
+        <ul className="nav-overlay-list" style={{ listStyle: "none", padding: 0, margin: 0, textAlign: "center" }}>
           {navLinks.map((link, i) => (
-            <li key={link.href} style={{ margin: "0.55rem 0" }}>
-              <a href={link.href} onClick={() => setMenuOpen(false)} className="nav-overlay-link">
+            <li key={link.href} className="nav-overlay-item">
+              <a
+                ref={(el) => { linkRefs.current[i] = el; }}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="nav-overlay-link"
+                style={activeLink === i ? { color: "#5f26e5", fontWeight: 800 } : undefined}
+              >
                 {link.label}
               </a>
             </li>
