@@ -94,7 +94,10 @@ export default function Navbar({
           height: "3rem",
           width: "3rem",
           borderRadius: "50%",
-          background: "linear-gradient(135deg, #5f26e5 0%, #ff0089 100%)",
+          background: "rgba(255, 255, 255, 0.22)",
+          backdropFilter: "blur(32px)",
+          WebkitBackdropFilter: "blur(32px)",
+          border: "1px solid rgba(255, 255, 255, 0.5)",
           zIndex: 298,
           transform: menuOpen ? "scale(80)" : "scale(0)",
           transition: "transform 800ms cubic-bezier(0.86, 0, 0.07, 1)",
@@ -132,7 +135,7 @@ export default function Navbar({
                   ...KT,
                   display: "inline-block",
                   padding: "0.8rem 2rem",
-                  color: "#ffffff",
+                  color: "#1a0a3d",
                   fontSize: "clamp(22px, 5vw, 48px)",
                   fontWeight: 700,
                   textDecoration: "none",
@@ -141,15 +144,15 @@ export default function Navbar({
                   transition: "color 200ms, transform 200ms",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.55)";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#5f26e5";
                   (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1.08)";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#1a0a3d";
                   (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1)";
                 }}
               >
-                <span style={{ marginRight: "1rem", color: "rgba(255,255,255,0.4)", fontSize: "0.55em", verticalAlign: "middle", fontWeight: 400 }}>
+                <span style={{ marginRight: "1rem", color: "rgba(95,38,229,0.4)", fontSize: "0.55em", verticalAlign: "middle", fontWeight: 400 }}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 {link.label}
@@ -164,11 +167,11 @@ export default function Navbar({
             onClick={toggleLang}
             style={{
               ...KT,
-              background: "rgba(255,255,255,0.15)",
-              border: "1px solid rgba(255,255,255,0.4)",
+              background: "rgba(255,255,255,0.55)",
+              border: "1px solid rgba(95,38,229,0.25)",
               borderRadius: "50px",
               padding: "10px 36px",
-              color: "#ffffff",
+              color: "#5f26e5",
               fontSize: "16px",
               fontWeight: 600,
               cursor: "pointer",
