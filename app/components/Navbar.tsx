@@ -229,12 +229,7 @@ export default function Navbar({
                     style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
                     {t.applyLine}
                   </a>
-                  <button onClick={toggleLang}
-                    className="btn-hero px-5 py-3 rounded-full"
-                    style={{ ...KT, fontSize: "16px", fontWeight: 600, color: forceDarkText ? "#5f26e5" : undefined }}>
-                    {lang === "th" ? "EN" : "TH"}
-                  </button>
-                </>
+                  </>
               ) : (
                 <>
                   <a href={`/${lang}#contact`}
