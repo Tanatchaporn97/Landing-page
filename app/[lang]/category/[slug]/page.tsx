@@ -64,7 +64,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ lang:
 
   return (
     <div className="background" style={{ ...KT }}>
-      <Navbar lang={lang as Locale} variant="influencer" />
+      <Navbar lang={lang as Locale} variant="home" />
 
       {/* Back button */}
       <div className="success-back-row" style={{ padding: "130px 48px 28px" }}>

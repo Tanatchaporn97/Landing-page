@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import RotatingCube from "../../components/RotatingCube";
+import Navbar from "../../components/Navbar";
 import { type Locale } from "../../../i18n-config";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -34,28 +35,7 @@ export default function BuddyRanksClient({ lang = "th" }: { lang?: Locale }) {
       flexDirection: "column",
     }}>
       {/* ── Navbar ── */}
-      <nav className="br-nav" style={{
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "24px 32px", maxWidth: "720px", width: "100%", margin: "0 auto", boxSizing: "border-box",
-      }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <div style={{ width: "34px", height: "48px", overflow: "hidden", position: "relative", flexShrink: 0 }}>
-            <Image src="/buddy-review-logo.png" alt="" fill sizes="140px"
-              style={{ objectFit: "cover", objectPosition: "left center" }} />
-          </div>
-          <span style={{ fontSize: "20px", fontWeight: 700, whiteSpace: "nowrap" }}>Buddy Ranks</span>
-        </div>
-        <a href="#login" className="br-login-btn" style={{
-          ...KT, display: "inline-flex", alignItems: "center", gap: "6px",
-          border: "1px solid rgba(255,255,255,0.35)", borderRadius: "50px",
-          padding: "10px 20px", fontSize: "14px", fontWeight: 600,
-          color: "#ffffff", textDecoration: "underline", textDecorationColor: "rgba(255,255,255,0.5)",
-          whiteSpace: "nowrap",
-        }}>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>
-          {t.login}
-        </a>
-      </nav>
+      <Navbar lang={lang} variant="home" />
 
       {/* ── Hero ── */}
       <section className="br-hero" style={{

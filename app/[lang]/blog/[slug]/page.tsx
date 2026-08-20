@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import BackButton from "./BackButton";
-import BlogNavbar from "../BlogNavbar";
+import Navbar from "../../../components/Navbar";
 import BlogFooter from "../BlogFooter";
 import ScrollProgressBar from "../../../components/ScrollProgressBar";
 import { getDictionary } from "../../../../get-dictionary";
@@ -600,7 +600,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ lang:
   return (
     <div className="background" style={{ ...KT }}>
       <ScrollProgressBar />
-      <BlogNavbar lang={lang as Locale} />
+      <Navbar lang={lang as Locale} variant="home" />
 
       {/* Top-left CTA */}
       <div className="blog-back-row" style={{ padding: "140px 48px 28px" }}>

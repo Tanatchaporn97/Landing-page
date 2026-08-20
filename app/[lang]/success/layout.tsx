@@ -8,7 +8,7 @@ export default async function SuccessLayout({ children, params }: { children: Re
   const dict = await getDictionary(lang as Locale);
   return (
     <>
-      <Navbar lang={lang as Locale} variant="influencer" />
+      <Navbar lang={lang as Locale} variant="home" />
       {children}
       <Footer lang={lang as Locale} variant="home" dict={dict} />
     </>

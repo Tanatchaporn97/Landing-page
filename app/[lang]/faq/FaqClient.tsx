@@ -26,7 +26,7 @@ export default function FaqClient({ lang, dict }: { lang: Locale, dict: any }) {
 
   return (
     <div className="background" style={{ ...KT, overflowX: "hidden" }}>
-      {fromInfluencer ? <Navbar lang={lang} variant="influencer" /> : <Navbar lang={lang} variant="home" />}
+      <Navbar lang={lang} variant="home" />
 
       {/* Hero */}
       <section className="faq-hero-section" style={{ padding: "160px 48px 80px", textAlign: "center" }}>

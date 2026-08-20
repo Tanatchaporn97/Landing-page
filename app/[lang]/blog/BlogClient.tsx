@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import BlogNavbar from "./BlogNavbar";
+import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -36,7 +36,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
   return (
     <div className="background" style={{ ...KT }}>
 
-      <BlogNavbar lang={lang} />
+      <Navbar lang={lang} variant="home" />
 
       {/* Back button */}
       <div className="blog-back-row" style={{ padding: "140px 48px 28px" }}>
