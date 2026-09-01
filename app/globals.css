@@ -940,7 +940,7 @@ body {
 
   /* Unlock Exclusive Opportunities: 3-col → stacked */
   .unlock-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-  .unlock-phone-img { width: 100% !important; max-width: 468px !important; }
+  .unlock-phone-img { width: 120% !important; max-width: 562px !important; margin-left: -10% !important; }
   /* Icon badges: same size as Buddy Review Solutions section (icon-wrap-lg is shared) */
   .unlock-icon-img { width: 115px !important; height: 115px !important; }
 
