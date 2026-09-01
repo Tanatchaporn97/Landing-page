@@ -5,8 +5,8 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const TEXT = {
   th: {
-    h1Line1: "แมทช์งานที่ใช่",
-    h1Line2: "ได้งานที่ชอบ",
+    h1Line1: "ได้งานที่ชอบ",
+    h1Line2: "แมทช์งานที่ใช่",
     subhead: "จบปัญหาความยุ่งยากในการรีวิวแบบเดิม ๆ เชื่อมต่อกับแบรนด์ชั้นนำและสร้างรายได้จากสิ่งที่คุณรัก",
     applyNow: "สมัครเลย",
     applyLine: "สมัครผ่านไลน์",
