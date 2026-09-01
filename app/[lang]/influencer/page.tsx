@@ -230,11 +230,11 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               gap: "24px",
               padding: "56px 48px",
             }}>
-              <p style={{ ...KT, fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 700, color: "#111827", margin: 0, lineHeight: 1.6 }}>
+              <p style={{ ...KT, fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 700, color: "#01082F", margin: 0, lineHeight: 1.6 }}>
                 {lang === "th" ? (
-                  <>มาเริ่มเป็นอินฟลูฯง่ายๆ แค่ปลายนิ้วกับ Buddy Review<br />สมัครฟรี! ไม่มีค่าใช้จ่าย</>
+                  <>มาเริ่มเป็นอินฟลูฯง่ายๆ แค่ปลายนิ้วกับ <span style={{ color: "#5f26e5" }}>Buddy Review</span><br /><span style={{ color: "#2d137d" }}>สมัครฟรี! ไม่มีค่าใช้จ่าย</span></>
                 ) : (
-                  <>Becoming an influencer starts right at your fingertips with Buddy Review<br />Sign up free — no cost at all!</>
+                  <>Becoming an influencer starts right at your fingertips with <span style={{ color: "#5f26e5" }}>Buddy Review</span><br /><span style={{ color: "#2d137d" }}>Sign up free — no cost at all!</span></>
                 )}
               </p>
               <a href="https://www.buddyreview.co/app/new-campaigns" target="_blank" rel="noopener noreferrer"
