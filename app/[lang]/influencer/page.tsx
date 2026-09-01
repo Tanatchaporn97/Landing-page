@@ -204,7 +204,9 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
 
       {/* ── Industry Insights ── */}
-      <BlogPostsSection lang={lang as Locale} dict={dict} filterCategory="influencer" />
+      <div style={{ background: "linear-gradient(180deg, #E9DFF7 0%, #E5D9F5 100%)" }}>
+        <BlogPostsSection lang={lang as Locale} dict={dict} filterCategory="influencer" />
+      </div>
 
 
       {/* ── FAQs ── */}
