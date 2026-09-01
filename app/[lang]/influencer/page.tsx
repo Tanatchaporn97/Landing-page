@@ -203,44 +203,43 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <TestimonialsScrollSection dict={dict} lang={lang} />
 
 
-      {/* ── Industry Insights ── */}
-      <div style={{ background: "linear-gradient(180deg, #E9DFF7 0%, #E5D9F5 100%)" }}>
+      {/* ── Industry Insights → FAQs → Pre-footer CTA: one continuous blended background ── */}
+      <div style={{ background: "linear-gradient(180deg, #E9DFF7 0%, #DDCDF1 100%)" }}>
+
+        {/* ── Industry Insights ── */}
         <BlogPostsSection lang={lang as Locale} dict={dict} filterCategory="influencer" />
-      </div>
 
-
-      {/* ── FAQs ── */}
-      <div style={{ background: "linear-gradient(180deg, #E5D9F5 0%, #E1D3F3 100%)" }}>
+        {/* ── FAQs ── */}
         <FAQAccordion faqs={dict?.faqPage?.faqsInfluencer} lang={lang as Locale} variant="influencer" dict={dict} />
-      </div>
 
-      {/* ── Pre-footer CTA ── */}
-      <section className="inf-section" style={{ background: "linear-gradient(180deg, #E1D3F3 0%, #DDCDF1 100%)", padding: "80px 48px" }}>
-        <div style={{
-          maxWidth: "1294px",
-          margin: "0 auto",
-          minHeight: "200px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          gap: "24px",
-        }}>
-          <p style={{ ...KT, fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 700, color: "#111827", margin: 0, lineHeight: 1.6 }}>
-            {lang === "th" ? (
-              <>มาเริ่มเป็นอินฟลูฯง่ายๆ แค่ปลายนิ้วกับ Buddy Review<br />สมัครฟรี! ไม่มีค่าใช้จ่าย</>
-            ) : (
-              <>Becoming an influencer starts right at your fingertips with Buddy Review<br />Sign up free — no cost at all!</>
-            )}
-          </p>
-          <a href="https://www.buddyreview.co/app/new-campaigns" target="_blank" rel="noopener noreferrer"
-            className="btn-hero-solid-purple"
-            style={{ ...KT, display: "inline-flex", alignItems: "center", borderRadius: "50px", padding: "14px 40px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
-            {lang === "th" ? "สมัครเลย" : "Apply Now"}
-          </a>
-        </div>
-      </section>
+        {/* ── Pre-footer CTA ── */}
+        <section className="inf-section" style={{ padding: "80px 48px" }}>
+          <div style={{
+            maxWidth: "1294px",
+            margin: "0 auto",
+            minHeight: "200px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+            gap: "24px",
+          }}>
+            <p style={{ ...KT, fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 700, color: "#111827", margin: 0, lineHeight: 1.6 }}>
+              {lang === "th" ? (
+                <>มาเริ่มเป็นอินฟลูฯง่ายๆ แค่ปลายนิ้วกับ Buddy Review<br />สมัครฟรี! ไม่มีค่าใช้จ่าย</>
+              ) : (
+                <>Becoming an influencer starts right at your fingertips with Buddy Review<br />Sign up free — no cost at all!</>
+              )}
+            </p>
+            <a href="https://www.buddyreview.co/app/new-campaigns" target="_blank" rel="noopener noreferrer"
+              className="btn-hero-solid-purple"
+              style={{ ...KT, display: "inline-flex", alignItems: "center", borderRadius: "50px", padding: "14px 40px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
+              {lang === "th" ? "สมัครเลย" : "Apply Now"}
+            </a>
+          </div>
+        </section>
+      </div>
 
       {/* ── Footer ── */}
       <Footer lang={lang as Locale} variant="influencer" dict={dict} />
