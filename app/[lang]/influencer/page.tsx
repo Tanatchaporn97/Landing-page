@@ -50,6 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 const TestimonialsScrollSection = dynamic(() => import("../../components/TestimonialsScrollSection"));
 const LogoMarquee = dynamic(() => import("../../components/LogoMarquee"));
 const SuccessStoriesSlider = dynamic(() => import("../../components/SuccessStoriesSlider"));
+const BlogPostsSection = dynamic(() => import("../../components/BlogPostsSection"));
 const FAQAccordion = dynamic(() => import("../../components/FAQAccordion"));
 
 import { getDictionary } from "../../../get-dictionary";
@@ -200,6 +201,10 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
       {/* ── Testimonials — scroll-jacking section (desktop) / static (mobile) ── */}
       <TestimonialsScrollSection dict={dict} lang={lang} />
+
+
+      {/* ── Industry Insights ── */}
+      <BlogPostsSection lang={lang as Locale} dict={dict} filterCategory="influencer" />
 
 
       {/* ── FAQs ── */}

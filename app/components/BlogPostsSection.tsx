@@ -5,42 +5,21 @@ import { useRouter } from "next/navigation";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
-const BLOG_POSTS = [
-  {
-    slug: "best-time-to-post-2025",
-    title: "รวมวันและเวลาที่ดีที่สุดในการโพสต์บนโซเชียลมีเดีย ปี 2025",
-    titleEn: "The Best Days and Times to Post on Social Media in 2025",
-    desc: "เคยสงสัยไหมว่า… \"ทำไมบางโพสต์แทบไม่มีคนเห็น แต่บางโพสต์กลับไวรัลขึ้นมาได้?\" ความลับไม่ได้อยู่ที่คอนเทนต์อย่างเดียว แต่ \"เวลา\" ก็เป็นอีกปัจจัยสำคัญที่กำหนดว่าคอนเทนต์ของคุณจะไปโผล่บนฟีดใครบ้าง",
-    descEn: "Ever wondered... \"why do some posts barely get seen while others go viral?\" The secret isn't just the content — \"timing\" is another key factor that determines whose feed your content lands on.",
-    image: "/blogs/blog-best-time.png",
-    categories: ["สำหรับอินฟลูเอนเซอร์"],
-    categoriesEn: ["For Influencers"],
-  },
-  {
-    slug: "tiktok-algorithm-9-techniques",
-    title: "ถอดรหัสอัลกอริทึม TikTok + 9 เทคนิคทำคลิปให้ดังแบบมืออาชีพ",
-    titleEn: "Decoding the TikTok Algorithm + 9 Techniques for Making Clips Go Big Like a Pro",
-    desc: "หลายคนที่เล่น TikTok อาจสงสัยว่า \"ทำไมบางคลิปแทบไม่มีคนดู แต่บางคลิปกลับไวรัล?\"",
-    descEn: "Many TikTok users wonder... \"why do some clips barely get views while others go viral?\"",
-    image: "/blogs/blog-2.png",
-    categories: ["สำหรับแบรนด์", "สำหรับอินฟลูเอนเซอร์"],
-    categoriesEn: ["For Brands", "For Influencers"],
-  },
-  {
-    slug: "influencer-mapping-canvas",
-    title: "วิธีเลือกอินฟลูเอนเซอร์ที่ใช่สำหรับแบรนด์ ด้วย Influencer Mapping Canvas",
-    titleEn: "How to Pick the Right Influencer for Your Brand With an Influencer Mapping Canvas",
-    desc: "ยุคนี้อินฟลูเอนเซอร์ไม่ได้เป็นเพียงแค่ \"คนดังบนโลกออนไลน์\" แต่คือผู้ทรงอิทธิพล",
-    descEn: "Today, influencers aren't just \"online celebrities\" — they're people who genuinely shape opinion.",
-    image: "/blogs/blog-influencer-mapping.png",
-    categories: ["สำหรับแบรนด์"],
-    categoriesEn: ["For Brands"],
-  },
-];
+const CATEGORY_LABEL: Record<"influencer" | "brand", Record<"th" | "en", string>> = {
+  influencer: { th: "สำหรับอินฟลูเอนเซอร์", en: "For Influencers" },
+  brand: { th: "สำหรับแบรนด์", en: "For Brands" },
+};
 
-export default function BlogPostsSection({ lang = "th" }: { lang?: "th" | "en" }) {
+export default function BlogPostsSection({ lang = "th", dict, filterCategory }: { lang?: "th" | "en"; dict?: any; filterCategory?: "influencer" | "brand" }) {
   const router = useRouter();
   const t = lang === "th" ? { readMore: "อ่านเพิ่มเติม", viewMore: "ดูเพิ่มเติม" } : { readMore: "Read More", viewMore: "View More" };
+
+  const allPosts: Array<{ slug: string; title: string; desc: string; image: string; categories: string[] }> = dict?.blogPosts || [];
+  const categoryLabel = filterCategory ? CATEGORY_LABEL[filterCategory][lang] : null;
+  const posts = categoryLabel
+    ? allPosts.filter((p) => p.categories.includes(categoryLabel))
+    : allPosts.slice(0, 3);
+  const viewMoreHref = categoryLabel ? `/${lang}/blog?cat=${encodeURIComponent(categoryLabel)}` : `/${lang}/blog`;
 
   return (
     <section className="py-20 px-6 blog-bg">
@@ -58,8 +37,8 @@ export default function BlogPostsSection({ lang = "th" }: { lang?: "th" | "en" }
         </h2>
 
         <div className="grid-3-col" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "28px" }}>
-          {BLOG_POSTS.map((post) => (
-            <a key={post.title} href={`/${lang}/blog/${post.slug}`} style={{
+          {posts.map((post) => (
+            <a key={post.slug} href={`/${lang}/blog/${post.slug}`} style={{
               background: "rgba(255,255,255,0.22)",
               backdropFilter: "blur(18px)",
               WebkitBackdropFilter: "blur(18px)",
@@ -75,7 +54,7 @@ export default function BlogPostsSection({ lang = "th" }: { lang?: "th" | "en" }
               {/* Banner */}
               <div style={{ padding: "20px 20px 0", flexShrink: 0 }}>
                 <div style={{ position: "relative", width: "100%", height: "200px" }}>
-                  <Image src={post.image} alt={lang === "th" ? post.title : post.titleEn} fill sizes="(max-width: 768px) 100vw, 400px"
+                  <Image src={post.image} alt={post.title} fill sizes="(max-width: 768px) 100vw, 400px"
                     style={{ objectFit: "cover", display: "block", borderRadius: "12px" }} />
                 </div>
               </div>
@@ -84,7 +63,7 @@ export default function BlogPostsSection({ lang = "th" }: { lang?: "th" | "en" }
               <div className="blog-card-content" style={{ padding: "28px 28px 32px", display: "flex", flexDirection: "column", gap: "16px", flex: 1 }}>
                 {/* Category tags */}
                 <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
-                  {(lang === "th" ? post.categories : post.categoriesEn).map((cat) => (
+                  {post.categories.map((cat) => (
                     <button key={cat}
                       onClick={(e) => { e.preventDefault(); e.stopPropagation(); router.push(`/${lang}/blog?cat=${encodeURIComponent(cat)}`); }}
                       style={{ ...KT, background: "rgba(255,255,255,0.15)", color: "#111827",
@@ -98,7 +77,7 @@ export default function BlogPostsSection({ lang = "th" }: { lang?: "th" | "en" }
                 </div>
                 {/* Title */}
                 <h3 className="card-h3" style={{ color: "#5f26e5", fontSize: "24px", fontWeight: 700, lineHeight: "1.45", margin: 0 }}>
-                  {lang === "th" ? post.title : post.titleEn}
+                  {post.title}
                 </h3>
 
                 {/* Description */}
@@ -106,7 +85,7 @@ export default function BlogPostsSection({ lang = "th" }: { lang?: "th" | "en" }
                   color: "#111827", fontSize: "16px", lineHeight: "1.7", margin: 0,
                   display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden",
                 }}>
-                  {lang === "th" ? post.desc : post.descEn}
+                  {post.desc}
                 </p>
 
                 {/* CTA */}
@@ -129,7 +108,7 @@ export default function BlogPostsSection({ lang = "th" }: { lang?: "th" | "en" }
 
         {/* ดูเพิ่มเติม CTA */}
         <div style={{ display: "flex", justifyContent: "center", marginTop: "48px" }}>
-          <Link href={`/${lang}/blog`} className="btn-insight" style={{
+          <Link href={viewMoreHref} className="btn-insight" style={{
             ...KT,
             borderRadius: "50px",
             fontSize: "16px",

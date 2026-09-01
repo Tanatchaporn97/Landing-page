@@ -426,7 +426,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       <KolPackagesSection lang={lang} />
 
       {/* ── Industry Insights ── */}
-      <BlogPostsSection lang={lang} />
+      <BlogPostsSection lang={lang} dict={dict} />
 
       {/* ── FAQs ── */}
       <FAQAccordion faqs={dict?.homeFaqs} lang={lang} variant="home" dict={dict} />
