@@ -214,6 +214,40 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <FAQAccordion faqs={dict?.faqPage?.faqsInfluencer} lang={lang as Locale} variant="influencer" dict={dict} />
       </div>
 
+      {/* ── Pre-footer CTA ── */}
+      <div style={{ padding: "64px 24px", display: "flex", justifyContent: "center" }}>
+        <div style={{
+          width: "100%",
+          maxWidth: "600px",
+          minHeight: "200px",
+          backgroundImage: "url(/light-purple-gradient-bg.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          borderRadius: "28px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          padding: "36px 32px",
+          gap: "24px",
+          boxShadow: "0 8px 32px rgba(95,38,229,0.12)",
+        }}>
+          <p style={{ ...KT, fontSize: "clamp(18px,2.2vw,22px)", fontWeight: 700, color: "#111827", margin: 0, lineHeight: 1.6 }}>
+            {lang === "th" ? (
+              <>มาเริ่มเป็นอินฟลูฯง่ายๆ แค่ปลายนิ้วกับ Buddy Review<br />สมัครฟรี! ไม่มีค่าใช้จ่าย</>
+            ) : (
+              <>Becoming an influencer starts right at your fingertips with Buddy Review<br />Sign up free — no cost at all!</>
+            )}
+          </p>
+          <a href="https://www.buddyreview.co/app/new-campaigns" target="_blank" rel="noopener noreferrer"
+            className="btn-hero-solid-purple"
+            style={{ ...KT, display: "inline-flex", alignItems: "center", borderRadius: "50px", padding: "14px 40px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
+            {lang === "th" ? "สมัครเลย" : "Apply Now"}
+          </a>
+        </div>
+      </div>
+
       {/* ── Footer ── */}
       <Footer lang={lang as Locale} variant="influencer" dict={dict} />
 
