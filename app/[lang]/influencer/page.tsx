@@ -210,30 +210,24 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
 
       {/* ── FAQs ── */}
-      <div style={{ background: "linear-gradient(180deg, #E9DFF7 0%, #E5D9F5 100%)" }}>
+      <div style={{ background: "linear-gradient(180deg, #E5D9F5 0%, #E1D3F3 100%)" }}>
         <FAQAccordion faqs={dict?.faqPage?.faqsInfluencer} lang={lang as Locale} variant="influencer" dict={dict} />
       </div>
 
       {/* ── Pre-footer CTA ── */}
-      <div style={{ padding: "64px 24px", display: "flex", justifyContent: "center" }}>
+      <section className="inf-section" style={{ background: "linear-gradient(180deg, #E1D3F3 0%, #DDCDF1 100%)", padding: "80px 48px" }}>
         <div style={{
-          width: "100%",
-          maxWidth: "600px",
+          maxWidth: "1294px",
+          margin: "0 auto",
           minHeight: "200px",
-          backgroundImage: "url(/light-purple-gradient-bg.jpg)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          borderRadius: "28px",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          padding: "36px 32px",
           gap: "24px",
-          boxShadow: "0 8px 32px rgba(95,38,229,0.12)",
         }}>
-          <p style={{ ...KT, fontSize: "clamp(18px,2.2vw,22px)", fontWeight: 700, color: "#111827", margin: 0, lineHeight: 1.6 }}>
+          <p style={{ ...KT, fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 700, color: "#111827", margin: 0, lineHeight: 1.6 }}>
             {lang === "th" ? (
               <>มาเริ่มเป็นอินฟลูฯง่ายๆ แค่ปลายนิ้วกับ Buddy Review<br />สมัครฟรี! ไม่มีค่าใช้จ่าย</>
             ) : (
@@ -246,7 +240,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             {lang === "th" ? "สมัครเลย" : "Apply Now"}
           </a>
         </div>
-      </div>
+      </section>
 
       {/* ── Footer ── */}
       <Footer lang={lang as Locale} variant="influencer" dict={dict} />
