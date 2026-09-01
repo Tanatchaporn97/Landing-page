@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "motion/react";
+import Image from "next/image";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -61,6 +62,7 @@ export default function InfluencerHero({ lang = "th" }: { lang?: "th" | "en" }) 
             <a href="https://line.me/ti/p/~@buddyreview" target="_blank" rel="noopener noreferrer"
               className="btn-line hero-cta-btn-inf"
               style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "10px", borderRadius: "50px", padding: "14px 28px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
+              <Image src="/social/Line.png" alt="" width={22} height={22} style={{ width: "22px", height: "22px", flexShrink: 0 }} />
               {t.applyLine}
             </a>
           </div>

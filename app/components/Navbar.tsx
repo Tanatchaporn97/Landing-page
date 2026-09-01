@@ -186,7 +186,8 @@ export default function Navbar({
                   </Link>
                   <a href="https://line.me/ti/p/~@buddyreview" target="_blank" rel="noopener noreferrer"
                     className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
-                    style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
+                    style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
+                    <Image src="/social/Line.png" alt="" width={20} height={20} style={{ width: "20px", height: "20px", flexShrink: 0 }} />
                     {t.applyLine}
                   </a>
                 </>
