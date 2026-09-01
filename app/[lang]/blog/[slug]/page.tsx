@@ -22,6 +22,10 @@ const BLOG_DESCRIPTIONS: Record<string, Record<string, string>> = {
     th: "Influencer Mapping Canvas เครื่องมือวิเคราะห์ 5 ปัจจัยเลือกอินฟลูเอนเซอร์ที่ใช่ สำหรับแคมเปญ Influencer Marketing ปี 2025",
     en: "The Influencer Mapping Canvas: a 5-factor framework for choosing the right influencer for your brand in 2025.",
   },
+  "6-copywriting-techniques": {
+    th: "รวม 6 เทคนิคการเขียน Copywriting ที่ทั้งโดนใจคนอ่านและอัลกอริทึม พร้อมตัวอย่างที่นำไปใช้ได้จริงในทุกแพลตฟอร์มโซเชียลมีเดีย",
+    en: "6 copywriting techniques that win over both readers and algorithms, with real examples you can apply across every social media platform.",
+  },
 };
 
 export async function generateMetadata(
@@ -639,7 +643,152 @@ function InfluencerContent({ lang }: { lang: Locale }) {
   );
 }
 
-const SLUGS = ["best-time-to-post-2025", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas"];
+function CopywritingContent({ lang }: { lang: Locale }) {
+  if (lang === "en") {
+    return (
+      <>
+        <P>Copywriting — the art of writing persuasive marketing copy — is one of the most essential skills in the digital age. In a world overflowing with content, people scroll past thousands of ads and posts every day. Good copywriting has to &quot;grab attention&quot; instantly, and more importantly, &quot;drive conversion&quot; — whether that means a purchase, a sign-up, or a share.</P>
+        <P>In this article, Buddy Review takes a deep dive into 6 copywriting techniques that are not just &quot;good&quot; but truly &quot;land&quot; with both readers and algorithms — plus tips you can apply right away across every social media platform. Let&apos;s take a look.</P>
+
+        <Divider />
+        <H2>1. Understand Your Audience Deeply Before You Write</H2>
+        <P>Writing copy that resonates starts with truly knowing the people you&apos;re talking to. The better you understand them, the more precisely you can choose your words, tone, and storytelling approach. Always ask yourself first:</P>
+        <UL items={[
+          "Who are they? (Teens? Working professionals? Stay-at-home parents?)",
+          "What problem can you solve for them?",
+          "What kind of language do they use? (Casual and playful, or serious and business-like?)",
+        ]} />
+        <Note>Example: If your target is Gen Z, who love speed and fun, keep the tone light and playful — like &quot;Want glowing skin without a filter? You need to try this!&quot;</Note>
+
+        <Divider />
+        <H2>2. Your Headline Must Grab Attention Instantly</H2>
+        <P>The headline is the first thing people see, and it&apos;s usually what decides whether they&apos;ll &quot;read on or scroll away.&quot;</P>
+        <P>Techniques for a killer headline:</P>
+        <UL items={[
+          "Use attention-grabbing words like “secret,” “the reason why,” or “here’s why”",
+          "Keep it short, sharp, and to the point",
+          "Highlight the outcome or benefit the reader will get",
+        ]} />
+        <Note>Example: &quot;5 Benefits of Marketing&quot; vs. &quot;Your Marketing Isn&apos;t Working Because You&apos;re Missing These 5 Things!&quot;</Note>
+
+        <Divider />
+        <H2>3. Sell the &quot;Benefit,&quot; Not Just the Feature</H2>
+        <P>Customers don&apos;t care what your product &quot;has&quot; — they care what it &quot;does&quot; for them. Instead of saying &quot;48-megapixel camera,&quot; try &quot;A camera sharp enough to capture every moment, even in low light.&quot;</P>
+
+        <Divider />
+        <H2>4. Your Call to Action Must Be Clear and Compelling</H2>
+        <P>A CTA tells the reader what to &quot;do next&quot; — click, sign up, or place an order. Use these techniques:</P>
+        <UL items={[
+          "Keep it short and to the point",
+          "Create a sense that “you need to act right now”",
+        ]} />
+        <P>Example:</P>
+        <UL items={[
+          "Sign up free — click now",
+          "Order now and get an exclusive deal!",
+          "Just for you — only 3 days left!",
+        ]} />
+
+        <Divider />
+        <H2>5. Add a Touch of Psychology</H2>
+        <P>Certain words hold real power to trigger emotion and decisions, such as</P>
+        <UL items={[
+          <>&quot;Just for you&quot; → makes people feel special</>,
+          <>&quot;Today only&quot; → creates urgency</>,
+          <>&quot;Only 5 left&quot; → triggers FOMO</>,
+        ]} />
+
+        <Divider />
+        <H2>6. Adapt Your Style to Each Platform</H2>
+        <P>Not every channel calls for the same writing style — you also need to understand user behavior and each platform&apos;s algorithm.</P>
+        <UL items={[
+          <><strong>Facebook &amp; Instagram:</strong> Keep it punchy and high-energy, with visuals that grab attention and are easy to share.</>,
+          <><strong>Website or blog:</strong> Go in-depth, with a clear structure (H1, H2, bullet points) and strong SEO.</>,
+          <><strong>Email &amp; LINE:</strong> Make it personalized, warm, and paired with a clear call to action.</>,
+          <><strong>TikTok &amp; YouTube:</strong> Focus on pacing and storytelling flow that keeps viewers hooked.</>,
+        ]} />
+
+        <Divider />
+        <div style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.25)", borderRadius: "16px", padding: "24px 28px" }}>
+          <h3 style={{ ...KT, color: "#5f26e5", fontSize: "18px", fontWeight: 700, margin: "0 0 12px" }}>In Short: Copywriting Is Art + Psychology + Marketing</h3>
+          <P>Great copywriting blends customer understanding, creativity, and communication techniques tailored to the platform. Master all three at once, and you can turn &quot;ordinary words&quot; into &quot;powerful words&quot; that genuinely drive sales and business results.</P>
+        </div>
+      </>
+    );
+  }
+  return (
+    <>
+      <P>Copywriting หรือการเขียนข้อความเชิงโฆษณา ถือว่าเป็นทักษะที่สำคัญมากในยุคดิจิทัล โดยเฉพาะในปัจจุบันที่โลกเต็มไปด้วยคอนเทนต์ ผู้คนต่างเลื่อนฟีดผ่านโฆษณาและโพสต์นับพันต่อวัน การเขียน Copywriting ที่ดีจึงต้อง &quot;ดึงดูด&quot; ให้เกิดความสนใจได้ทันทีและที่สำคัญคือ &quot;ชวนให้เกิด Conversion&quot; ไม่ว่าจะเป็นการซื้อสินค้า สมัครสมาชิกหรือกดแชร์ต่อ</P>
+      <P>บทความนี้ Buddy Review จะพาคุณไปเจาะลึกกับ 6 เทคนิคการเขียน Copywriting ที่ไม่เพียงแค่ &quot;ดี&quot; แต่ยัง &quot;โดน&quot; ทั้งใจคนอ่านและใจอัลกอริธึม พร้อมเคล็ดลับที่คุณนำไปใช้ได้จริงในทุกแพลตฟอร์มโซเชียลมีเดีย... จะมีอะไรบ้างมาดูกันเลย</P>
+
+      <Divider />
+      <H2>1. เข้าใจกลุ่มเป้าหมายให้ลึกก่อนลงมือเขียน</H2>
+      <P>การเขียนให้โดนใจเริ่มจากการ &quot;รู้จักคนที่เราจะสื่อสารด้วยจริงๆ&quot; เพราะถ้าเราเข้าใจเขาลึกพอ จะเลือกคำ พูดโทนและวิธีเล่าเรื่องได้ตรงใจมากขึ้น ดังนั้นควรลองถามตัวเองก่อนเสมอว่า</P>
+      <UL items={[
+        "เขาเป็นใคร? (วัยรุ่น? คนทำงาน? หรือคุณแม่บ้าน?)",
+        "เขามีปัญหาอะไรที่เราช่วยแก้ได้?",
+        "เขาใช้ภาษาแบบไหน? (ชิลๆ คุยเล่นหรือจริงจังแบบนักธุรกิจ?)",
+      ]} />
+      <Note>ตัวอย่าง: ถ้าเป้าหมายคือ Gen Z ที่ชอบความเร็วและความสนุก คำพูดก็ควรสบายๆ เช่น &quot;อยากผิวใส ไม่ต้องง้อฟิลเตอร์ ต้องลองสิ่งนี้เลย!&quot;</Note>
+
+      <Divider />
+      <H2>2. หัวข้อ (Headline) ต้องดึงดูดตั้งแต่แรกเห็น</H2>
+      <P>หัวข้อคือสิ่งแรกที่คนเห็น และมักเป็นจุดตัดสินใจว่าจะ &quot;อ่านต่อหรือปิดไป&quot;</P>
+      <P>เทคนิคเขียนหัวข้อให้ปัง:</P>
+      <UL items={[
+        "ใช้คำกระตุ้นความสนใจ เช่น \"ความลับ\", \"เหตุผลที่\", \"เพราะอะไร\"",
+        "สั้น กระชับ ตรงประเด็น",
+        "เน้นผลลัพธ์หรือประโยชน์ที่คนจะได้",
+      ]} />
+      <Note>ตัวอย่าง: &quot;5 ข้อดีของการทำการตลาด&quot; หรือ &quot;ทำการตลาดไม่ปังเพราะยังไม่รู้ 5 สิ่งนี้!&quot;</Note>
+
+      <Divider />
+      <H2>3. ขาย &quot;ประโยชน์&quot; มากกว่าคุณสมบัติ</H2>
+      <P>ลูกค้าไม่สนว่าของเรามี &quot;อะไร&quot; แต่สนว่ามัน &quot;ช่วยอะไร&quot; ได้บ้าง เช่น จากที่จะพูดว่า &quot;กล้องคมชัด 48 ล้านพิกเซล&quot; ก็อาจเปลี่ยนเป็น &quot;กล้องถ่ายรูปคมชัด เก็บได้ทุกโมเมนต์ได้แม้ในที่แสงน้อย&quot;</P>
+
+      <Divider />
+      <H2>4. Call to Action ต้องชัดและเร้าใจ</H2>
+      <P>CTA คือประโยคที่บอกให้ผู้อ่าน &quot;ลงมือทำ&quot; ต่อ เช่น คลิก สมัครหรือกดสั่งซื้อ ด้วยการใช้เทคนิค</P>
+      <UL items={[
+        "ใช้คำสั้นๆ ที่ตรงประเด็น",
+        "สื่อให้รู้สึกว่า \"ต้องทำตอนนี้เดี๋ยวนี้\"",
+      ]} />
+      <P>ตัวอย่าง:</P>
+      <UL items={[
+        "สมัครฟรี คลิกเลย",
+        "สั่งซื้อตอนนี้ รับโปรฯ พิเศษ!",
+        "พิเศษเฉพาะคุณ จำกัดแค่ 3 วัน!",
+      ]} />
+
+      <Divider />
+      <H2>5. ใส่หลักจิตวิทยาเล็กๆ ลงไป</H2>
+      <P>คำบางคำมีพลังในการกระตุ้นอารมณ์และการตัดสินใจ เช่น</P>
+      <UL items={[
+        <>&quot;เฉพาะคุณ&quot; → ทำให้รู้สึกพิเศษ</>,
+        <>&quot;วันนี้เท่านั้น&quot; → กระตุ้นให้เร่งมือ</>,
+        <>&quot;เหลือเพียง 5 ชิ้นสุดท้าย&quot; → เพื่อกระตุ้นการเกิด FOMO</>,
+      ]} />
+
+      <Divider />
+      <H2>6. ปรับสไตล์ให้เข้ากับแต่ละแพลตฟอร์ม</H2>
+      <P>ไม่ใช่ทุกช่องทางจะใช้วิธีเขียนแบบเดียวกัน จำเป็นต้องเรียนรู้พฤติกรรมของผู้ใช้และอัลกอริทึมของแพลตฟอร์มเช่นกัน</P>
+      <UL items={[
+        <><strong>Facebook และ Instagram:</strong> กระชับ มีพลัง ภาพที่ใช้ต้องดึงดูดและสร้างการแชร์ต่อง่าย</>,
+        <><strong>เว็บไซต์หรือบล็อก:</strong> รายละเอียดครบ โครงสร้างอ่านง่าย (H1, H2, Bullet) และมี SEO ที่ดี</>,
+        <><strong>อีเมลและ LINE:</strong> มีความ Personalized อบอุ่นและมี Call To Action ชัดเจน</>,
+        <><strong>Tiktok และ YouTube:</strong> เน้นจังหวะการเล่าเรื่อง ให้ฟังแล้วลื่น น่าติดตาม</>,
+      ]} />
+
+      <Divider />
+      <div style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.25)", borderRadius: "16px", padding: "24px 28px" }}>
+        <h3 style={{ ...KT, color: "#5f26e5", fontSize: "18px", fontWeight: 700, margin: "0 0 12px" }}>สรุป: Copywriting คือศิลปะ + จิตวิทยา + การตลาด</h3>
+        <P>การเขียน Copywriting ที่ดีต้องผสมผสานระหว่างความเข้าใจลูกค้า + ความคิดสร้างสรรค์ + เทคนิคการสื่อสาร ที่เหมาะกับแพลตฟอร์ม ใครที่สามารถใช้ 3 สิ่งนี้ได้พร้อมกันก็จะสามารถเปลี่ยน &quot;คำธรรมดา&quot; ให้กลายเป็น &quot;คำที่ทรงพลัง&quot; ที่สร้างยอดขายและผลลัพธ์ทางธุรกิจได้จริงอย่างแน่นอน</P>
+      </div>
+    </>
+  );
+}
+
+const SLUGS = ["best-time-to-post-2025", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas", "6-copywriting-techniques"];
 
 export function generateStaticParams() {
   return SLUGS.map((slug) => ({ slug }));
@@ -715,6 +864,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ lang:
             <BestTimeContent lang={lang as Locale} />
           ) : post.slug === "influencer-mapping-canvas" ? (
             <InfluencerContent lang={lang as Locale} />
+          ) : post.slug === "6-copywriting-techniques" ? (
+            <CopywritingContent lang={lang as Locale} />
           ) : (
             <div style={{ marginTop: "40px", padding: "20px 24px", borderRadius: "12px", background: "rgba(95,38,229,0.2)", border: "1px solid rgba(95,38,229,0.4)" }}>
               <p style={{ ...KT, color: "#111827", fontSize: "15px", margin: 0 }}>
