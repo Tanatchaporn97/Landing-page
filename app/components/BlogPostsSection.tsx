@@ -39,10 +39,7 @@ export default function BlogPostsSection({ lang = "th", dict, filterCategory }: 
         <div className="grid-3-col" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "28px" }}>
           {posts.map((post) => (
             <a key={post.slug} href={`/${lang}/blog/${post.slug}`} style={{
-              background: "rgba(255,255,255,0.22)",
-              backdropFilter: "blur(18px)",
-              WebkitBackdropFilter: "blur(18px)",
-              border: "1px solid rgba(255,255,255,0.45)",
+              background: "#ffffff",
               boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
               borderRadius: "24px",
               overflow: "hidden",
@@ -66,9 +63,8 @@ export default function BlogPostsSection({ lang = "th", dict, filterCategory }: 
                   {post.categories.map((cat) => (
                     <button key={cat}
                       onClick={(e) => { e.preventDefault(); e.stopPropagation(); router.push(`/${lang}/blog?cat=${encodeURIComponent(cat)}`); }}
-                      style={{ ...KT, background: "rgba(255,255,255,0.15)", color: "#111827",
-                        backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
-                        border: "1px solid rgba(255,255,255,0.35)", borderRadius: "50px",
+                      style={{ ...KT, background: "rgba(95,38,229,0.08)", color: "#5f26e5",
+                        border: "1px solid rgba(95,38,229,0.18)", borderRadius: "50px",
                         fontSize: "13px", fontWeight: 600, padding: "4px 14px",
                         display: "inline-block", cursor: "pointer" }}>
                       {cat}
