@@ -50,7 +50,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 const TestimonialsScrollSection = dynamic(() => import("../../components/TestimonialsScrollSection"));
 const LogoMarquee = dynamic(() => import("../../components/LogoMarquee"));
 const SuccessStoriesSlider = dynamic(() => import("../../components/SuccessStoriesSlider"));
-const ContactFormSection = dynamic(() => import("../../components/ContactFormSection"));
 const FAQAccordion = dynamic(() => import("../../components/FAQAccordion"));
 
 import { getDictionary } from "../../../get-dictionary";
@@ -206,11 +205,6 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       {/* ── FAQs ── */}
       <div style={{ background: "linear-gradient(180deg, #E9DFF7 0%, #E5D9F5 100%)" }}>
         <FAQAccordion faqs={dict?.faqPage?.faqsInfluencer} lang={lang as Locale} variant="influencer" dict={dict} />
-      </div>
-
-      {/* ── Contact Form ── */}
-      <div style={{ background: "linear-gradient(180deg, #E5D9F5 0%, #D6C5EF 100%)" }}>
-        <ContactFormSection lang={lang as Locale} dict={dict?.contactForm} />
       </div>
 
       {/* ── Footer ── */}
