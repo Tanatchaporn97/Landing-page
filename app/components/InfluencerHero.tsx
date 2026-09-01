@@ -59,7 +59,7 @@ export default function InfluencerHero({ lang = "th" }: { lang?: "th" | "en" }) 
               style={{ ...KT, display: "inline-flex", alignItems: "center", borderRadius: "50px", padding: "14px 32px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
               {t.applyNow}
             </a>
-            <a href="https://line.me/ti/p/~@buddyreview" target="_blank" rel="noopener noreferrer"
+            <a href="https://line.me/R/ti/p/@buddysupport" target="_blank" rel="noopener noreferrer"
               className="btn-line hero-cta-btn-inf"
               style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "10px", borderRadius: "50px", padding: "14px 28px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
               <Image src="/social/Line.png" alt="" width={22} height={22} style={{ width: "22px", height: "22px", flexShrink: 0 }} />
