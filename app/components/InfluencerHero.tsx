@@ -42,7 +42,7 @@ export default function InfluencerHero({ lang = "th" }: { lang?: "th" | "en" }) 
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <h1 className="hero-h1-inf" style={{ ...KT, fontWeight: 900, lineHeight: 1.06, margin: "0 0 24px", fontSize: "clamp(48px,5.2vw,80px)", color: "#111827" }}>
+          <h1 className="hero-h1-inf" style={{ ...KT, fontWeight: 900, lineHeight: 1.06, marginTop: "1lh", marginBottom: "24px", fontSize: "clamp(48px,5.2vw,80px)", color: "#111827" }}>
             {t.h1Line1}<br />
             <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               {t.h1Line2}
