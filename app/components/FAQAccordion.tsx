@@ -210,7 +210,7 @@ export default function FAQAccordion({
               <Link href={`/${lang}/faq`}
                 className="btn-insight"
                 style={{ ...KT, borderRadius: "50px", fontSize: "16px", fontWeight: 600, padding: "14px 48px", textDecoration: "none", display: "inline-block" }}>
-                {dict?.home?.viewMore || (lang === "en" ? "View More" : "ดูเพิ่มเติม")}
+                {dict?.home?.faqViewMore || (lang === "en" ? "View All FAQs" : "ดูคำถามที่พบบ่อยทั้งหมด")}
               </Link>
             </div>
           </div>
