@@ -248,8 +248,11 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
                 ) : (
                   <>
                     <h3 style={{ ...KT, fontSize: "clamp(26px,3.4vw,42px)", fontWeight: 800, color: "#01082F", margin: 0, lineHeight: 1.3 }}>
-                      Becoming an influencer starts right at your fingertips with <span style={{ color: "#5f26e5" }}>Buddy Review</span>
+                      Want to become an influencer but don&apos;t know where to start?
                     </h3>
+                    <p style={{ ...KT, fontSize: "clamp(16px,1.9vw,20px)", fontWeight: 400, color: "rgba(1,8,47,0.78)", margin: 0, lineHeight: 1.7 }}>
+                      It&apos;s easy with <span style={{ color: "#5f26e5", fontWeight: 700 }}>Buddy Review</span> — unlock new opportunities and grow together with us.
+                    </p>
                     <p style={{ ...KT, fontSize: "clamp(18px,2.1vw,24px)", fontWeight: 700, color: "#2d137d", margin: 0, lineHeight: 1.5 }}>
                       Sign up free — no cost at all!
                     </p>
