@@ -234,7 +234,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             }}>
               <p style={{ ...KT, fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 700, color: "#01082F", margin: 0, lineHeight: 1.6 }}>
                 {lang === "th" ? (
-                  <>มาเริ่มเป็นอินฟลูฯง่ายๆ แค่ปลายนิ้วกับ <span style={{ color: "#5f26e5" }}>Buddy Review</span><br /><span style={{ color: "#2d137d" }}>สมัครฟรี! ไม่มีค่าใช้จ่าย</span></>
+                  <>อยากเป็น Influencer แต่ไม่รู้จะเริ่มตรงไหน?<br />เริ่มต้นง่าย ๆ กับ <span style={{ color: "#5f26e5" }}>Buddy Review</span> เปิดรับโอกาสใหม่ ๆ และเติบโตไปพร้อมกับเรา<br /><span style={{ color: "#2d137d" }}>สมัครฟรี ไม่มีค่าใช้จ่าย</span></>
                 ) : (
                   <>Becoming an influencer starts right at your fingertips with <span style={{ color: "#5f26e5" }}>Buddy Review</span><br /><span style={{ color: "#2d137d" }}>Sign up free — no cost at all!</span></>
                 )}
