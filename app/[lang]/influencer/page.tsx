@@ -232,13 +232,30 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               gap: "24px",
               padding: "56px 48px",
             }}>
-              <p style={{ ...KT, fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 700, color: "#01082F", margin: 0, lineHeight: 1.6 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
                 {lang === "th" ? (
-                  <>อยากเป็น Influencer แต่ไม่รู้จะเริ่มตรงไหน?<br />เริ่มต้นง่าย ๆ กับ <span style={{ color: "#5f26e5" }}>Buddy Review</span> เปิดรับโอกาสใหม่ ๆ และเติบโตไปพร้อมกับเรา<br /><span style={{ color: "#2d137d" }}>สมัครฟรี ไม่มีค่าใช้จ่าย</span></>
+                  <>
+                    <h3 style={{ ...KT, fontSize: "clamp(26px,3.4vw,42px)", fontWeight: 800, color: "#01082F", margin: 0, lineHeight: 1.3 }}>
+                      อยากเป็น Influencer แต่ไม่รู้จะเริ่มตรงไหน?
+                    </h3>
+                    <p style={{ ...KT, fontSize: "clamp(16px,1.9vw,20px)", fontWeight: 400, color: "rgba(1,8,47,0.78)", margin: 0, lineHeight: 1.7 }}>
+                      เริ่มต้นง่าย ๆ กับ <span style={{ color: "#5f26e5", fontWeight: 700 }}>Buddy Review</span> เปิดรับโอกาสใหม่ ๆ และเติบโตไปพร้อมกับเรา
+                    </p>
+                    <p style={{ ...KT, fontSize: "clamp(18px,2.1vw,24px)", fontWeight: 700, color: "#2d137d", margin: 0, lineHeight: 1.5 }}>
+                      สมัครฟรี ไม่มีค่าใช้จ่าย
+                    </p>
+                  </>
                 ) : (
-                  <>Becoming an influencer starts right at your fingertips with <span style={{ color: "#5f26e5" }}>Buddy Review</span><br /><span style={{ color: "#2d137d" }}>Sign up free — no cost at all!</span></>
+                  <>
+                    <h3 style={{ ...KT, fontSize: "clamp(26px,3.4vw,42px)", fontWeight: 800, color: "#01082F", margin: 0, lineHeight: 1.3 }}>
+                      Becoming an influencer starts right at your fingertips with <span style={{ color: "#5f26e5" }}>Buddy Review</span>
+                    </h3>
+                    <p style={{ ...KT, fontSize: "clamp(18px,2.1vw,24px)", fontWeight: 700, color: "#2d137d", margin: 0, lineHeight: 1.5 }}>
+                      Sign up free — no cost at all!
+                    </p>
+                  </>
                 )}
-              </p>
+              </div>
               <a href="https://www.buddyreview.co/app/new-campaigns" target="_blank" rel="noopener noreferrer"
                 className="btn-hero-solid-purple"
                 style={{ ...KT, display: "inline-flex", alignItems: "center", borderRadius: "50px", padding: "14px 40px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
