@@ -219,7 +219,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               width: "100%",
               minHeight: "200px",
               boxSizing: "border-box",
-              backgroundImage: "url(/light-purple-gradient-bg.jpg)",
+              backgroundImage: "url(/new-landing-bg2.jpg)",
               backgroundSize: "cover",
               backgroundPosition: "center",
               borderRadius: "32px",
