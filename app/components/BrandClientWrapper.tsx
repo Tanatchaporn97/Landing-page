@@ -124,17 +124,28 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </div>
           </div>
 
-          {/* Right: dashboard mockup with stat cards arranged top to bottom */}
-          <div className="hero-stat-cards" style={{ position: "relative", height: "420px" }}>
+          {/* Right: dashboard mockup with scattered stat cards (same layout as I'm Influencer page) */}
+          <div className="hero-stat-cards" style={{ position: "relative", height: "260px" }}>
             <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
               <Image src="/im-brand-dashboard.png" alt={lang === "th" ? "แดชบอร์ดแคมเปญ" : "Campaign dashboard"} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "contain" }} />
             </div>
             <motion.div
               className="hero-stat-card"
-              animate={{ rotate: -3 }}
-              whileHover={{ rotate: -3, y: -10, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
+              animate={{ rotate: -4 }}
+              whileHover={{ rotate: -4, y: -14, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
               transition={{ type: "spring", stiffness: 320, damping: 22 }}
-              style={{ position: "absolute", left: "40px", top: 0, background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", zIndex: 1, cursor: "pointer" }}
+              style={{ position: "absolute", left: 0, top: "36px", background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", zIndex: 1, cursor: "pointer" }}
+            >
+              <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>🌐</span>
+              <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>1,000,000+</p>
+              <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>{lang === "th" ? "เครือข่ายอินฟลูเอนเซอร์" : "Influencer Network"}</p>
+            </motion.div>
+            <motion.div
+              className="hero-stat-card"
+              animate={{ rotate: 2 }}
+              whileHover={{ rotate: 2, y: -14, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
+              transition={{ type: "spring", stiffness: 320, damping: 22 }}
+              style={{ position: "absolute", left: "169px", top: "62px", background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", zIndex: 2, cursor: "pointer" }}
             >
               <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>🤝</span>
               <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>1,000+</p>
@@ -142,25 +153,14 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </motion.div>
             <motion.div
               className="hero-stat-card"
-              animate={{ rotate: 2 }}
-              whileHover={{ rotate: 2, y: -10, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
+              animate={{ rotate: -2 }}
+              whileHover={{ rotate: -2, y: -14, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
               transition={{ type: "spring", stiffness: 320, damping: 22 }}
-              style={{ position: "absolute", left: 0, top: "120px", background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", zIndex: 2, cursor: "pointer" }}
+              style={{ position: "absolute", left: "325px", top: "10px", background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", zIndex: 3, cursor: "pointer" }}
             >
               <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>🎯</span>
               <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>4,000+</p>
               <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>{lang === "th" ? "แคมเปญที่ส่งมอบ" : "Campaigns Delivered"}</p>
-            </motion.div>
-            <motion.div
-              className="hero-stat-card"
-              animate={{ rotate: -2 }}
-              whileHover={{ rotate: -2, y: -10, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
-              transition={{ type: "spring", stiffness: 320, damping: 22 }}
-              style={{ position: "absolute", left: "48px", top: "240px", background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", zIndex: 3, cursor: "pointer" }}
-            >
-              <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>🌐</span>
-              <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>95K+</p>
-              <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>{lang === "th" ? "เครือข่ายอินฟลูเอนเซอร์" : "Influencer Network"}</p>
             </motion.div>
           </div>
         </div>
