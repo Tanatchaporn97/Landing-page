@@ -255,67 +255,6 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         </div>
       </section>
 
-      {/* ── Buddy Review Solutions ── */}
-      <section className="py-20 px-6">
-        <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
-
-          {/* Heading */}
-          <h2 className="text-center font-bold mb-14 section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
-            fontFeatureSettings: "'pnum' on,'lnum' on", color: "#111827", margin: "0 0 56px" }}>
-            Buddy Review{" "}
-            <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              Solutions
-            </span>
-          </h2>
-
-          {/* 4 services in 2×2 grid */}
-          <div className="grid-4-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: "32px 24px" }}>
-              {[
-                { icon: "/icon-photo-video.png", title: "Photo / Video Production",
-                  desc: "การผลิตภาพถ่ายและวิดีโอสำหรับใช้ในคอนเทนต์และการสื่อสารของแบรนด์",
-                  descEn: "Photo and video production for your brand's content and communications." },
-                { icon: "/icon-onsite.png", title: "On-site Campaign & Staff Support",
-                  desc: "การดูแลและประสานงานแคมเปญในสถานที่จริง พร้อมจัดทีมงานซัพพอร์ต",
-                  descEn: "On-the-ground campaign management and coordination, with staff support included." },
-                { icon: "/icon-ondemand.png", title: "On-Demand & Fast-Track Campaigns",
-                  desc: "แคมเปญที่เริ่มและดำเนินงานได้รวดเร็ว ตอบโจทย์แบรนด์ในเวลาจำกัด",
-                  descEn: "Campaigns that launch and run fast, built for brands working against the clock." },
-                { icon: "/icon-network.png", title: "Influencer Network",
-                  desc: "เครือข่ายอินฟลูเอนเซอร์ที่หลากหลาย เชื่อมต่อให้เหมาะกับแบรนด์ของคุณ",
-                  descEn: "A diverse influencer network, matched to fit your brand." },
-              ].map(({ icon, title, desc, descEn }) => (
-                <motion.div key={title} style={{
-                  display: "flex", flexDirection: "column", gap: "14px",
-                  background: "rgba(95,38,229,0.02)",
-                  border: "1px solid rgba(95,38,229,0.15)",
-                  borderRadius: "24px",
-                  padding: "32px 28px 40px",
-                  boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
-                }}
-                className="solution-card"
-                whileHover={{ scale: 1.03, y: -4, boxShadow: "0 12px 32px rgba(95,38,229,0.08)" }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}>
-                  <div className="icon-wrap-lg" style={{ background: "#ede9f8", borderRadius: "50%",
-                    width: "68px", height: "68px", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0, alignSelf: "flex-start" }}>
-                    <span style={{ display: "inline-block", width: "40px", height: "40px",
-                      backgroundColor: "#5f26e5",
-                      WebkitMaskImage: `url(${icon})`, WebkitMaskSize: "contain",
-                      WebkitMaskRepeat: "no-repeat", WebkitMaskPosition: "center",
-                      maskImage: `url(${icon})`, maskSize: "contain",
-                      maskRepeat: "no-repeat", maskPosition: "center" }} />
-                  </div>
-                  <h3 className="card-h3" style={{ ...KT, fontSize: "24px", fontWeight: 700, color: "#111827",
-                    lineHeight: "1.3", margin: 0 }}>{title}</h3>
-                  <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
-                </motion.div>
-              ))}
-          </div>
-
-        </div>
-      </section>
-
       {/* ── Our Services ── */}
       <section className="py-20 px-6">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
