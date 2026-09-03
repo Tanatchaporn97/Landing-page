@@ -276,6 +276,67 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         </div>
       </section>
 
+      {/* ── How We Run Campaigns ── */}
+      <section className="py-20 px-6">
+        <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
+          <div className="text-center" style={{ maxWidth: "760px", margin: "0 auto 56px" }}>
+            <h2 className="section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, lineHeight: 1.3, color: "#111827", margin: "0 0 20px" }}>
+              {lang === "th" ? "วิธีที่เรา" : "How We "}
+              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                {lang === "th" ? "ดำเนินแคมเปญ" : "Run Campaigns"}
+              </span>
+            </h2>
+            <p style={{ ...KT, fontSize: "18px", lineHeight: "1.7", color: "#111827", margin: 0 }}>
+              {lang === "th"
+                ? "ตั้งแต่วางกลยุทธ์จนถึงวัดผลลัพธ์ ทุกขั้นตอนถูกออกแบบมาเพื่อให้แคมเปญของคุณเดินหน้าได้อย่างมั่นใจ"
+                : "From strategy to results, every step is designed to keep your campaign on track and your brand in good hands."}
+            </p>
+          </div>
+
+          <div className="grid-2-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
+            {/* Left: representative image */}
+            <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", height: "520px", boxShadow: "0 8px 32px rgba(95,38,229,0.15)" }}>
+              <Image src="/how-we-run-campaigns/plan-campaign.png" alt={lang === "th" ? "วิธีที่เราดำเนินแคมเปญ" : "How we run campaigns"} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+            </div>
+
+            {/* Right: steps list */}
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              {[
+                { img: "/how-we-run-campaigns/plan-campaign.png", title: "วางแผนแคมเปญ", titleEn: "Plan the Campaign",
+                  desc: "ร่วมวางกลยุทธ์และกำหนดเป้าหมายแคมเปญให้ตรงกับความต้องการของแบรนด์",
+                  descEn: "We work with you to shape the strategy and set clear goals that match your brand's needs." },
+                { img: "/how-we-run-campaigns/select-influencers.png", title: "คัดสรรอินฟลูเอนเซอร์", titleEn: "Select Influencers",
+                  desc: "คัดเลือกอินฟลูเอนเซอร์ที่ใช่ที่สุดสำหรับแบรนด์ ด้วยข้อมูลเชิงลึกและระบบ AI",
+                  descEn: "We handpick the best-fit influencers for your brand using deep data insights and AI." },
+                { img: "/how-we-run-campaigns/review-drafts.png", title: "ตรวจดราฟต์", titleEn: "Review Drafts",
+                  desc: "ตรวจสอบและให้ feedback คอนเทนต์ทุกชิ้นก่อนเผยแพร่ เพื่อให้ตรงกับภาพลักษณ์แบรนด์",
+                  descEn: "We review and give feedback on every piece of content before it goes live, keeping it on-brand." },
+                { img: "/how-we-run-campaigns/manage-seamlessly.png", title: "จัดการแคมเปญไร้รอยต่อ", titleEn: "Manage Seamlessly",
+                  desc: "ดูแลและประสานงานทุกขั้นตอนของแคมเปญให้ราบรื่น ตั้งแต่เริ่มจนจบ",
+                  descEn: "We manage and coordinate every step of the campaign, keeping things running smoothly start to finish." },
+                { img: "/how-we-run-campaigns/report-results.png", title: "รายงานผล", titleEn: "Report Results",
+                  desc: "สรุปผลลัพธ์แคมเปญอย่างชัดเจน พร้อมข้อมูลที่นำไปต่อยอดได้จริง",
+                  descEn: "We deliver clear campaign reports with insights you can actually act on." },
+              ].map((step, i, arr) => (
+                <div key={step.title} style={{ display: "flex", gap: "20px", position: "relative", paddingBottom: i < arr.length - 1 ? "32px" : 0 }}>
+                  {i < arr.length - 1 && (
+                    <div style={{ position: "absolute", left: "27px", top: "56px", bottom: 0, width: "2px", background: "rgba(95,38,229,0.15)" }} />
+                  )}
+                  <div style={{ position: "relative", width: "56px", height: "56px", borderRadius: "16px", overflow: "hidden", flexShrink: 0, boxShadow: "0 4px 12px rgba(95,38,229,0.20)" }}>
+                    <Image src={step.img} alt={lang === "th" ? step.title : step.titleEn} fill sizes="56px" style={{ objectFit: "cover" }} />
+                  </div>
+                  <div>
+                    <h3 style={{ ...KT, fontSize: "20px", fontWeight: 700, color: "#111827", margin: "0 0 6px" }}>{lang === "th" ? step.title : step.titleEn}</h3>
+                    <p style={{ ...KT, fontSize: "15px", lineHeight: "1.7", color: "#111827", margin: 0 }}>{lang === "th" ? step.desc : step.descEn}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Success Stories (card carousel, reference: ฉันคืออินฟลูเอนเซอร์ page) ── */}
       <section id="success-stories" className="py-20 px-6 success-bg">
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
