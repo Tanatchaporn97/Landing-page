@@ -66,8 +66,8 @@ export default function Navbar({
   }, [menuOpen]);
 
 
-  const th = { contactUs: "ติดต่อเรา", imInfluencer: "ฉันคืออินฟลูเอนเซอร์", applyNow: "สมัครเลย", applyLine: "สมัครผ่านไลน์", successStories: "เรื่องราวความสำเร็จ", blog: "บทความ" };
-  const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", applyNow: "Apply Now", applyLine: "Apply via LINE", successStories: "Success Stories", blog: "Blog" };
+  const th = { contactUs: "ติดต่อเรา", imInfluencer: "ฉันคืออินฟลูเอนเซอร์", imBrand: "ฉันคือแบรนด์", applyNow: "สมัครเลย", applyLine: "สมัครผ่านไลน์", successStories: "เรื่องราวความสำเร็จ", blog: "บทความ" };
+  const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", imBrand: "I'm a Brand", applyNow: "Apply Now", applyLine: "Apply via LINE", successStories: "Success Stories", blog: "Blog" };
   const t = lang === "th" ? th : en;
   const isFaqPage = pathname?.includes("/faq");
   const forceDarkText = scrolled || variant === "influencer" || variant === "brand" || isFaqPage;
@@ -76,6 +76,7 @@ export default function Navbar({
     ? [
         { label: t.successStories, href: `/${lang}/success` },
         { label: t.blog, href: `/${lang}/blog` },
+        { label: t.imBrand, href: `/${lang}/brand` },
         { label: t.applyNow, href: "https://www.buddyreview.co/app/new-campaigns" },
         { label: t.applyLine, href: "https://line.me/R/ti/p/@buddysupport" },
         { label: t.contactUs, href: `/${lang}#contact` },
@@ -84,6 +85,7 @@ export default function Navbar({
         { label: t.successStories, href: `/${lang}/success` },
         { label: t.blog, href: `/${lang}/blog` },
         { label: t.imInfluencer, href: `/${lang}/influencer` },
+        { label: t.imBrand, href: `/${lang}/brand` },
         { label: t.contactUs, href: `/${lang}#contact` },
       ];
 
