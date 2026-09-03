@@ -124,8 +124,11 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </div>
           </div>
 
-          {/* Right: stat cards arranged top to bottom */}
-          <div className="hero-stat-cards" style={{ position: "relative", height: "370px" }}>
+          {/* Right: dashboard mockup with stat cards arranged top to bottom */}
+          <div className="hero-stat-cards" style={{ position: "relative", height: "420px" }}>
+            <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+              <Image src="/im-brand-dashboard.png" alt={lang === "th" ? "แดชบอร์ดแคมเปญ" : "Campaign dashboard"} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "contain" }} />
+            </div>
             <motion.div
               className="hero-stat-card"
               animate={{ rotate: -3 }}
