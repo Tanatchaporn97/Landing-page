@@ -122,14 +122,10 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                 {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
               </a>
             </div>
-          </div>
 
-          {/* Right: dashboard mockup with scattered stat cards (same layout as I'm Influencer page) */}
-          <div className="hero-stat-cards" style={{ position: "relative", height: "260px" }}>
-            <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-              <Image src="/im-brand-dashboard.png" alt={lang === "th" ? "แดชบอร์ดแคมเปญ" : "Campaign dashboard"} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "contain" }} />
-            </div>
-            <motion.div
+            {/* Scattered stat cards under the CTA (same layout as I'm Influencer page) */}
+            <div className="hero-stat-cards" style={{ position: "relative", height: "260px", marginTop: "48px" }}>
+              <motion.div
               className="hero-stat-card"
               animate={{ rotate: -4 }}
               whileHover={{ rotate: -4, y: -14, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
@@ -161,7 +157,13 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>🎯</span>
               <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>4,000+</p>
               <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>{lang === "th" ? "แคมเปญที่ส่งมอบ" : "Campaigns Delivered"}</p>
-            </motion.div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Right: dashboard mockup */}
+          <div style={{ position: "relative", height: "420px" }}>
+            <Image src="/im-brand-dashboard.png" alt={lang === "th" ? "แดชบอร์ดแคมเปญ" : "Campaign dashboard"} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "contain" }} />
           </div>
         </div>
 
