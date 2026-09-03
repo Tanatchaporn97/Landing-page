@@ -170,7 +170,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </span>
           </h2>
 
-          <div className="grid-3-col" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "32px 24px", justifyContent: "center" }}>
+          <div className="grid-3-col" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "32px 24px" }}>
               {[
                 { icon: "/what-we-offer/What We Offer-01.png", title: "กลยุทธ์แม่นยำ", titleEn: "Precision Strategy",
                   desc: "ออกแบบแคมเปญจากข้อมูลเชิงลึก เพื่อผลลัพธ์ที่ตรงเป้าและวัดผลได้จริง",
@@ -189,23 +189,25 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   descEn: "Track and review results through a real-time dashboard, clear in every dimension." },
               ].map(({ icon, title, titleEn, desc, descEn }) => (
                 <motion.div key={title} style={{
-                  display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: "14px",
-                  background: "rgba(95,38,229,0.02)",
-                  border: "1px solid rgba(95,38,229,0.15)",
+                  display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "14px",
+                  background: "#ffffff",
                   borderRadius: "24px",
-                  padding: "36px 28px 40px",
+                  padding: "32px 28px 40px",
                   boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
                 }}
                 className="solution-card"
                 whileHover={{ scale: 1.03, y: -4, boxShadow: "0 12px 32px rgba(95,38,229,0.08)" }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}>
-                  <div style={{ position: "relative", width: "96px", height: "96px", flexShrink: 0 }}>
-                    <Image src={icon} alt={lang === "th" ? title : titleEn} fill sizes="96px" style={{ objectFit: "contain" }} />
+                  <div className="icon-wrap-lg" style={{ background: "#ede9f8", borderRadius: "50%",
+                    width: "68px", height: "68px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <div style={{ position: "relative", width: "40px", height: "40px" }}>
+                      <Image src={icon} alt={lang === "th" ? title : titleEn} fill sizes="40px" style={{ objectFit: "contain" }} />
+                    </div>
                   </div>
-                  <h3 className="card-h3" style={{ ...KT, fontSize: "22px", fontWeight: 700, color: "#5f26e5",
+                  <h3 className="card-h3" style={{ ...KT, fontSize: "24px", fontWeight: 700, color: "#111827",
                     lineHeight: "1.3", margin: 0 }}>{lang === "th" ? title : titleEn}</h3>
-                  <p style={{ ...KT, fontSize: "15px", lineHeight: "1.7", color: "#111827", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
+                  <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
                 </motion.div>
               ))}
           </div>
