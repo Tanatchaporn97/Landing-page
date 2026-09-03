@@ -238,7 +238,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                 { img: "/services/product-seeding.jpg", title: "Product Seeding",
                   desc: "สร้างกระแสให้สินค้าผ่านคอมเมนต์และรีวิวจำนวนมากอย่างเป็นธรรมชาติ ช่วยเพิ่ม Social Proof ทำให้แบรนด์ดูมีความน่าเชื่อถือและกระตุ้นการตัดสินใจซื้อ",
                   descEn: "Spark buzz for your product through a natural flood of comments and reviews, boosting social proof, credibility, and purchase decisions.",
-                  objectPosition: "70% center" },
+                  objectPosition: "30% center" },
                 { img: "/services/livestream-affiliate.jpg", title: "Livestream & Affiliate",
                   desc: "คอนเทนต์ที่ออกแบบมาเพื่อสร้างผลลัพธ์ด้านยอดขาย โดยตรงจากอินฟลูเอนเซอร์ ทำให้ทุกการลงทุนของคุณกลายเป็นรายได้",
                   descEn: "Content designed to drive sales results directly through influencers, turning every investment into revenue." },
@@ -248,7 +248,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                 { img: "/services/paid-media.jpg", title: "Paid Media",
                   desc: "เพิ่มพลังให้แคมเปญด้วยการยิงโฆษณาและบูสต์คอนเทนต์ เข้าถึงกลุ่มเป้าหมายตรงจุด อัปยอดขาย และทำให้ทุกการลงทุนคุ้มค่าที่สุด",
                   descEn: "Supercharge your campaign with targeted ads and content boosting — reaching the right audience, driving sales, and maximizing every baht spent.",
-                  objectPosition: "70% center" },
+                  objectPosition: "30% center" },
               ].map(({ img, title, desc, descEn, objectPosition }) => (
                 <motion.div key={title} style={{
                   position: "relative",
