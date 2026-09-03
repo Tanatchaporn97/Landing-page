@@ -167,7 +167,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
           {/* Right: dashboard mockup */}
           <div style={{ position: "relative", height: "420px" }}>
-            <Image src="/im-brand-dashboard.png" alt={lang === "th" ? "แดชบอร์ดแคมเปญ" : "Campaign dashboard"} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "contain" }} />
+            <Image src="/im-brand-dashboard.png" alt={lang === "th" ? "แดชบอร์ดแคมเปญ" : "Campaign dashboard"} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "contain", transform: "scale(1.4)" }} />
           </div>
         </div>
 
