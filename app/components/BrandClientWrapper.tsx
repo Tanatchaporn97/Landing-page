@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import AnimatedCounter from "./AnimatedCounter";
 
 // Lazy load below-the-fold components
 const LogoMarquee = dynamic(() => import("./LogoMarquee"));
@@ -87,7 +86,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
       {/* ── Hero ── */}
       <section
-        className="flex flex-col items-center justify-center text-center px-6 relative hero-section hero-header-glow"
+        className="flex items-center px-6 relative hero-section hero-header-glow"
         style={{
           minHeight: "72vh",
           paddingTop: "128px",
@@ -104,70 +103,69 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           pointerEvents: "none",
           display: "block",
         }} />
-        <div className="relative" style={{ maxWidth: "1100px", zIndex: 2 }}>
-          <h1 className="font-bold uppercase mb-6 hero-h1"
-            style={{ color: "#ffffff", fontSize: "clamp(28px,3.9vw,56px)", lineHeight: "84px", textAlign: "center",
-              fontFeatureSettings: "'pnum' on,'lnum' on",
-              textShadow: "0 2px 24px rgba(0,0,0,0.25), 0 1px 6px rgba(0,0,0,0.15)" }}>
-            Not Just Strategies.<br/>Execution That Delivers.
-          </h1>
-          <h2 className="font-normal mb-12"
-            style={{ color: "#ffffff", fontSize: "clamp(18px,1.8vw,28px)", lineHeight: "1.7", textAlign: "center",
-              textTransform: "capitalize", fontFeatureSettings: "'pnum' on,'lnum' on", margin: "0 0 48px" }}>
-            {lang === "th" ? (
-              "มากกว่ากลยุทธ์ คือพาแบรนด์ไปถึงเป้าหมาย"
-            ) : (
-              <>From Strategy To Insight,<span className="hero-subline-break"> We Turn Influence Into Impact.</span></>
-            )}
-          </h2>
-          <div className="flex flex-wrap gap-6 justify-center">
-            <a href="#contact" className="btn-hero font-semibold hero-btn"
-              style={{ ...KT, fontSize: "16px", padding: "14px 32px", minWidth: "176px", borderRadius: "50px", textDecoration: "none", color: "#5f26e5" }}>
-              {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
-            </a>
+        <div className="hero-grid-inf relative" style={{ maxWidth: "1200px", margin: "0 auto", width: "100%", zIndex: 2,
+          display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center" }}>
+
+          {/* Left: headline, subhead, CTA */}
+          <div>
+            <h1 className="font-bold uppercase mb-6 hero-h1"
+              style={{ color: "#ffffff", fontSize: "clamp(28px,3.9vw,56px)", lineHeight: "84px", textAlign: "left",
+                fontFeatureSettings: "'pnum' on,'lnum' on",
+                textShadow: "0 2px 24px rgba(0,0,0,0.25), 0 1px 6px rgba(0,0,0,0.15)" }}>
+              Not Just Strategies.<br/>Execution That Delivers.
+            </h1>
+            <h2 className="font-normal mb-12"
+              style={{ color: "#ffffff", fontSize: "clamp(18px,1.8vw,28px)", lineHeight: "1.7", textAlign: "left",
+                textTransform: "capitalize", fontFeatureSettings: "'pnum' on,'lnum' on", margin: "0 0 48px" }}>
+              {lang === "th" ? (
+                "มากกว่ากลยุทธ์ คือพาแบรนด์ไปถึงเป้าหมาย"
+              ) : (
+                <>From Strategy To Insight,<span className="hero-subline-break"> We Turn Influence Into Impact.</span></>
+              )}
+            </h2>
+            <div className="flex flex-wrap gap-6 justify-start">
+              <a href="#contact" className="btn-hero font-semibold hero-btn"
+                style={{ ...KT, fontSize: "16px", padding: "14px 32px", minWidth: "176px", borderRadius: "50px", textDecoration: "none", color: "#5f26e5" }}>
+                {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
+              </a>
+            </div>
           </div>
 
-          {/* Impact Stats — static figures from Success Stories section */}
-          <div className="hero-stats-strip" style={{
-            display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "22px",
-            marginTop: "76px",
-          }}>
-            {[
-              { target: 1000000, startValue: 900000, suffix: "+", label: lang === "th" ? "เครือข่ายอินฟลูเอนเซอร์" : "Influencer Network" },
-              { target: 1000, startValue: 900, suffix: "+", label: lang === "th" ? "ลูกค้าที่ไว้วางใจ" : "Trusted Clients" },
-              { target: 4000, startValue: 3000, suffix: "+", label: lang === "th" ? "แคมเปญที่ส่งมอบ" : "Campaigns Delivered" },
-            ].map((s) => (
-              <motion.div key={s.label} className="hero-stat-item" style={{
-                display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", gap: "6px",
-                background: "rgba(255,255,255,0.5)",
-                backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
-                border: "1px solid rgba(255,255,255,0.6)",
-                boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
-                borderRadius: "20px",
-                padding: "26px 20px",
-                width: "280px",
-                boxSizing: "border-box",
-              }}
-              whileHover={{
-                scale: [null, 1.05, 1.08],
-                transition: { duration: 0.5, times: [0, 0.6, 1], ease: ["easeInOut", "easeOut"] },
-              }}
-              whileTap={{ scale: 0.96 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}>
-                <span style={{
-                  ...KT, fontSize: "31px", fontWeight: 800, lineHeight: 1, whiteSpace: "nowrap",
-                  background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}>
-                  <AnimatedCounter target={s.target} startValue={s.startValue} suffix={s.suffix} />
-                </span>
-                <span style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", lineHeight: 1.35, whiteSpace: "nowrap" }}>
-                  {s.label}
-                </span>
-              </motion.div>
-            ))}
+          {/* Right: scattered stat cards */}
+          <div className="hero-stat-cards" style={{ position: "relative", height: "260px" }}>
+            <motion.div
+              className="hero-stat-card"
+              animate={{ rotate: -4 }}
+              whileHover={{ rotate: -4, y: -14, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
+              transition={{ type: "spring", stiffness: 320, damping: 22 }}
+              style={{ position: "absolute", left: 0, top: "36px", background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", zIndex: 1, cursor: "pointer" }}
+            >
+              <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>🤝</span>
+              <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>1,000+</p>
+              <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>{lang === "th" ? "ลูกค้าที่ไว้วางใจ" : "Trusted Clients"}</p>
+            </motion.div>
+            <motion.div
+              className="hero-stat-card"
+              animate={{ rotate: 2 }}
+              whileHover={{ rotate: 2, y: -14, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
+              transition={{ type: "spring", stiffness: 320, damping: 22 }}
+              style={{ position: "absolute", left: "169px", top: "62px", background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", zIndex: 2, cursor: "pointer" }}
+            >
+              <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>🎯</span>
+              <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>4,000+</p>
+              <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>{lang === "th" ? "แคมเปญที่ส่งมอบ" : "Campaigns Delivered"}</p>
+            </motion.div>
+            <motion.div
+              className="hero-stat-card"
+              animate={{ rotate: -2 }}
+              whileHover={{ rotate: -2, y: -14, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
+              transition={{ type: "spring", stiffness: 320, damping: 22 }}
+              style={{ position: "absolute", left: "325px", top: "10px", background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", zIndex: 3, cursor: "pointer" }}
+            >
+              <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>🌐</span>
+              <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>95K+</p>
+              <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>{lang === "th" ? "เครือข่ายอินฟลูเอนเซอร์" : "Influencer Network"}</p>
+            </motion.div>
           </div>
         </div>
 
