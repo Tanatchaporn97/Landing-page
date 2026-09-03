@@ -302,10 +302,10 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <div className="text-center" style={{ maxWidth: "760px", margin: "0 auto 56px" }}>
             <h2 className="section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, lineHeight: 1.3, color: "#111827", margin: "0 0 20px" }}>
-              {lang === "th" ? "วิธีที่เรา" : "How We "}
+              How We{" "}
               <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
                 WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                {lang === "th" ? "ดำเนินแคมเปญ" : "Run Campaigns"}
+                Run Campaigns
               </span>
             </h2>
             <p style={{ ...KT, fontSize: "18px", lineHeight: "1.7", color: "#111827", margin: 0 }}>
