@@ -265,8 +265,8 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                     background: "linear-gradient(to top, rgba(95,38,229,1) 0%, rgba(95,38,229,0.85) 30%, rgba(95,38,229,0) 65%)" }} />
                   <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "24px 24px 28px",
                     display: "flex", flexDirection: "column", gap: "8px" }}>
-                    <h3 style={{ ...KT, fontSize: "22px", fontWeight: 700, color: "#ffffff", margin: 0 }}>{title}</h3>
-                    <p style={{ ...KT, fontSize: "14px", lineHeight: "1.6", color: "rgba(255,255,255,0.85)", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
+                    <h3 style={{ ...KT, fontSize: "29px", fontWeight: 600, color: "#ffffff", margin: "0 0 6px", lineHeight: 1.2 }}>{title}</h3>
+                    <p style={{ ...KT, fontSize: "16px", fontWeight: 400, lineHeight: 1.65, color: "rgba(255,255,255,0.85)", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
                   </div>
                 </motion.div>
               ))}
