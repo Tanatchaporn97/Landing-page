@@ -102,7 +102,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           {/* Left: headline, subhead, CTA */}
           <div>
             <h1 className="font-bold uppercase mb-6 hero-h1"
-              style={{ color: "#111827", fontSize: "clamp(28px,3.9vw,56px)", lineHeight: "84px", textAlign: "left",
+              style={{ color: "#111827", fontSize: "clamp(22px,2.6vw,38px)", lineHeight: 1.25, textAlign: "left",
                 marginTop: "1lh",
                 fontFeatureSettings: "'pnum' on,'lnum' on", whiteSpace: "nowrap" }}>
               Not Just Strategies.<br/>
