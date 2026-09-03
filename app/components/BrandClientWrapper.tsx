@@ -179,6 +179,25 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       {/* ── Brand Logos Marquee ── */}
       <LogoMarquee />
 
+      {/* ── Tagline ── */}
+      <section className="pt-20 px-6" style={{ paddingBottom: 0 }}>
+        <div className="text-center" style={{ maxWidth: "860px", margin: "0 auto" }}>
+          <h2 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, lineHeight: 1.3, margin: "0 0 20px" }}>
+            <span style={{ color: "#111827" }}>{lang === "th" ? "แคมเปญอินฟลูเอนเซอร์" : "Influencer Campaigns"}</span>
+            <br />
+            <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              {lang === "th" ? "ที่เราพร้อมดูแลคุณในทุกขั้นตอนอย่างเหนือระดับ" : "Elevated at Every Step"}
+            </span>
+          </h2>
+          <p style={{ ...KT, fontSize: "18px", lineHeight: "1.7", color: "#111827", margin: 0 }}>
+            {lang === "th"
+              ? "ทุกกลยุทธ์ต่อยอดด้วยดาต้าและทีมงานมืออาชีพ เพื่อให้แคมเปญของคุณไปถึงผลลัพธ์ที่วางไว้"
+              : "Every strategy is powered by data and a professional team, driving your campaign to the results you set out to achieve."}
+          </p>
+        </div>
+      </section>
+
       {/* ── What We Offer ── */}
       <section className="py-20 px-6">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
