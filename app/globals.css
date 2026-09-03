@@ -772,6 +772,10 @@ body {
 /* ── Mobile (≤ 767px) ── */
 @media (max-width: 767px) {
 
+  /* /brand hero dashboard image — keep it within the section's side padding on mobile */
+  .brand-hero-dashboard { height: 260px !important; }
+  .brand-hero-dashboard img { transform: scale(1) !important; }
+
   /* Navbar */
   .nav-landing-wrap {
     left: 12px !important;
