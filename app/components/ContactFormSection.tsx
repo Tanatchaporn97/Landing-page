@@ -15,9 +15,10 @@ const IconCheck = ({ color = "#5f26e5" }: { color?: string }) => (
 
 export default function ContactFormSection({ lang = "th", dict }: { lang?: "th" | "en", dict: any }) {
   const [consented, setConsented] = useState(false);
+  const [showConsentWarning, setShowConsentWarning] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", company: "", budget: "", position: "", brief: "" });
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  
+
   const t = dict || {};
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -25,7 +26,11 @@ export default function ContactFormSection({ lang = "th", dict }: { lang?: "th" 
   };
 
   const handleFormSubmit = async () => {
-    if (!consented) return;
+    if (!consented) {
+      setShowConsentWarning(true);
+      return;
+    }
+    setShowConsentWarning(false);
     setFormStatus("sending");
     try {
       const res = await fetch("/api/contact", {
@@ -145,10 +150,10 @@ export default function ContactFormSection({ lang = "th", dict }: { lang?: "th" 
 
             {/* Consent */}
             <div style={{ display: "flex", alignItems: "flex-start", gap: "10px", cursor: "pointer" }}
-              onClick={() => setConsented(c => !c)}>
+              onClick={() => { setConsented(c => !c); setShowConsentWarning(false); }}>
               <div style={{ width: "18px", height: "18px", borderRadius: "4px", flexShrink: 0, marginTop: "2px",
                 background: consented ? "#5f26e5" : "transparent",
-                border: consented ? "none" : "1.5px solid #9ca3af",
+                border: consented ? "none" : (showConsentWarning ? "1.5px solid #dc2626" : "1.5px solid #9ca3af"),
                 display: "flex", alignItems: "center", justifyContent: "center",
                 transition: "background 0.2s, border 0.2s" }}>
                 {consented && <IconCheck color="#ffffff" />}
@@ -168,6 +173,11 @@ export default function ContactFormSection({ lang = "th", dict }: { lang?: "th" 
             </p>
 
             {/* Status messages */}
+            {showConsentWarning && !consented && (
+              <p style={{ ...KT, color: "#dc2626", fontSize: "14px", fontWeight: 600, margin: 0 }}>
+                {t.consentWarning || (lang === "en" ? "Please accept the terms and privacy policy above before submitting." : "กรุณายอมรับเงื่อนไขและนโยบายความเป็นส่วนตัวก่อนส่งข้อมูล")}
+              </p>
+            )}
             {formStatus === "success" && (
               <p style={{ ...KT, color: "#16a34a", fontSize: "15px", fontWeight: 600, margin: 0 }}>
                 {t.successMsg || "✓ Submitted successfully"}
@@ -181,13 +191,13 @@ export default function ContactFormSection({ lang = "th", dict }: { lang?: "th" 
 
             {/* Submit: pill button + circle arrow */}
             <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              <button disabled={!consented || formStatus === "sending"}
+              <button disabled={formStatus === "sending"}
                 onClick={handleFormSubmit}
                 className="cta-submit"
                 style={{ ...KT, background: consented ? "#5f26e5" : "#e5e7eb",
                   border: "none", borderRadius: "50px", color: consented ? "#ffffff" : "#9ca3af",
                   fontSize: "16px", fontWeight: 600, padding: "16px 36px",
-                  cursor: consented && formStatus !== "sending" ? "pointer" : "not-allowed",
+                  cursor: formStatus !== "sending" ? "pointer" : "not-allowed",
                   transition: "background 0.2s, color 0.2s" }}>
                 {formStatus === "sending" ? (t.sendingBtn || (lang === "en" ? "Sending..." : "กำลังส่ง...")) : (t.submitBtn || (lang === "en" ? "Submit" : "ส่งข้อมูล"))}
               </button>
