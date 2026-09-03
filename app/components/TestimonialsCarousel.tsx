@@ -107,12 +107,12 @@ export default function TestimonialsCarousel({ lang = "th" }: { lang?: "th" | "e
     <div>
       <div className="tc-wrap" onWheel={onWheel} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center", gap: "20px", padding: "20px 70px" }}>
         {/* Prev arrow */}
-        <button onClick={() => go(-1)} className="tc-arrow"
+        <button onClick={() => go(-1)} className="tc-arrow arrow-cta-btn"
           style={{ position: "absolute", left: 0, top: "50%", transform: "translateY(-50%)",
             width: "44px", height: "44px", borderRadius: "50%", border: "none",
-            background: "rgba(95,38,229,0.10)", cursor: "pointer", display: "flex",
+            cursor: "pointer", display: "flex",
             alignItems: "center", justifyContent: "center", zIndex: 3, touchAction: "manipulation" }}>
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 5L7.5 10L12.5 15" stroke="#5f26e5" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 5L7.5 10L12.5 15" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
 
         <div className="tc-side">

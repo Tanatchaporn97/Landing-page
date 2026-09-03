@@ -70,12 +70,12 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
       {/* Full-width carousel */}
       <div style={{ position: "relative" }}>
         {/* Prev arrow */}
-        <button onClick={() => ptpScrollTo(Math.max(0, ptpIndex - 1))} className="tc-arrow ptp-arrow"
+        <button onClick={() => ptpScrollTo(Math.max(0, ptpIndex - 1))} className="tc-arrow ptp-arrow arrow-cta-btn"
           style={{ position: "absolute", left: "8px", top: "50%", transform: "translateY(-50%)",
             width: "44px", height: "44px", borderRadius: "50%", border: "none",
-            background: "rgba(95,38,229,0.10)", cursor: "pointer", display: "flex",
+            cursor: "pointer", display: "flex",
             alignItems: "center", justifyContent: "center", zIndex: 3 }}>
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 5L7.5 10L12.5 15" stroke="#5f26e5" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 5L7.5 10L12.5 15" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
 
         {/* Next arrow */}
