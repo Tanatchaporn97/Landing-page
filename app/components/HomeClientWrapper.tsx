@@ -97,6 +97,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
         <div className="relative" style={{ maxWidth: "1100px", zIndex: 2 }}>
           <h1 className="font-bold uppercase mb-6 hero-h1"
             style={{ color: "#ffffff", fontSize: "clamp(28px,3.9vw,56px)", lineHeight: "84px", textAlign: "center",
+              marginTop: "1lh",
               fontFeatureSettings: "'pnum' on,'lnum' on",
               textShadow: "0 2px 24px rgba(0,0,0,0.25), 0 1px 6px rgba(0,0,0,0.15)" }}>
             {t.headline1}<br/>{t.headline2}
