@@ -536,6 +536,23 @@ body {
 .cs-card:hover .cs-arrow-path {
   stroke: #5f26e5;
 }
+
+/* Carousel nav "next" arrow buttons — purple by default, white on hover
+   (same pattern as .cs-arrow-btn above) */
+.arrow-cta-btn {
+  background: #5f26e5 !important;
+  transition: background 0.25s ease;
+}
+.arrow-cta-btn svg path {
+  transition: stroke 0.25s ease;
+}
+.arrow-cta-btn:hover {
+  background: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(95,38,229,0.20);
+}
+.arrow-cta-btn:hover svg path {
+  stroke: #5f26e5 !important;
+}
 .cs-card:hover .cs-card-title h3 {
   background: none;
   -webkit-text-fill-color: #ffffff;

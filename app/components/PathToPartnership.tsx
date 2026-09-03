@@ -79,10 +79,10 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
         </button>
 
         {/* Next arrow */}
-        <button onClick={() => ptpScrollTo(Math.min(PTP_STEPS.length - 1, ptpIndex + 1))} className="tc-arrow ptp-arrow"
+        <button onClick={() => ptpScrollTo(Math.min(PTP_STEPS.length - 1, ptpIndex + 1))} className="tc-arrow ptp-arrow arrow-cta-btn"
           style={{ position: "absolute", right: "8px", top: "50%", transform: "translateY(-50%)",
             width: "44px", height: "44px", borderRadius: "50%", border: "none",
-            background: "#5f26e5", cursor: "pointer", display: "flex",
+            cursor: "pointer", display: "flex",
             alignItems: "center", justifyContent: "center", zIndex: 3 }}>
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.5 5L12.5 10L7.5 15" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
