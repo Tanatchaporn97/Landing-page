@@ -86,7 +86,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
       {/* ── Hero ── */}
       <section
-        className="flex items-center px-6 relative hero-section brand-hero-bg"
+        className="flex items-start px-6 relative hero-section brand-hero-bg"
         style={{
           minHeight: "72vh",
           paddingTop: "120px",
