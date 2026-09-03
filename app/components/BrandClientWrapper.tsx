@@ -103,8 +103,12 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           <div>
             <h1 className="font-bold uppercase mb-6 hero-h1"
               style={{ color: "#111827", fontSize: "clamp(28px,3.9vw,56px)", lineHeight: "84px", textAlign: "left",
-                fontFeatureSettings: "'pnum' on,'lnum' on" }}>
-              Not Just Strategies.<br/>Execution That Delivers.
+                fontFeatureSettings: "'pnum' on,'lnum' on", whiteSpace: "nowrap" }}>
+              Not Just Strategies.<br/>
+              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                Execution That Delivers.
+              </span>
             </h1>
             <h2 className="font-normal mb-12"
               style={{ color: "#111827", fontSize: "clamp(18px,1.8vw,28px)", lineHeight: "1.7", textAlign: "left",
