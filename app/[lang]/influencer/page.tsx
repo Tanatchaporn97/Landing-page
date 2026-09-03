@@ -235,7 +235,9 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
                 {lang === "th" ? (
                   <>
-                    <h3 style={{ ...KT, fontSize: "clamp(26px,3.4vw,42px)", fontWeight: 800, color: "#01082F", margin: 0, lineHeight: 1.3 }}>
+                    <h3 style={{ ...KT, fontSize: "clamp(26px,3.4vw,42px)", fontWeight: 800, margin: 0, lineHeight: 1.3,
+                      background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+                      WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                       อยากเป็น Influencer แต่ไม่รู้จะเริ่มตรงไหน?
                     </h3>
                     <p style={{ ...KT, fontSize: "clamp(16px,1.9vw,20px)", fontWeight: 400, color: "rgba(1,8,47,0.78)", margin: 0, lineHeight: 1.7 }}>
