@@ -43,7 +43,7 @@ const IconCheck = ({ color = "#5f26e5" }: { color?: string }) => (
 
 import { type Locale } from "../../i18n-config";
 
-export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: any }) {
+export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict: any }) {
   const t = dict?.home || {};
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -107,10 +107,10 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
             From Strategy To Insight,<span className="hero-subline-break"> We Turn Influence Into Impact.</span>
           </h2>
           <div className="flex flex-wrap gap-6 justify-center">
-            <Link href={`/${lang}/brand`} className="btn-hero font-semibold hero-btn"
+            <a href="#solutions" className="btn-hero font-semibold hero-btn"
               style={{ ...KT, fontSize: "16px", padding: "14px 32px", minWidth: "176px", borderRadius: "50px", textDecoration: "none", color: "#5f26e5" }}>
               {t.imBrand}
-            </Link>
+            </a>
             <Link href={`/${lang}/influencer`} className="btn-hero btn-hero-solid-purple font-semibold hero-btn"
               style={{ ...KT, fontSize: "16px", padding: "14px 32px", minWidth: "176px", borderRadius: "50px", textDecoration: "none" }}>
               {t.imInfluencer}
