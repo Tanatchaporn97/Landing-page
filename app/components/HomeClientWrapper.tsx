@@ -80,7 +80,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
         className="flex flex-col items-center justify-center text-center px-6 relative hero-section hero-header-glow"
         style={{
           minHeight: "72vh",
-          paddingTop: "128px",
+          paddingTop: "120px",
           paddingBottom: "64px",
           overflow: "hidden",
           position: "relative",
