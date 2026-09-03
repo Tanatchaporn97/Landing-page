@@ -86,7 +86,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
       {/* ── Hero ── */}
       <section
-        className="flex items-center px-6 relative hero-section hero-header-glow"
+        className="flex items-center px-6 relative hero-section brand-hero-bg"
         style={{
           minHeight: "72vh",
           paddingTop: "128px",
@@ -96,26 +96,18 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           zIndex: 10,
         }}
       >
-        {/* Background image */}
-        <Image src="/header-landing-bg3.jpg" alt="" aria-hidden="true" fill priority sizes="100vw" style={{
-          objectFit: "cover", objectPosition: "center",
-          zIndex: 0,
-          pointerEvents: "none",
-          display: "block",
-        }} />
         <div className="hero-grid-inf relative" style={{ maxWidth: "1200px", margin: "0 auto", width: "100%", zIndex: 2,
           display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center" }}>
 
           {/* Left: headline, subhead, CTA */}
           <div>
             <h1 className="font-bold uppercase mb-6 hero-h1"
-              style={{ color: "#ffffff", fontSize: "clamp(26px,2.9vw,44px)", lineHeight: 1.2, textAlign: "left",
-                fontFeatureSettings: "'pnum' on,'lnum' on", whiteSpace: "nowrap",
-                textShadow: "0 2px 24px rgba(0,0,0,0.25), 0 1px 6px rgba(0,0,0,0.15)" }}>
+              style={{ color: "#111827", fontSize: "clamp(26px,2.9vw,44px)", lineHeight: 1.2, textAlign: "left",
+                fontFeatureSettings: "'pnum' on,'lnum' on", whiteSpace: "nowrap" }}>
               Not Just Strategies.<br/>Execution That Delivers.
             </h1>
             <h2 className="font-normal mb-12"
-              style={{ color: "#ffffff", fontSize: "clamp(18px,1.8vw,28px)", lineHeight: "1.7", textAlign: "left",
+              style={{ color: "#111827", fontSize: "clamp(18px,1.8vw,28px)", lineHeight: "1.7", textAlign: "left",
                 textTransform: "capitalize", fontFeatureSettings: "'pnum' on,'lnum' on", margin: "0 0 48px" }}>
               {lang === "th" ? (
                 "มากกว่ากลยุทธ์ คือพาแบรนด์ไปถึงเป้าหมาย"
@@ -124,9 +116,9 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               )}
             </h2>
             <div className="flex flex-wrap gap-6 justify-start">
-              <a href="#contact" className="btn-hero font-semibold hero-btn"
+              <a href="#contact" className="btn-hero btn-hero-solid-purple font-semibold hero-btn"
                 style={{ ...KT, display: "inline-flex", alignItems: "center", justifyContent: "center", textAlign: "center",
-                  fontSize: "16px", padding: "14px 32px", minWidth: "176px", borderRadius: "50px", textDecoration: "none", color: "#5f26e5" }}>
+                  fontSize: "16px", padding: "14px 32px", minWidth: "176px", borderRadius: "50px", textDecoration: "none" }}>
                 {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
               </a>
             </div>

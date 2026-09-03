@@ -68,6 +68,36 @@ button, a, [role="button"] { touch-action: manipulation; }
   background-size: 100% 100%;
 }
 
+/* ── /brand page hero section background ── */
+.brand-hero-bg {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse at 15% 5%,
+      rgba(216, 204, 250, 0.95) 0%,
+      rgba(226, 213, 250, 0.75) 22%,
+      rgba(244, 231, 249, 0.45) 48%,
+      transparent 75%
+    ),
+    radial-gradient(
+      ellipse at 90% 8%,
+      rgba(252, 219, 240, 0.95) 0%,
+      rgba(249, 226, 246, 0.65) 30%,
+      transparent 70%
+    ),
+    linear-gradient(
+      to bottom,
+      #e8dcf8 0%,
+      #f4eaf8 35%,
+      #faf6fb 52%,
+      #ffffff 72%,
+      #ffffff 100%
+    );
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
 .inf-logo-bg {
   background: linear-gradient(180deg, #F7F1FC 0%, #FFFFFF 100%);
 }
