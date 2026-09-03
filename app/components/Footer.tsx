@@ -17,8 +17,8 @@ export default function Footer({ variant = "influencer", lang = "th", dict }: { 
   const textColor = variant === "home" ? "#ffffff" : "#F0E8FF";
 
   const t = lang === "th"
-    ? { quickLinks: "เมนูลัด", home: "หน้าหลัก", successStories: "Success Stories", industryInsights: "Industry Insights", faqs: "FAQs", imInfluencer: "ฉันคืออินฟลูเอนเซอร์" }
-    : { quickLinks: "Quick Links", home: "Home", successStories: "Success Stories", industryInsights: "Industry Insights", faqs: "FAQs", imInfluencer: "I'm an Influencer" };
+    ? { quickLinks: "เมนูลัด", home: "หน้าหลัก", successStories: "Success Stories", industryInsights: "Industry Insights", faqs: "FAQs", imInfluencer: "ฉันคืออินฟลูเอนเซอร์", imBrand: "ฉันคือแบรนด์" }
+    : { quickLinks: "Quick Links", home: "Home", successStories: "Success Stories", industryInsights: "Industry Insights", faqs: "FAQs", imInfluencer: "I'm an Influencer", imBrand: "I'm a Brand" };
 
   const faqHref = `/${lang}/faq${variant === "influencer" ? "?from=influencer" : ""}`;
 
@@ -27,6 +27,7 @@ export default function Footer({ variant = "influencer", lang = "th", dict }: { 
     { label: t.successStories, href: `/${lang}/success` },
     { label: t.industryInsights, href: `/${lang}/blog` },
     { label: t.faqs, href: faqHref },
+    { label: t.imBrand, href: `/${lang}/brand` },
     { label: t.imInfluencer, href: `/${lang}/influencer` },
   ];
 
