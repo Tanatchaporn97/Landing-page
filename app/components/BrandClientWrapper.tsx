@@ -237,7 +237,8 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   descEn: "Stand out with fun challenges that pull people into organic participation, making your brand memorable." },
                 { img: "/services/product-seeding.jpg", title: "Product Seeding",
                   desc: "สร้างกระแสให้สินค้าผ่านคอมเมนต์และรีวิวจำนวนมากอย่างเป็นธรรมชาติ ช่วยเพิ่ม Social Proof ทำให้แบรนด์ดูมีความน่าเชื่อถือและกระตุ้นการตัดสินใจซื้อ",
-                  descEn: "Spark buzz for your product through a natural flood of comments and reviews, boosting social proof, credibility, and purchase decisions." },
+                  descEn: "Spark buzz for your product through a natural flood of comments and reviews, boosting social proof, credibility, and purchase decisions.",
+                  objectPosition: "70% center" },
                 { img: "/services/livestream-affiliate.jpg", title: "Livestream & Affiliate",
                   desc: "คอนเทนต์ที่ออกแบบมาเพื่อสร้างผลลัพธ์ด้านยอดขาย โดยตรงจากอินฟลูเอนเซอร์ ทำให้ทุกการลงทุนของคุณกลายเป็นรายได้",
                   descEn: "Content designed to drive sales results directly through influencers, turning every investment into revenue." },
@@ -246,8 +247,9 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   descEn: "From launch events to special activities, we handpick the right influencers to capture and share the moment live, keeping the buzz going." },
                 { img: "/services/paid-media.jpg", title: "Paid Media",
                   desc: "เพิ่มพลังให้แคมเปญด้วยการยิงโฆษณาและบูสต์คอนเทนต์ เข้าถึงกลุ่มเป้าหมายตรงจุด อัปยอดขาย และทำให้ทุกการลงทุนคุ้มค่าที่สุด",
-                  descEn: "Supercharge your campaign with targeted ads and content boosting — reaching the right audience, driving sales, and maximizing every baht spent." },
-              ].map(({ img, title, desc, descEn }) => (
+                  descEn: "Supercharge your campaign with targeted ads and content boosting — reaching the right audience, driving sales, and maximizing every baht spent.",
+                  objectPosition: "70% center" },
+              ].map(({ img, title, desc, descEn, objectPosition }) => (
                 <motion.div key={title} style={{
                   position: "relative",
                   borderRadius: "28px",
@@ -260,7 +262,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                 whileHover={{ scale: 1.03, y: -4 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}>
-                  <Image src={img} alt={title} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
+                  <Image src={img} alt={title} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover", objectPosition: objectPosition || "center" }} />
                   <div style={{ position: "absolute", inset: 0,
                     background: "linear-gradient(to top, rgba(95,38,229,1) 0%, rgba(95,38,229,0.85) 30%, rgba(95,38,229,0) 65%)" }} />
                   <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "24px 24px 28px",
