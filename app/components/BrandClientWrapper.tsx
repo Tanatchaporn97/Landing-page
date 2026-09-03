@@ -215,6 +215,62 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         </div>
       </section>
 
+      {/* ── Our Services ── */}
+      <section className="py-20 px-6">
+        <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
+          <h2 className="text-center font-bold mb-14 section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
+            fontFeatureSettings: "'pnum' on,'lnum' on", color: "#111827", margin: "0 0 56px" }}>
+            Our{" "}
+            <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              Services
+            </span>
+          </h2>
+
+          <div className="grid-3-col" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "32px 24px" }}>
+              {[
+                { img: "/services/campaign-reviews.jpg", title: "Campaign Reviews",
+                  desc: "รีวิวสินค้าและบริการผ่านอินฟลูเอนเซอร์ที่ใช่ พร้อมสื่อสารข้อความและจุดเด่นของแบรนด์ได้อย่างมีประสิทธิภาพ เปลี่ยนให้ทุกความสนใจเป็นยอดขาย",
+                  descEn: "Product and service reviews through the right influencers, communicating your brand's key messages effectively — turning every bit of interest into sales." },
+                { img: "/services/social-challenges.jpg", title: "Social Challenges",
+                  desc: "โดดเด่นเหนือใครด้วยชาเลนจ์สนุก ๆ ที่ดึงให้ผู้คนเข้ามามีส่วนร่วมแบบออร์แกนิค ช่วยให้แบรนด์เป็นที่น่าจดจำ",
+                  descEn: "Stand out with fun challenges that pull people into organic participation, making your brand memorable." },
+                { img: "/services/product-seeding.jpg", title: "Product Seeding",
+                  desc: "สร้างกระแสให้สินค้าผ่านคอมเมนต์และรีวิวจำนวนมากอย่างเป็นธรรมชาติ ช่วยเพิ่ม Social Proof ทำให้แบรนด์ดูมีความน่าเชื่อถือและกระตุ้นการตัดสินใจซื้อ",
+                  descEn: "Spark buzz for your product through a natural flood of comments and reviews, boosting social proof, credibility, and purchase decisions." },
+                { img: "/services/livestream-affiliate.jpg", title: "Livestream & Affiliate",
+                  desc: "คอนเทนต์ที่ออกแบบมาเพื่อสร้างผลลัพธ์ด้านยอดขาย โดยตรงจากอินฟลูเอนเซอร์ ทำให้ทุกการลงทุนของคุณกลายเป็นรายได้",
+                  descEn: "Content designed to drive sales results directly through influencers, turning every investment into revenue." },
+                { img: "/services/influencer-at-events.png", title: "Influencer at Events",
+                  desc: "ไม่ว่างานเปิดตัว กิจกรรม หรืออีเวนต์พิเศษ เราคัดเลือกอินฟลูเอนเซอร์ที่ใช่ ถ่ายทอดเรื่องราวสดๆ สร้างกระแสได้อย่างต่อเนื่อง",
+                  descEn: "From launch events to special activities, we handpick the right influencers to capture and share the moment live, keeping the buzz going." },
+                { img: "/services/paid-media.jpg", title: "Paid Media",
+                  desc: "เพิ่มพลังให้แคมเปญด้วยการยิงโฆษณาและบูสต์คอนเทนต์ เข้าถึงกลุ่มเป้าหมายตรงจุด อัปยอดขาย และทำให้ทุกการลงทุนคุ้มค่าที่สุด",
+                  descEn: "Supercharge your campaign with targeted ads and content boosting — reaching the right audience, driving sales, and maximizing every baht spent." },
+              ].map(({ img, title, desc, descEn }) => (
+                <motion.div key={title} style={{
+                  display: "flex", flexDirection: "column", gap: "16px",
+                  background: "linear-gradient(160deg, #3b1370 0%, #170a30 100%)",
+                  borderRadius: "28px",
+                  padding: "32px 28px 28px",
+                  boxShadow: "0 8px 32px rgba(95,38,229,0.18)",
+                }}
+                whileHover={{ scale: 1.03, y: -4 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}>
+                  <h3 style={{ ...KT, fontSize: "24px", fontWeight: 700, color: "#ff3d9a",
+                    textAlign: "center", margin: 0 }}>{title}</h3>
+                  <p style={{ ...KT, fontSize: "15px", lineHeight: "1.7", color: "rgba(255,255,255,0.85)",
+                    textAlign: "center", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
+                  <div style={{ position: "relative", width: "100%", height: "220px", borderRadius: "20px", overflow: "hidden" }}>
+                    <Image src={img} alt={title} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
+                  </div>
+                </motion.div>
+              ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Success Stories (card carousel, reference: ฉันคืออินฟลูเอนเซอร์ page) ── */}
       <section id="success-stories" className="py-20 px-6 success-bg">
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
