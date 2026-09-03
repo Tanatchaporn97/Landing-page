@@ -201,8 +201,8 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                 transition={{ duration: 0.2, ease: "easeOut" }}>
                   <div className="icon-wrap-lg" style={{ background: "#ede9f8", borderRadius: "50%",
                     width: "68px", height: "68px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <div style={{ position: "relative", width: "40px", height: "40px" }}>
-                      <Image src={icon} alt={lang === "th" ? title : titleEn} fill sizes="40px" style={{ objectFit: "contain" }} />
+                    <div style={{ position: "relative", width: "56px", height: "56px" }}>
+                      <Image src={icon} alt={lang === "th" ? title : titleEn} fill sizes="56px" style={{ objectFit: "contain" }} />
                     </div>
                   </div>
                   <h3 className="card-h3" style={{ ...KT, fontSize: "24px", fontWeight: 700, color: "#111827",
