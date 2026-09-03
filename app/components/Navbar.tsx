@@ -33,7 +33,7 @@ export default function Navbar({
   variant = "influencer",
   lang = "th",
 }: {
-  variant?: "home" | "influencer";
+  variant?: "home" | "influencer" | "brand";
   lang?: "th" | "en";
 }) {
   const [scrolled, setScrolled] = useState(false);
@@ -70,7 +70,7 @@ export default function Navbar({
   const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", applyNow: "Apply Now", applyLine: "Apply via LINE", successStories: "Success Stories", blog: "Blog" };
   const t = lang === "th" ? th : en;
   const isFaqPage = pathname?.includes("/faq");
-  const forceDarkText = scrolled || variant === "influencer" || isFaqPage;
+  const forceDarkText = scrolled || variant === "influencer" || variant === "brand" || isFaqPage;
 
   const navLinks = variant === "influencer"
     ? [

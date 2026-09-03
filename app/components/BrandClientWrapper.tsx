@@ -82,7 +82,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
     <div className="hero-bg min-h-screen flex flex-col overflow-x-hidden" style={{ ...KT }}>
 
       {/* ── Navbar ── */}
-      <Navbar variant="home" lang={lang} />
+      <Navbar variant="brand" lang={lang} />
 
       {/* ── Hero ── */}
       <section
