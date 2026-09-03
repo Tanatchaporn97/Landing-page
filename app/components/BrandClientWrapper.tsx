@@ -249,21 +249,22 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   descEn: "Supercharge your campaign with targeted ads and content boosting — reaching the right audience, driving sales, and maximizing every baht spent." },
               ].map(({ img, title, desc, descEn }) => (
                 <motion.div key={title} style={{
-                  display: "flex", flexDirection: "column", gap: "16px",
-                  background: "linear-gradient(160deg, #3b1370 0%, #170a30 100%)",
+                  position: "relative",
                   borderRadius: "28px",
-                  padding: "32px 28px 28px",
+                  overflow: "hidden",
+                  height: "420px",
                   boxShadow: "0 8px 32px rgba(95,38,229,0.18)",
                 }}
                 whileHover={{ scale: 1.03, y: -4 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}>
-                  <h3 style={{ ...KT, fontSize: "24px", fontWeight: 700, color: "#ff3d9a",
-                    textAlign: "center", margin: 0 }}>{title}</h3>
-                  <p style={{ ...KT, fontSize: "15px", lineHeight: "1.7", color: "rgba(255,255,255,0.85)",
-                    textAlign: "center", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
-                  <div style={{ position: "relative", width: "100%", height: "220px", borderRadius: "20px", overflow: "hidden" }}>
-                    <Image src={img} alt={title} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
+                  <Image src={img} alt={title} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
+                  <div style={{ position: "absolute", inset: 0,
+                    background: "linear-gradient(to top, rgba(95,38,229,1) 0%, rgba(95,38,229,0.85) 30%, rgba(95,38,229,0) 65%)" }} />
+                  <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "24px 24px 28px",
+                    display: "flex", flexDirection: "column", gap: "8px" }}>
+                    <h3 style={{ ...KT, fontSize: "22px", fontWeight: 700, color: "#ffffff", margin: 0 }}>{title}</h3>
+                    <p style={{ ...KT, fontSize: "14px", lineHeight: "1.6", color: "rgba(255,255,255,0.85)", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
                   </div>
                 </motion.div>
               ))}
