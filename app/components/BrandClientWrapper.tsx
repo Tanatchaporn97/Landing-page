@@ -58,20 +58,20 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
   const [activeCampaignStep, setActiveCampaignStep] = useState(0);
   const CAMPAIGN_STEPS = [
     { img: "/how-we-run-campaigns/plan-campaign.png", title: "วางแผนแคมเปญ", titleEn: "Plan the Campaign",
-      desc: "ร่วมวางกลยุทธ์และกำหนดเป้าหมายแคมเปญให้ตรงกับความต้องการของแบรนด์",
-      descEn: "We work with you to shape the strategy and set clear goals that match your brand's needs." },
-    { img: "/how-we-run-campaigns/select-influencers.png", title: "คัดสรรอินฟลูเอนเซอร์", titleEn: "Select Influencers",
-      desc: "คัดเลือกอินฟลูเอนเซอร์ที่ใช่ที่สุดสำหรับแบรนด์ ด้วยข้อมูลเชิงลึกและระบบ AI",
-      descEn: "We handpick the best-fit influencers for your brand using deep data insights and AI." },
-    { img: "/how-we-run-campaigns/review-drafts.png", title: "ตรวจดราฟต์", titleEn: "Review Drafts",
-      desc: "ตรวจสอบและให้ feedback คอนเทนต์ทุกชิ้นก่อนเผยแพร่ เพื่อให้ตรงกับภาพลักษณ์แบรนด์",
-      descEn: "We review and give feedback on every piece of content before it goes live, keeping it on-brand." },
+      desc: "เปลี่ยนเป้าหมายของแบรนด์เป็นกลยุทธ์ที่จับต้องได้ ให้ทุกการสื่อสารไปถึงกลุ่มเป้าหมายได้ตรงจุด",
+      descEn: "We turn your brand's goals into a concrete strategy, so every message reaches the right audience." },
+    { img: "/how-we-run-campaigns/select-influencers.png", title: "คัดสรรอินฟลูเอนเซอร์ที่ใช่", titleEn: "Select the Right Influencers",
+      desc: "ผ่านระบบ KOL Discovery จับคู่อินฟลูเอนเซอร์ที่เหมาะสมที่สุดกับแบรนด์คุณด้วยข้อมูลเชิงลึกที่แม่นยำ",
+      descEn: "Our KOL Discovery system matches your brand with the most suitable influencers using precise data insights." },
     { img: "/how-we-run-campaigns/manage-seamlessly.png", title: "จัดการแคมเปญไร้รอยต่อ", titleEn: "Manage Seamlessly",
-      desc: "ดูแลและประสานงานทุกขั้นตอนของแคมเปญให้ราบรื่น ตั้งแต่เริ่มจนจบ",
-      descEn: "We manage and coordinate every step of the campaign, keeping things running smoothly start to finish." },
-    { img: "/how-we-run-campaigns/report-results.png", title: "รายงานผล", titleEn: "Report Results",
-      desc: "สรุปผลลัพธ์แคมเปญอย่างชัดเจน พร้อมข้อมูลที่นำไปต่อยอดได้จริง",
-      descEn: "We deliver clear campaign reports with insights you can actually act on." },
+      desc: "ให้แคมเปญของคุณดำเนินไปอย่างไม่มีสะดุด ด้วยทีมงานมืออาชีพที่ดูแลทุกขั้นตอน",
+      descEn: "Your campaign runs without a hitch, with a professional team overseeing every step." },
+    { img: "/how-we-run-campaigns/review-drafts.png", title: "ตรวจดราฟต์คอนเทนต์", titleEn: "Review Content Drafts",
+      desc: "เช็กทุกชิ้นให้ตรงโทนแบรนด์ และปรับจูนให้พร้อมก่อนโพสต์ เพื่อผลลัพธ์ที่ดีที่สุด",
+      descEn: "We check every piece to match your brand tone and fine-tune it before posting, for the best results." },
+    { img: "/how-we-run-campaigns/report-results.png", title: "รายงานผลแบบเรียลไทม์", titleEn: "Real-Time Reporting",
+      desc: "ติดตามทุกความเคลื่อนไหวบนแดชบอร์ด พร้อมรับรายงานและอินไซต์ที่นำไปใช้ต่อได้จริง",
+      descEn: "Track every move on the dashboard and get reports and insights you can actually put to use." },
   ];
   const CAMPAIGN_ROW_HEIGHT = 96;
   const CAMPAIGN_ROW_GAP = 24;
