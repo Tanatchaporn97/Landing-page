@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -54,6 +54,27 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
   const csRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const catSlug = (cat: string) => cat.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-$/, "");
+
+  const [activeCampaignStep, setActiveCampaignStep] = useState(0);
+  const CAMPAIGN_STEPS = [
+    { img: "/how-we-run-campaigns/plan-campaign.png", title: "วางแผนแคมเปญ", titleEn: "Plan the Campaign",
+      desc: "ร่วมวางกลยุทธ์และกำหนดเป้าหมายแคมเปญให้ตรงกับความต้องการของแบรนด์",
+      descEn: "We work with you to shape the strategy and set clear goals that match your brand's needs." },
+    { img: "/how-we-run-campaigns/select-influencers.png", title: "คัดสรรอินฟลูเอนเซอร์", titleEn: "Select Influencers",
+      desc: "คัดเลือกอินฟลูเอนเซอร์ที่ใช่ที่สุดสำหรับแบรนด์ ด้วยข้อมูลเชิงลึกและระบบ AI",
+      descEn: "We handpick the best-fit influencers for your brand using deep data insights and AI." },
+    { img: "/how-we-run-campaigns/review-drafts.png", title: "ตรวจดราฟต์", titleEn: "Review Drafts",
+      desc: "ตรวจสอบและให้ feedback คอนเทนต์ทุกชิ้นก่อนเผยแพร่ เพื่อให้ตรงกับภาพลักษณ์แบรนด์",
+      descEn: "We review and give feedback on every piece of content before it goes live, keeping it on-brand." },
+    { img: "/how-we-run-campaigns/manage-seamlessly.png", title: "จัดการแคมเปญไร้รอยต่อ", titleEn: "Manage Seamlessly",
+      desc: "ดูแลและประสานงานทุกขั้นตอนของแคมเปญให้ราบรื่น ตั้งแต่เริ่มจนจบ",
+      descEn: "We manage and coordinate every step of the campaign, keeping things running smoothly start to finish." },
+    { img: "/how-we-run-campaigns/report-results.png", title: "รายงานผล", titleEn: "Report Results",
+      desc: "สรุปผลลัพธ์แคมเปญอย่างชัดเจน พร้อมข้อมูลที่นำไปต่อยอดได้จริง",
+      descEn: "We deliver clear campaign reports with insights you can actually act on." },
+  ];
+  const CAMPAIGN_ROW_HEIGHT = 96;
+  const CAMPAIGN_ROW_GAP = 24;
 
 
 
@@ -295,41 +316,38 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           </div>
 
           <div className="grid-2-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
-            {/* Left: representative image */}
+            {/* Left: image, crossfades to match the hovered step */}
             <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", height: "520px", boxShadow: "0 8px 32px rgba(95,38,229,0.15)" }}>
-              <Image src="/how-we-run-campaigns/plan-campaign.png" alt={lang === "th" ? "วิธีที่เราดำเนินแคมเปญ" : "How we run campaigns"} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+              <AnimatePresence mode="wait">
+                <motion.div key={CAMPAIGN_STEPS[activeCampaignStep].img}
+                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
+                  style={{ position: "absolute", inset: 0 }}>
+                  <Image src={CAMPAIGN_STEPS[activeCampaignStep].img}
+                    alt={lang === "th" ? CAMPAIGN_STEPS[activeCampaignStep].title : CAMPAIGN_STEPS[activeCampaignStep].titleEn}
+                    fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+                </motion.div>
+              </AnimatePresence>
             </div>
 
-            {/* Right: steps list */}
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              {[
-                { img: "/how-we-run-campaigns/plan-campaign.png", title: "วางแผนแคมเปญ", titleEn: "Plan the Campaign",
-                  desc: "ร่วมวางกลยุทธ์และกำหนดเป้าหมายแคมเปญให้ตรงกับความต้องการของแบรนด์",
-                  descEn: "We work with you to shape the strategy and set clear goals that match your brand's needs." },
-                { img: "/how-we-run-campaigns/select-influencers.png", title: "คัดสรรอินฟลูเอนเซอร์", titleEn: "Select Influencers",
-                  desc: "คัดเลือกอินฟลูเอนเซอร์ที่ใช่ที่สุดสำหรับแบรนด์ ด้วยข้อมูลเชิงลึกและระบบ AI",
-                  descEn: "We handpick the best-fit influencers for your brand using deep data insights and AI." },
-                { img: "/how-we-run-campaigns/review-drafts.png", title: "ตรวจดราฟต์", titleEn: "Review Drafts",
-                  desc: "ตรวจสอบและให้ feedback คอนเทนต์ทุกชิ้นก่อนเผยแพร่ เพื่อให้ตรงกับภาพลักษณ์แบรนด์",
-                  descEn: "We review and give feedback on every piece of content before it goes live, keeping it on-brand." },
-                { img: "/how-we-run-campaigns/manage-seamlessly.png", title: "จัดการแคมเปญไร้รอยต่อ", titleEn: "Manage Seamlessly",
-                  desc: "ดูแลและประสานงานทุกขั้นตอนของแคมเปญให้ราบรื่น ตั้งแต่เริ่มจนจบ",
-                  descEn: "We manage and coordinate every step of the campaign, keeping things running smoothly start to finish." },
-                { img: "/how-we-run-campaigns/report-results.png", title: "รายงานผล", titleEn: "Report Results",
-                  desc: "สรุปผลลัพธ์แคมเปญอย่างชัดเจน พร้อมข้อมูลที่นำไปต่อยอดได้จริง",
-                  descEn: "We deliver clear campaign reports with insights you can actually act on." },
-              ].map((step, i, arr) => (
-                <div key={step.title} style={{ display: "flex", gap: "20px", position: "relative", paddingBottom: i < arr.length - 1 ? "32px" : 0 }}>
-                  {i < arr.length - 1 && (
-                    <div style={{ position: "absolute", left: "27px", top: "56px", bottom: 0, width: "2px", background: "rgba(95,38,229,0.15)" }} />
-                  )}
-                  <div style={{ position: "relative", width: "56px", height: "56px", borderRadius: "16px", overflow: "hidden", flexShrink: 0, boxShadow: "0 4px 12px rgba(95,38,229,0.20)" }}>
-                    <Image src={step.img} alt={lang === "th" ? step.title : step.titleEn} fill sizes="56px" style={{ objectFit: "cover" }} />
-                  </div>
-                  <div>
-                    <h3 style={{ ...KT, fontSize: "20px", fontWeight: 700, color: "#111827", margin: "0 0 6px" }}>{lang === "th" ? step.title : step.titleEn}</h3>
-                    <p style={{ ...KT, fontSize: "15px", lineHeight: "1.7", color: "#111827", margin: 0 }}>{lang === "th" ? step.desc : step.descEn}</p>
-                  </div>
+            {/* Right: hoverable step list with a sliding progress bar */}
+            <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: `${CAMPAIGN_ROW_GAP}px`, paddingLeft: "32px" }}>
+              {/* track */}
+              <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "4px", borderRadius: "2px", background: "rgba(95,38,229,0.12)" }} />
+              {/* sliding highlight */}
+              <motion.div
+                animate={{ top: activeCampaignStep * (CAMPAIGN_ROW_HEIGHT + CAMPAIGN_ROW_GAP) }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                style={{ position: "absolute", left: 0, width: "4px", height: `${CAMPAIGN_ROW_HEIGHT}px`, borderRadius: "2px",
+                  background: "linear-gradient(180deg, #5f25e5 0%, #ff0089 100%)" }} />
+
+              {CAMPAIGN_STEPS.map((step, i) => (
+                <div key={step.title}
+                  onMouseEnter={() => setActiveCampaignStep(i)}
+                  style={{ minHeight: `${CAMPAIGN_ROW_HEIGHT}px`, display: "flex", flexDirection: "column", justifyContent: "center",
+                    cursor: "pointer", opacity: i === activeCampaignStep ? 1 : 0.55, transition: "opacity 0.2s" }}>
+                  <h3 style={{ ...KT, fontSize: "20px", fontWeight: 700, margin: "0 0 6px", transition: "color 0.2s",
+                    color: i === activeCampaignStep ? "#5f26e5" : "#111827" }}>{lang === "th" ? step.title : step.titleEn}</h3>
+                  <p style={{ ...KT, fontSize: "15px", lineHeight: "1.7", color: "#111827", margin: 0 }}>{lang === "th" ? step.desc : step.descEn}</p>
                 </div>
               ))}
             </div>
