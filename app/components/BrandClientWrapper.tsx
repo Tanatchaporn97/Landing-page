@@ -227,7 +227,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </span>
           </h2>
 
-          <div className="grid-3-col" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "32px 24px" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "32px 24px" }}>
               {[
                 { img: "/services/campaign-reviews.jpg", title: "Campaign Reviews",
                   desc: "รีวิวสินค้าและบริการผ่านอินฟลูเอนเซอร์ที่ใช่ พร้อมสื่อสารข้อความและจุดเด่นของแบรนด์ได้อย่างมีประสิทธิภาพ เปลี่ยนให้ทุกความสนใจเป็นยอดขาย",
@@ -252,7 +252,9 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   position: "relative",
                   borderRadius: "28px",
                   overflow: "hidden",
-                  aspectRatio: "3 / 4.3",
+                  width: "390px",
+                  height: "520px",
+                  flexShrink: 0,
                   boxShadow: "0 8px 32px rgba(95,38,229,0.18)",
                 }}
                 whileHover={{ scale: 1.03, y: -4 }}
