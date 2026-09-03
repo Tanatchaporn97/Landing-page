@@ -113,13 +113,17 @@ export default function Navbar({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "flex-start",
+          paddingTop: "calc(50vh - 11.25rem)",
           opacity: menuOpen ? 1 : 0,
           visibility: menuOpen ? "visible" : "hidden",
           transition: "opacity 0.4s ease, visibility 0.4s ease",
           pointerEvents: menuOpen ? "auto" : "none",
         }}
       >
+        {/* Fixed top offset (instead of vertical-centering the whole list) so the first
+            menu item always lands at the same spot as the Homepage's 5-item list,
+            regardless of how many links a given page's variant renders. */}
         <ul style={{ listStyle: "none", padding: 0, margin: 0, textAlign: "center" }}>
           {navLinks.map((link, i) => (
             <li key={link.href} style={{ margin: "0.55rem 0" }}>
