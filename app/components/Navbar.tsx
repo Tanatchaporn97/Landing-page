@@ -81,11 +81,18 @@ export default function Navbar({
         { label: t.applyLine, href: "https://line.me/R/ti/p/@buddysupport" },
         { label: t.contactUs, href: `/${lang}#contact` },
       ]
-    : [
+    : variant === "brand"
+    ? [
         { label: t.successStories, href: `/${lang}/success` },
         { label: t.blog, href: `/${lang}/blog` },
         { label: t.imInfluencer, href: `/${lang}/influencer` },
+        { label: t.contactUs, href: `/${lang}#contact` },
+      ]
+    : [
+        { label: t.successStories, href: `/${lang}/success` },
+        { label: t.blog, href: `/${lang}/blog` },
         { label: t.imBrand, href: `/${lang}/brand` },
+        { label: t.imInfluencer, href: `/${lang}/influencer` },
         { label: t.contactUs, href: `/${lang}#contact` },
       ];
 
