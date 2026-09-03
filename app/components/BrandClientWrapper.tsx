@@ -201,11 +201,11 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                 transition={{ duration: 0.2, ease: "easeOut" }}>
                   <div className="icon-wrap-lg" style={{ background: "#ede9f8", borderRadius: "50%",
                     width: "68px", height: "68px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <div style={{ position: "relative", width: "56px", height: "56px" }}>
-                      <Image src={icon} alt={lang === "th" ? title : titleEn} fill sizes="56px" style={{ objectFit: "contain" }} />
+                    <div style={{ position: "relative", width: "73px", height: "73px" }}>
+                      <Image src={icon} alt={lang === "th" ? title : titleEn} fill sizes="73px" style={{ objectFit: "contain" }} />
                     </div>
                   </div>
-                  <h3 className="card-h3" style={{ ...KT, fontSize: "24px", fontWeight: 700, color: "#111827",
+                  <h3 className="card-h3" style={{ ...KT, fontSize: "24px", fontWeight: 700, color: "#5f26e5",
                     lineHeight: "1.3", margin: 0 }}>{lang === "th" ? title : titleEn}</h3>
                   <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
                 </motion.div>
