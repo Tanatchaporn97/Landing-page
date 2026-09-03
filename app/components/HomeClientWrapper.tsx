@@ -187,8 +187,8 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
               style={{ fontSize: "18px", lineHeight: "1.7", textAlign: "center",
                 color: "#111827" }}>
               {lang === "th" ? (
-                <>เอเจนซี่ Influencer Marketing ที่ผสานข้อมูล เทคโนโลยี และทีมผู้เชี่ยวชาญ<br/>
-                เพื่อออกแบบแคมเปญที่แม่นยำ วัดผลได้ และสร้างการเติบโตทางธุรกิจอย่างยั่งยืน</>
+                <>Buddy Review ช่วยแบรนด์วางแผนและบริหาร Influencer Marketing ตั้งแต่การวางกลยุทธ์ คัดเลือกอินฟลูเอนเซอร์ ดูแลแคมเปญ ไปจนถึงการวัดผล<br/>
+                ด้วยทีมที่มีประสบการณ์ พร้อม Data และ Technology ที่ช่วยให้วางแผน ตัดสินใจ และวัดผลแคมเปญได้อย่างมีประสิทธิภาพ</>
               ) : (
                 <>An Influencer Marketing agency blending data, technology, and expert teams<br/>
                 to craft precise, measurable campaigns that drive sustainable business growth.</>
