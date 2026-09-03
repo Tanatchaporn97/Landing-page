@@ -109,8 +109,8 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           {/* Left: headline, subhead, CTA */}
           <div>
             <h1 className="font-bold uppercase mb-6 hero-h1"
-              style={{ color: "#ffffff", fontSize: "clamp(28px,3.9vw,56px)", lineHeight: "84px", textAlign: "left",
-                fontFeatureSettings: "'pnum' on,'lnum' on",
+              style={{ color: "#ffffff", fontSize: "clamp(26px,2.9vw,44px)", lineHeight: 1.2, textAlign: "left",
+                fontFeatureSettings: "'pnum' on,'lnum' on", whiteSpace: "nowrap",
                 textShadow: "0 2px 24px rgba(0,0,0,0.25), 0 1px 6px rgba(0,0,0,0.15)" }}>
               Not Just Strategies.<br/>Execution That Delivers.
             </h1>
@@ -125,20 +125,21 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </h2>
             <div className="flex flex-wrap gap-6 justify-start">
               <a href="#contact" className="btn-hero font-semibold hero-btn"
-                style={{ ...KT, fontSize: "16px", padding: "14px 32px", minWidth: "176px", borderRadius: "50px", textDecoration: "none", color: "#5f26e5" }}>
+                style={{ ...KT, display: "inline-flex", alignItems: "center", justifyContent: "center", textAlign: "center",
+                  fontSize: "16px", padding: "14px 32px", minWidth: "176px", borderRadius: "50px", textDecoration: "none", color: "#5f26e5" }}>
                 {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
               </a>
             </div>
           </div>
 
-          {/* Right: scattered stat cards */}
-          <div className="hero-stat-cards" style={{ position: "relative", height: "260px" }}>
+          {/* Right: stat cards arranged top to bottom */}
+          <div className="hero-stat-cards" style={{ position: "relative", height: "370px" }}>
             <motion.div
               className="hero-stat-card"
-              animate={{ rotate: -4 }}
-              whileHover={{ rotate: -4, y: -14, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
+              animate={{ rotate: -3 }}
+              whileHover={{ rotate: -3, y: -10, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
               transition={{ type: "spring", stiffness: 320, damping: 22 }}
-              style={{ position: "absolute", left: 0, top: "36px", background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", zIndex: 1, cursor: "pointer" }}
+              style={{ position: "absolute", left: "40px", top: 0, background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", zIndex: 1, cursor: "pointer" }}
             >
               <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>🤝</span>
               <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>1,000+</p>
@@ -147,9 +148,9 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             <motion.div
               className="hero-stat-card"
               animate={{ rotate: 2 }}
-              whileHover={{ rotate: 2, y: -14, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
+              whileHover={{ rotate: 2, y: -10, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
               transition={{ type: "spring", stiffness: 320, damping: 22 }}
-              style={{ position: "absolute", left: "169px", top: "62px", background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", zIndex: 2, cursor: "pointer" }}
+              style={{ position: "absolute", left: 0, top: "120px", background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", zIndex: 2, cursor: "pointer" }}
             >
               <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>🎯</span>
               <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>4,000+</p>
@@ -158,9 +159,9 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             <motion.div
               className="hero-stat-card"
               animate={{ rotate: -2 }}
-              whileHover={{ rotate: -2, y: -14, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
+              whileHover={{ rotate: -2, y: -10, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
               transition={{ type: "spring", stiffness: 320, damping: 22 }}
-              style={{ position: "absolute", left: "325px", top: "10px", background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", zIndex: 3, cursor: "pointer" }}
+              style={{ position: "absolute", left: "48px", top: "240px", background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", zIndex: 3, cursor: "pointer" }}
             >
               <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>🌐</span>
               <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>95K+</p>
