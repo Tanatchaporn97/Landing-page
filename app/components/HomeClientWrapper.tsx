@@ -14,7 +14,6 @@ import AnimatedCounter from "./AnimatedCounter";
 const LogoMarquee = dynamic(() => import("./LogoMarquee"));
 const CategoriesMarquee = dynamic(() => import("./CategoriesMarquee"));
 const TestimonialsCarousel = dynamic(() => import("./TestimonialsCarousel"));
-const KolPackagesSection = dynamic(() => import("./KolPackagesSection"));
 const BlogPostsSection = dynamic(() => import("./BlogPostsSection"));
 const FAQAccordion = dynamic(() => import("./FAQAccordion"));
 const ContactFormSection = dynamic(() => import("./ContactFormSection"));
@@ -361,9 +360,6 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
 
         <CategoriesMarquee />
       </section>
-
-      {/* ── KOL Campaign Packages ── */}
-      <KolPackagesSection lang={lang} />
 
       {/* ── Industry Insights ── */}
       <BlogPostsSection lang={lang} dict={dict} />
