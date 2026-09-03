@@ -199,10 +199,10 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           {/* 4 Photo Cards */}
           <div ref={photoCardsRef} className="grid-4-col" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "16px" }}>
             {[
-              { src: "/card1.jpg", title: "Built on Clarity",           desc: "ทำงานเป็นระบบที่ชัดเจนตามมาตรฐาน",       descEn: "Working within a clear, standardized system." },
-              { src: "/card2.jpg", title: "Teamwork with Intelligence", desc: "ทีมที่เข้าใจ ทำให้ทุกแคมเปญสำเร็จ",       descEn: "A team that understands you, making every campaign succeed." },
-              { src: "/card3.png", title: "Data-Driven Precision",      desc: "เทคโนโลยีช่วยให้คุณตัดสินใจง่ายขึ้น",     descEn: "Technology that makes your decisions easier." },
-              { src: "/card4.png", title: "Success Delivered",          desc: "ทุกแคมเปญ มุ่งสู่ความสำเร็จที่ชัดเจน",     descEn: "Every campaign, driven toward clear, measurable success." },
+              { src: "/card1.jpg", title: "Built on Clarity",           desc: "ทำงานเป็นระบบชัดเจนตามมาตรฐาน",         descEn: "Working within a clear, standardized system." },
+              { src: "/card2.jpg", title: "Teamwork with Intelligence", desc: "ทีมที่เข้าใจทั้งแบรนด์และอินฟลูเอนเซอร์", descEn: "A team that understands both brands and influencers." },
+              { src: "/card3.png", title: "Data-Driven Precision",      desc: "ใช้ข้อมูลช่วยตัดสินใจได้แม่นขึ้น",       descEn: "Data that helps you make sharper decisions." },
+              { src: "/card4.png", title: "Results That Matter",        desc: "วัดผลให้สอดคล้องกับเป้าหมายของแบรนด์",   descEn: "Measuring results that align with your brand's goals." },
             ].map((card, i) => (
               <div key={card.title} className="relative overflow-hidden photo-card-h"
                 style={{ height: "403px", borderRadius: "24px", opacity: 0 }}>
