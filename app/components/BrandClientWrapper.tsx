@@ -252,7 +252,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   position: "relative",
                   borderRadius: "28px",
                   overflow: "hidden",
-                  height: "420px",
+                  aspectRatio: "3 / 4.3",
                   boxShadow: "0 8px 32px rgba(95,38,229,0.18)",
                 }}
                 whileHover={{ scale: 1.03, y: -4 }}
