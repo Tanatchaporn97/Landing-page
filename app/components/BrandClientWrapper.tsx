@@ -109,26 +109,22 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             style={{ color: "#ffffff", fontSize: "clamp(28px,3.9vw,56px)", lineHeight: "84px", textAlign: "center",
               fontFeatureSettings: "'pnum' on,'lnum' on",
               textShadow: "0 2px 24px rgba(0,0,0,0.25), 0 1px 6px rgba(0,0,0,0.15)" }}>
-            {lang === "th" ? (
-              "มากกว่ากลยุทธ์ คือพาแบรนด์ไปถึงเป้าหมาย"
-            ) : (
-              <>Not Just Strategies.<br/>Execution That Delivers.</>
-            )}
+            Not Just Strategies.<br/>Execution That Delivers.
           </h1>
           <h2 className="font-normal mb-12"
             style={{ color: "#ffffff", fontSize: "clamp(18px,1.8vw,28px)", lineHeight: "1.7", textAlign: "center",
               textTransform: "capitalize", fontFeatureSettings: "'pnum' on,'lnum' on", margin: "0 0 48px" }}>
-            From Strategy To Insight,<span className="hero-subline-break"> We Turn Influence Into Impact.</span>
+            {lang === "th" ? (
+              "มากกว่ากลยุทธ์ คือพาแบรนด์ไปถึงเป้าหมาย"
+            ) : (
+              <>From Strategy To Insight,<span className="hero-subline-break"> We Turn Influence Into Impact.</span></>
+            )}
           </h2>
           <div className="flex flex-wrap gap-6 justify-center">
             <a href="#contact" className="btn-hero font-semibold hero-btn"
               style={{ ...KT, fontSize: "16px", padding: "14px 32px", minWidth: "176px", borderRadius: "50px", textDecoration: "none", color: "#5f26e5" }}>
               {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
             </a>
-            <Link href={`/${lang}/influencer`} className="btn-hero btn-hero-solid-purple font-semibold hero-btn"
-              style={{ ...KT, fontSize: "16px", padding: "14px 32px", minWidth: "176px", borderRadius: "50px", textDecoration: "none" }}>
-              {t.imInfluencer}
-            </Link>
           </div>
 
           {/* Impact Stats — static figures from Success Stories section */}
