@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
-import { animate, stagger, inView } from "motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -51,16 +50,6 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const photoCardsRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (!photoCardsRef.current) return;
-    return inView(photoCardsRef.current, () => {
-      animate(".photo-card-h", { opacity: [0, 1], y: [50, 0] }, { duration: 0.405, delay: stagger(0.135) });
-    }, { amount: 0.3 });
-  }, []);
-
-
 
   const csRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -168,124 +157,6 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
       {/* ── Brand Logos Marquee ── */}
       <LogoMarquee />
-
-      {/* ── Your Trusted Partner ── */}
-      <section style={{ paddingTop: "80px", paddingBottom: "80px" }} className="px-6 trusted-section partner-bg">
-        <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
-          {/* Heading */}
-          <div className="text-center mb-12" style={{ maxWidth: "954px", margin: "0 auto 48px" }}>
-            <h2 className="section-title font-bold mb-6 section-h2-fixed"
-              style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px", textAlign: "center",
-                fontFeatureSettings: "'pnum' on,'lnum' on" }}>
-              Your Trusted Partner in Thailand&apos;s<br/>
-              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                Influencer Marketing Landscape
-              </span>
-            </h2>
-            <p className="font-normal desc-text"
-              style={{ fontSize: "18px", lineHeight: "1.7", textAlign: "center",
-                color: "#111827" }}>
-              {lang === "th" ? (
-                <>เอเจนซี่ Influencer Marketing ที่ผสานข้อมูล เทคโนโลยี และทีมผู้เชี่ยวชาญ<br/>
-                เพื่อออกแบบแคมเปญที่แม่นยำ วัดผลได้ และสร้างการเติบโตทางธุรกิจอย่างยั่งยืน</>
-              ) : (
-                <>An Influencer Marketing agency blending data, technology, and expert teams<br/>
-                to craft precise, measurable campaigns that drive sustainable business growth.</>
-              )}
-            </p>
-          </div>
-
-          {/* 4 Photo Cards */}
-          <div ref={photoCardsRef} className="grid-4-col" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "16px" }}>
-            {[
-              { src: "/card1.jpg", title: "Built on Clarity",           desc: "ทำงานเป็นระบบที่ชัดเจนตามมาตรฐาน",       descEn: "Working within a clear, standardized system." },
-              { src: "/card2.jpg", title: "Teamwork with Intelligence", desc: "ทีมที่เข้าใจ ทำให้ทุกแคมเปญสำเร็จ",       descEn: "A team that understands you, making every campaign succeed." },
-              { src: "/card3.png", title: "Data-Driven Precision",      desc: "เทคโนโลยีช่วยให้คุณตัดสินใจง่ายขึ้น",     descEn: "Technology that makes your decisions easier." },
-              { src: "/card4.png", title: "Success Delivered",          desc: "ทุกแคมเปญ มุ่งสู่ความสำเร็จที่ชัดเจน",     descEn: "Every campaign, driven toward clear, measurable success." },
-            ].map((card, i) => (
-              <div key={card.title} className="relative overflow-hidden photo-card-h"
-                style={{ height: "403px", borderRadius: "24px", opacity: 0 }}>
-                <Image src={card.src} alt={card.title} fill className="object-cover object-top" sizes="280px"/>
-                <div className="absolute bottom-0 left-0 right-0"
-                  style={{ background: "linear-gradient(to top,rgba(95,38,229,1) 0%,rgba(95,38,229,0) 100%)",
-                    padding: "29px 18px" }}>
-                  <h3 className="text-white font-medium text-center"
-                    style={{ fontSize: "24px", lineHeight: "1.2",
-                      fontFeatureSettings: "'pnum' on,'lnum' on", marginBottom: "8px" }}>
-                    {card.title}
-                  </h3>
-                  <p className="text-white font-normal text-center"
-                    style={{ fontSize: "16px", lineHeight: "1.5" }}>
-                    {lang === "th" ? card.desc : card.descEn}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Buddy Review Solutions ── */}
-      <section id="solutions" className="py-20 px-6 solution-bg">
-        <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
-
-          {/* Heading */}
-          <h2 className="text-center font-bold mb-14 section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
-            fontFeatureSettings: "'pnum' on,'lnum' on", color: "#111827", margin: "0 0 56px" }}>
-            Buddy Review{" "}
-            <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              Solutions
-            </span>
-          </h2>
-
-          {/* 4 services in 2×2 grid */}
-          <div className="grid-4-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: "32px 24px" }}>
-              {[
-                { icon: "/icon-photo-video.png", title: "Photo / Video Production",
-                  desc: "การผลิตภาพถ่ายและวิดีโอสำหรับใช้ในคอนเทนต์และการสื่อสารของแบรนด์",
-                  descEn: "Photo and video production for your brand's content and communications." },
-                { icon: "/icon-onsite.png", title: "On-site Campaign & Staff Support",
-                  desc: "การดูแลและประสานงานแคมเปญในสถานที่จริง พร้อมจัดทีมงานซัพพอร์ต",
-                  descEn: "On-the-ground campaign management and coordination, with staff support included." },
-                { icon: "/icon-ondemand.png", title: "On-Demand & Fast-Track Campaigns",
-                  desc: "แคมเปญที่เริ่มและดำเนินงานได้รวดเร็ว ตอบโจทย์แบรนด์ในเวลาจำกัด",
-                  descEn: "Campaigns that launch and run fast, built for brands working against the clock." },
-                { icon: "/icon-network.png", title: "Influencer Network",
-                  desc: "เครือข่ายอินฟลูเอนเซอร์ที่หลากหลาย เชื่อมต่อให้เหมาะกับแบรนด์ของคุณ",
-                  descEn: "A diverse influencer network, matched to fit your brand." },
-              ].map(({ icon, title, desc, descEn }) => (
-                <motion.div key={title} style={{
-                  display: "flex", flexDirection: "column", gap: "14px",
-                  background: "rgba(95,38,229,0.02)",
-                  border: "1px solid rgba(95,38,229,0.15)",
-                  borderRadius: "24px",
-                  padding: "32px 28px 40px",
-                  boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
-                }}
-                className="solution-card"
-                whileHover={{ scale: 1.03, y: -4, boxShadow: "0 12px 32px rgba(95,38,229,0.08)" }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}>
-                  <div className="icon-wrap-lg" style={{ background: "#ede9f8", borderRadius: "50%",
-                    width: "68px", height: "68px", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0, alignSelf: "flex-start" }}>
-                    <span style={{ display: "inline-block", width: "40px", height: "40px",
-                      backgroundColor: "#5f26e5",
-                      WebkitMaskImage: `url(${icon})`, WebkitMaskSize: "contain",
-                      WebkitMaskRepeat: "no-repeat", WebkitMaskPosition: "center",
-                      maskImage: `url(${icon})`, maskSize: "contain",
-                      maskRepeat: "no-repeat", maskPosition: "center" }} />
-                  </div>
-                  <h3 className="card-h3" style={{ ...KT, fontSize: "24px", fontWeight: 700, color: "#111827",
-                    lineHeight: "1.3", margin: 0 }}>{title}</h3>
-                  <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
-                </motion.div>
-              ))}
-          </div>
-
-        </div>
-      </section>
 
       {/* ── Success Stories (card carousel, reference: ฉันคืออินฟลูเอนเซอร์ page) ── */}
       <section id="success-stories" className="py-20 px-6 success-bg">
