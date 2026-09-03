@@ -97,7 +97,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         }}
       >
         <div className="hero-grid-inf relative" style={{ maxWidth: "1200px", margin: "0 auto", width: "100%", zIndex: 2,
-          display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center" }}>
+          display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "start" }}>
 
           {/* Left: headline, subhead, CTA */}
           <div>
