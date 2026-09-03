@@ -308,11 +308,6 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                 Run Campaigns
               </span>
             </h2>
-            <p style={{ ...KT, fontSize: "18px", lineHeight: "1.7", color: "#111827", margin: 0 }}>
-              {lang === "th"
-                ? "ตั้งแต่วางกลยุทธ์จนถึงวัดผลลัพธ์ ทุกขั้นตอนถูกออกแบบมาเพื่อให้แคมเปญของคุณเดินหน้าได้อย่างมั่นใจ"
-                : "From strategy to results, every step is designed to keep your campaign on track and your brand in good hands."}
-            </p>
           </div>
 
           <div className="grid-2-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
