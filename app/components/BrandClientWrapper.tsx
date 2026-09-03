@@ -90,7 +90,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         style={{
           minHeight: "72vh",
           paddingTop: "120px",
-          paddingBottom: "24px",
+          paddingBottom: "64px",
           overflow: "hidden",
           position: "relative",
           zIndex: 10,
@@ -178,9 +178,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       <div className="hero-logos-fade" style={{ height: "120px", marginTop: "-120px", background: "linear-gradient(to bottom, transparent 0%, #ffffff 100%)", position: "relative", zIndex: 11, pointerEvents: "none" }} />
 
       {/* ── Brand Logos Marquee ── */}
-      <div style={{ marginTop: "-80px" }}>
-        <LogoMarquee />
-      </div>
+      <LogoMarquee />
 
       {/* ── Tagline ── */}
       <section className="pt-20 px-6" style={{ paddingBottom: 0 }}>
