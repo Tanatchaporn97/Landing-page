@@ -158,6 +158,60 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       {/* ── Brand Logos Marquee ── */}
       <LogoMarquee />
 
+      {/* ── What We Offer ── */}
+      <section className="py-20 px-6">
+        <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
+          <h2 className="text-center font-bold mb-14 section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
+            fontFeatureSettings: "'pnum' on,'lnum' on", color: "#111827", margin: "0 0 56px" }}>
+            What We{" "}
+            <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              Offer
+            </span>
+          </h2>
+
+          <div className="grid-3-col" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "32px 24px", justifyContent: "center" }}>
+              {[
+                { icon: "/what-we-offer/What We Offer-01.png", title: "กลยุทธ์แม่นยำ", titleEn: "Precision Strategy",
+                  desc: "ออกแบบแคมเปญจากข้อมูลเชิงลึก เพื่อผลลัพธ์ที่ตรงเป้าและวัดผลได้จริง",
+                  descEn: "Campaigns designed from deep data insights, built to hit your goals and deliver measurable results." },
+                { icon: "/what-we-offer/What We Offer-02.png", title: "คัดอินฟลูเอนเซอร์ด้วย AI", titleEn: "AI-Powered Influencer Matching",
+                  desc: "เลือกอินฟลูเอนเซอร์ที่ “ใช่ที่สุด” ด้วยระบบ AI เพื่อเข้าถึงกลุ่มเป้าหมายอย่างแม่นยำ",
+                  descEn: "Find the perfect-fit influencers with our AI system to reach your target audience precisely." },
+                { icon: "/what-we-offer/What We Offer-03.png", title: "ดูแลครบวงจร", titleEn: "End-to-End Management",
+                  desc: "ทีมงานมืออาชีพจัดการทุกขั้นตอนตั้งแต่เริ่มวางแผนจนจบแคมเปญ",
+                  descEn: "A professional team handles every step, from planning through campaign wrap-up." },
+                { icon: "/what-we-offer/What We Offer-04.png", title: "งบคุ้มค่า", titleEn: "Budget That Works Harder",
+                  desc: "ตัดสินใจบนพื้นฐานข้อมูล ช่วยเพิ่มประสิทธิภาพและผลตอบแทนสูงสุด",
+                  descEn: "Data-driven decisions that boost efficiency and maximize your return." },
+                { icon: "/what-we-offer/What We Offer-05.png", title: "วัดผลเรียลไทม์", titleEn: "Real-Time Reporting",
+                  desc: "ติดตามและสรุปผลผ่านแดชบอร์ดแบบเรียลไทม์ ชัดเจนทุกมิติ",
+                  descEn: "Track and review results through a real-time dashboard, clear in every dimension." },
+              ].map(({ icon, title, titleEn, desc, descEn }) => (
+                <motion.div key={title} style={{
+                  display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: "14px",
+                  background: "rgba(95,38,229,0.02)",
+                  border: "1px solid rgba(95,38,229,0.15)",
+                  borderRadius: "24px",
+                  padding: "36px 28px 40px",
+                  boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
+                }}
+                className="solution-card"
+                whileHover={{ scale: 1.03, y: -4, boxShadow: "0 12px 32px rgba(95,38,229,0.08)" }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}>
+                  <div style={{ position: "relative", width: "96px", height: "96px", flexShrink: 0 }}>
+                    <Image src={icon} alt={lang === "th" ? title : titleEn} fill sizes="96px" style={{ objectFit: "contain" }} />
+                  </div>
+                  <h3 className="card-h3" style={{ ...KT, fontSize: "22px", fontWeight: 700, color: "#5f26e5",
+                    lineHeight: "1.3", margin: 0 }}>{lang === "th" ? title : titleEn}</h3>
+                  <p style={{ ...KT, fontSize: "15px", lineHeight: "1.7", color: "#111827", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
+                </motion.div>
+              ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Success Stories (card carousel, reference: ฉันคืออินฟลูเอนเซอร์ page) ── */}
       <section id="success-stories" className="py-20 px-6 success-bg">
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
