@@ -317,7 +317,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
           <div className="grid-2-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
             {/* Left: image, crossfades to match the hovered step */}
-            <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", height: "520px" }}>
+            <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", aspectRatio: "3 / 2" }}>
               <AnimatePresence mode="wait">
                 <motion.div key={CAMPAIGN_STEPS[activeCampaignStep].img}
                   initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
