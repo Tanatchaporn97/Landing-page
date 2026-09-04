@@ -82,6 +82,7 @@ export default function Navbar({
     ? [
         { label: t.imBrand, href: `/${lang}/brand#our-services` },
         { label: t.ourWork, href: `/${lang}/brand#success-stories` },
+        { label: t.aboutUs, href: `/${lang}/about` },
         { label: t.blog, href: `/${lang}/blog` },
         { label: t.imInfluencer, href: `/${lang}/influencer` },
         { label: t.contactUs, href: `/${lang}#contact` },
