@@ -54,13 +54,13 @@ export default function OurJourney({ lang }: { lang: Locale }) {
 
       <div className="grid-2-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
         {/* Left: placeholder crossfades to match the hovered year */}
-        <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", aspectRatio: "3 / 2" }}>
+        <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", aspectRatio: "3 / 2", background: "#f5f3ff" }}>
           <AnimatePresence mode="wait">
             <motion.div key={step.year}
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
               style={{ position: "absolute", inset: 0 }}>
               {step.img ? (
-                <Image src={step.img} alt={step.year} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+                <Image src={step.img} alt={step.year} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "contain" }} />
               ) : (
                 <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
                   background: "linear-gradient(135deg, #5f25e5 0%, #ff0089 100%)" }}>
