@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useLayoutEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { type Locale } from "../../i18n-config";
 
@@ -36,54 +36,50 @@ const JOURNEY_STEPS = [
     descEn: "We claimed No. 1 among the fastest-growing Advertising & Marketing companies in Thailand by the Financial Times, and also received the Top MarTech Providers for Growing Business 2025 award from Content Shifu." },
 ];
 
-function Sparkle({ color, size = 22 }: { color: string; size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 0c0 5.2 1.3 8 6 8-4.7 0-6 2.8-6 8 0-5.2-1.3-8-6-8 4.7 0 6-2.8 6-8z" fill={color} />
-    </svg>
-  );
-}
-
 export default function OurJourney({ lang }: { lang: Locale }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const nodeRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [path, setPath] = useState<{ d: string; w: number; h: number }>({ d: "", w: 0, h: 0 });
+  const trackRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const recompute = useCallback(() => {
-    const container = containerRef.current;
-    if (!container) return;
-    if (window.innerWidth < 860) { setPath({ d: "", w: 0, h: 0 }); return; }
-    const cRect = container.getBoundingClientRect();
-    const points = nodeRefs.current
-      .filter((el): el is HTMLDivElement => !!el)
-      .map((el) => {
-        const r = el.getBoundingClientRect();
-        return { x: r.left + r.width / 2 - cRect.left, y: r.top + r.height / 2 - cRect.top };
-      });
-    if (points.length < 2) return;
-    let d = `M ${points[0].x} ${points[0].y}`;
-    for (let i = 1; i < points.length; i++) {
-      const prev = points[i - 1];
-      const cur = points[i];
-      const midY = (prev.y + cur.y) / 2;
-      d += ` C ${prev.x} ${midY}, ${cur.x} ${midY}, ${cur.x} ${cur.y}`;
-    }
-    setPath({ d, w: cRect.width, h: cRect.height });
+  const updateFocus = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const containerCenter = track.scrollLeft + track.clientWidth / 2;
+    cardRefs.current.forEach((card) => {
+      if (!card) return;
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const distance = Math.abs(cardCenter - containerCenter);
+      const t = Math.max(0, 1 - distance / (track.clientWidth * 0.55));
+      const opacity = 0.22 + t * 0.78;
+      const scale = 0.94 + t * 0.06;
+      card.style.setProperty("--focus-opacity", opacity.toFixed(3));
+      card.style.setProperty("--focus-scale", scale.toFixed(3));
+    });
   }, []);
 
-  useLayoutEffect(() => {
-    recompute();
-    let t: ReturnType<typeof setTimeout>;
-    const onResize = () => { clearTimeout(t); t = setTimeout(recompute, 120); };
-    window.addEventListener("resize", onResize);
-    return () => { window.removeEventListener("resize", onResize); clearTimeout(t); };
-  }, [recompute, lang]);
+  useEffect(() => {
+    updateFocus();
+    const track = trackRef.current;
+    if (!track) return;
+    let raf = 0;
+    const onScroll = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(updateFocus); };
+    track.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      track.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, [updateFocus, lang]);
 
-  const sparkleColors = ["#ff0089", "#5f25e5", "#ff8bc7"];
+  const scrollByCard = (dir: 1 | -1) => {
+    const track = trackRef.current;
+    if (!track) return;
+    track.scrollBy({ left: dir * (track.clientWidth * 0.7), behavior: "smooth" });
+  };
 
   return (
-    <div style={{ maxWidth: "1000px", margin: "80px auto 0", padding: "0 48px" }}>
-      <div className="text-center" style={{ maxWidth: "760px", margin: "0 auto 64px" }}>
+    <div style={{ maxWidth: "1294px", margin: "80px auto 0" }}>
+      <div className="text-center" style={{ maxWidth: "760px", margin: "0 auto 40px", padding: "0 48px" }}>
         <h2 className="section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, lineHeight: 1.3, color: "#111827", margin: 0 }}>
           Our{" "}
           <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
@@ -93,76 +89,60 @@ export default function OurJourney({ lang }: { lang: Locale }) {
         </h2>
       </div>
 
-      <div ref={containerRef} style={{ position: "relative" }}>
-        {path.d && (
-          <svg
-            width={path.w} height={path.h}
-            viewBox={`0 0 ${path.w} ${path.h}`}
-            style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}
-            aria-hidden="true"
-          >
-            <defs>
-              <linearGradient id="journey-line" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#5f25e5" />
-                <stop offset="100%" stopColor="#ff0089" />
-              </linearGradient>
-            </defs>
-            <path d={path.d} fill="none" stroke="url(#journey-line)" strokeWidth="4" strokeLinecap="round" />
-          </svg>
-        )}
+      <div style={{ display: "flex", gap: "10px", justifyContent: "flex-end", padding: "0 48px", marginBottom: "16px" }}>
+        <button className="arrow-cta-btn" onClick={() => scrollByCard(-1)} aria-label={lang === "th" ? "เลื่อนไปปีก่อนหน้า" : "Scroll to earlier year"}
+          style={{ width: "44px", height: "44px", borderRadius: "50%", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", touchAction: "manipulation" }}>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M12 3L6 9l6 6" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </button>
+        <button className="arrow-cta-btn" onClick={() => scrollByCard(1)} aria-label={lang === "th" ? "เลื่อนไปปีถัดไป" : "Scroll to later year"}
+          style={{ width: "44px", height: "44px", borderRadius: "50%", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", touchAction: "manipulation" }}>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M6 3l6 6-6 6" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </button>
+      </div>
 
-        {JOURNEY_STEPS.map((s, i) => {
-          const nodeOnLeft = i % 2 === 0;
-          return (
-            <div key={s.year}
-              className="journey-row"
-              style={{
-                position: "relative", zIndex: 1,
-                display: "flex",
-                flexDirection: nodeOnLeft ? "row" : "row-reverse",
-                alignItems: "center",
-                gap: "40px",
-                minHeight: "220px",
-                padding: "24px 0",
-              }}>
-              <div style={{ position: "relative", flexShrink: 0 }}>
-                <div ref={(el) => { nodeRefs.current[i] = el; }}
-                  style={{
-                    width: "148px", height: "148px", borderRadius: "50%", overflow: "hidden",
-                    position: "relative", border: "4px solid #ffffff",
-                    boxShadow: "0 12px 32px rgba(95,38,229,0.20)",
-                  }}>
-                  <Image src={s.img} alt={s.year} fill sizes="148px" style={{ objectFit: "cover" }} />
-                </div>
-                <div style={{ position: "absolute", top: "-10px", [nodeOnLeft ? "right" : "left"]: "-10px" } as React.CSSProperties}>
-                  <Sparkle color={sparkleColors[i % sparkleColors.length]} />
-                </div>
-              </div>
-
-              <div style={{ flex: 1, textAlign: nodeOnLeft ? "left" : "right" }}>
-                <h3 style={{ ...KT, fontSize: "clamp(24px,2.6vw,32px)", fontWeight: 800, margin: "0 0 6px", lineHeight: 1.2,
-                  background: "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)",
-                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                  {s.year}
-                </h3>
-                <p style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: "0 0 8px", lineHeight: 1.4, color: "#111827" }}>
-                  {lang === "th" ? s.subtitle : s.subtitleEn}
-                </p>
-                <p style={{ ...KT, fontSize: "14px", lineHeight: "1.7", color: "#374151", margin: "0 0 0 auto", maxWidth: "440px",
-                  marginLeft: nodeOnLeft ? 0 : "auto", marginRight: nodeOnLeft ? "auto" : 0 }}>
-                  {lang === "th" ? s.desc : s.descEn}
-                </p>
-              </div>
+      <div ref={trackRef} className="journey-track" style={{
+        display: "flex", gap: "32px", overflowX: "auto", scrollSnapType: "x mandatory",
+        scrollbarWidth: "none", msOverflowStyle: "none" as React.CSSProperties["msOverflowStyle"],
+        padding: "8px calc(50% - 150px) 24px",
+      }}>
+        {JOURNEY_STEPS.map((s, i) => (
+          <div key={s.year}
+            ref={(el) => { cardRefs.current[i] = el; }}
+            className="journey-card"
+            style={{
+              flexShrink: 0, width: "300px", scrollSnapAlign: "center",
+              display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center",
+              opacity: "var(--focus-opacity, 0.4)",
+              transform: "scale(var(--focus-scale, 0.96))",
+              transition: "opacity 0.15s linear, transform 0.15s linear",
+            }}>
+            <div style={{
+              width: "148px", height: "148px", borderRadius: "50%", overflow: "hidden",
+              position: "relative", border: "4px solid #ffffff",
+              boxShadow: "0 12px 32px rgba(95,38,229,0.20)", marginBottom: "24px", flexShrink: 0,
+            }}>
+              <Image src={s.img} alt={s.year} fill sizes="148px" style={{ objectFit: "cover" }} />
             </div>
-          );
-        })}
+            <h3 style={{ ...KT, fontSize: "clamp(24px,2.6vw,32px)", fontWeight: 800, margin: "0 0 8px", lineHeight: 1.2,
+              background: "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)",
+              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              {s.year}
+            </h3>
+            <p style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: "0 0 10px", lineHeight: 1.4, color: "#111827" }}>
+              {lang === "th" ? s.subtitle : s.subtitleEn}
+            </p>
+            <p style={{ ...KT, fontSize: "14px", lineHeight: "1.7", color: "#374151", margin: 0 }}>
+              {lang === "th" ? s.desc : s.descEn}
+            </p>
+          </div>
+        ))}
       </div>
 
       <style>{`
-        @media (max-width: 859px){
-          .journey-row{ flex-direction: column !important; text-align: center !important; gap: 20px !important; }
-          .journey-row > div:last-child{ text-align: center !important; }
-          .journey-row > div:last-child p{ margin-left: auto !important; margin-right: auto !important; text-align: center !important; }
+        .journey-track::-webkit-scrollbar{ display: none; }
+        @media (max-width: 640px){
+          .journey-track{ padding-left: calc(50% - 130px) !important; padding-right: calc(50% - 130px) !important; }
+          .journey-card{ width: 260px !important; }
         }
       `}</style>
     </div>
