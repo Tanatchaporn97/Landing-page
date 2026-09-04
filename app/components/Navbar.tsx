@@ -66,8 +66,8 @@ export default function Navbar({
   }, [menuOpen]);
 
 
-  const th = { contactUs: "ติดต่อเรา", imInfluencer: "สำหรับอินฟลูเอนเซอร์", imBrand: "บริการของเรา", forBrand: "สำหรับแบรนด์", applyNow: "สมัครเลย", applyLine: "สมัครผ่านไลน์", successStories: "เรื่องราวความสำเร็จ", blog: "บทความ" };
-  const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", imBrand: "I'm a Brand", forBrand: "For Brands", applyNow: "Apply Now", applyLine: "Apply via LINE", successStories: "Success Stories", blog: "Blog" };
+  const th = { contactUs: "ติดต่อเรา", imInfluencer: "สำหรับอินฟลูเอนเซอร์", imBrand: "บริการของเรา", forBrand: "สำหรับแบรนด์", applyNow: "สมัครเลย", applyLine: "สมัครผ่านไลน์", successStories: "เรื่องราวความสำเร็จ", ourWork: "ผลงานของเรา", blog: "บทความ" };
+  const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", imBrand: "I'm a Brand", forBrand: "For Brands", applyNow: "Apply Now", applyLine: "Apply via LINE", successStories: "Success Stories", ourWork: "Our Work", blog: "Blog" };
   const t = lang === "th" ? th : en;
   const isFaqPage = pathname?.includes("/faq");
   const forceDarkText = scrolled || variant === "influencer" || variant === "brand" || isFaqPage;
@@ -83,7 +83,8 @@ export default function Navbar({
       ]
     : variant === "brand"
     ? [
-        { label: t.successStories, href: `/${lang}/success` },
+        { label: t.imBrand, href: `/${lang}/brand#our-services` },
+        { label: t.ourWork, href: `/${lang}/brand#success-stories` },
         { label: t.blog, href: `/${lang}/blog` },
         { label: t.imInfluencer, href: `/${lang}/influencer` },
         { label: t.contactUs, href: `/${lang}#contact` },

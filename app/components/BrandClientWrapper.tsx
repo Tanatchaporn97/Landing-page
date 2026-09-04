@@ -256,7 +256,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       </section>
 
       {/* ── Our Services ── */}
-      <section className="py-20 px-6">
+      <section id="our-services" className="py-20 px-6">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <h2 className="text-center font-bold mb-14 section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
             fontFeatureSettings: "'pnum' on,'lnum' on", color: "#111827", margin: "0 0 56px" }}>
