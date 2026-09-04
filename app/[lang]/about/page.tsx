@@ -41,16 +41,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
     <div className="background" style={{ ...KT, minHeight: "100vh" }}>
       <Navbar lang={lang as Locale} variant="home" />
 
-      <section style={{ padding: "160px 0 120px", textAlign: "center" }}>
-        <div style={{ maxWidth: "960px", margin: "0 auto", padding: "0 48px" }}>
-          <h1 className="section-title font-bold" style={{ fontSize: "clamp(32px,4vw,56px)", lineHeight: 1.2, margin: "0 0 32px" }}>
-            {lang === "th" ? "เกี่ยวกับ" : "About"}{" "}
-            <span style={{ background: "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              {lang === "th" ? "เรา" : "Us"}
-            </span>
-          </h1>
-        </div>
-
+      <section style={{ padding: "120px 0 120px", textAlign: "center" }}>
         <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9" }}>
           <iframe
             src="https://www.youtube.com/embed/sONGZCJUv1I?autoplay=1&mute=1&playsinline=1"
