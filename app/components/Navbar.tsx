@@ -66,20 +66,17 @@ export default function Navbar({
   }, [menuOpen]);
 
 
-  const th = { contactUs: "ติดต่อเรา", imInfluencer: "สำหรับอินฟลูเอนเซอร์", imBrand: "บริการของเรา", forBrand: "สำหรับแบรนด์", applyNow: "สมัครเลย", applyLine: "สมัครผ่านไลน์", successStories: "เรื่องราวความสำเร็จ", ourWork: "ผลงานของเรา", blog: "บทความ" };
-  const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", imBrand: "I'm a Brand", forBrand: "For Brands", applyNow: "Apply Now", applyLine: "Apply via LINE", successStories: "Success Stories", ourWork: "Our Work", blog: "Blog" };
+  const th = { contactUs: "ติดต่อเรา", imInfluencer: "สำหรับอินฟลูเอนเซอร์", imBrand: "บริการของเรา", forBrand: "สำหรับแบรนด์", applyNow: "สมัครเลย", applyLine: "สมัครผ่านไลน์", successStories: "เรื่องราวความสำเร็จ", ourWork: "ผลงานของเรา", blog: "บทความ", aboutUs: "เกี่ยวกับเรา", applyAsInfluencer: "สมัครเป็นอินฟลูเอนเซอร์", applyViaWebsite: "สมัครผ่านเว็บไซต์" };
+  const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", imBrand: "I'm a Brand", forBrand: "For Brands", applyNow: "Apply Now", applyLine: "Apply via LINE", successStories: "Success Stories", ourWork: "Our Work", blog: "Blog", aboutUs: "About Us", applyAsInfluencer: "Apply as an Influencer", applyViaWebsite: "Apply via Website" };
   const t = lang === "th" ? th : en;
   const isFaqPage = pathname?.includes("/faq");
   const forceDarkText = scrolled || variant === "influencer" || variant === "brand" || isFaqPage;
 
   const navLinks = variant === "influencer"
     ? [
-        { label: t.successStories, href: `/${lang}/success` },
+        { label: t.aboutUs, href: `/${lang}/about` },
         { label: t.blog, href: `/${lang}/blog` },
-        { label: t.imBrand, href: `/${lang}/brand` },
-        { label: t.applyNow, href: "https://www.buddyreview.co/app/new-campaigns" },
-        { label: t.applyLine, href: "https://line.me/R/ti/p/@buddysupport" },
-        { label: t.contactUs, href: `/${lang}#contact` },
+        { label: t.forBrand, href: `/${lang}/brand` },
       ]
     : variant === "brand"
     ? [
@@ -132,6 +129,26 @@ export default function Navbar({
             </li>
           ))}
         </ul>
+
+        {variant === "influencer" && (
+          <div style={{ width: "min(280px, 60vw)", textAlign: "center" }}>
+            <div style={{ height: "1px", background: "rgba(26,10,61,0.18)", margin: "1.1rem auto" }} />
+            <p style={{ ...KT, fontSize: "clamp(15px,1.6vw,18px)", fontWeight: 700, color: "#1a0a3d",
+              textTransform: "uppercase", letterSpacing: "0.06em", margin: "0 0 0.6rem" }}>
+              {t.applyAsInfluencer}
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem" }}>
+              <a href="https://www.buddyreview.co/app/new-campaigns" onClick={() => setMenuOpen(false)}
+                className="nav-overlay-sublink">
+                {t.applyViaWebsite}
+              </a>
+              <a href="https://line.me/R/ti/p/@buddysupport" target="_blank" rel="noopener noreferrer"
+                onClick={() => setMenuOpen(false)} className="nav-overlay-sublink">
+                LINE {t.applyLine}
+              </a>
+            </div>
+          </div>
+        )}
 
         <div style={{ marginTop: "1.75rem" }}>
           <button
