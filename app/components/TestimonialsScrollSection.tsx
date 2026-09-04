@@ -7,7 +7,7 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const CARD_GAP = 16;
 const VIEW_H  = 720;
-const BG_TOP  = "#EDE5F9";
+const BG_TOP  = "#F1EBFA";
 const BG_BOT  = "#E9DFF7";
 
 const QuoteIcon = () => (

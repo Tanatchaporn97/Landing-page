@@ -199,7 +199,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
 
       {/* ── Influencer Categories ── */}
-      <section style={{ overflow: "hidden" }} className="py-20 category-bg">
+      <section style={{ overflow: "hidden", background: "#E9DFF7" }} className="py-20">
         <div style={{ maxWidth: "1294px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
           <h2 className="section-title text-center font-bold mb-12 section-h2-fixed"
             style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
