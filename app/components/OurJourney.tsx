@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { type Locale } from "../../i18n-config";
 
@@ -9,28 +10,28 @@ const ROW_HEIGHT = 72;
 const ROW_GAP = 16;
 
 const JOURNEY_STEPS = [
-  { year: "2015 - 2017", title: "จุดเริ่มต้น", titleEn: "The Beginning",
+  { year: "2015 - 2017", img: "/about-us/2015-2017.png", title: "จุดเริ่มต้น", titleEn: "The Beginning",
     desc: "เริ่มต้นธุรกิจ Influencer Marketing ด้วยทีมงานเล็กๆ ที่เชื่อมั่นในพลังของอินฟลูเอนเซอร์ในการสร้างการเปลี่ยนแปลงให้แบรนด์",
     descEn: "Started our influencer marketing business with a small team that believed in the power of influencers to drive real change for brands." },
-  { year: "2018", title: "ขยายเครือข่าย", titleEn: "Growing the Network",
+  { year: "2018", img: "/about-us/2018.webp", title: "ขยายเครือข่าย", titleEn: "Growing the Network",
     desc: "เติบโตเครือข่ายอินฟลูเอนเซอร์และพาร์ทเนอร์แบรนด์ พร้อมวางรากฐานระบบจับคู่แคมเปญ",
     descEn: "Grew our influencer and brand-partner network while laying the foundation for our campaign-matching system." },
-  { year: "2019", title: "พัฒนาแพลตฟอร์ม", titleEn: "Building the Platform",
+  { year: "2019", img: "/about-us/2019.webp", title: "พัฒนาแพลตฟอร์ม", titleEn: "Building the Platform",
     desc: "เปิดตัวระบบจัดการแคมเปญที่ช่วยให้แบรนด์และอินฟลูเอนเซอร์ทำงานร่วมกันได้ง่ายและมีประสิทธิภาพมากขึ้น",
     descEn: "Launched our campaign management system, making collaboration between brands and influencers easier and more effective." },
-  { year: "2020", title: "ก้าวสู่ดิจิทัลเต็มรูปแบบ", titleEn: "Going Fully Digital",
+  { year: "2020", img: "/about-us/2020.webp", title: "ก้าวสู่ดิจิทัลเต็มรูปแบบ", titleEn: "Going Fully Digital",
     desc: "ปรับตัวสู่การทำงานแบบดิจิทัลเต็มรูปแบบ รองรับความต้องการที่เปลี่ยนแปลงอย่างรวดเร็ว",
     descEn: "Shifted to a fully digital way of working to keep up with rapidly changing demands." },
-  { year: "2022", title: "ขับเคลื่อนด้วยดาต้า", titleEn: "Powered by Data",
+  { year: "2022", img: "/about-us/2022.png", title: "ขับเคลื่อนด้วยดาต้า", titleEn: "Powered by Data",
     desc: "นำเทคโนโลยีและข้อมูลเชิงลึกมาใช้วิเคราะห์และเพิ่มประสิทธิภาพแคมเปญอย่างแม่นยำ",
     descEn: "Adopted technology and data insights to analyze and fine-tune campaign performance with precision." },
-  { year: "2024", title: "ผู้นำในตลาด", titleEn: "A Market Leader",
+  { year: "2024", img: "/about-us/2024.png", title: "ผู้นำในตลาด", titleEn: "A Market Leader",
     desc: "ก้าวขึ้นเป็นหนึ่งในผู้นำด้าน Influencer Marketing ในไทย ด้วยเครือข่ายอินฟลูเอนเซอร์กว่า 1,000,000+ ราย",
     descEn: "Rose to become one of Thailand's leading influencer marketing agencies, with a network of over 1,000,000+ influencers." },
-  { year: "2025", title: "นวัตกรรมใหม่", titleEn: "New Innovations",
+  { year: "2025", img: "/about-us/2025.png", title: "นวัตกรรมใหม่", titleEn: "New Innovations",
     desc: "พัฒนาโซลูชันและฟีเจอร์ใหม่ๆ อย่างต่อเนื่อง เพื่อตอบโจทย์ทุกความต้องการของแบรนด์",
     descEn: "Continuously developing new solutions and features to meet every brand's needs." },
-  { year: "2026", title: "ก้าวต่อไป", titleEn: "What's Next",
+  { year: "2026", img: null, title: "ก้าวต่อไป", titleEn: "What's Next",
     desc: "มุ่งสู่การเป็นศูนย์กลาง Influencer Marketing ที่ขับเคลื่อนด้วยเทคโนโลยีชั้นนำในภูมิภาค",
     descEn: "Moving toward becoming the region's leading technology-driven influencer marketing hub." },
 ];
@@ -57,9 +58,15 @@ export default function OurJourney({ lang }: { lang: Locale }) {
           <AnimatePresence mode="wait">
             <motion.div key={step.year}
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
-              style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
-                background: "linear-gradient(135deg, #5f25e5 0%, #ff0089 100%)" }}>
-              <span style={{ ...KT, fontSize: "clamp(40px,5vw,64px)", fontWeight: 800, color: "#ffffff" }}>{step.year}</span>
+              style={{ position: "absolute", inset: 0 }}>
+              {step.img ? (
+                <Image src={step.img} alt={step.year} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+              ) : (
+                <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
+                  background: "linear-gradient(135deg, #5f25e5 0%, #ff0089 100%)" }}>
+                  <span style={{ ...KT, fontSize: "clamp(40px,5vw,64px)", fontWeight: 800, color: "#ffffff" }}>{step.year}</span>
+                </div>
+              )}
             </motion.div>
           </AnimatePresence>
         </div>
