@@ -191,11 +191,6 @@ export default function Navbar({
             <div className="desktop-nav-btns flex items-center gap-3">
               {variant === "influencer" ? (
                 <>
-                  <Link href={`/${lang}/brand`}
-                    className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
-                    style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
-                    {t.forBrand}
-                  </Link>
                   <Link href="https://www.buddyreview.co/app/new-campaigns"
                     className="btn-hero btn-hero-solid-purple px-6 py-3 rounded-full whitespace-nowrap"
                     style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
@@ -209,6 +204,11 @@ export default function Navbar({
                     </svg>
                     {t.applyLine}
                   </a>
+                  <Link href={`/${lang}/brand`}
+                    className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
+                    style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
+                    {t.forBrand}
+                  </Link>
                 </>
               ) : (
                 <>
