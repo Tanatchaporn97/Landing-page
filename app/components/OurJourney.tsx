@@ -89,10 +89,19 @@ export default function OurJourney({ lang }: { lang: Locale }) {
               onMouseEnter={() => setActive(i)}
               style={{ display: "flex", flexDirection: "column", justifyContent: "center",
                 cursor: "pointer", opacity: i === active ? 1 : 0.55, transition: "opacity 0.2s" }}>
-              <h3 style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: "0 0 4px", transition: "color 0.2s",
-                color: i === active ? "#5f26e5" : "#111827" }}>
-                {s.year} — {lang === "th" ? s.subtitle : s.subtitleEn}
+              <h3 style={{ ...KT, fontSize: "clamp(24px,2.6vw,32px)", fontWeight: 800, margin: "0 0 6px", lineHeight: 1.2,
+                background: i === active ? "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)" : "none",
+                WebkitBackgroundClip: i === active ? "text" : "unset",
+                WebkitTextFillColor: i === active ? "transparent" : "unset",
+                backgroundClip: i === active ? "text" : "unset",
+                color: i === active ? undefined : "#111827",
+                transition: "opacity 0.2s" }}>
+                {s.year}
               </h3>
+              <p style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: "0 0 8px", lineHeight: 1.4, transition: "color 0.2s",
+                color: i === active ? "#5f26e5" : "#111827" }}>
+                {lang === "th" ? s.subtitle : s.subtitleEn}
+              </p>
               <p style={{ ...KT, fontSize: "14px", lineHeight: "1.7", color: "#374151", margin: 0 }}>
                 {lang === "th" ? s.desc : s.descEn}
               </p>
