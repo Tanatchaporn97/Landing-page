@@ -526,7 +526,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
 const th = {
   contactUs:    "ติดต่อเรา",
-  imInfluencer: "ฉันคืออินฟลูเอนเซอร์",
+  imInfluencer: "สำหรับอินฟลูเอนเซอร์",
   imBrand:      "ฉันคือแบรนด์",
   headline1:    "DATA-POWERED INFLUENCER MARKETING",
   headline2:    "FOR MEASURABLE GROWTH",

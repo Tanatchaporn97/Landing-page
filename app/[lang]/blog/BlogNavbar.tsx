@@ -13,7 +13,7 @@ export default function BlogNavbar({ lang = "th" }: { lang?: Locale }) {
   const pathname = usePathname();
   const router = useRouter();
   const t = lang === "th"
-    ? { contactUs: "ติดต่อเรา", imInfluencer: "ฉันคืออินฟลูเอนเซอร์" }
+    ? { contactUs: "ติดต่อเรา", imInfluencer: "สำหรับอินฟลูเอนเซอร์" }
     : { contactUs: "Contact Us", imInfluencer: "I'm an Influencer" };
 
   useEffect(() => {

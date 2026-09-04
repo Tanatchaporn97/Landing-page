@@ -66,7 +66,7 @@ export default function Navbar({
   }, [menuOpen]);
 
 
-  const th = { contactUs: "ติดต่อเรา", imInfluencer: "ฉันคืออินฟลูเอนเซอร์", imBrand: "ฉันคือแบรนด์", applyNow: "สมัครเลย", applyLine: "สมัครผ่านไลน์", successStories: "เรื่องราวความสำเร็จ", blog: "บทความ" };
+  const th = { contactUs: "ติดต่อเรา", imInfluencer: "สำหรับอินฟลูเอนเซอร์", imBrand: "ฉันคือแบรนด์", applyNow: "สมัครเลย", applyLine: "สมัครผ่านไลน์", successStories: "เรื่องราวความสำเร็จ", blog: "บทความ" };
   const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", imBrand: "I'm a Brand", applyNow: "Apply Now", applyLine: "Apply via LINE", successStories: "Success Stories", blog: "Blog" };
   const t = lang === "th" ? th : en;
   const isFaqPage = pathname?.includes("/faq");
