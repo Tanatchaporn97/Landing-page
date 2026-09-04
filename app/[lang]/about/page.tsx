@@ -66,6 +66,40 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
               : "Because every brand deserves the best service, we're committed to building technology- and data-driven platforms and solutions — so your campaigns hit the mark, deliver value, and achieve the results you're aiming for."}
           </p>
         </div>
+
+        {/* ── Vision / Mission / Value ── */}
+        <div style={{ maxWidth: "1294px", margin: "80px auto 0", padding: "0 48px" }}>
+          <div className="vmv-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "28px" }}>
+            {(lang === "th" ? [
+              { title: "Vision", desc: "ศูนย์กลาง Influencer Marketing ด้วยเทคโนโลยีล้ำสมัย เพื่อให้แบรนด์เข้าถึงผู้บริโภคอย่างมีประสิทธิภาพ" },
+              { title: "Mission", desc: "พัฒนาระบบที่ผสานเทคโนโลยีกับความเข้าใจตลาดอินฟลูเอนเซอร์ เพื่อตอบโจทย์ทุกความต้องการของแบรนด์" },
+              { title: "Value", desc: "มอบแคมเปญพรีเมียมที่ปรับแต่งได้ เน้นผลลัพธ์ตรงเป้าและคุ้มค่า เพราะทุกแบรนด์ควรได้รับบริการที่ดีที่สุด" },
+            ] : [
+              { title: "Vision", desc: "The hub of influencer marketing powered by cutting-edge technology, helping brands reach consumers effectively." },
+              { title: "Mission", desc: "Building systems that blend technology with a deep understanding of the influencer market to meet every brand's needs." },
+              { title: "Value", desc: "Delivering customizable premium campaigns focused on real results and value — because every brand deserves the best service." },
+            ]).map((item) => (
+              <div key={item.title} style={{
+                borderRadius: "24px",
+                padding: "48px 32px",
+                textAlign: "center",
+                background: "rgba(255,255,255,0.32)",
+                backdropFilter: "blur(18px)",
+                WebkitBackdropFilter: "blur(18px)",
+                border: "1px solid rgba(255,255,255,0.55)",
+                boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
+              }}>
+                <h3 style={{ ...KT, fontSize: "clamp(24px,2.6vw,32px)", fontWeight: 800, margin: "0 0 20px",
+                  background: "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                  {item.title}
+                </h3>
+                <p style={{ ...KT, fontSize: "16px", color: "#374151", lineHeight: 1.8, margin: 0 }}>
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <Footer lang={lang as Locale} variant="home" dict={dict} />
