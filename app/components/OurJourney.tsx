@@ -1,7 +1,5 @@
 "use client";
-import { useState, useRef, useLayoutEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "motion/react";
 import { type Locale } from "../../i18n-config";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -38,19 +36,9 @@ const JOURNEY_STEPS = [
 ];
 
 export default function OurJourney({ lang }: { lang: Locale }) {
-  const [active, setActive] = useState(0);
-  const [bar, setBar] = useState({ top: 0, height: 0 });
-  const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const step = JOURNEY_STEPS[active];
-
-  useLayoutEffect(() => {
-    const el = rowRefs.current[active];
-    if (el) setBar({ top: el.offsetTop, height: el.offsetHeight });
-  }, [active, lang]);
-
   return (
-    <div style={{ maxWidth: "1294px", margin: "80px auto 0", padding: "0 48px" }}>
-      <div className="text-center" style={{ maxWidth: "760px", margin: "0 auto 56px" }}>
+    <div style={{ maxWidth: "1000px", margin: "80px auto 0", padding: "0 48px" }}>
+      <div className="text-center" style={{ maxWidth: "760px", margin: "0 auto 64px" }}>
         <h2 className="section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, lineHeight: 1.3, color: "#111827", margin: 0 }}>
           Our{" "}
           <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
@@ -60,55 +48,42 @@ export default function OurJourney({ lang }: { lang: Locale }) {
         </h2>
       </div>
 
-      <div className="grid-2-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
-        {/* Left: photo crossfades to match the hovered year — no frame, never cropped */}
-        <div style={{ position: "relative", aspectRatio: "3 / 2" }}>
-          <AnimatePresence mode="wait">
-            <motion.div key={step.year}
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
-              style={{ position: "absolute", inset: 0 }}>
-              <Image src={step.img} alt={step.year} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "contain" }} />
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Right: hoverable year list with a sliding progress bar */}
-        <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: "24px", paddingLeft: "32px" }}>
-          {/* track */}
-          <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "4px", borderRadius: "2px", background: "rgba(95,38,229,0.12)" }} />
-          {/* sliding highlight — measured from the active row's real height */}
-          <motion.div
-            animate={{ top: bar.top, height: bar.height }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            style={{ position: "absolute", left: 0, width: "4px", borderRadius: "2px",
-              background: "linear-gradient(180deg, #5f25e5 0%, #ff0089 100%)" }} />
-
-          {JOURNEY_STEPS.map((s, i) => (
+      <div style={{ display: "flex", flexDirection: "column", gap: "80px" }}>
+        {JOURNEY_STEPS.map((s, i) => {
+          const onRight = i % 2 === 1;
+          return (
             <div key={s.year}
-              ref={(el) => { rowRefs.current[i] = el; }}
-              onMouseEnter={() => setActive(i)}
-              style={{ display: "flex", flexDirection: "column", justifyContent: "center",
-                cursor: "pointer", opacity: i === active ? 1 : 0.55, transition: "opacity 0.2s" }}>
-              <h3 style={{ ...KT, fontSize: "clamp(24px,2.6vw,32px)", fontWeight: 800, margin: "0 0 6px", lineHeight: 1.2,
-                background: i === active ? "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)" : "none",
-                WebkitBackgroundClip: i === active ? "text" : "unset",
-                WebkitTextFillColor: i === active ? "transparent" : "unset",
-                backgroundClip: i === active ? "text" : "unset",
-                color: i === active ? undefined : "#111827",
-                transition: "opacity 0.2s" }}>
+              className="journey-block"
+              style={{
+                maxWidth: "460px",
+                marginLeft: onRight ? "auto" : 0,
+                marginRight: onRight ? 0 : "auto",
+                textAlign: onRight ? "right" : "left",
+              }}>
+              <h3 style={{ ...KT, fontSize: "clamp(24px,2.6vw,32px)", fontWeight: 800, margin: "0 0 8px", lineHeight: 1.2,
+                background: "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)",
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 {s.year}
               </h3>
-              <p style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: "0 0 8px", lineHeight: 1.4, transition: "color 0.2s",
-                color: i === active ? "#5f26e5" : "#111827" }}>
+              <p style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: "0 0 10px", lineHeight: 1.4, color: "#111827" }}>
                 {lang === "th" ? s.subtitle : s.subtitleEn}
               </p>
-              <p style={{ ...KT, fontSize: "14px", lineHeight: "1.7", color: "#374151", margin: 0 }}>
+              <p style={{ ...KT, fontSize: "14px", lineHeight: "1.7", color: "#374151", margin: "0 0 24px" }}>
                 {lang === "th" ? s.desc : s.descEn}
               </p>
+              <div style={{ position: "relative", width: "100%", aspectRatio: "3 / 2" }}>
+                <Image src={s.img} alt={s.year} fill sizes="(max-width: 768px) 100vw, 460px" style={{ objectFit: "contain", objectPosition: onRight ? "right" : "left" }} />
+              </div>
             </div>
-          ))}
-        </div>
+          );
+        })}
       </div>
+
+      <style>{`
+        @media (max-width: 640px){
+          .journey-block{ max-width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; text-align: left !important; }
+        }
+      `}</style>
     </div>
   );
 }
