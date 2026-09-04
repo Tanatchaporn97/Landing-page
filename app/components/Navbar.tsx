@@ -113,20 +113,19 @@ export default function Navbar({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "flex-start",
-          paddingTop: "calc(50vh - 11.25rem)",
+          justifyContent: "center",
           opacity: menuOpen ? 1 : 0,
           visibility: menuOpen ? "visible" : "hidden",
           transition: "opacity 0.4s ease, visibility 0.4s ease",
           pointerEvents: menuOpen ? "auto" : "none",
         }}
       >
-        {/* Fixed top offset (instead of vertical-centering the whole list) so the first
-            menu item always lands at the same spot as the Homepage's 5-item list,
-            regardless of how many links a given page's variant renders. */}
+        {/* True vertical centering (not a fixed offset) so the whole menu — regardless
+            of how many links a page's variant renders — always fits within the
+            viewport height without needing to scroll. */}
         <ul style={{ listStyle: "none", padding: 0, margin: 0, textAlign: "center" }}>
           {navLinks.map((link, i) => (
-            <li key={link.href} style={{ margin: "0.55rem 0" }}>
+            <li key={link.href} style={{ margin: "0.3rem 0" }}>
               <a href={link.href} onClick={() => setMenuOpen(false)} className="nav-overlay-link">
                 {link.label}
               </a>
@@ -134,7 +133,7 @@ export default function Navbar({
           ))}
         </ul>
 
-        <div style={{ marginTop: "2.5rem" }}>
+        <div style={{ marginTop: "1.75rem" }}>
           <button
             onClick={toggleLang}
             style={{
@@ -142,10 +141,10 @@ export default function Navbar({
               background: "rgba(255,255,255,0.55)",
               border: "1px solid rgba(95,38,229,0.25)",
               borderRadius: "50px",
-              padding: "10px 36px",
+              padding: "16px 52px",
               color: "#5f26e5",
-              fontSize: "16px",
-              fontWeight: 600,
+              fontSize: "20px",
+              fontWeight: 700,
               cursor: "pointer",
               letterSpacing: "0.12em",
               transition: "background 0.25s",
