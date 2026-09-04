@@ -49,9 +49,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 // Lazy load below-the-fold components
 const TestimonialsScrollSection = dynamic(() => import("../../components/TestimonialsScrollSection"));
 const LogoMarquee = dynamic(() => import("../../components/LogoMarquee"));
-const SuccessStoriesSlider = dynamic(() => import("../../components/SuccessStoriesSlider"));
 const CategoriesMarquee = dynamic(() => import("../../components/CategoriesMarquee"));
-const BlogPostsSection = dynamic(() => import("../../components/BlogPostsSection"));
 const FAQAccordion = dynamic(() => import("../../components/FAQAccordion"));
 
 import { getDictionary } from "../../../get-dictionary";
@@ -196,10 +194,6 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       </section>
 
 
-      {/* ── Case Studies ── */}
-      <SuccessStoriesSlider lang={lang as Locale} />
-
-
       {/* ── Testimonials — scroll-jacking section (desktop) / static (mobile) ── */}
       <TestimonialsScrollSection dict={dict} lang={lang} />
 
@@ -225,9 +219,6 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
       {/* ── Industry Insights → FAQs → Pre-footer CTA: one continuous blended background ── */}
       <div style={{ background: "linear-gradient(180deg, #E9DFF7 0%, #DDCDF1 100%)" }}>
-
-        {/* ── Industry Insights ── */}
-        <BlogPostsSection lang={lang as Locale} dict={dict} filterCategory="influencer" variant="influencer" />
 
         {/* ── FAQs ── */}
         <FAQAccordion faqs={dict?.faqPage?.faqsInfluencer} lang={lang as Locale} variant="influencer" dict={dict} />
