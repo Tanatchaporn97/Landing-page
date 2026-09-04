@@ -66,8 +66,8 @@ export default function Navbar({
   }, [menuOpen]);
 
 
-  const th = { contactUs: "ติดต่อเรา", imInfluencer: "สำหรับอินฟลูเอนเซอร์", imBrand: "บริการของเรา", applyNow: "สมัครเลย", applyLine: "สมัครผ่านไลน์", successStories: "เรื่องราวความสำเร็จ", blog: "บทความ" };
-  const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", imBrand: "I'm a Brand", applyNow: "Apply Now", applyLine: "Apply via LINE", successStories: "Success Stories", blog: "Blog" };
+  const th = { contactUs: "ติดต่อเรา", imInfluencer: "สำหรับอินฟลูเอนเซอร์", imBrand: "บริการของเรา", forBrand: "สำหรับแบรนด์", applyNow: "สมัครเลย", applyLine: "สมัครผ่านไลน์", successStories: "เรื่องราวความสำเร็จ", blog: "บทความ" };
+  const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", imBrand: "I'm a Brand", forBrand: "For Brands", applyNow: "Apply Now", applyLine: "Apply via LINE", successStories: "Success Stories", blog: "Blog" };
   const t = lang === "th" ? th : en;
   const isFaqPage = pathname?.includes("/faq");
   const forceDarkText = scrolled || variant === "influencer" || variant === "brand" || isFaqPage;
@@ -191,6 +191,11 @@ export default function Navbar({
             <div className="desktop-nav-btns flex items-center gap-3">
               {variant === "influencer" ? (
                 <>
+                  <Link href={`/${lang}/brand`}
+                    className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
+                    style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
+                    {t.forBrand}
+                  </Link>
                   <Link href="https://www.buddyreview.co/app/new-campaigns"
                     className="btn-hero btn-hero-solid-purple px-6 py-3 rounded-full whitespace-nowrap"
                     style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
