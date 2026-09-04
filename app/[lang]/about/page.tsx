@@ -53,7 +53,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
         </div>
 
         <div style={{ maxWidth: "960px", margin: "0 auto", padding: "0 48px" }}>
-          <p style={{ ...KT, fontSize: "18px", color: "#374151", lineHeight: 1.85, margin: "32px 0 0" }}>
+          <p className="desc-text" style={{ ...KT, fontSize: "18px", color: "#111827", lineHeight: 1.85, margin: "32px 0 0" }}>
             {lang === "th"
               ? "Buddy Review คือ Influencer Marketing Agency ที่ให้บริการครบวงจร ตั้งแต่การวางกลยุทธ์ คัดเลือกอินฟลูเอนเซอร์ บริหารแคมเปญ ไปจนถึงการวัดผล โดยผสานความเชี่ยวชาญของทีมเข้ากับ Data และ Technology เพื่อช่วยให้แบรนด์ทำ Influencer Marketing ได้แม่นยำและวัดผลได้ชัดเจน"
               : "Buddy Review is a full-service influencer marketing agency — from strategy and influencer selection to campaign management and measurement. We combine our team's expertise with data and technology to help brands run influencer marketing that's precise and clearly measurable."}
@@ -98,15 +98,16 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
         <OurJourney lang={lang as Locale} />
 
         {/* ── Our Award ── */}
-        <div style={{ maxWidth: "720px", margin: "96px auto 0", padding: "0 48px" }}>
+        <div style={{ maxWidth: "720px", margin: "80px auto 0", padding: "0 48px" }}>
           <div style={{ position: "relative", width: "180px", height: "203px", margin: "0 auto 40px" }}>
             <Image src="/awards/mtaward2025.png" alt="Thailand's MarTech Awards 2025" fill sizes="180px" style={{ objectFit: "contain" }} />
           </div>
-          <h2 className="section-title font-bold" style={{ ...KT, fontSize: "clamp(28px,3.3vw,42px)", lineHeight: 1.3, margin: "0 0 20px",
+          <h2 className="section-title text-center font-bold section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
+            fontFeatureSettings: "'pnum' on,'lnum' on", margin: "0 0 20px",
             background: "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            {lang === "th" ? "Thailand's MarTech Awards 2025" : "Thailand's MarTech Awards 2025"}
+            Thailand&apos;s MarTech Awards 2025
           </h2>
-          <p style={{ ...KT, fontSize: "18px", color: "#374151", lineHeight: 1.8, margin: 0 }}>
+          <p className="desc-text" style={{ ...KT, fontSize: "18px", color: "#111827", lineHeight: 1.85, margin: 0 }}>
             {lang === "th"
               ? "รางวัล MarTech Providers ที่มีการใช้มากที่สุด ในปี 2025"
               : "Top (Most Used) MarTech Providers for Growing Businesses, 2025"}

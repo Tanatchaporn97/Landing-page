@@ -80,14 +80,15 @@ export default function OurJourney({ lang }: { lang: Locale }) {
   return (
     <div style={{ maxWidth: "1000px", margin: "80px auto 0", padding: "0 48px" }}>
       <div className="text-center" style={{ maxWidth: "760px", margin: "0 auto 64px" }}>
-        <h2 className="section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, lineHeight: 1.3, color: "#111827", margin: "0 0 20px" }}>
+        <h2 className="section-title text-center font-bold section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
+          fontFeatureSettings: "'pnum' on,'lnum' on", margin: "0 0 20px" }}>
           Our{" "}
           <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             Journey
           </span>
         </h2>
-        <p style={{ ...KT, fontSize: "18px", color: "#374151", lineHeight: 1.85, margin: 0 }}>
+        <p className="desc-text" style={{ ...KT, fontSize: "18px", color: "#111827", lineHeight: 1.85, margin: 0 }}>
           {lang === "th"
             ? "จากจุดเริ่มต้นของ Influencer Marketing Platform สู่ Partner ที่ช่วยแบรนด์วางแผน บริหาร และวัดผล Influencer Marketing แบบ End-to-End ผ่านทีมผู้เชี่ยวชาญ Data และ Technology"
             : "From our beginnings as an influencer marketing platform to a partner that helps brands plan, manage, and measure influencer marketing end-to-end, powered by a team of data and technology experts."}
