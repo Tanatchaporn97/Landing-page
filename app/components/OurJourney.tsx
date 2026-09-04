@@ -37,18 +37,16 @@ const JOURNEY_STEPS = [
 ];
 
 export default function OurJourney({ lang }: { lang: Locale }) {
-  const trackRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const updateFocus = useCallback(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    const containerCenter = track.scrollLeft + track.clientWidth / 2;
+    const viewportCenter = window.innerHeight / 2;
     cardRefs.current.forEach((card) => {
       if (!card) return;
-      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-      const distance = Math.abs(cardCenter - containerCenter);
-      const t = Math.max(0, 1 - distance / (track.clientWidth * 0.55));
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.top + rect.height / 2;
+      const distance = Math.abs(cardCenter - viewportCenter);
+      const t = Math.max(0, 1 - distance / (window.innerHeight * 0.55));
       const opacity = 0.22 + t * 0.78;
       const scale = 0.94 + t * 0.06;
       card.style.setProperty("--focus-opacity", opacity.toFixed(3));
@@ -58,28 +56,20 @@ export default function OurJourney({ lang }: { lang: Locale }) {
 
   useEffect(() => {
     updateFocus();
-    const track = trackRef.current;
-    if (!track) return;
     let raf = 0;
     const onScroll = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(updateFocus); };
-    track.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     return () => {
-      track.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       cancelAnimationFrame(raf);
     };
   }, [updateFocus, lang]);
 
-  const scrollByCard = (dir: 1 | -1) => {
-    const track = trackRef.current;
-    if (!track) return;
-    track.scrollBy({ left: dir * (track.clientWidth * 0.7), behavior: "smooth" });
-  };
-
   return (
-    <div style={{ maxWidth: "1294px", margin: "80px auto 0" }}>
-      <div className="text-center" style={{ maxWidth: "760px", margin: "0 auto 40px", padding: "0 48px" }}>
+    <div style={{ maxWidth: "760px", margin: "80px auto 0", padding: "0 48px" }}>
+      <div className="text-center" style={{ margin: "0 auto 56px" }}>
         <h2 className="section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, lineHeight: 1.3, color: "#111827", margin: 0 }}>
           Our{" "}
           <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
@@ -89,28 +79,12 @@ export default function OurJourney({ lang }: { lang: Locale }) {
         </h2>
       </div>
 
-      <div style={{ display: "flex", gap: "10px", justifyContent: "flex-end", padding: "0 48px", marginBottom: "16px" }}>
-        <button className="arrow-cta-btn" onClick={() => scrollByCard(-1)} aria-label={lang === "th" ? "เลื่อนไปปีก่อนหน้า" : "Scroll to earlier year"}
-          style={{ width: "44px", height: "44px", borderRadius: "50%", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", touchAction: "manipulation" }}>
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M12 3L6 9l6 6" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-        </button>
-        <button className="arrow-cta-btn" onClick={() => scrollByCard(1)} aria-label={lang === "th" ? "เลื่อนไปปีถัดไป" : "Scroll to later year"}
-          style={{ width: "44px", height: "44px", borderRadius: "50%", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", touchAction: "manipulation" }}>
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M6 3l6 6-6 6" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-        </button>
-      </div>
-
-      <div ref={trackRef} className="journey-track" style={{
-        display: "flex", gap: "32px", overflowX: "auto", scrollSnapType: "x mandatory",
-        scrollbarWidth: "none", msOverflowStyle: "none" as React.CSSProperties["msOverflowStyle"],
-        padding: "8px calc(50% - 150px) 24px",
-      }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "88px" }}>
         {JOURNEY_STEPS.map((s, i) => (
           <div key={s.year}
             ref={(el) => { cardRefs.current[i] = el; }}
             className="journey-card"
             style={{
-              flexShrink: 0, width: "300px", scrollSnapAlign: "center",
               display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center",
               opacity: "var(--focus-opacity, 0.4)",
               transform: "scale(var(--focus-scale, 0.96))",
@@ -131,20 +105,12 @@ export default function OurJourney({ lang }: { lang: Locale }) {
             <p style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: "0 0 10px", lineHeight: 1.4, color: "#111827" }}>
               {lang === "th" ? s.subtitle : s.subtitleEn}
             </p>
-            <p style={{ ...KT, fontSize: "14px", lineHeight: "1.7", color: "#374151", margin: 0 }}>
+            <p style={{ ...KT, fontSize: "14px", lineHeight: "1.7", color: "#374151", margin: 0, maxWidth: "480px" }}>
               {lang === "th" ? s.desc : s.descEn}
             </p>
           </div>
         ))}
       </div>
-
-      <style>{`
-        .journey-track::-webkit-scrollbar{ display: none; }
-        @media (max-width: 640px){
-          .journey-track{ padding-left: calc(50% - 130px) !important; padding-right: calc(50% - 130px) !important; }
-          .journey-card{ width: 260px !important; }
-        }
-      `}</style>
     </div>
   );
 }
