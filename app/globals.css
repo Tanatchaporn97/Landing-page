@@ -660,23 +660,24 @@ body {
 /* Secondary sub-links (e.g. the "Apply as an Influencer" group in the
    influencer page's hamburger menu) — smaller than the main nav items */
 .nav-overlay-sublink {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   text-align: center;
-  padding: 6px 20px;
-  color: #5f26e5;
+  padding: 10px 20px;
+  color: #ffffff;
   font-family: var(--font-kanit), 'Noto Sans Thai', sans-serif;
   font-size: clamp(15px, 1.8vw, 19px);
   font-weight: 600;
   text-decoration: none;
   border-radius: 50px;
-  border: 1px solid rgba(95,38,229,0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  border: 1.5px solid transparent;
+  transition: opacity 0.25s ease;
 }
-.nav-overlay-sublink:hover { color: #ffffff; background: #5f26e5; border-color: #5f26e5; }
+.nav-overlay-sublink:hover { opacity: 0.85; }
+.nav-overlay-sublink--purple { background: #5f26e5; border-color: #5f26e5; }
+.nav-overlay-sublink--line { background: #06c755; border-color: #06c755; }
 
 /* Hamburger menu language toggle — solid white on hover, same as .btn-hero:hover */
 .nav-lang-toggle:hover {
