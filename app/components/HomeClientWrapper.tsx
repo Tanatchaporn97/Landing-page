@@ -12,7 +12,6 @@ import AnimatedCounter from "./AnimatedCounter";
 
 // Lazy load below-the-fold components
 const LogoMarquee = dynamic(() => import("./LogoMarquee"));
-const CategoriesMarquee = dynamic(() => import("./CategoriesMarquee"));
 const TestimonialsCarousel = dynamic(() => import("./TestimonialsCarousel"));
 const BlogPostsSection = dynamic(() => import("./BlogPostsSection"));
 const FAQAccordion = dynamic(() => import("./FAQAccordion"));
@@ -341,25 +340,6 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           {/* Infinite marquee — auto-slides right to left */}
           <TestimonialsCarousel lang={lang} />
         </div>
-      </section>
-
-      {/* ── Influencer Categories ── */}
-      <section style={{ overflow: "hidden" }} className="py-20 category-bg">
-        <div style={{ maxWidth: "1294px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
-          <h2 className="section-title text-center font-bold mb-12 section-h2-fixed"
-            style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
-              fontFeatureSettings: "'pnum' on,'lnum' on" }}>
-            Influencer{" "}
-            <span style={{
-              background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}>Categories</span>
-          </h2>
-        </div>
-
-        <CategoriesMarquee />
       </section>
 
       {/* ── Industry Insights ── */}
