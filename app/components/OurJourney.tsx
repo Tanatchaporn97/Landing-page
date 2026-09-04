@@ -1,4 +1,5 @@
 "use client";
+import { useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { type Locale } from "../../i18n-config";
 
@@ -36,6 +37,46 @@ const JOURNEY_STEPS = [
 ];
 
 export default function OurJourney({ lang }: { lang: Locale }) {
+  const trackWrapRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
+  const blockRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const dotRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const updateProgress = useCallback(() => {
+    const wrap = trackWrapRef.current;
+    const progress = progressRef.current;
+    if (!wrap || !progress) return;
+    const rect = wrap.getBoundingClientRect();
+    const threshold = window.innerHeight * 0.55;
+    const raw = (threshold - rect.top) / rect.height;
+    const t = Math.min(1, Math.max(0, raw));
+    const heightPx = t * rect.height;
+    progress.style.height = `${heightPx}px`;
+
+    blockRefs.current.forEach((block, i) => {
+      const dot = dotRefs.current[i];
+      if (!block || !dot) return;
+      dot.style.top = `${block.offsetTop + 18}px`;
+      const passed = block.offsetTop + 18 <= heightPx;
+      dot.style.background = passed
+        ? "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)"
+        : "#e5e0f5";
+    });
+  }, []);
+
+  useEffect(() => {
+    updateProgress();
+    let raf = 0;
+    const onScroll = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(updateProgress); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, [updateProgress]);
+
   return (
     <div style={{ maxWidth: "1000px", margin: "80px auto 0", padding: "0 48px" }}>
       <div className="text-center" style={{ maxWidth: "760px", margin: "0 auto 64px" }}>
@@ -48,14 +89,33 @@ export default function OurJourney({ lang }: { lang: Locale }) {
         </h2>
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "80px" }}>
+      <div ref={trackWrapRef} style={{ position: "relative", display: "flex", flexDirection: "column", gap: "80px" }}>
+        {/* center divider — track + scroll-driven progress, same automation as How We Run Campaigns */}
+        <div className="journey-center-line" style={{ position: "absolute", left: "50%", top: 0, bottom: 0, width: "4px", borderRadius: "2px", background: "rgba(95,38,229,0.12)", transform: "translateX(-50%)" }} />
+        <div ref={progressRef} className="journey-center-line" style={{ position: "absolute", left: "50%", top: 0, width: "4px", borderRadius: "2px", background: "linear-gradient(180deg, #5f25e5 0%, #ff0089 100%)", transform: "translateX(-50%)", transition: "height 0.1s linear" }} />
+
+        {JOURNEY_STEPS.map((_, i) => (
+          <div key={`dot-${JOURNEY_STEPS[i].year}`}
+            ref={(el) => { dotRefs.current[i] = el; }}
+            className="journey-dot"
+            style={{
+              position: "absolute", left: "50%", top: 0,
+              width: "16px", height: "16px", borderRadius: "50%",
+              background: "#e5e0f5", border: "3px solid #ffffff",
+              boxShadow: "0 2px 8px rgba(95,38,229,0.25)",
+              transform: "translate(-50%, -50%)", zIndex: 1,
+            }} />
+        ))}
+
         {JOURNEY_STEPS.map((s, i) => {
           const onRight = i % 2 === 1;
           return (
             <div key={s.year}
+              ref={(el) => { blockRefs.current[i] = el; }}
               className="journey-block"
               style={{
-                maxWidth: "460px",
+                position: "relative",
+                maxWidth: "44%",
                 marginLeft: onRight ? "auto" : 0,
                 marginRight: onRight ? 0 : "auto",
                 textAlign: onRight ? "right" : "left",
@@ -80,6 +140,9 @@ export default function OurJourney({ lang }: { lang: Locale }) {
       </div>
 
       <style>{`
+        @media (max-width: 860px){
+          .journey-center-line, .journey-dot{ display: none !important; }
+        }
         @media (max-width: 640px){
           .journey-block{ max-width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; text-align: left !important; }
         }
