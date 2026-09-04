@@ -66,7 +66,7 @@ export default function Navbar({
   }, [menuOpen]);
 
 
-  const th = { contactUs: "ติดต่อเรา", imInfluencer: "สำหรับอินฟลูเอนเซอร์", imBrand: "ฉันคือแบรนด์", applyNow: "สมัครเลย", applyLine: "สมัครผ่านไลน์", successStories: "เรื่องราวความสำเร็จ", blog: "บทความ" };
+  const th = { contactUs: "ติดต่อเรา", imInfluencer: "สำหรับอินฟลูเอนเซอร์", imBrand: "บริการของเรา", applyNow: "สมัครเลย", applyLine: "สมัครผ่านไลน์", successStories: "เรื่องราวความสำเร็จ", blog: "บทความ" };
   const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", imBrand: "I'm a Brand", applyNow: "Apply Now", applyLine: "Apply via LINE", successStories: "Success Stories", blog: "Blog" };
   const t = lang === "th" ? th : en;
   const isFaqPage = pathname?.includes("/faq");
@@ -135,6 +135,7 @@ export default function Navbar({
         <div style={{ marginTop: "1.75rem" }}>
           <button
             onClick={toggleLang}
+            className="nav-lang-toggle"
             style={{
               ...KT,
               background: "rgba(255,255,255,0.55)",
@@ -146,7 +147,7 @@ export default function Navbar({
               fontWeight: 600,
               cursor: "pointer",
               letterSpacing: "0.12em",
-              transition: "background 0.25s",
+              transition: "background 0.25s, border-color 0.25s, box-shadow 0.25s",
             }}
           >
             {lang === "th" ? "EN" : "TH"}

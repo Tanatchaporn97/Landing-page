@@ -657,6 +657,13 @@ body {
 }
 .nav-overlay-link:hover { color: #5f26e5; }
 
+/* Hamburger menu language toggle — solid white on hover, same as .btn-hero:hover */
+.nav-lang-toggle:hover {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+}
+
 /* Touch (mobile/tablet): tap-to-highlight only */
 @media (hover: none) and (pointer: coarse) {
   .nav-overlay-link:active {
