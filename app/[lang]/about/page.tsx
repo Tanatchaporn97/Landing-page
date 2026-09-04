@@ -56,6 +56,11 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
               style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
             />
           </div>
+          <p style={{ ...KT, fontSize: "18px", color: "#374151", lineHeight: 1.85, margin: "32px 0 0" }}>
+            {lang === "th"
+              ? "เพราะทุกแบรนด์ควรได้รับบริการที่ดีที่สุด เราจึงมุ่งพัฒนาแพลตฟอร์มและโซลูชันที่ขับเคลื่อนด้วยเทคโนโลยีและดาต้า เพื่อให้แคมเปญของคุณตอบโจทย์ คุ้มค่า และมีผลลัพธ์ที่ตรงตามเป้าหมาย"
+              : "Because every brand deserves the best service, we're committed to building technology- and data-driven platforms and solutions — so your campaigns hit the mark, deliver value, and achieve the results you're aiming for."}
+          </p>
         </div>
       </section>
 
