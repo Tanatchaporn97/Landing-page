@@ -117,9 +117,9 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
         <div style={{ maxWidth: "1100px", margin: "96px auto 0", padding: "0 48px" }}>
           <h2 className="section-title text-center font-bold section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
             fontFeatureSettings: "'pnum' on,'lnum' on", margin: "0 0 56px" }}>
-            {lang === "th" ? "รู้จัก" : "Meet Our"}{" "}
+            Meet Our{" "}
             <span style={{ background: "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              {lang === "th" ? "ผู้ร่วมก่อตั้ง" : "Co-Founder"}
+              Co-Founder
             </span>
           </h2>
 
