@@ -40,16 +40,22 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
       <Navbar lang={lang as Locale} variant="home" />
 
       <section style={{ padding: "160px 48px 120px", textAlign: "center" }}>
-        <div style={{ maxWidth: "720px", margin: "0 auto" }}>
-          <h1 className="section-title font-bold" style={{ fontSize: "clamp(32px,4vw,56px)", lineHeight: 1.2, margin: "0 0 20px" }}>
+        <div style={{ maxWidth: "960px", margin: "0 auto" }}>
+          <h1 className="section-title font-bold" style={{ fontSize: "clamp(32px,4vw,56px)", lineHeight: 1.2, margin: "0 0 32px" }}>
             {lang === "th" ? "เกี่ยวกับ" : "About"}{" "}
             <span style={{ background: "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               {lang === "th" ? "เรา" : "Us"}
             </span>
           </h1>
-          <p style={{ ...KT, fontSize: "18px", color: "#374151", lineHeight: 1.7, margin: 0 }}>
-            {lang === "th" ? "หน้านี้กำลังอยู่ระหว่างการจัดทำ เร็ว ๆ นี้" : "This page is coming soon."}
-          </p>
+          <div style={{ position: "relative", width: "100%", paddingTop: "56.25%", borderRadius: "24px", overflow: "hidden", boxShadow: "0 8px 32px rgba(95,38,229,0.15)" }}>
+            <iframe
+              src="https://www.youtube.com/embed/sONGZCJUv1I"
+              title="Buddy Review"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+            />
+          </div>
         </div>
       </section>
 
