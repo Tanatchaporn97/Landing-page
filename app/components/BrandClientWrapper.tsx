@@ -10,8 +10,6 @@ import Footer from "./Footer";
 
 // Lazy load below-the-fold components
 const LogoMarquee = dynamic(() => import("./LogoMarquee"));
-const CategoriesMarquee = dynamic(() => import("./CategoriesMarquee"));
-const TestimonialsCarousel = dynamic(() => import("./TestimonialsCarousel"));
 const KolPackagesSection = dynamic(() => import("./KolPackagesSection"));
 const BlogPostsSection = dynamic(() => import("./BlogPostsSection"));
 const FAQAccordion = dynamic(() => import("./FAQAccordion"));
@@ -463,45 +461,6 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </Link>
           </div>
         </div>
-      </section>
-
-      {/* ── Trust Influencers ── */}
-      <section className="py-20 px-6 influencer-bg">
-        <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
-          <h2 className="section-title text-center font-bold mb-12"
-            style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "85px",
-              fontFeatureSettings: "'pnum' on,'lnum' on" }}>
-            Trust{" "}
-            <span style={{
-              background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}>Influencers</span>
-          </h2>
-
-          {/* Infinite marquee — auto-slides right to left */}
-          <TestimonialsCarousel lang={lang} />
-        </div>
-      </section>
-
-      {/* ── Influencer Categories ── */}
-      <section style={{ overflow: "hidden" }} className="py-20 category-bg">
-        <div style={{ maxWidth: "1294px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
-          <h2 className="section-title text-center font-bold mb-12 section-h2-fixed"
-            style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
-              fontFeatureSettings: "'pnum' on,'lnum' on" }}>
-            Influencer{" "}
-            <span style={{
-              background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}>Categories</span>
-          </h2>
-        </div>
-
-        <CategoriesMarquee />
       </section>
 
       {/* ── KOL Campaign Packages ── */}
