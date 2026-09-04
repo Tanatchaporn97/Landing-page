@@ -1,44 +1,52 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { type Locale } from "../../i18n-config";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
-const ROW_HEIGHT = 72;
-const ROW_GAP = 16;
-
 const JOURNEY_STEPS = [
-  { year: "2015 - 2017", img: "/about-us/2015-2017.png", title: "จุดเริ่มต้น", titleEn: "The Beginning",
-    desc: "เริ่มต้นธุรกิจ Influencer Marketing ด้วยทีมงานเล็กๆ ที่เชื่อมั่นในพลังของอินฟลูเอนเซอร์ในการสร้างการเปลี่ยนแปลงให้แบรนด์",
-    descEn: "Started our influencer marketing business with a small team that believed in the power of influencers to drive real change for brands." },
-  { year: "2018", img: "/about-us/2018.webp", title: "ขยายเครือข่าย", titleEn: "Growing the Network",
-    desc: "เติบโตเครือข่ายอินฟลูเอนเซอร์และพาร์ทเนอร์แบรนด์ พร้อมวางรากฐานระบบจับคู่แคมเปญ",
-    descEn: "Grew our influencer and brand-partner network while laying the foundation for our campaign-matching system." },
-  { year: "2019", img: "/about-us/2019.webp", title: "พัฒนาแพลตฟอร์ม", titleEn: "Building the Platform",
-    desc: "เปิดตัวระบบจัดการแคมเปญที่ช่วยให้แบรนด์และอินฟลูเอนเซอร์ทำงานร่วมกันได้ง่ายและมีประสิทธิภาพมากขึ้น",
-    descEn: "Launched our campaign management system, making collaboration between brands and influencers easier and more effective." },
-  { year: "2020", img: "/about-us/2020.webp", title: "ก้าวสู่ดิจิทัลเต็มรูปแบบ", titleEn: "Going Fully Digital",
-    desc: "ปรับตัวสู่การทำงานแบบดิจิทัลเต็มรูปแบบ รองรับความต้องการที่เปลี่ยนแปลงอย่างรวดเร็ว",
-    descEn: "Shifted to a fully digital way of working to keep up with rapidly changing demands." },
-  { year: "2022", img: "/about-us/2022.png", title: "ขับเคลื่อนด้วยดาต้า", titleEn: "Powered by Data",
-    desc: "นำเทคโนโลยีและข้อมูลเชิงลึกมาใช้วิเคราะห์และเพิ่มประสิทธิภาพแคมเปญอย่างแม่นยำ",
-    descEn: "Adopted technology and data insights to analyze and fine-tune campaign performance with precision." },
-  { year: "2024", img: "/about-us/2024.png", title: "ผู้นำในตลาด", titleEn: "A Market Leader",
-    desc: "ก้าวขึ้นเป็นหนึ่งในผู้นำด้าน Influencer Marketing ในไทย ด้วยเครือข่ายอินฟลูเอนเซอร์กว่า 1,000,000+ ราย",
-    descEn: "Rose to become one of Thailand's leading influencer marketing agencies, with a network of over 1,000,000+ influencers." },
-  { year: "2025", img: "/about-us/2025.png", title: "นวัตกรรมใหม่", titleEn: "New Innovations",
-    desc: "พัฒนาโซลูชันและฟีเจอร์ใหม่ๆ อย่างต่อเนื่อง เพื่อตอบโจทย์ทุกความต้องการของแบรนด์",
-    descEn: "Continuously developing new solutions and features to meet every brand's needs." },
-  { year: "2026", img: null, title: "ก้าวต่อไป", titleEn: "What's Next",
-    desc: "มุ่งสู่การเป็นศูนย์กลาง Influencer Marketing ที่ขับเคลื่อนด้วยเทคโนโลยีชั้นนำในภูมิภาค",
-    descEn: "Moving toward becoming the region's leading technology-driven influencer marketing hub." },
+  { year: "2015 - 2017", img: "/about-us/2015-2017.png",
+    subtitle: "เราได้ทดลองและพัฒนาโปรดักต์หลากหลายโซลูชัน", subtitleEn: "We Experimented With and Built Multiple Product Solutions",
+    desc: "เพื่อตอบโจทย์ผู้บริโภคคนไทย จากความมุ่งมั่นนี้เองที่ทำให้เราค้นพบโปรดักต์ที่สามารถแก้ปัญหาและมอบคุณค่าให้กับแบรนด์และอินฟลูเอนเซอร์ที่ต่อมาเราใช้ชื่อเรียกว่า 'Buddy Review'",
+    descEn: "To meet the needs of Thai consumers — and it was this determination that led us to a product that could solve real problems and deliver value to brands and influencers, which we later named 'Buddy Review.'" },
+  { year: "2018", img: "/about-us/2018.webp",
+    subtitle: "เปิดตัว Buddy Review", subtitleEn: "Buddy Review Launches",
+    desc: "Soft Launch อย่างเป็นทางการ ด้วยการเป็นแพลตฟอร์มที่พลิกโฉมวงการ ที่ทำให้แบรนด์และอินฟลูเอนเซอร์สามารถร่วมงานกันได้สะดวกมากขึ้น ปัญหาน้อยลง ด้วยเทคโนโลยีบนแพลตฟอร์มที่มีประสิทธิภาพ",
+    descEn: "We officially soft-launched a platform that reshaped the industry — making it easier for brands and influencers to collaborate, with fewer problems, thanks to efficient platform technology." },
+  { year: "2019", img: "/about-us/2019.webp",
+    subtitle: "ก้าวสำคัญสู่ความมั่นคง", subtitleEn: "A Major Step Toward Stability",
+    desc: "เริ่มก่อตั้งบริษัท 'บับเบิลลี จำกัด' อย่างเป็นทางการ เพื่อรองรับการเติบโตและสร้างความเชื่อมั่นให้กับลูกค้า พร้อมกับการพัฒนาระบบการจัดการและบริการที่ดียิ่งขึ้นเพื่อตอบโจทย์ลูกค้าในทุกกลุ่ม",
+    descEn: "We officially founded Bubblely Co., Ltd. to support our growth and build client confidence, alongside better management systems and services to serve every customer segment." },
+  { year: "2020", img: "/about-us/2020.webp",
+    subtitle: "เติบโตท่ามกลางความท้าทาย", subtitleEn: "Growing Through Challenges",
+    desc: "แม้จะเป็นช่วงที่ท้าทายสำหรับหลายธุรกิจ แต่ Buddy Review ยังคงมุ่งมั่นพัฒนาบริการและแพลตฟอร์มอย่างต่อเนื่อง พร้อมยังทำแคมเปญช่วยเหลือแบรนด์ SME และร่วมมือกับอินฟลูเอนเซอร์ที่มีจิตอาสาในช่วง COVID-19 เพื่อก้าวข้ามและเติบโตผ่านเวลาที่ลำบากไปด้วยกัน",
+    descEn: "Even through a challenging time for many businesses, Buddy Review kept developing our services and platform — running campaigns to support SME brands and partnering with volunteer-minded influencers through COVID-19, growing through hard times together." },
+  { year: "2022", img: "/about-us/2022.png",
+    subtitle: "ขยายทีมครั้งใหญ่", subtitleEn: "A Major Team Expansion",
+    desc: "แม้จะเป็นช่วงที่ท้าทายสำหรับหลายธุรกิจ แต่ Buddy Review ยังคงมุ่งมั่นพัฒนาบริการและแพลตฟอร์มอย่างต่อเนื่อง พร้อมยังทำแคมเปญช่วยเหลือแบรนด์ SME และร่วมมือกับอินฟลูเอนเซอร์ที่มีจิตอาสาในช่วง COVID-19 เพื่อก้าวข้ามและเติบโตผ่านเวลาที่ลำบากไปด้วยกัน",
+    descEn: "Even through a challenging time for many businesses, Buddy Review kept developing our services and platform — running campaigns to support SME brands and partnering with volunteer-minded influencers through COVID-19, growing through hard times together." },
+  { year: "2024", img: "/about-us/2024.png",
+    subtitle: "อีกก้าวความสำเร็จ", subtitleEn: "Another Milestone of Success",
+    desc: "เราได้ถูกจัดอันดับเป็นอันดับ 4 บริษัทหมวด Advertising & Marketing ที่เติบโตเร็วที่สุดในเอเชียแปซิฟิกจากการจัดอันดับโดย Financial Times",
+    descEn: "We were ranked No. 4 among the fastest-growing Advertising & Marketing companies in Asia-Pacific by the Financial Times." },
+  { year: "2025", img: "/about-us/2025.png",
+    subtitle: "ตอกย้ำความสำเร็จอีกขั้น", subtitleEn: "Cementing Our Success Further",
+    desc: "เราได้คว้าอันดับที่ 1 บริษัทหมวด Advertising & Marketing ที่มีอัตราการเติบโตที่เร็วที่สุดในประเทศไทยโดย Financial Times และยังได้รับรางวัล Top MarTech Providers for Growing Business 2025 โดย Content Shifu อีกด้วย",
+    descEn: "We claimed No. 1 among the fastest-growing Advertising & Marketing companies in Thailand by the Financial Times, and also received the Top MarTech Providers for Growing Business 2025 award from Content Shifu." },
 ];
 
 export default function OurJourney({ lang }: { lang: Locale }) {
   const [active, setActive] = useState(0);
+  const [bar, setBar] = useState({ top: 0, height: 0 });
+  const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
   const step = JOURNEY_STEPS[active];
+
+  useLayoutEffect(() => {
+    const el = rowRefs.current[active];
+    if (el) setBar({ top: el.offsetTop, height: el.offsetHeight });
+  }, [active, lang]);
 
   return (
     <div style={{ maxWidth: "1294px", margin: "80px auto 0", padding: "0 48px" }}>
@@ -53,43 +61,37 @@ export default function OurJourney({ lang }: { lang: Locale }) {
       </div>
 
       <div className="grid-2-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
-        {/* Left: placeholder crossfades to match the hovered year */}
-        <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", aspectRatio: "3 / 2", background: "#f5f3ff" }}>
+        {/* Left: photo crossfades to match the hovered year */}
+        <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", aspectRatio: "3 / 2" }}>
           <AnimatePresence mode="wait">
             <motion.div key={step.year}
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
               style={{ position: "absolute", inset: 0 }}>
-              {step.img ? (
-                <Image src={step.img} alt={step.year} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "contain" }} />
-              ) : (
-                <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
-                  background: "linear-gradient(135deg, #5f25e5 0%, #ff0089 100%)" }}>
-                  <span style={{ ...KT, fontSize: "clamp(40px,5vw,64px)", fontWeight: 800, color: "#ffffff" }}>{step.year}</span>
-                </div>
-              )}
+              <Image src={step.img} alt={step.year} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "contain" }} />
             </motion.div>
           </AnimatePresence>
         </div>
 
         {/* Right: hoverable year list with a sliding progress bar */}
-        <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: `${ROW_GAP}px`, paddingLeft: "32px" }}>
+        <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: "24px", paddingLeft: "32px" }}>
           {/* track */}
           <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "4px", borderRadius: "2px", background: "rgba(95,38,229,0.12)" }} />
-          {/* sliding highlight */}
+          {/* sliding highlight — measured from the active row's real height */}
           <motion.div
-            animate={{ top: active * (ROW_HEIGHT + ROW_GAP) }}
+            animate={{ top: bar.top, height: bar.height }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            style={{ position: "absolute", left: 0, width: "4px", height: `${ROW_HEIGHT}px`, borderRadius: "2px",
+            style={{ position: "absolute", left: 0, width: "4px", borderRadius: "2px",
               background: "linear-gradient(180deg, #5f25e5 0%, #ff0089 100%)" }} />
 
           {JOURNEY_STEPS.map((s, i) => (
             <div key={s.year}
+              ref={(el) => { rowRefs.current[i] = el; }}
               onMouseEnter={() => setActive(i)}
-              style={{ minHeight: `${ROW_HEIGHT}px`, display: "flex", flexDirection: "column", justifyContent: "center",
+              style={{ display: "flex", flexDirection: "column", justifyContent: "center",
                 cursor: "pointer", opacity: i === active ? 1 : 0.55, transition: "opacity 0.2s" }}>
               <h3 style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: "0 0 4px", transition: "color 0.2s",
                 color: i === active ? "#5f26e5" : "#111827" }}>
-                {s.year} — {lang === "th" ? s.title : s.titleEn}
+                {s.year} — {lang === "th" ? s.subtitle : s.subtitleEn}
               </h3>
               <p style={{ ...KT, fontSize: "14px", lineHeight: "1.7", color: "#374151", margin: 0 }}>
                 {lang === "th" ? s.desc : s.descEn}
