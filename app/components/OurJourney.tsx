@@ -1,6 +1,7 @@
 "use client";
-import { useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "motion/react";
 import { type Locale } from "../../i18n-config";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -37,39 +38,19 @@ const JOURNEY_STEPS = [
 ];
 
 export default function OurJourney({ lang }: { lang: Locale }) {
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [active, setActive] = useState(0);
+  const [bar, setBar] = useState({ top: 0, height: 0 });
+  const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const step = JOURNEY_STEPS[active];
 
-  const updateFocus = useCallback(() => {
-    const viewportCenter = window.innerHeight / 2;
-    cardRefs.current.forEach((card) => {
-      if (!card) return;
-      const rect = card.getBoundingClientRect();
-      const cardCenter = rect.top + rect.height / 2;
-      const distance = Math.abs(cardCenter - viewportCenter);
-      const t = Math.max(0, 1 - distance / (window.innerHeight * 0.55));
-      const opacity = 0.22 + t * 0.78;
-      const scale = 0.94 + t * 0.06;
-      card.style.setProperty("--focus-opacity", opacity.toFixed(3));
-      card.style.setProperty("--focus-scale", scale.toFixed(3));
-    });
-  }, []);
-
-  useEffect(() => {
-    updateFocus();
-    let raf = 0;
-    const onScroll = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(updateFocus); };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      cancelAnimationFrame(raf);
-    };
-  }, [updateFocus, lang]);
+  useLayoutEffect(() => {
+    const el = rowRefs.current[active];
+    if (el) setBar({ top: el.offsetTop, height: el.offsetHeight });
+  }, [active, lang]);
 
   return (
-    <div style={{ maxWidth: "760px", margin: "80px auto 0", padding: "0 48px" }}>
-      <div className="text-center" style={{ margin: "0 auto 56px" }}>
+    <div style={{ maxWidth: "1294px", margin: "80px auto 0", padding: "0 48px" }}>
+      <div className="text-center" style={{ maxWidth: "760px", margin: "0 auto 56px" }}>
         <h2 className="section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, lineHeight: 1.3, color: "#111827", margin: 0 }}>
           Our{" "}
           <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
@@ -79,37 +60,54 @@ export default function OurJourney({ lang }: { lang: Locale }) {
         </h2>
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "88px" }}>
-        {JOURNEY_STEPS.map((s, i) => (
-          <div key={s.year}
-            ref={(el) => { cardRefs.current[i] = el; }}
-            className="journey-card"
-            style={{
-              display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center",
-              opacity: "var(--focus-opacity, 0.4)",
-              transform: "scale(var(--focus-scale, 0.96))",
-              transition: "opacity 0.15s linear, transform 0.15s linear",
-            }}>
-            <div style={{
-              width: "148px", height: "148px", borderRadius: "50%", overflow: "hidden",
-              position: "relative", border: "4px solid #ffffff",
-              boxShadow: "0 12px 32px rgba(95,38,229,0.20)", marginBottom: "24px", flexShrink: 0,
-            }}>
-              <Image src={s.img} alt={s.year} fill sizes="148px" style={{ objectFit: "cover" }} />
+      <div className="grid-2-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
+        {/* Left: photo crossfades to match the hovered year — no frame, never cropped */}
+        <div style={{ position: "relative", aspectRatio: "3 / 2" }}>
+          <AnimatePresence mode="wait">
+            <motion.div key={step.year}
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
+              style={{ position: "absolute", inset: 0 }}>
+              <Image src={step.img} alt={step.year} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "contain" }} />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Right: hoverable year list with a sliding progress bar */}
+        <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: "24px", paddingLeft: "32px" }}>
+          {/* track */}
+          <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "4px", borderRadius: "2px", background: "rgba(95,38,229,0.12)" }} />
+          {/* sliding highlight — measured from the active row's real height */}
+          <motion.div
+            animate={{ top: bar.top, height: bar.height }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            style={{ position: "absolute", left: 0, width: "4px", borderRadius: "2px",
+              background: "linear-gradient(180deg, #5f25e5 0%, #ff0089 100%)" }} />
+
+          {JOURNEY_STEPS.map((s, i) => (
+            <div key={s.year}
+              ref={(el) => { rowRefs.current[i] = el; }}
+              onMouseEnter={() => setActive(i)}
+              style={{ display: "flex", flexDirection: "column", justifyContent: "center",
+                cursor: "pointer", opacity: i === active ? 1 : 0.55, transition: "opacity 0.2s" }}>
+              <h3 style={{ ...KT, fontSize: "clamp(24px,2.6vw,32px)", fontWeight: 800, margin: "0 0 6px", lineHeight: 1.2,
+                background: i === active ? "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)" : "none",
+                WebkitBackgroundClip: i === active ? "text" : "unset",
+                WebkitTextFillColor: i === active ? "transparent" : "unset",
+                backgroundClip: i === active ? "text" : "unset",
+                color: i === active ? undefined : "#111827",
+                transition: "opacity 0.2s" }}>
+                {s.year}
+              </h3>
+              <p style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: "0 0 8px", lineHeight: 1.4, transition: "color 0.2s",
+                color: i === active ? "#5f26e5" : "#111827" }}>
+                {lang === "th" ? s.subtitle : s.subtitleEn}
+              </p>
+              <p style={{ ...KT, fontSize: "14px", lineHeight: "1.7", color: "#374151", margin: 0 }}>
+                {lang === "th" ? s.desc : s.descEn}
+              </p>
             </div>
-            <h3 style={{ ...KT, fontSize: "clamp(24px,2.6vw,32px)", fontWeight: 800, margin: "0 0 8px", lineHeight: 1.2,
-              background: "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              {s.year}
-            </h3>
-            <p style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: "0 0 10px", lineHeight: 1.4, color: "#111827" }}>
-              {lang === "th" ? s.subtitle : s.subtitleEn}
-            </p>
-            <p style={{ ...KT, fontSize: "14px", lineHeight: "1.7", color: "#374151", margin: 0, maxWidth: "480px" }}>
-              {lang === "th" ? s.desc : s.descEn}
-            </p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
