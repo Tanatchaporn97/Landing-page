@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import OurJourney from "../../components/OurJourney";
 import { getDictionary } from "../../../get-dictionary";
 import { type Locale } from "../../../i18n-config";
 
@@ -100,6 +101,9 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
             ))}
           </div>
         </div>
+
+        {/* ── Our Journey ── */}
+        <OurJourney lang={lang as Locale} />
       </section>
 
       <Footer lang={lang as Locale} variant="home" dict={dict} />
