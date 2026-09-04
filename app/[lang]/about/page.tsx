@@ -113,36 +113,29 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
               : "Top (Most Used) MarTech Providers for Growing Businesses, 2025"}
           </p>
         </div>
-      </section>
+        {/* ── Meet Our Co-Founder ── */}
+        <div style={{ maxWidth: "1100px", margin: "96px auto 0", padding: "0 48px" }}>
+          <h2 className="section-title text-center font-bold section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
+            fontFeatureSettings: "'pnum' on,'lnum' on", margin: "0 0 56px" }}>
+            {lang === "th" ? "รู้จัก" : "Meet Our"}{" "}
+            <span style={{ background: "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              {lang === "th" ? "ผู้ร่วมก่อตั้ง" : "Co-Founder"}
+            </span>
+          </h2>
 
-      {/* ── Meet Our Co-Founder ── */}
-      <section style={{
-        padding: "96px 48px",
-        textAlign: "center",
-        background: `
-          radial-gradient(ellipse 70% 60% at 10% 0%, rgba(140,20,90,0.55) 0%, rgba(90,15,60,0.25) 40%, transparent 70%),
-          #000000
-        `,
-      }}>
-        <h2 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, lineHeight: 1.3, color: "#ffffff", margin: "0 0 56px" }}>
-          {lang === "th" ? "รู้จัก" : "Meet Our"}{" "}
-          <span style={{ background: "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            {lang === "th" ? "ผู้ร่วมก่อตั้ง" : "Co-Founder"}
-          </span>
-        </h2>
+          <div className="cofounder-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px", margin: "0 auto 48px" }}>
+            {["/co-founder/co-founder-1.jpg", "/co-founder/co-founder-2.jpg", "/co-founder/co-founder-3.jpg"].map((src) => (
+              <div key={src} style={{ position: "relative", aspectRatio: "3 / 4", borderRadius: "24px", overflow: "hidden", background: "#f3f3f3" }}>
+                <Image src={src} alt="Buddy Review Co-Founder" fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
+              </div>
+            ))}
+          </div>
 
-        <div className="cofounder-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px", maxWidth: "1100px", margin: "0 auto 48px" }}>
-          {["/co-founder/co-founder-1.jpg", "/co-founder/co-founder-2.jpg", "/co-founder/co-founder-3.jpg"].map((src) => (
-            <div key={src} style={{ position: "relative", aspectRatio: "2 / 3", borderRadius: "24px", overflow: "hidden", background: "#f3f3f3" }}>
-              <Image src={src} alt="Buddy Review Co-Founder" fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
-            </div>
-          ))}
+          <a href={`/${lang}#contact`} className="btn-hero-solid-purple"
+            style={{ ...KT, display: "inline-flex", alignItems: "center", justifyContent: "center", borderRadius: "50px", padding: "14px 40px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
+            {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
+          </a>
         </div>
-
-        <a href={`/${lang}#contact`} className="btn-hero"
-          style={{ ...KT, display: "inline-flex", alignItems: "center", justifyContent: "center", borderRadius: "50px", padding: "14px 40px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
-          {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
-        </a>
 
         <style>{`
           @media (max-width: 760px){
