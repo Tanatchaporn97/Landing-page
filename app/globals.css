@@ -663,13 +663,17 @@ body {
   display: block;
   text-align: center;
   padding: 6px 20px;
-  color: #4c3a7a;
+  color: #5f26e5;
   font-family: var(--font-kanit), 'Noto Sans Thai', sans-serif;
   font-size: clamp(15px, 1.8vw, 19px);
   font-weight: 600;
   text-decoration: none;
   border-radius: 50px;
   border: 1px solid rgba(95,38,229,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
 }
 .nav-overlay-sublink:hover { color: #ffffff; background: #5f26e5; border-color: #5f26e5; }

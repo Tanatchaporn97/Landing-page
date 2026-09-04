@@ -132,20 +132,21 @@ export default function Navbar({
         </ul>
 
         {variant === "influencer" && (
-          <div style={{ width: "min(280px, 60vw)", textAlign: "center" }}>
-            <div style={{ height: "1px", background: "rgba(26,10,61,0.18)", margin: "1.1rem auto" }} />
-            <p style={{ ...KT, fontSize: "clamp(15px,1.6vw,18px)", fontWeight: 700, color: "#1a0a3d",
-              textTransform: "uppercase", letterSpacing: "0.06em", margin: "0 0 0.6rem" }}>
+          <div style={{ textAlign: "center" }}>
+            <div style={{ width: "min(280px, 60vw)", height: "1px", background: "rgba(26,10,61,0.18)", margin: "1.1rem auto" }} />
+            <p style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, color: "#1a0a3d",
+              textTransform: "uppercase", letterSpacing: "0.04em", margin: "0 0 0.6rem" }}>
               {t.applyAsInfluencer}
             </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem" }}>
+            <div style={{ width: "min(280px, 60vw)", margin: "0 auto", display: "flex", flexDirection: "column", gap: "0.35rem" }}>
               <a href="https://www.buddyreview.co/app/new-campaigns" onClick={() => setMenuOpen(false)}
                 className="nav-overlay-sublink">
                 {t.applyViaWebsite}
               </a>
               <a href="https://line.me/R/ti/p/@buddysupport" target="_blank" rel="noopener noreferrer"
                 onClick={() => setMenuOpen(false)} className="nav-overlay-sublink">
-                LINE {t.applyLine}
+                <img src="/social/Line.png" alt="LINE" style={{ width: "20px", height: "20px", objectFit: "contain" }} />
+                {t.applyLine}
               </a>
             </div>
           </div>
