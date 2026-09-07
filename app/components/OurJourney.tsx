@@ -79,9 +79,8 @@ export default function OurJourney({ lang }: { lang: Locale }) {
 
   return (
     <div style={{ maxWidth: "1000px", margin: "80px auto 0", padding: "0 48px" }}>
-      <div className="text-center" style={{ maxWidth: "760px", margin: "0 auto 64px" }}>
-        <h2 className="section-title text-center font-bold section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
-          fontFeatureSettings: "'pnum' on,'lnum' on", margin: "0 0 20px" }}>
+      <div className="text-center" style={{ maxWidth: "760px", margin: "0 auto 56px" }}>
+        <h2 className="section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, lineHeight: 1.3, color: "#111827", margin: "0 0 20px" }}>
           Our{" "}
           <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
