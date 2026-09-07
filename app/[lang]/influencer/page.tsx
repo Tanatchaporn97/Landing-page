@@ -187,22 +187,16 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <div className="our-work-grid" style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
           <div>
             <p style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#6b7280", margin: "0 0 12px" }}>
-              {lang === "th" ? "ผลงานของเรา" : "OUR WORK"}
+              {lang === "th" ? "AI วิเคราะห์บัญชี TikTok" : "AI TikTok Account Analysis"}
             </p>
-            <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-playfair), serif", fontWeight: 800, fontSize: "clamp(32px,3.5vw,52px)", lineHeight: 1.25, margin: 0, color: "#111827" }}>
-              Buddy Ranks<br />
+            <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-playfair), serif", fontWeight: 800, fontSize: "clamp(32px,3.5vw,52px)", lineHeight: 1.25, margin: 0 }}>
+              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                Buddy Ranks
+              </span><br />
               {lang === "th" ? (
-                <>
-                <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                  รู้จักช่องตัวเองให้มากขึ้น
-                </span><br />
-                <span style={{ color: "#111827" }}>แล้วโตได้แบบมีทิศทาง</span></>
+                <span style={{ color: "#111827" }}>รู้จักช่องตัวเองให้มากขึ้น แล้วโตได้แบบมีทิศทาง</span>
               ) : (
-                <>
-                <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                  Know your channel better,
-                </span>{" "}
-                <span style={{ color: "#111827" }}>grow with direction</span></>
+                <span style={{ color: "#111827" }}>Know your channel better, grow with direction</span>
               )}
             </h2>
           </div>
