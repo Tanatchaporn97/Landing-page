@@ -189,11 +189,18 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             <p style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#6b7280", margin: "0 0 12px" }}>
               {lang === "th" ? "ผลงานของเรา" : "OUR WORK"}
             </p>
-            <h2 style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(48px,6vw,88px)", lineHeight: 1.05, margin: 0, color: "#111827" }}>
-              Success{" "}
-              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                Stories
-              </span>
+            <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(36px,4.6vw,64px)", lineHeight: 1.25, margin: 0, color: "#111827" }}>
+              {lang === "th" ? (
+                <>รู้จักช่องตัวเองให้มากขึ้น<br />
+                <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                  แล้วโตได้แบบมีทิศทาง
+                </span></>
+              ) : (
+                <>Know your channel better,{" "}
+                <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                  grow with direction
+                </span></>
+              )}
             </h2>
           </div>
           <div>
