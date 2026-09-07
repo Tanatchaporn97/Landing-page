@@ -97,42 +97,6 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
         {/* ── Our Journey ── */}
         <OurJourney lang={lang as Locale} />
 
-        {/* ── Our Award ── */}
-        <div style={{ maxWidth: "720px", margin: "80px auto 0", padding: "0 48px", position: "relative" }}>
-          {/* soft glow behind the card */}
-          <div style={{ position: "absolute", inset: "-40px", background: "radial-gradient(ellipse 60% 60% at 50% 40%, rgba(95,38,229,0.20) 0%, transparent 70%)", zIndex: 0, pointerEvents: "none" }} />
-
-          {/* gradient-ring border */}
-          <div style={{ position: "relative", borderRadius: "34px", padding: "2px", background: "linear-gradient(135deg,#5f25e5 0%,#ff0089 100%)", boxShadow: "0 20px 56px rgba(95,38,229,0.22)" }}>
-            <div style={{
-              borderRadius: "32px",
-              padding: "56px 40px",
-              textAlign: "center",
-              background: "rgba(255,255,255,0.92)",
-              backdropFilter: "blur(18px)",
-              WebkitBackdropFilter: "blur(18px)",
-            }}>
-              <div style={{ position: "relative", width: "180px", height: "203px", margin: "0 auto 40px" }}>
-                <div style={{ position: "absolute", inset: "-24px", background: "radial-gradient(circle, rgba(255,0,137,0.16) 0%, transparent 70%)", zIndex: 0 }} />
-                <Image src="/awards/mtaward2025.png" alt="Thailand's MarTech Awards 2025" fill sizes="180px" style={{ objectFit: "contain", zIndex: 1 }} />
-              </div>
-              <div className="text-center" style={{ maxWidth: "560px", margin: "0 auto" }}>
-                <h2 className="section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, lineHeight: 1.3, color: "#111827", margin: "0 0 20px" }}>
-                  Thailand&apos;s{" "}
-                  <span style={{ background: "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                    MarTech Awards 2025
-                  </span>
-                </h2>
-                <p className="desc-text" style={{ ...KT, fontSize: "18px", color: "#111827", lineHeight: 1.85, margin: 0 }}>
-                  {lang === "th"
-                    ? "รางวัล MarTech Providers ที่มีการใช้มากที่สุด ในปี 2025"
-                    : "Top (Most Used) MarTech Providers for Growing Businesses, 2025"}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* ── Meet Our Co-Founder ── */}
         <div style={{ maxWidth: "1100px", margin: "96px auto 0", padding: "0 48px" }}>
           <h2 className="section-title text-center font-bold mb-12 section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
