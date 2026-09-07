@@ -278,6 +278,46 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <CategoriesMarquee />
       </section>
 
+      {/* ── Newsroom ── */}
+      <section style={{
+        background: "linear-gradient(180deg, #1a0a3d 0%, #2d1b69 100%)",
+        padding: "80px 48px",
+      }}>
+        <div style={{ maxWidth: "1000px", margin: "0 auto", textAlign: "center" }}>
+          <p style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", margin: "0 0 48px" }}>
+            {lang === "th" ? "รางวัลและการจัดอันดับ" : "Newsroom"}
+          </p>
+          <div className="newsroom-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px", alignItems: "center" }}>
+            <div>
+              <div style={{ position: "relative", width: "100%", maxWidth: "280px", height: "66px", margin: "0 auto 24px" }}>
+                <Image src="/awards/ft-apac-hgc-2025-white.png" alt="Financial Times — Asia-Pacific High-Growth Companies 2025" fill sizes="280px" style={{ objectFit: "contain" }} />
+              </div>
+              <p style={{ ...KT, fontSize: "16px", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, margin: 0 }}>
+                {lang === "th"
+                  ? "จัดอันดับให้ Buddy Review เป็นบริษัทหมวด Advertising & Marketing ที่มีอัตราการเติบโตเร็วที่สุดในประเทศไทย"
+                  : "Ranked Buddy Review as the fastest-growing Advertising & Marketing company in Thailand."}
+              </p>
+            </div>
+            <div>
+              <div style={{ position: "relative", width: "140px", height: "158px", margin: "0 auto 24px" }}>
+                <Image src="/awards/mtaward2025.png" alt="Thailand's MarTech Awards 2025" fill sizes="140px" style={{ objectFit: "contain" }} />
+              </div>
+              <p style={{ ...KT, fontSize: "16px", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, margin: 0 }}>
+                {lang === "th"
+                  ? "มอบรางวัล Top MarTech Providers for Growing Business 2025 โดย Content Shifu"
+                  : "Awarded Top MarTech Providers for Growing Business 2025 by Content Shifu."}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <style>{`
+          @media (max-width: 760px){
+            .newsroom-grid{ grid-template-columns: 1fr !important; gap: 48px !important; }
+          }
+        `}</style>
+      </section>
+
       {/* ── Industry Insights → FAQs → Pre-footer CTA: one continuous blended background ── */}
       <div style={{ background: "linear-gradient(180deg, #E9DFF7 0%, #DDCDF1 100%)" }}>
 
