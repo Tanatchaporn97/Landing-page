@@ -206,7 +206,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
                 ? "Buddy Ranks ใช้ AI ในการช่วยวิเคราะห์ผู้ติดตาม คอนเทนต์ และ Performance รู้ว่า คนดูคือใคร คอนเทนต์แบบไหนเวิร์ก และควรทำอะไรต่อ"
                 : "Buddy Ranks uses AI to help analyze your followers, content, and performance — know who your audience is, what content works, and what to do next."}
             </p>
-            <a href="https://creator.buddyreview.co/" target="_blank" rel="noopener noreferrer" className="btn-insight"
+            <a href="https://rank.buddyreview.co/" target="_blank" rel="noopener noreferrer" className="btn-insight"
               style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", borderRadius: "50px", fontSize: "16px", fontWeight: 600, padding: "14px 32px", textDecoration: "none" }}>
               {lang === "th" ? "วิเคราะห์ TikTok ฟรี" : "Analyze Your TikTok Free"} →
             </a>
