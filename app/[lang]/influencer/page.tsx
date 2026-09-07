@@ -14,6 +14,7 @@ import OpportunityVisual, { OpportunityPhone } from "../../components/Opportunit
 import UnlockCards from "../../components/UnlockCards";
 import ApplyPartnerships from "../../components/ApplyPartnerships";
 import CreatorStories from "../../components/CreatorStories";
+import MarqueeTicker from "../../components/MarqueeTicker";
 import { type Locale } from "../../../i18n-config";
 
 const META = {
@@ -86,11 +87,11 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <div style={{ position: "absolute", inset: 0, background: "rgba(10,5,20,0.28)" }} />
 
         <div style={{ position: "relative", zIndex: 1, minHeight: "60vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "64px 16px" }}>
-          <h2 style={{ margin: "0 0 24px", lineHeight: 1.15 }}>
-            <span className="vs-line1" style={{ ...KT, display: "block", fontWeight: 900, fontSize: "clamp(40px,7vw,80px)", color: "#ffffff", whiteSpace: "nowrap" }}>
+          <h2 style={{ margin: "0 0 24px", lineHeight: 1.1 }}>
+            <span className="vs-line1" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }), display: "block", fontWeight: lang === "th" ? 900 : 700, fontStyle: lang === "th" ? "normal" : "italic", fontSize: "clamp(36px,6vw,72px)", color: "#ffffff", whiteSpace: "nowrap" }}>
               {lang === "th" ? "แมทช์งานที่ใช่" : "Match the Right Job,"}
             </span>
-            <span className="vs-line2" style={{ ...KT, display: "block", fontWeight: 900, fontSize: "clamp(60px,10vw,140px)", whiteSpace: "nowrap",
+            <span className="vs-line2" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }), display: "block", fontWeight: 700, fontSize: "clamp(52px,9vw,128px)", whiteSpace: "nowrap",
               background: "linear-gradient(45deg, #a78bfa 0%, #ff8bc7 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               {lang === "th" ? "ได้งานที่ชอบ" : "Get Work You Love"}
             </span>
@@ -123,6 +124,11 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         `}</style>
       </section>
 
+      {/* ── Ticker ── */}
+      <MarqueeTicker items={lang === "th"
+        ? ["เปิดรับ Creator ใหม่", "รับงานจากแบรนด์ชั้นนำ", "สมัครฟรี ไม่มีค่าใช้จ่าย", "จ่ายตรงเวลาทุกแคมเปญ"]
+        : ["Now Accepting New Creators", "Work With Top Brands", "Apply Free — No Cost", "Paid On Time, Every Time"]} />
+
       {/* ── Brand Logos Marquee ── */}
       <LogoMarquee bgClassName="inf-logo-bg" fadeColor="#F7F1FC" />
 
@@ -135,13 +141,13 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <div className="opportunity-grid" style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
           <div style={{ textAlign: "left" }}>
             <h2 style={{
-              ...KT,
+              ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }),
               fontSize: "clamp(32px,3.5vw,52px)",
-              fontWeight: 800,
-              lineHeight: 1.25,
+              fontWeight: 700,
+              lineHeight: 1.2,
               margin: "0 0 32px",
             }}>
-              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              <span style={{ fontStyle: lang === "th" ? "normal" : "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 {lang === "th" ? "โอกาสใหม่" : "New Opportunities,"}
               </span>
               <br />
@@ -191,8 +197,8 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             <p style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#6b7280", margin: "0 0 12px" }}>
               {lang === "th" ? "AI วิเคราะห์บัญชี TikTok" : "AI TikTok Account Analysis"}
             </p>
-            <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-playfair), serif", fontWeight: 800, fontSize: "clamp(32px,3.5vw,52px)", lineHeight: 1.25, margin: 0 }}>
-              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(32px,3.5vw,52px)", lineHeight: 1.2, margin: 0 }}>
+              <span style={{ fontStyle: lang === "th" ? "normal" : "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 Buddy Ranks
               </span><br />
               {lang === "th" ? (
@@ -264,10 +270,11 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       {/* ── Influencer Categories ── */}
       <section style={{ overflow: "hidden", background: "#E9DFF7" }} className="py-20">
         <div style={{ maxWidth: "1294px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
-          <h2 className="section-title text-center font-bold"
-            style={{ fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 800, lineHeight: 1.25, margin: "0 0 48px" }}>
+          <h2 className="section-title text-center"
+            style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(32px,3.5vw,52px)", lineHeight: 1.2, margin: "0 0 48px" }}>
             Influencer{" "}
             <span style={{
+              fontStyle: "italic",
               background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
@@ -283,9 +290,9 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <section style={{ background: "#E9DFF7", padding: "100px 48px" }}>
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "56px" }}>
-            <h2 style={{ fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
+            <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-playfair), serif", fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
               {lang === "th" ? "เรื่องราวจาก " : "Creator "}
-              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              <span style={{ fontStyle: lang === "th" ? "normal" : "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 {lang === "th" ? "Creator จริง" : "Stories"}
               </span>
             </h2>
