@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -63,8 +62,15 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
               return (
                 <div key={s.step}
                   onMouseEnter={() => setActive(i)}
-                  style={{ padding: "14px 0", cursor: "pointer", display: "flex", alignItems: "baseline", gap: "16px" }}>
-                  <span style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.06em", color: isActive ? "#ff8bc7" : "rgba(255,255,255,0.35)", flexShrink: 0, transition: "color 0.3s ease" }}>
+                  style={{ padding: "14px 0", cursor: "pointer", display: "flex", alignItems: "center", gap: "16px" }}>
+                  <span style={{
+                    ...KT, fontSize: "13px", fontWeight: 700, flexShrink: 0,
+                    width: "40px", height: "40px", borderRadius: "50%",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    border: isActive ? "1.5px solid #ff8bc7" : "1.5px solid rgba(255,255,255,0.2)",
+                    color: isActive ? "#ff8bc7" : "rgba(255,255,255,0.35)",
+                    transition: "color 0.3s ease, border-color 0.3s ease",
+                  }}>
                     {s.step}
                   </span>
                   <h3 style={{ ...KT, fontSize: "clamp(18px,2vw,24px)", fontWeight: 700, margin: 0, lineHeight: 1.35,
@@ -88,32 +94,25 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
             alignItems: "center",
             textAlign: "center",
           }}>
-            <div style={{ position: "relative", width: "100%", maxWidth: "260px", aspectRatio: "468 / 900", marginBottom: "28px" }}>
+            <div style={{ position: "relative", height: "520px", width: "auto", marginBottom: "28px" }}>
               <div style={{
-                position: "absolute", width: "260px", height: "260px", borderRadius: "50%",
+                position: "absolute", width: "450px", height: "450px", borderRadius: "50%",
                 background: "radial-gradient(circle, rgba(160,100,255,0.22) 0%, transparent 68%)",
                 top: "50%", left: "50%", transform: "translate(-50%,-50%)", zIndex: 0,
               }} />
               <AnimatePresence mode="wait">
-                <motion.div key={current.img}
+                <motion.img key={current.img}
+                  src={current.img}
+                  alt={current.title}
                   initial={{ opacity: 0, scale: 0.92 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.96 }}
                   transition={{ duration: 0.3 }}
-                  style={{ position: "absolute", inset: 0, zIndex: 1 }}>
-                  <Image src={current.img} alt={current.title} fill sizes="260px" style={{ objectFit: "contain" }} />
-                </motion.div>
+                  style={{ position: "relative", zIndex: 1, height: "520px", width: "auto", display: "block", objectFit: "contain" }}
+                />
               </AnimatePresence>
             </div>
 
-            <div style={{
-              display: "inline-flex", alignItems: "center",
-              background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-              borderRadius: "50px", padding: "8px 24px", width: "fit-content", marginBottom: "16px",
-            }}>
-              <span style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#F0E8FF", letterSpacing: "0.04em" }}>STEP {current.step}</span>
-            </div>
-            <h3 style={{ ...KT, fontSize: "clamp(20px,2.2vw,26px)", fontWeight: 800, color: "#5f26e5", margin: "0 0 12px", lineHeight: 1.3 }}>{current.title}</h3>
             <p style={{ ...KT, fontSize: "16px", color: "#111827", lineHeight: 1.8, margin: 0, maxWidth: "420px" }}>{current.desc}</p>
           </div>
         </div>
