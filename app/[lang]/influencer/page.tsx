@@ -70,7 +70,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <InfluencerHero lang={lang as Locale} />
 
       {/* ── Video Showcase ── */}
-      <section style={{ position: "relative", minHeight: "100vh", overflow: "hidden" }}>
+      <section style={{ position: "relative", minHeight: "60vh", overflow: "hidden" }}>
         <div className="video-showcase-row" style={{ position: "absolute", inset: 0, display: "flex" }}>
           {["/videos/influencer-header/header-1.mp4", "/videos/influencer-header/header-2.mp4", "/videos/influencer-header/header-3.mp4"].map((src) => (
             <video key={src} autoPlay muted loop playsInline
@@ -81,16 +81,17 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         </div>
         <div style={{ position: "absolute", inset: 0, background: "rgba(10,5,20,0.28)" }} />
 
-        <div style={{ position: "relative", zIndex: 1, minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "80px 48px" }}>
+        <div style={{ position: "relative", zIndex: 1, minHeight: "60vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "64px 24px" }}>
           <h2 style={{ margin: "0 0 24px", lineHeight: 1.15 }}>
-            <span style={{ display: "block", fontFamily: "var(--font-playfair), serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(32px,4.5vw,56px)", color: "#ffffff" }}>
+            <span style={{ display: "block", fontFamily: "var(--font-playfair), serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(36px,5.2vw,64px)", color: "#ffffff" }}>
               {lang === "th" ? "แมทช์งานที่ใช่" : "Match the Right Job,"}
             </span>
-            <span style={{ display: "block", fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(44px,6.5vw,84px)", color: "#ffffff", letterSpacing: "0.02em" }}>
+            <span style={{ display: "block", fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(52px,7.5vw,96px)", letterSpacing: "0.02em",
+              background: "linear-gradient(45deg, #a78bfa 0%, #ff8bc7 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               {lang === "th" ? "ได้งานที่ชอบ" : "Get Work You Love"}
             </span>
           </h2>
-          <p style={{ ...KT, fontSize: "clamp(15px,1.6vw,18px)", color: "rgba(255,255,255,0.85)", maxWidth: "560px", lineHeight: 1.8, margin: "0 0 32px" }}>
+          <p style={{ ...KT, fontSize: "clamp(15px,1.6vw,18px)", color: "rgba(255,255,255,0.85)", maxWidth: "680px", lineHeight: 1.8, margin: "0 0 32px" }}>
             {lang === "th" ? (
               <>จบปัญหาความยุ่งยากในการรีวิวแบบเดิม ๆ<br />เชื่อมต่อกับแบรนด์ชั้นนำและสร้างรายได้จากสิ่งที่คุณรัก</>
             ) : (
