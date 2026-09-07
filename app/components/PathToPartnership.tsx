@@ -1,6 +1,7 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "motion/react";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -26,172 +27,103 @@ const PTP_STEPS_EN = [
 
 export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" }) {
   const PTP_STEPS = lang === "th" ? PTP_STEPS_TH : PTP_STEPS_EN;
-  const [ptpIndex, setPtpIndex] = useState(0);
-  const ptpRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ptpRef.current;
-    if (!el) return;
-    
-    const onScroll = () => {
-      const idx = Math.round(el.scrollLeft / (el.scrollWidth / PTP_STEPS.length));
-      setPtpIndex(Math.min(idx, PTP_STEPS.length - 1));
-    };
-    el.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      el.removeEventListener("scroll", onScroll);
-    };
-  }, []);
-
-  const ptpScrollTo = (idx: number) => {
-    const el = ptpRef.current;
-    if (!el) return;
-    const card = el.children[idx] as HTMLElement;
-    if (card) el.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
-    setPtpIndex(idx);
-  };
+  const [active, setActive] = useState(0);
+  const current = PTP_STEPS[active];
 
   return (
     <section className="inf-section" style={{ background: "linear-gradient(180deg, #F9F6FE 0%, #F5F0FC 100%)", padding: "100px 48px" }}>
       <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
 
-      {/* Centered title */}
-      <div style={{ textAlign: "center", marginBottom: "64px" }}>
-        <h2 style={{
-          ...KT,
-          fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 800,
-          color: "#111827",
-          margin: "0 0 16px", lineHeight: 1.2,
-        }}>
-          <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>Path to </span><span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Partnership</span>
-        </h2>
-      </div>
+        {/* Centered title */}
+        <div style={{ textAlign: "center", marginBottom: "64px" }}>
+          <h2 style={{
+            ...KT,
+            fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 800,
+            color: "#111827",
+            margin: "0 0 16px", lineHeight: 1.2,
+          }}>
+            <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>Path to </span><span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Partnership</span>
+          </h2>
+        </div>
 
-      {/* Full-width carousel */}
-      <div style={{ position: "relative" }}>
-        {/* Prev arrow */}
-        <button onClick={() => ptpScrollTo(Math.max(0, ptpIndex - 1))} className="tc-arrow ptp-arrow arrow-cta-btn"
-          style={{ position: "absolute", left: "8px", top: "50%", transform: "translateY(-50%)",
-            width: "44px", height: "44px", borderRadius: "50%", border: "none",
-            cursor: "pointer", display: "flex",
-            alignItems: "center", justifyContent: "center", zIndex: 3 }}>
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 5L7.5 10L12.5 15" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-        </button>
+        {/* 2-column: hoverable step list | mockup + description */}
+        <div className="ptp-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "stretch" }}>
 
-        {/* Next arrow */}
-        <button onClick={() => ptpScrollTo(Math.min(PTP_STEPS.length - 1, ptpIndex + 1))} className="tc-arrow ptp-arrow arrow-cta-btn"
-          style={{ position: "absolute", right: "8px", top: "50%", transform: "translateY(-50%)",
-            width: "44px", height: "44px", borderRadius: "50%", border: "none",
-            cursor: "pointer", display: "flex",
-            alignItems: "center", justifyContent: "center", zIndex: 3 }}>
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.5 5L12.5 10L7.5 15" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-        </button>
-
-        {/* Track */}
-        <div
-          ref={ptpRef}
-          className="ptp-track"
-          style={{
+          {/* Left — dark hoverable step list */}
+          <div style={{
+            background: "linear-gradient(160deg, #1a0f2e 0%, #120a24 100%)",
+            borderRadius: "28px",
+            padding: "16px 40px",
             display: "flex",
-            gap: "24px",
-            overflowX: "auto",
-            overflowY: "visible",
-            scrollSnapType: "x mandatory",
-            WebkitOverflowScrolling: "touch",
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-            paddingBottom: "40px",
-            cursor: "grab",
-          }}
-          onMouseDown={(e) => {
-            const el = e.currentTarget as HTMLDivElement;
-            el.style.cursor = "grabbing";
-            const startX = e.pageX;
-            const startScroll = el.scrollLeft;
-            const onMove = (me: MouseEvent) => { el.scrollLeft = startScroll - (me.pageX - startX); };
-            const onUp = () => {
-              el.style.cursor = "grab";
-              window.removeEventListener("mousemove", onMove);
-              window.removeEventListener("mouseup", onUp);
-            };
-            window.addEventListener("mousemove", onMove);
-            window.addEventListener("mouseup", onUp);
-          }}
-        >
-          {PTP_STEPS.map((s) => (
-            <div key={s.step} className="ptp-card" style={{
-              flex: "0 0 clamp(630px, 69vw, 900px)",
-              scrollSnapAlign: "start",
-              userSelect: "none",
-              padding: "64px 64px 64px 48px",
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "54px",
-              alignItems: "center",
-              background: "#ffffff",
-              borderRadius: "28px",
-              border: "1px solid rgba(95,38,229,0.08)",
-              boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
-            }}>
-                {/* Left — phone mockup image */}
-                <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                  <div style={{
-                    position: "absolute", width: "450px", height: "450px", borderRadius: "50%",
-                    background: "radial-gradient(circle, rgba(160,100,255,0.22) 0%, transparent 68%)",
-                    top: "50%", left: "50%", transform: "translate(-50%,-50%)",
-                  }} />
-                  <div style={{
-                    position: "absolute", width: "210px", height: "210px", borderRadius: "50%",
-                    background: "radial-gradient(circle, rgba(255,0,137,0.13) 0%, transparent 70%)",
-                    bottom: "0px", right: "0px",
-                  }} />
-                  <Image
-                    src={s.img}
-                    alt={s.title}
-                    draggable={false}
-                    className="ptp-phone"
-                    width={468}
-                    height={900}
-                    style={{
-                      position: "relative", zIndex: 1,
-                      width: "100%", maxWidth: "468px",
-                      height: "auto",
-                    }}
-                  />
+            flexDirection: "column",
+            justifyContent: "center",
+          }}>
+            {PTP_STEPS.map((s, i) => {
+              const isActive = i === active;
+              return (
+                <div key={s.step}
+                  onMouseEnter={() => setActive(i)}
+                  style={{ padding: "14px 0", cursor: "pointer", display: "flex", alignItems: "baseline", gap: "16px" }}>
+                  <span style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.06em", color: isActive ? "#ff8bc7" : "rgba(255,255,255,0.35)", flexShrink: 0, transition: "color 0.3s ease" }}>
+                    {s.step}
+                  </span>
+                  <h3 style={{ ...KT, fontSize: "clamp(18px,2vw,24px)", fontWeight: 700, margin: 0, lineHeight: 1.35,
+                    color: isActive ? "#ffffff" : "rgba(255,255,255,0.4)", transition: "color 0.3s ease" }}>
+                    {s.title}
+                  </h3>
                 </div>
-                {/* Right — content */}
-                <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
-                  <div style={{
-                    display: "inline-flex", alignItems: "center",
-                    background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-                    borderRadius: "50px", padding: "8px 24px", width: "fit-content",
-                  }}>
-                    <span style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#F0E8FF", letterSpacing: "0.04em" }}>STEP {s.step}</span>
-                  </div>
-                  <h3 style={{ ...KT, fontSize: "clamp(22px,2.2vw,30px)", fontWeight: 800, color: "#5f26e5", margin: 0, lineHeight: 1.3 }}>{s.title}</h3>
-                  <p className="ptp-desc" style={{ ...KT, fontSize: "16px", color: "#111827", lineHeight: 1.8, margin: 0 }}>{s.desc}</p>
-                </div>
-              </div>
-          ))}
-        </div>
+              );
+            })}
+          </div>
 
-        {/* Dot indicators */}
-        <div style={{ display: "flex", justifyContent: "center", gap: "8px" }}>
-          {PTP_STEPS.map((s, i) => (
-            <button
-              key={s.step}
-              onClick={() => ptpScrollTo(i)}
-              style={{
-                height: "8px", width: i === ptpIndex ? "28px" : "8px",
-                borderRadius: "4px", border: "none", padding: 0, cursor: "pointer",
-                background: i === ptpIndex ? "#5f26e5" : "rgba(95,38,229,0.2)",
-                transition: "width 0.3s ease, background 0.3s ease",
-              }}
-            />
-          ))}
+          {/* Right — mockup crossfade + description */}
+          <div style={{
+            background: "#ffffff",
+            borderRadius: "28px",
+            border: "1px solid rgba(95,38,229,0.08)",
+            boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
+            padding: "48px 40px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
+          }}>
+            <div style={{ position: "relative", width: "100%", maxWidth: "260px", aspectRatio: "468 / 900", marginBottom: "28px" }}>
+              <div style={{
+                position: "absolute", width: "260px", height: "260px", borderRadius: "50%",
+                background: "radial-gradient(circle, rgba(160,100,255,0.22) 0%, transparent 68%)",
+                top: "50%", left: "50%", transform: "translate(-50%,-50%)", zIndex: 0,
+              }} />
+              <AnimatePresence mode="wait">
+                <motion.div key={current.img}
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.3 }}
+                  style={{ position: "absolute", inset: 0, zIndex: 1 }}>
+                  <Image src={current.img} alt={current.title} fill sizes="260px" style={{ objectFit: "contain" }} />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            <div style={{
+              display: "inline-flex", alignItems: "center",
+              background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+              borderRadius: "50px", padding: "8px 24px", width: "fit-content", marginBottom: "16px",
+            }}>
+              <span style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#F0E8FF", letterSpacing: "0.04em" }}>STEP {current.step}</span>
+            </div>
+            <h3 style={{ ...KT, fontSize: "clamp(20px,2.2vw,26px)", fontWeight: 800, color: "#5f26e5", margin: "0 0 12px", lineHeight: 1.3 }}>{current.title}</h3>
+            <p style={{ ...KT, fontSize: "16px", color: "#111827", lineHeight: 1.8, margin: 0, maxWidth: "420px" }}>{current.desc}</p>
+          </div>
         </div>
       </div>
-      </div>
+
+      <style>{`
+        @media (max-width: 900px){
+          .ptp-grid{ grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   );
 }
