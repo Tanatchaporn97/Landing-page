@@ -189,7 +189,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             <p style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#6b7280", margin: "0 0 12px" }}>
               {lang === "th" ? "ผลงานของเรา" : "OUR WORK"}
             </p>
-            <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(36px,4.6vw,64px)", lineHeight: 1.25, margin: 0, color: "#111827" }}>
+            <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-playfair), serif", fontWeight: 800, fontSize: "clamp(32px,3.5vw,52px)", lineHeight: 1.25, margin: 0, color: "#111827" }}>
               {lang === "th" ? (
                 <>รู้จักช่องตัวเองให้มากขึ้น<br />
                 <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
