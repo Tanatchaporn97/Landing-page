@@ -318,6 +318,46 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         `}</style>
       </section>
 
+      {/* ── Creator Stories ── */}
+      <section style={{ background: "#F5F0FC", padding: "100px 48px" }}>
+        <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "56px" }}>
+            <h2 style={{ fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
+              {lang === "th" ? "เรื่องราวจาก " : "Creator "}
+              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                {lang === "th" ? "Creator จริง" : "Stories"}
+              </span>
+            </h2>
+          </div>
+
+          <div className="creator-stories-row" style={{ display: "flex", gap: "24px", overflowX: "auto", justifyContent: "center", paddingBottom: "8px" }}>
+            {[
+              { src: "/videos/influencer-header/header-1.mp4", name: "Flukymltp" },
+              { src: "/videos/influencer-header/header-4.mp4", name: "Nice.Naphatchw" },
+              { src: "/videos/influencer-header/header-2.mp4", name: "Icepapan" },
+              { src: "/videos/influencer-header/header-3.mp4", name: "Pookkyjdp" },
+            ].map((v) => (
+              <div key={v.src} className="creator-story-card" style={{
+                position: "relative", flexShrink: 0, width: "230px", aspectRatio: "9 / 16",
+                borderRadius: "28px", overflow: "hidden", background: "#000000",
+                boxShadow: "0 12px 32px rgba(95,38,229,0.16)",
+              }}>
+                <video autoPlay muted loop playsInline style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}>
+                  <source src={v.src} type="video/mp4" />
+                </video>
+                <div style={{ position: "absolute", left: "16px", bottom: "16px", background: "#ffffff", borderRadius: "50px", padding: "8px 18px" }}>
+                  <span style={{ ...KT, fontSize: "13px", fontWeight: 600, color: "#111827" }}>{v.name}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <style>{`
+          .creator-stories-row::-webkit-scrollbar{ display: none; }
+        `}</style>
+      </section>
+
       {/* ── Industry Insights → FAQs → Pre-footer CTA: one continuous blended background ── */}
       <div style={{ background: "linear-gradient(180deg, #E9DFF7 0%, #DDCDF1 100%)" }}>
 
