@@ -170,7 +170,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
 
         <style>{`
           .cofounder-overlay{
-            background: linear-gradient(160deg, rgba(95,38,229,0.92) 0%, rgba(255,0,137,0.85) 100%);
+            background: linear-gradient(to top, rgba(95,38,229,0.95) 0%, rgba(95,38,229,0) 80%);
             opacity: 0;
             transition: opacity 0.35s ease;
           }
