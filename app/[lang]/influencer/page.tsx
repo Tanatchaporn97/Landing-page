@@ -69,6 +69,46 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       {/* ── Hero ── */}
       <InfluencerHero lang={lang as Locale} />
 
+      {/* ── Video Showcase ── */}
+      <section style={{ position: "relative", minHeight: "640px", overflow: "hidden" }}>
+        <div className="video-showcase-row" style={{ position: "absolute", inset: 0, display: "flex" }}>
+          {["/videos/influencer-header/header-1.mp4", "/videos/influencer-header/header-2.mp4", "/videos/influencer-header/header-3.mp4"].map((src) => (
+            <video key={src} autoPlay muted loop playsInline
+              style={{ flex: 1, minWidth: 0, height: "100%", objectFit: "cover" }}>
+              <source src={src} type="video/mp4" />
+            </video>
+          ))}
+        </div>
+        <div style={{ position: "absolute", inset: 0, background: "rgba(10,5,20,0.28)" }} />
+
+        <div style={{ position: "relative", zIndex: 1, minHeight: "640px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "80px 48px" }}>
+          <h2 style={{ margin: "0 0 8px", lineHeight: 1.15 }}>
+            <span style={{ display: "block", fontFamily: "var(--font-playfair), serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(32px,4.5vw,56px)", color: "#ffffff" }}>
+              content made
+            </span>
+            <span style={{ display: "block", fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(44px,6.5vw,84px)", color: "#ffffff", letterSpacing: "0.02em" }}>
+              REWARDING
+            </span>
+          </h2>
+          <p style={{ ...KT, fontSize: "clamp(15px,1.6vw,18px)", color: "rgba(255,255,255,0.85)", maxWidth: "560px", lineHeight: 1.8, margin: "24px 0 32px" }}>
+            {lang === "th"
+              ? "ทุกคอนเทนต์ที่คุณสร้างมีมูลค่า Buddy Review ช่วยให้คุณจับคู่กับแบรนด์ที่ใช่ และได้รับผลตอบแทนที่คุ้มค่ากับความคิดสร้างสรรค์ของคุณ"
+              : "Every piece of content you create has value. Buddy Review connects you with the right brands and rewards you fairly for your creativity."}
+          </p>
+          <a href="https://www.buddyreview.co/app/new-campaigns" target="_blank" rel="noopener noreferrer"
+            className="btn-hero"
+            style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", background: "#ffffff", color: "#111827", borderRadius: "50px", padding: "14px 32px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
+            {lang === "th" ? "เริ่มต้นเลย" : "Get Started"} →
+          </a>
+        </div>
+
+        <style>{`
+          @media (max-width: 760px){
+            .video-showcase-row{ flex-direction: column; }
+          }
+        `}</style>
+      </section>
+
       {/* ── Brand Logos Marquee ── */}
       <LogoMarquee bgClassName="inf-logo-bg" fadeColor="#F7F1FC" />
 
