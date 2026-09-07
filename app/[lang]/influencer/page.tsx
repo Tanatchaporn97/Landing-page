@@ -81,17 +81,17 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         </div>
         <div style={{ position: "absolute", inset: 0, background: "rgba(10,5,20,0.28)" }} />
 
-        <div style={{ position: "relative", zIndex: 1, minHeight: "60vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "64px 24px" }}>
+        <div style={{ position: "relative", zIndex: 1, minHeight: "60vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "64px 16px" }}>
           <h2 style={{ margin: "0 0 24px", lineHeight: 1.15 }}>
-            <span style={{ display: "block", fontFamily: "var(--font-playfair), serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(36px,5.2vw,64px)", color: "#ffffff" }}>
+            <span className="vs-line1" style={{ display: "block", fontFamily: "var(--font-playfair), serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(40px,7vw,80px)", color: "#ffffff", whiteSpace: "nowrap" }}>
               {lang === "th" ? "แมทช์งานที่ใช่" : "Match the Right Job,"}
             </span>
-            <span style={{ display: "block", fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(52px,7.5vw,96px)", letterSpacing: "0.02em",
+            <span className="vs-line2" style={{ display: "block", fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(60px,10vw,140px)", letterSpacing: "0.02em", whiteSpace: "nowrap",
               background: "linear-gradient(45deg, #a78bfa 0%, #ff8bc7 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               {lang === "th" ? "ได้งานที่ชอบ" : "Get Work You Love"}
             </span>
           </h2>
-          <p style={{ ...KT, fontSize: "clamp(15px,1.6vw,18px)", color: "rgba(255,255,255,0.85)", maxWidth: "680px", lineHeight: 1.8, margin: "0 0 32px" }}>
+          <p style={{ ...KT, fontSize: "clamp(15px,1.6vw,18px)", color: "rgba(255,255,255,0.85)", maxWidth: "900px", lineHeight: 1.8, margin: "0 0 32px" }}>
             {lang === "th" ? (
               <>จบปัญหาความยุ่งยากในการรีวิวแบบเดิม ๆ<br />เชื่อมต่อกับแบรนด์ชั้นนำและสร้างรายได้จากสิ่งที่คุณรัก</>
             ) : (
@@ -118,6 +118,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <style>{`
           @media (max-width: 760px){
             .video-showcase-row{ flex-direction: column; }
+            .vs-line1, .vs-line2{ white-space: normal !important; }
           }
         `}</style>
       </section>
