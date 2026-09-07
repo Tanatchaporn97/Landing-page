@@ -27,13 +27,12 @@ export default function BlogPostsSection({ lang = "th", dict, filterCategory, va
         <h2 className="section-title text-center font-bold mb-14 section-h2-fixed"
           style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
             fontFeatureSettings: "'pnum' on,'lnum' on" }}>
-          Industry{" "}
           <span style={{
             background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
-          }}>Insights</span>
+          }}>Blog</span>
         </h2>
 
         <div className="grid-3-col" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "28px" }}>
