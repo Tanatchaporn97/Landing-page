@@ -186,77 +186,77 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <UnlockIconHover />
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           {/* Title */}
-          <div style={{ textAlign: "center", marginBottom: "72px" }}>
+          <div style={{ textAlign: "center", marginBottom: "56px" }}>
+            <p style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#5f26e5", margin: "0 0 12px" }}>
+              {lang === "th" ? "สิ่งที่คุณจะได้รับ" : "What You'll Get"}
+            </p>
             <h2 style={{ fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
               <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>Unlock Exclusive </span>
               <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Opportunities</span>
             </h2>
           </div>
 
-          {/* 3-column: left features | phone | right features */}
-          <div className="unlock-grid" style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: "2px", alignItems: "center" }}>
-
-            {/* Left features */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
-              {(lang === "th" ? [
-                { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", title: "แบรนด์เชื่อถือได้", desc: "ไม่มีแบรนด์เงียบ ไม่มีงานปลอม\nมีแต่ความโปร" },
-                { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", title: "จ่ายตรง ไม่มีเบี้ยว", desc: "งานจบ เงินไม่หาย กดเบิกเองได้ทุกเมื่อ รับตามรอบแบบตรงเวลา" },
-                { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", title: "รีวิวได้ครบ", desc: "จบทุกแพลตฟอร์ม ให้คุณสามารถมีโอกาส รับงานรีวิวได้หลากหลายช่องทาง" },
-              ] : [
-                { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", title: "Trusted Brands", desc: "No ghosting, no fake jobs\nJust professionalism." },
-                { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", title: "Paid on Time, Every Time", desc: "Finish the job, keep your money — withdraw anytime and get paid on a reliable schedule." },
-                { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", title: "Review Anywhere", desc: "Covers every platform, giving you the chance to take on review work across multiple channels." },
-              ]).map((item) => (
-                <div key={item.title} style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
-                  <div className="icon-wrap-lg" style={{ position: "relative", width: "78px", height: "78px", borderRadius: "50%", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 4px 20px rgba(0,0,0,0.12)" }}>
-                    <Image className="unlock-icon-img" src={item.img} alt={item.title} width={172} height={172} style={{ width: "172px", height: "172px", objectFit: "contain" }} />
-                  </div>
-                  <div style={{ maxWidth: "800px" }}>
-                    <h3 className="card-h3 unlock-title" style={{ ...KT, fontSize: "22px", fontWeight: 700, color: "#5f26e5", margin: "0 0 8px", lineHeight: 1.3 }}>{item.title}</h3>
-                    <p className="unlock-desc" style={{ ...KT, fontSize: "15px", color: "#000000", lineHeight: 1.7, margin: 0, whiteSpace: "pre-line" }}>{item.desc}</p>
-                  </div>
+          {/* Hover-to-expand card row */}
+          <div className="unlock-cards-row" style={{ display: "flex", gap: "20px", overflowX: "auto", paddingBottom: "8px" }}>
+            {(lang === "th" ? [
+              { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", title: "แบรนด์เชื่อถือได้", desc: "ไม่มีแบรนด์เงียบ ไม่มีงานปลอม มีแต่ความโปร" },
+              { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", title: "จ่ายตรง ไม่มีเบี้ยว", desc: "งานจบ เงินไม่หาย กดเบิกเองได้ทุกเมื่อ รับตามรอบแบบตรงเวลา" },
+              { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", title: "รีวิวได้ครบ", desc: "จบทุกแพลตฟอร์ม ให้คุณสามารถมีโอกาส รับงานรีวิวได้หลากหลายช่องทาง" },
+              { img: "/unlocked-exclusive/Unlocked Exclusive-04.png", title: "สิทธิพิเศษเฉพาะคุณ", desc: "ร่วมกิจกรรมและรับรางวัลสุดเอ็กซ์คลูซีฟ" },
+              { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", title: "มืออาชีพที่อยู่เคียงข้างคุณ", desc: "ทำงานได้อย่างมั่นใจ ด้วยทีมงานมืออาชีพ และระบบที่ช่วยให้ทุกอย่างง่ายขึ้น" },
+              { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", title: "แมทช์งานที่ใช่", desc: "รู้งานใหม่ก่อนใคร ด้วยระบบคัดกรองที่แมทช์งานตรงใจ ให้คุณได้ทำงานที่ใช่จากสิ่งที่ชอบ" },
+            ] : [
+              { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", title: "Trusted Brands", desc: "No ghosting, no fake jobs. Just professionalism." },
+              { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", title: "Paid on Time, Every Time", desc: "Finish the job, keep your money — withdraw anytime and get paid on a reliable schedule." },
+              { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", title: "Review Anywhere", desc: "Covers every platform, giving you the chance to take on review work across multiple channels." },
+              { img: "/unlocked-exclusive/Unlocked Exclusive-04.png", title: "Exclusive Perks for You", desc: "Join events and win exclusive rewards." },
+              { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", title: "Professionals By Your Side", desc: "Work with confidence, backed by a professional team and a system that makes everything easier." },
+              { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", title: "The Right Match", desc: "Be first to know about new jobs with a matching system that connects you to work you'll actually love." },
+            ]).map((item) => (
+              <div key={item.title} className="unlock-card">
+                <div className="icon-wrap-lg" style={{ position: "relative", width: "64px", height: "64px", borderRadius: "50%", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 4px 20px rgba(0,0,0,0.10)", marginBottom: "20px" }}>
+                  <Image className="unlock-icon-img" src={item.img} alt={item.title} width={140} height={140} style={{ width: "140px", height: "140px", objectFit: "contain" }} />
                 </div>
-              ))}
-            </div>
-
-            {/* Center — phone */}
-            <div style={{ position: "relative", flexShrink: 0 }}>
-              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "520px", height: "520px", borderRadius: "50%", background: "radial-gradient(circle, rgba(95,38,229,0.18) 0%, transparent 70%)", pointerEvents: "none" }} />
-              <Image
-                className="unlock-phone-img"
-                src="/buddy-rank-phone.png"
-                alt="Buddy Rank"
-                width={608}
-                height={1200}
-                style={{ width: "608px", height: "auto", display: "block", position: "relative", zIndex: 1 }}
-              />
-            </div>
-
-            {/* Right features */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
-              {(lang === "th" ? [
-                { img: "/unlocked-exclusive/Unlocked Exclusive-04.png", title: "สิทธิพิเศษเฉพาะคุณ", desc: "ร่วมกิจกรรมและรับรางวัลสุดเอ็กซ์คลูซีฟ" },
-                { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", title: "มืออาชีพที่อยู่เคียงข้างคุณ", desc: "ทำงานได้อย่างมั่นใจ ด้วยทีมงานมืออาชีพ และระบบที่ช่วยให้ทุกอย่างง่ายขึ้น" },
-                { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", title: "แมทช์งานที่ใช่", desc: "รู้งานใหม่ก่อนใคร ด้วยระบบคัดกรองที่แมทช์งานตรงใจ ให้คุณได้ทำงานที่ใช่จากสิ่งที่ชอบ" },
-              ] : [
-                { img: "/unlocked-exclusive/Unlocked Exclusive-04.png", title: "Exclusive Perks for You", desc: "Join events and win exclusive rewards." },
-                { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", title: "Professionals By Your Side", desc: "Work with confidence, backed by a professional team and a system that makes everything easier." },
-                { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", title: "The Right Match", desc: "Be first to know about new jobs with a matching system that connects you to work you'll actually love." },
-              ]).map((item) => (
-                <div key={item.title} style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
-                  <div className="icon-wrap-lg" style={{ position: "relative", width: "78px", height: "78px", borderRadius: "50%", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 4px 20px rgba(0,0,0,0.12)" }}>
-                    <Image className="unlock-icon-img" src={item.img} alt={item.title} width={172} height={172} style={{ width: "172px", height: "172px", objectFit: "contain" }} />
-                  </div>
-                  <div style={{ maxWidth: "800px" }}>
-                    <h3 className="card-h3 unlock-title" style={{ ...KT, fontSize: "22px", fontWeight: 700, color: "#5f26e5", margin: "0 0 8px", lineHeight: 1.3 }}>{item.title}</h3>
-                    <p className="unlock-desc" style={{ ...KT, fontSize: "15px", color: "#000000", lineHeight: 1.7, margin: 0, whiteSpace: "pre-line" }}>{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
+                <h3 className="card-h3 unlock-title" style={{ ...KT, fontSize: "19px", fontWeight: 700, color: "#111827", margin: "0 0 12px", lineHeight: 1.3 }}>{item.title}</h3>
+                <p className="unlock-desc" style={{ ...KT, fontSize: "14px", color: "#374151", lineHeight: 1.7 }}>{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
+
+        <style>{`
+          .unlock-cards-row::-webkit-scrollbar{ display: none; }
+          .unlock-card{
+            position: relative;
+            flex: 0 0 190px;
+            border-radius: 24px;
+            padding: 28px 24px;
+            background: rgba(255,255,255,0.5);
+            border: 1px solid rgba(255,255,255,0.7);
+            cursor: pointer;
+            overflow: hidden;
+            transition: flex-basis 0.4s cubic-bezier(0.4,0,0.2,1), background 0.3s ease;
+          }
+          .unlock-card .unlock-desc{
+            max-height: 0;
+            opacity: 0;
+            margin: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.4s ease;
+          }
+          .unlock-card:hover{
+            flex-basis: 340px;
+            background: rgba(255,255,255,0.85);
+          }
+          .unlock-card:hover .unlock-desc{
+            max-height: 160px;
+            opacity: 1;
+            margin-top: 12px;
+          }
+          @media (max-width: 760px){
+            .unlock-card, .unlock-card:hover{ flex-basis: 260px; }
+          }
+        `}</style>
       </section>
 
 
