@@ -62,7 +62,7 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
               return (
                 <div key={s.step}
                   onMouseEnter={() => setActive(i)}
-                  style={{ padding: "14px 0", cursor: "pointer", display: "flex", alignItems: "center", gap: "16px" }}>
+                  style={{ padding: "14px 0", cursor: "pointer", display: "flex", alignItems: "flex-start", gap: "16px" }}>
                   <span style={{
                     ...KT, fontSize: "13px", fontWeight: 700, flexShrink: 0,
                     width: "40px", height: "40px", borderRadius: "50%",
@@ -73,10 +73,22 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
                   }}>
                     {s.step}
                   </span>
-                  <h3 style={{ ...KT, fontSize: "clamp(18px,2vw,24px)", fontWeight: 700, margin: 0, lineHeight: 1.35,
-                    color: isActive ? "#ffffff" : "rgba(255,255,255,0.4)", transition: "color 0.3s ease" }}>
-                    {s.title}
-                  </h3>
+                  <div>
+                    <h3 style={{ ...KT, fontSize: "clamp(18px,2vw,24px)", fontWeight: 700, margin: 0, lineHeight: 1.35,
+                      color: isActive ? "#ffffff" : "rgba(255,255,255,0.4)", transition: "color 0.3s ease" }}>
+                      {s.title}
+                    </h3>
+                    <p style={{
+                      ...KT, fontSize: "15px", lineHeight: 1.7, color: "rgba(255,255,255,0.65)",
+                      margin: 0, maxWidth: "400px", overflow: "hidden",
+                      maxHeight: isActive ? "120px" : "0px",
+                      opacity: isActive ? 1 : 0,
+                      marginTop: isActive ? "8px" : "0px",
+                      transition: "max-height 0.35s ease, opacity 0.3s ease, margin-top 0.35s ease",
+                    }}>
+                      {s.desc}
+                    </p>
+                  </div>
                 </div>
               );
             })}
@@ -112,8 +124,6 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
                 />
               </AnimatePresence>
             </div>
-
-            <p style={{ ...KT, fontSize: "16px", color: "#111827", lineHeight: 1.8, margin: 0, maxWidth: "420px" }}>{current.desc}</p>
           </div>
         </div>
       </div>
