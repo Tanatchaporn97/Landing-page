@@ -12,6 +12,7 @@ import PathToPartnership from "../../components/PathToPartnership";
 import UnlockIconHover from "../../components/UnlockIconHover";
 import OpportunityVisual, { OpportunityPhone } from "../../components/OpportunityVisual";
 import UnlockCards from "../../components/UnlockCards";
+import ApplyPartnerships from "../../components/ApplyPartnerships";
 import { type Locale } from "../../../i18n-config";
 
 const META = {
@@ -219,6 +220,9 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
           }
         `}</style>
       </section>
+
+      {/* ── Apply For Partnerships ── */}
+      <ApplyPartnerships lang={lang as "th" | "en"} />
 
       {/* ── Unlock Exclusive Opportunities ── */}
       <section className="inf-section" style={{ background: "linear-gradient(180deg, #F5F0FC 0%, #F1EBFA 100%)", padding: "100px 48px" }}>
