@@ -190,24 +190,27 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               {lang === "th" ? "ผลงานของเรา" : "OUR WORK"}
             </p>
             <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-playfair), serif", fontWeight: 800, fontSize: "clamp(32px,3.5vw,52px)", lineHeight: 1.25, margin: 0, color: "#111827" }}>
+              Buddy Ranks<br />
               {lang === "th" ? (
-                <>รู้จักช่องตัวเองให้มากขึ้น<br />
+                <>
                 <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                  แล้วโตได้แบบมีทิศทาง
-                </span></>
+                  รู้จักช่องตัวเองให้มากขึ้น
+                </span><br />
+                <span style={{ color: "#111827" }}>แล้วโตได้แบบมีทิศทาง</span></>
               ) : (
-                <>Know your channel better,{" "}
+                <>
                 <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                  grow with direction
-                </span></>
+                  Know your channel better,
+                </span>{" "}
+                <span style={{ color: "#111827" }}>grow with direction</span></>
               )}
             </h2>
           </div>
           <div>
             <p className="desc-text" style={{ ...KT, fontSize: "18px", color: "#374151", lineHeight: 1.85, margin: "0 0 32px" }}>
               {lang === "th"
-                ? "ทุกแคมเปญมีเรื่องราว เราช่วยแบรนด์และอินฟลูเอนเซอร์สร้างผลลัพธ์ที่จับต้องได้ ผ่านกลยุทธ์ที่แม่นยำและคอนเทนต์ที่เข้าถึงใจ มาดูกันว่าเราช่วยแบรนด์ต่างๆ ประสบความสำเร็จได้อย่างไร"
-                : "Every campaign has a story. We help brands and influencers create real, measurable results through precise strategy and content that resonates. See how we've helped brands succeed."}
+                ? "Buddy Ranks ใช้ AI ในการช่วยวิเคราะห์ผู้ติดตาม คอนเทนต์ และ Performance รู้ว่า คนดูคือใคร คอนเทนต์แบบไหนเวิร์ก และควรทำอะไรต่อ"
+                : "Buddy Ranks uses AI to help analyze your followers, content, and performance — know who your audience is, what content works, and what to do next."}
             </p>
             <Link href={`/${lang}/success`} className="btn-insight"
               style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", borderRadius: "50px", fontSize: "16px", fontWeight: 600, padding: "14px 32px", textDecoration: "none" }}>
