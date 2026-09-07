@@ -146,7 +146,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
               <div key={person.src} style={{ textAlign: "center" }}>
                 <div className="cofounder-photo" style={{ position: "relative", aspectRatio: "3 / 4", borderRadius: "24px", overflow: "hidden", background: "#f3f3f3" }}>
                   <Image src={person.src} alt={person.name} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
-                  <div className="cofounder-overlay" style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: "32px" }}>
+                  <div className="cofounder-overlay" style={{ position: "absolute", inset: 0, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: "24px" }}>
                     <p style={{ ...KT, fontSize: "16px", fontWeight: 600, color: "#ffffff", lineHeight: 1.7, margin: 0 }}>
                       &ldquo;{person.quote}&rdquo;
                     </p>
