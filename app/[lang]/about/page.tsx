@@ -99,20 +99,31 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
 
         {/* ── Our Award ── */}
         <div style={{ maxWidth: "720px", margin: "80px auto 0", padding: "0 48px" }}>
-          <div style={{ position: "relative", width: "180px", height: "203px", margin: "0 auto 40px" }}>
-            <Image src="/awards/mtaward2025.png" alt="Thailand's MarTech Awards 2025" fill sizes="180px" style={{ objectFit: "contain" }} />
+          <div style={{
+            borderRadius: "32px",
+            padding: "56px 40px",
+            background: "rgba(255,255,255,0.42)",
+            backdropFilter: "blur(18px)",
+            WebkitBackdropFilter: "blur(18px)",
+            border: "1px solid rgba(255,255,255,0.65)",
+            boxShadow: "0 16px 48px rgba(95,38,229,0.16)",
+          }}>
+            <div style={{ position: "relative", width: "180px", height: "203px", margin: "0 auto 40px" }}>
+              <Image src="/awards/mtaward2025.png" alt="Thailand's MarTech Awards 2025" fill sizes="180px" style={{ objectFit: "contain" }} />
+            </div>
+            <h2 className="section-title text-center font-bold section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
+              fontFeatureSettings: "'pnum' on,'lnum' on", margin: "0 0 20px",
+              background: "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              Thailand&apos;s MarTech Awards 2025
+            </h2>
+            <p className="desc-text" style={{ ...KT, fontSize: "18px", color: "#111827", lineHeight: 1.85, margin: 0 }}>
+              {lang === "th"
+                ? "รางวัล MarTech Providers ที่มีการใช้มากที่สุด ในปี 2025"
+                : "Top (Most Used) MarTech Providers for Growing Businesses, 2025"}
+            </p>
           </div>
-          <h2 className="section-title text-center font-bold section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
-            fontFeatureSettings: "'pnum' on,'lnum' on", margin: "0 0 20px",
-            background: "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            Thailand&apos;s MarTech Awards 2025
-          </h2>
-          <p className="desc-text" style={{ ...KT, fontSize: "18px", color: "#111827", lineHeight: 1.85, margin: 0 }}>
-            {lang === "th"
-              ? "รางวัล MarTech Providers ที่มีการใช้มากที่สุด ในปี 2025"
-              : "Top (Most Used) MarTech Providers for Growing Businesses, 2025"}
-          </p>
         </div>
+
         {/* ── Meet Our Co-Founder ── */}
         <div style={{ maxWidth: "1100px", margin: "96px auto 0", padding: "0 48px" }}>
           <h2 className="section-title text-center font-bold section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
