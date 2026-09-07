@@ -183,7 +183,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <PathToPartnership lang={lang as Locale} />
 
       {/* ── Our Work ── */}
-      <section className="inf-section" style={{ background: "#ffffff", padding: "100px 48px" }}>
+      <section className="inf-section" style={{ background: "#F5F0FC", padding: "100px 48px" }}>
         <div className="our-work-grid" style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
           <div>
             <p style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#6b7280", margin: "0 0 12px" }}>
