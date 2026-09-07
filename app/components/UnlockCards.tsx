@@ -22,11 +22,11 @@ export default function UnlockCards({ items }: { items: Item[] }) {
             onClick={() => setActive(isOpen ? null : i)}
             onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActive(isOpen ? null : i); } }}
           >
-            <div className="unlock-card-top" style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
-              <div className="icon-wrap-lg" style={{ position: "relative", width: "56px", height: "56px", borderRadius: "50%", background: item.bg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+            <div className="unlock-card-top" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "16px" }}>
+              <div className="icon-wrap-lg" style={{ position: "relative", width: "56px", height: "56px", borderRadius: "50%", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 4px 12px rgba(17,24,39,0.08)" }}>
                 <Image className="unlock-icon-img" src={item.img} alt={item.title} width={120} height={120} style={{ width: "120px", height: "120px", objectFit: "contain" }} />
               </div>
-              <h3 className="card-h3 unlock-title" style={{ ...KT, fontSize: "19px", fontWeight: 700, color: "#111827", margin: 0, lineHeight: 1.3, flexShrink: 0 }}>{item.title}</h3>
+              <h3 className="card-h3 unlock-title" style={{ ...KT, fontSize: "19px", fontWeight: 700, color: "#111827", margin: 0, lineHeight: 1.3 }}>{item.title}</h3>
             </div>
 
             <p className="unlock-desc" style={{ ...KT, fontSize: "15px", color: "#6b7280", lineHeight: 1.7 }}>{item.desc}</p>
