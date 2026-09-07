@@ -196,8 +196,8 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             </h2>
           </div>
 
-          {/* Hover-to-expand card row */}
-          <div className="unlock-cards-row" style={{ display: "flex", gap: "20px", overflowX: "auto", paddingBottom: "8px" }}>
+          {/* Hover-to-expand card grid — 2 rows of 3 */}
+          <div className="unlock-cards-row" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
             {(lang === "th" ? [
               { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", title: "แบรนด์เชื่อถือได้", desc: "ไม่มีแบรนด์เงียบ ไม่มีงานปลอม มีแต่ความโปร" },
               { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", title: "จ่ายตรง ไม่มีเบี้ยว", desc: "งานจบ เงินไม่หาย กดเบิกเองได้ทุกเมื่อ รับตามรอบแบบตรงเวลา" },
@@ -217,25 +217,23 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
                 <div className="icon-wrap-lg" style={{ position: "relative", width: "64px", height: "64px", borderRadius: "50%", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 4px 20px rgba(0,0,0,0.10)", marginBottom: "20px" }}>
                   <Image className="unlock-icon-img" src={item.img} alt={item.title} width={140} height={140} style={{ width: "140px", height: "140px", objectFit: "contain" }} />
                 </div>
-                <h3 className="card-h3 unlock-title" style={{ ...KT, fontSize: "19px", fontWeight: 700, color: "#111827", margin: "0 0 12px", lineHeight: 1.3 }}>{item.title}</h3>
-                <p className="unlock-desc" style={{ ...KT, fontSize: "14px", color: "#374151", lineHeight: 1.7 }}>{item.desc}</p>
+                <h3 className="card-h3 unlock-title" style={{ ...KT, fontSize: "19px", fontWeight: 700, color: "#5f26e5", margin: "0 0 12px", lineHeight: 1.3 }}>{item.title}</h3>
+                <p className="unlock-desc" style={{ ...KT, fontSize: "16px", color: "#374151", lineHeight: 1.8 }}>{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
 
         <style>{`
-          .unlock-cards-row::-webkit-scrollbar{ display: none; }
           .unlock-card{
             position: relative;
-            flex: 0 0 190px;
             border-radius: 24px;
             padding: 28px 24px;
             background: rgba(255,255,255,0.5);
             border: 1px solid rgba(255,255,255,0.7);
             cursor: pointer;
             overflow: hidden;
-            transition: flex-basis 0.4s cubic-bezier(0.4,0,0.2,1), background 0.3s ease;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
           }
           .unlock-card .unlock-desc{
             max-height: 0;
@@ -245,8 +243,8 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.4s ease;
           }
           .unlock-card:hover{
-            flex-basis: 340px;
             background: rgba(255,255,255,0.85);
+            box-shadow: 0 12px 32px rgba(95,38,229,0.12);
           }
           .unlock-card:hover .unlock-desc{
             max-height: 160px;
@@ -254,7 +252,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             margin-top: 12px;
           }
           @media (max-width: 760px){
-            .unlock-card, .unlock-card:hover{ flex-basis: 260px; }
+            .unlock-cards-row{ grid-template-columns: 1fr !important; }
           }
         `}</style>
       </section>
