@@ -10,6 +10,7 @@ import Footer from "../../components/Footer";
 import InfluencerHero from "../../components/InfluencerHero";
 import PathToPartnership from "../../components/PathToPartnership";
 import UnlockIconHover from "../../components/UnlockIconHover";
+import OpportunityVisual, { OpportunityPhone } from "../../components/OpportunityVisual";
 import { type Locale } from "../../../i18n-config";
 
 const META = {
@@ -153,50 +154,21 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               maxWidth: "460px",
             }}>
               {lang === "th" ? (
-                <>Buddy Review ทำให้การเป็นอินฟลูเอนเซอร์เป็นเรื่องง่ายขึ้น ด้วยระบบที่เชื่อมคุณกับแบรนด์ชั้นนำ<br />
-                พร้อมทีมงานที่ช่วยเหลือในทุกขั้นตอน เพิ่มโอกาสสร้างรายได้จากการรีวิว</>
+                <>Buddy Review ทำให้การเป็นอินฟลูเอนเซอร์เป็นเรื่องง่ายขึ้น<br />
+                ด้วยระบบที่เชื่อมคุณกับแบรนด์ชั้นนำ พร้อมทีมงานที่ช่วยเหลือ<br />
+                ในทุกขั้นตอน เพิ่มโอกาสสร้างรายได้จากการรีวิว</>
               ) : (
-                <>Buddy Review makes being an influencer easier, with a system that connects you to leading brands<br />
-                and a team that supports you every step of the way — boosting your opportunities to earn from reviews.</>
+                <>Buddy Review makes being an influencer easier,<br />
+                with a system that connects you to leading brands<br />
+                and a team supporting you every step of the way.</>
               )}
             </p>
 
-            {/* Stat cards — same scattered treatment as the Header */}
-            <div className="hero-stat-cards" style={{ position: "relative", height: "260px" }}>
-              <div
-                className="hero-stat-card"
-                style={{ position: "absolute", left: 0, top: "36px", background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", zIndex: 1, transform: "rotate(-4deg)" }}
-              >
-                <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>🤝</span>
-                <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>1,000+</p>
-                <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>{lang === "th" ? "ลูกค้าที่ไว้วางใจ" : "Trusted Clients"}</p>
-              </div>
-              <div
-                className="hero-stat-card"
-                style={{ position: "absolute", left: "169px", top: "62px", background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", zIndex: 2, transform: "rotate(2deg)" }}
-              >
-                <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>🎯</span>
-                <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>4,000+</p>
-                <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>{lang === "th" ? "แคมเปญที่ส่งมอบ" : "Campaigns Delivered"}</p>
-              </div>
-              <div
-                className="hero-stat-card"
-                style={{ position: "absolute", left: "325px", top: "10px", background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", zIndex: 3, transform: "rotate(-2deg)" }}
-              >
-                <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>🌐</span>
-                <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>95K+</p>
-                <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>{lang === "th" ? "เครือข่ายอินฟลูเอนเซอร์" : "Influencer Network"}</p>
-              </div>
-            </div>
+            <OpportunityVisual lang={lang as "th" | "en"} />
           </div>
 
           {/* Mobile mockup — same image as the Header */}
-          <div style={{ position: "relative", display: "flex", justifyContent: "center" }}>
-            <div style={{ position: "absolute", left: "40%", top: "30%", transform: "translate(-50%, -50%)", width: "110%", height: "55%", background: "#5f25e5", borderRadius: "50%", filter: "blur(60px)", opacity: 0.22, zIndex: 0, pointerEvents: "none" }} />
-            <div style={{ position: "absolute", left: "60%", top: "70%", transform: "translate(-50%, -50%)", width: "110%", height: "55%", background: "#ff0089", borderRadius: "50%", filter: "blur(60px)", opacity: 0.20, zIndex: 0, pointerEvents: "none" }} />
-            <img src="/path-to-partnership/Step-2.png" alt="Buddy Review app"
-              style={{ height: "520px", width: "auto", maxWidth: "100%", display: "block", objectFit: "contain", position: "relative", zIndex: 1 }} />
-          </div>
+          <OpportunityPhone />
         </div>
 
         <style>{`
