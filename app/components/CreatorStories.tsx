@@ -1,6 +1,8 @@
 "use client";
 import { useRef, useState } from "react";
 
+const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
+
 const VIDEOS = [
   { src: "/videos/influencer-header/header-1.mp4", name: "Flukymltp" },
   { src: "/videos/influencer-header/header-4.mp4", name: "Nice.Naphatchw" },
@@ -52,11 +54,8 @@ function StoryCard({ src, name }: { src: string; name: string }) {
         </button>
       )}
 
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 45%)", pointerEvents: "none" }} />
-      <div style={{ position: "absolute", left: "20px", right: "20px", bottom: "20px" }}>
-        <span style={{ fontFamily: "var(--font-playfair), serif", fontStyle: "italic", fontWeight: 700, fontSize: "clamp(22px,3vw,32px)", color: "#ffffff", lineHeight: 1.1, display: "block" }}>
-          {name}
-        </span>
+      <div style={{ position: "absolute", left: "16px", bottom: "16px", background: "#5f26e5", borderRadius: "50px", padding: "8px 18px" }}>
+        <span style={{ ...KT, fontSize: "13px", fontWeight: 600, color: "#ffffff" }}>{name}</span>
       </div>
     </div>
   );
