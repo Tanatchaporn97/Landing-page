@@ -144,10 +144,16 @@ export default function OurJourney({ lang }: { lang: Locale }) {
                 )}
               </div>
 
-              {/* Wide-format photos break out of the 44% column so they render larger without cropping */}
+              {/* Wide-format photos break out of the 44% column so they render larger without cropping,
+                  but stay aligned under the same side as their entry's text */}
               {s.wide && (
-                <div className="journey-wide-img" style={{ position: "relative", width: "100%", maxWidth: "820px", margin: "-40px auto 0", aspectRatio: s.ratio }}>
-                  <Image src={s.img} alt={s.year} fill sizes="(max-width: 900px) 100vw, 820px" style={{ objectFit: "contain" }} />
+                <div className="journey-wide-img" style={{
+                  position: "relative", width: "100%", maxWidth: "820px", aspectRatio: s.ratio,
+                  marginTop: "-40px",
+                  marginLeft: onRight ? "auto" : 0,
+                  marginRight: onRight ? 0 : "auto",
+                }}>
+                  <Image src={s.img} alt={s.year} fill sizes="(max-width: 900px) 100vw, 820px" style={{ objectFit: "contain", objectPosition: onRight ? "right" : "left" }} />
                 </div>
               )}
             </Fragment>
