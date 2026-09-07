@@ -142,7 +142,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
                 <p style={{ ...KT, fontSize: "14px", fontWeight: 400, color: "#111827", margin: "0 0 12px" }}>
                   {person.title}
                 </p>
-                <p style={{ ...KT, fontSize: "14px", fontStyle: "italic", color: "#6b7280", lineHeight: 1.7, margin: 0 }}>
+                <p style={{ ...KT, fontSize: "14px", color: "#111827", lineHeight: 1.7, margin: 0 }}>
                   &ldquo;{person.quote}&rdquo;
                 </p>
               </div>
