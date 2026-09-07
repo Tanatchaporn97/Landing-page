@@ -182,6 +182,40 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       {/* ── Path to Partnership ── */}
       <PathToPartnership lang={lang as Locale} />
 
+      {/* ── Our Work ── */}
+      <section className="inf-section" style={{ background: "#ffffff", padding: "100px 48px" }}>
+        <div className="our-work-grid" style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
+          <div>
+            <p style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#6b7280", margin: "0 0 12px" }}>
+              {lang === "th" ? "ผลงานของเรา" : "OUR WORK"}
+            </p>
+            <h2 style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(48px,6vw,88px)", lineHeight: 1.05, margin: 0, color: "#111827" }}>
+              Success{" "}
+              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                Stories
+              </span>
+            </h2>
+          </div>
+          <div>
+            <p className="desc-text" style={{ ...KT, fontSize: "18px", color: "#374151", lineHeight: 1.85, margin: "0 0 32px" }}>
+              {lang === "th"
+                ? "ทุกแคมเปญมีเรื่องราว เราช่วยแบรนด์และอินฟลูเอนเซอร์สร้างผลลัพธ์ที่จับต้องได้ ผ่านกลยุทธ์ที่แม่นยำและคอนเทนต์ที่เข้าถึงใจ มาดูกันว่าเราช่วยแบรนด์ต่างๆ ประสบความสำเร็จได้อย่างไร"
+                : "Every campaign has a story. We help brands and influencers create real, measurable results through precise strategy and content that resonates. See how we've helped brands succeed."}
+            </p>
+            <Link href={`/${lang}/success`} className="btn-insight"
+              style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", borderRadius: "50px", fontSize: "16px", fontWeight: 600, padding: "14px 32px", textDecoration: "none" }}>
+              {lang === "th" ? "ดูผลงานของเรา" : "See Our Work"} →
+            </Link>
+          </div>
+        </div>
+
+        <style>{`
+          @media (max-width: 860px){
+            .our-work-grid{ grid-template-columns: 1fr !important; text-align: center !important; }
+          }
+        `}</style>
+      </section>
+
       {/* ── Unlock Exclusive Opportunities ── */}
       <section className="inf-section" style={{ background: "linear-gradient(180deg, #F5F0FC 0%, #F1EBFA 100%)", padding: "100px 48px" }}>
         <UnlockIconHover />
