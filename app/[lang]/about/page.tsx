@@ -124,9 +124,21 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
           </h2>
 
           <div className="cofounder-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px", margin: "0 auto 48px" }}>
-            {["/co-founder/co-founder-1.jpg", "/co-founder/co-founder-2.jpg", "/co-founder/co-founder-3.jpg"].map((src) => (
-              <div key={src} style={{ position: "relative", aspectRatio: "3 / 4", borderRadius: "24px", overflow: "hidden", background: "#f3f3f3" }}>
-                <Image src={src} alt="Buddy Review Co-Founder" fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
+            {[
+              { src: "/co-founder/co-founder-1.jpg", name: "ณัฏฐดนัย รักตประจิต (นิค)", title: "Co-founder" },
+              { src: "/co-founder/co-founder-2.jpg", name: "ณพัชร รัตนถาวรกิติ (พัชร)", title: "CEO, Co-founder" },
+              { src: "/co-founder/co-founder-3.jpg", name: "เศรษฐพร ศรีวิไล (บอส)", title: "Co-founder" },
+            ].map((person) => (
+              <div key={person.src} style={{ textAlign: "center" }}>
+                <div style={{ position: "relative", aspectRatio: "3 / 4", borderRadius: "24px", overflow: "hidden", background: "#f3f3f3" }}>
+                  <Image src={person.src} alt={person.name} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
+                </div>
+                <p style={{ ...KT, fontSize: "18px", fontWeight: 700, color: "#5f26e5", margin: "20px 0 4px" }}>
+                  {person.name}
+                </p>
+                <p style={{ ...KT, fontSize: "14px", fontWeight: 400, color: "#111827", margin: 0 }}>
+                  {person.title}
+                </p>
               </div>
             ))}
           </div>
