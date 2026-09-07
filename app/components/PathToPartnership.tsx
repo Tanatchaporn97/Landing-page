@@ -168,8 +168,8 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
                   }}>
                     <span style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#F0E8FF", letterSpacing: "0.04em" }}>STEP {s.step}</span>
                   </div>
-                  <h3 style={{ ...KT, fontSize: "clamp(22px,2vw,30px)", fontWeight: 800, color: "#5f26e5", margin: 0, lineHeight: 1.3 }}>{s.title}</h3>
-                  <p className="ptp-desc" style={{ ...KT, fontSize: "17px", color: "#111827", lineHeight: 1.8, margin: 0 }}>{s.desc}</p>
+                  <h3 style={{ ...KT, fontSize: "clamp(22px,2.2vw,30px)", fontWeight: 800, color: "#5f26e5", margin: 0, lineHeight: 1.3 }}>{s.title}</h3>
+                  <p className="ptp-desc" style={{ ...KT, fontSize: "16px", color: "#111827", lineHeight: 1.8, margin: 0 }}>{s.desc}</p>
                 </div>
               </div>
           ))}

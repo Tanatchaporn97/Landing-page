@@ -36,12 +36,12 @@ export default function ApplyPartnerships({ lang }: { lang: "th" | "en" }) {
                   color: isActive ? "#5f26e5" : "#9ca3af", transition: "color 0.3s ease" }}>
                   {s.title}
                 </h3>
-                <p style={{ ...KT, fontSize: "15px", color: isActive ? "#374151" : "#b5bcc7", lineHeight: 1.7, margin: "0 0 16px", transition: "color 0.3s ease" }}>
+                <p style={{ ...KT, fontSize: "16px", color: isActive ? "#374151" : "#b5bcc7", lineHeight: 1.7, margin: "0 0 16px", transition: "color 0.3s ease" }}>
                   {s.desc}
                 </p>
                 <div style={{
-                  height: "2px", borderRadius: "2px",
-                  background: "linear-gradient(90deg, #5f25e5 0%, #ff0089 100%)",
+                  height: "1px", borderRadius: "2px",
+                  background: "#111827",
                   opacity: isActive ? 1 : 0.15,
                   transition: "opacity 0.35s ease",
                 }} />
