@@ -33,9 +33,9 @@ export default function UnlockCards({ items }: { items: Item[] }) {
 
             <div className="unlock-readmore-row" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <span style={{ ...KT, fontSize: "14px", fontWeight: 600, color: "#111827" }}>Read More</span>
-              <span className="unlock-arrow-chip" style={{ width: "32px", height: "32px", borderRadius: "50%", background: isOpen ? item.bg : "transparent", border: isOpen ? "none" : "1px solid rgba(17,24,39,0.15)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, transition: "background 0.3s ease, border-color 0.3s ease" }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ transform: isOpen ? "rotate(0deg)" : "rotate(0deg)" }}>
-                  <path d="M7 17L17 7M17 7H9M17 7V15" stroke="#111827" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <span className="unlock-arrow-chip" style={{ width: "32px", height: "32px", borderRadius: "50%", background: isOpen ? "#5f26e5" : "transparent", border: isOpen ? "none" : "1px solid rgba(17,24,39,0.15)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, transition: "background 0.3s ease, border-color 0.3s ease" }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                  <path d="M7 17L17 7M17 7H9M17 7V15" stroke={isOpen ? "#ffffff" : "#111827"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>
             </div>
