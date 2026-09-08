@@ -201,40 +201,55 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       {/* ── Path to Partnership ── */}
       <PathToPartnership lang={lang as Locale} />
 
-      {/* ── Our Work ── */}
-      <section className="inf-section" style={{ background: "#F5F0FC", padding: "100px 48px" }}>
-        <div className="our-work-grid" style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
-          <div>
-            <p style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#6b7280", margin: "0 0 12px" }}>
-              {lang === "th" ? "AI วิเคราะห์บัญชี TikTok" : "AI TikTok Account Analysis"}
-            </p>
-            <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(32px,3.5vw,52px)", lineHeight: 1.2, margin: 0 }}>
-              <span style={{ fontStyle: lang === "th" ? "normal" : "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                Buddy Ranks
-              </span><br />
-              {lang === "th" ? (
-                <span style={{ color: "#111827" }}>รู้จักช่องตัวเองให้มากขึ้น แล้วโตได้แบบมีทิศทาง</span>
-              ) : (
-                <span style={{ color: "#111827" }}>Know your channel better, grow with direction</span>
-              )}
-            </h2>
+      {/* ── Our Work / Buddy Ranks ── */}
+      <section className="inf-section" style={{ background: "#F5F0FC", padding: "100px 48px", overflow: "hidden" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
+          <p style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#6b7280", margin: "0 0 12px" }}>
+            {lang === "th" ? "AI วิเคราะห์บัญชี TikTok" : "AI TikTok Account Analysis"}
+          </p>
+          <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(32px,3.5vw,52px)", lineHeight: 1.2, margin: "0 0 24px" }}>
+            <span style={{ fontStyle: lang === "th" ? "normal" : "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              Buddy Ranks
+            </span><br />
+            {lang === "th" ? (
+              <span style={{ color: "#111827" }}>รู้จักช่องตัวเองให้มากขึ้น แล้วโตได้แบบมีทิศทาง</span>
+            ) : (
+              <span style={{ color: "#111827" }}>Know your channel better, grow with direction</span>
+            )}
+          </h2>
+          <p className="desc-text" style={{ ...KT, fontSize: "18px", color: "#374151", lineHeight: 1.85, margin: "0 auto 32px", maxWidth: "620px" }}>
+            {lang === "th"
+              ? "Buddy Ranks ใช้ AI ในการช่วยวิเคราะห์ผู้ติดตาม คอนเทนต์ และ Performance รู้ว่า คนดูคือใคร คอนเทนต์แบบไหนเวิร์ก และควรทำอะไรต่อ"
+              : "Buddy Ranks uses AI to help analyze your followers, content, and performance — know who your audience is, what content works, and what to do next."}
+          </p>
+          <a href="https://rank.buddyreview.co/" target="_blank" rel="noopener noreferrer" className="btn-insight"
+            style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", borderRadius: "50px", fontSize: "16px", fontWeight: 600, padding: "14px 32px", textDecoration: "none" }}>
+            {lang === "th" ? "วิเคราะห์ TikTok ฟรี" : "Analyze Your TikTok Free"} →
+          </a>
+        </div>
+
+        {/* Fanned phone screenshots — numeric order left → right, largest/centered = 3 */}
+        <div className="buddy-ranks-fan" style={{ position: "relative", maxWidth: "1200px", margin: "48px auto 0", height: "260px" }}>
+          <div style={{ position: "absolute", left: "2%", top: "60px", width: "160px", transform: "rotate(-8deg)", zIndex: 1 }}>
+            <Image src="/buddy-ranks/1-followers.png" alt="Buddy Ranks — follower analysis" width={400} height={400} style={{ width: "100%", height: "auto" }} />
           </div>
-          <div>
-            <p className="desc-text" style={{ ...KT, fontSize: "18px", color: "#374151", lineHeight: 1.85, margin: "0 0 32px" }}>
-              {lang === "th"
-                ? "Buddy Ranks ใช้ AI ในการช่วยวิเคราะห์ผู้ติดตาม คอนเทนต์ และ Performance รู้ว่า คนดูคือใคร คอนเทนต์แบบไหนเวิร์ก และควรทำอะไรต่อ"
-                : "Buddy Ranks uses AI to help analyze your followers, content, and performance — know who your audience is, what content works, and what to do next."}
-            </p>
-            <a href="https://rank.buddyreview.co/" target="_blank" rel="noopener noreferrer" className="btn-insight"
-              style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", borderRadius: "50px", fontSize: "16px", fontWeight: 600, padding: "14px 32px", textDecoration: "none" }}>
-              {lang === "th" ? "วิเคราะห์ TikTok ฟรี" : "Analyze Your TikTok Free"} →
-            </a>
+          <div style={{ position: "absolute", left: "20%", top: "0px", width: "190px", transform: "rotate(-4deg)", zIndex: 2 }}>
+            <Image src="/buddy-ranks/2-followers-2.png" alt="Buddy Ranks — audience interests" width={400} height={400} style={{ width: "100%", height: "auto" }} />
+          </div>
+          <div style={{ position: "absolute", left: "50%", top: "-20px", width: "260px", transform: "translateX(-50%)", zIndex: 3 }}>
+            <Image src="/buddy-ranks/3-content-ideas.png" alt="Buddy Ranks — content assistant" width={400} height={400} style={{ width: "100%", height: "auto" }} />
+          </div>
+          <div style={{ position: "absolute", right: "20%", top: "0px", width: "190px", transform: "rotate(4deg)", zIndex: 2 }}>
+            <Image src="/buddy-ranks/4-content-ideas-2.png" alt="Buddy Ranks — content ideas" width={400} height={400} style={{ width: "100%", height: "auto" }} />
+          </div>
+          <div style={{ position: "absolute", right: "2%", top: "60px", width: "160px", transform: "rotate(8deg)", zIndex: 1 }}>
+            <Image src="/buddy-ranks/5-compare.png" alt="Buddy Ranks — creator comparison" width={400} height={400} style={{ width: "100%", height: "auto" }} />
           </div>
         </div>
 
         <style>{`
           @media (max-width: 860px){
-            .our-work-grid{ grid-template-columns: 1fr !important; text-align: center !important; }
+            .buddy-ranks-fan{ display: none !important; }
           }
         `}</style>
       </section>
