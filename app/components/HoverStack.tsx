@@ -12,8 +12,8 @@ export interface HoverStackCard {
   icon?: string;
 }
 
-const CARD_BG = "rgba(255,255,255,0.22)";
-const CARD_BORDER = "1px solid rgba(255,255,255,0.45)";
+const CARD_BG = "linear-gradient(160deg, #6d28f0 0%, #5f26e5 100%)";
+const CARD_BORDER = "1px solid rgba(255,255,255,0.25)";
 
 interface PreparedHoverStackCard extends HoverStackCard {
   _rotation: number;
@@ -45,10 +45,10 @@ function CardBody({ card }: { card: HoverStackCard }) {
           <Image src={card.icon} alt={card.title} fill sizes="48px" style={{ objectFit: "contain" }} />
         </div>
       )}
-      <h3 className="m-0" style={{ fontSize: "24px", fontWeight: 700, lineHeight: 1.3, color: "#5f26e5" }}>
+      <h3 className="m-0" style={{ fontSize: "24px", fontWeight: 700, lineHeight: 1.3, color: "#ffffff" }}>
         {card.title}
       </h3>
-      <p className="m-0" style={{ fontSize: "16px", lineHeight: 1.7, color: "#111827" }}>
+      <p className="m-0" style={{ fontSize: "16px", lineHeight: 1.7, color: "rgba(255,255,255,0.85)" }}>
         {card.desc}
       </p>
     </div>
