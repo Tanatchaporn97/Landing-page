@@ -10,6 +10,10 @@ import { getDictionary } from "../../../../get-dictionary";
 import { type Locale } from "../../../../i18n-config";
 
 const BLOG_DESCRIPTIONS: Record<string, Record<string, string>> = {
+  "ais-infinite-smes-2026": {
+    th: "Buddy Review เข้าร่วมโครงการ Transformative Infinite SMEs 2026 โดย AIS Infinite SMEs แลกเปลี่ยนมุมมอง Technology, AI และการ Scale Up ธุรกิจ",
+    en: "Buddy Review joined the Transformative Infinite SMEs 2026 program by AIS Infinite SMEs, exchanging perspectives on Technology, AI, and scaling up a business.",
+  },
   "cp-all-influencer-trend-ep8": {
     th: "Buddy Review ร่วมเป็น Speaker แชร์ประสบการณ์และอินไซต์ให้ครีเอเตอร์ในงาน CPALL Influencer Trend EP.8",
     en: "Buddy Review joined CP ALL as a speaker, sharing experience and insights with creators at Influencer Trend EP.8.",
@@ -125,6 +129,46 @@ const OL = ({ items }: { items: React.ReactNode[] }) => (
     ))}
   </ol>
 );
+
+const AIS_GALLERY = [
+  "/blogs/ais-infinite-smes-02.jpg",
+  "/blogs/ais-infinite-smes-03.jpg",
+  "/blogs/ais-infinite-smes-04.jpg",
+  "/blogs/ais-infinite-smes-05.jpg",
+];
+
+function AISGallery() {
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "12px", margin: "8px 0 32px" }}>
+      {AIS_GALLERY.map((src) => (
+        <div key={src} style={{ position: "relative", borderRadius: "16px", overflow: "hidden", aspectRatio: "1 / 1" }}>
+          <Image src={src} alt="AIS Infinite SMEs 2026" fill sizes="(max-width: 768px) 50vw, 380px" style={{ objectFit: "cover" }} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function AISInfiniteSMEsContent({ lang }: { lang: Locale }) {
+  if (lang === "en") {
+    return (
+      <>
+        <P>Buddy Review had the opportunity to join the Transformative Infinite SMEs 2026 program — a space bringing together Tech SMEs and professionals from many fields to exchange perspectives on business growth in the digital age.</P>
+        <P>Throughout the program, we got fresh perspectives on Technology, AI, and scaling up a business, and got to know and exchange experiences with many partners and entrepreneurs. A big thank you to AIS Infinite SMEs for this great opportunity 💜</P>
+        <Divider />
+        <AISGallery />
+      </>
+    );
+  }
+  return (
+    <>
+      <P>Buddy Review ได้โอกาสเข้าร่วมโครงการ Transformative Infinite SMEs 2026 อีกหนึ่งพื้นที่ที่รวม Tech SMEs และคนทำงานจากหลากหลายสายมาแลกเปลี่ยนมุมมองเรื่องการเติบโตของธุรกิจในยุคดิจิทัล</P>
+      <P>ตลอดโครงการ Buddy Review ได้ทั้งอัปเดตมุมมองด้าน Technology, AI และการ Scale Up ธุรกิจ รวมถึงได้รู้จักและแลกเปลี่ยนประสบการณ์กับพาร์ตเนอร์และผู้ประกอบการอีกหลายท่าน ต้องขอขอบคุณ AIS Infinite SMEs สำหรับโอกาสดีๆ ในครั้งนี้ครับ💜</P>
+      <Divider />
+      <AISGallery />
+    </>
+  );
+}
 
 const CP_GALLERY = [
   "/blogs/cp-influencer-trend-02.jpg",
@@ -835,7 +879,7 @@ function CopywritingContent({ lang }: { lang: Locale }) {
   );
 }
 
-const SLUGS = ["cp-all-influencer-trend-ep8", "best-time-to-post-2025", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas", "6-copywriting-techniques"];
+const SLUGS = ["ais-infinite-smes-2026", "cp-all-influencer-trend-ep8", "best-time-to-post-2025", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas", "6-copywriting-techniques"];
 
 export function generateStaticParams() {
   return SLUGS.map((slug) => ({ slug }));
@@ -905,7 +949,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ lang:
           </h1>
           <div style={{ height: "1px", background: "rgba(255,255,255,0.2)", marginBottom: "32px" }} />
 
-          {post.slug === "cp-all-influencer-trend-ep8" ? (
+          {post.slug === "ais-infinite-smes-2026" ? (
+            <AISInfiniteSMEsContent lang={lang as Locale} />
+          ) : post.slug === "cp-all-influencer-trend-ep8" ? (
             <CPAllEventContent lang={lang as Locale} />
           ) : post.slug === "tiktok-algorithm-9-techniques" ? (
             <TikTokContent lang={lang as Locale} />
