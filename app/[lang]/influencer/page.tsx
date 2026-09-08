@@ -5,6 +5,17 @@ import type { Metadata } from "next";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
+// Hoisted to a stable reference — passing a fresh array literal as a prop on
+// every render would make CardFanCarousel's memoized callbacks (and the
+// effect depending on them) recompute and re-run unnecessarily.
+const BUDDY_RANKS_CARDS = [
+  { imgUrl: "/buddy-ranks/1-followers-trimmed.png", alt: "Buddy Ranks — follower analysis" },
+  { imgUrl: "/buddy-ranks/2-followers-2-trimmed.png", alt: "Buddy Ranks — audience interests" },
+  { imgUrl: "/buddy-ranks/3-content-ideas-trimmed.png", alt: "Buddy Ranks — content assistant" },
+  { imgUrl: "/buddy-ranks/4-content-ideas-2-trimmed.png", alt: "Buddy Ranks — content ideas" },
+  { imgUrl: "/buddy-ranks/5-compare-trimmed.png", alt: "Buddy Ranks — creator comparison" },
+];
+
 import dynamic from "next/dynamic";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -233,13 +244,18 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <ApplyPartnerships lang={lang as "th" | "en"} />
 
         {/* Hoverable fan carousel — numeric order left → right, center = 3 */}
-        <CardFanCarousel cards={[
-          { imgUrl: "/buddy-ranks/1-followers-trimmed.png", alt: "Buddy Ranks — follower analysis" },
-          { imgUrl: "/buddy-ranks/2-followers-2-trimmed.png", alt: "Buddy Ranks — audience interests" },
-          { imgUrl: "/buddy-ranks/3-content-ideas-trimmed.png", alt: "Buddy Ranks — content assistant" },
-          { imgUrl: "/buddy-ranks/4-content-ideas-2-trimmed.png", alt: "Buddy Ranks — content ideas" },
-          { imgUrl: "/buddy-ranks/5-compare-trimmed.png", alt: "Buddy Ranks — creator comparison" },
-        ]} />
+        <div className="buddy-ranks-mockup-bleed">
+          <CardFanCarousel cards={BUDDY_RANKS_CARDS} />
+        </div>
+
+        <style>{`
+          @media (min-width: 768px) and (max-width: 1080px){
+            .buddy-ranks-mockup-bleed{ margin-left: -32px; margin-right: -32px; }
+          }
+          @media (max-width: 767px){
+            .buddy-ranks-mockup-bleed{ margin-left: -20px; margin-right: -20px; }
+          }
+        `}</style>
       </section>
 
       {/* ── Unlock Exclusive Opportunities ── */}

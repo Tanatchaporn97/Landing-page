@@ -237,6 +237,11 @@ export default function CardFanCarousel({ cards }: CardFanCarouselProps) {
     window.addEventListener("resize", onResize);
 
     return () => {
+      // Cancel any in-flight tweens so a re-run of this effect (React
+      // StrictMode's double-invoke, or a prop change) can't race the
+      // entrance animation and leave cards stuck at their mid-tween values
+      // (e.g. permanently opacity: 0).
+      gsap.killTweensOf(cardElements);
       enterHandlers.forEach(({ el, handler }) => el.removeEventListener("mouseenter", handler));
       container.removeEventListener("mouseleave", onMouseLeave);
       window.removeEventListener("resize", onResize);
