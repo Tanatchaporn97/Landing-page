@@ -10,7 +10,7 @@ import Footer from "../../components/Footer";
 import InfluencerHero from "../../components/InfluencerHero";
 import PathToPartnership from "../../components/PathToPartnership";
 import UnlockIconHover from "../../components/UnlockIconHover";
-import OpportunityVisual, { OpportunityPhone } from "../../components/OpportunityVisual";
+import OpportunityVisual from "../../components/OpportunityVisual";
 import UnlockCards from "../../components/UnlockCards";
 import ApplyPartnerships from "../../components/ApplyPartnerships";
 import CreatorStories from "../../components/CreatorStories";
@@ -138,8 +138,8 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         background: "linear-gradient(180deg, #FFFFFF 0%, #F9F6FE 100%)",
         padding: "100px 48px",
       }}>
-        <div className="opportunity-grid" style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
-          <div style={{ textAlign: "left" }}>
+        <div className="opportunity-grid" style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <div style={{ textAlign: "center" }}>
             <h2 style={{
               ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }),
               fontSize: "clamp(32px,3.5vw,52px)",
@@ -158,7 +158,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               color: "#111827",
               fontSize: "18px",
               lineHeight: 1.85,
-              margin: "0 0 48px",
+              margin: "0 auto 48px",
               fontWeight: 400,
               maxWidth: "460px",
             }}>
@@ -175,20 +175,10 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
             <OpportunityVisual lang={lang as "th" | "en"} />
           </div>
-
-          <div className="opportunity-phone-wrap">
-            <OpportunityPhone />
-          </div>
         </div>
 
         <style>{`
-          @media (max-width: 900px){
-            .opportunity-grid{ grid-template-columns: 1fr !important; }
-            .opportunity-grid > div:first-child{ text-align: center !important; }
-            .opportunity-grid .desc-text{ margin-left: auto !important; margin-right: auto !important; }
-            .opportunity-grid .hero-stat-cards{ margin: 0 auto !important; max-width: 553px; }
-            .opportunity-phone-wrap{ display: none !important; }
-          }
+          .opportunity-grid .hero-stat-cards{ margin: 0 auto; max-width: 553px; }
         `}</style>
       </section>
 
