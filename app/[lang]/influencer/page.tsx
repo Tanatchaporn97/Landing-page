@@ -177,19 +177,23 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               )}
             </p>
 
-            <OpportunityVisual lang={lang as "th" | "en"} />
+            {/* Desktop: stat cards live in the scattered margin (OpportunityScatter). Mobile fallback below. */}
+            <div className="opportunity-visual-mobile" style={{ display: "none" }}>
+              <OpportunityVisual lang={lang as "th" | "en"} />
+            </div>
           </div>
           </div>
         </div>
 
         <style>{`
-          .opportunity-grid .hero-stat-cards{ margin: 0 auto; max-width: 553px; }
+          .opportunity-visual-mobile .hero-stat-cards{ margin: 0 auto; max-width: 553px; }
           @media (max-width: 560px){
             .opportunity-heading{ white-space: normal !important; font-size: clamp(24px,7vw,32px) !important; }
           }
           @media (max-width: 1100px){
             .opportunity-scatter-wrap{ min-height: 0 !important; }
             .opportunity-scatter{ display: none !important; }
+            .opportunity-visual-mobile{ display: block !important; }
           }
         `}</style>
       </section>
