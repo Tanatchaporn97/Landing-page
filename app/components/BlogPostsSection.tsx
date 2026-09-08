@@ -10,7 +10,7 @@ const CATEGORY_LABEL: Record<"influencer" | "brand", Record<"th" | "en", string>
   brand: { th: "สำหรับแบรนด์", en: "For Brands" },
 };
 
-export default function BlogPostsSection({ lang = "th", dict, filterCategory, variant = "home" }: { lang?: "th" | "en"; dict?: any; filterCategory?: "influencer" | "brand"; variant?: "home" | "influencer" }) {
+export default function BlogPostsSection({ lang = "th", dict, filterCategory, variant = "home", heading = "Blog" }: { lang?: "th" | "en"; dict?: any; filterCategory?: "influencer" | "brand"; variant?: "home" | "influencer"; heading?: string }) {
   const router = useRouter();
   const t = lang === "th" ? { readMore: "อ่านเพิ่มเติม", viewMore: "ดูเพิ่มเติม" } : { readMore: "Read More", viewMore: "View More" };
 
@@ -32,7 +32,7 @@ export default function BlogPostsSection({ lang = "th", dict, filterCategory, va
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
-          }}>Blog</span>
+          }}>{heading}</span>
         </h2>
 
         <div className="grid-3-col" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "28px" }}>
