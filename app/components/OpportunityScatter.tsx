@@ -27,23 +27,25 @@ type StatItem = {
 // Positions mirror the reference collage exactly (top-left / top-center /
 // top-right / mid-right / bottom-left / bottom-center / bottom-right), with
 // the two center-column items (top-center, bottom-center) kept clear of the
-// heading/paragraph vertically, just like the reference.
+// heading/paragraph vertically, just like the reference. Widths are % of the
+// container so they reflow with it (desktop/tablet only — see mobile strip
+// below for narrow screens, where absolute + tiny % would crush to nothing).
 const ITEMS_TH: ScatterItem[] = [
-  { label: "สตอรี่จากครีเอเตอร์จริง", top: "3%",  left: "30%", width: "150px", rotate: 3,  kind: "image", img: "/header-influencer-poster.jpg" },
-  { label: "รับเงินผ่านมือถือ",      top: "22%", left: "85%", width: "130px", rotate: -4, kind: "image", img: "/buddy-rank-phone.png" },
-  { label: "บล็อกให้ความรู้",         top: "64%", left: "17%", width: "150px", rotate: -2, kind: "notepad" },
-  { label: "แบรนด์พาร์ทเนอร์ชั้นนำ",   top: "72%", left: "47%", width: "220px", rotate: 1,  kind: "icons" },
+  { label: "สตอรี่จากครีเอเตอร์จริง", top: "3%",  left: "30%", width: "9.4%",   rotate: 3,  kind: "image", img: "/header-influencer-poster.jpg" },
+  { label: "รับเงินผ่านมือถือ",      top: "22%", left: "85%", width: "8.1%",   rotate: -4, kind: "image", img: "/buddy-rank-phone.png" },
+  { label: "บล็อกให้ความรู้",         top: "64%", left: "17%", width: "9.4%",   rotate: -2, kind: "notepad" },
+  { label: "แบรนด์พาร์ทเนอร์ชั้นนำ",   top: "72%", left: "47%", width: "13.75%", rotate: 1,  kind: "icons" },
 ];
 
 const ITEMS_EN: ScatterItem[] = [
-  { label: "Real Creator Stories",   top: "3%",  left: "30%", width: "150px", rotate: 3,  kind: "image", img: "/header-influencer-poster.jpg" },
-  { label: "Get Paid On Your Phone", top: "22%", left: "85%", width: "130px", rotate: -4, kind: "image", img: "/buddy-rank-phone.png" },
-  { label: "The Creator Blog",       top: "64%", left: "17%", width: "150px", rotate: -2, kind: "notepad" },
-  { label: "Top Brand Partners",     top: "72%", left: "47%", width: "220px", rotate: 1,  kind: "icons" },
+  { label: "Real Creator Stories",   top: "3%",  left: "30%", width: "9.4%",   rotate: 3,  kind: "image", img: "/header-influencer-poster.jpg" },
+  { label: "Get Paid On Your Phone", top: "22%", left: "85%", width: "8.1%",   rotate: -4, kind: "image", img: "/buddy-rank-phone.png" },
+  { label: "The Creator Blog",       top: "64%", left: "17%", width: "9.4%",   rotate: -2, kind: "notepad" },
+  { label: "Top Brand Partners",     top: "72%", left: "47%", width: "13.75%", rotate: 1,  kind: "icons" },
 ];
 
-// The original 3 stat cards (same size, same hover-animate treatment) —
-// placed in the top-left / top-right / bottom-right corners.
+// The original 3 stat cards (same hover-animate treatment) — placed in the
+// top-left / top-right / bottom-right corners.
 const STATS: StatItem[] = [
   { top: "18%", left: "3%",  rotate: -4, emoji: "🤝", value: "1,000+" },
   { top: "6%",  left: "67%", rotate: 2,  emoji: "🎯", value: "4,000+" },
@@ -54,11 +56,11 @@ const STATS: StatItem[] = [
   labelEn: ["Trusted Clients", "Campaigns Delivered", "Influencer Network"][i],
 }));
 
-function ScatterLabel({ children }: { children: React.ReactNode }) {
+function Label({ children, small }: { children: React.ReactNode; small?: boolean }) {
   return (
     <p style={{
-      ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase",
-      textAlign: "center", margin: "0 0 10px",
+      ...KT, fontSize: small ? "11px" : "clamp(9px, 0.75vw, 12px)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase",
+      textAlign: "center", margin: small ? "0 0 8px" : "0 0 clamp(4px, 0.6vw, 10px)",
       background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
       WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
     }}>
@@ -67,66 +69,102 @@ function ScatterLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+function ImageCard({ img }: { img: string }) {
+  return (
+    <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 3", borderRadius: "14px", overflow: "hidden", boxShadow: "0 12px 28px rgba(95,38,229,0.14)", background: "#ffffff" }}>
+      <Image src={img} alt="" fill sizes="190px" style={{ objectFit: "cover" }} />
+    </div>
+  );
+}
+
+function NotepadCard() {
+  return (
+    <div style={{ background: "#ffffff", borderRadius: "10px", boxShadow: "0 12px 28px rgba(95,38,229,0.14)", padding: "16px 14px" }}>
+      {Array.from({ length: 6 }).map((_, i) => (
+        <div key={i} style={{ height: "1px", background: "rgba(17,24,39,0.15)", margin: "9px 0" }} />
+      ))}
+    </div>
+  );
+}
+
+function IconsCard() {
+  return (
+    <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
+      {["📸", "🎤", "🎬"].map((emoji, i) => (
+        <div key={i} style={{ width: "44px", height: "44px", borderRadius: "50%", background: "#ffffff", boxShadow: "0 8px 20px rgba(95,38,229,0.14)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "18px", flexShrink: 0 }}>
+          {emoji}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function StatCard({ s, lang, compact }: { s: StatItem; lang: "th" | "en"; compact?: boolean }) {
+  return (
+    <motion.div
+      animate={{ rotate: compact ? 0 : s.rotate }}
+      whileHover={compact ? undefined : { rotate: s.rotate, y: -14, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
+      transition={{ type: "spring", stiffness: 320, damping: 22 }}
+      style={{
+        position: "relative",
+        background: "#ffffff", borderRadius: "18px", padding: "18px 18px 16px",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.10)",
+        pointerEvents: "auto", cursor: "pointer",
+      }}
+    >
+      <span style={{ fontSize: "18px", position: "absolute", top: "12px", right: "14px" }}>{s.emoji}</span>
+      <p style={{ ...KT, fontSize: "24px", fontWeight: 800, margin: "0 0 4px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+        {s.value}
+      </p>
+      <p style={{ ...KT, fontSize: "13px", fontWeight: 700, color: "#111827", margin: 0 }}>
+        {lang === "th" ? s.labelTh : s.labelEn}
+      </p>
+    </motion.div>
+  );
+}
+
 export default function OpportunityScatter({ lang }: { lang: "th" | "en" }) {
   const items = lang === "th" ? ITEMS_TH : ITEMS_EN;
 
   return (
-    <div className="opportunity-scatter" aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-      {items.map((item) => (
-        <div key={item.label} style={{
-          position: "absolute", top: item.top, left: item.left, width: item.width,
-          transform: `rotate(${item.rotate}deg)`,
-        }}>
-          <ScatterLabel>{item.label}</ScatterLabel>
+    <>
+      {/* Desktop/tablet — exact scattered collage layout */}
+      <div className="opportunity-scatter opportunity-scatter-desktop" aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
+        {items.map((item) => (
+          <div key={item.label} style={{
+            position: "absolute", top: item.top, left: item.left, width: item.width,
+            transform: `rotate(${item.rotate}deg)`,
+          }}>
+            <Label>{item.label}</Label>
+            {item.kind === "image" && <ImageCard img={item.img!} />}
+            {item.kind === "notepad" && <NotepadCard />}
+            {item.kind === "icons" && <IconsCard />}
+          </div>
+        ))}
 
-          {item.kind === "image" && (
-            <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 3", borderRadius: "14px", overflow: "hidden", boxShadow: "0 12px 28px rgba(95,38,229,0.14)", background: "#ffffff" }}>
-              <Image src={item.img!} alt="" fill sizes="190px" style={{ objectFit: "cover" }} />
-            </div>
-          )}
+        {STATS.map((s) => (
+          <div key={s.value} style={{ position: "absolute", top: s.top, left: s.left, width: "14.25%", minWidth: "150px" }}>
+            <StatCard s={s} lang={lang} />
+          </div>
+        ))}
+      </div>
 
-          {item.kind === "notepad" && (
-            <div style={{ background: "#ffffff", borderRadius: "10px", boxShadow: "0 12px 28px rgba(95,38,229,0.14)", padding: "18px 16px" }}>
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} style={{ height: "1px", background: "rgba(17,24,39,0.15)", margin: "10px 0" }} />
-              ))}
-            </div>
-          )}
-
-          {item.kind === "icons" && (
-            <div style={{ display: "flex", gap: "12px", justifyContent: "center" }}>
-              {["📸", "🎤", "🎬"].map((emoji, i) => (
-                <div key={i} style={{ width: "48px", height: "48px", borderRadius: "50%", background: "#ffffff", boxShadow: "0 8px 20px rgba(95,38,229,0.14)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "20px" }}>
-                  {emoji}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
-
-      {STATS.map((s) => (
-        <motion.div
-          key={s.value}
-          animate={{ rotate: s.rotate }}
-          whileHover={{ rotate: s.rotate, y: -14, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
-          transition={{ type: "spring", stiffness: 320, damping: 22 }}
-          style={{
-            position: "absolute", top: s.top, left: s.left,
-            background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px",
-            pointerEvents: "auto", cursor: "pointer",
-          }}
-        >
-          <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>{s.emoji}</span>
-          <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            {s.value}
-          </p>
-          <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>
-            {lang === "th" ? s.labelTh : s.labelEn}
-          </p>
-        </motion.div>
-      ))}
-    </div>
+      {/* Mobile — same content, horizontal-scroll strip so nothing gets crushed illegible */}
+      <div className="opportunity-scatter-mobile" style={{ display: "none", width: "100%", boxSizing: "border-box", gap: "16px", overflowX: "auto", padding: "4px 4px 12px" }}>
+        {items.map((item) => (
+          <div key={item.label} style={{ flex: "0 0 140px", width: "140px" }}>
+            <Label small>{item.label}</Label>
+            {item.kind === "image" && <ImageCard img={item.img!} />}
+            {item.kind === "notepad" && <NotepadCard />}
+            {item.kind === "icons" && <IconsCard />}
+          </div>
+        ))}
+        {STATS.map((s) => (
+          <div key={s.value} style={{ flex: "0 0 150px", width: "150px" }}>
+            <StatCard s={s} lang={lang} compact />
+          </div>
+        ))}
+      </div>
+    </>
   );
 }

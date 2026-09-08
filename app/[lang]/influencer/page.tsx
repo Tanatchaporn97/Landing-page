@@ -11,7 +11,6 @@ import InfluencerHero from "../../components/InfluencerHero";
 import PathToPartnership from "../../components/PathToPartnership";
 import UnlockIconHover from "../../components/UnlockIconHover";
 import OpportunityScatter from "../../components/OpportunityScatter";
-import ScatterScale from "../../components/ScatterScale";
 import UnlockCards from "../../components/UnlockCards";
 import ApplyPartnerships from "../../components/ApplyPartnerships";
 import CreatorStories from "../../components/CreatorStories";
@@ -141,46 +140,58 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         position: "relative",
         overflow: "hidden",
       }}>
-        <ScatterScale width={1600} height={800}>
-          <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <OpportunityScatter lang={lang as "th" | "en"} />
+        {/* Desktop/tablet — decorative scatter is absolutely positioned around the (always normal-flow, always legible) heading */}
+        <div className="opportunity-scatter-area" style={{ position: "relative", maxWidth: "1600px", minHeight: "700px", margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+          <OpportunityScatter lang={lang as "th" | "en"} />
 
-            <div className="opportunity-grid" style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", position: "relative", zIndex: 1 }}>
-            <div style={{ textAlign: "center" }}>
-              <h2 className="opportunity-heading" style={{
-                ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }),
-                fontSize: "clamp(24px,3vw,48px)",
-                fontWeight: 700,
-                lineHeight: 1.2,
-                margin: "0 0 32px",
-                whiteSpace: "nowrap",
-              }}>
-                <span style={{ fontStyle: lang === "th" ? "normal" : "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                  {lang === "th" ? "โอกาสใหม่ " : "New Opportunities, "}
-                </span>
-                <span style={{ color: "#111827" }}>{lang === "th" ? "เริ่มต้นได้ที่นี่" : "Start Here"}</span>
-              </h2>
-              <p className="desc-text" style={{
-                ...KT,
-                color: "#111827",
-                fontSize: "18px",
-                lineHeight: 1.85,
-                margin: "0 auto 48px",
-                fontWeight: 400,
-                maxWidth: "460px",
-              }}>
-                {lang === "th" ? (
-                  <>Buddy Review ทำให้การเป็นอินฟลูเอนเซอร์เป็นเรื่องง่ายขึ้น<br />
-                  ด้วยระบบที่เชื่อมคุณกับแบรนด์ชั้นนำและทีมงานที่ช่วยเหลือทุกขั้นตอน</>
-                ) : (
-                  <>Buddy Review makes being an influencer easier,<br />
-                  connecting you to top brands with support every step of the way.</>
-                )}
-              </p>
-            </div>
-            </div>
+          <div className="opportunity-grid" style={{ width: "100%", maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", position: "relative", zIndex: 1, boxSizing: "border-box" }}>
+          <div style={{ textAlign: "center", width: "100%" }}>
+            <h2 className="opportunity-heading" style={{
+              ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }),
+              fontSize: "clamp(24px,3vw,48px)",
+              fontWeight: 700,
+              lineHeight: 1.2,
+              margin: "0 0 32px",
+              whiteSpace: "nowrap",
+              overflowWrap: "break-word",
+            }}>
+              <span style={{ fontStyle: lang === "th" ? "normal" : "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                {lang === "th" ? "โอกาสใหม่ " : "New Opportunities, "}
+              </span>
+              <span style={{ color: "#111827" }}>{lang === "th" ? "เริ่มต้นได้ที่นี่" : "Start Here"}</span>
+            </h2>
+            <p className="desc-text" style={{
+              ...KT,
+              color: "#111827",
+              fontSize: "18px",
+              lineHeight: 1.85,
+              margin: "0 auto 48px",
+              fontWeight: 400,
+              maxWidth: "460px",
+              overflowWrap: "break-word",
+            }}>
+              {lang === "th" ? (
+                <>Buddy Review ทำให้การเป็นอินฟลูเอนเซอร์เป็นเรื่องง่ายขึ้น<br />
+                ด้วยระบบที่เชื่อมคุณกับแบรนด์ชั้นนำและทีมงานที่ช่วยเหลือทุกขั้นตอน</>
+              ) : (
+                <>Buddy Review makes being an influencer easier,<br />
+                connecting you to top brands with support every step of the way.</>
+              )}
+            </p>
           </div>
-        </ScatterScale>
+          </div>
+        </div>
+
+        <style>{`
+          @media (max-width: 760px){
+            .opportunity-scatter-area{ min-height: 0 !important; }
+            .opportunity-scatter-desktop{ display: none !important; }
+            .opportunity-scatter-mobile{ display: flex !important; }
+          }
+          @media (max-width: 560px){
+            .opportunity-heading{ white-space: normal !important; overflow-wrap: break-word !important; word-break: break-word !important; font-size: clamp(22px,6.5vw,30px) !important; }
+          }
+        `}</style>
       </section>
 
       {/* ── Path to Partnership ── */}
