@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Kanit, Cantata_One, Playfair_Display } from "next/font/google";
 import { i18n, type Locale } from "../../i18n-config";
 import CtaPressEffect from "../components/CtaPressEffect";
+import FloatingContactCTA from "../components/FloatingContactCTA";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -35,6 +36,7 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col">
         <CtaPressEffect />
         {children}
+        <FloatingContactCTA lang={lang === "en" ? "en" : "th"} />
       </body>
     </html>
   );
