@@ -27,11 +27,10 @@ export default function FloatingContactCTA({ lang }: { lang: "th" | "en" }) {
         }}
       >
         <span style={{
-          width: "48px", height: "48px", borderRadius: "50%", background: "#ffffff",
+          width: "34px", height: "34px",
           display: "flex", alignItems: "center", justifyContent: "center", position: "relative",
-          overflow: "hidden",
         }}>
-          <Image src="/icon.png" alt="Buddy Review" fill sizes="48px" style={{ objectFit: "contain", padding: "8px" }} />
+          <Image src="/bd-mark.svg" alt="Buddy Review" fill sizes="34px" style={{ objectFit: "contain" }} />
         </span>
       </button>
 
