@@ -176,13 +176,18 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             <OpportunityVisual lang={lang as "th" | "en"} />
           </div>
 
-          {/* Mobile mockup — same image as the Header */}
-          <OpportunityPhone />
+          <div className="opportunity-phone-wrap">
+            <OpportunityPhone />
+          </div>
         </div>
 
         <style>{`
           @media (max-width: 900px){
             .opportunity-grid{ grid-template-columns: 1fr !important; }
+            .opportunity-grid > div:first-child{ text-align: center !important; }
+            .opportunity-grid .desc-text{ margin-left: auto !important; margin-right: auto !important; }
+            .opportunity-grid .hero-stat-cards{ margin: 0 auto !important; max-width: 553px; }
+            .opportunity-phone-wrap{ display: none !important; }
           }
         `}</style>
       </section>
