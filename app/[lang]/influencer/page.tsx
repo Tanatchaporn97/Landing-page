@@ -141,10 +141,10 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         position: "relative",
         overflow: "hidden",
       }}>
-        <div className="opportunity-scatter-wrap" style={{ position: "relative", maxWidth: "1600px", minHeight: "800px", margin: "0 auto" }}>
+        <div className="opportunity-scatter-wrap" style={{ position: "relative", maxWidth: "1600px", height: "800px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <OpportunityScatter lang={lang as "th" | "en"} />
 
-          <div className="opportunity-grid" style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", position: "relative", zIndex: 1, paddingTop: "40px" }}>
+          <div className="opportunity-grid" style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", position: "relative", zIndex: 1 }}>
           <div style={{ textAlign: "center" }}>
             <h2 className="opportunity-heading" style={{
               ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }),
@@ -191,7 +191,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             .opportunity-heading{ white-space: normal !important; font-size: clamp(24px,7vw,32px) !important; }
           }
           @media (max-width: 1400px){
-            .opportunity-scatter-wrap{ min-height: 0 !important; }
+            .opportunity-scatter-wrap{ height: auto !important; }
             .opportunity-scatter{ display: none !important; }
             .opportunity-visual-mobile{ display: block !important; }
           }
