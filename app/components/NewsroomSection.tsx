@@ -25,8 +25,17 @@ function CategoryPill({ children }: { children: React.ReactNode }) {
 
 export default function NewsroomSection({ lang = "th", dict }: { lang?: "th" | "en"; dict?: any }) {
   const t = lang === "th"
-    ? { badge: "Newsroom", viewMore: "ดูเพิ่มเติม", minRead: "นาทีในการอ่าน", by: "โดย Buddy Review" }
-    : { badge: "Newsroom", viewMore: "View More", minRead: "min read", by: "by Buddy Review" };
+    ? { viewMore: "ดูเพิ่มเติม", minRead: "นาทีในการอ่าน", by: "โดย Buddy Review" }
+    : { viewMore: "View More", minRead: "min read", by: "by Buddy Review" };
+
+  const catAll = lang === "th" ? "ข่าวสาร" : "News";
+  const catBrand = lang === "th" ? "สำหรับแบรนด์" : "For Brands";
+  const catInf = lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Influencers";
+  const CATS = [
+    { label: catAll, href: `/${lang}/blog` },
+    { label: catBrand, href: `/${lang}/blog?cat=${encodeURIComponent(catBrand)}` },
+    { label: catInf, href: `/${lang}/blog?cat=${encodeURIComponent(catInf)}` },
+  ];
 
   const posts: Post[] = (dict?.blogPosts || []).slice(0, 4);
   if (posts.length === 0) return null;
@@ -35,41 +44,32 @@ export default function NewsroomSection({ lang = "th", dict }: { lang?: "th" | "
   return (
     <section className="py-20 px-6">
       <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
-        {/* Badge + headline */}
-        <div style={{ textAlign: "center", marginBottom: "56px" }}>
-          <span style={{
-            ...KT, display: "inline-block", background: "#ffffff", color: "#5f26e5",
-            border: "1px solid rgba(95,38,229,0.18)", borderRadius: "50px",
-            fontSize: "13px", fontWeight: 700, padding: "6px 20px", marginBottom: "24px",
-            boxShadow: "0 4px 16px rgba(95,38,229,0.08)",
+        {/* Heading row — heading left, category CTAs right */}
+        <div className="newsroom-header-row" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "24px", marginBottom: "56px" }}>
+          <h2 style={{
+            ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, letterSpacing: "0.02em",
+            textTransform: "uppercase", margin: 0, lineHeight: 1.15,
+            background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
           }}>
-            {t.badge}
-          </span>
-          <h2 style={{ fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, lineHeight: 1.25, margin: 0, color: "#111827" }}>
-            {lang === "th" ? (
-              <>
-                <span style={KT}>บทความที่ช่วยให้คุณ</span><br />
-                <span style={{
-                  ...KT,
-                  background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-                }}>
-                  ก้าวไปได้เร็วขึ้น
-                </span>
-              </>
-            ) : (
-              <>
-                <span style={{ fontFamily: "var(--font-playfair), serif" }}>Stories &amp; insights to help you</span><br />
-                <span style={{
-                  fontFamily: "var(--font-playfair), serif", fontStyle: "italic",
-                  background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-                }}>
-                  move faster.
-                </span>
-              </>
-            )}
+            Newsroom
           </h2>
+
+          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+            {CATS.map((cat, i) => (
+              <Link key={cat.label} href={cat.href} style={{
+                ...KT, textDecoration: "none",
+                background: i === 0 ? "#5f26e5" : "#ffffff",
+                color: i === 0 ? "#ffffff" : "#5f26e5",
+                border: i === 0 ? "1px solid #5f26e5" : "1px solid rgba(95,38,229,0.18)",
+                boxShadow: "0 4px 16px rgba(95,38,229,0.08)",
+                borderRadius: "50px", fontSize: "14px", fontWeight: 600,
+                padding: "10px 22px", display: "inline-block",
+              }}>
+                {cat.label}
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* Featured post */}
@@ -156,6 +156,7 @@ export default function NewsroomSection({ lang = "th", dict }: { lang?: "th" | "
         @media (max-width: 900px){
           .newsroom-featured{ grid-template-columns: 1fr !important; }
           .newsroom-grid{ grid-template-columns: 1fr !important; }
+          .newsroom-header-row{ justify-content: flex-start !important; }
         }
       `}</style>
     </section>
