@@ -10,7 +10,7 @@ import Footer from "../../components/Footer";
 import InfluencerHero from "../../components/InfluencerHero";
 import PathToPartnership from "../../components/PathToPartnership";
 import UnlockIconHover from "../../components/UnlockIconHover";
-import OpportunityScatter from "../../components/OpportunityScatter";
+import OpportunityScatter, { OpportunityScatterMobileTop, OpportunityScatterMobileBottom } from "../../components/OpportunityScatter";
 import UnlockCards from "../../components/UnlockCards";
 import ApplyPartnerships from "../../components/ApplyPartnerships";
 import CreatorStories from "../../components/CreatorStories";
@@ -144,6 +144,8 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <div className="opportunity-scatter-area" style={{ position: "relative", maxWidth: "1600px", minHeight: "700px", margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
           <OpportunityScatter lang={lang as "th" | "en"} />
 
+          <OpportunityScatterMobileTop lang={lang as "th" | "en"} />
+
           <div className="opportunity-grid" style={{ width: "100%", maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", position: "relative", zIndex: 1, boxSizing: "border-box" }}>
           <div style={{ textAlign: "center", width: "100%" }}>
             <h2 className="opportunity-heading" style={{
@@ -180,6 +182,8 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             </p>
           </div>
           </div>
+
+          <OpportunityScatterMobileBottom lang={lang as "th" | "en"} />
         </div>
 
         <style>{`

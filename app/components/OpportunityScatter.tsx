@@ -28,8 +28,8 @@ type StatItem = {
 // top-right / mid-right / bottom-left / bottom-center / bottom-right), with
 // the two center-column items (top-center, bottom-center) kept clear of the
 // heading/paragraph vertically, just like the reference. Widths are % of the
-// container so they reflow with it (desktop/tablet only — see mobile strip
-// below for narrow screens, where absolute + tiny % would crush to nothing).
+// container so they reflow with it (desktop/tablet only — mobile renders a
+// separate stacked-pairs layout further down this file).
 const ITEMS_TH: ScatterItem[] = [
   { label: "สตอรี่จากครีเอเตอร์จริง", top: "3%",  left: "30%", width: "9.4%",   rotate: 3,  kind: "image", img: "/header-influencer-poster.jpg" },
   { label: "รับเงินผ่านมือถือ",      top: "22%", left: "85%", width: "8.1%",   rotate: -4, kind: "image", img: "/buddy-rank-phone.png" },
@@ -45,7 +45,7 @@ const ITEMS_EN: ScatterItem[] = [
 ];
 
 // The original 3 stat cards (same hover-animate treatment) — placed in the
-// top-left / top-right / bottom-right corners.
+// top-left / top-right / bottom-right corners on desktop.
 const STATS: StatItem[] = [
   { top: "18%", left: "3%",  rotate: -4, emoji: "🤝", value: "1,000+" },
   { top: "6%",  left: "67%", rotate: 2,  emoji: "🎯", value: "4,000+" },
@@ -127,44 +127,78 @@ export default function OpportunityScatter({ lang }: { lang: "th" | "en" }) {
   const items = lang === "th" ? ITEMS_TH : ITEMS_EN;
 
   return (
-    <>
-      {/* Desktop/tablet — exact scattered collage layout */}
-      <div className="opportunity-scatter opportunity-scatter-desktop" aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-        {items.map((item) => (
-          <div key={item.label} style={{
-            position: "absolute", top: item.top, left: item.left, width: item.width,
-            transform: `rotate(${item.rotate}deg)`,
-          }}>
-            <Label>{item.label}</Label>
-            {item.kind === "image" && <ImageCard img={item.img!} />}
-            {item.kind === "notepad" && <NotepadCard />}
-            {item.kind === "icons" && <IconsCard />}
-          </div>
-        ))}
+    <div className="opportunity-scatter opportunity-scatter-desktop" aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
+      {items.map((item) => (
+        <div key={item.label} style={{
+          position: "absolute", top: item.top, left: item.left, width: item.width,
+          transform: `rotate(${item.rotate}deg)`,
+        }}>
+          <Label>{item.label}</Label>
+          {item.kind === "image" && <ImageCard img={item.img!} />}
+          {item.kind === "notepad" && <NotepadCard />}
+          {item.kind === "icons" && <IconsCard />}
+        </div>
+      ))}
 
-        {STATS.map((s) => (
-          <div key={s.value} style={{ position: "absolute", top: s.top, left: s.left, width: "14.25%", minWidth: "150px" }}>
-            <StatCard s={s} lang={lang} />
-          </div>
-        ))}
-      </div>
+      {STATS.map((s) => (
+        <div key={s.value} style={{ position: "absolute", top: s.top, left: s.left, width: "14.25%", minWidth: "150px" }}>
+          <StatCard s={s} lang={lang} />
+        </div>
+      ))}
+    </div>
+  );
+}
 
-      {/* Mobile — same content, horizontal-scroll strip so nothing gets crushed illegible */}
-      <div className="opportunity-scatter-mobile" style={{ display: "none", width: "100%", boxSizing: "border-box", gap: "16px", overflowX: "auto", padding: "4px 4px 12px" }}>
-        {items.map((item) => (
-          <div key={item.label} style={{ flex: "0 0 140px", width: "140px" }}>
-            <Label small>{item.label}</Label>
-            {item.kind === "image" && <ImageCard img={item.img!} />}
-            {item.kind === "notepad" && <NotepadCard />}
-            {item.kind === "icons" && <IconsCard />}
-          </div>
-        ))}
-        {STATS.map((s) => (
-          <div key={s.value} style={{ flex: "0 0 150px", width: "150px" }}>
-            <StatCard s={s} lang={lang} compact />
-          </div>
-        ))}
+// ── Mobile — same 7 elements as loose scattered pairs stacked in normal
+// document flow, straddling the heading/paragraph (rendered between the two
+// halves in page.tsx), matching the reference collage's portrait layout.
+function MobileCell({ item, lang, rotate }: { item: ScatterItem | { kind: "stat"; stat: StatItem }; lang: "th" | "en"; rotate: number }) {
+  if ("stat" in item) {
+    return (
+      <div style={{ flex: "1 1 0", transform: `rotate(${rotate}deg)` }}>
+        <StatCard s={item.stat} lang={lang} compact />
       </div>
-    </>
+    );
+  }
+  return (
+    <div style={{ flex: "1 1 0", transform: `rotate(${rotate}deg)` }}>
+      <Label small>{item.label}</Label>
+      {item.kind === "image" && <ImageCard img={item.img!} />}
+      {item.kind === "notepad" && <NotepadCard />}
+      {item.kind === "icons" && <IconsCard />}
+    </div>
+  );
+}
+
+export function OpportunityScatterMobileTop({ lang }: { lang: "th" | "en" }) {
+  const items = lang === "th" ? ITEMS_TH : ITEMS_EN;
+  return (
+    <div className="opportunity-scatter-mobile" style={{ display: "none", flexDirection: "column", gap: "20px", width: "100%", boxSizing: "border-box", marginBottom: "24px" }}>
+      <div style={{ display: "flex", gap: "16px" }}>
+        <MobileCell item={items[0]} lang={lang} rotate={-3} />
+        <MobileCell item={items[1]} lang={lang} rotate={3} />
+      </div>
+      <div style={{ display: "flex", gap: "16px" }}>
+        <MobileCell item={{ kind: "stat", stat: STATS[0] }} lang={lang} rotate={-2} />
+        <MobileCell item={{ kind: "stat", stat: STATS[1] }} lang={lang} rotate={2} />
+      </div>
+    </div>
+  );
+}
+
+export function OpportunityScatterMobileBottom({ lang }: { lang: "th" | "en" }) {
+  const items = lang === "th" ? ITEMS_TH : ITEMS_EN;
+  return (
+    <div className="opportunity-scatter-mobile" style={{ display: "none", flexDirection: "column", gap: "20px", width: "100%", boxSizing: "border-box", marginTop: "24px" }}>
+      <div style={{ display: "flex", gap: "16px" }}>
+        <MobileCell item={items[2]} lang={lang} rotate={2} />
+        <MobileCell item={{ kind: "stat", stat: STATS[2] }} lang={lang} rotate={-2} />
+      </div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ width: "60%" }}>
+          <MobileCell item={items[3]} lang={lang} rotate={1} />
+        </div>
+      </div>
+    </div>
   );
 }
