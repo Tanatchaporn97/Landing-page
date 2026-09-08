@@ -13,7 +13,7 @@ import { type Locale } from "../../../i18n-config";
 
 export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) {
   const searchParams = useSearchParams();
-  const catAll = dict?.home?.category || (lang === "th" ? "ทั้งหมด" : "All Categories");
+  const catAll = lang === "th" ? "ข่าวสาร" : "News";
   const catBrand = lang === "th" ? "สำหรับแบรนด์" : "For Brands";
   const catInf = lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Influencers";
   const CATS = [catAll, catBrand, catInf];
@@ -50,24 +50,25 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
 
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px 100px" }}>
 
-        {/* Header */}
-        <h1 style={{ ...KT, background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", fontSize: "clamp(32px,4vw,56px)", fontWeight: 800, margin: "0 0 24px", lineHeight: 1.2 }}>
-          Industry Insights
-        </h1>
+        {/* Header row — heading left, category CTAs right */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "24px", marginBottom: "48px" }}>
+          <h1 style={{ ...KT, background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", fontSize: "clamp(32px,4.2vw,56px)", fontWeight: 800, letterSpacing: "0.02em", textTransform: "uppercase", margin: 0, lineHeight: 1.15 }}>
+            Newsroom
+          </h1>
 
-        {/* Category chips */}
-        <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "48px" }}>
-          {CATS.map((cat) => (
-            <button key={cat} onClick={() => setActiveCat(cat)} style={{ ...KT,
-              background: activeCat === cat ? "#5f26e5" : "rgba(255,255,255,0.12)",
-              backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
-              color: activeCat === cat ? "#ffffff" : "#5f26e5",
-              border: activeCat === cat ? "1px solid #5f26e5" : "1px solid rgba(255,255,255,0.35)",
-              borderRadius: "50px", fontSize: "14px", fontWeight: 600,
-              padding: "7px 20px", cursor: "pointer" }}>
-              {cat}
-            </button>
-          ))}
+          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+            {CATS.map((cat) => (
+              <button key={cat} onClick={() => setActiveCat(cat)} style={{ ...KT,
+                background: activeCat === cat ? "#5f26e5" : "#ffffff",
+                color: activeCat === cat ? "#ffffff" : "#5f26e5",
+                border: activeCat === cat ? "1px solid #5f26e5" : "1px solid rgba(95,38,229,0.18)",
+                boxShadow: "0 4px 16px rgba(95,38,229,0.08)",
+                borderRadius: "50px", fontSize: "14px", fontWeight: 600,
+                padding: "10px 22px", cursor: "pointer" }}>
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
 
         {filtered.length === 0 && (
