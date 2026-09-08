@@ -48,28 +48,22 @@ const OUR_SERVICES = [
     objectPosition: "30% center" },
 ];
 
-// CI pastel palette reused from elsewhere on the site (Unlock Exclusive cards)
 const WHAT_WE_OFFER = [
   { icon: "/what-we-offer/What We Offer-01.png", title: "กลยุทธ์แม่นยำ", titleEn: "Precision Strategy",
     desc: "ออกแบบแคมเปญจากข้อมูลเชิงลึก เพื่อผลลัพธ์ที่ตรงเป้าและวัดผลได้จริง",
-    descEn: "Campaigns designed from deep data insights, built to hit your goals and deliver measurable results.",
-    bg: "#d7f2df" },
+    descEn: "Campaigns designed from deep data insights, built to hit your goals and deliver measurable results." },
   { icon: "/what-we-offer/What We Offer-02.png", title: "คัดอินฟลูเอนเซอร์ด้วย AI", titleEn: "AI-Powered Influencer Matching",
     desc: "เลือกอินฟลูเอนเซอร์ที่ “ใช่ที่สุด” ด้วยระบบ AI เพื่อเข้าถึงกลุ่มเป้าหมายอย่างแม่นยำ",
-    descEn: "Find the perfect-fit influencers with our AI system to reach your target audience precisely.",
-    bg: "#fbdce9" },
+    descEn: "Find the perfect-fit influencers with our AI system to reach your target audience precisely." },
   { icon: "/what-we-offer/What We Offer-03.png", title: "ดูแลครบวงจร", titleEn: "End-to-End Management",
     desc: "ทีมงานมืออาชีพจัดการทุกขั้นตอนตั้งแต่เริ่มวางแผนจนจบแคมเปญ",
-    descEn: "A professional team handles every step, from planning through campaign wrap-up.",
-    bg: "#dbeafe" },
+    descEn: "A professional team handles every step, from planning through campaign wrap-up." },
   { icon: "/what-we-offer/What We Offer-04.png", title: "งบคุ้มค่า", titleEn: "Budget That Works Harder",
     desc: "ตัดสินใจบนพื้นฐานข้อมูล ช่วยเพิ่มประสิทธิภาพและผลตอบแทนสูงสุด",
-    descEn: "Data-driven decisions that boost efficiency and maximize your return.",
-    bg: "#fde8cf" },
+    descEn: "Data-driven decisions that boost efficiency and maximize your return." },
   { icon: "/what-we-offer/What We Offer-05.png", title: "วัดผลเรียลไทม์", titleEn: "Real-Time Reporting",
     desc: "ติดตามและสรุปผลผ่านแดชบอร์ดแบบเรียลไทม์ ชัดเจนทุกมิติ",
-    descEn: "Track and review results through a real-time dashboard, clear in every dimension.",
-    bg: "#e5ddfb" },
+    descEn: "Track and review results through a real-time dashboard, clear in every dimension." },
 ];
 
 /* ── Icons ── */
@@ -264,7 +258,6 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             icon: item.icon,
             title: lang === "th" ? item.title : item.titleEn,
             desc: lang === "th" ? item.desc : item.descEn,
-            bg: item.bg,
           }))} />
         </div>
       </section>

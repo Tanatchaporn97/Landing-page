@@ -10,8 +10,10 @@ export interface HoverStackCard {
   title: string;
   desc: string;
   icon?: string;
-  bg: string;
 }
+
+const CARD_BG = "rgba(255,255,255,0.22)";
+const CARD_BORDER = "1px solid rgba(255,255,255,0.45)";
 
 interface PreparedHoverStackCard extends HoverStackCard {
   _rotation: number;
@@ -35,45 +37,6 @@ export interface HoverStackProps {
 
 const PRESET_ROTATIONS = [-8, 4, -3, 5, -4, 6, 3, -6, 2, -5];
 
-function ArrowUpRight({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2.25}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M7 17 17 7M9 7h8v8" />
-    </svg>
-  );
-}
-
-/** Shared card footer: divider + "explore" pill + index number. */
-function CardFooter({ index }: { index: number }) {
-  return (
-    <div className="relative z-[2] flex flex-col gap-4">
-      <div className="h-px w-full" style={{ background: "rgba(17,24,39,0.12)" }} />
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2.5">
-          <span className="flex size-9 shrink-0 items-center justify-center rounded-full text-white" style={{ background: "#5f26e5", boxShadow: "0 4px 12px rgba(95,38,229,0.25)" }}>
-            <ArrowUpRight className="size-[15px]" />
-          </span>
-          <span className="text-[11px] font-semibold uppercase tracking-[0.16em]" style={{ color: "#5f26e5" }}>
-            Explore
-          </span>
-        </div>
-        <span className="text-[11px] font-medium uppercase tabular-nums tracking-[0.16em]" style={{ color: "rgba(17,24,39,0.4)" }}>
-          {String(index + 1).padStart(2, "0")}
-        </span>
-      </div>
-    </div>
-  );
-}
-
 function CardBody({ card }: { card: HoverStackCard }) {
   return (
     <div className="relative z-[2] flex flex-1 flex-col justify-center gap-3">
@@ -82,10 +45,10 @@ function CardBody({ card }: { card: HoverStackCard }) {
           <Image src={card.icon} alt={card.title} fill sizes="48px" style={{ objectFit: "contain" }} />
         </div>
       )}
-      <h3 className="m-0 text-[22px] font-bold leading-[1.25] tracking-[-0.01em]" style={{ color: "#5f26e5" }}>
+      <h3 className="m-0" style={{ fontSize: "24px", fontWeight: 700, lineHeight: 1.3, color: "#5f26e5" }}>
         {card.title}
       </h3>
-      <p className="m-0 text-[15px] leading-[1.6]" style={{ color: "#374151" }}>
+      <p className="m-0" style={{ fontSize: "16px", lineHeight: 1.7, color: "#111827" }}>
         {card.desc}
       </p>
     </div>
@@ -175,7 +138,7 @@ export default function HoverStack({
         transform: `translate3d(${x}px, ${y}px, 0) rotate(${rotate}deg) scale(1)`,
         zIndex,
         transition: "none",
-        background: card.bg,
+        background: CARD_BG,
       };
     }
 
@@ -213,7 +176,7 @@ export default function HoverStack({
       transform: `translate3d(${x}px, ${y}px, 0) rotate(${rotate}deg) scale(${scale})`,
       zIndex,
       transition,
-      background: card.bg,
+      background: CARD_BG,
       boxShadow,
     };
   };
@@ -234,12 +197,10 @@ export default function HoverStack({
           {cards.map((card, index) => (
             <div
               key={card.id ?? index}
-              className="relative flex min-h-[280px] w-full cursor-default select-none flex-col justify-between overflow-hidden rounded-3xl border p-6"
-              style={{ background: card.bg, borderColor: "rgba(17,24,39,0.10)" }}
+              className="relative flex min-h-[220px] w-full cursor-default select-none flex-col overflow-hidden rounded-3xl border p-6"
+              style={{ background: CARD_BG, border: CARD_BORDER, backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)" }}
             >
-              <div />
               <CardBody card={card} />
-              <CardFooter index={index} />
             </div>
           ))}
         </div>
@@ -256,14 +217,12 @@ export default function HoverStack({
           {preparedCards.map((card, index) => (
             <div
               key={card.id ?? index}
-              className="absolute left-0 top-0 flex h-[var(--card-height)] w-[var(--card-width)] origin-[center_center] cursor-pointer select-none flex-col justify-between overflow-hidden rounded-2xl border p-6 will-change-transform"
-              style={{ ...getCardStyle(card, index), borderColor: "rgba(17,24,39,0.10)" }}
+              className="absolute left-0 top-0 flex h-[var(--card-height)] w-[var(--card-width)] origin-[center_center] cursor-pointer select-none flex-col overflow-hidden rounded-2xl border p-6 will-change-transform"
+              style={{ ...getCardStyle(card, index), border: CARD_BORDER, backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)" }}
               onMouseEnter={() => setActiveIndex(index)}
               onMouseLeave={() => setActiveIndex(null)}
             >
-              <div />
               <CardBody card={card} />
-              <CardFooter index={index} />
             </div>
           ))}
         </div>
