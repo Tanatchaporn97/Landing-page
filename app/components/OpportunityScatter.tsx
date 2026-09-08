@@ -8,28 +8,31 @@ type ScatterItem = {
   left: string;
   width: string;
   rotate: number;
-  kind: "image" | "notepad" | "icons";
+  kind: "image" | "notepad" | "number";
   img?: string;
+  value?: string;
 };
 
+// Kept strictly in the left/right margins (outside the ~900px centered
+// text column) so nothing ever overlaps the heading/paragraph/stat cards.
 const ITEMS_TH: ScatterItem[] = [
-  { label: "แพลนคอนเทนต์ล่วงหน้า", top: "1%",  left: "2%",  width: "180px", rotate: -5, kind: "image", img: "/path-to-partnership/Step-4-screen.png" },
-  { label: "สตอรี่จากครีเอเตอร์จริง", top: "0%",  left: "30%", width: "150px", rotate: 3,  kind: "image", img: "/header-influencer-poster.jpg" },
-  { label: "วิเคราะห์ Performance", top: "3%",  left: "68%", width: "150px", rotate: -3, kind: "image", img: "/icon-network.png" },
-  { label: "รับเงินผ่านมือถือ",      top: "36%", left: "85%", width: "140px", rotate: 4,  kind: "image", img: "/buddy-rank-phone.png" },
-  { label: "บล็อกให้ความรู้",         top: "66%", left: "4%",  width: "160px", rotate: -2, kind: "notepad" },
-  { label: "แบรนด์พาร์ทเนอร์ชั้นนำ",   top: "70%", left: "33%", width: "220px", rotate: 1,  kind: "icons" },
-  { label: "แคมเปญไลฟ์สด",           top: "64%", left: "66%", width: "180px", rotate: -1, kind: "image", img: "/path-to-partnership/Step-6-screen.png" },
+  { label: "แพลนคอนเทนต์ล่วงหน้า", top: "2%",  left: "1%",  width: "190px", rotate: -5, kind: "image", img: "/path-to-partnership/Step-4-screen.png" },
+  { label: "แบรนด์พันธมิตร",       top: "40%", left: "2%",  width: "170px", rotate: 3,  kind: "number", value: "1,000+" },
+  { label: "บล็อกให้ความรู้",       top: "72%", left: "1%",  width: "170px", rotate: -2, kind: "notepad" },
+
+  { label: "วิเคราะห์ Performance", top: "1%",  left: "85%", width: "180px", rotate: 4,  kind: "image", img: "/icon-network.png" },
+  { label: "ประสบการณ์ในวงการ",     top: "39%", left: "86%", width: "160px", rotate: -3, kind: "number", value: "5+ ปี" },
+  { label: "แคมเปญไลฟ์สด",         top: "72%", left: "84%", width: "180px", rotate: 2,  kind: "image", img: "/path-to-partnership/Step-6-screen.png" },
 ];
 
 const ITEMS_EN: ScatterItem[] = [
-  { label: "Plan Content Ahead", top: "1%",  left: "2%",  width: "180px", rotate: -5, kind: "image", img: "/path-to-partnership/Step-4-screen.png" },
-  { label: "Real Creator Stories", top: "0%",  left: "30%", width: "150px", rotate: 3,  kind: "image", img: "/header-influencer-poster.jpg" },
-  { label: "Performance Analytics", top: "3%",  left: "68%", width: "150px", rotate: -3, kind: "image", img: "/icon-network.png" },
-  { label: "Get Paid On Your Phone", top: "36%", left: "85%", width: "140px", rotate: 4,  kind: "image", img: "/buddy-rank-phone.png" },
-  { label: "The Creator Blog",      top: "66%", left: "4%",  width: "160px", rotate: -2, kind: "notepad" },
-  { label: "Top Brand Partners",    top: "70%", left: "33%", width: "220px", rotate: 1,  kind: "icons" },
-  { label: "Live Campaigns",        top: "64%", left: "66%", width: "180px", rotate: -1, kind: "image", img: "/path-to-partnership/Step-6-screen.png" },
+  { label: "Plan Content Ahead",   top: "2%",  left: "1%",  width: "190px", rotate: -5, kind: "image", img: "/path-to-partnership/Step-4-screen.png" },
+  { label: "Brand Partners",       top: "40%", left: "2%",  width: "170px", rotate: 3,  kind: "number", value: "1,000+" },
+  { label: "The Creator Blog",     top: "72%", left: "1%",  width: "170px", rotate: -2, kind: "notepad" },
+
+  { label: "Performance Analytics", top: "1%",  left: "85%", width: "180px", rotate: 4,  kind: "image", img: "/icon-network.png" },
+  { label: "Years In The Industry", top: "39%", left: "86%", width: "160px", rotate: -3, kind: "number", value: "5+" },
+  { label: "Live Campaigns",        top: "72%", left: "84%", width: "180px", rotate: 2,  kind: "image", img: "/path-to-partnership/Step-6-screen.png" },
 ];
 
 function ScatterLabel({ children }: { children: React.ReactNode }) {
@@ -59,7 +62,7 @@ export default function OpportunityScatter({ lang }: { lang: "th" | "en" }) {
 
           {item.kind === "image" && (
             <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 3", borderRadius: "14px", overflow: "hidden", boxShadow: "0 12px 28px rgba(95,38,229,0.14)", background: "#ffffff" }}>
-              <Image src={item.img!} alt="" fill sizes="180px" style={{ objectFit: "cover" }} />
+              <Image src={item.img!} alt="" fill sizes="190px" style={{ objectFit: "cover" }} />
             </div>
           )}
 
@@ -71,13 +74,15 @@ export default function OpportunityScatter({ lang }: { lang: "th" | "en" }) {
             </div>
           )}
 
-          {item.kind === "icons" && (
-            <div style={{ display: "flex", gap: "12px", justifyContent: "center" }}>
-              {["📸", "🎤", "🎬"].map((emoji, i) => (
-                <div key={i} style={{ width: "48px", height: "48px", borderRadius: "50%", background: "#ffffff", boxShadow: "0 8px 20px rgba(95,38,229,0.14)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "20px" }}>
-                  {emoji}
-                </div>
-              ))}
+          {item.kind === "number" && (
+            <div style={{ background: "#ffffff", borderRadius: "16px", boxShadow: "0 12px 28px rgba(95,38,229,0.14)", padding: "20px 16px", textAlign: "center" }}>
+              <span style={{
+                ...KT, fontSize: "30px", fontWeight: 800, lineHeight: 1,
+                background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+              }}>
+                {item.value}
+              </span>
             </div>
           )}
         </div>

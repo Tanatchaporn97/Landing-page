@@ -146,17 +146,17 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
           <div className="opportunity-grid" style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", position: "relative", zIndex: 1, paddingTop: "40px" }}>
           <div style={{ textAlign: "center" }}>
-            <h2 style={{
+            <h2 className="opportunity-heading" style={{
               ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }),
-              fontSize: "clamp(32px,3.5vw,52px)",
+              fontSize: "clamp(24px,3vw,48px)",
               fontWeight: 700,
               lineHeight: 1.2,
               margin: "0 0 32px",
+              whiteSpace: "nowrap",
             }}>
               <span style={{ fontStyle: lang === "th" ? "normal" : "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                {lang === "th" ? "โอกาสใหม่" : "New Opportunities,"}
+                {lang === "th" ? "โอกาสใหม่ " : "New Opportunities, "}
               </span>
-              <br />
               <span style={{ color: "#111827" }}>{lang === "th" ? "เริ่มต้นได้ที่นี่" : "Start Here"}</span>
             </h2>
             <p className="desc-text" style={{
@@ -170,12 +170,10 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             }}>
               {lang === "th" ? (
                 <>Buddy Review ทำให้การเป็นอินฟลูเอนเซอร์เป็นเรื่องง่ายขึ้น<br />
-                ด้วยระบบที่เชื่อมคุณกับแบรนด์ชั้นนำ พร้อมทีมงานที่ช่วยเหลือ<br />
-                ในทุกขั้นตอน เพิ่มโอกาสสร้างรายได้จากการรีวิว</>
+                ด้วยระบบที่เชื่อมคุณกับแบรนด์ชั้นนำและทีมงานที่ช่วยเหลือทุกขั้นตอน</>
               ) : (
                 <>Buddy Review makes being an influencer easier,<br />
-                with a system that connects you to leading brands<br />
-                and a team supporting you every step of the way.</>
+                connecting you to top brands with support every step of the way.</>
               )}
             </p>
 
@@ -186,6 +184,9 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
         <style>{`
           .opportunity-grid .hero-stat-cards{ margin: 0 auto; max-width: 553px; }
+          @media (max-width: 560px){
+            .opportunity-heading{ white-space: normal !important; font-size: clamp(24px,7vw,32px) !important; }
+          }
           @media (max-width: 1100px){
             .opportunity-scatter-wrap{ min-height: 0 !important; }
             .opportunity-scatter{ display: none !important; }
