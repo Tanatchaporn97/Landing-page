@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -31,14 +32,13 @@ export default function NewsroomSection({ lang = "th", dict }: { lang?: "th" | "
   const catAll = lang === "th" ? "ข่าวสาร" : "News";
   const catBrand = lang === "th" ? "สำหรับแบรนด์" : "For Brands";
   const catInf = lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Influencers";
-  const CATS = [
-    { label: catAll, href: `/${lang}/blog` },
-    { label: catBrand, href: `/${lang}/blog?cat=${encodeURIComponent(catBrand)}` },
-    { label: catInf, href: `/${lang}/blog?cat=${encodeURIComponent(catInf)}` },
-  ];
+  const CATS = [catAll, catBrand, catInf];
 
-  const posts: Post[] = (dict?.blogPosts || []).slice(0, 4);
-  if (posts.length === 0) return null;
+  const [activeCat, setActiveCat] = useState(catAll);
+
+  const allPosts: Post[] = dict?.blogPosts || [];
+  if (allPosts.length === 0) return null;
+  const posts = (activeCat === catAll ? allPosts : allPosts.filter((p) => p.categories.includes(activeCat))).slice(0, 4);
   const [featured, ...rest] = posts;
 
   return (
@@ -56,22 +56,33 @@ export default function NewsroomSection({ lang = "th", dict }: { lang?: "th" | "
           </h2>
 
           <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-            {CATS.map((cat, i) => (
-              <Link key={cat.label} href={cat.href} style={{
-                ...KT, textDecoration: "none",
-                background: i === 0 ? "#5f26e5" : "#ffffff",
-                color: i === 0 ? "#ffffff" : "#5f26e5",
-                border: i === 0 ? "1px solid #5f26e5" : "1px solid rgba(95,38,229,0.18)",
-                boxShadow: "0 4px 16px rgba(95,38,229,0.08)",
-                borderRadius: "50px", fontSize: "14px", fontWeight: 600,
-                padding: "10px 22px", display: "inline-block",
-              }}>
-                {cat.label}
-              </Link>
-            ))}
+            {CATS.map((cat) => {
+              const isActive = activeCat === cat;
+              return (
+                <button key={cat} onClick={() => setActiveCat(cat)} style={{
+                  ...KT, cursor: "pointer",
+                  background: isActive ? "#5f26e5" : "#ffffff",
+                  color: isActive ? "#ffffff" : "#5f26e5",
+                  border: isActive ? "1px solid #5f26e5" : "1px solid rgba(95,38,229,0.18)",
+                  boxShadow: "0 4px 16px rgba(95,38,229,0.08)",
+                  borderRadius: "50px", fontSize: "14px", fontWeight: 600,
+                  padding: "10px 22px", display: "inline-block",
+                }}>
+                  {cat}
+                </button>
+              );
+            })}
           </div>
         </div>
 
+        {!featured && (
+          <p style={{ ...KT, color: "#111827", fontSize: "16px" }}>
+            {lang === "th" ? "ไม่มีบทความในหมวดนี้" : "No articles in this category"}
+          </p>
+        )}
+
+        {featured && (
+        <>
         {/* Featured post */}
         <Link href={`/${lang}/blog/${featured.slug}`} style={{
           display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0",
@@ -140,6 +151,8 @@ export default function NewsroomSection({ lang = "th", dict }: { lang?: "th" | "
             </Link>
           ))}
         </div>
+        </>
+        )}
 
         {/* View more CTA */}
         <div style={{ display: "flex", justifyContent: "center", marginTop: "48px" }}>
