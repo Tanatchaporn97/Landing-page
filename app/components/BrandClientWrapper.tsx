@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import StackingCards, { StackingCardItem } from "./StackingCards";
 import HoverStack from "./HoverStack";
 
 // Lazy load below-the-fold components
@@ -274,30 +273,33 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </span>
           </h2>
 
-          <StackingCards totalCards={OUR_SERVICES.length} scaleMultiplier={0.05} peekOffset={30} stickyHeight="75vh" style={{ height: `${OUR_SERVICES.length * 70}vh` }}>
-            {OUR_SERVICES.map(({ img, title, desc, descEn, objectPosition }, i) => (
-              <StackingCardItem key={title} index={i}>
-                <div style={{
-                  position: "relative",
-                  borderRadius: "28px",
-                  overflow: "hidden",
-                  width: "min(560px, 92vw)",
-                  height: "520px",
-                  margin: "0 auto",
-                  boxShadow: "0 12px 40px rgba(95,38,229,0.22)",
-                }}>
-                  <Image src={img} alt={title} fill sizes="(max-width: 768px) 100vw, 560px" style={{ objectFit: "cover", objectPosition: objectPosition || "center" }} />
-                  <div style={{ position: "absolute", inset: 0,
-                    background: "linear-gradient(to top, rgba(95,38,229,1) 0%, rgba(95,38,229,0.85) 30%, rgba(95,38,229,0) 65%)" }} />
-                  <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "24px 24px 28px",
-                    display: "flex", flexDirection: "column", gap: "8px" }}>
-                    <h3 style={{ ...KT, fontSize: "29px", fontWeight: 600, color: "#ffffff", margin: "0 0 6px", lineHeight: 1.2 }}>{title}</h3>
-                    <p style={{ ...KT, fontSize: "16px", fontWeight: 400, lineHeight: 1.65, color: "rgba(255,255,255,0.85)", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
-                  </div>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "32px",
+          }}
+          className="our-services-grid"
+          >
+            {OUR_SERVICES.map(({ img, title, desc, descEn, objectPosition }) => (
+              <div key={title} style={{
+                position: "relative",
+                borderRadius: "28px",
+                overflow: "hidden",
+                width: "100%",
+                height: "420px",
+                boxShadow: "0 12px 40px rgba(95,38,229,0.22)",
+              }}>
+                <Image src={img} alt={title} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover", objectPosition: objectPosition || "center" }} />
+                <div style={{ position: "absolute", inset: 0,
+                  background: "linear-gradient(to top, rgba(95,38,229,1) 0%, rgba(95,38,229,0.85) 30%, rgba(95,38,229,0) 65%)" }} />
+                <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "24px 24px 28px",
+                  display: "flex", flexDirection: "column", gap: "8px" }}>
+                  <h3 style={{ ...KT, fontSize: "24px", fontWeight: 600, color: "#ffffff", margin: "0 0 6px", lineHeight: 1.2 }}>{title}</h3>
+                  <p style={{ ...KT, fontSize: "15px", fontWeight: 400, lineHeight: 1.6, color: "rgba(255,255,255,0.85)", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
                 </div>
-              </StackingCardItem>
+              </div>
             ))}
-          </StackingCards>
+          </div>
         </div>
       </section>
 
