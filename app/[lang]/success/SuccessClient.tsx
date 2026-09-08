@@ -238,14 +238,14 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
 
                     {/* Arrow button — top right */}
                     <div style={{ position: "absolute", top: "28px", right: "28px", zIndex: 2 }}>
-                      <div className="cs-arrow-btn" style={{ width: "40px", height: "40px", borderRadius: "50%", background: "#5f26e5", border: "none", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path className="cs-arrow-path" d="M4 12L12 4M12 4H6M12 4V10" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                      <div className="cs-arrow-btn" style={{ width: "32px", height: "32px", borderRadius: "50%", background: "#5f26e5", border: "none", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path className="cs-arrow-path" d="M4 12L12 4M12 4H6M12 4V10" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       </div>
                     </div>
 
                     {/* Category pill */}
                     <div style={{ position: "absolute", top: "28px", left: "28px", zIndex: 2 }}>
-                      <span className="cs-cat-btn" style={{ fontFamily: "sans-serif", fontSize: "11px", fontWeight: 700, color: "#ffffff", background: "#5f26e5", borderRadius: "50px", padding: "6px 16px", letterSpacing: "0.08em", display: "inline-block" }}>
+                      <span className="cs-cat-btn" style={{ fontFamily: "sans-serif", fontSize: "9px", fontWeight: 700, color: "#ffffff", background: "#5f26e5", borderRadius: "50px", padding: "5px 12px", letterSpacing: "0.08em", display: "inline-block" }}>
                         {story.industry.toUpperCase()}
                       </span>
                     </div>
