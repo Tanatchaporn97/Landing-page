@@ -202,6 +202,9 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       {/* ── Path to Partnership ── */}
       <PathToPartnership lang={lang as Locale} />
 
+      {/* ── Apply For Partnerships ── */}
+      <ApplyPartnerships lang={lang as "th" | "en"} />
+
       {/* ── Our Work / Buddy Ranks ── */}
       <section className="inf-section" style={{ background: "#F5F0FC", padding: "100px 48px", overflow: "hidden" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
@@ -238,9 +241,6 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
           { imgUrl: "/buddy-ranks/5-compare-trimmed.png", alt: "Buddy Ranks — creator comparison" },
         ]} />
       </section>
-
-      {/* ── Apply For Partnerships ── */}
-      <ApplyPartnerships lang={lang as "th" | "en"} />
 
       {/* ── Unlock Exclusive Opportunities ── */}
       <section className="inf-section" style={{ background: "linear-gradient(180deg, #F5F0FC 0%, #F1EBFA 100%)", padding: "100px 48px" }}>

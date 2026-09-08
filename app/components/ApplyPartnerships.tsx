@@ -34,7 +34,7 @@ export default function ApplyPartnerships({ lang }: { lang: "th" | "en" }) {
               }}>
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <h3 style={{ ...KT, fontSize: "clamp(20px,2vw,26px)", fontWeight: 700, margin: 0, lineHeight: 1.3, color: "#111827" }}>
+              <h3 style={{ ...KT, fontSize: "clamp(20px,2vw,26px)", fontWeight: 700, margin: 0, lineHeight: 1.3, color: "#5f26e5" }}>
                 {s.title}
               </h3>
               <p style={{ ...KT, fontSize: "16px", color: "#6b7280", lineHeight: 1.7, margin: 0 }}>
