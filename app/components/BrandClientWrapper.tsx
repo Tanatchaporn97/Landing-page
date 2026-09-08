@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import StackingCards, { StackingCardItem } from "./StackingCards";
 
 // Lazy load below-the-fold components
 const LogoMarquee = dynamic(() => import("./LogoMarquee"));
@@ -20,6 +21,31 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 
 const DARK_BG = "transparent";
+
+// Hoisted to a stable reference so it doesn't get recreated (and break
+// memoized scroll-progress calculations) on every render.
+const OUR_SERVICES = [
+  { img: "/services/campaign-reviews.jpg", title: "Campaign Reviews",
+    desc: "รีวิวสินค้าและบริการผ่านอินฟลูเอนเซอร์ที่ใช่ พร้อมสื่อสารข้อความและจุดเด่นของแบรนด์ได้อย่างมีประสิทธิภาพ เปลี่ยนให้ทุกความสนใจเป็นยอดขาย",
+    descEn: "Product and service reviews through the right influencers, communicating your brand's key messages effectively — turning every bit of interest into sales." },
+  { img: "/services/social-challenges.jpg", title: "Social Challenges",
+    desc: "โดดเด่นเหนือใครด้วยชาเลนจ์สนุก ๆ กระตุ้นการมีส่วนร่วมแบบออร์แกนิค ช่วยให้แบรนด์เป็นที่น่าจดจำ และกลายเป็นเรื่องที่ใคร ๆ ก็อยากพูดถึง",
+    descEn: "Stand out with fun challenges that spark organic engagement, making your brand memorable and giving people something to talk about." },
+  { img: "/services/product-seeding.jpg", title: "Product Seeding",
+    desc: "สร้างกระแสให้สินค้าผ่านคอมเมนต์และรีวิวจำนวนมากอย่างเป็นธรรมชาติ ช่วยเพิ่ม Social Proof ทำให้แบรนด์ดูมีความน่าเชื่อถือและกระตุ้นการตัดสินใจซื้อ",
+    descEn: "Spark buzz for your product through a natural flood of comments and reviews, boosting social proof, credibility, and purchase decisions.",
+    objectPosition: "30% center" },
+  { img: "/services/livestream-affiliate.jpg", title: "Livestream & Affiliate",
+    desc: "คอนเทนต์ที่ออกแบบมาเพื่อสร้างผลลัพธ์ด้านยอดขาย โดยตรงจากอินฟลูเอนเซอร์ ทำให้ทุกการลงทุนของคุณกลายเป็นรายได้",
+    descEn: "Content designed to drive sales results directly through influencers, turning every investment into revenue." },
+  { img: "/services/influencer-at-events.png", title: "Influencer at Events",
+    desc: "ไม่ว่างานเปิดตัว กิจกรรม หรืออีเวนต์พิเศษ เราคัดเลือกอินฟลูเอนเซอร์ที่ใช่ ถ่ายทอดเรื่องราวสดๆ สร้างกระแสได้อย่างต่อเนื่อง",
+    descEn: "From launch events to special activities, we handpick the right influencers to capture and share the moment live, keeping the buzz going." },
+  { img: "/services/paid-media.jpg", title: "Paid Media",
+    desc: "เพิ่มพลังให้แคมเปญด้วยการยิงโฆษณาและบูสต์คอนเทนต์ เข้าถึงกลุ่มเป้าหมายตรงจุด อัปยอดขาย และทำให้ทุกการลงทุนคุ้มค่าที่สุด",
+    descEn: "Supercharge your campaign with targeted ads and content boosting — reaching the right audience, driving sales, and maximizing every baht spent.",
+    objectPosition: "30% center" },
+];
 
 /* ── Icons ── */
 
@@ -265,42 +291,19 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </span>
           </h2>
 
-          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "32px 24px" }}>
-              {[
-                { img: "/services/campaign-reviews.jpg", title: "Campaign Reviews",
-                  desc: "รีวิวสินค้าและบริการผ่านอินฟลูเอนเซอร์ที่ใช่ พร้อมสื่อสารข้อความและจุดเด่นของแบรนด์ได้อย่างมีประสิทธิภาพ เปลี่ยนให้ทุกความสนใจเป็นยอดขาย",
-                  descEn: "Product and service reviews through the right influencers, communicating your brand's key messages effectively — turning every bit of interest into sales." },
-                { img: "/services/social-challenges.jpg", title: "Social Challenges",
-                  desc: "โดดเด่นเหนือใครด้วยชาเลนจ์สนุก ๆ กระตุ้นการมีส่วนร่วมแบบออร์แกนิค ช่วยให้แบรนด์เป็นที่น่าจดจำ และกลายเป็นเรื่องที่ใคร ๆ ก็อยากพูดถึง",
-                  descEn: "Stand out with fun challenges that spark organic engagement, making your brand memorable and giving people something to talk about." },
-                { img: "/services/product-seeding.jpg", title: "Product Seeding",
-                  desc: "สร้างกระแสให้สินค้าผ่านคอมเมนต์และรีวิวจำนวนมากอย่างเป็นธรรมชาติ ช่วยเพิ่ม Social Proof ทำให้แบรนด์ดูมีความน่าเชื่อถือและกระตุ้นการตัดสินใจซื้อ",
-                  descEn: "Spark buzz for your product through a natural flood of comments and reviews, boosting social proof, credibility, and purchase decisions.",
-                  objectPosition: "30% center" },
-                { img: "/services/livestream-affiliate.jpg", title: "Livestream & Affiliate",
-                  desc: "คอนเทนต์ที่ออกแบบมาเพื่อสร้างผลลัพธ์ด้านยอดขาย โดยตรงจากอินฟลูเอนเซอร์ ทำให้ทุกการลงทุนของคุณกลายเป็นรายได้",
-                  descEn: "Content designed to drive sales results directly through influencers, turning every investment into revenue." },
-                { img: "/services/influencer-at-events.png", title: "Influencer at Events",
-                  desc: "ไม่ว่างานเปิดตัว กิจกรรม หรืออีเวนต์พิเศษ เราคัดเลือกอินฟลูเอนเซอร์ที่ใช่ ถ่ายทอดเรื่องราวสดๆ สร้างกระแสได้อย่างต่อเนื่อง",
-                  descEn: "From launch events to special activities, we handpick the right influencers to capture and share the moment live, keeping the buzz going." },
-                { img: "/services/paid-media.jpg", title: "Paid Media",
-                  desc: "เพิ่มพลังให้แคมเปญด้วยการยิงโฆษณาและบูสต์คอนเทนต์ เข้าถึงกลุ่มเป้าหมายตรงจุด อัปยอดขาย และทำให้ทุกการลงทุนคุ้มค่าที่สุด",
-                  descEn: "Supercharge your campaign with targeted ads and content boosting — reaching the right audience, driving sales, and maximizing every baht spent.",
-                  objectPosition: "30% center" },
-              ].map(({ img, title, desc, descEn, objectPosition }) => (
-                <motion.div key={title} style={{
+          <StackingCards totalCards={OUR_SERVICES.length} scaleMultiplier={0.04} style={{ position: "relative" }}>
+            {OUR_SERVICES.map(({ img, title, desc, descEn, objectPosition }, i) => (
+              <StackingCardItem key={title} index={i} style={{ height: "560px" }}>
+                <div style={{
                   position: "relative",
                   borderRadius: "28px",
                   overflow: "hidden",
-                  width: "390px",
+                  width: "min(560px, 92vw)",
                   height: "520px",
-                  flexShrink: 0,
-                  boxShadow: "0 8px 32px rgba(95,38,229,0.18)",
-                }}
-                whileHover={{ scale: 1.03, y: -4 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}>
-                  <Image src={img} alt={title} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover", objectPosition: objectPosition || "center" }} />
+                  margin: "0 auto",
+                  boxShadow: "0 12px 40px rgba(95,38,229,0.22)",
+                }}>
+                  <Image src={img} alt={title} fill sizes="(max-width: 768px) 100vw, 560px" style={{ objectFit: "cover", objectPosition: objectPosition || "center" }} />
                   <div style={{ position: "absolute", inset: 0,
                     background: "linear-gradient(to top, rgba(95,38,229,1) 0%, rgba(95,38,229,0.85) 30%, rgba(95,38,229,0) 65%)" }} />
                   <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "24px 24px 28px",
@@ -308,9 +311,10 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                     <h3 style={{ ...KT, fontSize: "29px", fontWeight: 600, color: "#ffffff", margin: "0 0 6px", lineHeight: 1.2 }}>{title}</h3>
                     <p style={{ ...KT, fontSize: "16px", fontWeight: 400, lineHeight: 1.65, color: "rgba(255,255,255,0.85)", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
                   </div>
-                </motion.div>
-              ))}
-          </div>
+                </div>
+              </StackingCardItem>
+            ))}
+          </StackingCards>
         </div>
       </section>
 
