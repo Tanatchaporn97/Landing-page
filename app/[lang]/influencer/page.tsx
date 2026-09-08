@@ -11,6 +11,7 @@ import InfluencerHero from "../../components/InfluencerHero";
 import PathToPartnership from "../../components/PathToPartnership";
 import UnlockIconHover from "../../components/UnlockIconHover";
 import OpportunityVisual from "../../components/OpportunityVisual";
+import OpportunityScatter from "../../components/OpportunityScatter";
 import UnlockCards from "../../components/UnlockCards";
 import ApplyPartnerships from "../../components/ApplyPartnerships";
 import CreatorStories from "../../components/CreatorStories";
@@ -134,11 +135,16 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
 
       {/* ── Opportunity Banner ── */}
-      <section className="inf-section" style={{
+      <section className="inf-section opportunity-section" style={{
         background: "linear-gradient(180deg, #FFFFFF 0%, #F9F6FE 100%)",
         padding: "100px 48px",
+        position: "relative",
+        overflow: "hidden",
       }}>
-        <div className="opportunity-grid" style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <div className="opportunity-scatter-wrap" style={{ position: "relative", maxWidth: "1400px", minHeight: "680px", margin: "0 auto" }}>
+          <OpportunityScatter lang={lang as "th" | "en"} />
+
+          <div className="opportunity-grid" style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", position: "relative", zIndex: 1, paddingTop: "40px" }}>
           <div style={{ textAlign: "center" }}>
             <h2 style={{
               ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }),
@@ -175,10 +181,15 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
             <OpportunityVisual lang={lang as "th" | "en"} />
           </div>
+          </div>
         </div>
 
         <style>{`
           .opportunity-grid .hero-stat-cards{ margin: 0 auto; max-width: 553px; }
+          @media (max-width: 1100px){
+            .opportunity-scatter-wrap{ min-height: 0 !important; }
+            .opportunity-scatter{ display: none !important; }
+          }
         `}</style>
       </section>
 
