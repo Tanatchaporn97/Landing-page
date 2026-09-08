@@ -159,31 +159,29 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       <section style={{ paddingTop: "80px", paddingBottom: "80px" }} className="px-6 trusted-section partner-bg">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           {/* Heading */}
-          <div className="mb-12" style={{ maxWidth: "1100px", margin: "0 0 48px", display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "24px" }}>
-            <h2 className="section-title font-bold section-h2-fixed"
-              style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "1.25", textAlign: "left", margin: 0,
+          <div className="text-center mb-12" style={{ maxWidth: "954px", margin: "0 auto 48px" }}>
+            <h2 className="section-title font-bold mb-6 section-h2-fixed"
+              style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px", textAlign: "center",
                 fontFeatureSettings: "'pnum' on,'lnum' on" }}>
-              Your Trusted Partner in Thailand&apos;s{" "}
+              Your Trusted Partner in Thailand&apos;s<br/>
               <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
                 WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 Influencer Marketing Landscape
               </span>
             </h2>
-            <span style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em", color: "#9ca3af", whiteSpace: "nowrap", paddingTop: "8px" }}>
-              (WHY US)
-            </span>
+            <p className="font-normal desc-text"
+              style={{ fontSize: "18px", lineHeight: "1.7", textAlign: "center",
+                color: "#111827" }}>
+              {lang === "th" ? (
+                <>Buddy Review ช่วยแบรนด์วางแผนและบริหาร Influencer Marketing ตั้งแต่การวางกลยุทธ์<br/>
+                คัดเลือกอินฟลูเอนเซอร์ ดูแลแคมเปญ ไปจนถึงการวัดผล ด้วยทีมที่มีประสบการณ์ พร้อม Data<br/>
+                และ Technology ที่ช่วยให้วางแผน ตัดสินใจ และวัดผลแคมเปญได้อย่างมีประสิทธิภาพ</>
+              ) : (
+                <>An Influencer Marketing agency blending data, technology, and expert teams<br/>
+                to craft precise, measurable campaigns that drive sustainable business growth.</>
+              )}
+            </p>
           </div>
-          <p className="font-normal desc-text"
-            style={{ fontSize: "18px", lineHeight: "1.7", textAlign: "left", color: "#111827", maxWidth: "780px", margin: "-24px 0 56px" }}>
-            {lang === "th" ? (
-              <>Buddy Review ช่วยแบรนด์วางแผนและบริหาร Influencer Marketing ตั้งแต่การวางกลยุทธ์
-              คัดเลือกอินฟลูเอนเซอร์ ดูแลแคมเปญ ไปจนถึงการวัดผล ด้วยทีมที่มีประสบการณ์ พร้อม Data
-              และ Technology ที่ช่วยให้วางแผน ตัดสินใจ และวัดผลแคมเปญได้อย่างมีประสิทธิภาพ</>
-            ) : (
-              <>An Influencer Marketing agency blending data, technology, and expert teams
-              to craft precise, measurable campaigns that drive sustainable business growth.</>
-            )}
-          </p>
 
           {/* Numbered showcase list + image */}
           <TrustedPartnerShowcase lang={lang as "th" | "en"} />
