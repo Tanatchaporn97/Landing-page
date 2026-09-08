@@ -88,14 +88,24 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
                     }}>
                       {s.desc}
                     </p>
+                    {/* Mobile only — mockup sits inline right under the description */}
+                    <div className="ptp-mobile-img" style={{
+                      overflow: "hidden",
+                      maxHeight: isActive ? "480px" : "0px",
+                      opacity: isActive ? 1 : 0,
+                      marginTop: isActive ? "16px" : "0px",
+                      transition: "max-height 0.4s ease, opacity 0.3s ease, margin-top 0.4s ease",
+                    }}>
+                      <img src={s.img} alt={s.title} style={{ height: "260px", width: "auto", display: "block" }} />
+                    </div>
                   </div>
                 </div>
               );
             })}
           </div>
 
-          {/* Right — mockup crossfade + description */}
-          <div style={{
+          {/* Right — mockup crossfade (desktop only, replaced by inline mockups on mobile) */}
+          <div className="ptp-desktop-panel" style={{
             background: "#ffffff",
             borderRadius: "28px",
             border: "1px solid rgba(95,38,229,0.08)",
@@ -129,8 +139,11 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
       </div>
 
       <style>{`
+        .ptp-mobile-img{ display: none; }
         @media (max-width: 900px){
           .ptp-grid{ grid-template-columns: 1fr !important; }
+          .ptp-mobile-img{ display: block; }
+          .ptp-desktop-panel{ display: none !important; }
         }
       `}</style>
     </section>
