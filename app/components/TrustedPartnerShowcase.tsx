@@ -7,9 +7,9 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const ITEMS = [
   { src: "/card1.jpg", title: "Built on Clarity",           desc: "ทำงานเป็นระบบชัดเจนตามมาตรฐาน",         descEn: "Working within a clear, standardized system." },
-  { src: "/services/influencer-at-events.png", title: "Teamwork with Intelligence", desc: "ทีมที่เข้าใจทั้งแบรนด์และอินฟลูเอนเซอร์", descEn: "A team that understands both brands and influencers." },
-  { src: "/services/paid-media.jpg",           title: "Data-Driven Precision",      desc: "ใช้ข้อมูลช่วยตัดสินใจได้แม่นขึ้น",       descEn: "Data that helps you make sharper decisions." },
-  { src: "/services/social-challenges.jpg",    title: "Results That Matter",        desc: "วัดผลให้สอดคล้องกับเป้าหมายของแบรนด์",   descEn: "Measuring results that align with your brand's goals." },
+  { src: "/service/teamwork.jpg",                title: "Teamwork with Intelligence", desc: "ทีมที่เข้าใจทั้งแบรนด์และอินฟลูเอนเซอร์", descEn: "A team that understands both brands and influencers." },
+  { src: "/service/data-driven-precision.jpg",   title: "Data-Driven Precision",      desc: "ใช้ข้อมูลช่วยตัดสินใจได้แม่นขึ้น",       descEn: "Data that helps you make sharper decisions." },
+  { src: "/service/result.jpg",                  title: "Results That Matter",        desc: "วัดผลให้สอดคล้องกับเป้าหมายของแบรนด์",   descEn: "Measuring results that align with your brand's goals." },
 ];
 
 export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) {
