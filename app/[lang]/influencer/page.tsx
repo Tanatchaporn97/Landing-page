@@ -202,9 +202,6 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       {/* ── Path to Partnership ── */}
       <PathToPartnership lang={lang as Locale} />
 
-      {/* ── Apply For Partnerships ── */}
-      <ApplyPartnerships lang={lang as "th" | "en"} />
-
       {/* ── Our Work / Buddy Ranks ── */}
       <section className="inf-section" style={{ background: "#F5F0FC", padding: "100px 48px", overflow: "hidden" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
@@ -231,6 +228,9 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             {lang === "th" ? "วิเคราะห์ TikTok ฟรี" : "Analyze Your TikTok Free"} →
           </a>
         </div>
+
+        {/* Apply For Partnerships — 3 numbered cards */}
+        <ApplyPartnerships lang={lang as "th" | "en"} />
 
         {/* Hoverable fan carousel — numeric order left → right, center = 3 */}
         <CardFanCarousel cards={[
