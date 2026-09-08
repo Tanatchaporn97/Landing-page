@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import GlowCard from "./GlowCard";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -14,7 +15,8 @@ export default function UnlockCards({ items }: { items: Item[] }) {
       {items.map((item, i) => {
         const isOpen = active === i;
         return (
-          <div key={item.title}
+          <GlowCard key={item.title}
+            glowColor="purple"
             className={`unlock-card${isOpen ? " unlock-card-open" : ""}`}
             role="button"
             tabIndex={0}
@@ -39,7 +41,7 @@ export default function UnlockCards({ items }: { items: Item[] }) {
                 </svg>
               </span>
             </div>
-          </div>
+          </GlowCard>
         );
       })}
 
