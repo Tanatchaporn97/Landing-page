@@ -42,8 +42,8 @@ function CardBody({ card }: { card: HoverStackCard }) {
   return (
     <div className="relative z-[2] flex flex-1 flex-col justify-center gap-3">
       {card.icon && (
-        <div className="relative shrink-0" style={{ width: "48px", height: "48px" }}>
-          <Image src={card.icon} alt={card.title} fill sizes="48px" style={{ objectFit: "contain" }} />
+        <div className="relative shrink-0" style={{ width: "58px", height: "58px" }}>
+          <Image src={card.icon} alt={card.title} fill sizes="58px" style={{ objectFit: "contain" }} />
         </div>
       )}
       <h3 className="m-0" style={{ fontSize: "24px", fontWeight: 700, lineHeight: 1.3, color: "#5f26e5" }}>
