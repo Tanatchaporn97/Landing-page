@@ -12,8 +12,9 @@ export interface HoverStackCard {
   icon?: string;
 }
 
-const CARD_BG = "linear-gradient(160deg, #6d28f0 0%, #5f26e5 100%)";
-const CARD_BORDER = "1px solid rgba(255,255,255,0.25)";
+const CARD_BG = "rgba(255,255,255,0.22)";
+const CARD_BORDER = "1px solid rgba(255,255,255,0.45)";
+const CARD_SHADOW = "0 8px 32px rgba(95,38,229,0.10)";
 
 interface PreparedHoverStackCard extends HoverStackCard {
   _rotation: number;
@@ -45,10 +46,10 @@ function CardBody({ card }: { card: HoverStackCard }) {
           <Image src={card.icon} alt={card.title} fill sizes="48px" style={{ objectFit: "contain" }} />
         </div>
       )}
-      <h3 className="m-0" style={{ fontSize: "24px", fontWeight: 700, lineHeight: 1.3, color: "#ffffff" }}>
+      <h3 className="m-0" style={{ fontSize: "24px", fontWeight: 700, lineHeight: 1.3, color: "#5f26e5" }}>
         {card.title}
       </h3>
-      <p className="m-0" style={{ fontSize: "16px", lineHeight: 1.7, color: "rgba(255,255,255,0.85)" }}>
+      <p className="m-0" style={{ fontSize: "16px", lineHeight: 1.7, color: "#111827" }}>
         {card.desc}
       </p>
     </div>
@@ -139,10 +140,11 @@ export default function HoverStack({
         zIndex,
         transition: "none",
         background: CARD_BG,
+        boxShadow: CARD_SHADOW,
       };
     }
 
-    let boxShadow;
+    let boxShadow = CARD_SHADOW;
 
     if (hasActive) {
       if (index < activeIndex) {
@@ -159,7 +161,7 @@ export default function HoverStack({
         rotate = 0;
         zIndex = 999;
         scale = 1.035;
-        boxShadow = `0 0 0 3px ${accentColor}`;
+        boxShadow = `0 0 0 3px ${accentColor}, ${CARD_SHADOW}`;
       }
     }
 
@@ -198,7 +200,7 @@ export default function HoverStack({
             <div
               key={card.id ?? index}
               className="relative flex min-h-[220px] w-full cursor-default select-none flex-col overflow-hidden rounded-3xl border p-6"
-              style={{ background: CARD_BG, border: CARD_BORDER, backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)" }}
+              style={{ background: CARD_BG, border: CARD_BORDER, boxShadow: CARD_SHADOW, backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)" }}
             >
               <CardBody card={card} />
             </div>
