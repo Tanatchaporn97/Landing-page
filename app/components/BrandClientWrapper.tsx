@@ -281,9 +281,9 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </span>
           </h2>
 
-          <StackingCards totalCards={OUR_SERVICES.length} scaleMultiplier={0.04} style={{ position: "relative" }}>
+          <StackingCards totalCards={OUR_SERVICES.length} scaleMultiplier={0.05} peekOffset={30} stickyHeight="75vh" style={{ height: `${OUR_SERVICES.length * 70}vh` }}>
             {OUR_SERVICES.map(({ img, title, desc, descEn, objectPosition }, i) => (
-              <StackingCardItem key={title} index={i} style={{ height: "560px" }}>
+              <StackingCardItem key={title} index={i}>
                 <div style={{
                   position: "relative",
                   borderRadius: "28px",
