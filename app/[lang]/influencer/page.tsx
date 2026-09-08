@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import CardFanCarousel from "../../components/CardFanCarousel";
 import type { Metadata } from "next";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -228,30 +229,14 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
           </a>
         </div>
 
-        {/* Fanned phone screenshots — numeric order left → right, largest/centered = 3 */}
-        <div className="buddy-ranks-fan" style={{ position: "relative", maxWidth: "1200px", margin: "48px auto 0", height: "260px" }}>
-          <div style={{ position: "absolute", left: "2%", top: "60px", width: "160px", transform: "rotate(-8deg)", zIndex: 1 }}>
-            <Image src="/buddy-ranks/1-followers.png" alt="Buddy Ranks — follower analysis" width={400} height={400} style={{ width: "100%", height: "auto" }} />
-          </div>
-          <div style={{ position: "absolute", left: "20%", top: "0px", width: "190px", transform: "rotate(-4deg)", zIndex: 2 }}>
-            <Image src="/buddy-ranks/2-followers-2.png" alt="Buddy Ranks — audience interests" width={400} height={400} style={{ width: "100%", height: "auto" }} />
-          </div>
-          <div style={{ position: "absolute", left: "50%", top: "-20px", width: "260px", transform: "translateX(-50%)", zIndex: 3 }}>
-            <Image src="/buddy-ranks/3-content-ideas.png" alt="Buddy Ranks — content assistant" width={400} height={400} style={{ width: "100%", height: "auto" }} />
-          </div>
-          <div style={{ position: "absolute", right: "20%", top: "0px", width: "190px", transform: "rotate(4deg)", zIndex: 2 }}>
-            <Image src="/buddy-ranks/4-content-ideas-2.png" alt="Buddy Ranks — content ideas" width={400} height={400} style={{ width: "100%", height: "auto" }} />
-          </div>
-          <div style={{ position: "absolute", right: "2%", top: "60px", width: "160px", transform: "rotate(8deg)", zIndex: 1 }}>
-            <Image src="/buddy-ranks/5-compare.png" alt="Buddy Ranks — creator comparison" width={400} height={400} style={{ width: "100%", height: "auto" }} />
-          </div>
-        </div>
-
-        <style>{`
-          @media (max-width: 860px){
-            .buddy-ranks-fan{ display: none !important; }
-          }
-        `}</style>
+        {/* Hoverable fan carousel — numeric order left → right, center = 3 */}
+        <CardFanCarousel cards={[
+          { imgUrl: "/buddy-ranks/1-followers.png", alt: "Buddy Ranks — follower analysis" },
+          { imgUrl: "/buddy-ranks/2-followers-2.png", alt: "Buddy Ranks — audience interests" },
+          { imgUrl: "/buddy-ranks/3-content-ideas.png", alt: "Buddy Ranks — content assistant" },
+          { imgUrl: "/buddy-ranks/4-content-ideas-2.png", alt: "Buddy Ranks — content ideas" },
+          { imgUrl: "/buddy-ranks/5-compare.png", alt: "Buddy Ranks — creator comparison" },
+        ]} />
       </section>
 
       {/* ── Apply For Partnerships ── */}
