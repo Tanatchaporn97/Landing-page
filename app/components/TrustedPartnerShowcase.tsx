@@ -38,7 +38,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
                 </span>
                 <div>
                   <h3 style={{ ...KT, fontSize: "clamp(24px,2.4vw,32px)", fontWeight: 700, margin: 0, lineHeight: 1.3,
-                    color: isActive ? "#111827" : "#9ca3af", transition: "color 0.3s ease" }}>
+                    color: isActive ? "#5f26e5" : "#9ca3af", transition: "color 0.3s ease" }}>
                     {item.title}
                   </h3>
                   <p style={{
