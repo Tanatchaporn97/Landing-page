@@ -20,7 +20,7 @@ export default function FloatingContactCTA({ lang }: { lang: "th" | "en" }) {
         style={{
           position: "fixed", bottom: "24px", right: "24px", zIndex: 400,
           width: "64px", height: "64px", borderRadius: "50%",
-          background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+          background: "#5f26e5",
           border: "none", boxShadow: "0 8px 24px rgba(95,38,229,0.35)",
           display: "flex", alignItems: "center", justifyContent: "center",
           cursor: "pointer", padding: 0,
