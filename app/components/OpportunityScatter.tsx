@@ -10,7 +10,7 @@ type ScatterItem = {
   left: string;
   width: string;
   rotate: number;
-  kind: "image" | "notepad";
+  kind: "image" | "notepad" | "icons";
   img?: string;
 };
 
@@ -24,29 +24,33 @@ type StatItem = {
   labelEn: string;
 };
 
-// Kept strictly in the left/right margins (outside the ~900px centered
-// text column) so nothing ever overlaps the heading/paragraph/stat cards.
+// Positions mirror the reference collage exactly (top-left / top-center /
+// top-right / mid-right / bottom-left / bottom-center / bottom-right), with
+// the two center-column items (top-center, bottom-center) kept clear of the
+// heading/paragraph vertically, just like the reference.
 const ITEMS_TH: ScatterItem[] = [
-  { label: "แพลนคอนเทนต์ล่วงหน้า", top: "2%",  left: "1%", width: "190px", rotate: -5, kind: "image", img: "/path-to-partnership/Step-4-screen.png" },
-  { label: "บล็อกให้ความรู้",       top: "38%", left: "1%", width: "170px", rotate: 3,  kind: "notepad" },
-  { label: "แคมเปญไลฟ์สด",         top: "72%", left: "1%", width: "190px", rotate: -3, kind: "image", img: "/path-to-partnership/Step-6-screen.png" },
+  { label: "สตอรี่จากครีเอเตอร์จริง", top: "3%",  left: "30%", width: "150px", rotate: 3,  kind: "image", img: "/header-influencer-poster.jpg" },
+  { label: "รับเงินผ่านมือถือ",      top: "22%", left: "85%", width: "130px", rotate: -4, kind: "image", img: "/buddy-rank-phone.png" },
+  { label: "บล็อกให้ความรู้",         top: "64%", left: "17%", width: "150px", rotate: -2, kind: "notepad" },
+  { label: "แบรนด์พาร์ทเนอร์ชั้นนำ",   top: "72%", left: "47%", width: "220px", rotate: 1,  kind: "icons" },
 ];
 
 const ITEMS_EN: ScatterItem[] = [
-  { label: "Plan Content Ahead", top: "2%",  left: "1%", width: "190px", rotate: -5, kind: "image", img: "/path-to-partnership/Step-4-screen.png" },
-  { label: "The Creator Blog",   top: "38%", left: "1%", width: "170px", rotate: 3,  kind: "notepad" },
-  { label: "Live Campaigns",     top: "72%", left: "1%", width: "190px", rotate: -3, kind: "image", img: "/path-to-partnership/Step-6-screen.png" },
+  { label: "Real Creator Stories",   top: "3%",  left: "30%", width: "150px", rotate: 3,  kind: "image", img: "/header-influencer-poster.jpg" },
+  { label: "Get Paid On Your Phone", top: "22%", left: "85%", width: "130px", rotate: -4, kind: "image", img: "/buddy-rank-phone.png" },
+  { label: "The Creator Blog",       top: "64%", left: "17%", width: "150px", rotate: -2, kind: "notepad" },
+  { label: "Top Brand Partners",     top: "72%", left: "47%", width: "220px", rotate: 1,  kind: "icons" },
 ];
 
 // The original 3 stat cards (same size, same hover-animate treatment) —
-// moved out of the center column and grouped in the right margin.
+// placed in the top-left / top-right / bottom-right corners.
 const STATS: StatItem[] = [
-  { top: "4%",  left: "83%", rotate: -4, emoji: "🤝", value: "1,000+" },
-  { top: "37%", left: "83%", rotate: 2,  emoji: "🎯", value: "4,000+" },
-  { top: "70%", left: "83%", rotate: -2, emoji: "🌐", value: "95K+" },
+  { top: "18%", left: "3%",  rotate: -4, emoji: "🤝", value: "1,000+" },
+  { top: "6%",  left: "67%", rotate: 2,  emoji: "🎯", value: "4,000+" },
+  { top: "65%", left: "82%", rotate: -2, emoji: "🌐", value: "95K+" },
 ].map((s, i) => ({
   ...s,
-  labelTh: [" ลูกค้าที่ไว้วางใจ", "แคมเปญที่ส่งมอบ", "เครือข่ายอินฟลูเอนเซอร์"][i],
+  labelTh: ["ลูกค้าที่ไว้วางใจ", "แคมเปญที่ส่งมอบ", "เครือข่ายอินฟลูเอนเซอร์"][i],
   labelEn: ["Trusted Clients", "Campaigns Delivered", "Influencer Network"][i],
 }));
 
@@ -88,10 +92,19 @@ export default function OpportunityScatter({ lang }: { lang: "th" | "en" }) {
               ))}
             </div>
           )}
+
+          {item.kind === "icons" && (
+            <div style={{ display: "flex", gap: "12px", justifyContent: "center" }}>
+              {["📸", "🎤", "🎬"].map((emoji, i) => (
+                <div key={i} style={{ width: "48px", height: "48px", borderRadius: "50%", background: "#ffffff", boxShadow: "0 8px 20px rgba(95,38,229,0.14)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "20px" }}>
+                  {emoji}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       ))}
 
-      {/* Same 3 stat cards, same size + hover animation as before — now grouped in the right margin */}
       {STATS.map((s) => (
         <motion.div
           key={s.value}
