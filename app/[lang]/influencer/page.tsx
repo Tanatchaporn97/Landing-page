@@ -169,7 +169,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               lineHeight: 1.85,
               margin: "0 auto 48px",
               fontWeight: 400,
-              maxWidth: "460px",
+              maxWidth: "500px",
               overflowWrap: "break-word",
             }}>
               {lang === "th" ? (
