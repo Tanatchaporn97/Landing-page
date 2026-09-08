@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import StackingCards, { StackingCardItem } from "./StackingCards";
+import HoverStack from "./HoverStack";
 
 // Lazy load below-the-fold components
 const LogoMarquee = dynamic(() => import("./LogoMarquee"));
@@ -45,6 +46,30 @@ const OUR_SERVICES = [
     desc: "เพิ่มพลังให้แคมเปญด้วยการยิงโฆษณาและบูสต์คอนเทนต์ เข้าถึงกลุ่มเป้าหมายตรงจุด อัปยอดขาย และทำให้ทุกการลงทุนคุ้มค่าที่สุด",
     descEn: "Supercharge your campaign with targeted ads and content boosting — reaching the right audience, driving sales, and maximizing every baht spent.",
     objectPosition: "30% center" },
+];
+
+// CI pastel palette reused from elsewhere on the site (Unlock Exclusive cards)
+const WHAT_WE_OFFER = [
+  { icon: "/what-we-offer/What We Offer-01.png", title: "กลยุทธ์แม่นยำ", titleEn: "Precision Strategy",
+    desc: "ออกแบบแคมเปญจากข้อมูลเชิงลึก เพื่อผลลัพธ์ที่ตรงเป้าและวัดผลได้จริง",
+    descEn: "Campaigns designed from deep data insights, built to hit your goals and deliver measurable results.",
+    bg: "#d7f2df" },
+  { icon: "/what-we-offer/What We Offer-02.png", title: "คัดอินฟลูเอนเซอร์ด้วย AI", titleEn: "AI-Powered Influencer Matching",
+    desc: "เลือกอินฟลูเอนเซอร์ที่ “ใช่ที่สุด” ด้วยระบบ AI เพื่อเข้าถึงกลุ่มเป้าหมายอย่างแม่นยำ",
+    descEn: "Find the perfect-fit influencers with our AI system to reach your target audience precisely.",
+    bg: "#fbdce9" },
+  { icon: "/what-we-offer/What We Offer-03.png", title: "ดูแลครบวงจร", titleEn: "End-to-End Management",
+    desc: "ทีมงานมืออาชีพจัดการทุกขั้นตอนตั้งแต่เริ่มวางแผนจนจบแคมเปญ",
+    descEn: "A professional team handles every step, from planning through campaign wrap-up.",
+    bg: "#dbeafe" },
+  { icon: "/what-we-offer/What We Offer-04.png", title: "งบคุ้มค่า", titleEn: "Budget That Works Harder",
+    desc: "ตัดสินใจบนพื้นฐานข้อมูล ช่วยเพิ่มประสิทธิภาพและผลตอบแทนสูงสุด",
+    descEn: "Data-driven decisions that boost efficiency and maximize your return.",
+    bg: "#fde8cf" },
+  { icon: "/what-we-offer/What We Offer-05.png", title: "วัดผลเรียลไทม์", titleEn: "Real-Time Reporting",
+    desc: "ติดตามและสรุปผลผ่านแดชบอร์ดแบบเรียลไทม์ ชัดเจนทุกมิติ",
+    descEn: "Track and review results through a real-time dashboard, clear in every dimension.",
+    bg: "#e5ddfb" },
 ];
 
 /* ── Icons ── */
@@ -234,48 +259,13 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </span>
           </h2>
 
-          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "32px 24px" }}>
-              {[
-                { icon: "/what-we-offer/What We Offer-01.png", title: "กลยุทธ์แม่นยำ", titleEn: "Precision Strategy",
-                  desc: "ออกแบบแคมเปญจากข้อมูลเชิงลึก เพื่อผลลัพธ์ที่ตรงเป้าและวัดผลได้จริง",
-                  descEn: "Campaigns designed from deep data insights, built to hit your goals and deliver measurable results." },
-                { icon: "/what-we-offer/What We Offer-02.png", title: "คัดอินฟลูเอนเซอร์ด้วย AI", titleEn: "AI-Powered Influencer Matching",
-                  desc: "เลือกอินฟลูเอนเซอร์ที่ “ใช่ที่สุด” ด้วยระบบ AI เพื่อเข้าถึงกลุ่มเป้าหมายอย่างแม่นยำ",
-                  descEn: "Find the perfect-fit influencers with our AI system to reach your target audience precisely." },
-                { icon: "/what-we-offer/What We Offer-03.png", title: "ดูแลครบวงจร", titleEn: "End-to-End Management",
-                  desc: "ทีมงานมืออาชีพจัดการทุกขั้นตอนตั้งแต่เริ่มวางแผนจนจบแคมเปญ",
-                  descEn: "A professional team handles every step, from planning through campaign wrap-up." },
-                { icon: "/what-we-offer/What We Offer-04.png", title: "งบคุ้มค่า", titleEn: "Budget That Works Harder",
-                  desc: "ตัดสินใจบนพื้นฐานข้อมูล ช่วยเพิ่มประสิทธิภาพและผลตอบแทนสูงสุด",
-                  descEn: "Data-driven decisions that boost efficiency and maximize your return." },
-                { icon: "/what-we-offer/What We Offer-05.png", title: "วัดผลเรียลไทม์", titleEn: "Real-Time Reporting",
-                  desc: "ติดตามและสรุปผลผ่านแดชบอร์ดแบบเรียลไทม์ ชัดเจนทุกมิติ",
-                  descEn: "Track and review results through a real-time dashboard, clear in every dimension." },
-              ].map(({ icon, title, titleEn, desc, descEn }) => (
-                <motion.div key={title} style={{
-                  display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "14px",
-                  background: "#ffffff",
-                  borderRadius: "24px",
-                  padding: "32px 28px 40px",
-                  boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
-                  boxSizing: "border-box",
-                }}
-                className="solution-card wwo-card"
-                whileHover={{ scale: 1.03, y: -4, boxShadow: "0 12px 32px rgba(95,38,229,0.08)" }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}>
-                  <div className="icon-wrap-lg" style={{ background: "#ede9f8", borderRadius: "50%",
-                    width: "68px", height: "68px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <div style={{ position: "relative", width: "73px", height: "73px" }}>
-                      <Image src={icon} alt={lang === "th" ? title : titleEn} fill sizes="73px" style={{ objectFit: "contain" }} />
-                    </div>
-                  </div>
-                  <h3 className="card-h3" style={{ ...KT, fontSize: "24px", fontWeight: 700, color: "#5f26e5",
-                    lineHeight: "1.3", margin: 0 }}>{lang === "th" ? title : titleEn}</h3>
-                  <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
-                </motion.div>
-              ))}
-          </div>
+          <HoverStack cards={WHAT_WE_OFFER.map((item, i) => ({
+            id: i,
+            icon: item.icon,
+            title: lang === "th" ? item.title : item.titleEn,
+            desc: lang === "th" ? item.desc : item.descEn,
+            bg: item.bg,
+          }))} />
         </div>
       </section>
 
