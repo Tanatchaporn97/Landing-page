@@ -11,7 +11,7 @@ import AnimatedCounter from "./AnimatedCounter";
 
 // Lazy load below-the-fold components
 const LogoMarquee = dynamic(() => import("./LogoMarquee"));
-const BlogPostsSection = dynamic(() => import("./BlogPostsSection"));
+const NewsroomSection = dynamic(() => import("./NewsroomSection"));
 const FAQAccordion = dynamic(() => import("./FAQAccordion"));
 const ContactFormSection = dynamic(() => import("./ContactFormSection"));
 
@@ -222,7 +222,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       </section>
 
       {/* ── Industry Insights ── */}
-      <BlogPostsSection lang={lang} dict={dict} heading="Newsroom" />
+      <NewsroomSection lang={lang} dict={dict} />
 
       {/* ── FAQs ── */}
       <FAQAccordion faqs={dict?.homeFaqs} lang={lang} variant="home" dict={dict} />
