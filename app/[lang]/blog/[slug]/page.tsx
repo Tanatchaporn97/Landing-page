@@ -10,6 +10,10 @@ import { getDictionary } from "../../../../get-dictionary";
 import { type Locale } from "../../../../i18n-config";
 
 const BLOG_DESCRIPTIONS: Record<string, Record<string, string>> = {
+  "cp-all-influencer-trend-ep8": {
+    th: "Buddy Review ร่วมเป็น Speaker แชร์ประสบการณ์และอินไซต์ให้ครีเอเตอร์ในงาน CPALL Influencer Trend EP.8",
+    en: "Buddy Review joined CP ALL as a speaker, sharing experience and insights with creators at Influencer Trend EP.8.",
+  },
   "tiktok-algorithm-9-techniques": {
     th: "เจาะลึกอัลกอริทึม TikTok 2025 พร้อม 9 เทคนิคทำคลิปให้ติด For You Page เพิ่ม Engagement และยอดวิวอย่างได้ผล",
     en: "Decode the TikTok Algorithm 2025 with 9 proven techniques to get your videos on the For You Page and grow your reach.",
@@ -121,6 +125,49 @@ const OL = ({ items }: { items: React.ReactNode[] }) => (
     ))}
   </ol>
 );
+
+const CP_GALLERY = [
+  "/blogs/cp-influencer-trend-02.jpg",
+  "/blogs/cp-influencer-trend-03.jpg",
+  "/blogs/cp-influencer-trend-04.jpg",
+  "/blogs/cp-influencer-trend-05.jpg",
+  "/blogs/cp-influencer-trend-06.jpg",
+  "/blogs/cp-influencer-trend-07.jpg",
+  "/blogs/cp-influencer-trend-08.jpg",
+];
+
+function Gallery() {
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "12px", margin: "8px 0 32px" }}>
+      {CP_GALLERY.map((src) => (
+        <div key={src} style={{ position: "relative", borderRadius: "16px", overflow: "hidden", aspectRatio: "1 / 1" }}>
+          <Image src={src} alt="CPALL Influencer Trend EP.8" fill sizes="(max-width: 768px) 50vw, 380px" style={{ objectFit: "cover" }} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function CPAllEventContent({ lang }: { lang: Locale }) {
+  if (lang === "en") {
+    return (
+      <>
+        <P>Buddy Review would like to thank CP ALL for inviting us to join as a Speaker, sharing our experience and insights with fellow creators at #CPALLInfluencerTrendEP8.</P>
+        <P>We&apos;d also like to thank every creator who stopped by our booth to say hi and exchange ideas with us. We hope everyone walked away with great tips and inspiration to bring back into their own content.</P>
+        <Divider />
+        <Gallery />
+      </>
+    );
+  }
+  return (
+    <>
+      <P>Buddy Review ขอขอบคุณทาง CP ALL ที่ชวนพวกเรามาร่วมเป็น Speaker แชร์ประสบการณ์และอินไซต์ให้กับเพื่อนๆ ครีเอเตอร์ในงาน #CPALLInfluencerTrendEP8</P>
+      <P>รวมถึงขอบคุณครีเอเตอร์ทุกคนที่แวะมาทักทาย แลกเปลี่ยนไอเดียกันที่บูธของเรา หวังว่าทุกคนจะได้ทริคและแรงบันดาลใจดีๆ กลับไปต่อยอดการทำคอนเทนต์กันนะครับ</P>
+      <Divider />
+      <Gallery />
+    </>
+  );
+}
 
 function TikTokContent({ lang }: { lang: Locale }) {
   if (lang === "en") {
@@ -788,7 +835,7 @@ function CopywritingContent({ lang }: { lang: Locale }) {
   );
 }
 
-const SLUGS = ["best-time-to-post-2025", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas", "6-copywriting-techniques"];
+const SLUGS = ["cp-all-influencer-trend-ep8", "best-time-to-post-2025", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas", "6-copywriting-techniques"];
 
 export function generateStaticParams() {
   return SLUGS.map((slug) => ({ slug }));
@@ -858,7 +905,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ lang:
           </h1>
           <div style={{ height: "1px", background: "rgba(255,255,255,0.2)", marginBottom: "32px" }} />
 
-          {post.slug === "tiktok-algorithm-9-techniques" ? (
+          {post.slug === "cp-all-influencer-trend-ep8" ? (
+            <CPAllEventContent lang={lang as Locale} />
+          ) : post.slug === "tiktok-algorithm-9-techniques" ? (
             <TikTokContent lang={lang as Locale} />
           ) : post.slug === "best-time-to-post-2025" ? (
             <BestTimeContent lang={lang as Locale} />
