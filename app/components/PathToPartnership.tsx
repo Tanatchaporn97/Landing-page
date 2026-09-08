@@ -96,7 +96,7 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
                       marginTop: isActive ? "16px" : "0px",
                       transition: "max-height 0.4s ease, opacity 0.3s ease, margin-top 0.4s ease",
                     }}>
-                      <img src={s.img} alt={s.title} style={{ height: "260px", width: "auto", display: "block" }} />
+                      <img src={s.img} alt={s.title} style={{ height: "312px", width: "auto", display: "block" }} />
                     </div>
                   </div>
                 </div>
