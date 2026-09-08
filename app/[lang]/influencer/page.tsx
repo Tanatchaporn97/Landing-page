@@ -231,11 +231,11 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
         {/* Hoverable fan carousel — numeric order left → right, center = 3 */}
         <CardFanCarousel cards={[
-          { imgUrl: "/buddy-ranks/1-followers.png", alt: "Buddy Ranks — follower analysis" },
-          { imgUrl: "/buddy-ranks/2-followers-2.png", alt: "Buddy Ranks — audience interests" },
-          { imgUrl: "/buddy-ranks/3-content-ideas.png", alt: "Buddy Ranks — content assistant" },
-          { imgUrl: "/buddy-ranks/4-content-ideas-2.png", alt: "Buddy Ranks — content ideas" },
-          { imgUrl: "/buddy-ranks/5-compare.png", alt: "Buddy Ranks — creator comparison" },
+          { imgUrl: "/buddy-ranks/1-followers-trimmed.png", alt: "Buddy Ranks — follower analysis" },
+          { imgUrl: "/buddy-ranks/2-followers-2-trimmed.png", alt: "Buddy Ranks — audience interests" },
+          { imgUrl: "/buddy-ranks/3-content-ideas-trimmed.png", alt: "Buddy Ranks — content assistant" },
+          { imgUrl: "/buddy-ranks/4-content-ideas-2-trimmed.png", alt: "Buddy Ranks — content ideas" },
+          { imgUrl: "/buddy-ranks/5-compare-trimmed.png", alt: "Buddy Ranks — creator comparison" },
         ]} />
       </section>
 

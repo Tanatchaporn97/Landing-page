@@ -255,18 +255,18 @@ export default function CardFanCarousel({ cards }: CardFanCarouselProps) {
   return (
     <section className="flex flex-col items-center w-full py-4 lg:py-8 px-4 md:px-8 relative z-20">
       <div className="flex items-center justify-center w-full max-w-[90rem]">
-        <div ref={containerRef} className="fan-layout flex relative justify-center items-center w-full max-w-[80rem]" style={{ height: "17rem" }}>
+        <div ref={containerRef} className="fan-layout flex relative justify-center items-center w-full max-w-[80rem]" style={{ height: "36rem" }}>
           {cards.map((card, index) => {
             const image = (
-              <div className="relative w-full h-full overflow-hidden rounded-2xl shadow-[0_12px_28px_rgba(95,38,229,0.14)]">
-                <img src={card.imgUrl} loading="lazy" alt={card.alt || `Card ${index}`} className="absolute inset-0 w-full h-full object-cover z-10" />
+              <div className="relative w-full h-full">
+                <img src={card.imgUrl} loading="lazy" alt={card.alt || `Card ${index}`} className="absolute inset-0 w-full h-full object-contain z-10" />
               </div>
             );
             return card.linkUrl ? (
               <a key={index} href={card.linkUrl} target={card.linkUrl.startsWith("http") ? "_blank" : "_self"} rel="noopener noreferrer"
-                className="fan-card block cursor-pointer absolute" style={{ width: "13rem", height: "17rem" }}>{image}</a>
+                className="fan-card block cursor-pointer absolute" style={{ width: "16.2rem", height: "32.5rem" }}>{image}</a>
             ) : (
-              <div key={index} className="fan-card absolute" style={{ width: "13rem", height: "17rem" }}>{image}</div>
+              <div key={index} className="fan-card absolute" style={{ width: "16.2rem", height: "32.5rem" }}>{image}</div>
             );
           })}
         </div>
