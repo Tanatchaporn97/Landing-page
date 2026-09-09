@@ -39,7 +39,7 @@ const OUR_SERVICES = [
   { img: "/services/livestream-affiliate.jpg", title: "Livestream & Affiliate",
     desc: "คอนเทนต์ที่ออกแบบมาเพื่อสร้างผลลัพธ์ด้านยอดขาย โดยตรงจากอินฟลูเอนเซอร์ ทำให้ทุกการลงทุนของคุณกลายเป็นรายได้",
     descEn: "Content designed to drive sales results directly through influencers, turning every investment into revenue.",
-    objectPosition: "65% center" },
+    objectPosition: "88% center" },
   { img: "/services/influencer-at-events.png", title: "Influencer at Events",
     desc: "ไม่ว่างานเปิดตัว กิจกรรม หรืออีเวนต์พิเศษ เราคัดเลือกอินฟลูเอนเซอร์ที่ใช่ ถ่ายทอดเรื่องราวสดๆ สร้างกระแสได้อย่างต่อเนื่อง",
     descEn: "From launch events to special activities, we handpick the right influencers to capture and share the moment live, keeping the buzz going." },
@@ -409,7 +409,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                 </div>
               ))}
             </div>
-            <HoverSliderImageWrap className="w-full max-w-[420px] rounded-[28px]" style={{ aspectRatio: "4 / 3", boxShadow: "0 12px 40px rgba(95,38,229,0.16)" }}>
+            <HoverSliderImageWrap className="w-full max-w-[360px] rounded-[28px]" style={{ aspectRatio: "4 / 5", boxShadow: "0 12px 40px rgba(95,38,229,0.16)" }}>
               {OUR_SERVICES.map(({ img, title, objectPosition }, index) => (
                 <HoverSliderImage
                   key={title}
