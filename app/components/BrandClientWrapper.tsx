@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import HoverStack from "./HoverStack";
+import { HoverSlider, HoverSliderImage, HoverSliderImageWrap, TextStaggerHover } from "./AnimatedSlideshow";
 
 // Lazy load below-the-fold components
 const LogoMarquee = dynamic(() => import("./LogoMarquee"));
@@ -273,32 +274,33 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </span>
           </h2>
 
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "32px",
-          }}
-          className="our-services-grid"
-          >
-            {OUR_SERVICES.map(({ img, title, desc, descEn, objectPosition }) => (
-              <div key={title} style={{ display: "flex", flexDirection: "column" }}>
-                <div style={{
-                  position: "relative",
-                  borderRadius: "28px",
-                  overflow: "hidden",
-                  width: "100%",
-                  height: "320px",
-                  boxShadow: "0 12px 40px rgba(95,38,229,0.16)",
-                }}>
-                  <Image src={img} alt={title} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover", objectPosition: objectPosition || "center" }} />
-                </div>
-                <div style={{ padding: "20px 4px 0", display: "flex", flexDirection: "column", gap: "8px" }}>
-                  <h3 style={{ ...KT, fontSize: "24px", fontWeight: 600, color: "#111827", margin: "0 0 6px", lineHeight: 1.2 }}>{title}</h3>
-                  <p style={{ ...KT, fontSize: "15px", fontWeight: 400, lineHeight: 1.6, color: "#6b7280", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <HoverSlider className="flex flex-col-reverse items-center justify-evenly gap-10 md:flex-row md:items-start md:gap-12">
+            <div className="flex flex-col" style={{ gap: "clamp(8px,1.2vw,16px)" }}>
+              {OUR_SERVICES.map(({ title }, index) => (
+                <TextStaggerHover
+                  key={title}
+                  index={index}
+                  text={title}
+                  className="cursor-pointer uppercase tracking-tight"
+                  style={{ ...KT, fontSize: "clamp(22px,2.6vw,34px)", fontWeight: 800, color: "#111827" }}
+                />
+              ))}
+            </div>
+            <HoverSliderImageWrap className="w-full max-w-[420px] rounded-[28px]" style={{ aspectRatio: "4 / 3", boxShadow: "0 12px 40px rgba(95,38,229,0.16)" }}>
+              {OUR_SERVICES.map(({ img, title, objectPosition }, index) => (
+                <HoverSliderImage
+                  key={title}
+                  index={index}
+                  src={img}
+                  alt={title}
+                  loading="eager"
+                  decoding="async"
+                  className="size-full object-cover"
+                  style={{ objectPosition: objectPosition || "center" }}
+                />
+              ))}
+            </HoverSliderImageWrap>
+          </HoverSlider>
         </div>
       </section>
 
