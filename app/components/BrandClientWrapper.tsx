@@ -253,7 +253,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               <path d="M6 40 C 18 44, 24 20, 14 12 C 8 6, 20 2, 28 10 M40 6 L 46 2 M44 14 L 52 12" fill="none" stroke="#5f26e5" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" opacity="0.55" />
             </svg>
 
-            <p style={{ ...KT, color: "#6b7280", fontSize: "clamp(15px,1.3vw,18px)", lineHeight: 1.8, margin: "40px 0 32px", maxWidth: "440px" }}>
+            <p style={{ ...KT, color: "#6b7280", fontSize: "clamp(18px,1.8vw,28px)", lineHeight: 1.7, margin: "40px 0 32px", maxWidth: "440px" }}>
               {lang === "th" ? (
                 "มากกว่ากลยุทธ์ คือพาแบรนด์ไปถึงเป้าหมาย"
               ) : (
@@ -262,13 +262,13 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </p>
 
             <a href="#contact" style={{ ...KT, display: "inline-flex", alignItems: "center", justifyContent: "center",
-              background: "#111827", color: "#ffffff", fontWeight: 600, fontSize: "16px",
+              background: "#5f26e5", color: "#ffffff", fontWeight: 600, fontSize: "16px",
               padding: "16px 36px", borderRadius: "50px", textDecoration: "none" }}>
               {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
             </a>
 
-            {/* Number stats, playful tilted row */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "16px", marginTop: "40px" }}>
+            {/* Number stats, playful tilted row — same size as the header above, centered */}
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "16px", marginTop: "40px" }}>
               {[
                 { rotate: -3, emoji: "🌐", value: "1,000,000+", labelTh: "เครือข่ายอินฟลูเอนเซอร์", labelEn: "Influencer Network" },
                 { rotate: 2,  emoji: "🤝", value: "1,000+",     labelTh: "ลูกค้าที่ไว้วางใจ",       labelEn: "Trusted Clients" },
@@ -276,16 +276,16 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               ].map((s) => (
                 <motion.div key={s.value}
                   animate={{ rotate: s.rotate }}
-                  whileHover={{ rotate: 0, y: -6, scale: 1.05, boxShadow: "0 16px 36px rgba(95,38,229,0.16)" }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  style={{ position: "relative", background: "#ffffff", borderRadius: "18px", padding: "16px 18px", boxShadow: "0 8px 24px rgba(0,0,0,0.08)", cursor: "pointer" }}
+                  whileHover={{ rotate: 0, y: -14, scale: 1.06, boxShadow: "0 20px 48px rgba(95,38,229,0.18)" }}
+                  transition={{ type: "spring", stiffness: 320, damping: 22 }}
+                  style={{ position: "relative", background: "#ffffff", borderRadius: "22px", padding: "23px 23px 21px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)", width: "228px", cursor: "pointer" }}
                 >
-                  <span style={{ fontSize: "17px", position: "absolute", top: "10px", right: "12px" }}>{s.emoji}</span>
-                  <p style={{ ...KT, fontSize: "22px", fontWeight: 800, margin: "0 0 3px", lineHeight: 1,
+                  <span style={{ fontSize: "23px", position: "absolute", top: "16px", right: "18px" }}>{s.emoji}</span>
+                  <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1,
                     background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                     {s.value}
                   </p>
-                  <p style={{ ...KT, fontSize: "13px", fontWeight: 700, color: "#111827", margin: 0, whiteSpace: "nowrap" }}>
+                  <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>
                     {lang === "th" ? s.labelTh : s.labelEn}
                   </p>
                 </motion.div>

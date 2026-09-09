@@ -56,12 +56,11 @@ function ReactionEmoji({ emoji, rotate }: { emoji: string; rotate: number }) {
   return (
     <motion.div
       initial={{ scale: 1, rotate }}
-      whileHover={{ scale: 1.5, rotate: 0, boxShadow: "0 12px 28px rgba(95,38,229,0.25)" }}
+      whileHover={{ scale: 1.5, rotate: 0 }}
       transition={{ type: "spring", stiffness: 400, damping: 15 }}
       style={{
-        width: "44px", height: "44px", borderRadius: "50%", background: "#ffffff",
-        display: "flex", alignItems: "center", justifyContent: "center", fontSize: "20px",
-        boxShadow: "0 6px 16px rgba(0,0,0,0.10)", cursor: "pointer", pointerEvents: "auto",
+        display: "flex", alignItems: "center", justifyContent: "center", fontSize: "34px",
+        cursor: "pointer", pointerEvents: "auto",
       }}
     >
       {emoji}
