@@ -150,7 +150,8 @@ function MarqueeColumn({
   const colStyle: React.CSSProperties = { display: "flex", flexDirection: "column", gap: `${CARD_GAP}px` };
 
   return (
-    <div ref={wrapperRef} className={className} style={{ flex: 1, overflow: "hidden", ...style }}>
+    <div ref={wrapperRef} className={className} style={{ flex: 1, overflow: "hidden", ...style }}
+      onMouseEnter={pause} onMouseLeave={resume}>
       <motion.div
         style={{ y, cursor: "grab", userSelect: "none" }}
         drag="y"

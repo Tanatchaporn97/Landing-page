@@ -6,6 +6,8 @@ import { HTMLMotionProps, MotionConfig, motion } from "motion/react";
 interface TextStaggerHoverProps {
   text: string;
   index: number;
+  activeColor?: string;
+  inactiveColor?: string;
 }
 interface HoverSliderImageProps {
   index: number;
@@ -46,7 +48,7 @@ export const HoverSlider = React.forwardRef<HTMLDivElement, React.HTMLAttributes
 HoverSlider.displayName = "HoverSlider";
 
 export const TextStaggerHover = React.forwardRef<HTMLSpanElement, React.HTMLAttributes<HTMLSpanElement> & TextStaggerHoverProps>(
-  ({ text, index, className, ...props }, ref) => {
+  ({ text, index, activeColor = "#5f26e5", inactiveColor = "#9ca3af", className, ...props }, ref) => {
     const { activeSlide, changeSlide } = useHoverSliderContext();
     const { characters } = splitText(text);
     const isActive = activeSlide === index;
@@ -60,11 +62,11 @@ export const TextStaggerHover = React.forwardRef<HTMLSpanElement, React.HTMLAttr
         {characters.map((char, i) => (
           <span key={`${char}-${i}`} className="relative inline-block overflow-hidden">
             <MotionConfig transition={{ delay: i * 0.025, duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}>
-              <motion.span className="inline-block opacity-20" initial={{ y: "0%" }} animate={isActive ? { y: "-110%" } : { y: "0%" }}>
+              <motion.span className="inline-block" style={{ color: inactiveColor }} initial={{ y: "0%" }} animate={isActive ? { y: "-110%" } : { y: "0%" }}>
                 {char}
                 {char === " " && i < characters.length - 1 && <>&nbsp;</>}
               </motion.span>
-              <motion.span className="absolute left-0 top-0 inline-block opacity-100" initial={{ y: "110%" }} animate={isActive ? { y: "0%" } : { y: "110%" }}>
+              <motion.span className="absolute left-0 top-0 inline-block" style={{ color: activeColor }} initial={{ y: "110%" }} animate={isActive ? { y: "0%" } : { y: "110%" }}>
                 {char}
               </motion.span>
             </MotionConfig>
@@ -75,6 +77,31 @@ export const TextStaggerHover = React.forwardRef<HTMLSpanElement, React.HTMLAttr
   }
 );
 TextStaggerHover.displayName = "TextStaggerHover";
+
+export const HoverSlideDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement> & { index: number }>(
+  ({ index, className, style, children, ...props }, ref) => {
+    const { activeSlide } = useHoverSliderContext();
+    const isActive = activeSlide === index;
+    return (
+      <p
+        ref={ref}
+        className={className}
+        style={{
+          overflow: "hidden",
+          maxHeight: isActive ? "80px" : "0px",
+          opacity: isActive ? 1 : 0,
+          marginTop: isActive ? "8px" : "0px",
+          transition: "max-height 0.35s ease, opacity 0.3s ease, margin-top 0.35s ease",
+          ...style,
+        }}
+        {...props}
+      >
+        {children}
+      </p>
+    );
+  }
+);
+HoverSlideDescription.displayName = "HoverSlideDescription";
 
 const clipPathVariants = {
   visible: { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },

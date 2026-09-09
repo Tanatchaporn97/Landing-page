@@ -7,8 +7,7 @@ import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import HoverStack from "./HoverStack";
-import { HoverSlider, HoverSliderImage, HoverSliderImageWrap, TextStaggerHover } from "./AnimatedSlideshow";
+import { HoverSlider, HoverSliderImage, HoverSliderImageWrap, TextStaggerHover, HoverSlideDescription } from "./AnimatedSlideshow";
 
 // Lazy load below-the-fold components
 const LogoMarquee = dynamic(() => import("./LogoMarquee"));
@@ -28,7 +27,8 @@ const DARK_BG = "transparent";
 const OUR_SERVICES = [
   { img: "/services/campaign-reviews.jpg", title: "Campaign Reviews",
     desc: "รีวิวสินค้าและบริการผ่านอินฟลูเอนเซอร์ที่ใช่ พร้อมสื่อสารข้อความและจุดเด่นของแบรนด์ได้อย่างมีประสิทธิภาพ เปลี่ยนให้ทุกความสนใจเป็นยอดขาย",
-    descEn: "Product and service reviews through the right influencers, communicating your brand's key messages effectively — turning every bit of interest into sales." },
+    descEn: "Product and service reviews through the right influencers, communicating your brand's key messages effectively — turning every bit of interest into sales.",
+    objectPosition: "center 15%" },
   { img: "/services/social-challenges.jpg", title: "Social Challenges",
     desc: "โดดเด่นเหนือใครด้วยชาเลนจ์สนุก ๆ กระตุ้นการมีส่วนร่วมแบบออร์แกนิค ช่วยให้แบรนด์เป็นที่น่าจดจำ และกลายเป็นเรื่องที่ใคร ๆ ก็อยากพูดถึง",
     descEn: "Stand out with fun challenges that spark organic engagement, making your brand memorable and giving people something to talk about." },
@@ -38,7 +38,8 @@ const OUR_SERVICES = [
     objectPosition: "30% center" },
   { img: "/services/livestream-affiliate.jpg", title: "Livestream & Affiliate",
     desc: "คอนเทนต์ที่ออกแบบมาเพื่อสร้างผลลัพธ์ด้านยอดขาย โดยตรงจากอินฟลูเอนเซอร์ ทำให้ทุกการลงทุนของคุณกลายเป็นรายได้",
-    descEn: "Content designed to drive sales results directly through influencers, turning every investment into revenue." },
+    descEn: "Content designed to drive sales results directly through influencers, turning every investment into revenue.",
+    objectPosition: "65% center" },
   { img: "/services/influencer-at-events.png", title: "Influencer at Events",
     desc: "ไม่ว่างานเปิดตัว กิจกรรม หรืออีเวนต์พิเศษ เราคัดเลือกอินฟลูเอนเซอร์ที่ใช่ ถ่ายทอดเรื่องราวสดๆ สร้างกระแสได้อย่างต่อเนื่อง",
     descEn: "From launch events to special activities, we handpick the right influencers to capture and share the moment live, keeping the buzz going." },
@@ -332,12 +333,30 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </span>
           </h2>
 
-          <HoverStack cards={WHAT_WE_OFFER.map((item, i) => ({
-            id: i,
-            icon: item.icon,
-            title: lang === "th" ? item.title : item.titleEn,
-            desc: lang === "th" ? item.desc : item.descEn,
-          }))} />
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "24px" }}>
+            {WHAT_WE_OFFER.map((item, i) => (
+              <div key={i} style={{
+                background: "rgba(255,255,255,0.22)",
+                backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
+                border: "1px solid rgba(255,255,255,0.45)",
+                boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
+                borderRadius: "24px", padding: "32px 28px",
+                display: "flex", flexDirection: "column", gap: "12px",
+              }}>
+                {item.icon && (
+                  <div className="relative shrink-0" style={{ width: "58px", height: "58px" }}>
+                    <Image src={item.icon} alt={lang === "th" ? item.title : item.titleEn} fill sizes="58px" style={{ objectFit: "contain" }} />
+                  </div>
+                )}
+                <h3 style={{ ...KT, fontSize: "22px", fontWeight: 700, lineHeight: 1.3, color: "#5f26e5", margin: 0 }}>
+                  {lang === "th" ? item.title : item.titleEn}
+                </h3>
+                <p style={{ ...KT, fontSize: "15px", lineHeight: 1.7, color: "#111827", margin: 0 }}>
+                  {lang === "th" ? item.desc : item.descEn}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -355,14 +374,21 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
           <HoverSlider className="flex flex-col-reverse items-center justify-evenly gap-10 md:flex-row md:items-start md:gap-12">
             <div className="flex flex-col" style={{ gap: "clamp(8px,1.2vw,16px)" }}>
-              {OUR_SERVICES.map(({ title }, index) => (
-                <TextStaggerHover
-                  key={title}
-                  index={index}
-                  text={title}
-                  className="cursor-pointer uppercase tracking-tight"
-                  style={{ ...KT, fontSize: "clamp(22px,2.6vw,34px)", fontWeight: 800, color: "#111827" }}
-                />
+              {OUR_SERVICES.map(({ title, desc, descEn }, index) => (
+                <div key={title}>
+                  <TextStaggerHover
+                    index={index}
+                    text={title}
+                    className="cursor-pointer uppercase tracking-tight"
+                    style={{ ...KT, fontSize: "clamp(22px,2.6vw,34px)", fontWeight: 800 }}
+                  />
+                  <HoverSlideDescription
+                    index={index}
+                    style={{ ...KT, fontSize: "15px", lineHeight: 1.6, color: "#6b7280", maxWidth: "420px" }}
+                  >
+                    {lang === "th" ? desc : descEn}
+                  </HoverSlideDescription>
+                </div>
               ))}
             </div>
             <HoverSliderImageWrap className="w-full max-w-[420px] rounded-[28px]" style={{ aspectRatio: "4 / 3", boxShadow: "0 12px 40px rgba(95,38,229,0.16)" }}>
