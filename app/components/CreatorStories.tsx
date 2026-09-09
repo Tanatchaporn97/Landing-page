@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const VIDEOS = [
-  { src: "/videos/influencer-header/header-1.mp4", name: "Flukymltp" },
   { src: "/videos/influencer-header/header-4.mp4", name: "Nice.Naphatchw" },
   { src: "/videos/influencer-header/header-2.mp4", name: "Icepapan" },
   { src: "/videos/influencer-header/header-3.mp4", name: "Pookkyjdp" },
@@ -63,11 +62,8 @@ function StoryCard({ src, name }: { src: string; name: string }) {
 
 export default function CreatorStories() {
   return (
-    <div className="creator-stories-row" style={{ display: "flex", gap: "24px", overflowX: "auto", paddingBottom: "8px" }}>
+    <div className="creator-stories-row" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "24px" }}>
       {VIDEOS.map((v) => <StoryCard key={v.src} src={v.src} name={v.name} />)}
-      <style>{`
-        .creator-stories-row::-webkit-scrollbar{ display: none; }
-      `}</style>
     </div>
   );
 }
