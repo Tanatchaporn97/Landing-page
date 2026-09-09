@@ -24,7 +24,7 @@ function CategoryPill({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function NewsroomSection({ lang = "th", dict }: { lang?: "th" | "en"; dict?: any }) {
+export default function NewsroomSection({ lang = "th", dict, variant = "home" }: { lang?: "th" | "en"; dict?: any; variant?: "home" | "brand" | "influencer" }) {
   const t = lang === "th"
     ? { viewMore: "ดูเพิ่มเติม", minRead: "นาทีในการอ่าน", by: "โดย Buddy Review" }
     : { viewMore: "View More", minRead: "min read", by: "by Buddy Review" };
@@ -34,7 +34,8 @@ export default function NewsroomSection({ lang = "th", dict }: { lang?: "th" | "
   const catInf = lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Influencers";
   const CATS = [catAll, catBrand, catInf];
 
-  const [activeCat, setActiveCat] = useState(catAll);
+  const initialCat = variant === "brand" ? catBrand : variant === "influencer" ? catInf : catAll;
+  const [activeCat, setActiveCat] = useState(initialCat);
 
   const allPosts: Post[] = dict?.blogPosts || [];
   if (allPosts.length === 0) return null;

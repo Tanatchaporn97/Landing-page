@@ -12,7 +12,7 @@ import { HoverSlider, HoverSliderImage, HoverSliderImageWrap, TextStaggerHover, 
 // Lazy load below-the-fold components
 const LogoMarquee = dynamic(() => import("./LogoMarquee"));
 const KolPackagesSection = dynamic(() => import("./KolPackagesSection"));
-const BlogPostsSection = dynamic(() => import("./BlogPostsSection"));
+const NewsroomSection = dynamic(() => import("./NewsroomSection"));
 const FAQAccordion = dynamic(() => import("./FAQAccordion"));
 const ContactFormSection = dynamic(() => import("./ContactFormSection"));
 
@@ -233,28 +233,19 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         <div className="hero-grid-inf relative" style={{ maxWidth: "1200px", margin: "0 auto", width: "100%", zIndex: 2,
           display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center" }}>
 
-          {/* Left: playful stacked headline + underline squiggle + pill CTA */}
+          {/* Left: real hero copy, playful stacked layout + underline squiggle + pill CTA */}
           <div style={{ position: "relative" }}>
-            <h2 className="font-bold" style={{ ...KT, color: "#111827", fontSize: "clamp(30px,4vw,52px)", lineHeight: 1.2, margin: "0 0 24px" }}>
-              {lang === "th" ? (
-                <>ไม่ใช่แค่กลยุทธ์<br/>แต่คือ<br/>
-                  <span style={{ position: "relative", display: "inline-block" }}>
-                    ผลลัพธ์ที่วัดได้จริง
-                    <svg viewBox="0 0 320 24" width="100%" height="24" style={{ position: "absolute", left: 0, bottom: "-14px", overflow: "visible" }} aria-hidden="true">
-                      <path d="M4 14 C 60 2, 120 22, 180 10 S 280 4, 316 12" fill="none" stroke="#ff0089" strokeWidth="5" strokeLinecap="round" />
-                    </svg>
-                  </span>
-                </>
-              ) : (
-                <>Not Just<br/>Strategies, But<br/>
-                  <span style={{ position: "relative", display: "inline-block" }}>
-                    Real Results
-                    <svg viewBox="0 0 320 24" width="100%" height="24" style={{ position: "absolute", left: 0, bottom: "-14px", overflow: "visible" }} aria-hidden="true">
-                      <path d="M4 14 C 60 2, 120 22, 180 10 S 280 4, 316 12" fill="none" stroke="#ff0089" strokeWidth="5" strokeLinecap="round" />
-                    </svg>
-                  </span>
-                </>
-              )}
+            <h2 className="font-bold uppercase" style={{ ...KT, color: "#111827", fontSize: "clamp(28px,3.6vw,46px)", lineHeight: 1.2, margin: "0 0 24px" }}>
+              Not Just Strategies.<br/>
+              <span style={{ position: "relative", display: "inline-block" }}>
+                <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                  Execution That Delivers.
+                </span>
+                <svg viewBox="0 0 320 24" width="100%" height="24" style={{ position: "absolute", left: 0, bottom: "-14px", overflow: "visible" }} aria-hidden="true">
+                  <path d="M4 14 C 60 2, 120 22, 180 10 S 280 4, 316 12" fill="none" stroke="#ff0089" strokeWidth="5" strokeLinecap="round" />
+                </svg>
+              </span>
             </h2>
 
             {/* Floating scribble accent, echoing the reference's hand-drawn doodle */}
@@ -263,16 +254,43 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </svg>
 
             <p style={{ ...KT, color: "#6b7280", fontSize: "clamp(15px,1.3vw,18px)", lineHeight: 1.8, margin: "40px 0 32px", maxWidth: "440px" }}>
-              {lang === "th"
-                ? "ไม่ว่าจะทุกที่หรือทุกเวลา Buddy Review ช่วยให้แบรนด์ของคุณเข้าถึงลูกค้าได้อย่างมั่นใจและวัดผลได้จริง"
-                : "Anywhere, anytime — Buddy Review helps your brand reach the right audience with confidence and measurable results."}
+              {lang === "th" ? (
+                "มากกว่ากลยุทธ์ คือพาแบรนด์ไปถึงเป้าหมาย"
+              ) : (
+                <>From Strategy To Insight,<span className="hero-subline-break"> We Turn Influence Into Impact.</span></>
+              )}
             </p>
 
             <a href="#contact" style={{ ...KT, display: "inline-flex", alignItems: "center", justifyContent: "center",
               background: "#111827", color: "#ffffff", fontWeight: 600, fontSize: "16px",
               padding: "16px 36px", borderRadius: "50px", textDecoration: "none" }}>
-              {lang === "th" ? "เริ่มต้นเลย" : "Get Started"}
+              {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
             </a>
+
+            {/* Number stats, playful tilted row */}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "16px", marginTop: "40px" }}>
+              {[
+                { rotate: -3, emoji: "🌐", value: "1,000,000+", labelTh: "เครือข่ายอินฟลูเอนเซอร์", labelEn: "Influencer Network" },
+                { rotate: 2,  emoji: "🤝", value: "1,000+",     labelTh: "ลูกค้าที่ไว้วางใจ",       labelEn: "Trusted Clients" },
+                { rotate: -2, emoji: "🎯", value: "4,000+",     labelTh: "แคมเปญที่ส่งมอบ",         labelEn: "Campaigns Delivered" },
+              ].map((s) => (
+                <motion.div key={s.value}
+                  animate={{ rotate: s.rotate }}
+                  whileHover={{ rotate: 0, y: -6, scale: 1.05, boxShadow: "0 16px 36px rgba(95,38,229,0.16)" }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  style={{ position: "relative", background: "#ffffff", borderRadius: "18px", padding: "16px 18px", boxShadow: "0 8px 24px rgba(0,0,0,0.08)", cursor: "pointer" }}
+                >
+                  <span style={{ fontSize: "17px", position: "absolute", top: "10px", right: "12px" }}>{s.emoji}</span>
+                  <p style={{ ...KT, fontSize: "22px", fontWeight: 800, margin: "0 0 3px", lineHeight: 1,
+                    background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                    {s.value}
+                  </p>
+                  <p style={{ ...KT, fontSize: "13px", fontWeight: 700, color: "#111827", margin: 0, whiteSpace: "nowrap" }}>
+                    {lang === "th" ? s.labelTh : s.labelEn}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
           {/* Right: tilted mockup with floating decorative accents */}
@@ -562,7 +580,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       <KolPackagesSection lang={lang} />
 
       {/* ── Industry Insights ── */}
-      <BlogPostsSection lang={lang} dict={dict} />
+      <NewsroomSection lang={lang} dict={dict} variant="brand" />
 
       {/* ── FAQs ── */}
       <FAQAccordion faqs={dict?.homeFaqs} lang={lang} variant="home" dict={dict} />

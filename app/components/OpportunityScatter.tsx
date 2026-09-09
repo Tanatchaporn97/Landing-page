@@ -44,6 +44,31 @@ const STATS: StatItem[] = [
   labelEn: ["Trusted Clients", "Campaigns Delivered", "Influencer Network"][i],
 }));
 
+// Playful floating reaction emoji — sits small/still at rest and pops up
+// (scales, lifts, gains a shadow) on hover, like a little reaction bubble.
+const REACTIONS = [
+  { emoji: "🔥", top: "38%", left: "5%",  rotate: -8 },
+  { emoji: "🤩", top: "42%", left: "91%", rotate: 6 },
+  { emoji: "💗", top: "86%", left: "64%", rotate: -5 },
+];
+
+function ReactionEmoji({ emoji, rotate }: { emoji: string; rotate: number }) {
+  return (
+    <motion.div
+      initial={{ scale: 1, rotate }}
+      whileHover={{ scale: 1.5, rotate: 0, boxShadow: "0 12px 28px rgba(95,38,229,0.25)" }}
+      transition={{ type: "spring", stiffness: 400, damping: 15 }}
+      style={{
+        width: "44px", height: "44px", borderRadius: "50%", background: "#ffffff",
+        display: "flex", alignItems: "center", justifyContent: "center", fontSize: "20px",
+        boxShadow: "0 6px 16px rgba(0,0,0,0.10)", cursor: "pointer", pointerEvents: "auto",
+      }}
+    >
+      {emoji}
+    </motion.div>
+  );
+}
+
 function CategoryPillCard({ icon, label }: { icon: string; label: string }) {
   return (
     <div style={{
@@ -102,6 +127,12 @@ export default function OpportunityScatter({ lang }: { lang: "th" | "en" }) {
           <StatCard s={s} lang={lang} />
         </div>
       ))}
+
+      {REACTIONS.map((r) => (
+        <div key={r.emoji} style={{ position: "absolute", top: r.top, left: r.left }}>
+          <ReactionEmoji emoji={r.emoji} rotate={r.rotate} />
+        </div>
+      ))}
     </div>
   );
 }
@@ -150,6 +181,9 @@ export function OpportunityScatterMobileBottom({ lang }: { lang: "th" | "en" }) 
         <div style={{ width: "60%" }}>
           <MobileCell item={ITEMS[3]} lang={lang} rotate={1} />
         </div>
+      </div>
+      <div style={{ display: "flex", justifyContent: "center", gap: "16px" }}>
+        {REACTIONS.map((r) => <ReactionEmoji key={r.emoji} emoji={r.emoji} rotate={r.rotate} />)}
       </div>
     </div>
   );
