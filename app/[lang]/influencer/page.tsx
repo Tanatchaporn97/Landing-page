@@ -217,15 +217,40 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         `}</style>
       </section>
 
-      {/* ── Path to Partnership ── */}
-      <PathToPartnership lang={lang as Locale} />
+      {/* ── Unlock Exclusive Opportunities ── */}
+      <section className="inf-section" style={{ background: "linear-gradient(180deg, #F5F0FC 0%, #F1EBFA 100%)", padding: "100px 48px" }}>
+        <UnlockIconHover />
+        <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
+          {/* Title */}
+          <div style={{ textAlign: "center", marginBottom: "56px" }}>
+            <h2 style={{ fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
+              <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>Unlock Exclusive </span>
+              <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Opportunities</span>
+            </h2>
+          </div>
+
+          {/* Click-to-expand card row */}
+          <UnlockCards items={lang === "th" ? [
+            { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", bg: "#d7f2df", title: "แบรนด์เชื่อถือได้", desc: "ไม่มีแบรนด์เงียบ ไม่มีงานปลอม มีแต่ความโปร" },
+            { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", bg: "#fbdce9", title: "จ่ายตรง ไม่มีเบี้ยว", desc: "งานจบ เงินไม่หาย กดเบิกเองได้ทุกเมื่อ รับตามรอบแบบตรงเวลา" },
+            { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", bg: "#dbeafe", title: "รีวิวได้ครบ", desc: "จบทุกแพลตฟอร์ม ให้คุณสามารถมีโอกาส รับงานรีวิวได้หลากหลายช่องทาง" },
+            { img: "/unlocked-exclusive/Unlocked Exclusive-04.png", bg: "#fde8cf", title: "สิทธิพิเศษเฉพาะคุณ", desc: "ร่วมกิจกรรมและรับรางวัลสุดเอ็กซ์คลูซีฟ" },
+            { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", bg: "#e5ddfb", title: "มืออาชีพที่อยู่เคียงข้างคุณ", desc: "ทำงานได้อย่างมั่นใจ ด้วยทีมงานมืออาชีพ และระบบที่ช่วยให้ทุกอย่างง่ายขึ้น" },
+            { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", bg: "#d6f3f5", title: "แมทช์งานที่ใช่", desc: "รู้งานใหม่ก่อนใคร ด้วยระบบคัดกรองที่แมทช์งานตรงใจ ให้คุณได้ทำงานที่ใช่จากสิ่งที่ชอบ" },
+          ] : [
+            { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", bg: "#d7f2df", title: "Trusted Brands", desc: "No ghosting, no fake jobs. Just professionalism." },
+            { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", bg: "#fbdce9", title: "Paid on Time, Every Time", desc: "Finish the job, keep your money — withdraw anytime and get paid on a reliable schedule." },
+            { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", bg: "#dbeafe", title: "Review Anywhere", desc: "Covers every platform, giving you the chance to take on review work across multiple channels." },
+            { img: "/unlocked-exclusive/Unlocked Exclusive-04.png", bg: "#fde8cf", title: "Exclusive Perks for You", desc: "Join events and win exclusive rewards." },
+            { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", bg: "#e5ddfb", title: "Professionals By Your Side", desc: "Work with confidence, backed by a professional team and a system that makes everything easier." },
+            { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", bg: "#d6f3f5", title: "The Right Match", desc: "Be first to know about new jobs with a matching system that connects you to work you'll actually love." },
+          ]} />
+        </div>
+      </section>
 
       {/* ── Our Work / Buddy Ranks ── */}
       <section className="inf-section" style={{ background: "#F5F0FC", padding: "100px 48px", overflow: "hidden" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
-          <p style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#6b7280", margin: "0 0 12px" }}>
-            {lang === "th" ? "AI วิเคราะห์บัญชี TikTok" : "AI TikTok Account Analysis"}
-          </p>
           <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 24px" }}>
             <span style={{ fontStyle: lang === "th" ? "normal" : "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               Buddy Ranks
@@ -274,36 +299,8 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         `}</style>
       </section>
 
-      {/* ── Unlock Exclusive Opportunities ── */}
-      <section className="inf-section" style={{ background: "linear-gradient(180deg, #F5F0FC 0%, #F1EBFA 100%)", padding: "100px 48px" }}>
-        <UnlockIconHover />
-        <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
-          {/* Title */}
-          <div style={{ textAlign: "center", marginBottom: "56px" }}>
-            <h2 style={{ fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
-              <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>Unlock Exclusive </span>
-              <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Opportunities</span>
-            </h2>
-          </div>
-
-          {/* Click-to-expand card row */}
-          <UnlockCards items={lang === "th" ? [
-            { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", bg: "#d7f2df", title: "แบรนด์เชื่อถือได้", desc: "ไม่มีแบรนด์เงียบ ไม่มีงานปลอม มีแต่ความโปร" },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", bg: "#fbdce9", title: "จ่ายตรง ไม่มีเบี้ยว", desc: "งานจบ เงินไม่หาย กดเบิกเองได้ทุกเมื่อ รับตามรอบแบบตรงเวลา" },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", bg: "#dbeafe", title: "รีวิวได้ครบ", desc: "จบทุกแพลตฟอร์ม ให้คุณสามารถมีโอกาส รับงานรีวิวได้หลากหลายช่องทาง" },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-04.png", bg: "#fde8cf", title: "สิทธิพิเศษเฉพาะคุณ", desc: "ร่วมกิจกรรมและรับรางวัลสุดเอ็กซ์คลูซีฟ" },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", bg: "#e5ddfb", title: "มืออาชีพที่อยู่เคียงข้างคุณ", desc: "ทำงานได้อย่างมั่นใจ ด้วยทีมงานมืออาชีพ และระบบที่ช่วยให้ทุกอย่างง่ายขึ้น" },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", bg: "#d6f3f5", title: "แมทช์งานที่ใช่", desc: "รู้งานใหม่ก่อนใคร ด้วยระบบคัดกรองที่แมทช์งานตรงใจ ให้คุณได้ทำงานที่ใช่จากสิ่งที่ชอบ" },
-          ] : [
-            { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", bg: "#d7f2df", title: "Trusted Brands", desc: "No ghosting, no fake jobs. Just professionalism." },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", bg: "#fbdce9", title: "Paid on Time, Every Time", desc: "Finish the job, keep your money — withdraw anytime and get paid on a reliable schedule." },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", bg: "#dbeafe", title: "Review Anywhere", desc: "Covers every platform, giving you the chance to take on review work across multiple channels." },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-04.png", bg: "#fde8cf", title: "Exclusive Perks for You", desc: "Join events and win exclusive rewards." },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", bg: "#e5ddfb", title: "Professionals By Your Side", desc: "Work with confidence, backed by a professional team and a system that makes everything easier." },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", bg: "#d6f3f5", title: "The Right Match", desc: "Be first to know about new jobs with a matching system that connects you to work you'll actually love." },
-          ]} />
-        </div>
-      </section>
+      {/* ── Path to Partnership ── */}
+      <PathToPartnership lang={lang as Locale} />
 
 
       {/* ── Testimonials — scroll-jacking section (desktop) / static (mobile) ── */}

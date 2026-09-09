@@ -1,6 +1,6 @@
 "use client";
-import { useRef, useLayoutEffect, useEffect, useCallback, useState } from "react";
-import { motion, useMotionValue, animate } from "motion/react";
+import { useRef, useLayoutEffect, useEffect, useState } from "react";
+import { motion, useMotionValue } from "motion/react";
 import Image from "next/image";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -46,71 +46,31 @@ function Card({ t }: { t: { photo: string; name: string; text: string } }) {
 }
 
 // ── MarqueeColumn ────────────────────────────────────────────────────────────
-// - Auto-scrolls in `direction` at `duration` seconds per loop.
-// - Mouse wheel over the column scrolls it manually (page scroll is not stolen
-//   unless the pointer is actually inside the column).
-// - Drag (touch / mouse drag) also works; releases resume auto-scroll.
+// Static column, no auto-scroll — the user scrolls it manually with the mouse
+// wheel or by dragging (touch / mouse).
 function MarqueeColumn({
   items,
   direction,
-  duration,
   style,
   className,
 }: {
   items: { photo: string; name: string; text: string }[];
   direction: "up" | "down";
-  duration: number;
   style?: React.CSSProperties;
   className?: string;
 }) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const origRef    = useRef<HTMLDivElement>(null);
-  const stepRef    = useRef(0);          // always-current step, safe for closures
   const [step, setStep] = useState(0);  // for dragConstraints render
   const y          = useMotionValue(0);
-  const loopRef    = useRef<ReturnType<typeof animate> | null>(null);
 
-  // Start (or restart) the infinite loop from currentY.
-  const runLoop = useCallback((currentY: number, s: number) => {
-    const target    = direction === "up" ? -s : 0;
-    const loopStart = direction === "up" ?  0 : -s;
-
-    // Normalise into one loop range to prevent backward animation.
-    let from = currentY;
-    if (direction === "up") {
-      from = ((from % s) - s) % s;
-      if (from > 0) from -= s;
-    } else {
-      from = ((from + s) % s) - s;
-      if (from > 0) from -= s;
-    }
-    y.set(from);
-
-    const dist = Math.abs(from - target);
-    const dur  = (dist / s) * duration;
-
-    loopRef.current?.stop();
-    loopRef.current = animate(y, target, {
-      duration: dur,
-      ease: "linear",
-      onComplete: () => {
-        y.set(loopStart);
-        runLoop(loopStart, s);
-      },
-    });
-  }, [direction, duration, y]);
-
-  // Measure on first paint and kick off auto-scroll.
+  // Measure on first paint and set the initial static position.
   useLayoutEffect(() => {
     const h = origRef.current?.offsetHeight ?? 0;
     if (!h) return;
     const s = h + CARD_GAP;
-    stepRef.current = s;
     setStep(s);
-    const initial = direction === "up" ? 0 : -s;
-    y.set(initial);
-    runLoop(initial, s);
-    return () => loopRef.current?.stop();
+    y.set(direction === "up" ? 0 : -s);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -120,45 +80,24 @@ function MarqueeColumn({
     const el = wrapperRef.current;
     if (!el) return;
 
-    let wheelTimer: ReturnType<typeof setTimeout>;
-
     const handleWheel = (e: WheelEvent) => {
-      const s = stepRef.current;
-      if (!s) return;
       e.preventDefault();            // stop page from scrolling
-      loopRef.current?.stop();
       y.set(y.get() - e.deltaY * 0.8);
-
-      // Resume auto-scroll ~900 ms after the user stops wheeling.
-      clearTimeout(wheelTimer);
-      wheelTimer = setTimeout(() => runLoop(y.get(), s), 900);
     };
 
     el.addEventListener("wheel", handleWheel, { passive: false });
-    return () => {
-      el.removeEventListener("wheel", handleWheel);
-      clearTimeout(wheelTimer);
-    };
-  }, [runLoop, y]);
-
-  const pause  = useCallback(() => { loopRef.current?.stop(); }, []);
-  const resume = useCallback(() => {
-    const s = stepRef.current;
-    if (s) runLoop(y.get(), s);
-  }, [runLoop, y]);
+    return () => el.removeEventListener("wheel", handleWheel);
+  }, [y]);
 
   const colStyle: React.CSSProperties = { display: "flex", flexDirection: "column", gap: `${CARD_GAP}px` };
 
   return (
-    <div ref={wrapperRef} className={className} style={{ flex: 1, overflow: "hidden", ...style }}
-      onMouseEnter={pause} onMouseLeave={resume}>
+    <div ref={wrapperRef} className={className} style={{ flex: 1, overflow: "hidden", ...style }}>
       <motion.div
         style={{ y, cursor: "grab", userSelect: "none" }}
         drag="y"
         dragConstraints={{ top: -(step * 3), bottom: step * 2 }}
         dragElastic={0.08}
-        onDragStart={pause}
-        onDragEnd={resume}
         whileDrag={{ cursor: "grabbing" }}
       >
         {direction === "down" && (
@@ -238,8 +177,8 @@ export default function TestimonialsScrollSection({
             position: "relative",
           }}
         >
-          <MarqueeColumn items={col1} direction="up" duration={30} className="tss-col1" />
-          <MarqueeColumn items={col2} direction="down" duration={38} style={{ marginTop: "48px" }} className="tss-col2" />
+          <MarqueeColumn items={col1} direction="up" className="tss-col1" />
+          <MarqueeColumn items={col2} direction="down" style={{ marginTop: "48px" }} className="tss-col2" />
           <div className="tss-fade-bot" style={{
             position: "absolute", bottom: 0, left: 0, right: 0, height: "120px",
             background: `linear-gradient(to top, ${BG_BOT} 0%, transparent 100%)`,
@@ -252,7 +191,7 @@ export default function TestimonialsScrollSection({
           className="tss-viewport-single"
           style={{ display: "none", width: "100%", height: `${VIEW_H}px`, position: "relative", overflow: "hidden" }}
         >
-          <MarqueeColumn items={items} direction="up" duration={35} />
+          <MarqueeColumn items={items} direction="up" />
           <div className="tss-fade-bot" style={{
             position: "absolute", bottom: 0, left: 0, right: 0, height: "120px",
             background: `linear-gradient(to top, ${BG_BOT} 0%, transparent 100%)`,

@@ -11,7 +11,7 @@ export default function UnlockCards({ items }: { items: Item[] }) {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <div className="unlock-cards-row" style={{ display: "flex", gap: "20px", overflowX: "auto", paddingBottom: "8px" }}>
+    <div className="unlock-cards-row" style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center" }}>
       {items.map((item, i) => {
         const isOpen = active === i;
         return (
@@ -46,7 +46,6 @@ export default function UnlockCards({ items }: { items: Item[] }) {
       })}
 
       <style>{`
-        .unlock-cards-row::-webkit-scrollbar{ display: none; }
         .unlock-card{
           position: relative;
           flex: 0 0 210px;
