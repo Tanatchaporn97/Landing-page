@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -32,10 +31,8 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
   const catAll = lang === "th" ? "ข่าวสาร" : "News";
   const catBrand = lang === "th" ? "สำหรับแบรนด์" : "For Brands";
   const catInf = lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Influencers";
-  const CATS = [catAll, catBrand, catInf];
 
-  const initialCat = variant === "brand" ? catBrand : variant === "influencer" ? catInf : catAll;
-  const [activeCat, setActiveCat] = useState(initialCat);
+  const activeCat = variant === "brand" ? catBrand : variant === "influencer" ? catInf : catAll;
 
   const allPosts: Post[] = dict?.blogPosts || [];
   if (allPosts.length === 0) return null;
@@ -45,8 +42,8 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
   return (
     <section className="py-20 px-6">
       <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
-        {/* Heading row — heading left, category CTAs right */}
-        <div className="newsroom-header-row" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "24px", marginBottom: "56px" }}>
+        {/* Heading row */}
+        <div className="newsroom-header-row" style={{ marginBottom: "56px" }}>
           <h2 style={{
             ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800,
             margin: 0, lineHeight: 1.15,
@@ -55,25 +52,6 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
           }}>
             Newsroom
           </h2>
-
-          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-            {CATS.map((cat) => {
-              const isActive = activeCat === cat;
-              return (
-                <button key={cat} onClick={() => setActiveCat(cat)} style={{
-                  ...KT, cursor: "pointer",
-                  background: isActive ? "#5f26e5" : "#ffffff",
-                  color: isActive ? "#ffffff" : "#5f26e5",
-                  border: isActive ? "1px solid #5f26e5" : "1px solid rgba(95,38,229,0.18)",
-                  boxShadow: "0 4px 16px rgba(95,38,229,0.08)",
-                  borderRadius: "50px", fontSize: "14px", fontWeight: 600,
-                  padding: "10px 22px", display: "inline-block",
-                }}>
-                  {cat}
-                </button>
-              );
-            })}
-          </div>
         </div>
 
         {!featured && (

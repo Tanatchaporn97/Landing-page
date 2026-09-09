@@ -92,16 +92,55 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
               textTransform: "capitalize", fontFeatureSettings: "'pnum' on,'lnum' on", margin: "0 0 48px" }}>
             From Strategy To Insight,<span className="hero-subline-break"> We Turn Influence Into Impact.</span>
           </h2>
-          <div className="flex flex-wrap gap-6 justify-center">
-            <Link href={`/${lang}/brand`} className="btn-hero font-semibold hero-btn"
-              style={{ ...KT, fontSize: "16px", padding: "14px 32px", minWidth: "176px", borderRadius: "50px", textDecoration: "none", color: "#5f26e5" }}>
-              {t.imBrand}
+          {/* Split path — left for brands, right for influencers */}
+          <div className="hero-split-row" style={{
+            display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0",
+            maxWidth: "820px", margin: "0 auto",
+            background: "rgba(255,255,255,0.5)",
+            backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
+            border: "1px solid rgba(255,255,255,0.6)",
+            boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
+            borderRadius: "24px", overflow: "hidden",
+          }}>
+            <Link href={`/${lang}/brand`} className="hero-split-panel" style={{
+              ...KT, textDecoration: "none", display: "flex", flexDirection: "column", alignItems: "center",
+              gap: "10px", padding: "32px 24px", color: "#111827",
+              borderRight: "1px solid rgba(95,38,229,0.15)",
+            }}>
+              <span style={{ fontSize: "26px" }}>🏢</span>
+              <span style={{ fontSize: "18px", fontWeight: 800 }}>{t.imBrand}</span>
+              <span style={{ fontSize: "14px", color: "#6b7280", lineHeight: 1.6 }}>
+                {lang === "th" ? "วางกลยุทธ์และบริหารแคมเปญอินฟลูเอนเซอร์" : "Plan and manage influencer campaigns"}
+              </span>
+              <span className="hero-split-cta" style={{ fontSize: "14px", fontWeight: 700, color: "#5f26e5", marginTop: "6px" }}>
+                {lang === "th" ? "เริ่มต้นเลย →" : "Get Started →"}
+              </span>
             </Link>
-            <Link href={`/${lang}/influencer`} className="btn-hero btn-hero-solid-purple font-semibold hero-btn"
-              style={{ ...KT, fontSize: "16px", padding: "14px 32px", minWidth: "176px", borderRadius: "50px", textDecoration: "none" }}>
-              {t.imInfluencer}
+            <Link href={`/${lang}/influencer`} className="hero-split-panel" style={{
+              ...KT, textDecoration: "none", display: "flex", flexDirection: "column", alignItems: "center",
+              gap: "10px", padding: "32px 24px", color: "#111827",
+            }}>
+              <span style={{ fontSize: "26px" }}>🎤</span>
+              <span style={{ fontSize: "18px", fontWeight: 800 }}>{t.imInfluencer}</span>
+              <span style={{ fontSize: "14px", color: "#6b7280", lineHeight: 1.6 }}>
+                {lang === "th" ? "รับงานรีวิวจากแบรนด์ชั้นนำ สร้างรายได้จากสิ่งที่คุณรัก" : "Get review jobs from top brands, earn from what you love"}
+              </span>
+              <span className="hero-split-cta" style={{ fontSize: "14px", fontWeight: 700, color: "#5f26e5", marginTop: "6px" }}>
+                {lang === "th" ? "เริ่มต้นเลย →" : "Get Started →"}
+              </span>
             </Link>
           </div>
+
+          <style>{`
+            .hero-split-panel{ transition: background-color 0.25s ease, transform 0.25s ease; }
+            .hero-split-panel:hover{ background: rgba(95,38,229,0.06); transform: translateY(-2px); }
+            .hero-split-cta{ transition: transform 0.25s ease; }
+            .hero-split-panel:hover .hero-split-cta{ transform: translateX(4px); }
+            @media (max-width: 640px){
+              .hero-split-row{ grid-template-columns: 1fr !important; }
+              .hero-split-panel{ border-right: none !important; border-bottom: 1px solid rgba(95,38,229,0.15); }
+            }
+          `}</style>
 
           {/* Impact Stats — static figures from Success Stories section */}
           <div className="hero-stats-strip" style={{
@@ -160,6 +199,9 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           {/* Heading */}
           <div className="text-center mb-12" style={{ maxWidth: "954px", margin: "0 auto 48px" }}>
+            <p style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#6b7280", margin: "0 0 12px" }}>
+              {lang === "th" ? "อะไรดีนะ" : "What's the Secret?"}
+            </p>
             <h2 className="section-title font-bold mb-6 section-h2-fixed"
               style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px", textAlign: "center",
                 fontFeatureSettings: "'pnum' on,'lnum' on" }}>
