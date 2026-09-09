@@ -281,21 +281,20 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           className="our-services-grid"
           >
             {OUR_SERVICES.map(({ img, title, desc, descEn, objectPosition }) => (
-              <div key={title} style={{
-                position: "relative",
-                borderRadius: "28px",
-                overflow: "hidden",
-                width: "100%",
-                height: "420px",
-                boxShadow: "0 12px 40px rgba(95,38,229,0.22)",
-              }}>
-                <Image src={img} alt={title} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover", objectPosition: objectPosition || "center" }} />
-                <div style={{ position: "absolute", inset: 0,
-                  background: "linear-gradient(to top, rgba(95,38,229,1) 0%, rgba(95,38,229,0.85) 30%, rgba(95,38,229,0) 65%)" }} />
-                <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "24px 24px 28px",
-                  display: "flex", flexDirection: "column", gap: "8px" }}>
-                  <h3 style={{ ...KT, fontSize: "24px", fontWeight: 600, color: "#ffffff", margin: "0 0 6px", lineHeight: 1.2 }}>{title}</h3>
-                  <p style={{ ...KT, fontSize: "15px", fontWeight: 400, lineHeight: 1.6, color: "rgba(255,255,255,0.85)", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
+              <div key={title} style={{ display: "flex", flexDirection: "column" }}>
+                <div style={{
+                  position: "relative",
+                  borderRadius: "28px",
+                  overflow: "hidden",
+                  width: "100%",
+                  height: "320px",
+                  boxShadow: "0 12px 40px rgba(95,38,229,0.16)",
+                }}>
+                  <Image src={img} alt={title} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover", objectPosition: objectPosition || "center" }} />
+                </div>
+                <div style={{ padding: "20px 4px 0", display: "flex", flexDirection: "column", gap: "8px" }}>
+                  <h3 style={{ ...KT, fontSize: "24px", fontWeight: 600, color: "#111827", margin: "0 0 6px", lineHeight: 1.2 }}>{title}</h3>
+                  <p style={{ ...KT, fontSize: "15px", fontWeight: 400, lineHeight: 1.6, color: "#6b7280", margin: 0 }}>{lang === "th" ? desc : descEn}</p>
                 </div>
               </div>
             ))}
