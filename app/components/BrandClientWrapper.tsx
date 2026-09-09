@@ -397,12 +397,12 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   <TextStaggerHover
                     index={index}
                     text={title}
-                    className="cursor-pointer uppercase tracking-tight"
+                    className="cursor-pointer"
                     style={{ ...KT, fontSize: "clamp(22px,2.6vw,34px)", fontWeight: 800 }}
                   />
                   <HoverSlideDescription
                     index={index}
-                    style={{ ...KT, fontSize: "15px", lineHeight: 1.6, color: "#6b7280", maxWidth: "420px" }}
+                    style={{ ...KT, fontSize: "15px", lineHeight: 1.6, color: "#111827", maxWidth: "420px" }}
                   >
                     {lang === "th" ? desc : descEn}
                   </HoverSlideDescription>
