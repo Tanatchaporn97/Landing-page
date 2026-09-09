@@ -217,6 +217,85 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
       </section>
 
+      {/* ── Hero (playful variant) ── */}
+      <section
+        className="flex items-start px-6 relative"
+        style={{
+          minHeight: "72vh",
+          padding: "100px 24px",
+          overflow: "hidden",
+          position: "relative",
+          zIndex: 10,
+          background: "linear-gradient(180deg, #F9F6FE 0%, #FFFFFF 100%)",
+        }}
+      >
+        <div className="hero-grid-inf relative" style={{ maxWidth: "1200px", margin: "0 auto", width: "100%", zIndex: 2,
+          display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center" }}>
+
+          {/* Left: playful stacked headline + underline squiggle + pill CTA */}
+          <div style={{ position: "relative" }}>
+            <h2 className="font-bold" style={{ ...KT, color: "#111827", fontSize: "clamp(30px,4vw,52px)", lineHeight: 1.2, margin: "0 0 24px" }}>
+              {lang === "th" ? (
+                <>ไม่ใช่แค่กลยุทธ์<br/>แต่คือ<br/>
+                  <span style={{ position: "relative", display: "inline-block" }}>
+                    ผลลัพธ์ที่วัดได้จริง
+                    <svg viewBox="0 0 320 24" width="100%" height="24" style={{ position: "absolute", left: 0, bottom: "-14px", overflow: "visible" }} aria-hidden="true">
+                      <path d="M4 14 C 60 2, 120 22, 180 10 S 280 4, 316 12" fill="none" stroke="#ff0089" strokeWidth="5" strokeLinecap="round" />
+                    </svg>
+                  </span>
+                </>
+              ) : (
+                <>Not Just<br/>Strategies, But<br/>
+                  <span style={{ position: "relative", display: "inline-block" }}>
+                    Real Results
+                    <svg viewBox="0 0 320 24" width="100%" height="24" style={{ position: "absolute", left: 0, bottom: "-14px", overflow: "visible" }} aria-hidden="true">
+                      <path d="M4 14 C 60 2, 120 22, 180 10 S 280 4, 316 12" fill="none" stroke="#ff0089" strokeWidth="5" strokeLinecap="round" />
+                    </svg>
+                  </span>
+                </>
+              )}
+            </h2>
+
+            {/* Floating scribble accent, echoing the reference's hand-drawn doodle */}
+            <svg viewBox="0 0 60 60" width="52" height="52" style={{ position: "absolute", top: "-8px", right: "8%" }} aria-hidden="true">
+              <path d="M6 40 C 18 44, 24 20, 14 12 C 8 6, 20 2, 28 10 M40 6 L 46 2 M44 14 L 52 12" fill="none" stroke="#5f26e5" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" opacity="0.55" />
+            </svg>
+
+            <p style={{ ...KT, color: "#6b7280", fontSize: "clamp(15px,1.3vw,18px)", lineHeight: 1.8, margin: "40px 0 32px", maxWidth: "440px" }}>
+              {lang === "th"
+                ? "ไม่ว่าจะทุกที่หรือทุกเวลา Buddy Review ช่วยให้แบรนด์ของคุณเข้าถึงลูกค้าได้อย่างมั่นใจและวัดผลได้จริง"
+                : "Anywhere, anytime — Buddy Review helps your brand reach the right audience with confidence and measurable results."}
+            </p>
+
+            <a href="#contact" style={{ ...KT, display: "inline-flex", alignItems: "center", justifyContent: "center",
+              background: "#111827", color: "#ffffff", fontWeight: 600, fontSize: "16px",
+              padding: "16px 36px", borderRadius: "50px", textDecoration: "none" }}>
+              {lang === "th" ? "เริ่มต้นเลย" : "Get Started"}
+            </a>
+          </div>
+
+          {/* Right: tilted mockup with floating decorative accents */}
+          <div style={{ position: "relative" }}>
+            <div style={{
+              position: "absolute", width: "320px", height: "320px", borderRadius: "50%",
+              background: "radial-gradient(circle, rgba(255,0,137,0.10) 0%, transparent 70%)",
+              top: "50%", left: "50%", transform: "translate(-50%,-50%)", zIndex: 0,
+            }} />
+            <motion.div
+              style={{ position: "relative", aspectRatio: "6251 / 4239", zIndex: 1 }}
+              animate={{ rotate: -3 }}
+              whileHover={{ rotate: 0, scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 200, damping: 18 }}
+            >
+              <Image src="/im-brand-dashboard.png" alt={lang === "th" ? "แดชบอร์ดแคมเปญ" : "Campaign dashboard"} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "contain" }} />
+            </motion.div>
+
+            <span style={{ position: "absolute", top: "6%", left: "0%", fontSize: "28px", zIndex: 2 }}>✨</span>
+            <span style={{ position: "absolute", bottom: "10%", right: "2%", fontSize: "24px", zIndex: 2 }}>💜</span>
+          </div>
+        </div>
+      </section>
+
       {/* ── Hero → Logos fade overlay ── */}
       <div className="hero-logos-fade" style={{ height: "120px", marginTop: "-120px", background: "linear-gradient(to bottom, transparent 0%, #ffffff 100%)", position: "relative", zIndex: 11, pointerEvents: "none" }} />
 
