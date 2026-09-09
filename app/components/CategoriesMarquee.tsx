@@ -17,9 +17,8 @@ function CatCard({ cat }: { cat: typeof INF_CATEGORIES[0] }) {
       width: "300px", flexShrink: 0,
       display: "flex", flexDirection: "row", alignItems: "center", gap: "16px",
       padding: "18px 22px",
-      background: "rgba(255,255,255,0.22)",
-      backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
-      border: "1px solid rgba(255,255,255,0.45)",
+      background: "#ffffff",
+      border: "1px solid rgba(95,38,229,0.12)",
       boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
       borderRadius: "20px", boxSizing: "border-box",
     }}>
@@ -33,10 +32,9 @@ function CatCard({ cat }: { cat: typeof INF_CATEGORIES[0] }) {
           {cat.label}
         </span>
         <span style={{
-          color: "#5f26e5", fontSize: "13px", fontWeight: 500,
+          color: "#ffffff", fontSize: "13px", fontWeight: 500,
           padding: "4px 12px", borderRadius: "20px",
-          background: "rgba(255,255,255,0.18)", backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.35)",
+          background: "#5f26e5",
           display: "inline-block", width: "fit-content", whiteSpace: "nowrap",
         }}>
           {cat.category} {cat.emoji}

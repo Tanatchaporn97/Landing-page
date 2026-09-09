@@ -37,7 +37,7 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
         <div style={{ textAlign: "center", marginBottom: "64px" }}>
           <h2 style={{
             ...KT,
-            fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 800,
+            fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800,
             color: "#111827",
             margin: "0 0 16px", lineHeight: 1.2,
           }}>
@@ -46,13 +46,11 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
         </div>
 
         {/* 2-column: hoverable step list | mockup + description */}
-        <div className="ptp-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "stretch" }}>
+        <div className="ptp-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0,480px) minmax(0,480px)", gap: "16px", alignItems: "stretch", justifyContent: "center", maxWidth: "1040px", margin: "0 auto" }}>
 
-          {/* Left — dark hoverable step list */}
+          {/* Left — hoverable step list */}
           <div style={{
-            background: "linear-gradient(160deg, #1a0f2e 0%, #120a24 100%)",
-            borderRadius: "28px",
-            padding: "16px 40px",
+            padding: "16px 0",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -67,19 +65,19 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
                     ...KT, fontSize: "13px", fontWeight: 700, flexShrink: 0,
                     width: "40px", height: "40px", borderRadius: "50%",
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    border: isActive ? "1.5px solid #ff8bc7" : "1.5px solid rgba(255,255,255,0.2)",
-                    color: isActive ? "#ff8bc7" : "rgba(255,255,255,0.35)",
+                    border: isActive ? "1.5px solid #5f26e5" : "1.5px solid rgba(17,24,39,0.15)",
+                    color: isActive ? "#5f26e5" : "rgba(17,24,39,0.35)",
                     transition: "color 0.3s ease, border-color 0.3s ease",
                   }}>
                     {s.step}
                   </span>
                   <div>
                     <h3 style={{ ...KT, fontSize: "clamp(18px,2vw,24px)", fontWeight: 700, margin: 0, lineHeight: 1.35,
-                      color: isActive ? "#ffffff" : "rgba(255,255,255,0.4)", transition: "color 0.3s ease" }}>
+                      color: isActive ? "#5f26e5" : "rgba(17,24,39,0.35)", transition: "color 0.3s ease" }}>
                       {s.title}
                     </h3>
                     <p style={{
-                      ...KT, fontSize: "15px", lineHeight: 1.7, color: "rgba(255,255,255,0.65)",
+                      ...KT, fontSize: "15px", lineHeight: 1.7, color: "#374151",
                       margin: 0, maxWidth: "400px", overflow: "hidden",
                       maxHeight: isActive ? "120px" : "0px",
                       opacity: isActive ? 1 : 0,
@@ -96,7 +94,7 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
                       marginTop: isActive ? "16px" : "0px",
                       transition: "max-height 0.4s ease, opacity 0.3s ease, margin-top 0.4s ease",
                     }}>
-                      <img src={s.img} alt={s.title} style={{ height: "312px", width: "auto", display: "block" }} />
+                      <img src={s.img} alt={s.title} className="ptp-mobile-phone-img" style={{ width: "calc(100vw - 80px)", height: "auto", display: "block" }} />
                     </div>
                   </div>
                 </div>
@@ -106,10 +104,6 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
 
           {/* Right — mockup crossfade (desktop only, replaced by inline mockups on mobile) */}
           <div className="ptp-desktop-panel" style={{
-            background: "#ffffff",
-            borderRadius: "28px",
-            border: "1px solid rgba(95,38,229,0.08)",
-            boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
             padding: "48px 40px",
             display: "flex",
             flexDirection: "column",

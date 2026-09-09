@@ -10,6 +10,10 @@ import { getDictionary } from "../../../../get-dictionary";
 import { type Locale } from "../../../../i18n-config";
 
 const BLOG_DESCRIPTIONS: Record<string, Record<string, string>> = {
+  "outing-trip-2025": {
+    th: "Buddy Review พาทีมไปเอาท์ติ้ง Outing Trip 2025 แบ่งปันเสียงหัวเราะ ความสุข และการทำงานเป็นทีมที่ลงตัว",
+    en: "Buddy Review's Outing Trip 2025 — laughs, joys, and perfect teamwork as we connect and recharge together.",
+  },
   "ais-infinite-smes-2026": {
     th: "Buddy Review เข้าร่วมโครงการ Transformative Infinite SMEs 2026 โดย AIS Infinite SMEs แลกเปลี่ยนมุมมอง Technology, AI และการ Scale Up ธุรกิจ",
     en: "Buddy Review joined the Transformative Infinite SMEs 2026 program by AIS Infinite SMEs, exchanging perspectives on Technology, AI, and scaling up a business.",
@@ -129,6 +133,52 @@ const OL = ({ items }: { items: React.ReactNode[] }) => (
     ))}
   </ol>
 );
+
+const OUTING_GALLERY = [
+  "/blogs/outing-2025-03.jpg",
+  "/blogs/outing-2025-04.jpg",
+  "/blogs/outing-2025-05.jpg",
+  "/blogs/outing-2025-06.jpg",
+  "/blogs/outing-2025-07.jpg",
+  "/blogs/outing-2025-08.jpg",
+  "/blogs/outing-2025-09.jpg",
+  "/blogs/outing-2025-10.jpg",
+];
+
+function OutingGallery() {
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "12px", margin: "8px 0 32px" }}>
+      {OUTING_GALLERY.map((src) => (
+        <div key={src} style={{ position: "relative", borderRadius: "16px", overflow: "hidden", aspectRatio: "1 / 1" }}>
+          <Image src={src} alt="Buddy Review Outing Trip 2025" fill sizes="(max-width: 768px) 50vw, 380px" style={{ objectFit: "cover" }} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function OutingTripContent({ lang }: { lang: Locale }) {
+  if (lang === "en") {
+    return (
+      <>
+        <P>We share laughs, joys, and perfect teamwork.</P>
+        <P>It&apos;s not just an outing — it&apos;s the moment we connect, recharge, and come back stronger together.</P>
+        <P>Grateful for every smile and every memory we created.</P>
+        <Divider />
+        <OutingGallery />
+      </>
+    );
+  }
+  return (
+    <>
+      <P>เราแบ่งปันเสียงหัวเราะ ความสุข และการทำงานเป็นทีมที่ลงตัว</P>
+      <P>นี่ไม่ใช่แค่ทริปเอาท์ติ้ง แต่คือช่วงเวลาที่เราได้เชื่อมสัมพันธ์ ชาร์จพลัง และกลับมาแข็งแกร่งไปด้วยกัน</P>
+      <P>ขอบคุณทุกรอยยิ้มและทุกความทรงจำที่เราสร้างขึ้นด้วยกัน</P>
+      <Divider />
+      <OutingGallery />
+    </>
+  );
+}
 
 const AIS_GALLERY = [
   "/blogs/ais-infinite-smes-02.jpg",
@@ -879,7 +929,7 @@ function CopywritingContent({ lang }: { lang: Locale }) {
   );
 }
 
-const SLUGS = ["ais-infinite-smes-2026", "cp-all-influencer-trend-ep8", "best-time-to-post-2025", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas", "6-copywriting-techniques"];
+const SLUGS = ["outing-trip-2025", "ais-infinite-smes-2026", "cp-all-influencer-trend-ep8", "best-time-to-post-2025", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas", "6-copywriting-techniques"];
 
 export function generateStaticParams() {
   return SLUGS.map((slug) => ({ slug }));
@@ -949,7 +999,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ lang:
           </h1>
           <div style={{ height: "1px", background: "rgba(255,255,255,0.2)", marginBottom: "32px" }} />
 
-          {post.slug === "ais-infinite-smes-2026" ? (
+          {post.slug === "outing-trip-2025" ? (
+            <OutingTripContent lang={lang as Locale} />
+          ) : post.slug === "ais-infinite-smes-2026" ? (
             <AISInfiniteSMEsContent lang={lang as Locale} />
           ) : post.slug === "cp-all-influencer-trend-ep8" ? (
             <CPAllEventContent lang={lang as Locale} />

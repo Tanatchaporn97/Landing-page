@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
@@ -13,6 +13,7 @@ import { type Locale } from "../../../i18n-config";
 
 export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const catAll = lang === "th" ? "ข่าวสาร" : "News";
   const catBrand = lang === "th" ? "สำหรับแบรนด์" : "For Brands";
   const catInf = lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Influencers";
@@ -40,12 +41,15 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
 
       {/* Back button */}
       <div className="blog-back-row" style={{ padding: "140px 48px 28px" }}>
-        <Link href={`/${lang}`} style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,255,255,0.12)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.25)", borderRadius: "50px", padding: "10px 22px", color: "#5f26e5", textDecoration: "none", fontSize: "15px", fontWeight: 500 }}>
+        <button
+          onClick={() => router.back()}
+          style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,255,255,0.12)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.25)", borderRadius: "50px", padding: "10px 22px", color: "#5f26e5", fontSize: "15px", fontWeight: 500, cursor: "pointer" }}
+        >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M19 12H5M12 5l-7 7 7 7"/>
           </svg>
-          {lang === "th" ? "กลับหน้าหลัก" : "Back to Home"}
-        </Link>
+          {lang === "th" ? "ย้อนกลับ" : "Back"}
+        </button>
       </div>
 
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px 100px" }}>

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import CardFanCarousel from "../../components/CardFanCarousel";
 import type { Metadata } from "next";
 
@@ -89,7 +88,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       {/* ── Video Showcase ── */}
       <section style={{ position: "relative", minHeight: "60vh", overflow: "hidden" }}>
         <div className="video-showcase-row" style={{ position: "absolute", inset: 0, display: "flex" }}>
-          {["/videos/influencer-header/header-1.mp4", "/videos/influencer-header/header-2.mp4", "/videos/influencer-header/header-3.mp4"].map((src) => (
+          {["/videos/influencer-header/header-2.mp4", "/videos/influencer-header/header-3.mp4"].map((src) => (
             <video key={src} autoPlay muted loop playsInline
               style={{ flex: 1, minWidth: 0, height: "100%", objectFit: "cover" }}>
               <source src={src} type="video/mp4" />
@@ -108,7 +107,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               {lang === "th" ? "ได้งานที่ชอบ" : "Get Work You Love"}
             </span>
           </h2>
-          <p style={{ ...KT, fontWeight: 700, fontSize: "clamp(15px,1.6vw,18px)", color: "rgba(255,255,255,0.9)", maxWidth: "900px", lineHeight: 1.8, margin: "0 0 32px" }}>
+          <p style={{ ...KT, fontWeight: 700, fontSize: "clamp(18px,1.8vw,28px)", color: "rgba(255,255,255,0.9)", maxWidth: "900px", lineHeight: 1.7, margin: "0 0 32px" }}>
             {lang === "th" ? (
               <>จบปัญหาความยุ่งยากในการรีวิวแบบเดิม ๆ<br />เชื่อมต่อกับแบรนด์ชั้นนำและสร้างรายได้จากสิ่งที่คุณรัก</>
             ) : (
@@ -117,18 +116,26 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
           </p>
           <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
             <a href="https://www.buddyreview.co/app/new-campaigns" target="_blank" rel="noopener noreferrer"
+              className="vs-cta-solid"
               style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", background: "#5f26e5", color: "#ffffff", borderRadius: "50px", padding: "14px 32px", textDecoration: "none", fontSize: "16px", fontWeight: 700 }}>
               {lang === "th" ? "สมัครเลย" : "Apply Now"}
             </a>
             <a href="https://line.me/R/ti/p/@buddysupport" target="_blank" rel="noopener noreferrer"
-              style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none", fontSize: "16px", fontWeight: 700, color: "#111827", background: "rgba(255,255,255,0.9)", border: "1px solid rgba(95,38,229,0.25)", borderRadius: "50px", padding: "10px 28px 10px 14px" }}>
-              <Image src="/social/Line.png" alt="LINE" width={26} height={26} style={{ borderRadius: "6px" }} />
+              className="vs-cta-line"
+              style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none", fontSize: "16px", fontWeight: 700, color: "#06C755", background: "#ffffff", border: "1.5px solid #06C755", borderRadius: "50px", padding: "10px 28px 10px 14px" }}>
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style={{ flexShrink: 0 }} aria-hidden="true">
+                <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .348-.281.629-.629.629H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.628-.63.349 0 .63.285.63.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
+              </svg>
               {lang === "th" ? "สมัครผ่านไลน์" : "Apply via LINE"}
             </a>
           </div>
         </div>
 
         <style>{`
+          .vs-cta-solid{ transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease; }
+          .vs-cta-solid:hover{ background: #ffffff !important; color: #5f26e5 !important; transform: translateY(-2px); }
+          .vs-cta-line{ transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease; }
+          .vs-cta-line:hover{ background: #06C755 !important; color: #ffffff !important; transform: translateY(-2px); }
           @media (max-width: 760px){
             .video-showcase-row{ flex-direction: column; }
             .vs-line1, .vs-line2{ white-space: normal !important; }
@@ -162,7 +169,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
           <div style={{ textAlign: "center", width: "100%" }}>
             <h2 className="opportunity-heading" style={{
               ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }),
-              fontSize: "clamp(24px,3vw,48px)",
+              fontSize: "clamp(28px,3.3vw,48px)",
               fontWeight: 700,
               lineHeight: 1.2,
               margin: "0 0 32px",
@@ -178,7 +185,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               ...KT,
               color: "#111827",
               fontSize: "18px",
-              lineHeight: 1.85,
+              lineHeight: 1.7,
               margin: "0 auto 48px",
               fontWeight: 400,
               maxWidth: "500px",
@@ -219,17 +226,17 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
           <p style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#6b7280", margin: "0 0 12px" }}>
             {lang === "th" ? "AI วิเคราะห์บัญชี TikTok" : "AI TikTok Account Analysis"}
           </p>
-          <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(32px,3.5vw,52px)", lineHeight: 1.2, margin: "0 0 24px" }}>
+          <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 24px" }}>
             <span style={{ fontStyle: lang === "th" ? "normal" : "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               Buddy Ranks
             </span><br />
             {lang === "th" ? (
-              <span style={{ color: "#111827" }}>รู้จักช่องตัวเองให้มากขึ้น แล้วโตได้แบบมีทิศทาง</span>
+              <span style={{ color: "#111827" }}>รู้จักช่องตัวเองให้มากขึ้น<br />แล้วโตได้แบบมีทิศทาง</span>
             ) : (
               <span style={{ color: "#111827" }}>Know your channel better, grow with direction</span>
             )}
           </h2>
-          <p className="desc-text" style={{ ...KT, fontSize: "18px", color: "#374151", lineHeight: 1.85, margin: "0 auto 32px", maxWidth: "620px" }}>
+          <p className="desc-text" style={{ ...KT, fontSize: "18px", color: "#374151", lineHeight: 1.7, margin: "0 auto 32px", maxWidth: "620px" }}>
             {lang === "th"
               ? "Buddy Ranks ใช้ AI ในการช่วยวิเคราะห์ผู้ติดตาม คอนเทนต์ และ Performance รู้ว่า คนดูคือใคร คอนเทนต์แบบไหนเวิร์ก และควรทำอะไรต่อ"
               : "Buddy Ranks uses AI to help analyze your followers, content, and performance — know who your audience is, what content works, and what to do next."}
@@ -252,8 +259,17 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
           @media (min-width: 768px) and (max-width: 1080px){
             .buddy-ranks-mockup-bleed{ margin-left: -32px; margin-right: -32px; }
           }
+          /* Mobile: keep the fan inside the section's side padding instead of
+             bleeding to the screen edge — scale it down per breakpoint so the
+             outermost cards never spill past the viewport. */
           @media (max-width: 767px){
-            .buddy-ranks-mockup-bleed{ margin-left: -20px; margin-right: -20px; }
+            .buddy-ranks-mockup-bleed .fan-layout{ transform: scale(0.85); transform-origin: center center; }
+          }
+          @media (max-width: 639px){
+            .buddy-ranks-mockup-bleed .fan-layout{ transform: scale(0.75); }
+          }
+          @media (max-width: 479px){
+            .buddy-ranks-mockup-bleed .fan-layout{ transform: scale(0.52); }
           }
         `}</style>
       </section>
@@ -264,7 +280,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           {/* Title */}
           <div style={{ textAlign: "center", marginBottom: "56px" }}>
-            <h2 style={{ fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
+            <h2 style={{ fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
               <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>Unlock Exclusive </span>
               <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Opportunities</span>
             </h2>
@@ -298,7 +314,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <section style={{ overflow: "hidden", background: "#E9DFF7" }} className="py-20">
         <div style={{ maxWidth: "1294px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
           <h2 className="section-title text-center"
-            style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(32px,3.5vw,52px)", lineHeight: 1.2, margin: "0 0 48px" }}>
+            style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 48px" }}>
             Influencer{" "}
             <span style={{
               fontStyle: "italic",
@@ -313,18 +329,9 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <CategoriesMarquee />
       </section>
 
-      {/* ── Creator Stories ── */}
+      {/* ── Creator Stories (videos only, no heading) ── */}
       <section style={{ background: "#E9DFF7", padding: "100px 48px" }}>
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "56px" }}>
-            <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-playfair), serif", fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
-              {lang === "th" ? "เรื่องราวจาก " : "Creator "}
-              <span style={{ fontStyle: lang === "th" ? "normal" : "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                {lang === "th" ? "Creator จริง" : "Stories"}
-              </span>
-            </h2>
-          </div>
-
           <CreatorStories />
         </div>
       </section>

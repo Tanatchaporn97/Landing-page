@@ -1,27 +1,25 @@
 "use client";
-import Image from "next/image";
 import { motion } from "motion/react";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
-type ScatterItem = {
+type ScatterCategoryItem = {
   label: string;
+  icon: string;
   top: string;
   left: string;
-  width: string;
   rotate: number;
-  kind: "image" | "notepad" | "categories";
-  img?: string;
 };
 
-const CATEGORY_PILLS = [
-  { icon: "💪", label: "Sporty & Healthy" },
-  { icon: "🎵", label: "TikTok Stars" },
-  { icon: "💄", label: "Beauty Blogger" },
-  { icon: "🍜", label: "Foodie" },
-  { icon: "🎬", label: "Youtuber" },
-  { icon: "🩺", label: "Doctor & Nurse" },
-  { icon: "🦷", label: "Dentist" },
+// Individual category pills scattered around the heading (desktop/tablet —
+// mobile renders a separate stacked-pairs layout further down this file).
+// Category names stay in English regardless of site language, matching the
+// convention already used by CategoriesMarquee / InfluencerHero.
+const ITEMS: ScatterCategoryItem[] = [
+  { label: "Beauty Blogger", icon: "💄", top: "3%",  left: "30%", rotate: 3 },
+  { label: "Foodie",         icon: "🍜", top: "22%", left: "85%", rotate: -4 },
+  { label: "Youtuber",       icon: "🎬", top: "64%", left: "17%", rotate: -2 },
+  { label: "TikTok Stars",   icon: "🎵", top: "72%", left: "47%", rotate: 1 },
 ];
 
 type StatItem = {
@@ -33,26 +31,6 @@ type StatItem = {
   labelTh: string;
   labelEn: string;
 };
-
-// Positions mirror the reference collage exactly (top-left / top-center /
-// top-right / mid-right / bottom-left / bottom-center / bottom-right), with
-// the two center-column items (top-center, bottom-center) kept clear of the
-// heading/paragraph vertically, just like the reference. Widths are % of the
-// container so they reflow with it (desktop/tablet only — mobile renders a
-// separate stacked-pairs layout further down this file).
-const ITEMS_TH: ScatterItem[] = [
-  { label: "สตอรี่จากครีเอเตอร์จริง", top: "3%",  left: "30%", width: "9.4%",   rotate: 3,  kind: "image", img: "/header-influencer-poster.jpg" },
-  { label: "รับเงินผ่านมือถือ",      top: "22%", left: "85%", width: "8.1%",   rotate: -4, kind: "image", img: "/buddy-rank-phone.png" },
-  { label: "บล็อกให้ความรู้",         top: "64%", left: "17%", width: "9.4%",   rotate: -2, kind: "notepad" },
-  { label: "ครีเอเตอร์ทุกวงการ",      top: "72%", left: "47%", width: "190px", rotate: 1,  kind: "categories" },
-];
-
-const ITEMS_EN: ScatterItem[] = [
-  { label: "Real Creator Stories",   top: "3%",  left: "30%", width: "9.4%",   rotate: 3,  kind: "image", img: "/header-influencer-poster.jpg" },
-  { label: "Get Paid On Your Phone", top: "22%", left: "85%", width: "8.1%",   rotate: -4, kind: "image", img: "/buddy-rank-phone.png" },
-  { label: "The Creator Blog",       top: "64%", left: "17%", width: "9.4%",   rotate: -2, kind: "notepad" },
-  { label: "Every Kind of Creator",  top: "72%", left: "47%", width: "190px", rotate: 1,  kind: "categories" },
-];
 
 // The original 3 stat cards (same hover-animate treatment) — placed in the
 // top-left / top-right / bottom-right corners on desktop.
@@ -66,63 +44,19 @@ const STATS: StatItem[] = [
   labelEn: ["Trusted Clients", "Campaigns Delivered", "Influencer Network"][i],
 }));
 
-function Label({ children, small }: { children: React.ReactNode; small?: boolean }) {
+function CategoryPillCard({ icon, label }: { icon: string; label: string }) {
   return (
-    <p style={{
-      ...KT, fontSize: small ? "11px" : "clamp(9px, 0.75vw, 12px)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase",
-      textAlign: "center", margin: small ? "0 0 8px" : "0 0 clamp(4px, 0.6vw, 10px)",
-      background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-      WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+    <div style={{
+      display: "flex", alignItems: "center", gap: "10px",
+      background: "#ffffff", borderRadius: "50px",
+      padding: "10px 20px 10px 10px",
+      boxShadow: "0 12px 28px rgba(95,38,229,0.14)",
+      whiteSpace: "nowrap",
     }}>
-      {children}
-    </p>
-  );
-}
-
-function ImageCard({ img }: { img: string }) {
-  return (
-    <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 3", borderRadius: "14px", overflow: "hidden", boxShadow: "0 12px 28px rgba(95,38,229,0.14)", background: "#ffffff" }}>
-      <Image src={img} alt="" fill sizes="190px" style={{ objectFit: "cover" }} />
-    </div>
-  );
-}
-
-function NotepadCard() {
-  return (
-    <div style={{ background: "#ffffff", borderRadius: "10px", boxShadow: "0 12px 28px rgba(95,38,229,0.14)", padding: "16px 14px" }}>
-      {Array.from({ length: 6 }).map((_, i) => (
-        <div key={i} style={{ height: "1px", background: "rgba(17,24,39,0.15)", margin: "9px 0" }} />
-      ))}
-    </div>
-  );
-}
-
-function CategoryPillsCard() {
-  const renderPill = (pill: { icon: string; label: string }, key: string) => (
-    <div key={key} style={{
-      display: "flex", alignItems: "center", gap: "8px",
-      background: "rgba(255,255,255,0.88)",
-      border: "1.5px solid rgba(255,255,255,0.95)",
-      borderRadius: "50px",
-      padding: "7px 12px 7px 7px",
-      boxShadow: "0 2px 12px rgba(0,0,0,0.10)",
-      whiteSpace: "nowrap" as const,
-      marginBottom: "9px",
-      backdropFilter: "blur(8px)",
-      WebkitBackdropFilter: "blur(8px)",
-    }}>
-      <div style={{ width: "26px", height: "26px", borderRadius: "50%", background: "#f3f4f6", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "13px", flexShrink: 0 }}>
-        {pill.icon}
+      <div style={{ width: "36px", height: "36px", borderRadius: "50%", background: "#f3f4f6", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "16px", flexShrink: 0 }}>
+        {icon}
       </div>
-      <span style={{ ...KT, fontSize: "11px", fontWeight: 600, color: "#111827" }}>{pill.label}</span>
-    </div>
-  );
-
-  return (
-    <div className="pill-scroll-area" style={{ width: "190px", height: "240px", padding: "4px 0" }}>
-      <div className="pill-scroll-track">
-        {[...CATEGORY_PILLS, ...CATEGORY_PILLS].map((pill, i) => renderPill(pill, `${i}`))}
-      </div>
+      <span style={{ ...KT, fontSize: "13px", fontWeight: 700, color: "#111827" }}>{label}</span>
     </div>
   );
 }
@@ -152,19 +86,14 @@ function StatCard({ s, lang, compact }: { s: StatItem; lang: "th" | "en"; compac
 }
 
 export default function OpportunityScatter({ lang }: { lang: "th" | "en" }) {
-  const items = lang === "th" ? ITEMS_TH : ITEMS_EN;
-
   return (
     <div className="opportunity-scatter opportunity-scatter-desktop" aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-      {items.map((item) => (
+      {ITEMS.map((item) => (
         <div key={item.label} style={{
-          position: "absolute", top: item.top, left: item.left, width: item.width,
+          position: "absolute", top: item.top, left: item.left,
           transform: `rotate(${item.rotate}deg)`,
         }}>
-          <Label>{item.label}</Label>
-          {item.kind === "image" && <ImageCard img={item.img!} />}
-          {item.kind === "notepad" && <NotepadCard />}
-          {item.kind === "categories" && <CategoryPillsCard />}
+          <CategoryPillCard icon={item.icon} label={item.label} />
         </div>
       ))}
 
@@ -180,7 +109,7 @@ export default function OpportunityScatter({ lang }: { lang: "th" | "en" }) {
 // ── Mobile — same 7 elements as loose scattered pairs stacked in normal
 // document flow, straddling the heading/paragraph (rendered between the two
 // halves in page.tsx), matching the reference collage's portrait layout.
-function MobileCell({ item, lang, rotate }: { item: ScatterItem | { kind: "stat"; stat: StatItem }; lang: "th" | "en"; rotate: number }) {
+function MobileCell({ item, lang, rotate }: { item: ScatterCategoryItem | { kind: "stat"; stat: StatItem }; lang: "th" | "en"; rotate: number }) {
   if ("stat" in item) {
     return (
       <div style={{ flex: "1 1 0", transform: `rotate(${rotate}deg)` }}>
@@ -189,22 +118,18 @@ function MobileCell({ item, lang, rotate }: { item: ScatterItem | { kind: "stat"
     );
   }
   return (
-    <div style={{ flex: "1 1 0", transform: `rotate(${rotate}deg)` }}>
-      <Label small>{item.label}</Label>
-      {item.kind === "image" && <ImageCard img={item.img!} />}
-      {item.kind === "notepad" && <NotepadCard />}
-      {item.kind === "icons" && <IconsCard />}
+    <div style={{ flex: "1 1 0", display: "flex", justifyContent: "center", transform: `rotate(${rotate}deg)` }}>
+      <CategoryPillCard icon={item.icon} label={item.label} />
     </div>
   );
 }
 
 export function OpportunityScatterMobileTop({ lang }: { lang: "th" | "en" }) {
-  const items = lang === "th" ? ITEMS_TH : ITEMS_EN;
   return (
     <div className="opportunity-scatter-mobile" style={{ display: "none", flexDirection: "column", gap: "20px", width: "100%", boxSizing: "border-box", marginBottom: "24px" }}>
       <div style={{ display: "flex", gap: "16px" }}>
-        <MobileCell item={items[0]} lang={lang} rotate={-3} />
-        <MobileCell item={items[1]} lang={lang} rotate={3} />
+        <MobileCell item={ITEMS[0]} lang={lang} rotate={-3} />
+        <MobileCell item={ITEMS[1]} lang={lang} rotate={3} />
       </div>
       <div style={{ display: "flex", gap: "16px" }}>
         <MobileCell item={{ kind: "stat", stat: STATS[0] }} lang={lang} rotate={-2} />
@@ -215,16 +140,15 @@ export function OpportunityScatterMobileTop({ lang }: { lang: "th" | "en" }) {
 }
 
 export function OpportunityScatterMobileBottom({ lang }: { lang: "th" | "en" }) {
-  const items = lang === "th" ? ITEMS_TH : ITEMS_EN;
   return (
     <div className="opportunity-scatter-mobile" style={{ display: "none", flexDirection: "column", gap: "20px", width: "100%", boxSizing: "border-box", marginTop: "24px" }}>
       <div style={{ display: "flex", gap: "16px" }}>
-        <MobileCell item={items[2]} lang={lang} rotate={2} />
+        <MobileCell item={ITEMS[2]} lang={lang} rotate={2} />
         <MobileCell item={{ kind: "stat", stat: STATS[2] }} lang={lang} rotate={-2} />
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <div style={{ width: "60%" }}>
-          <MobileCell item={items[3]} lang={lang} rotate={1} />
+          <MobileCell item={ITEMS[3]} lang={lang} rotate={1} />
         </div>
       </div>
     </div>

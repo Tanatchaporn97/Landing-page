@@ -216,14 +216,33 @@ export default function CardFanCarousel({ cards }: CardFanCarouselProps) {
       });
     };
 
+    // Touch devices can't hover a covered card to reveal it, so tapping
+    // toggles that card to the front instead (tapping it again restores it).
+    const isTouch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+
     const enterHandlers = visibleEntries.map(({ el, slot }) => {
+      if (isTouch) {
+        const handler = () => {
+          if (isAnimating.current) return;
+          if (activeSlot === slot) {
+            activeSlot = null;
+            updateHoverLayout(null);
+          } else {
+            activeSlot = slot;
+            updateHoverLayout(slot);
+          }
+        };
+        el.addEventListener("click", handler);
+        return { el, handler, type: "click" as const };
+      }
+
       const handler = () => {
         if (isAnimating.current) return;
         if (leaveTimer) { clearTimeout(leaveTimer); leaveTimer = null; }
         if (activeSlot !== slot) { activeSlot = slot; updateHoverLayout(slot); }
       };
       el.addEventListener("mouseenter", handler);
-      return { el, handler };
+      return { el, handler, type: "mouseenter" as const };
     });
 
     const onMouseLeave = () => {
@@ -242,7 +261,7 @@ export default function CardFanCarousel({ cards }: CardFanCarouselProps) {
       // entrance animation and leave cards stuck at their mid-tween values
       // (e.g. permanently opacity: 0).
       gsap.killTweensOf(cardElements);
-      enterHandlers.forEach(({ el, handler }) => el.removeEventListener("mouseenter", handler));
+      enterHandlers.forEach(({ el, handler, type }) => el.removeEventListener(type, handler));
       container.removeEventListener("mouseleave", onMouseLeave);
       window.removeEventListener("resize", onResize);
       if (leaveTimer) clearTimeout(leaveTimer);
