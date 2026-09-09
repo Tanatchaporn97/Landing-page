@@ -10,9 +10,19 @@ type ScatterItem = {
   left: string;
   width: string;
   rotate: number;
-  kind: "image" | "notepad" | "icons";
+  kind: "image" | "notepad" | "categories";
   img?: string;
 };
+
+const CATEGORY_PILLS = [
+  { icon: "💪", label: "Sporty & Healthy" },
+  { icon: "🎵", label: "TikTok Stars" },
+  { icon: "💄", label: "Beauty Blogger" },
+  { icon: "🍜", label: "Foodie" },
+  { icon: "🎬", label: "Youtuber" },
+  { icon: "🩺", label: "Doctor & Nurse" },
+  { icon: "🦷", label: "Dentist" },
+];
 
 type StatItem = {
   top: string;
@@ -34,14 +44,14 @@ const ITEMS_TH: ScatterItem[] = [
   { label: "สตอรี่จากครีเอเตอร์จริง", top: "3%",  left: "30%", width: "9.4%",   rotate: 3,  kind: "image", img: "/header-influencer-poster.jpg" },
   { label: "รับเงินผ่านมือถือ",      top: "22%", left: "85%", width: "8.1%",   rotate: -4, kind: "image", img: "/buddy-rank-phone.png" },
   { label: "บล็อกให้ความรู้",         top: "64%", left: "17%", width: "9.4%",   rotate: -2, kind: "notepad" },
-  { label: "แบรนด์พาร์ทเนอร์ชั้นนำ",   top: "72%", left: "47%", width: "13.75%", rotate: 1,  kind: "icons" },
+  { label: "ครีเอเตอร์ทุกวงการ",      top: "72%", left: "47%", width: "190px", rotate: 1,  kind: "categories" },
 ];
 
 const ITEMS_EN: ScatterItem[] = [
   { label: "Real Creator Stories",   top: "3%",  left: "30%", width: "9.4%",   rotate: 3,  kind: "image", img: "/header-influencer-poster.jpg" },
   { label: "Get Paid On Your Phone", top: "22%", left: "85%", width: "8.1%",   rotate: -4, kind: "image", img: "/buddy-rank-phone.png" },
   { label: "The Creator Blog",       top: "64%", left: "17%", width: "9.4%",   rotate: -2, kind: "notepad" },
-  { label: "Top Brand Partners",     top: "72%", left: "47%", width: "13.75%", rotate: 1,  kind: "icons" },
+  { label: "Every Kind of Creator",  top: "72%", left: "47%", width: "190px", rotate: 1,  kind: "categories" },
 ];
 
 // The original 3 stat cards (same hover-animate treatment) — placed in the
@@ -87,14 +97,32 @@ function NotepadCard() {
   );
 }
 
-function IconsCard() {
+function CategoryPillsCard() {
+  const renderPill = (pill: { icon: string; label: string }, key: string) => (
+    <div key={key} style={{
+      display: "flex", alignItems: "center", gap: "8px",
+      background: "rgba(255,255,255,0.88)",
+      border: "1.5px solid rgba(255,255,255,0.95)",
+      borderRadius: "50px",
+      padding: "7px 12px 7px 7px",
+      boxShadow: "0 2px 12px rgba(0,0,0,0.10)",
+      whiteSpace: "nowrap" as const,
+      marginBottom: "9px",
+      backdropFilter: "blur(8px)",
+      WebkitBackdropFilter: "blur(8px)",
+    }}>
+      <div style={{ width: "26px", height: "26px", borderRadius: "50%", background: "#f3f4f6", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "13px", flexShrink: 0 }}>
+        {pill.icon}
+      </div>
+      <span style={{ ...KT, fontSize: "11px", fontWeight: 600, color: "#111827" }}>{pill.label}</span>
+    </div>
+  );
+
   return (
-    <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
-      {["📸", "🎤", "🎬"].map((emoji, i) => (
-        <div key={i} style={{ width: "44px", height: "44px", borderRadius: "50%", background: "#ffffff", boxShadow: "0 8px 20px rgba(95,38,229,0.14)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "18px", flexShrink: 0 }}>
-          {emoji}
-        </div>
-      ))}
+    <div className="pill-scroll-area" style={{ width: "190px", height: "240px", padding: "4px 0" }}>
+      <div className="pill-scroll-track">
+        {[...CATEGORY_PILLS, ...CATEGORY_PILLS].map((pill, i) => renderPill(pill, `${i}`))}
+      </div>
     </div>
   );
 }
@@ -136,7 +164,7 @@ export default function OpportunityScatter({ lang }: { lang: "th" | "en" }) {
           <Label>{item.label}</Label>
           {item.kind === "image" && <ImageCard img={item.img!} />}
           {item.kind === "notepad" && <NotepadCard />}
-          {item.kind === "icons" && <IconsCard />}
+          {item.kind === "categories" && <CategoryPillsCard />}
         </div>
       ))}
 
