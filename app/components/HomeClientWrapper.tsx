@@ -92,13 +92,13 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
               textTransform: "capitalize", fontFeatureSettings: "'pnum' on,'lnum' on", margin: "0 0 48px" }}>
             From Strategy To Insight,<span className="hero-subline-break"> We Turn Influence Into Impact.</span>
           </h2>
-          {/* Split path — left for brands, right for influencers */}
+          {/* Split path — left for brands, right for influencers (full-bleed, breaks out of the maxWidth container) */}
           <div className="hero-split-row" style={{
-            display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px",
-            width: "100%", margin: "0 auto",
-            padding: "40px",
-            borderRadius: "32px",
-            background: "linear-gradient(115deg, #3d1660 0%, #1c1140 45%, #0a0a20 100%)",
+            display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0",
+            width: "100vw",
+            position: "relative",
+            left: "50%",
+            marginLeft: "-50vw",
           }}>
             <motion.div
               initial={{ opacity: 0, x: -90 }}
@@ -107,7 +107,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
             >
               <Link href={`/${lang}/brand`} className="hero-split-panel" style={{
                 ...KT, textDecoration: "none", position: "relative", display: "block",
-                borderRadius: "24px", overflow: "hidden", aspectRatio: "16 / 9",
+                overflow: "hidden", aspectRatio: "16 / 9",
               }}>
                 <Image src="/heading-website-brand.jpg" alt={t.imBrand} fill sizes="(max-width: 640px) 100vw, 50vw" style={{ objectFit: "cover" }} />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(20,10,40,0.55) 0%, rgba(20,10,40,0.15) 55%, rgba(20,10,40,0) 100%)" }} />
@@ -139,7 +139,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
             >
               <Link href={`/${lang}/influencer`} className="hero-split-panel" style={{
                 ...KT, textDecoration: "none", position: "relative", display: "block",
-                borderRadius: "24px", overflow: "hidden", aspectRatio: "16 / 9",
+                overflow: "hidden", aspectRatio: "16 / 9",
               }}>
                 <Image src="/header-influencer-poster.jpg" alt={t.imInfluencer} fill sizes="(max-width: 640px) 100vw, 50vw" style={{ objectFit: "cover" }} />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(20,10,40,0.7) 0%, rgba(30,15,55,0.55) 55%, rgba(40,20,70,0.35) 100%)" }} />
