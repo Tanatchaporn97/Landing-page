@@ -210,7 +210,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       <section style={{ paddingTop: "80px", paddingBottom: "80px" }} className="px-6 trusted-section partner-bg">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           {/* Heading */}
-          <div className="text-center mb-12" style={{ maxWidth: "954px", margin: "0 auto 48px" }}>
+          <div className="text-center" style={{ maxWidth: "954px", margin: "0 auto" }}>
             <h2 className="section-title font-bold mb-6 section-h2-fixed"
               style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px", textAlign: "center",
                 fontFeatureSettings: "'pnum' on,'lnum' on" }}>
@@ -233,8 +233,12 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
               )}
             </p>
           </div>
+        </div>
+      </section>
 
-          {/* Numbered showcase list + image */}
+      {/* ── Benefit ── */}
+      <section style={{ background: "#ffffff", paddingTop: "80px", paddingBottom: "80px" }} className="px-6">
+        <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <TrustedPartnerShowcase lang={lang as "th" | "en"} />
         </div>
       </section>
