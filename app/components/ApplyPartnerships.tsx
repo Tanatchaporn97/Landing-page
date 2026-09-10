@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "motion/react";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -65,35 +66,42 @@ export default function ApplyPartnerships({ lang }: { lang: "th" | "en" }) {
                 {s.desc}
               </p>
 
-              {/* Popup mockup(s) — appear on hover/click, floating below the card */}
+              {/* Popup mockup(s) — bounce up on hover/click, floating below the card */}
               <div
                 className="apply-partnerships-popup"
                 style={{
                   position: "absolute",
                   top: "calc(100% + 16px)",
                   left: "50%",
-                  transform: isActive ? "translate(-50%, 0) scale(1)" : "translate(-50%, -12px) scale(0.94)",
-                  opacity: isActive ? 1 : 0,
+                  transform: "translateX(-50%)",
                   pointerEvents: "none",
-                  transition: "opacity 0.25s ease, transform 0.25s ease",
                   display: "flex", alignItems: "flex-start", justifyContent: "center", gap: "10px",
                   zIndex: 20,
                 }}
               >
-                {mockups.map((src, mi) => (
-                  <div key={src} style={{
-                    position: "relative",
-                    width: mockups.length > 1 ? "110px" : "150px",
-                    aspectRatio: "0.497",
-                    borderRadius: "18px",
-                    overflow: "hidden",
-                    boxShadow: "0 12px 32px rgba(0,0,0,0.25)",
-                    transform: mockups.length > 1 ? `rotate(${mi === 0 ? -6 : 6}deg)` : "none",
-                    background: "#ffffff",
-                  }}>
-                    <Image src={src} alt={s.title} fill sizes="150px" style={{ objectFit: "cover" }} />
-                  </div>
-                ))}
+                <AnimatePresence>
+                  {isActive && mockups.map((src, mi) => (
+                    <motion.div
+                      key={src}
+                      initial={{ opacity: 0, y: 28, scale: 0.8 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 16, scale: 0.85 }}
+                      transition={{ type: "spring", stiffness: 320, damping: 14, delay: mi * 0.06 }}
+                      style={{
+                        position: "relative",
+                        width: mockups.length > 1 ? "110px" : "150px",
+                        aspectRatio: "0.497",
+                        borderRadius: "18px",
+                        overflow: "hidden",
+                        boxShadow: "0 12px 32px rgba(0,0,0,0.25)",
+                        rotate: mockups.length > 1 ? (mi === 0 ? -6 : 6) : 0,
+                        background: "#ffffff",
+                      }}
+                    >
+                      <Image src={src} alt={s.title} fill sizes="150px" style={{ objectFit: "cover" }} />
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
               </div>
             </div>
           );
