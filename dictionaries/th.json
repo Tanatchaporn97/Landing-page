@@ -308,6 +308,47 @@
           "label": "Engagement"
         }
       ]
+    },
+    {
+      "slug": "optimum-hi-pro",
+      "brand": "Optimum Hi Pro",
+      "logo": "/success-stories-2/optimum-hi-pro-hero.jpg",
+      "logoOnWhite": false,
+      "tagline": "เข้าถึงคนเลี้ยงปลาคาร์พอย่างตรงกลุ่ม พร้อมขยายการรับรู้ในวงกว้าง",
+      "industry": "Pet Care",
+      "heroStats": [
+        { "val": "5.78M", "label": "Reach" },
+        { "val": "+114%", "label": "vs. Committed Reach" },
+        { "val": "+91%", "label": "vs. Estimated Engagement KPI" },
+        { "val": "37", "label": "Contents" }
+      ],
+      "sections": [
+        {
+          "heading": "Campaign Overview",
+          "body": "Buddy Review วางแผน Influencer Marketing Campaign สำหรับ Optimum Hi Pro ตั้งแต่ Strategy, Key Message ไปจนถึงการคัดเลือกอินฟลูเอนเซอร์ เพื่อสร้างการรับรู้ในกลุ่มคนเลี้ยงปลาคาร์พ พร้อมสื่อสารจุดเด่นของผลิตภัณฑ์ให้เข้าใจง่ายและเข้าถึง Audience ได้กว้างขึ้น"
+        },
+        {
+          "heading": "Challenge",
+          "body": "โจทย์สำคัญคือกลุ่มเป้าหมายของแบรนด์ค่อนข้างเฉพาะ การหาอินฟลูเอนเซอร์ที่เข้าถึงคนเลี้ยงปลาคาร์พโดยตรง จึงต้องดูมากกว่าจำนวนผู้ติดตาม\nขณะเดียวกัน Campaign ยังต้องสร้าง Reach ในวงกว้าง โดยยังคงเข้าถึงกลุ่มเป้าหมายหลักได้อย่างตรงจุด"
+        },
+        {
+          "heading": "Strategy",
+          "body": "ภายใต้ Key Message “ยืนหนึ่งในใจคาร์พ” Buddy Review วาง Creator Strategy โดยผสมอินฟลูเอนเซอร์สองบทบาทเข้าด้วยกัน\nอินฟลูเอนเซอร์เฉพาะทาง (Specialist Influencer) ช่วยเข้าถึง Community คนเลี้ยงปลาคาร์พได้อย่างตรงกลุ่มและสร้างความน่าเชื่อถือ ขณะที่ Lifestyle Influencer ช่วยขยายการรับรู้ไปยัง Audience ที่กว้างขึ้น\nทำให้ Campaign สามารถสร้างทั้ง Relevance และ Scale ไปพร้อมกัน"
+        },
+        {
+          "heading": "Content & Execution",
+          "body": "อินฟลูเอนเซอร์ถ่ายทอด Key Message ผ่าน Content ที่เหมาะกับสไตล์ของตัวเอง ทั้งการให้ความรู้ เทคนิคการเลี้ยงปลา การแนะนำผลิตภัณฑ์ และประสบการณ์ใช้งานจริง\nCampaign สร้างทั้งหมด 37 Contents ผ่าน TikTok, Facebook, Instagram, YouTube และ Lemon8 โดยมี TikTok เป็นช่องทางหลัก"
+        }
+      ],
+      "stats": [
+        { "val": "5,780,991", "label": "Total Reach" },
+        { "val": "+114%", "label": "Higher than Committed Reach" },
+        { "val": "10.9K", "label": "Total Engagements" },
+        { "val": "+91%", "label": "Higher than Estimated Engagement KPI" },
+        { "val": "1.07M", "label": "Combined Creator Followers" },
+        { "val": "37", "label": "Creator Contents" }
+      ],
+      "takeaway": "การเลือกอินฟลูเอนเซอร์ที่ตรงกับกลุ่มเป้าหมาย ไม่ได้จำกัดการเข้าถึงของแคมเปญ หากวางสัดส่วนอินฟลูเอนเซอร์แต่ละกลุ่มให้มีบทบาทชัดเจน\nการผสม Specialist และ Lifestyle Influencer ทำให้ Optimum Hi Pro สามารถเข้าถึง Core Target ที่เป็นคนเลี้ยงปลาคาร์พ พร้อมขยายการรับรู้ในวงกว้าง ส่งผลให้ Campaign ทำ Reach สูงกว่า Commit 114% และ Engagement สูงกว่า Estimated KPI 91%\nวางแผน Influencer Marketing Campaign ร่วมกับ Buddy Review เราดูแลตั้งแต่การวาง Strategy, การคัดเลือก Influencer, การกำหนด Content Direction ไปจนถึงการวัดผล Campaign เพื่อให้ทุกขั้นตอนเชื่อมโยงกันและตอบโจทย์ทางธุรกิจของแบรนด์"
     }
   ],
   "blogPosts": [

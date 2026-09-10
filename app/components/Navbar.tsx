@@ -85,7 +85,7 @@ export default function Navbar({
         { label: t.aboutUs, href: `/${lang}/about` },
         { label: t.blog, href: `/${lang}/blog` },
         { label: t.imInfluencer, href: `/${lang}/influencer` },
-        { label: t.contactUs, href: `/${lang}#contact` },
+        { label: t.contactUs, href: `/${lang}/contact` },
       ]
     : [
         { label: t.imBrand, href: `/${lang}/brand#our-services` },
@@ -93,7 +93,7 @@ export default function Navbar({
         { label: t.aboutUs, href: `/${lang}/about` },
         { label: t.blog, href: `/${lang}/blog` },
         { label: t.imInfluencer, href: `/${lang}/influencer` },
-        { label: t.contactUs, href: `/${lang}#contact` },
+        { label: t.contactUs, href: `/${lang}/contact` },
       ];
 
   return (
@@ -235,7 +235,7 @@ export default function Navbar({
                 </>
               ) : (
                 <>
-                  <a href={`/${lang}#contact`}
+                  <a href={`/${lang}/contact`}
                     className="btn-hero btn-hero-solid-purple px-6 py-3 rounded-full whitespace-nowrap"
                     style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
                     {t.contactUs}

@@ -95,20 +95,62 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
           {story.tagline}
         </p>
 
-        {/* Description paragraphs */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "24px", marginBottom: "72px" }}>
-          {story.paras.map((para, i) => (
-            <p key={i} style={{ ...KT, color: "#111827", fontSize: "clamp(15px,1.2vw,17px)", lineHeight: 1.85, margin: 0 }}>
-              {para}
-            </p>
-          ))}
+        {/* Hero stats strip — compact highlight numbers right under the tagline */}
+        {story.heroStats && story.heroStats.length > 0 && (
+          <div className="success-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: "20px", marginBottom: "56px" }}>
+            {story.heroStats.map((s) => (
+              <div key={s.label} style={{
+                display: "flex", flexDirection: "column", alignItems: "center", gap: "8px", textAlign: "center",
+                background: "rgba(255,255,255,0.22)",
+                backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
+                border: "1px solid rgba(255,255,255,0.45)",
+                borderRadius: "18px", padding: "20px 16px",
+              }}>
+                <span style={{
+                  ...KT, background: PINK_GRAD,
+                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  fontSize: "clamp(24px,2.6vw,36px)", fontWeight: 800, lineHeight: 1,
+                }}>
+                  {s.val}
+                </span>
+                <span style={{ ...KT, color: "#111827", fontSize: "clamp(13px,1vw,15px)", fontWeight: 700 }}>
+                  {s.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Description paragraphs — either titled sections (richer case studies) or plain paragraphs */}
+        <div style={{ display: "flex", flexDirection: "column", gap: story.sections ? "40px" : "24px", marginBottom: "72px" }}>
+          {story.sections ? (
+            story.sections.map((sec, i) => (
+              <div key={i}>
+                <h3 style={{ ...KT, color: "#5f26e5", fontSize: "clamp(19px,1.8vw,24px)", fontWeight: 700, margin: "0 0 12px" }}>
+                  {sec.heading}
+                </h3>
+                {sec.body.split("\n").map((line, li) => (
+                  <p key={li} style={{ ...KT, color: "#111827", fontSize: "clamp(15px,1.2vw,17px)", lineHeight: 1.85, margin: li === 0 ? 0 : "12px 0 0" }}>
+                    {line}
+                  </p>
+                ))}
+              </div>
+            ))
+          ) : (
+            story.paras.map((para, i) => (
+              <p key={i} style={{ ...KT, color: "#111827", fontSize: "clamp(15px,1.2vw,17px)", lineHeight: 1.85, margin: 0 }}>
+                {para}
+              </p>
+            ))
+          )}
         </div>
 
         {/* Results */}
         <h2 style={{ ...KT, color: "#111827", fontSize: "clamp(24px,2.5vw,36px)", fontWeight: 800, margin: "0 0 32px", textAlign: "center" }}>
           {lang === "th" ? "ผลลัพธ์" : "Results"}
         </h2>
-        <div className="success-stats-grid" style={{ display: "grid", gridTemplateColumns: `repeat(${story.stats.length}, 1fr)`, gap: "24px" }}>
+        <div className="success-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "24px", marginBottom: story.takeaway ? "56px" : 0 }}>
           {story.stats.map((s) => (
             <div key={s.label} style={{
               display: "flex", flexDirection: "column", alignItems: "center", gap: "12px",
@@ -121,16 +163,30 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
                 ...KT, background: PINK_GRAD,
                 WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-                fontSize: "clamp(34px,3.7vw,54px)", fontWeight: 800, lineHeight: 1,
+                fontSize: "clamp(28px,3.2vw,48px)", fontWeight: 800, lineHeight: 1,
               }}>
                 {s.val}
               </span>
-              <span style={{ ...KT, color: "#111827", fontSize: "clamp(16px,1.3vw,19px)", fontWeight: 700 }}>
+              <span style={{ ...KT, color: "#111827", fontSize: "clamp(14px,1.1vw,17px)", fontWeight: 700, textAlign: "center" }}>
                 {s.label}
               </span>
             </div>
           ))}
         </div>
+
+        {/* Strategic Takeaway — closing insight for richer case studies */}
+        {story.takeaway && (
+          <div style={{ marginTop: "56px" }}>
+            <h2 style={{ ...KT, color: "#111827", fontSize: "clamp(22px,2.2vw,32px)", fontWeight: 800, margin: "0 0 20px", textAlign: "center" }}>
+              {lang === "th" ? "บทสรุปเชิงกลยุทธ์" : "Strategic Takeaway"}
+            </h2>
+            {story.takeaway.split("\n").map((line, i) => (
+              <p key={i} style={{ ...KT, color: "#111827", fontSize: "clamp(15px,1.2vw,17px)", lineHeight: 1.85, margin: i === 0 ? 0 : "16px 0 0" }}>
+                {line}
+              </p>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Bottom nav — back + next */}

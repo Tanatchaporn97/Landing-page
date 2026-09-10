@@ -8,8 +8,8 @@ import { motion, AnimatePresence } from "motion/react";
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const PINK_GRAD = "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)";
 
-const CATS_TH = ["ทั้งหมด", "Food & Beverage", "Beauty", "Healthcare", "Entertainment & Streaming"];
-const CATS_EN = ["All", "Food & Beverage", "Beauty", "Healthcare", "Entertainment & Streaming"];
+const CATS_TH = ["ทั้งหมด", "Food & Beverage", "Beauty", "Healthcare", "Entertainment & Streaming", "Pet Care"];
+const CATS_EN = ["All", "Food & Beverage", "Beauty", "Healthcare", "Entertainment & Streaming", "Pet Care"];
 
 const STORIES_TH = [
   {
@@ -82,6 +82,18 @@ const STORIES_TH = [
       { val: "14M", label: "Views" },
       { val: "9.2M", label: "Reach" },
       { val: "190K", label: "Engagement" },
+    ],
+  },
+  {
+    slug: "optimum-hi-pro",
+    brand: "Optimum Hi Pro",
+    photo: "/success-stories-2/optimum-hi-pro-hero.jpg",
+    tagline: `เข้าถึงคนเลี้ยงปลาคาร์พอย่างตรงกลุ่ม พร้อมขยายการรับรู้ในวงกว้าง`,
+    industry: `Pet Care`,
+    stats: [
+      { val: "5.78M", label: "Reach" },
+      { val: "10.9K", label: "Engagement" },
+      { val: "37", label: "Contents" },
     ],
   },
 ];
@@ -157,6 +169,18 @@ const STORIES_EN = [
       { val: "14M", label: "Views" },
       { val: "9.2M", label: "Reach" },
       { val: "190K", label: "Engagement" },
+    ],
+  },
+  {
+    slug: "optimum-hi-pro",
+    brand: "Optimum Hi Pro",
+    photo: "/success-stories-2/optimum-hi-pro-hero.jpg",
+    tagline: `Reaching koi keepers with precision, while expanding awareness at scale.`,
+    industry: `Pet Care`,
+    stats: [
+      { val: "5.78M", label: "Reach" },
+      { val: "10.9K", label: "Engagement" },
+      { val: "37", label: "Contents" },
     ],
   },
 ];

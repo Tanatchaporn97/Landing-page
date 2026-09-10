@@ -306,6 +306,47 @@
           "label": "Engagement"
         }
       ]
+    },
+    {
+      "slug": "optimum-hi-pro",
+      "brand": "Optimum Hi Pro",
+      "logo": "/success-stories-2/optimum-hi-pro-hero.jpg",
+      "logoOnWhite": false,
+      "tagline": "Reaching koi keepers with precision, while expanding awareness at scale.",
+      "industry": "Pet Care",
+      "heroStats": [
+        { "val": "5.78M", "label": "Reach" },
+        { "val": "+114%", "label": "vs. Committed Reach" },
+        { "val": "+91%", "label": "vs. Estimated Engagement KPI" },
+        { "val": "37", "label": "Contents" }
+      ],
+      "sections": [
+        {
+          "heading": "Campaign Overview",
+          "body": "Buddy Review planned the full Influencer Marketing campaign for Optimum Hi Pro — from strategy and key message to influencer selection — to build awareness among koi keepers while communicating the product's strengths clearly and reaching a wider audience."
+        },
+        {
+          "heading": "Challenge",
+          "body": "The brand's target audience is highly niche, so finding influencers who genuinely reach koi keepers required looking well beyond follower counts.\nAt the same time, the campaign still needed to deliver reach at scale while staying precisely on target."
+        },
+        {
+          "heading": "Strategy",
+          "body": "Under the key message \"Number One in Every Koi Keeper's Heart,\" Buddy Review built a creator strategy that blended two influencer roles.\nSpecialist influencers reached the koi-keeping community directly and built credibility, while lifestyle influencers extended awareness to a broader audience.\nThis let the campaign achieve both relevance and scale at the same time."
+        },
+        {
+          "heading": "Content & Execution",
+          "body": "Influencers delivered the key message through content suited to their own style — educational tips, fish-keeping techniques, product recommendations, and real usage experiences.\nThe campaign produced 37 pieces of content across TikTok, Facebook, Instagram, YouTube, and Lemon8, with TikTok as the primary channel."
+        }
+      ],
+      "stats": [
+        { "val": "5,780,991", "label": "Total Reach" },
+        { "val": "+114%", "label": "Higher than Committed Reach" },
+        { "val": "10.9K", "label": "Total Engagements" },
+        { "val": "+91%", "label": "Higher than Estimated Engagement KPI" },
+        { "val": "1.07M", "label": "Combined Creator Followers" },
+        { "val": "37", "label": "Creator Contents" }
+      ],
+      "takeaway": "Choosing influencers who match the target audience doesn't limit a campaign's reach — as long as each influencer group is given a clear role.\nBlending specialist and lifestyle influencers let Optimum Hi Pro reach its core target of koi keepers while expanding awareness at scale, driving reach 114% above commitment and engagement 91% above the estimated KPI.\nPlan your influencer marketing campaign with Buddy Review — we handle everything from strategy and influencer selection to content direction and measurement, so every step connects and delivers on your brand's business goals."
     }
   ],
   "blogPosts": [

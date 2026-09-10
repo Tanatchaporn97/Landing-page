@@ -85,7 +85,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           initial={{ x: "-100%", opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          style={{ position: "absolute", left: 0, top: 0, bottom: "220px", width: "clamp(160px, 20vw, 320px)", zIndex: 2 }}
+          style={{ position: "absolute", left: 0, top: 0, bottom: "220px", width: "clamp(220px, 30vw, 460px)", zIndex: 2 }}
         >
           <Link href={`/${lang}/brand`} className="hero-split-panel" style={{
             ...KT, textDecoration: "none", position: "relative", display: "block", width: "100%", height: "100%", overflow: "hidden",
@@ -117,7 +117,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           initial={{ x: "100%", opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          style={{ position: "absolute", right: 0, top: 0, bottom: "220px", width: "clamp(160px, 20vw, 320px)", zIndex: 2 }}
+          style={{ position: "absolute", right: 0, top: 0, bottom: "220px", width: "clamp(220px, 30vw, 460px)", zIndex: 2 }}
         >
           <Link href={`/${lang}/influencer`} className="hero-split-panel" style={{
             ...KT, textDecoration: "none", position: "relative", display: "block", width: "100%", height: "100%", overflow: "hidden",
@@ -147,7 +147,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
         <div className="hero-center-content relative" style={{
           position: "relative", zIndex: 3, minHeight: "88vh",
           display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-          textAlign: "center", padding: "120px clamp(160px, 20vw, 320px) 48px",
+          textAlign: "center", padding: "120px clamp(24px, 5vw, 72px) 48px",
         }}>
           <h1 className="font-bold uppercase mb-6 hero-h1"
             style={{ color: "#ffffff", fontSize: "clamp(17px,2.1vw,30px)", lineHeight: 1.3, textAlign: "center",

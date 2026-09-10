@@ -2,14 +2,16 @@
 import Image from "next/image";
 
 const LOGO_FILES_ROW1 = [
-  "clients-logo-05.png","clients-logo-06.png","clients-logo-11.png","clients-logo-15.png","clients-logo-23.png",
-  "watsons.webp","optimum.png","scb.webp","siangpure.png","smartheart.png",
-  "soap-and-glory.png","teepol.png","true-money.png","puthai.png",
+  "upper-clients-logo-05.png","upper-clients-logo-06.png","upper-clients-logo-11.png","upper-clients-logo-12.png",
+  "upper-clients-logo-15.png","upper-clients-logo-23.png","upper-clients-logo-32.png","upper-clients-logo-33.png",
+  "upper-clients-logo-34.png","upper-clients-logo-35.png","upper-clients-logo-36.png","upper-clients-logo-37.png",
+  "upper-clients-logo-50.png","upper-clients-logo-51.png",
 ];
 const LOGO_FILES_ROW2 = [
-  "boots-logo.png","bose-logo.png","cp-all-logo.webp","clients-logo-24.png","clients-logo-31.png",
-  "auntie-annes.webp","bobbi-dog.png","d-nee.png","daikin.png","fineline.png",
-  "me-o.png","mega-bangna.png","momchoice.png","moonlight-glow-logo.png",
+  "lower-clients-logo-24.png","lower-clients-logo-31.png","lower-clients-logo-38.png","lower-clients-logo-39.png",
+  "lower-clients-logo-40.png","lower-clients-logo-41.png","lower-clients-logo-42.png","lower-clients-logo-43.png",
+  "lower-clients-logo-44.png","lower-clients-logo-45.png","lower-clients-logo-46.png","lower-clients-logo-47.png",
+  "lower-clients-logo-48.png","lower-clients-logo.png",
 ];
 const LOGOS_ROW1 = LOGO_FILES_ROW1.map((f) => (
   <Image key={f} src={`/logos-clients/${f}`} alt={f.replace(/\.(png|webp)$/,"")} className="logo-marquee-img" width={200} height={86} priority style={{ height:"86px", width:"auto", objectFit:"contain", display:"block" }} />
