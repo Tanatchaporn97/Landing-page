@@ -8,6 +8,8 @@ import dynamic from "next/dynamic";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { HoverSlider, HoverSliderImage, HoverSliderImageWrap, TextStaggerHover, HoverSlideDescription } from "./AnimatedSlideshow";
+import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
+import { Target, Sparkles, Layers, Wallet, BarChart3 } from "lucide-react";
 
 // Lazy load below-the-fold components
 const LogoMarquee = dynamic(() => import("./LogoMarquee"));
@@ -52,19 +54,29 @@ const OUR_SERVICES = [
 const WHAT_WE_OFFER = [
   { icon: "/what-we-offer/What We Offer-01.png", title: "กลยุทธ์แม่นยำ", titleEn: "Precision Strategy",
     desc: "ออกแบบแคมเปญจากข้อมูลเชิงลึก เพื่อผลลัพธ์ที่ตรงเป้าและวัดผลได้จริง",
-    descEn: "Campaigns designed from deep data insights, built to hit your goals and deliver measurable results." },
+    descEn: "Campaigns designed from deep data insights, built to hit your goals and deliver measurable results.",
+    Icon: Target, gradient: "linear-gradient(135deg, #5f26e5 0%, #8b5cf6 100%)",
+    bentoClassName: "lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-4" },
   { icon: "/what-we-offer/What We Offer-02.png", title: "คัดอินฟลูเอนเซอร์ด้วย AI", titleEn: "AI-Powered Influencer Matching",
     desc: "เลือกอินฟลูเอนเซอร์ที่ “ใช่ที่สุด” ด้วยระบบ AI เพื่อเข้าถึงกลุ่มเป้าหมายอย่างแม่นยำ",
-    descEn: "Find the perfect-fit influencers with our AI system to reach your target audience precisely." },
+    descEn: "Find the perfect-fit influencers with our AI system to reach your target audience precisely.",
+    Icon: Sparkles, gradient: "linear-gradient(135deg, #ff0089 0%, #ff5fa8 100%)",
+    bentoClassName: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3" },
   { icon: "/what-we-offer/What We Offer-03.png", title: "ดูแลครบวงจร", titleEn: "End-to-End Management",
     desc: "ทีมงานมืออาชีพจัดการทุกขั้นตอนตั้งแต่เริ่มวางแผนจนจบแคมเปญ",
-    descEn: "A professional team handles every step, from planning through campaign wrap-up." },
+    descEn: "A professional team handles every step, from planning through campaign wrap-up.",
+    Icon: Layers, gradient: "linear-gradient(135deg, #2e1a7a 0%, #5f26e5 100%)",
+    bentoClassName: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4" },
   { icon: "/what-we-offer/What We Offer-04.png", title: "งบคุ้มค่า", titleEn: "Budget That Works Harder",
     desc: "ตัดสินใจบนพื้นฐานข้อมูล ช่วยเพิ่มประสิทธิภาพและผลตอบแทนสูงสุด",
-    descEn: "Data-driven decisions that boost efficiency and maximize your return." },
+    descEn: "Data-driven decisions that boost efficiency and maximize your return.",
+    Icon: Wallet, gradient: "linear-gradient(135deg, #b6146e 0%, #ff0089 100%)",
+    bentoClassName: "lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-2" },
   { icon: "/what-we-offer/What We Offer-05.png", title: "วัดผลเรียลไทม์", titleEn: "Real-Time Reporting",
     desc: "ติดตามและสรุปผลผ่านแดชบอร์ดแบบเรียลไทม์ ชัดเจนทุกมิติ",
-    descEn: "Track and review results through a real-time dashboard, clear in every dimension." },
+    descEn: "Track and review results through a real-time dashboard, clear in every dimension.",
+    Icon: BarChart3, gradient: "linear-gradient(135deg, #7c3aed 0%, #ff0089 100%)",
+    bentoClassName: "lg:col-start-3 lg:col-end-4 lg:row-start-2 lg:row-end-4" },
 ];
 
 /* ── Icons ── */
@@ -343,30 +355,26 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </span>
           </h2>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "24px" }}>
+          <BentoGrid className="lg:grid-rows-3">
             {WHAT_WE_OFFER.map((item, i) => (
-              <div key={i} style={{
-                background: "rgba(255,255,255,0.22)",
-                backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
-                border: "1px solid rgba(255,255,255,0.45)",
-                boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
-                borderRadius: "24px", padding: "32px 28px",
-                display: "flex", flexDirection: "column", gap: "12px",
-              }}>
-                {item.icon && (
-                  <div className="relative shrink-0" style={{ width: "58px", height: "58px" }}>
-                    <Image src={item.icon} alt={lang === "th" ? item.title : item.titleEn} fill sizes="58px" style={{ objectFit: "contain" }} />
-                  </div>
-                )}
-                <h3 style={{ ...KT, fontSize: "22px", fontWeight: 700, lineHeight: 1.3, color: "#5f26e5", margin: 0 }}>
-                  {lang === "th" ? item.title : item.titleEn}
-                </h3>
-                <p style={{ ...KT, fontSize: "15px", lineHeight: 1.7, color: "#111827", margin: 0 }}>
-                  {lang === "th" ? item.desc : item.descEn}
-                </p>
-              </div>
+              <BentoCard
+                key={i}
+                name={lang === "th" ? item.title : item.titleEn}
+                description={lang === "th" ? item.desc : item.descEn}
+                Icon={item.Icon}
+                href="#our-services"
+                cta={lang === "th" ? "ดูเพิ่มเติม" : "Learn more"}
+                className={item.bentoClassName}
+                background={
+                  <div style={{
+                    position: "absolute", inset: 0,
+                    background: item.gradient,
+                    opacity: 0.9,
+                  }} />
+                }
+              />
             ))}
-          </div>
+          </BentoGrid>
         </div>
       </section>
 
