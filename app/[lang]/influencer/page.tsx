@@ -140,10 +140,10 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <section style={{ position: "relative", background: "transparent", overflow: "hidden", padding: "72px 0 64px" }}>
         <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "0 16px" }}>
           <h2 style={{ margin: "0 0 24px", lineHeight: 1.1 }}>
-            <span className="vs-line1" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }), display: "block", fontWeight: lang === "th" ? 900 : 700, fontStyle: lang === "th" ? "normal" : "italic", fontSize: "clamp(36px,6vw,72px)", color: "#111827", whiteSpace: "nowrap" }}>
+            <span className="vs-line1" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }), display: "block", fontWeight: lang === "th" ? 900 : 700, fontStyle: lang === "th" ? "normal" : "italic", fontSize: "clamp(28px,3.3vw,48px)", color: "#111827", whiteSpace: "nowrap" }}>
               {lang === "th" ? "แมทช์งานที่ใช่" : "Match the Right Job,"}
             </span>
-            <span className="vs-line2" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }), display: "block", fontWeight: 700, fontSize: "clamp(52px,9vw,128px)", whiteSpace: "nowrap",
+            <span className="vs-line2" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }), display: "block", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", whiteSpace: "nowrap",
               background: "linear-gradient(45deg, #5f26e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               {lang === "th" ? "ได้งานที่ชอบ" : "Get Work You Love"}
             </span>
