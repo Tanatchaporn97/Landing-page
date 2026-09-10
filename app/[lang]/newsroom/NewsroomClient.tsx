@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
@@ -11,28 +10,12 @@ const PINK_GRAD = "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)";
 
 import { type Locale } from "../../../i18n-config";
 
-export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) {
-  const searchParams = useSearchParams();
+export default function NewsroomClient({ lang, dict }: { lang: Locale, dict: any }) {
   const router = useRouter();
-  const catAll = lang === "th" ? "ทั้งหมด" : "All";
-  const catBrand = lang === "th" ? "สำหรับแบรนด์" : "For Brands";
-  const catInf = lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Influencers";
-  const CATS = [catAll, catBrand, catInf];
+  const catNews = lang === "th" ? "ข่าวสาร" : "News";
 
-  const BLOG_POSTS = (dict?.blogPosts || []).filter((p: any) => p.categories.includes(catBrand) || p.categories.includes(catInf));
-
-  const [activeCat, setActiveCat] = useState(() => {
-    const cat = searchParams.get("cat");
-    return cat && CATS.includes(cat) ? cat : catAll;
-  });
-  useEffect(() => {
-    const cat = searchParams.get("cat");
-    if (cat && CATS.includes(cat)) setActiveCat(cat);
-  }, [searchParams]);
-
-  const filtered = activeCat === catAll
-    ? BLOG_POSTS
-    : BLOG_POSTS.filter((p: any) => p.categories.includes(activeCat));
+  const allPosts = dict?.blogPosts || [];
+  const posts = allPosts.filter((p: any) => p.categories.includes(catNews));
 
   return (
     <div className="background" style={{ ...KT }}>
@@ -54,35 +37,20 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
 
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px 100px" }}>
 
-        {/* Header row — heading left, category CTAs right */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "24px", marginBottom: "48px" }}>
-          <h1 style={{ ...KT, background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", fontSize: "clamp(32px,4.2vw,56px)", fontWeight: 800, letterSpacing: "0.02em", textTransform: "uppercase", margin: 0, lineHeight: 1.15 }}>
-            Blog
+        <div style={{ marginBottom: "48px" }}>
+          <h1 style={{ ...KT, background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", fontSize: "clamp(32px,4.2vw,56px)", fontWeight: 800, margin: 0, lineHeight: 1.15 }}>
+            Newsroom
           </h1>
-
-          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-            {CATS.map((cat) => (
-              <button key={cat} onClick={() => setActiveCat(cat)} style={{ ...KT,
-                background: activeCat === cat ? "#5f26e5" : "#ffffff",
-                color: activeCat === cat ? "#ffffff" : "#5f26e5",
-                border: activeCat === cat ? "1px solid #5f26e5" : "1px solid rgba(95,38,229,0.18)",
-                boxShadow: "0 4px 16px rgba(95,38,229,0.08)",
-                borderRadius: "50px", fontSize: "14px", fontWeight: 600,
-                padding: "10px 22px", cursor: "pointer" }}>
-                {cat}
-              </button>
-            ))}
-          </div>
         </div>
 
-        {filtered.length === 0 && (
-          <p style={{ ...KT, color: "#111827", fontSize: "16px" }}>{lang === "th" ? "ไม่มีบทความในหมวดนี้" : "No articles in this category"}</p>
+        {posts.length === 0 && (
+          <p style={{ ...KT, color: "#111827", fontSize: "16px" }}>{lang === "th" ? "ไม่มีข่าวสารในขณะนี้" : "No news right now"}</p>
         )}
 
         {/* Cards grid */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "28px" }}>
-          {filtered.map((post: any) => (
-            <Link key={post.slug} href={`/${lang}/blog/${post.slug}`} style={{ display: "flex", flexDirection: "column", background: "rgba(255,255,255,0.22)", backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)", border: "1px solid rgba(255,255,255,0.45)", borderRadius: "24px", textDecoration: "none", cursor: "pointer" }}>
+          {posts.map((post: any) => (
+            <Link key={post.slug} href={`/${lang}/newsroom/${post.slug}`} style={{ display: "flex", flexDirection: "column", background: "rgba(255,255,255,0.22)", backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)", border: "1px solid rgba(255,255,255,0.45)", borderRadius: "24px", textDecoration: "none", cursor: "pointer" }}>
 
               <div style={{ position: "relative", padding: "20px 20px 0", flexShrink: 0 }}>
                 <Image src={post.image} alt={post.title} width={400} height={200} style={{ width: "100%", height: "200px", objectFit: "cover", display: "block", borderRadius: "12px" }} />

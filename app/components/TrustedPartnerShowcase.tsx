@@ -7,7 +7,7 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const ITEMS = [
   { src: "/service/built-on-clarity.jpg", title: "Built on Clarity",           desc: "ทำงานเป็นระบบชัดเจนตามมาตรฐาน",         descEn: "Working within a clear, standardized system." },
-  { src: "/service/teamwork.jpg",                title: "Teamwork with Intelligence", desc: "ทีมที่เข้าใจทั้งแบรนด์และอินฟลูเอนเซอร์", descEn: "A team that understands both brands and influencers." },
+  { src: "/service/teamwork.jpg",                title: "Teamwork with Intelligence", desc: "ทีมที่เข้าใจทั้งแบรนด์และอินฟลูเอนเซอร์", descEn: "A team that understands both brands and influencers.", objectPosition: "35% center" },
   { src: "/service/data-driven-precision.jpg",   title: "Data-Driven Precision",      desc: "ใช้ข้อมูลช่วยตัดสินใจได้แม่นขึ้น",       descEn: "Data that helps you make sharper decisions." },
   { src: "/service/result.jpg",                  title: "Results That Matter",        desc: "วัดผลให้สอดคล้องกับเป้าหมายของแบรนด์",   descEn: "Measuring results that align with your brand's goals." },
 ];
@@ -42,7 +42,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
                     {item.title}
                   </h3>
                   <p style={{
-                    ...KT, fontSize: "16px", lineHeight: 1.7, color: "#6b7280",
+                    ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827",
                     margin: 0, maxWidth: "420px", overflow: "hidden",
                     maxHeight: isActive ? "80px" : "0px",
                     opacity: isActive ? 1 : 0,
@@ -59,8 +59,8 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
         })}
       </div>
 
-      {/* Right — crossfading image */}
-      <div style={{ position: "relative", borderRadius: "24px", overflow: "hidden", minHeight: "420px" }}>
+      {/* Right — crossfading image (portrait/vertical) */}
+      <div style={{ position: "relative", borderRadius: "24px", overflow: "hidden", aspectRatio: "4 / 5", alignSelf: "start", boxShadow: "0 12px 40px rgba(95,38,229,0.16)" }}>
         <AnimatePresence mode="wait">
           <motion.div key={current.src}
             initial={{ opacity: 0, scale: 1.04 }}
@@ -68,7 +68,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
             exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.4 }}
             style={{ position: "absolute", inset: 0 }}>
-            <Image src={current.src} alt={current.title} fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover", objectPosition: "top" }} />
+            <Image src={current.src} alt={current.title} fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover", objectPosition: current.objectPosition || "top" }} />
           </motion.div>
         </AnimatePresence>
       </div>

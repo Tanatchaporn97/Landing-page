@@ -33,6 +33,7 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
   const catInf = lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Influencers";
 
   const activeCat = variant === "brand" ? catBrand : variant === "influencer" ? catInf : catAll;
+  const basePath = variant === "brand" || variant === "influencer" ? "blog" : "newsroom";
 
   const allPosts: Post[] = dict?.blogPosts || [];
   if (allPosts.length === 0) return null;
@@ -63,7 +64,7 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
         {featured && (
         <>
         {/* Featured post */}
-        <Link href={`/${lang}/blog/${featured.slug}`} style={{
+        <Link href={`/${lang}/${basePath}/${featured.slug}`} style={{
           display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0",
           background: "#ffffff", borderRadius: "28px", overflow: "hidden",
           boxShadow: "0 12px 40px rgba(95,38,229,0.10)", textDecoration: "none",
@@ -100,7 +101,7 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
         {/* Grid of remaining posts */}
         <div className="newsroom-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}>
           {rest.map((post) => (
-            <Link key={post.slug} href={`/${lang}/blog/${post.slug}`} style={{
+            <Link key={post.slug} href={`/${lang}/${basePath}/${post.slug}`} style={{
               background: "#ffffff", borderRadius: "20px", overflow: "hidden",
               boxShadow: "0 8px 28px rgba(95,38,229,0.08)", textDecoration: "none",
               display: "flex", flexDirection: "column",
@@ -135,7 +136,7 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
 
         {/* View more CTA */}
         <div style={{ display: "flex", justifyContent: "center", marginTop: "48px" }}>
-          <Link href={`/${lang}/blog`} className="btn-insight" style={{
+          <Link href={`/${lang}/${basePath}`} className="btn-insight" style={{
             ...KT, borderRadius: "50px", fontSize: "16px", fontWeight: 600,
             padding: "14px 48px", textDecoration: "none", display: "inline-block",
           }}>
