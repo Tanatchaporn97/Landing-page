@@ -233,27 +233,17 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         }}
       >
         <div className="hero-grid-inf relative" style={{ maxWidth: "1200px", margin: "0 auto", width: "100%", zIndex: 2,
-          display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center" }}>
+          display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: "72px", alignItems: "center" }}>
 
           {/* Left: real hero copy, playful stacked layout + underline squiggle + pill CTA */}
           <div style={{ position: "relative" }}>
             <h2 className="font-bold uppercase" style={{ ...KT, color: "#111827", fontSize: "clamp(28px,3.6vw,46px)", lineHeight: 1.2, margin: "0 0 24px" }}>
               Not Just Strategies.<br/>
-              <span style={{ position: "relative", display: "inline-block" }}>
-                <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                  Execution That Delivers.
-                </span>
-                <svg viewBox="0 0 320 24" width="100%" height="24" style={{ position: "absolute", left: 0, bottom: "-14px", overflow: "visible" }} aria-hidden="true">
-                  <path d="M4 14 C 60 2, 120 22, 180 10 S 280 4, 316 12" fill="none" stroke="#ff0089" strokeWidth="5" strokeLinecap="round" />
-                </svg>
+              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                Execution That Delivers.
               </span>
             </h2>
-
-            {/* Floating scribble accent, echoing the reference's hand-drawn doodle */}
-            <svg viewBox="0 0 60 60" width="52" height="52" style={{ position: "absolute", top: "-8px", right: "8%" }} aria-hidden="true">
-              <path d="M6 40 C 18 44, 24 20, 14 12 C 8 6, 20 2, 28 10 M40 6 L 46 2 M44 14 L 52 12" fill="none" stroke="#5f26e5" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" opacity="0.55" />
-            </svg>
 
             <p style={{ ...KT, color: "#111827", fontSize: "clamp(18px,1.8vw,28px)", lineHeight: 1.7, margin: "40px 0 32px" }}>
               {lang === "th" ? (
@@ -263,8 +253,8 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               )}
             </p>
 
-            <a href="#contact" style={{ ...KT, display: "inline-flex", alignItems: "center", justifyContent: "center",
-              background: "#5f26e5", color: "#ffffff", fontWeight: 600, fontSize: "16px",
+            <a href="#contact" className="btn-hero-solid-purple" style={{ ...KT, display: "inline-flex", alignItems: "center", justifyContent: "center",
+              fontWeight: 600, fontSize: "16px",
               padding: "16px 36px", borderRadius: "50px", textDecoration: "none" }}>
               {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
             </a>
@@ -298,7 +288,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           {/* Right: tilted mockup with floating decorative accents */}
           <div style={{ position: "relative" }}>
             <div style={{
-              position: "absolute", width: "320px", height: "320px", borderRadius: "50%",
+              position: "absolute", width: "380px", height: "380px", borderRadius: "50%",
               background: "radial-gradient(circle, rgba(255,0,137,0.10) 0%, transparent 70%)",
               top: "50%", left: "50%", transform: "translate(-50%,-50%)", zIndex: 0,
             }} />
