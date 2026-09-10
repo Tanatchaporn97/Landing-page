@@ -101,7 +101,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <InfluencerHero lang={lang as Locale} />
 
       {/* ── Video Showcase ── */}
-      <section style={{ position: "relative", background: "linear-gradient(180deg, #F7F2E9 0%, #FFFFFF 100%)", overflow: "hidden", padding: "72px 0 64px" }}>
+      <section style={{ position: "relative", background: "linear-gradient(180deg, #F7F1FC 0%, #FFFFFF 100%)", overflow: "hidden", padding: "72px 0 64px" }}>
         <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "0 16px" }}>
           <h2 style={{ margin: "0 0 24px", lineHeight: 1.1 }}>
             <span className="vs-line1" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }), display: "block", fontWeight: lang === "th" ? 900 : 700, fontStyle: lang === "th" ? "normal" : "italic", fontSize: "clamp(36px,6vw,72px)", color: "#111827", whiteSpace: "nowrap" }}>

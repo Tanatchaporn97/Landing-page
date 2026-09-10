@@ -40,7 +40,7 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
         const abs = Math.abs(p);
 
         const edgeT = Math.max(0, (abs - 0.45) / 0.55);
-        const scale = 1 + edgeT * edgeT * 0.42;
+        const scale = 1 + edgeT * edgeT * 0.28;
         const translateY = abs * abs * 26;
         const rotate = p * abs * 10;
 
@@ -127,7 +127,7 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          gap: "20px",
+          gap: "40px",
           overflowX: "auto",
           overflowY: "visible",
           cursor: "grab",
@@ -179,8 +179,8 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
       <style>{`
         .vsf-scroller::-webkit-scrollbar{ display: none; }
         .vsf-fade{ position: absolute; top: 0; bottom: 0; width: 9vw; min-width: 60px; max-width: 140px; pointer-events: none; z-index: 5; }
-        .vsf-fade-left{ left: 0; background: linear-gradient(90deg, #F7F2E9 0%, rgba(247,242,233,0) 100%); }
-        .vsf-fade-right{ right: 0; background: linear-gradient(270deg, #F7F2E9 0%, rgba(247,242,233,0) 100%); }
+        .vsf-fade-left{ left: 0; background: linear-gradient(90deg, #F7F1FC 0%, rgba(247,241,252,0) 100%); }
+        .vsf-fade-right{ right: 0; background: linear-gradient(270deg, #F7F1FC 0%, rgba(247,241,252,0) 100%); }
       `}</style>
     </div>
   );
