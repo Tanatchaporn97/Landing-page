@@ -315,10 +315,22 @@
       "tagline": "Reaching koi keepers with precision, while expanding awareness at scale.",
       "industry": "Pet Care",
       "heroStats": [
-        { "val": "5.78M", "label": "Reach" },
-        { "val": "+114%", "label": "vs. Committed Reach" },
-        { "val": "+91%", "label": "vs. Estimated Engagement KPI" },
-        { "val": "37", "label": "Contents" }
+        {
+          "val": "5.78M",
+          "label": "Reach"
+        },
+        {
+          "val": "+114%",
+          "label": "vs. Committed Reach"
+        },
+        {
+          "val": "+91%",
+          "label": "vs. Estimated Engagement KPI"
+        },
+        {
+          "val": "37",
+          "label": "Contents"
+        }
       ],
       "sections": [
         {
@@ -339,14 +351,114 @@
         }
       ],
       "stats": [
-        { "val": "5,780,991", "label": "Total Reach" },
-        { "val": "+114%", "label": "Higher than Committed Reach" },
-        { "val": "10.9K", "label": "Total Engagements" },
-        { "val": "+91%", "label": "Higher than Estimated Engagement KPI" },
-        { "val": "1.07M", "label": "Combined Creator Followers" },
-        { "val": "37", "label": "Creator Contents" }
+        {
+          "val": "5,780,991",
+          "label": "Total Reach"
+        },
+        {
+          "val": "+114%",
+          "label": "Higher than Committed Reach"
+        },
+        {
+          "val": "10.9K",
+          "label": "Total Engagements"
+        },
+        {
+          "val": "+91%",
+          "label": "Higher than Estimated Engagement KPI"
+        },
+        {
+          "val": "1.07M",
+          "label": "Combined Creator Followers"
+        },
+        {
+          "val": "37",
+          "label": "Creator Contents"
+        }
       ],
       "takeaway": "Choosing influencers who match the target audience doesn't limit a campaign's reach — as long as each influencer group is given a clear role.\nBlending specialist and lifestyle influencers let Optimum Hi Pro reach its core target of koi keepers while expanding awareness at scale, driving reach 114% above commitment and engagement 91% above the estimated KPI.\nPlan your influencer marketing campaign with Buddy Review — we handle everything from strategy and influencer selection to content direction and measurement, so every step connects and delivers on your brand's business goals."
+    },
+    {
+      "slug": "auntie-annes",
+      "brand": "Auntie Anne's",
+      "logo": "/success-stories-2/auntie-annes-hero.jpg",
+      "logoOnWhite": false,
+      "tagline": "Building an Always-on TikTok Content Engine",
+      "industry": "Food & Beverage",
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": "Buddy Review managed end-to-end short-form content production for Auntie Anne's on TikTok — from storyboard development and talent sourcing to the production team — while continuously adapting content formats to keep pace with TikTok trends.\nThe engagement ran continuously for more than 15 months, at a cadence of roughly 15 contents per month, totaling over 225 contents across the partnership."
+        },
+        {
+          "heading": "Challenge",
+          "body": "Running an always-on TikTok presence takes more than a steady volume of content — each piece has to stay fresh against fast-moving platform behavior and trends, all while staying true to Auntie Anne's brand character."
+        },
+        {
+          "heading": "Content Insight",
+          "body": "On TikTok, the content formats that capture attention can shift at any time. Sticking to one content formula risks the channel losing its freshness.\nWhat matters isn't just \"following trends\" — it's having a system that can continuously catch trends → adapt storytelling → produce content → learn from performance."
+        },
+        {
+          "heading": "Strategic Approach",
+          "body": "Buddy Review built an Always-on Content Engine combining three elements: consistent posting cadence, content formats that adapt to trends, and a production system that could turn ideas into short videos in practice.\nFrom developing and pitching storyboards, to matching the right talent to each piece of content, to sourcing and managing the production team — the channel could keep producing continuously without being tied to any single format."
+        },
+        {
+          "heading": "Execution",
+          "body": "Produced roughly 15 TikTok contents per month, covering content planning, storyboard development, talent sourcing, and video production — with direction and format continuously adjusted to trends as they emerged."
+        }
+      ],
+      "stats": [
+        {
+          "val": "760K",
+          "label": "Organic Views (Top Content)"
+        }
+      ],
+      "takeaway": "This shows that an effective always-on TikTok presence doesn't come from hoping every clip goes viral — it comes from building a content system that produces consistently, adapts quickly to trends, and gives the right content room to grow through organic reach.\nAcross more than 15 months of continuous work, Buddy Review's role went beyond video production alone — helping build a TikTok content system that could evolve alongside the platform and audience interest."
+    },
+    {
+      "slug": "siangpure",
+      "brand": "Siangpure",
+      "logo": "/success-stories-2/siangpure-hero.jpg",
+      "logoOnWhite": false,
+      "tagline": "India Influencer Campaign",
+      "industry": "Healthcare",
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": "Buddy Review brought Siangpure to Indian consumers through Indian influencers based in India on Instagram, framing the content angle so the product connected naturally with Thailand-travel behavior."
+        },
+        {
+          "heading": "Challenge",
+          "body": "The brief wasn't just about finding overseas influencers — it required making a Thai product resonate with Indian audiences' interests, with enough reason for people to remember it or want to buy it when they visit Thailand."
+        },
+        {
+          "heading": "Strategy",
+          "body": "Buddy Review selected Indian influencers whose audiences matched the target market, developing content under the concept \"Visiting Thailand — what's the must-buy souvenir?\"\nThis repositioned Siangpure from a Thai herbal product into a Thai Travel Essential — easy to carry, genuinely useful, and worth buying to bring home."
+        }
+      ],
+      "stats": [
+        {
+          "val": "3",
+          "label": "Influencers"
+        },
+        {
+          "val": "505.5K",
+          "label": "Followers"
+        },
+        {
+          "val": "333,535",
+          "label": "Reach"
+        },
+        {
+          "val": "19.5K",
+          "label": "Engagements"
+        },
+        {
+          "val": "5.8%",
+          "label": "Engagement Rate"
+        }
+      ],
+      "takeaway": "With just 3 influencers, the campaign generated a reach of over 333K — showing that choosing the right creators and aligning content with the target audience's behavior can drive results without needing a large roster of creators.\nThis case shows that cross-market influencer marketing isn't just about finding creators in that country — it's about finding the content context that lets the brand genuinely fit into the target audience's behavior."
     }
   ],
   "blogPosts": [

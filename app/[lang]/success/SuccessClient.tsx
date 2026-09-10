@@ -96,6 +96,30 @@ const STORIES_TH = [
       { val: "37", label: "Contents" },
     ],
   },
+  {
+    slug: "auntie-annes",
+    brand: "Auntie Anne's",
+    photo: "/success-stories-2/auntie-annes-hero.jpg",
+    tagline: `สร้าง Always-on TikTok Content Engine ที่ผลิตต่อเนื่องกว่า 15 เดือน`,
+    industry: `Food & Beverage`,
+    stats: [
+      { val: "225+", label: "Contents" },
+      { val: "15", label: "Contents/Month" },
+      { val: "760K", label: "Top Content Views" },
+    ],
+  },
+  {
+    slug: "siangpure",
+    brand: "Siangpure",
+    photo: "/success-stories-2/siangpure-hero.jpg",
+    tagline: `เข้าถึงผู้บริโภคชาวอินเดียผ่าน Indian Influencers บน Instagram`,
+    industry: `Healthcare`,
+    stats: [
+      { val: "3", label: "Influencers" },
+      { val: "333,535", label: "Reach" },
+      { val: "5.8%", label: "Engagement Rate" },
+    ],
+  },
 ];
 
 const STORIES_EN = [
@@ -181,6 +205,30 @@ const STORIES_EN = [
       { val: "5.78M", label: "Reach" },
       { val: "10.9K", label: "Engagement" },
       { val: "37", label: "Contents" },
+    ],
+  },
+  {
+    slug: "auntie-annes",
+    brand: "Auntie Anne's",
+    photo: "/success-stories-2/auntie-annes-hero.jpg",
+    tagline: `Building an Always-on TikTok Content Engine`,
+    industry: `Food & Beverage`,
+    stats: [
+      { val: "225+", label: "Contents" },
+      { val: "15", label: "Contents/Month" },
+      { val: "760K", label: "Top Content Views" },
+    ],
+  },
+  {
+    slug: "siangpure",
+    brand: "Siangpure",
+    photo: "/success-stories-2/siangpure-hero.jpg",
+    tagline: `India Influencer Campaign`,
+    industry: `Healthcare`,
+    stats: [
+      { val: "3", label: "Influencers" },
+      { val: "333,535", label: "Reach" },
+      { val: "5.8%", label: "Engagement Rate" },
     ],
   },
 ];
