@@ -94,13 +94,11 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           </h2>
           {/* Split path — left for brands, right for influencers */}
           <div className="hero-split-row" style={{
-            display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0",
+            display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px",
             width: "100%", margin: "0 auto",
-            background: "rgba(255,255,255,0.5)",
-            backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
-            border: "1px solid rgba(255,255,255,0.6)",
-            boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
-            borderRadius: "24px", overflow: "hidden",
+            padding: "40px",
+            borderRadius: "32px",
+            background: "linear-gradient(115deg, #3d1660 0%, #1c1140 45%, #0a0a20 100%)",
           }}>
             <motion.div
               initial={{ opacity: 0, x: -90 }}
@@ -108,18 +106,30 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
               transition={{ duration: 0.7, ease: "easeOut" }}
             >
               <Link href={`/${lang}/brand`} className="hero-split-panel" style={{
-                ...KT, textDecoration: "none", display: "flex", flexDirection: "column", alignItems: "center",
-                justifyContent: "center", gap: "10px", padding: "48px 24px", minHeight: "200px", color: "#111827",
-                borderRight: "1px solid rgba(95,38,229,0.15)",
+                ...KT, textDecoration: "none", position: "relative", display: "block",
+                borderRadius: "24px", overflow: "hidden", aspectRatio: "16 / 9",
               }}>
-                <span style={{ fontSize: "26px" }}>🏢</span>
-                <span style={{ fontSize: "18px", fontWeight: 800 }}>{t.imBrand}</span>
-                <span style={{ fontSize: "14px", color: "#6b7280", lineHeight: 1.6 }}>
-                  {lang === "th" ? "วางกลยุทธ์และบริหารแคมเปญอินฟลูเอนเซอร์" : "Plan and manage influencer campaigns"}
-                </span>
-                <span className="hero-split-cta" style={{ fontSize: "14px", fontWeight: 700, color: "#5f26e5", marginTop: "6px" }}>
-                  {lang === "th" ? "เริ่มต้นเลย →" : "Get Started →"}
-                </span>
+                <Image src="/heading-website-brand.jpg" alt={t.imBrand} fill sizes="(max-width: 640px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(20,10,40,0.55) 0%, rgba(20,10,40,0.15) 55%, rgba(20,10,40,0) 100%)" }} />
+                <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-start", gap: "10px", padding: "clamp(20px,4vw,44px)", textAlign: "left" }}>
+                  <span style={{ fontSize: "16px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>
+                    {lang === "th" ? "สำหรับ" : "For"}
+                  </span>
+                  <span style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: "#ffffff", lineHeight: 1.1 }}>
+                    {lang === "th" ? "แบรนด์" : "Brand"}
+                  </span>
+                  <span style={{ fontSize: "clamp(14px,1.2vw,17px)", color: "rgba(255,255,255,0.85)", lineHeight: 1.5 }}>
+                    {lang === "th" ? "ค้นหาอินฟลูเอนเซอร์ที่ใช่ด้วยเทคโนโลยีอัจฉริยะ" : "Find the right influencers with smart technology"}
+                  </span>
+                  <span className="hero-split-cta" style={{
+                    marginTop: "10px", display: "inline-flex", alignItems: "center",
+                    fontSize: "14px", fontWeight: 600, color: "#ffffff",
+                    border: "1px solid rgba(255,255,255,0.5)", borderRadius: "50px",
+                    padding: "10px 24px",
+                  }}>
+                    {lang === "th" ? "ดูเพิ่มเติม" : "Learn More"}
+                  </span>
+                </div>
               </Link>
             </motion.div>
             <motion.div
@@ -128,29 +138,41 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
               transition={{ duration: 0.7, ease: "easeOut" }}
             >
               <Link href={`/${lang}/influencer`} className="hero-split-panel" style={{
-                ...KT, textDecoration: "none", display: "flex", flexDirection: "column", alignItems: "center",
-                justifyContent: "center", gap: "10px", padding: "48px 24px", minHeight: "200px", color: "#111827",
+                ...KT, textDecoration: "none", position: "relative", display: "block",
+                borderRadius: "24px", overflow: "hidden", aspectRatio: "16 / 9",
               }}>
-                <span style={{ fontSize: "26px" }}>🎤</span>
-                <span style={{ fontSize: "18px", fontWeight: 800 }}>{t.imInfluencer}</span>
-                <span style={{ fontSize: "14px", color: "#6b7280", lineHeight: 1.6 }}>
-                  {lang === "th" ? "รับงานรีวิวจากแบรนด์ชั้นนำ สร้างรายได้จากสิ่งที่คุณรัก" : "Get review jobs from top brands, earn from what you love"}
-                </span>
-                <span className="hero-split-cta" style={{ fontSize: "14px", fontWeight: 700, color: "#5f26e5", marginTop: "6px" }}>
-                  {lang === "th" ? "เริ่มต้นเลย →" : "Get Started →"}
-                </span>
+                <Image src="/header-influencer-poster.jpg" alt={t.imInfluencer} fill sizes="(max-width: 640px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(20,10,40,0.7) 0%, rgba(30,15,55,0.55) 55%, rgba(40,20,70,0.35) 100%)" }} />
+                <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-start", gap: "10px", padding: "clamp(20px,4vw,44px)", textAlign: "left" }}>
+                  <span style={{ fontSize: "16px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>
+                    {lang === "th" ? "สำหรับ" : "For"}
+                  </span>
+                  <span style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: "#ffffff", lineHeight: 1.1 }}>
+                    {lang === "th" ? "อินฟลูเอนเซอร์" : "Influencers"}
+                  </span>
+                  <span style={{ fontSize: "clamp(14px,1.2vw,17px)", color: "rgba(255,255,255,0.85)", lineHeight: 1.5 }}>
+                    {lang === "th" ? "เชื่อมต่อกับแบรนด์ที่ใช่สำหรับสไตล์คุณ" : "Connect with the right brands for your style"}
+                  </span>
+                  <span className="hero-split-cta" style={{
+                    marginTop: "10px", display: "inline-flex", alignItems: "center",
+                    fontSize: "14px", fontWeight: 600, color: "#ffffff",
+                    border: "1px solid rgba(255,255,255,0.5)", borderRadius: "50px",
+                    padding: "10px 24px",
+                  }}>
+                    {lang === "th" ? "ดูเพิ่มเติม" : "Learn More"}
+                  </span>
+                </div>
               </Link>
             </motion.div>
           </div>
 
           <style>{`
-            .hero-split-panel{ transition: background-color 0.25s ease, transform 0.25s ease; }
-            .hero-split-panel:hover{ background: rgba(95,38,229,0.06); transform: translateY(-2px); }
-            .hero-split-cta{ transition: transform 0.25s ease; }
-            .hero-split-panel:hover .hero-split-cta{ transform: translateX(4px); }
+            .hero-split-panel{ transition: transform 0.25s ease, box-shadow 0.25s ease; }
+            .hero-split-panel:hover{ transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.35); }
+            .hero-split-cta{ transition: background-color 0.25s ease, color 0.25s ease; }
+            .hero-split-panel:hover .hero-split-cta{ background: #ffffff; color: #1c1140; }
             @media (max-width: 640px){
-              .hero-split-row{ grid-template-columns: 1fr !important; }
-              .hero-split-panel{ border-right: none !important; border-bottom: 1px solid rgba(95,38,229,0.15); }
+              .hero-split-row{ grid-template-columns: 1fr !important; padding: 20px !important; }
             }
           `}</style>
 
