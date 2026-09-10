@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const INFLUENCER_HEADER_VIDEOS = [
+  { src: "/videos/influencer-header/header-1.mp4", name: "Flukymltp" },
   { src: "/videos/influencer-header/header-2.mp4", name: "Icepapan" },
   { src: "/videos/influencer-header/header-3.mp4", name: "Pookkyjdp" },
   { src: "/videos/influencer-header/header-4.mp4", name: "Nice.Naphatchw" },
@@ -13,6 +14,9 @@ const INFLUENCER_HEADER_VIDEOS = [
   { src: "/videos/influencer-header/header-6.mp4", name: "ignoreyouuu" },
   { src: "/videos/influencer-header/header-7.mp4", name: "suppapitchayas" },
   { src: "/videos/influencer-header/header-8.mp4", name: "deerboraa" },
+  { src: "/videos/influencer-header/header-9.mp4", name: "graphic.review" },
+  { src: "/videos/influencer-header/header-10.mp4", name: "tinnimalist" },
+  { src: "/videos/influencer-header/header-11.mp4", name: "ถุงเงิน ณัฐดาภรณ์" },
 ];
 
 // Hoisted to a stable reference — passing a fresh array literal as a prop on

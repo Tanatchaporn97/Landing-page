@@ -131,7 +131,7 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
           overflowX: "auto",
           overflowY: "visible",
           cursor: "grab",
-          padding: "64px 6vw 44px",
+          padding: "64px 56px 44px",
           scrollbarWidth: "none",
           touchAction: "pan-y",
         }}

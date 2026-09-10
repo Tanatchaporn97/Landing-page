@@ -95,40 +95,52 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           {/* Split path — left for brands, right for influencers */}
           <div className="hero-split-row" style={{
             display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0",
-            maxWidth: "820px", margin: "0 auto",
+            width: "100%", margin: "0 auto",
             background: "rgba(255,255,255,0.5)",
             backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
             border: "1px solid rgba(255,255,255,0.6)",
             boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
             borderRadius: "24px", overflow: "hidden",
           }}>
-            <Link href={`/${lang}/brand`} className="hero-split-panel" style={{
-              ...KT, textDecoration: "none", display: "flex", flexDirection: "column", alignItems: "center",
-              gap: "10px", padding: "32px 24px", color: "#111827",
-              borderRight: "1px solid rgba(95,38,229,0.15)",
-            }}>
-              <span style={{ fontSize: "26px" }}>🏢</span>
-              <span style={{ fontSize: "18px", fontWeight: 800 }}>{t.imBrand}</span>
-              <span style={{ fontSize: "14px", color: "#6b7280", lineHeight: 1.6 }}>
-                {lang === "th" ? "วางกลยุทธ์และบริหารแคมเปญอินฟลูเอนเซอร์" : "Plan and manage influencer campaigns"}
-              </span>
-              <span className="hero-split-cta" style={{ fontSize: "14px", fontWeight: 700, color: "#5f26e5", marginTop: "6px" }}>
-                {lang === "th" ? "เริ่มต้นเลย →" : "Get Started →"}
-              </span>
-            </Link>
-            <Link href={`/${lang}/influencer`} className="hero-split-panel" style={{
-              ...KT, textDecoration: "none", display: "flex", flexDirection: "column", alignItems: "center",
-              gap: "10px", padding: "32px 24px", color: "#111827",
-            }}>
-              <span style={{ fontSize: "26px" }}>🎤</span>
-              <span style={{ fontSize: "18px", fontWeight: 800 }}>{t.imInfluencer}</span>
-              <span style={{ fontSize: "14px", color: "#6b7280", lineHeight: 1.6 }}>
-                {lang === "th" ? "รับงานรีวิวจากแบรนด์ชั้นนำ สร้างรายได้จากสิ่งที่คุณรัก" : "Get review jobs from top brands, earn from what you love"}
-              </span>
-              <span className="hero-split-cta" style={{ fontSize: "14px", fontWeight: 700, color: "#5f26e5", marginTop: "6px" }}>
-                {lang === "th" ? "เริ่มต้นเลย →" : "Get Started →"}
-              </span>
-            </Link>
+            <motion.div
+              initial={{ opacity: 0, x: -90 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+              <Link href={`/${lang}/brand`} className="hero-split-panel" style={{
+                ...KT, textDecoration: "none", display: "flex", flexDirection: "column", alignItems: "center",
+                justifyContent: "center", gap: "10px", padding: "48px 24px", minHeight: "200px", color: "#111827",
+                borderRight: "1px solid rgba(95,38,229,0.15)",
+              }}>
+                <span style={{ fontSize: "26px" }}>🏢</span>
+                <span style={{ fontSize: "18px", fontWeight: 800 }}>{t.imBrand}</span>
+                <span style={{ fontSize: "14px", color: "#6b7280", lineHeight: 1.6 }}>
+                  {lang === "th" ? "วางกลยุทธ์และบริหารแคมเปญอินฟลูเอนเซอร์" : "Plan and manage influencer campaigns"}
+                </span>
+                <span className="hero-split-cta" style={{ fontSize: "14px", fontWeight: 700, color: "#5f26e5", marginTop: "6px" }}>
+                  {lang === "th" ? "เริ่มต้นเลย →" : "Get Started →"}
+                </span>
+              </Link>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 90 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+              <Link href={`/${lang}/influencer`} className="hero-split-panel" style={{
+                ...KT, textDecoration: "none", display: "flex", flexDirection: "column", alignItems: "center",
+                justifyContent: "center", gap: "10px", padding: "48px 24px", minHeight: "200px", color: "#111827",
+              }}>
+                <span style={{ fontSize: "26px" }}>🎤</span>
+                <span style={{ fontSize: "18px", fontWeight: 800 }}>{t.imInfluencer}</span>
+                <span style={{ fontSize: "14px", color: "#6b7280", lineHeight: 1.6 }}>
+                  {lang === "th" ? "รับงานรีวิวจากแบรนด์ชั้นนำ สร้างรายได้จากสิ่งที่คุณรัก" : "Get review jobs from top brands, earn from what you love"}
+                </span>
+                <span className="hero-split-cta" style={{ fontSize: "14px", fontWeight: 700, color: "#5f26e5", marginTop: "6px" }}>
+                  {lang === "th" ? "เริ่มต้นเลย →" : "Get Started →"}
+                </span>
+              </Link>
+            </motion.div>
           </div>
 
           <style>{`

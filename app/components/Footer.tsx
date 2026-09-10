@@ -17,17 +17,19 @@ export default function Footer({ variant = "influencer", lang = "th", dict }: { 
   const textColor = variant === "home" ? "#ffffff" : "#F0E8FF";
 
   const t = lang === "th"
-    ? { quickLinks: "เมนูลัด", home: "หน้าหลัก", successStories: "Success Stories", industryInsights: "Industry Insights", faqs: "FAQs", imInfluencer: "สำหรับอินฟลูเอนเซอร์", imBrand: "ฉันคือแบรนด์" }
-    : { quickLinks: "Quick Links", home: "Home", successStories: "Success Stories", industryInsights: "Industry Insights", faqs: "FAQs", imInfluencer: "I'm an Influencer", imBrand: "I'm a Brand" };
+    ? { quickLinks: "เมนูลัด", home: "หน้าหลัก", aboutUs: "เกี่ยวกับเรา", news: "ข่าวสาร", articles: "บทความ", ourWork: "ผลงานของเรา", faqs: "คำถามที่พบบ่อย", imInfluencer: "สำหรับอินฟลูเอนเซอร์", ourServices: "บริการของเรา" }
+    : { quickLinks: "Quick Links", home: "Home", aboutUs: "About Us", news: "Newsroom", articles: "Articles", ourWork: "Our Work", faqs: "FAQ", imInfluencer: "I'm an Influencer", ourServices: "Our Services" };
 
   const faqHref = `/${lang}/faq${variant === "influencer" ? "?from=influencer" : ""}`;
 
   const QUICK_LINKS = [
     { label: t.home, href: `/${lang}` },
-    { label: t.successStories, href: `/${lang}/success` },
-    { label: t.industryInsights, href: `/${lang}/blog` },
+    { label: t.aboutUs, href: `/${lang}/about` },
+    { label: t.news, href: `/${lang}/newsroom` },
+    { label: t.articles, href: `/${lang}/blog` },
+    { label: t.ourWork, href: `/${lang}/success` },
     { label: t.faqs, href: faqHref },
-    { label: t.imBrand, href: `/${lang}/brand` },
+    { label: t.ourServices, href: `/${lang}/brand` },
     { label: t.imInfluencer, href: `/${lang}/influencer` },
   ];
 
