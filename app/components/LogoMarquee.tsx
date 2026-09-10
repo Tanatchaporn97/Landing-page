@@ -2,19 +2,20 @@
 import Image from "next/image";
 
 const LOGO_FILES_ROW1 = [
-  "Clients Logo-03.png","Clients Logo-04.png","Clients Logo-05.png","Clients Logo-06.png",
-  "Clients Logo-11.png","Clients Logo-13.png","Clients Logo-14.png","Clients Logo-16.png",
+  "clients-logo-05.png","clients-logo-06.png","clients-logo-11.png","clients-logo-15.png","clients-logo-23.png",
+  "watsons.webp","optimum.png","scb.webp","siangpure.png","smartheart.png",
+  "soap-and-glory.png","teepol.png","true-money.png","puthai.png",
 ];
 const LOGO_FILES_ROW2 = [
-  "Clients Logo-07.png","Clients Logo-08.png","Clients Logo-09.png","Clients Logo-12.png",
-  "Clients Logo-15.png","Clients Logo-17.png","Clients Logo-18.png","Clients Logo-20.png",
-  "Clients Logo-21.png","Clients Logo-31.png",
+  "boots-logo.png","bose-logo.png","cp-all-logo.webp","clients-logo-24.png","clients-logo-31.png",
+  "auntie-annes.webp","bobbi-dog.png","d-nee.png","daikin.png","fineline.png",
+  "me-o.png","mega-bangna.png","momchoice.png","moonlight-glow-logo.png",
 ];
 const LOGOS_ROW1 = LOGO_FILES_ROW1.map((f) => (
-  <Image key={f} src={`/logos/${f}`} alt={f.replace(".png","")} className="logo-marquee-img" width={200} height={86} priority style={{ height:"86px", width:"auto", objectFit:"contain", display:"block" }} />
+  <Image key={f} src={`/logos-clients/${f}`} alt={f.replace(/\.(png|webp)$/,"")} className="logo-marquee-img" width={200} height={86} priority style={{ height:"86px", width:"auto", objectFit:"contain", display:"block" }} />
 ));
 const LOGOS_ROW2 = LOGO_FILES_ROW2.map((f) => (
-  <Image key={f} src={`/logos/${f}`} alt={f.replace(".png","")} className="logo-marquee-img" width={200} height={86} priority style={{ height:"86px", width:"auto", objectFit:"contain", display:"block" }} />
+  <Image key={f} src={`/logos-clients/${f}`} alt={f.replace(/\.(png|webp)$/,"")} className="logo-marquee-img" width={200} height={86} priority style={{ height:"86px", width:"auto", objectFit:"contain", display:"block" }} />
 ));
 
 function LogoMarqueeRow({ logos, direction }: { logos: React.ReactNode[], direction: "left"|"right" }) {

@@ -309,10 +309,6 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <PathToPartnership lang={lang as Locale} />
 
 
-      {/* ── Testimonials — scroll-jacking section (desktop) / static (mobile) ── */}
-      <TestimonialsScrollSection dict={dict} lang={lang} />
-
-
       {/* ── Influencer Categories ── */}
       <section style={{ overflow: "hidden", background: "#E9DFF7" }} className="py-20">
         <div style={{ maxWidth: "1294px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
@@ -331,6 +327,9 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
         <CategoriesMarquee />
       </section>
+
+      {/* ── Testimonials — scroll-jacking section (desktop) / static (mobile) ── */}
+      <TestimonialsScrollSection dict={dict} lang={lang} />
 
       {/* ── Creator Stories (videos only, no heading) ── */}
       <section style={{ background: "#E9DFF7", padding: "100px 48px" }}>
