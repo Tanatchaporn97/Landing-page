@@ -24,12 +24,12 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
           background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
           WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
         }}>
-          Benefit
+          Our Standard
         </h3>
         <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0, maxWidth: "320px" }}>
           {lang === "th"
-            ? "ข้อดีที่ทำให้แบรนด์ไว้วางใจ Buddy Review ในการทำ Influencer Marketing"
-            : "The advantages that make brands trust Buddy Review for their influencer marketing."}
+            ? "หลักการที่อยู่เบื้องหลังวิธีคิด การทำงาน และการส่งมอบผลลัพธ์ของเรา"
+            : "The principles behind how we think, work, and deliver."}
         </p>
       </div>
 

@@ -238,7 +238,9 @@ import { type Locale } from "../../../i18n-config";
 export default function SuccessClient({ lang }: { lang: Locale }) {
   const searchParams = useSearchParams();
   const CATS = lang === "th" ? CATS_TH : CATS_EN;
-  const STORIES = lang === "th" ? STORIES_TH : STORIES_EN;
+  // Newest-added entries are appended to the end of STORIES_TH/EN, so reverse
+  // here to always show the most recently uploaded story first.
+  const STORIES = [...(lang === "th" ? STORIES_TH : STORIES_EN)].reverse();
   const allLabel = CATS[0];
   const backLabel = lang === "th" ? "กลับหน้าหลัก" : "Back to Home";
 

@@ -40,13 +40,11 @@ export default function ApplyPartnerships({ lang }: { lang: "th" | "en" }) {
               key={s.title}
               onMouseEnter={() => setActive(i)}
               onMouseLeave={() => setActive((prev) => (prev === i ? null : prev))}
-              onClick={() => setActive((prev) => (prev === i ? null : i))}
               style={{
                 position: "relative",
                 background: "#ffffff", borderRadius: "24px", padding: "36px 32px",
                 boxShadow: isActive ? "0 16px 40px rgba(95,38,229,0.20)" : "0 8px 28px rgba(95,38,229,0.08)",
                 display: "flex", flexDirection: "column", gap: "14px",
-                cursor: "pointer",
                 transition: "box-shadow 0.25s ease, transform 0.25s ease",
                 transform: isActive ? "translateY(-4px)" : "translateY(0)",
               }}

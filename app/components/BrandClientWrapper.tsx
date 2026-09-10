@@ -521,7 +521,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               { href: `/${lang}/success/optimum-hi-pro`, img: "/success-stories-2/Success stories-14.jpg", cat: "PET CARE",  title: "Optimum Hi Pro",  tagline: "เข้าถึงคนเลี้ยงปลาคาร์พอย่างตรงกลุ่ม พร้อมขยายการรับรู้ในวงกว้าง",   taglineEn: "Reaching koi keepers with precision, while expanding awareness at scale." },
               { href: `/${lang}/success/auntie-annes`,   img: "/success-stories-2/Success stories-15.jpg",   cat: "FOOD & BEVERAGE", title: "Auntie Anne's",   tagline: "สร้าง Always-on TikTok Content Engine ที่ผลิตต่อเนื่องกว่า 15 เดือน", taglineEn: "Building an always-on TikTok content engine, running for 15+ months." },
               { href: `/${lang}/success/siangpure`,      img: "/success-stories-2/Success stories-16.jpg",      cat: "HEALTHCARE",      title: "Siangpure",       tagline: "เข้าถึงผู้บริโภคชาวอินเดียผ่าน Indian Influencers บน Instagram",  taglineEn: "Reaching Indian consumers through Indian influencers on Instagram." },
-            ].map(card => (
+            ].slice().reverse().map(card => (
               <Link key={card.href} href={card.href} className="cs-card-link" style={{ textDecoration: "none", flexShrink: 0, width: "390px", scrollSnapAlign: "start" }}>
                 <div className="cs-card" style={{
                   borderRadius: "28px", height: "520px",
