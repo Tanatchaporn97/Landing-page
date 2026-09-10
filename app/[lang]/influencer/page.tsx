@@ -5,6 +5,11 @@ import type { Metadata } from "next";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
+// Single continuous background for the whole page — every section below sets
+// its own background to transparent so this one gradient shows through with
+// no seams between sections.
+const PAGE_GRADIENT = "linear-gradient(180deg, #FFFFFF 0%, #F7F1FC 10%, #F9F6FE 22%, #F5F0FC 36%, #F1EBFA 50%, #E9DFF7 72%, #DDCDF1 100%)";
+
 const INFLUENCER_HEADER_VIDEOS = [
   { src: "/videos/influencer-header/header-1.mp4", name: "Flukymltp" },
   { src: "/videos/influencer-header/header-2.mp4", name: "Icepapan" },
@@ -124,14 +129,14 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       {/* ── Navbar — outside overflow container so position:fixed works on iOS Safari ── */}
       <Navbar lang={lang as Locale} variant="influencer" />
 
-    <div className="hero" style={{ ...KT, overflowX: "hidden" }}>
+    <div className="hero" style={{ ...KT, overflowX: "hidden", background: PAGE_GRADIENT }}>
 
 
       {/* ── Hero ── */}
       <InfluencerHero lang={lang as Locale} />
 
       {/* ── Video Showcase ── */}
-      <section style={{ position: "relative", background: "linear-gradient(180deg, #F7F1FC 0%, #FFFFFF 100%)", overflow: "hidden", padding: "72px 0 64px" }}>
+      <section style={{ position: "relative", background: "transparent", overflow: "hidden", padding: "72px 0 64px" }}>
         <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "0 16px" }}>
           <h2 style={{ margin: "0 0 24px", lineHeight: 1.1 }}>
             <span className="vs-line1" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }), display: "block", fontWeight: lang === "th" ? 900 : 700, fontStyle: lang === "th" ? "normal" : "italic", fontSize: "clamp(36px,6vw,72px)", color: "#111827", whiteSpace: "nowrap" }}>
@@ -190,7 +195,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
       {/* ── Opportunity Banner ── */}
       <section className="inf-section opportunity-section" style={{
-        background: "linear-gradient(180deg, #FFFFFF 0%, #F9F6FE 100%)",
+        background: "transparent",
         padding: "100px 48px",
         position: "relative",
         overflow: "hidden",
@@ -254,7 +259,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       </section>
 
       {/* ── Unlock Exclusive Opportunities ── */}
-      <section className="inf-section" style={{ background: "linear-gradient(180deg, #F5F0FC 0%, #F1EBFA 100%)", padding: "100px 48px" }}>
+      <section className="inf-section" style={{ background: "transparent", padding: "100px 48px" }}>
         <UnlockIconHover />
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           {/* Title */}
@@ -285,7 +290,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       </section>
 
       {/* ── Unlock Exclusive Opportunities — Bento grid duplicate ── */}
-      <section className="inf-section" style={{ background: "linear-gradient(180deg, #F1EBFA 0%, #F5F0FC 100%)", padding: "100px 48px" }}>
+      <section className="inf-section" style={{ background: "transparent", padding: "100px 48px" }}>
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "56px" }}>
             <h2 style={{ fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
@@ -299,7 +304,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       </section>
 
       {/* ── Our Work / Buddy Ranks ── */}
-      <section className="inf-section" style={{ background: "#F5F0FC", padding: "100px 48px", overflow: "hidden" }}>
+      <section className="inf-section" style={{ background: "transparent", padding: "100px 48px", overflow: "hidden" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
           <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 24px" }}>
             <span style={{ fontStyle: lang === "th" ? "normal" : "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
@@ -354,7 +359,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
 
       {/* ── Influencer Categories ── */}
-      <section style={{ overflow: "hidden", background: "#E9DFF7" }} className="py-20">
+      <section style={{ overflow: "hidden", background: "transparent" }} className="py-20">
         <div style={{ maxWidth: "1294px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
           <h2 className="section-title text-center"
             style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 48px" }}>
@@ -376,14 +381,14 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <TestimonialsScrollSection dict={dict} lang={lang} />
 
       {/* ── Creator Stories (videos only, no heading) ── */}
-      <section style={{ background: "#E9DFF7", padding: "100px 48px" }}>
+      <section style={{ background: "transparent", padding: "100px 48px" }}>
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <CreatorStories />
         </div>
       </section>
 
-      {/* ── Industry Insights → FAQs → Pre-footer CTA: one continuous blended background ── */}
-      <div style={{ background: "linear-gradient(180deg, #E9DFF7 0%, #DDCDF1 100%)" }}>
+      {/* ── Industry Insights → FAQs → Pre-footer CTA ── */}
+      <div style={{ background: "transparent" }}>
 
         {/* ── FAQs ── */}
         <FAQAccordion faqs={dict?.faqPage?.faqsInfluencer} lang={lang as Locale} variant="influencer" dict={dict} />

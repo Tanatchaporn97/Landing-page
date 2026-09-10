@@ -150,7 +150,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
         <h2 style={{ ...KT, color: "#111827", fontSize: "clamp(24px,2.5vw,36px)", fontWeight: 800, margin: "0 0 32px", textAlign: "center" }}>
           {lang === "th" ? "ผลลัพธ์" : "Results"}
         </h2>
-        <div className="success-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "24px", marginBottom: story.takeaway ? "56px" : 0 }}>
+        <div className="success-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px", marginBottom: story.takeaway ? "56px" : 0 }}>
           {story.stats.map((s) => (
             <div key={s.label} style={{
               display: "flex", flexDirection: "column", alignItems: "center", gap: "12px",

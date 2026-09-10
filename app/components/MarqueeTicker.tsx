@@ -7,7 +7,7 @@ export default function MarqueeTicker({ items }: { items: string[] }) {
       borderTop: "1px solid rgba(17,24,39,0.12)",
       borderBottom: "1px solid rgba(17,24,39,0.12)",
       overflow: "hidden",
-      background: "#ffffff",
+      background: "transparent",
       padding: "14px 0",
     }}>
       <div className="ticker-track" style={{ display: "flex", width: "max-content" }}>

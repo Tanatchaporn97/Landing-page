@@ -99,7 +99,7 @@ button, a, [role="button"] { touch-action: manipulation; }
 }
 
 .inf-logo-bg {
-  background: linear-gradient(180deg, #F7F1FC 0%, #FFFFFF 100%);
+  background: transparent;
 }
 
 .client-bg,

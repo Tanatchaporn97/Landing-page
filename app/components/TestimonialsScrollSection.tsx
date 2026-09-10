@@ -196,7 +196,7 @@ export default function TestimonialsScrollSection({
 
   return (
     <div className="tss-outer" style={{
-      background: `linear-gradient(180deg, ${BG_TOP} 0%, ${BG_BOT} 100%)`,
+      background: "transparent",
       padding: "80px 48px",
     }}>
       <div

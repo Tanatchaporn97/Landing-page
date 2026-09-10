@@ -87,7 +87,7 @@ const STORIES_TH = [
   {
     slug: "optimum-hi-pro",
     brand: "Optimum Hi Pro",
-    photo: "/success-stories-2/optimum-hi-pro-hero.jpg",
+    photo: "/success-stories-2/Success stories-14.jpg",
     tagline: `เข้าถึงคนเลี้ยงปลาคาร์พอย่างตรงกลุ่ม พร้อมขยายการรับรู้ในวงกว้าง`,
     industry: `Pet Care`,
     stats: [
@@ -99,7 +99,7 @@ const STORIES_TH = [
   {
     slug: "auntie-annes",
     brand: "Auntie Anne's",
-    photo: "/success-stories-2/auntie-annes-hero.jpg",
+    photo: "/success-stories-2/Success stories-15.jpg",
     tagline: `สร้าง Always-on TikTok Content Engine ที่ผลิตต่อเนื่องกว่า 15 เดือน`,
     industry: `Food & Beverage`,
     stats: [
@@ -111,7 +111,7 @@ const STORIES_TH = [
   {
     slug: "siangpure",
     brand: "Siangpure",
-    photo: "/success-stories-2/siangpure-hero.jpg",
+    photo: "/success-stories-2/Success stories-16.jpg",
     tagline: `เข้าถึงผู้บริโภคชาวอินเดียผ่าน Indian Influencers บน Instagram`,
     industry: `Healthcare`,
     stats: [
@@ -198,7 +198,7 @@ const STORIES_EN = [
   {
     slug: "optimum-hi-pro",
     brand: "Optimum Hi Pro",
-    photo: "/success-stories-2/optimum-hi-pro-hero.jpg",
+    photo: "/success-stories-2/Success stories-14.jpg",
     tagline: `Reaching koi keepers with precision, while expanding awareness at scale.`,
     industry: `Pet Care`,
     stats: [
@@ -210,7 +210,7 @@ const STORIES_EN = [
   {
     slug: "auntie-annes",
     brand: "Auntie Anne's",
-    photo: "/success-stories-2/auntie-annes-hero.jpg",
+    photo: "/success-stories-2/Success stories-15.jpg",
     tagline: `Building an Always-on TikTok Content Engine`,
     industry: `Food & Beverage`,
     stats: [
@@ -222,7 +222,7 @@ const STORIES_EN = [
   {
     slug: "siangpure",
     brand: "Siangpure",
-    photo: "/success-stories-2/siangpure-hero.jpg",
+    photo: "/success-stories-2/Success stories-16.jpg",
     tagline: `India Influencer Campaign`,
     industry: `Healthcare`,
     stats: [
