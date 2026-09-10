@@ -30,6 +30,35 @@ const BUDDY_RANKS_CARDS = [
   { imgUrl: "/buddy-ranks/5-compare-trimmed.png", alt: "Buddy Ranks — creator comparison" },
 ];
 
+// Bento-grid duplicate of the Unlock Exclusive Opportunities cards below —
+// same content, restyled with CI purple/pink gradient shades + rotation.
+const UNLOCK_BENTO_META: { gradient: string; rotate: number; span?: boolean }[] = [
+  { gradient: "linear-gradient(135deg, #5f26e5 0%, #7c3aed 100%)", rotate: -1, span: true },
+  { gradient: "linear-gradient(135deg, #ff0089 0%, #ff5fa8 100%)", rotate: 2 },
+  { gradient: "linear-gradient(135deg, #2e1a7a 0%, #5f26e5 100%)", rotate: -2 },
+  { gradient: "linear-gradient(135deg, #b6146e 0%, #ff0089 100%)", rotate: 3 },
+  { gradient: "linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%)", rotate: -3 },
+  { gradient: "linear-gradient(135deg, #ff4fa0 0%, #c026d3 100%)", rotate: 1 },
+];
+
+const UNLOCK_BENTO_ITEMS_TH: ColorfulBentoItem[] = [
+  { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", title: "แบรนด์เชื่อถือได้", desc: "ไม่มีแบรนด์เงียบ ไม่มีงานปลอม มีแต่ความโปร", ...UNLOCK_BENTO_META[0] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", title: "จ่ายตรง ไม่มีเบี้ยว", desc: "งานจบ เงินไม่หาย กดเบิกเองได้ทุกเมื่อ รับตามรอบแบบตรงเวลา", ...UNLOCK_BENTO_META[1] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", title: "รีวิวได้ครบ", desc: "จบทุกแพลตฟอร์ม ให้คุณสามารถมีโอกาส รับงานรีวิวได้หลากหลายช่องทาง", ...UNLOCK_BENTO_META[2] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-04.png", title: "สิทธิพิเศษเฉพาะคุณ", desc: "ร่วมกิจกรรมและรับรางวัลสุดเอ็กซ์คลูซีฟ", ...UNLOCK_BENTO_META[3] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", title: "มืออาชีพที่อยู่เคียงข้างคุณ", desc: "ทำงานได้อย่างมั่นใจ ด้วยทีมงานมืออาชีพ และระบบที่ช่วยให้ทุกอย่างง่ายขึ้น", ...UNLOCK_BENTO_META[4] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", title: "แมทช์งานที่ใช่", desc: "รู้งานใหม่ก่อนใคร ด้วยระบบคัดกรองที่แมทช์งานตรงใจ ให้คุณได้ทำงานที่ใช่จากสิ่งที่ชอบ", ...UNLOCK_BENTO_META[5] },
+];
+
+const UNLOCK_BENTO_ITEMS_EN: ColorfulBentoItem[] = [
+  { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", title: "Trusted Brands", desc: "No ghosting, no fake jobs. Just professionalism.", ...UNLOCK_BENTO_META[0] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", title: "Paid on Time, Every Time", desc: "Finish the job, keep your money — withdraw anytime and get paid on a reliable schedule.", ...UNLOCK_BENTO_META[1] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", title: "Review Anywhere", desc: "Covers every platform, giving you the chance to take on review work across multiple channels.", ...UNLOCK_BENTO_META[2] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-04.png", title: "Exclusive Perks for You", desc: "Join events and win exclusive rewards.", ...UNLOCK_BENTO_META[3] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", title: "Professionals By Your Side", desc: "Work with confidence, backed by a professional team and a system that makes everything easier.", ...UNLOCK_BENTO_META[4] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", title: "The Right Match", desc: "Be first to know about new jobs with a matching system that connects you to work you'll actually love.", ...UNLOCK_BENTO_META[5] },
+];
+
 import dynamic from "next/dynamic";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -38,6 +67,7 @@ import PathToPartnership from "../../components/PathToPartnership";
 import UnlockIconHover from "../../components/UnlockIconHover";
 import OpportunityScatter, { OpportunityScatterMobileTop, OpportunityScatterMobileBottom } from "../../components/OpportunityScatter";
 import UnlockCards from "../../components/UnlockCards";
+import { ColorfulBentoGrid, type ColorfulBentoItem } from "@/components/ui/colorful-bento-grid";
 import ApplyPartnerships from "../../components/ApplyPartnerships";
 import CreatorStories from "../../components/CreatorStories";
 import MarqueeTicker from "../../components/MarqueeTicker";
@@ -251,6 +281,20 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", bg: "#e5ddfb", title: "Professionals By Your Side", desc: "Work with confidence, backed by a professional team and a system that makes everything easier." },
             { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", bg: "#d6f3f5", title: "The Right Match", desc: "Be first to know about new jobs with a matching system that connects you to work you'll actually love." },
           ]} />
+        </div>
+      </section>
+
+      {/* ── Unlock Exclusive Opportunities — Bento grid duplicate ── */}
+      <section className="inf-section" style={{ background: "linear-gradient(180deg, #F1EBFA 0%, #F5F0FC 100%)", padding: "100px 48px" }}>
+        <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "56px" }}>
+            <h2 style={{ fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
+              <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>Unlock Exclusive </span>
+              <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Opportunities</span>
+            </h2>
+          </div>
+
+          <ColorfulBentoGrid items={lang === "th" ? UNLOCK_BENTO_ITEMS_TH : UNLOCK_BENTO_ITEMS_EN} />
         </div>
       </section>
 
