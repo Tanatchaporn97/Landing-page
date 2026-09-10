@@ -1,7 +1,6 @@
 import Link from "next/link";
 import CardFanCarousel from "../../components/CardFanCarousel";
 import VideoScrollFan from "../../components/VideoScrollFan";
-import VideoClickCarousel from "../../components/VideoClickCarousel";
 import type { Metadata } from "next";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -98,7 +97,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <InfluencerHero lang={lang as Locale} />
 
       {/* ── Video Showcase ── */}
-      <section style={{ position: "relative", background: "#F7F2E9", overflow: "hidden", padding: "72px 0 24px" }}>
+      <section style={{ position: "relative", background: "#F7F2E9", overflow: "hidden", padding: "72px 0 64px" }}>
         <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "0 16px" }}>
           <h2 style={{ margin: "0 0 24px", lineHeight: 1.1 }}>
             <span className="vs-line1" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }), display: "block", fontWeight: lang === "th" ? 900 : 700, fontStyle: lang === "th" ? "normal" : "italic", fontSize: "clamp(36px,6vw,72px)", color: "#111827", whiteSpace: "nowrap" }}>
@@ -144,11 +143,6 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             .vs-line1, .vs-line2{ white-space: normal !important; }
           }
         `}</style>
-      </section>
-
-      {/* ── More Creator Clips (click to browse) ── */}
-      <section style={{ position: "relative", background: "#F7F2E9", overflow: "hidden", padding: "0 0 88px" }}>
-        <VideoClickCarousel videos={INFLUENCER_HEADER_VIDEOS} />
       </section>
 
       {/* ── Ticker ── */}
