@@ -26,7 +26,7 @@ const BUDDY_RANKS_CARDS = [
   { imgUrl: "/buddy-ranks/1-followers-trimmed.png", alt: "Buddy Ranks — follower analysis" },
   { imgUrl: "/buddy-ranks/2-followers-2-trimmed.png", alt: "Buddy Ranks — audience interests" },
   { imgUrl: "/buddy-ranks/3-content-ideas-trimmed.png", alt: "Buddy Ranks — content assistant" },
-  { imgUrl: "/buddy-ranks/4-content-ideas-2-trimmed.png", alt: "Buddy Ranks — content ideas" },
+  { imgUrl: "/buddy-ranks/6-profile.png", alt: "Buddy Ranks — creator profile" },
   { imgUrl: "/buddy-ranks/5-compare-trimmed.png", alt: "Buddy Ranks — creator comparison" },
 ];
 
