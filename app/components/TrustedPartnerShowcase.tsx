@@ -60,7 +60,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
       </div>
 
       {/* Right — crossfading image (portrait/vertical) */}
-      <div style={{ position: "relative", borderRadius: "24px", overflow: "hidden", aspectRatio: "4 / 5", alignSelf: "start", boxShadow: "0 12px 40px rgba(95,38,229,0.16)" }}>
+      <div style={{ position: "relative", borderRadius: "24px", overflow: "hidden", aspectRatio: "4 / 5", width: "100%", maxWidth: "360px", alignSelf: "start", justifySelf: "end", boxShadow: "0 12px 40px rgba(95,38,229,0.16)" }}>
         <AnimatePresence mode="wait">
           <motion.div key={current.src}
             initial={{ opacity: 0, scale: 1.04 }}
