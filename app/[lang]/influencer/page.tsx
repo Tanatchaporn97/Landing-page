@@ -36,14 +36,15 @@ const BUDDY_RANKS_CARDS = [
 ];
 
 // Bento-grid duplicate of the Unlock Exclusive Opportunities cards below —
-// same content, restyled with CI purple/pink gradient shades + rotation.
-const UNLOCK_BENTO_META: { gradient: string; rotate: number; span?: boolean }[] = [
-  { gradient: "linear-gradient(135deg, #5f26e5 0%, #7c3aed 100%)", rotate: -1, span: true },
-  { gradient: "linear-gradient(135deg, #ff0089 0%, #ff5fa8 100%)", rotate: 2 },
-  { gradient: "linear-gradient(135deg, #2e1a7a 0%, #5f26e5 100%)", rotate: -2 },
-  { gradient: "linear-gradient(135deg, #b6146e 0%, #ff0089 100%)", rotate: 3 },
-  { gradient: "linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%)", rotate: -3 },
-  { gradient: "linear-gradient(135deg, #ff4fa0 0%, #c026d3 100%)", rotate: 1 },
+// same content, restyled with CI purple/pink gradient shades, laid out in
+// the fixed asymmetric grid ColorfulBentoGrid renders (tall/wide/small/small/wide/small).
+const UNLOCK_BENTO_META: { gradient: string }[] = [
+  { gradient: "linear-gradient(135deg, #5f26e5 0%, #7c3aed 100%)" },
+  { gradient: "linear-gradient(135deg, #ff0089 0%, #ff5fa8 100%)" },
+  { gradient: "linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%)" },
+  { gradient: "linear-gradient(135deg, #b6146e 0%, #ff0089 100%)" },
+  { gradient: "linear-gradient(135deg, #2e1a7a 0%, #5f26e5 100%)" },
+  { gradient: "linear-gradient(135deg, #ff4fa0 0%, #c026d3 100%)" },
 ];
 
 const UNLOCK_BENTO_ITEMS_TH: ColorfulBentoItem[] = [
