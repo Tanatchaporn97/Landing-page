@@ -119,7 +119,7 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
   }, [videos]);
 
   return (
-    <div className="vsf-wrap" style={{ position: "relative", maxWidth: "1180px", margin: "0 auto" }}>
+    <div className="vsf-wrap" style={{ position: "relative", width: "100%", margin: "0 auto" }}>
       <div
         ref={scrollerRef}
         className="vsf-scroller"
