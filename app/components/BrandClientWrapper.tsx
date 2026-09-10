@@ -141,7 +141,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         }}
       >
         <div className="hero-grid-inf relative" style={{ maxWidth: "1200px", margin: "0 auto", width: "100%", zIndex: 2,
-          display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "start" }}>
+          display: "grid", gridTemplateColumns: "0.82fr 1.18fr", gap: "72px", alignItems: "start" }}>
 
           {/* Left: headline, subhead, CTA */}
           <div>
@@ -210,9 +210,11 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </div>
           </div>
 
-          {/* Right: dashboard mockup */}
+          {/* Right: dashboard mockup — bled wider than its grid column for more
+              visual weight; the section's own overflow:hidden + side padding
+              keep it from ever crossing the page edge. */}
           <div className="brand-hero-dashboard" style={{ position: "relative", aspectRatio: "6251 / 4239" }}>
-            <Image src="/im-brand-dashboard.png" alt={lang === "th" ? "แดชบอร์ดแคมเปญ" : "Campaign dashboard"} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "contain" }} />
+            <Image src="/im-brand-dashboard.png" alt={lang === "th" ? "แดชบอร์ดแคมเปญ" : "Campaign dashboard"} fill sizes="(max-width: 768px) 100vw, 66vw" style={{ objectFit: "contain" }} />
           </div>
         </div>
 
@@ -253,11 +255,11 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               <path d="M6 40 C 18 44, 24 20, 14 12 C 8 6, 20 2, 28 10 M40 6 L 46 2 M44 14 L 52 12" fill="none" stroke="#5f26e5" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" opacity="0.55" />
             </svg>
 
-            <p style={{ ...KT, color: "#6b7280", fontSize: "clamp(18px,1.8vw,28px)", lineHeight: 1.7, margin: "40px 0 32px", maxWidth: "440px" }}>
+            <p style={{ ...KT, color: "#111827", fontSize: "clamp(18px,1.8vw,28px)", lineHeight: 1.7, margin: "40px 0 32px" }}>
               {lang === "th" ? (
                 "มากกว่ากลยุทธ์ คือพาแบรนด์ไปถึงเป้าหมาย"
               ) : (
-                <>From Strategy To Insight,<span className="hero-subline-break"> We Turn Influence Into Impact.</span></>
+                "From Strategy To Insight, We Turn Influence Into Impact."
               )}
             </p>
 

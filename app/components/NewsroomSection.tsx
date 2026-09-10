@@ -50,7 +50,7 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
             background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
           }}>
-            Newsroom
+            {variant === "brand" ? "Blog" : "Newsroom"}
           </h2>
         </div>
 

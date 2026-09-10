@@ -119,17 +119,15 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
               <div key={person.src} style={{ textAlign: "center" }}>
                 <div className="cofounder-photo" style={{ position: "relative", aspectRatio: "3 / 4", borderRadius: "24px", overflow: "hidden", background: "#f3f3f3" }}>
                   <Image src={person.src} alt={person.name} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
-                  <div className="cofounder-overlay" style={{ position: "absolute", inset: 0, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: "24px" }}>
-                    <p style={{ ...KT, fontSize: "16px", fontWeight: 600, color: "#ffffff", lineHeight: 1.7, margin: 0 }}>
-                      &ldquo;{person.quote}&rdquo;
-                    </p>
-                  </div>
                 </div>
                 <p style={{ ...KT, fontSize: "18px", fontWeight: 700, color: "#5f26e5", margin: "20px 0 4px" }}>
                   {person.name}
                 </p>
-                <p style={{ ...KT, fontSize: "14px", fontWeight: 400, color: "#374151", margin: 0 }}>
+                <p style={{ ...KT, fontSize: "14px", fontWeight: 400, color: "#374151", margin: "0 0 12px" }}>
                   {person.title}
+                </p>
+                <p style={{ ...KT, fontSize: "15px", fontWeight: 400, color: "#111827", lineHeight: 1.7, margin: 0 }}>
+                  &ldquo;{person.quote}&rdquo;
                 </p>
               </div>
             ))}
@@ -142,12 +140,6 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
         </div>
 
         <style>{`
-          .cofounder-overlay{
-            background: linear-gradient(to top, rgba(95,38,229,0.95) 0%, rgba(95,38,229,0) 80%);
-            opacity: 0;
-            transition: opacity 0.35s ease;
-          }
-          .cofounder-photo:hover .cofounder-overlay{ opacity: 1; }
           @media (max-width: 760px){
             .cofounder-grid{ grid-template-columns: 1fr !important; max-width: 320px !important; }
           }

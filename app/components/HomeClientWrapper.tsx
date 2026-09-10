@@ -199,9 +199,6 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           {/* Heading */}
           <div className="text-center mb-12" style={{ maxWidth: "954px", margin: "0 auto 48px" }}>
-            <p style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#6b7280", margin: "0 0 12px" }}>
-              {lang === "th" ? "อะไรดีนะ" : "What's the Secret?"}
-            </p>
             <h2 className="section-title font-bold mb-6 section-h2-fixed"
               style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px", textAlign: "center",
                 fontFeatureSettings: "'pnum' on,'lnum' on" }}>
