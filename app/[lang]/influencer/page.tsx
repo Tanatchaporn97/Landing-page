@@ -68,11 +68,8 @@ const UNLOCK_BENTO_ITEMS_EN: ColorfulBentoItem[] = [
 import dynamic from "next/dynamic";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import InfluencerHero from "../../components/InfluencerHero";
 import PathToPartnership from "../../components/PathToPartnership";
-import UnlockIconHover from "../../components/UnlockIconHover";
 import OpportunityScatter, { OpportunityScatterMobileTop, OpportunityScatterMobileBottom } from "../../components/OpportunityScatter";
-import UnlockCards from "../../components/UnlockCards";
 import { ColorfulBentoGrid, type ColorfulBentoItem } from "@/components/ui/colorful-bento-grid";
 import ApplyPartnerships from "../../components/ApplyPartnerships";
 import CreatorStories from "../../components/CreatorStories";
@@ -133,11 +130,8 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
     <div className="hero" style={{ ...KT, overflowX: "hidden", background: PAGE_GRADIENT }}>
 
 
-      {/* ── Hero ── */}
-      <InfluencerHero lang={lang as Locale} />
-
       {/* ── Video Showcase ── */}
-      <section style={{ position: "relative", background: "transparent", overflow: "hidden", padding: "72px 0 64px" }}>
+      <section style={{ position: "relative", background: "transparent", overflow: "hidden", padding: "140px 0 64px" }}>
         <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "0 16px" }}>
           <h2 style={{ margin: "0 0 24px", lineHeight: 1.1 }}>
             <span className="vs-line1" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }), display: "block", fontWeight: lang === "th" ? 900 : 700, fontStyle: lang === "th" ? "normal" : "italic", fontSize: "clamp(28px,3.3vw,48px)", color: "#111827", whiteSpace: "nowrap" }}>
@@ -259,38 +253,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         `}</style>
       </section>
 
-      {/* ── Unlock Exclusive Opportunities ── */}
-      <section className="inf-section" style={{ background: "transparent", padding: "100px 48px" }}>
-        <UnlockIconHover />
-        <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
-          {/* Title */}
-          <div style={{ textAlign: "center", marginBottom: "56px" }}>
-            <h2 style={{ fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
-              <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>Unlock Exclusive </span>
-              <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Opportunities</span>
-            </h2>
-          </div>
-
-          {/* Click-to-expand card row */}
-          <UnlockCards items={lang === "th" ? [
-            { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", bg: "#d7f2df", title: "แบรนด์เชื่อถือได้", desc: "ไม่มีแบรนด์เงียบ ไม่มีงานปลอม มีแต่ความโปร" },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", bg: "#fbdce9", title: "จ่ายตรง ไม่มีเบี้ยว", desc: "งานจบ เงินไม่หาย กดเบิกเองได้ทุกเมื่อ รับตามรอบแบบตรงเวลา" },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", bg: "#dbeafe", title: "รีวิวได้ครบ", desc: "จบทุกแพลตฟอร์ม ให้คุณสามารถมีโอกาส รับงานรีวิวได้หลากหลายช่องทาง" },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-04.png", bg: "#fde8cf", title: "สิทธิพิเศษเฉพาะคุณ", desc: "ร่วมกิจกรรมและรับรางวัลสุดเอ็กซ์คลูซีฟ" },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", bg: "#e5ddfb", title: "มืออาชีพที่อยู่เคียงข้างคุณ", desc: "ทำงานได้อย่างมั่นใจ ด้วยทีมงานมืออาชีพ และระบบที่ช่วยให้ทุกอย่างง่ายขึ้น" },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", bg: "#d6f3f5", title: "แมทช์งานที่ใช่", desc: "รู้งานใหม่ก่อนใคร ด้วยระบบคัดกรองที่แมทช์งานตรงใจ ให้คุณได้ทำงานที่ใช่จากสิ่งที่ชอบ" },
-          ] : [
-            { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", bg: "#d7f2df", title: "Trusted Brands", desc: "No ghosting, no fake jobs. Just professionalism." },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", bg: "#fbdce9", title: "Paid on Time, Every Time", desc: "Finish the job, keep your money — withdraw anytime and get paid on a reliable schedule." },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", bg: "#dbeafe", title: "Review Anywhere", desc: "Covers every platform, giving you the chance to take on review work across multiple channels." },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-04.png", bg: "#fde8cf", title: "Exclusive Perks for You", desc: "Join events and win exclusive rewards." },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", bg: "#e5ddfb", title: "Professionals By Your Side", desc: "Work with confidence, backed by a professional team and a system that makes everything easier." },
-            { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", bg: "#d6f3f5", title: "The Right Match", desc: "Be first to know about new jobs with a matching system that connects you to work you'll actually love." },
-          ]} />
-        </div>
-      </section>
-
-      {/* ── Unlock Exclusive Opportunities — Bento grid duplicate ── */}
+      {/* ── Unlock Exclusive Opportunities — Bento grid ── */}
       <section className="inf-section" style={{ background: "transparent", padding: "100px 48px" }}>
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "56px" }}>

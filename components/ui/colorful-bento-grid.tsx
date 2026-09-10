@@ -39,8 +39,8 @@ export function ColorfulBentoGrid({ items }: { items: ColorfulBentoItem[] }) {
             </p>
           </div>
           {item.img && (
-            <div className="cbg-icon relative flex-1 min-h-[90px]">
-              <Image src={item.img} alt="" fill sizes="240px" style={{ objectFit: "contain", objectPosition: "bottom right" }} />
+            <div className="cbg-icon absolute" style={{ right: "16px", bottom: "16px", width: "clamp(90px,11vw,150px)", height: "clamp(90px,11vw,150px)" }}>
+              <Image src={item.img} alt="" fill sizes="150px" style={{ objectFit: "contain" }} />
             </div>
           )}
         </div>
@@ -48,7 +48,7 @@ export function ColorfulBentoGrid({ items }: { items: ColorfulBentoItem[] }) {
       <style>{`
         .cbg-card{ transition: transform 0.25s ease, box-shadow 0.25s ease; }
         .cbg-card:hover{ transform: translateY(-4px); box-shadow: 0 16px 40px rgba(95,38,229,0.28); }
-        .cbg-icon{ padding: 8px 8px 0 0; opacity: 0.96; }
+        .cbg-icon{ opacity: 0.96; }
         @media (max-width: 860px){
           .cbg-grid{ grid-template-columns: 1fr !important; }
           .cbg-card{ grid-column: auto !important; grid-row: auto !important; min-height: 260px; }
