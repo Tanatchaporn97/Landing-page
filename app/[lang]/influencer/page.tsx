@@ -1,8 +1,20 @@
 import Link from "next/link";
 import CardFanCarousel from "../../components/CardFanCarousel";
+import VideoScrollFan from "../../components/VideoScrollFan";
+import VideoClickCarousel from "../../components/VideoClickCarousel";
 import type { Metadata } from "next";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
+
+const INFLUENCER_HEADER_VIDEOS = [
+  { src: "/videos/influencer-header/header-2.mp4", name: "Icepapan" },
+  { src: "/videos/influencer-header/header-3.mp4", name: "Pookkyjdp" },
+  { src: "/videos/influencer-header/header-4.mp4", name: "Nice.Naphatchw" },
+  { src: "/videos/influencer-header/header-5.mp4", name: "ducky.jesse" },
+  { src: "/videos/influencer-header/header-6.mp4", name: "ignoreyouuu" },
+  { src: "/videos/influencer-header/header-7.mp4", name: "suppapitchayas" },
+  { src: "/videos/influencer-header/header-8.mp4", name: "deerboraa" },
+];
 
 // Hoisted to a stable reference — passing a fresh array literal as a prop on
 // every render would make CardFanCarousel's memoized callbacks (and the
@@ -86,28 +98,18 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <InfluencerHero lang={lang as Locale} />
 
       {/* ── Video Showcase ── */}
-      <section style={{ position: "relative", minHeight: "60vh", overflow: "hidden" }}>
-        <div className="video-showcase-row" style={{ position: "absolute", inset: 0, display: "flex" }}>
-          {["/videos/influencer-header/header-2.mp4", "/videos/influencer-header/header-3.mp4"].map((src) => (
-            <video key={src} autoPlay muted loop playsInline
-              style={{ flex: 1, minWidth: 0, height: "100%", objectFit: "cover" }}>
-              <source src={src} type="video/mp4" />
-            </video>
-          ))}
-        </div>
-        <div style={{ position: "absolute", inset: 0, background: "rgba(10,5,20,0.28)" }} />
-
-        <div style={{ position: "relative", zIndex: 1, minHeight: "60vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "64px 16px" }}>
+      <section style={{ position: "relative", background: "#F7F2E9", overflow: "hidden", padding: "72px 0 24px" }}>
+        <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "0 16px" }}>
           <h2 style={{ margin: "0 0 24px", lineHeight: 1.1 }}>
-            <span className="vs-line1" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }), display: "block", fontWeight: lang === "th" ? 900 : 700, fontStyle: lang === "th" ? "normal" : "italic", fontSize: "clamp(36px,6vw,72px)", color: "#ffffff", whiteSpace: "nowrap" }}>
+            <span className="vs-line1" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }), display: "block", fontWeight: lang === "th" ? 900 : 700, fontStyle: lang === "th" ? "normal" : "italic", fontSize: "clamp(36px,6vw,72px)", color: "#111827", whiteSpace: "nowrap" }}>
               {lang === "th" ? "แมทช์งานที่ใช่" : "Match the Right Job,"}
             </span>
             <span className="vs-line2" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }), display: "block", fontWeight: 700, fontSize: "clamp(52px,9vw,128px)", whiteSpace: "nowrap",
-              background: "linear-gradient(45deg, #a78bfa 0%, #ff8bc7 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              background: "linear-gradient(45deg, #5f26e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               {lang === "th" ? "ได้งานที่ชอบ" : "Get Work You Love"}
             </span>
           </h2>
-          <p style={{ ...KT, fontWeight: 700, fontSize: "clamp(18px,1.8vw,28px)", color: "rgba(255,255,255,0.9)", maxWidth: "900px", lineHeight: 1.7, margin: "0 0 32px" }}>
+          <p style={{ ...KT, fontWeight: 700, fontSize: "clamp(18px,1.8vw,28px)", color: "rgba(17,24,39,0.75)", maxWidth: "900px", lineHeight: 1.7, margin: "0 0 32px" }}>
             {lang === "th" ? (
               <>จบปัญหาความยุ่งยากในการรีวิวแบบเดิม ๆ<br />เชื่อมต่อกับแบรนด์ชั้นนำและสร้างรายได้จากสิ่งที่คุณรัก</>
             ) : (
@@ -131,16 +133,22 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
           </div>
         </div>
 
+        <VideoScrollFan videos={INFLUENCER_HEADER_VIDEOS} />
+
         <style>{`
           .vs-cta-solid{ transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease; }
-          .vs-cta-solid:hover{ background: #ffffff !important; color: #5f26e5 !important; transform: translateY(-2px); }
+          .vs-cta-solid:hover{ background: #111827 !important; color: #ffffff !important; transform: translateY(-2px); }
           .vs-cta-line{ transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease; }
           .vs-cta-line:hover{ background: #06C755 !important; color: #ffffff !important; transform: translateY(-2px); }
           @media (max-width: 760px){
-            .video-showcase-row{ flex-direction: column; }
             .vs-line1, .vs-line2{ white-space: normal !important; }
           }
         `}</style>
+      </section>
+
+      {/* ── More Creator Clips (click to browse) ── */}
+      <section style={{ position: "relative", background: "#F7F2E9", overflow: "hidden", padding: "0 0 88px" }}>
+        <VideoClickCarousel videos={INFLUENCER_HEADER_VIDEOS} />
       </section>
 
       {/* ── Ticker ── */}
