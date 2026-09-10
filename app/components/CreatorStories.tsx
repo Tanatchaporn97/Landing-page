@@ -8,6 +8,13 @@ const VIDEOS = [
   { src: "/videos/influencer-header/header-4.mp4", name: "Nice.Naphatchw" },
   { src: "/videos/influencer-header/header-2.mp4", name: "Icepapan" },
   { src: "/videos/influencer-header/header-3.mp4", name: "Pookkyjdp" },
+  { src: "/videos/influencer-header/header-5.mp4", name: "ducky.jesse" },
+  { src: "/videos/influencer-header/header-6.mp4", name: "ignoreyouuu" },
+  { src: "/videos/influencer-header/header-7.mp4", name: "suppapitchayas" },
+  { src: "/videos/influencer-header/header-8.mp4", name: "deerboraa" },
+  { src: "/videos/influencer-header/header-9.mp4", name: "graphic.review" },
+  { src: "/videos/influencer-header/header-10.mp4", name: "tinnimalist" },
+  { src: "/videos/influencer-header/header-11.mp4", name: "ถุงเงิน ณัฐดาภรณ์" },
 ];
 
 function StoryCard({ src, name }: { src: string; name: string }) {
@@ -28,9 +35,10 @@ function StoryCard({ src, name }: { src: string; name: string }) {
 
   return (
     <div className="creator-story-card" style={{
-      position: "relative", flex: "1 1 0", minWidth: "200px", aspectRatio: "9 / 16",
+      position: "relative", flex: "0 0 calc(25% - 18px)", minWidth: "200px", aspectRatio: "9 / 16",
       borderRadius: "28px", overflow: "hidden", background: "#000000",
       boxShadow: "0 12px 32px rgba(95,38,229,0.16)", cursor: "pointer",
+      scrollSnapAlign: "start",
     }} onClick={toggle}>
       <video ref={videoRef} playsInline loop style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
         onEnded={() => setPlaying(false)}>
@@ -63,7 +71,7 @@ function StoryCard({ src, name }: { src: string; name: string }) {
 
 export default function CreatorStories() {
   return (
-    <div className="creator-stories-row" style={{ display: "flex", gap: "24px", overflowX: "auto", paddingBottom: "8px" }}>
+    <div className="creator-stories-row" style={{ display: "flex", gap: "24px", overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none", paddingBottom: "8px" }}>
       {VIDEOS.map((v) => <StoryCard key={v.src} src={v.src} name={v.name} />)}
       <style>{`
         .creator-stories-row::-webkit-scrollbar{ display: none; }
