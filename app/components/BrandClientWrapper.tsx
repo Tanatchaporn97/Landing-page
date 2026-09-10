@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { HoverSlider, HoverSliderImage, HoverSliderImageWrap, TextStaggerHover, HoverSlideDescription } from "./AnimatedSlideshow";
+import { TextRotate } from "@/components/ui/text-rotate";
 
 // Lazy load below-the-fold components
 const LogoMarquee = dynamic(() => import("./LogoMarquee"));
@@ -239,10 +240,16 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           <div style={{ position: "relative" }}>
             <h2 className="font-bold uppercase" style={{ ...KT, color: "#111827", fontSize: "clamp(28px,3.6vw,46px)", lineHeight: 1.2, margin: "0 0 24px" }}>
               Not Just Strategies.<br/>
-              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                Execution That Delivers.
-              </span>
+              <TextRotate
+                texts={lang === "th"
+                  ? ["ที่ส่งมอบผลลัพธ์จริง", "ที่วัดผลได้ชัดเจน", "ที่ขับเคลื่อนธุรกิจ"]
+                  : ["Execution That Delivers.", "Strategy That Performs.", "Growth That Compounds."]}
+                mainClassName="inline-flex text-[#ff0089]"
+                staggerFrom="last"
+                staggerDuration={0.02}
+                rotationInterval={2800}
+                transition={{ type: "spring", damping: 28, stiffness: 300 }}
+              />
             </h2>
 
             <p style={{ ...KT, color: "#111827", fontSize: "clamp(18px,1.8vw,28px)", lineHeight: 1.7, margin: "40px 0 32px" }}>
