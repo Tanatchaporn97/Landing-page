@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -17,9 +16,14 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
 
   return (
     <div className="tps-grid" style={{ display: "grid", gridTemplateColumns: "0.62fr 2fr", gap: "48px", alignItems: "start" }}>
-      {/* Left — heading, description, CTA */}
+      {/* Left — heading, description */}
       <div className="tps-left" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-        <h3 style={{ ...KT, fontSize: "clamp(26px,2.6vw,34px)", fontWeight: 800, margin: 0, lineHeight: 1.25, color: "#111827" }}>
+        <h3 style={{
+          ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800,
+          margin: 0, lineHeight: 1.15,
+          background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+          WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+        }}>
           Benefit
         </h3>
         <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0, maxWidth: "320px" }}>
@@ -27,12 +31,6 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
             ? "ข้อดีที่ทำให้แบรนด์ไว้วางใจ Buddy Review ในการทำ Influencer Marketing"
             : "The advantages that make brands trust Buddy Review for their influencer marketing."}
         </p>
-        <Link href={`/${lang}/about`} style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "15px", fontWeight: 700, color: "#5f26e5", textDecoration: "none" }}>
-          {lang === "th" ? "ดูเพิ่มเติม" : "Learn More"}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </Link>
       </div>
 
       {/* Right — row of benefit cards */}
@@ -44,11 +42,8 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
               <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", aspectRatio: "4 / 3", marginBottom: "16px" }}>
                 <Image src={item.src} alt={item.title} fill sizes="(max-width: 900px) 50vw, 25vw" style={{ objectFit: "cover", objectPosition: item.objectPosition || "top" }} />
               </div>
-              <span style={{ ...KT, fontSize: "13px", fontWeight: 700, color: "#9ca3af", letterSpacing: "0.04em", marginBottom: "6px" }}>
-                ({String(i + 1).padStart(2, "0")})
-              </span>
               <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "12px" }}>
-                <h4 style={{ ...KT, fontSize: "18px", fontWeight: 700, color: "#111827", margin: 0, lineHeight: 1.35 }}>
+                <h4 style={{ ...KT, fontSize: "22px", fontWeight: 700, color: "#5f26e5", margin: 0, lineHeight: 1.35 }}>
                   {item.title}
                 </h4>
                 <button
@@ -69,7 +64,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
                 </button>
               </div>
               <p style={{
-                ...KT, fontSize: "14px", lineHeight: 1.7, color: "#374151",
+                ...KT, fontSize: "14px", lineHeight: 1.7, color: "#111827",
                 margin: 0, overflow: "hidden",
                 maxHeight: isOpen ? "80px" : "0px",
                 opacity: isOpen ? 1 : 0,
