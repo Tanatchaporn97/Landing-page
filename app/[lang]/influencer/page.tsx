@@ -300,9 +300,11 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             )}
           </h2>
           <p className="desc-text" style={{ ...KT, fontSize: "18px", color: "#374151", lineHeight: 1.7, margin: "0 auto 32px", maxWidth: "620px" }}>
-            {lang === "th"
-              ? "ใช้ AI ในการช่วยวิเคราะห์ผู้ติดตาม คอนเทนต์ และ Performance รู้ว่า คนดูคือใคร คอนเทนต์แบบไหนเวิร์ก และควรทำอะไรต่อ"
-              : "Uses AI to help analyze your followers, content, and performance — know who your audience is, what content works, and what to do next."}
+            {lang === "th" ? (
+              <>ใช้ AI ในการช่วยวิเคราะห์ผู้ติดตาม คอนเทนต์ และ Performance<br />รู้ว่าคนดูคือใคร คอนเทนต์แบบไหนเวิร์ก และควรทำอะไรต่อ</>
+            ) : (
+              <>Uses AI to help analyze your followers, content, and performance<br />know who your audience is, what content works, and what to do next.</>
+            )}
           </p>
           <a href="https://rank.buddyreview.co/" target="_blank" rel="noopener noreferrer" className="btn-insight"
             style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", borderRadius: "50px", fontSize: "16px", fontWeight: 600, padding: "14px 32px", textDecoration: "none" }}>

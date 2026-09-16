@@ -8,10 +8,10 @@ const TAGS = ["Location", "Demographic", "Content Category", "Occupation", "Pers
 const KEYWORDS = ["Skincare", "Beauty Routine", "Makeup", "Lifestyle"];
 const CONTENT_TYPES = ["Review", "Tutorial", "Routine", "Unboxing"];
 const SIMILAR_CREATORS = [
-  { name: "cheese", img: "/creator-mockup/cheese.jpg" },
-  { name: "puifai", img: "/creator-mockup/puifai.jpg" },
-  { name: "yam", img: "/creator-mockup/yam.jpg" },
-  { name: "may", img: "/creator-mockup/may.jpg" },
+  { name: "Creator A", img: "/creator-mockup/cheese.jpg" },
+  { name: "Creator B", img: "/creator-mockup/puifai.jpg" },
+  { name: "Creator C", img: "/creator-mockup/yam.jpg" },
+  { name: "Creator D", img: "/creator-mockup/may.jpg" },
 ];
 const AGE_BARS = [28, 62, 48, 20, 10];
 

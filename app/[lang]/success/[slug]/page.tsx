@@ -96,7 +96,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
         </p>
 
         {/* Hero stats strip — compact highlight numbers right under the tagline */}
-        {story.heroStats && story.heroStats.length > 0 && (
+        {story.heroStats && story.heroStats.length > 0 && story.slug !== "optimum-hi-pro" && (
           <div className="success-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: "20px", marginBottom: "56px" }}>
             {story.heroStats.map((s) => (
               <div key={s.label} style={{
