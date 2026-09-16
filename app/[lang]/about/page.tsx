@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import OurJourney from "../../components/OurJourney";
+import { TestimonialSlider } from "@/components/ui/testimonial-slider-1";
 import { getDictionary } from "../../../get-dictionary";
 import { type Locale } from "../../../i18n-config";
 
@@ -107,30 +107,21 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
             </span>
           </h2>
 
-          <div className="cofounder-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px", margin: "0 auto 48px" }}>
-            {[
-              { src: "/co-founder/co-founder-1.jpg", name: "ณัฏฐดนัย รักตประจิต (นิค)", title: "Co-founder",
-                quote: "เราสร้างการตลาดอินฟลูเอนเซอร์ที่ไม่ได้แค่ 'ดัง' แต่สร้าง 'กำไรจริง'" },
-              { src: "/co-founder/co-founder-2.jpg", name: "ณพัชร รัตนถาวรกิติ (พัชร)", title: "CEO, Co-founder",
-                quote: "เราสร้างอนาคตของ Influencer Marketing ด้วยวิสัยทัศน์ที่ชัดเจนและผลลัพธ์ที่พิสูจน์ได้", objectPosition: "center top" },
-              { src: "/co-founder/co-founder-3.jpg", name: "เศรษฐพร ศรีวิไล (บอส)", title: "Co-founder",
-                quote: "เทคโนโลยีของเราคือขุมพลังที่เปลี่ยนทุกข้อมูล สู่ผลลัพธ์ที่แม่นยำ" },
-            ].map((person) => (
-              <div key={person.src} style={{ textAlign: "center" }}>
-                <div className="cofounder-photo" style={{ position: "relative", aspectRatio: "3 / 4", borderRadius: "24px", overflow: "hidden", background: "#f3f3f3" }}>
-                  <Image src={person.src} alt={person.name} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover", objectPosition: person.objectPosition ?? "center" }} />
-                </div>
-                <p style={{ ...KT, fontSize: "18px", fontWeight: 700, color: "#5f26e5", margin: "20px 0 4px" }}>
-                  {person.name}
-                </p>
-                <p style={{ ...KT, fontSize: "14px", fontWeight: 400, color: "#374151", margin: "0 0 12px" }}>
-                  {person.title}
-                </p>
-                <p style={{ ...KT, fontSize: "15px", fontWeight: 400, color: "#111827", lineHeight: 1.7, margin: 0 }}>
-                  &ldquo;{person.quote}&rdquo;
-                </p>
-              </div>
-            ))}
+          <div style={{ margin: "0 auto 48px" }}>
+            <TestimonialSlider
+              reviews={[
+                { id: "phat", name: "ณพัชร รัตนถาวรกิติ (พัชร)", affiliation: "CEO, Co-founder",
+                  quote: "เราสร้างอนาคตของ Influencer Marketing ด้วยวิสัยทัศน์ที่ชัดเจนและผลลัพธ์ที่พิสูจน์ได้",
+                  imageSrc: "/co-founder/co-founder-2.jpg", thumbnailSrc: "/co-founder/co-founder-2.jpg" },
+                { id: "nick", name: "ณัฏฐดนัย รักตประจิต (นิค)", affiliation: "Co-founder",
+                  quote: "เราสร้างการตลาดอินฟลูเอนเซอร์ที่ไม่ได้แค่ 'ดัง' แต่สร้าง 'กำไรจริง'",
+                  imageSrc: "/co-founder/co-founder-1.jpg", thumbnailSrc: "/co-founder/co-founder-1.jpg" },
+                { id: "boss", name: "เศรษฐพร ศรีวิไล (บอส)", affiliation: "Co-founder",
+                  quote: "เทคโนโลยีของเราคือขุมพลังที่เปลี่ยนทุกข้อมูล สู่ผลลัพธ์ที่แม่นยำ",
+                  imageSrc: "/co-founder/co-founder-3.jpg", thumbnailSrc: "/co-founder/co-founder-3.jpg" },
+              ]}
+              className="shadow-[0_8px_32px_rgba(95,38,229,0.10)] border border-black/5"
+            />
           </div>
 
           <a href={`/${lang}#contact`} className="btn-hero-solid-purple"
