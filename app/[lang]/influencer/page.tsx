@@ -72,6 +72,7 @@ import OpportunityScatter, { OpportunityScatterMobileTop, OpportunityScatterMobi
 import { type ColorfulBentoItem } from "@/components/ui/colorful-bento-grid";
 import { AnimatedFeatureCard } from "@/components/ui/feature-card-1";
 import BuddyRanksInteractive from "../../components/BuddyRanksInteractive";
+import CreatorChannelsSection from "../../components/CreatorChannelsSection";
 import CreatorStories from "../../components/CreatorStories";
 import MarqueeTicker from "../../components/MarqueeTicker";
 import { type Locale } from "../../../i18n-config";
@@ -244,6 +245,13 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             .opportunity-heading{ white-space: normal !important; overflow-wrap: break-word !important; word-break: break-word !important; font-size: clamp(22px,6.5vw,30px) !important; }
           }
         `}</style>
+      </section>
+
+      {/* ── One Creator, Many Channels ── */}
+      <section className="inf-section" style={{ background: "transparent", padding: "60px 48px" }}>
+        <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
+          <CreatorChannelsSection lang={lang as "th" | "en"} />
+        </div>
       </section>
 
       {/* ── Unlock Exclusive Opportunities — Bento grid ── */}

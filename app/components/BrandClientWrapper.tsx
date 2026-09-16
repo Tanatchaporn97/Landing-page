@@ -708,7 +708,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
       {/* ── Campaign Learning — Measure, Learn, Improve ── */}
       <section style={{
-        backgroundImage: "url('/creator-mockup/campaign-learning-bg.jpg')",
+        backgroundImage: "url('/creator-mockup/campaign-learning-bg2.jpg')",
         backgroundSize: "cover", backgroundPosition: "center",
         position: "relative", overflow: "hidden",
       }} className="py-20 px-6">

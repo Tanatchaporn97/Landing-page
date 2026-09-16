@@ -15,21 +15,9 @@ const STEPS = [
 ];
 
 const SENTIMENT = [
-  { label: "Positive", labelTh: "เชิงบวก", value: "78%" },
-  { label: "Neutral", labelTh: "กลาง ๆ", value: "18%" },
-  { label: "Negative", labelTh: "เชิงลบ", value: "4%" },
-];
-
-const RESULT_STATS = [
-  { v: "161%", l: "Reach" },
-  { v: "219%", l: "Views" },
-  { v: "5.33%", l: "ER" },
-];
-
-const COMMENT_RIBBONS = [
-  { label: "Positive Comments", labelTh: "คอมเมนต์เชิงบวก", bg: "#5f26e5" },
-  { label: "Neutral Comments", labelTh: "คอมเมนต์กลาง ๆ", bg: "#8b6fe8" },
-  { label: "Negative Comments", labelTh: "คอมเมนต์เชิงลบ", bg: "#c4b5fd" },
+  { label: "Positive", labelTh: "เชิงบวก", value: 78, color: "#5f26e5" },
+  { label: "Neutral", labelTh: "กลาง ๆ", value: 18, color: "#c4b5fd" },
+  { label: "Negative", labelTh: "เชิงลบ", value: 4, color: "#ff0089" },
 ];
 
 const ACTIVITY_TILES = [
@@ -65,13 +53,13 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
 
         <div style={{ display: "flex", flexDirection: "column", marginTop: "8px" }}>
           {STEPS.map((step, i) => (
-            <div key={step.num} style={{
+            <div key={step.num} className={step.highlight ? "cl-step-hover" : step.num === "02" ? "cl-step-hover-2" : step.num === "03" ? "cl-step-hover-3" : undefined} style={{
               padding: "20px 22px",
-              borderRadius: step.highlight ? "18px" : 0,
-              background: step.highlight ? "rgba(95,38,229,0.06)" : "transparent",
-              border: step.highlight ? "1px solid rgba(95,38,229,0.15)" : "none",
-              borderBottom: !step.highlight && i < STEPS.length - 1 ? "1px solid rgba(95,38,229,0.12)" : (!step.highlight ? "none" : undefined),
-              marginBottom: step.highlight ? "4px" : 0,
+              borderRadius: 0,
+              background: "transparent",
+              border: "none",
+              borderBottom: i < STEPS.length - 1 ? "1px solid rgba(95,38,229,0.12)" : "none",
+              marginBottom: 0,
             }}>
               <div style={{ display: "flex", alignItems: "baseline", gap: "12px", marginBottom: "6px" }}>
                 <span style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#9ca3af" }}>{step.num}</span>
@@ -88,159 +76,171 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
       </div>
 
       {/* Right — reporting dashboard mockup */}
-      <div className="cl-dashboard" style={{ position: "relative", minHeight: "480px" }}>
-        {/* Base panel: browser/device frame showing campaign activity */}
+      <div className="cl-dashboard" style={{ position: "relative", minHeight: "460px" }}>
+        {/* Base panel: Campaign activity grid */}
         <div style={{
-          position: "relative", borderRadius: "18px", overflow: "hidden",
-          background: "#ffffff", border: "1px solid rgba(95,38,229,0.12)",
-          boxShadow: "0 24px 50px -18px rgba(95,38,229,0.3)",
+          position: "relative", borderRadius: "24px", padding: "24px",
+          background: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.8)",
+          boxShadow: "0 24px 50px -18px rgba(95,38,229,0.25)", backdropFilter: "blur(10px)",
         }}>
-          {/* browser chrome bar */}
-          <div style={{ display: "flex", alignItems: "center", gap: "6px", padding: "12px 16px", background: "#f4f2fb", borderBottom: "1px solid rgba(95,38,229,0.1)" }}>
-            <span style={{ width: "9px", height: "9px", borderRadius: "50%", background: "#ff8fb3" }} />
-            <span style={{ width: "9px", height: "9px", borderRadius: "50%", background: "#ffd08f" }} />
-            <span style={{ width: "9px", height: "9px", borderRadius: "50%", background: "#8fe8b8" }} />
-            <span style={{ ...KT, fontSize: "11px", color: "#9ca3af", marginLeft: "10px" }}>
-              {lang === "th" ? "รายงานแคมเปญ" : "Campaign Report"}
-            </span>
-          </div>
-          <div style={{ padding: "20px" }}>
-            <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#6b7280", margin: "0 0 14px" }}>
-              {lang === "th" ? "กิจกรรมแคมเปญ" : "Campaign Activity"}
-            </p>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px" }}>
-              {ACTIVITY_TILES.map((bg, i) => (
-                <div key={i} style={{ aspectRatio: "1 / 1", borderRadius: "14px", background: bg }} />
-              ))}
-            </div>
+          <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#6b7280", margin: "0 0 14px" }}>
+            {lang === "th" ? "กิจกรรมแคมเปญ" : "Campaign Activity"}
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px" }}>
+            {ACTIVITY_TILES.map((bg, i) => (
+              <div key={i} style={{ aspectRatio: "1 / 1", borderRadius: "14px", background: bg }} />
+            ))}
           </div>
         </div>
 
-        {/* Floating: Sentiment — solid purple header table */}
-        <div className="cl-float" style={{
-          position: "absolute", top: "-32px", left: "-28px", width: "190px",
-          background: "#ffffff", borderRadius: "16px", overflow: "hidden",
-          boxShadow: "0 16px 32px -10px rgba(95,38,229,0.3)",
+        {/* Floating: Sentiment */}
+        <div className="cl-float cl-float-sentiment cl-target-sentiment" style={{
+          position: "absolute", top: "-28px", left: "-24px", width: "180px",
+          background: "#ffffff", borderRadius: "16px", padding: "16px 18px",
+          boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
+          opacity: 0.55,
+          transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
         }}>
-          <div style={{ background: "#5f26e5", padding: "10px 16px" }}>
-            <p style={{ ...KT, fontSize: "14px", fontWeight: 800, color: "#ffffff", margin: 0, textAlign: "center" }}>
-              {lang === "th" ? "ความรู้สึก" : "Sentiment"}
-            </p>
-          </div>
-          <div>
-            {SENTIMENT.map((s, i) => (
-              <div key={s.label} style={{ display: "flex", justifyContent: "space-between", padding: "8px 16px",
-                borderBottom: i < SENTIMENT.length - 1 ? "1px solid rgba(95,38,229,0.1)" : "none", ...KT, fontSize: "13px" }}>
-                <span style={{ color: "#5f26e5", fontWeight: 700 }}>{lang === "th" ? s.labelTh : s.label}</span>
-                <span style={{ color: "#111827", fontWeight: 700 }}>{s.value}</span>
+          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#9ca3af", margin: "0 0 10px" }}>
+            {lang === "th" ? "ความรู้สึก" : "Sentiment"}
+          </p>
+          {SENTIMENT.map((s) => (
+            <div key={s.label} style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px", ...KT, fontSize: "13px" }}>
+              <span style={{ color: s.color, fontWeight: 700 }}>{lang === "th" ? s.labelTh : s.label}</span>
+              <span style={{ color: "#111827", fontWeight: 700 }}>{s.value}%</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Floating: Campaign result */}
+        <div className="cl-float cl-target-result" style={{
+          position: "absolute", top: "36%", left: "-32px", width: "210px",
+          background: "#ffffff", borderRadius: "16px", padding: "16px 18px",
+          boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
+          opacity: 0.55,
+          transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
+        }}>
+          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#9ca3af", margin: "0 0 10px" }}>
+            {lang === "th" ? "ผลลัพธ์แคมเปญ" : "Campaign Result"}
+          </p>
+          <div style={{ display: "flex", gap: "14px" }}>
+            {[{ v: "161%", l: lang === "th" ? "การเข้าถึง" : "Reach" }, { v: "219%", l: lang === "th" ? "ยอดวิว" : "Views" }, { v: "5.33%", l: "ER" }].map((s) => (
+              <div key={s.l}>
+                <p style={{ ...KT, fontSize: "16px", fontWeight: 800, color: "#5f26e5", margin: "0 0 2px" }}>{s.v}</p>
+                <p style={{ ...KT, fontSize: "10px", color: "#9ca3af", margin: 0 }}>{s.l}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Floating: Campaign result — 3-column stat table */}
-        <div className="cl-float" style={{
-          position: "absolute", top: "22%", left: "-40px", width: "230px",
-          background: "#ffffff", borderRadius: "16px", overflow: "hidden",
-          boxShadow: "0 16px 32px -10px rgba(95,38,229,0.3)",
-        }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", background: "#5f26e5" }}>
-            {RESULT_STATS.map((s) => (
-              <p key={s.l} style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#ffffff", margin: 0, padding: "8px 6px", textAlign: "center", borderRight: "1px solid rgba(255,255,255,0.2)" }}>
-                {s.l}
-              </p>
-            ))}
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}>
-            {RESULT_STATS.map((s) => (
-              <p key={s.v} style={{ ...KT, fontSize: "15px", fontWeight: 800, color: "#111827", margin: 0, padding: "10px 6px", textAlign: "center" }}>
-                {s.v}
-              </p>
-            ))}
-          </div>
-        </div>
-
-        {/* Floating: Do Better / Did Good — glowing circle pair */}
-        <div className="cl-float cl-circles" style={{ position: "absolute", top: "-24px", right: "-32px", display: "flex" }}>
-          <div style={{
-            width: "108px", height: "108px", borderRadius: "50%", flexShrink: 0,
-            background: "linear-gradient(135deg, #5f25e5 0%, #7c3aed 100%)",
-            boxShadow: "0 0 40px rgba(95,38,229,0.5)",
-            display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "8px",
-          }}>
-            <span style={{ ...KT, fontSize: "13px", fontWeight: 800, color: "#ffffff", lineHeight: 1.3 }}>
-              {lang === "th" ? "ทำได้ดีขึ้น" : "Do Better"}
-            </span>
-          </div>
-          <div style={{
-            width: "108px", height: "108px", borderRadius: "50%", flexShrink: 0, marginLeft: "-24px",
-            background: "linear-gradient(135deg, #b794f6 0%, #ff8fc7 100%)",
-            boxShadow: "0 0 40px rgba(255,143,199,0.5)",
-            display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "8px",
-          }}>
-            <span style={{ ...KT, fontSize: "13px", fontWeight: 800, color: "#ffffff", lineHeight: 1.3 }}>
-              {lang === "th" ? "ทำได้ดีแล้ว" : "Did Good"}
-            </span>
-          </div>
-        </div>
-
-        {/* Floating: What people said — ribbon-style tags */}
-        <div className="cl-float" style={{ position: "absolute", bottom: "-30px", left: "4%", display: "flex", flexDirection: "column" }}>
-          {COMMENT_RIBBONS.map((r, i) => (
-            <span key={r.label} style={{
-              ...KT, fontSize: "13px", fontWeight: 800, color: "#ffffff",
-              background: r.bg, padding: "10px 26px 10px 18px",
-              clipPath: "polygon(0 0, 88% 0, 100% 50%, 88% 100%, 0 100%)",
-              marginTop: i === 0 ? 0 : "-10px", marginLeft: `${i * 26}px`,
-              boxShadow: "0 8px 16px -6px rgba(95,38,229,0.35)",
-              position: "relative", zIndex: COMMENT_RIBBONS.length - i,
-            }}>
-              {lang === "th" ? r.labelTh : r.label}
-            </span>
-          ))}
-        </div>
-
-        {/* Floating: Reach by day — fuller chart with axis + legend */}
-        <div className="cl-float" style={{
-          position: "absolute", bottom: "-36px", right: "-20px", width: "270px",
+        {/* Floating: Next move */}
+        <div className="cl-float cl-target-nextmove" style={{
+          position: "absolute", top: "-20px", right: "-20px", width: "210px",
           background: "#ffffff", borderRadius: "16px", padding: "16px 18px",
-          boxShadow: "0 16px 32px -10px rgba(95,38,229,0.3)",
+          boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
+          opacity: 0.55,
+          transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
         }}>
-          <p style={{ ...KT, fontSize: "12px", fontWeight: 800, color: "#111827", margin: "0 0 10px" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px" }}>
+            <span style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#9ca3af" }}>{lang === "th" ? "ก้าวต่อไป" : "Next Move"}</span>
+            <span style={{ display: "flex", alignItems: "center", gap: "4px", ...KT, fontSize: "10px", fontWeight: 700, color: "#ff0089" }}>
+              <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#ff0089" }} />Live
+            </span>
+          </div>
+          <p style={{ ...KT, fontSize: "13px", lineHeight: 1.6, color: "#111827", margin: 0, fontWeight: 600 }}>
+            {lang === "th"
+              ? "ลดคลิป How-to และเพิ่ม Creator ที่ทำ Review แบบก่อน-หลัง"
+              : "Cut back on how-to clips and add more before-and-after style reviews."}
+          </p>
+        </div>
+
+        {/* Floating: What people said */}
+        <div className="cl-float cl-target-whatsaid" style={{
+          position: "absolute", bottom: "-24px", left: "6%", width: "200px",
+          background: "#ffffff", borderRadius: "16px", padding: "16px 18px",
+          boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
+          opacity: 0.55,
+          transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
+        }}>
+          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#9ca3af", margin: "0 0 10px" }}>
+            {lang === "th" ? "คนพูดว่ายังไง" : "What People Said"}
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+            {[
+              lang === "th" ? "คอมเมนต์เชิงบวก" : "Positive comments",
+              lang === "th" ? "คำถามที่ต้องตอบ" : "Questions to answer",
+              lang === "th" ? "จุดที่ทำซ้ำได้" : "Repeatable content cues",
+            ].map((txt) => (
+              <span key={txt} style={{ ...KT, fontSize: "12px", fontWeight: 600, color: "#5f26e5",
+                background: "rgba(95,38,229,0.06)", borderRadius: "8px", padding: "6px 10px" }}>
+                {txt}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Floating: Reach by day */}
+        <div className="cl-float cl-target-reach" style={{
+          position: "absolute", bottom: "-32px", right: "-16px", width: "230px",
+          background: "#ffffff", borderRadius: "16px", padding: "16px 18px",
+          boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
+          opacity: 0.55,
+          transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
+        }}>
+          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#9ca3af", margin: "0 0 10px" }}>
             {lang === "th" ? "การเข้าถึงรายวัน" : "Reach by Day"}
           </p>
-          <svg viewBox="0 0 240 70" width="100%" height="60" preserveAspectRatio="none">
+          <svg viewBox="0 0 200 50" width="100%" height="44" preserveAspectRatio="none">
             <defs>
               <linearGradient id="cl-area" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#5f25e5" stopOpacity="0.3" />
                 <stop offset="100%" stopColor="#5f25e5" stopOpacity="0" />
               </linearGradient>
             </defs>
-            {[10, 25, 40, 55].map((y) => (
-              <line key={y} x1="0" y1={y} x2="240" y2={y} stroke="#eee7fb" strokeWidth="1" />
-            ))}
-            <path d="M0,45 C18,43 30,12 48,18 C66,24 72,50 90,47 C108,44 114,18 132,22 C150,26 156,42 174,38 C192,34 198,22 216,25 L240,27 L240,60 L0,60 Z" fill="url(#cl-area)" />
-            <path d="M0,45 C18,43 30,12 48,18 C66,24 72,50 90,47 C108,44 114,18 132,22 C150,26 156,42 174,38 C192,34 198,22 216,25 L240,27" fill="none" stroke="#5f25e5" strokeWidth="2.5" />
+            <path d="M0,35 C15,33 25,10 40,15 C55,20 60,40 75,38 C90,36 95,15 110,18 C125,21 130,33 145,30 C160,27 165,18 180,20 L200,22 L200,50 L0,50 Z" fill="url(#cl-area)" />
+            <path d="M0,35 C15,33 25,10 40,15 C55,20 60,40 75,38 C90,36 95,15 110,18 C125,21 130,33 145,30 C160,27 165,18 180,20 L200,22" fill="none" stroke="#5f25e5" strokeWidth="2" />
           </svg>
-          <div style={{ display: "flex", justifyContent: "space-between", ...KT, fontSize: "9px", color: "#9ca3af", marginTop: "4px" }}>
-            {["12 Feb","18 Feb","24 Feb","03 Mar"].map((d) => <span key={d}>{d}</span>)}
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "6px", marginTop: "8px" }}>
-            <span style={{ width: "18px", height: "2px", background: "#5f25e5", display: "inline-block" }} />
-            <span style={{ ...KT, fontSize: "11px", color: "#6b7280" }}>{lang === "th" ? "การเข้าถึง" : "Reach"}</span>
-          </div>
+          <p style={{ ...KT, fontSize: "11px", color: "#9ca3af", margin: "6px 0 0" }}>
+            {lang === "th" ? "ดูช่วงพีค แล้วทำซ้ำสิ่งที่ได้ผล" : "Watch the spike, then reuse the cue."}
+          </p>
         </div>
       </div>
 
       <style>{`
+        .cl-grid:has(.cl-step-hover:hover) .cl-target-result,
+        .cl-grid:has(.cl-step-hover:hover) .cl-target-reach,
+        .cl-grid:has(.cl-step-hover-2:hover) .cl-target-sentiment,
+        .cl-grid:has(.cl-step-hover-2:hover) .cl-target-whatsaid,
+        .cl-grid:has(.cl-step-hover-3:hover) .cl-target-nextmove{
+          transform: translateY(-10px);
+          box-shadow: 0 24px 40px -12px rgba(95,38,229,0.4);
+          opacity: 1 !important;
+          border: 1.5px solid rgba(95,38,229,0.35);
+          background: #ffffff !important;
+        }
+        .cl-target-result, .cl-target-reach, .cl-target-sentiment, .cl-target-whatsaid, .cl-target-nextmove{
+          border: 1.5px solid transparent;
+        }
+        .cl-step-hover, .cl-step-hover-2, .cl-step-hover-3{
+          transition: background 0.35s ease, border-color 0.35s ease, border-radius 0.35s ease;
+          cursor: pointer;
+        }
+        .cl-step-hover:hover, .cl-step-hover-2:hover, .cl-step-hover-3:hover{
+          background: #5f26e5 !important;
+          border-color: #5f26e5 !important;
+          border-radius: 18px !important;
+        }
+        .cl-step-hover:hover *, .cl-step-hover-2:hover *, .cl-step-hover-3:hover *{
+          color: #ffffff !important;
+          transition: color 0.35s ease;
+        }
         @media (max-width: 900px){
           .cl-grid{ grid-template-columns: 1fr !important; gap: 40px !important; }
           .cl-left{ max-width: none !important; }
           .cl-dashboard{ margin-top: 40px; }
         }
         @media (max-width: 640px){
-          .cl-float{ position: static !important; width: 100% !important; margin: 0 0 12px !important; }
-          .cl-circles{ justify-content: center; }
+          .cl-float{ position: static !important; width: 100% !important; margin-bottom: 12px; }
           .cl-dashboard{ display: flex; flex-direction: column; }
         }
       `}</style>
