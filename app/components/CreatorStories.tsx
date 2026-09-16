@@ -35,7 +35,7 @@ function StoryCard({ src, name }: { src: string; name: string }) {
 
   return (
     <div className="creator-story-card" style={{
-      position: "relative", flex: "0 0 calc(25% - 18px)", minWidth: "200px", aspectRatio: "9 / 16",
+      position: "relative", flex: "0 0 300px", width: "300px", aspectRatio: "9 / 16",
       borderRadius: "28px", overflow: "hidden", background: "#000000",
       boxShadow: "0 12px 32px rgba(95,38,229,0.16)", cursor: "pointer",
       scrollSnapAlign: "start",
