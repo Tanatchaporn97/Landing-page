@@ -1,16 +1,16 @@
 "use client";
 
-import { FaTiktok, FaFacebookF, FaInstagram, FaYoutube, FaXTwitter } from "react-icons/fa6";
+import Image from "next/image";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const CHANNELS = [
-  { name: "TikTok", icon: FaTiktok, bg: "#000000", iconColor: "#ffffff" },
-  { name: "Facebook", icon: FaFacebookF, bg: "#1877F2", iconColor: "#ffffff" },
-  { name: "Instagram", icon: FaInstagram, bg: "linear-gradient(135deg, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%)", iconColor: "#ffffff" },
-  { name: "YouTube", icon: FaYoutube, bg: "#FF0000", iconColor: "#ffffff" },
-  { name: "Lemon8", icon: null, bg: "#000000", iconColor: "#ffffff", label: "L8" },
-  { name: "X", icon: FaXTwitter, bg: "#000000", iconColor: "#ffffff" },
+  { name: "TikTok", icon: "/social-icons/tiktok.png" },
+  { name: "Facebook", icon: "/social-icons/facebook.png" },
+  { name: "Instagram", icon: "/social-icons/instagram.png" },
+  { name: "YouTube", icon: "/social-icons/youtube.png" },
+  { name: "Lemon8", icon: "/social-icons/lemon8.png" },
+  { name: "X", icon: "/social-icons/x.png" },
 ];
 
 export default function CreatorChannelsSection({ lang }: { lang: "th" | "en" }) {
@@ -42,14 +42,10 @@ export default function CreatorChannelsSection({ lang }: { lang: "th" | "en" }) 
             transition: "transform 0.3s ease, box-shadow 0.3s ease",
           }}>
             <div style={{
-              width: "38px", height: "38px", borderRadius: "10px", flexShrink: 0,
-              background: ch.bg, display: "flex", alignItems: "center", justifyContent: "center",
+              width: "38px", height: "38px", borderRadius: "50%", flexShrink: 0,
+              display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden",
             }}>
-              {ch.icon ? (
-                <ch.icon size={18} color={ch.iconColor} />
-              ) : (
-                <span style={{ ...KT, fontSize: "12px", fontWeight: 800, color: ch.iconColor }}>{ch.label}</span>
-              )}
+              <Image src={ch.icon} alt={ch.name} width={38} height={38} style={{ objectFit: "contain" }} />
             </div>
             <span style={{ ...KT, fontSize: "15px", fontWeight: 700, color: "#111827" }}>{ch.name}</span>
           </div>
