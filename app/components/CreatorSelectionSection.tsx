@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import { Badge } from "@/components/ui/badge";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -28,14 +29,14 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
     <div className="cs-grid" style={{ display: "grid", gridTemplateColumns: "0.62fr 2fr", gap: "48px", alignItems: "center" }}>
       {/* Left — eyebrow, heading, description, filter tags */}
       <div className="cs-left" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-        <span style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.14em", color: "#5f26e5", textTransform: "uppercase" }}>
-          {lang === "th" ? "การคัดเลือกครีเอเตอร์" : "Creator Selection"}
-        </span>
+        <div>
+          <Badge variant="outline">Creator Selection</Badge>
+        </div>
         <h3 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, margin: 0, lineHeight: 1.15 }}>
-          <span style={{ color: "#111827" }}>{lang === "th" ? "หา" : "Find the Right "}</span>
+          <span style={{ color: "#111827" }}>Find the Right </span>
           <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            {lang === "th" ? "ครีเอเตอร์ที่ใช่" : "Creator"}
+            Creator
           </span>
         </h3>
         <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0, maxWidth: "340px" }}>

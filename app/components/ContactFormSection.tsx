@@ -13,7 +13,7 @@ const IconCheck = ({ color = "#5f26e5" }: { color?: string }) => (
   </svg>
 );
 
-export default function ContactFormSection({ lang = "th", dict }: { lang?: "th" | "en", dict: any }) {
+export default function ContactFormSection({ lang = "th", dict, headingOverride, subheadingOverride }: { lang?: "th" | "en", dict: any, headingOverride?: string, subheadingOverride?: string }) {
   const [consented, setConsented] = useState(false);
   const [showConsentWarning, setShowConsentWarning] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", company: "", budget: "", position: "", brief: "" });
@@ -58,12 +58,17 @@ export default function ContactFormSection({ lang = "th", dict }: { lang?: "th" 
         {/* ── Top heading row ── */}
         <div className="contact-title-wrap" style={{ display: "flex", alignItems: "flex-start", justifyContent: "center",
           gap: "40px", marginBottom: "56px" }}>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px", textAlign: "center" }}>
             <h2 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 900,
-              margin: 0, lineHeight: "72px",
+              margin: 0, lineHeight: headingOverride ? 1.2 : "72px",
               display: "inline-block" }}>
-              <span style={{ background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{t.contactUs || "ติดต่อเรา"}</span>
+              <span style={{ background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{headingOverride || t.contactUs || "ติดต่อเรา"}</span>
             </h2>
+            {subheadingOverride && (
+              <p style={{ ...KT, fontSize: "16px", color: "#4b5563", lineHeight: 1.7, margin: 0, maxWidth: "560px" }}>
+                {subheadingOverride}
+              </p>
+            )}
           </div>
         </div>
 

@@ -1,5 +1,7 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
+
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const CATEGORIES = [
@@ -46,15 +48,13 @@ export default function CreatorCategoriesSection({ lang }: { lang: "th" | "en" }
     <div>
       <div className="cc-header-row" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "32px", marginBottom: "40px", flexWrap: "wrap" }}>
         <div>
-          <span style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.14em", color: "#5f26e5", textTransform: "uppercase" }}>
-            {lang === "th" ? "หมวดหมู่ครีเอเตอร์" : "Creator Categories"}
-          </span>
+          <Badge variant="outline">Creator Categories</Badge>
           <h3 style={{ ...KT, fontSize: "clamp(28px,3.6vw,48px)", fontWeight: 800, margin: "10px 0 0", lineHeight: 1.15 }}>
-            <span style={{ color: "#111827" }}>{lang === "th" ? "สำรวจครีเอเตอร์ทุก" : "Explore Every Creator"}</span>
+            <span style={{ color: "#111827" }}>Explore Every Creator</span>
             <br />
             <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              {lang === "th" ? "หมวดหมู่" : "Category"}
+              Category
             </span>
           </h3>
         </div>

@@ -2,6 +2,7 @@
 import { Rocket, Eye, CheckCircle2, Store, Clapperboard, Repeat } from "lucide-react";
 import { motion } from "motion/react";
 import { TiltCard } from "@/components/ui/standard-card";
+import { Badge } from "@/components/ui/badge";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -31,18 +32,18 @@ export default function BusinessGoalsSection({ lang }: { lang: "th" | "en" }) {
     <div className="bg-grid" style={{ display: "grid", gridTemplateColumns: "0.62fr 2fr", gap: "48px", alignItems: "start" }}>
       {/* Left — eyebrow, heading, description */}
       <div className="bg-left" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-        <span style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.14em", color: "#5f26e5", textTransform: "uppercase" }}>
-          {lang === "th" ? "วัตถุประสงค์ทางธุรกิจ" : "Business Objectives"}
-        </span>
+        <div>
+          <Badge variant="outline">Business Objectives</Badge>
+        </div>
         <h3 style={{
           ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800,
           margin: 0, lineHeight: 1.15,
         }}>
-          <span style={{ color: "#111827" }}>{lang === "th" ? "เริ่มจาก" : "Start With Your "}</span>
+          <span style={{ color: "#111827" }}>Start With Your </span>
           <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
             whiteSpace: "nowrap" }}>
-            {lang === "th" ? "เป้าหมาย" : "Goal"}
+            Goal
           </span>
         </h3>
         <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0, maxWidth: "320px" }}>

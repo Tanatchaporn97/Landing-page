@@ -40,11 +40,11 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           <Badge variant="outline">Creator Selection</Badge>
         </div>
         <h3 style={{ ...KT, fontSize: "clamp(28px,3.3vw,44px)", fontWeight: 800, margin: 0, lineHeight: 1.2 }}>
-          <span style={{ color: "#111827" }}>{lang === "th" ? "วัดผล เรียนรู้" : "Measure, Learn,"}</span>
+          <span style={{ color: "#111827" }}>Keep Every Step</span>
           <br />
           <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            {lang === "th" ? "และพัฒนาต่อ" : "Improve"}
+            Moving
           </span>
         </h3>
         <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#4b5563", margin: 0, maxWidth: "380px" }}>

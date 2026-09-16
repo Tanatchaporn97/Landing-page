@@ -315,15 +315,26 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
            mechanism as Success Stories) ── */}
       <section id="our-services" className="py-20 px-6">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "32px", flexWrap: "wrap", gap: "16px" }}>
-            <h2 className="font-bold section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: 0,
-              fontFeatureSettings: "'pnum' on,'lnum' on", color: "#111827" }}>
-              Our{" "}
-              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                Services
-              </span>
-            </h2>
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "32px", flexWrap: "wrap", gap: "16px" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "16px", maxWidth: "620px" }}>
+              <div>
+                <Badge variant="outline">What We Do</Badge>
+              </div>
+              <h2 className="font-bold section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: 0,
+                fontFeatureSettings: "'pnum' on,'lnum' on", color: "#111827" }}>
+                Solutions for Every{" "}
+                <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                  Creator Marketing
+                </span>{" "}
+                Need
+              </h2>
+              <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0 }}>
+                {lang === "th"
+                  ? "ตั้งแต่ Strategy, Creator Campaigns, Commerce ไปจนถึง Content & Production"
+                  : "From Strategy, Creator Campaigns, and Commerce to Content & Production."}
+              </p>
+            </div>
             <div style={{ display: "flex", gap: "10px" }}>
               <button className="arrow-cta-btn" onClick={() => setActiveService((prev) => Math.max(0, prev - 1))}
                 style={{ width: "44px", height: "44px", borderRadius: "50%", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", touchAction: "manipulation" }}>
@@ -403,14 +414,22 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       {/* ── What We Offer ── */}
       <section style={{ background: "transparent" }} className="py-20 px-6">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
-          <h2 className="text-center font-bold mb-14 section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
-            fontFeatureSettings: "'pnum' on,'lnum' on", color: "#111827", margin: "0 0 56px" }}>
-            What We{" "}
-            <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              Offer
-            </span>
-          </h2>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", textAlign: "center", marginBottom: "56px" }}>
+            <Badge variant="outline">Why Buddy Review</Badge>
+            <h2 className="font-bold section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2,
+              fontFeatureSettings: "'pnum' on,'lnum' on", color: "#111827", margin: 0 }}>
+              Think Smarter,{" "}
+              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                Execute Better
+              </span>
+            </h2>
+            <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0, maxWidth: "640px" }}>
+              {lang === "th"
+                ? "เราใช้ Strategy, Creator Intelligence และ Campaign Data เชื่อมทุกขั้นตอนเข้าด้วยกัน ตั้งแต่การเลือก Creator ไปจนถึงการวัดผล เพื่อให้ทุกการตัดสินใจมีเหตุผล และทุกแคมเปญนำไปต่อยอดได้"
+                : "We connect Strategy, Creator Intelligence, and Campaign Data across every step — from Creator selection to measurement — so every decision is backed by reason, and every campaign can be built on."}
+            </p>
+          </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-10">
             {WHAT_WE_OFFER.map((item, i) => {
@@ -730,7 +749,12 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       <FAQAccordion faqs={dict?.homeFaqs} lang={lang} variant="home" dict={dict} />
 
       <div id="contact" className="contact-bg" style={{ padding: "80px 0" }}>
-        <ContactFormSection lang={lang} dict={dict?.contactForm} />
+        <ContactFormSection lang={lang} dict={dict?.contactForm}
+          headingOverride={lang === "th" ? "มี Brief แล้ว หรือยังไม่แน่ใจว่าควรเริ่มจากอะไร?" : "Have a brief, or not sure where to start?"}
+          subheadingOverride={lang === "th"
+            ? "เล่าเป้าหมายของคุณให้เราฟัง ทีม Buddy Review จะช่วยมองโจทย์ วางแนวทาง และแนะนำ campaign approach ที่เหมาะกับแบรนด์"
+            : "Tell us your goal — the Buddy Review team will help frame the challenge, shape the direction, and recommend a campaign approach that fits your brand."}
+        />
       </div>
 
       {/* ── Footer ── */}
