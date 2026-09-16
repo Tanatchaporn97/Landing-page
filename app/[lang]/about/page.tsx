@@ -120,7 +120,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
                   quote: "เทคโนโลยีของเราคือขุมพลังที่เปลี่ยนทุกข้อมูล สู่ผลลัพธ์ที่แม่นยำ",
                   imageSrc: "/co-founder/co-founder-3.jpg", thumbnailSrc: "/co-founder/co-founder-3.jpg" },
               ]}
-              className="shadow-[0_8px_32px_rgba(95,38,229,0.10)] border border-black/5"
+              className="bg-white/25 backdrop-blur-2xl border border-white/50 shadow-[0_8px_32px_rgba(95,38,229,0.15)]"
             />
           </div>
 
