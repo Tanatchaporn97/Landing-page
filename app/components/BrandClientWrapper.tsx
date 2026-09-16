@@ -678,14 +678,20 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       {/* ── How We Run Campaigns ── */}
       <section className="py-20 px-6">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
-          <div className="text-center" style={{ maxWidth: "760px", margin: "0 auto 56px" }}>
-            <h2 className="section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, lineHeight: 1.3, color: "#111827", margin: "0 0 20px" }}>
-              How We{" "}
+          <div className="text-center" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", maxWidth: "760px", margin: "0 auto 56px" }}>
+            <Badge variant="outline">Campaign Flow</Badge>
+            <h2 className="section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, lineHeight: 1.3, color: "#111827", margin: 0 }}>
+              Keep Every Step{" "}
               <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
                 WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                Run Campaigns
+                Moving
               </span>
             </h2>
+            <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0 }}>
+              {lang === "th"
+                ? "ทีม Buddy Review ดูแลแคมเปญตั้งแต่ต้นจนจบ พร้อมให้ลูกค้าเห็นความคืบหน้าและสิ่งที่ต้องตัดสินใจในแต่ละขั้น"
+                : "The Buddy Review team manages your campaign from start to finish, keeping you updated on progress and every decision along the way."}
+            </p>
           </div>
 
           <div className="grid-2-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>

@@ -37,14 +37,14 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
       {/* Left — eyebrow, heading, description, 3-step list */}
       <div className="cl-left" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         <div>
-          <Badge variant="outline">Creator Selection</Badge>
+          <Badge variant="outline">Campaign Learning</Badge>
         </div>
         <h3 style={{ ...KT, fontSize: "clamp(28px,3.3vw,44px)", fontWeight: 800, margin: 0, lineHeight: 1.2 }}>
-          <span style={{ color: "#111827" }}>Keep Every Step</span>
+          <span style={{ color: "#111827" }}>Measure, Learn,</span>
           <br />
           <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            Moving
+            Improve
           </span>
         </h3>
         <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#4b5563", margin: 0, maxWidth: "380px" }}>
@@ -66,7 +66,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
               <div style={{ display: "flex", alignItems: "baseline", gap: "12px", marginBottom: "6px" }}>
                 <span style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#9ca3af" }}>{step.num}</span>
                 <h4 style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: 0, color: "#111827" }}>
-                  {lang === "th" ? step.titleTh : step.title}
+                  {step.title}
                 </h4>
               </div>
               <p style={{ ...KT, fontSize: "14px", lineHeight: 1.7, color: "#6b7280", margin: 0 }}>
