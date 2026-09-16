@@ -14,10 +14,11 @@ import { type Locale } from "../../../i18n-config";
 export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const catAll = lang === "th" ? "ทั้งหมด" : "All";
   const catBrand = lang === "th" ? "สำหรับแบรนด์" : "For Brands";
   const catInf = lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Influencers";
-  const CATS = [catAll, catBrand, catInf];
+  const catAll = lang === "th" ? "ทั้งหมด" : "All";
+  const TOPICS = ["Knowledge", "How-to", "Insight", "Update", "Case", "Other"];
+  const CATS = [catAll, ...TOPICS];
 
   const BLOG_POSTS = (dict?.blogPosts || []).filter((p: any) => p.categories.includes(catBrand) || p.categories.includes(catInf));
 
@@ -32,7 +33,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
 
   const filtered = activeCat === catAll
     ? BLOG_POSTS
-    : BLOG_POSTS.filter((p: any) => p.categories.includes(activeCat));
+    : BLOG_POSTS.filter((p: any) => (p.topics || []).includes(activeCat));
 
   return (
     <div className="background" style={{ ...KT }}>
@@ -91,7 +92,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
               <div style={{ padding: "24px 24px 28px", display: "flex", flexDirection: "column", gap: "12px", flex: 1 }}>
 
                 <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
-                  {post.categories.map((cat: any) => (
+                  {(post.topics || []).map((cat: any) => (
                     <span key={cat} style={{ ...KT, background: "rgba(255,255,255,0.15)", color: "#111827", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.35)", borderRadius: "50px", fontSize: "13px", fontWeight: 600, padding: "4px 14px", display: "inline-block", width: "fit-content" }}>
                       {cat}
                     </span>

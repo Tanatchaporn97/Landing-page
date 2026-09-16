@@ -10,6 +10,10 @@ import { getDictionary } from "../../../../get-dictionary";
 import { type Locale } from "../../../../i18n-config";
 
 const BLOG_DESCRIPTIONS: Record<string, Record<string, string>> = {
+  "content-strategy-canvas": {
+    th: "รู้จัก Content Strategy Canvas เครื่องมือวางแผนคอนเทนต์แบบหน้าเดียว ที่ช่วยตอบ Purpose, Audience และ Execution ให้ชัดเจน เพิ่ม Reach และ Engagement ได้อย่างแม่นยำ",
+    en: "Discover the Content Strategy Canvas — a one-page framework that clarifies Purpose, Audience, and Execution to plan content that actually reaches and engages the right people.",
+  },
   "tiktok-algorithm-9-techniques": {
     th: "เจาะลึกอัลกอริทึม TikTok 2025 พร้อม 9 เทคนิคทำคลิปให้ติด For You Page เพิ่ม Engagement และยอดวิวอย่างได้ผล",
     en: "Decode the TikTok Algorithm 2025 with 9 proven techniques to get your videos on the For You Page and grow your reach.",
@@ -120,6 +124,83 @@ const OL = ({ items }: { items: React.ReactNode[] }) => (
     ))}
   </ol>
 );
+
+function ContentStrategyCanvasContent({ lang }: { lang: Locale }) {
+  if (lang === "en") {
+    return (
+      <>
+        <P>A common complaint among marketers and creators: producing tons of content, yet likes stay quiet and sales stay flat, with no clear idea what to fix. This usually happens when the content is &quot;good, but aimed at the wrong audience&quot; — because in this era, &quot;volume&quot; matters far less than &quot;precision.&quot;</P>
+        <P>Buddy Review wants to introduce a tool that can rescue your Reach and sharpen your content planning: the <strong style={{ color: "#5f26e5" }}>Content Strategy Canvas</strong>.</P>
+
+        <Divider />
+        <H2>What Is the Content Strategy Canvas?</H2>
+        <P>The Content Strategy Canvas is a one-page framework that summarizes the full picture of a content plan, helping you and your team answer three key questions with total clarity:</P>
+        <UL items={[
+          <><strong>Purpose:</strong> Why are we making this content?</>,
+          <><strong>Audience:</strong> Who are we talking to?</>,
+          <><strong>Execution:</strong> What approach will actually achieve the goal?</>,
+        ]} />
+
+        <P>The Content Strategy Canvas has 8 key components:</P>
+        <OL items={[
+          <><strong>Business Goal</strong> — Start with what the brand actually needs, such as boosting sales or reaching Gen Z. We recommend focusing on just 1–2 goals per campaign so the scope doesn&apos;t get so wide you lose focus.</>,
+          <><strong>Content Goal</strong> — Translate the business goal into an action, e.g. turning &quot;boost sales&quot; into &quot;create reviews that build trust.&quot;</>,
+          <><strong>Audience</strong> — No need for a long persona write-up; focus on data you can actually use, like what they enjoy watching and their pain points. This sharpens your communication direction.</>,
+          <><strong>Core Message</strong> — What do you want people to remember from this content? E.g. &quot;flawless skin from one jar,&quot; then branch that message into multiple content angles while staying consistent.</>,
+          <><strong>Content Pillars</strong> — Define 3–5 core topics the brand wants to communicate, e.g. education, product reviews, lifestyle, or tips — making it easier for the team to ideate while keeping the content from becoming scattered.</>,
+          <><strong>Formats</strong> — Choose formats that fit both the content and the audience. Don&apos;t pick a format just because everyone else is using it.</>,
+          <><strong>Distribution</strong> — Decide where the content will live, e.g. TikTok, Instagram, or Facebook, and plan which content will be Paid vs. Organic to reach the target audience more precisely.</>,
+          <><strong>KPI</strong> — Metrics should always align with the goal, for example:
+            <UL noBullet items={[
+              "Want more visibility (Awareness) → focus on Reach or Views",
+              "Want more sales (Conversion) → focus on Add to Cart or purchase volume",
+            ]} />
+          </>,
+        ]} />
+
+        <P>In the end, underperforming content isn&apos;t always about &quot;bad content&quot; — it&apos;s often because the Content Strategy was never clearly defined: why we&apos;re doing it, who we&apos;re talking to, and how we&apos;ll measure it.</P>
+        <P>The Content Strategy Canvas is a framework that gets the whole team aligned on one picture — from the goal, audience, and message, all the way to format, distribution, and KPIs — so content doesn&apos;t rely purely on trial and error, but can be planned and adjusted using real data.</P>
+        <P><strong style={{ color: "#5f26e5" }}>Because great content isn&apos;t just about reaching a lot of people — it&apos;s about reaching the right people and driving them toward the goal the brand actually wants.</strong></P>
+      </>
+    );
+  }
+  return (
+    <>
+      <P>ปัญหายอดฮิตของนักการตลาดและครีเอเตอร์คือ ทำคอนเทนต์ออกมาเยอะมาก แต่ยอดไลก์เงียบ ยอดขายนิ่ง ไม่รู้จะแก้ตรงไหน ปัญหานี้มักเกิดจากการทำ &quot;คอนเทนต์ดี แต่ผิดกลุ่ม&quot; เพราะในยุคนี้การเน้น &quot;ปริมาณ&quot; ไม่สำคัญเท่า &quot;ความแม่นยำ&quot;</P>
+      <P>Buddy Review เลยอยากชวนมาทำความรู้จักเครื่องมือที่จะช่วยกู้ยอด Reach และทำให้เราวางแผนคอนเทนต์ได้เฉียบคมขึ้น นั่นคือ <strong style={{ color: "#5f26e5" }}>Content Strategy Canvas</strong> ครับ</P>
+
+      <Divider />
+      <H2>Content Strategy Canvas คืออะไร?</H2>
+      <P>Content Strategy Canvas คือ แผนภาพหน้าเดียวที่สรุปทุกภาพรวมของการทำคอนเทนต์ เพื่อช่วยให้เราและทีมตอบคำถามสำคัญ 3 ข้อนี้ได้เคลียร์ที่สุด</P>
+      <UL items={[
+        <><strong>Purpose:</strong> เราทำคอนเทนต์นี้ไปเพื่ออะไร?</>,
+        <><strong>Audience:</strong> เรากำลังคุยอยู่กับใคร?</>,
+        <><strong>Execution:</strong> ต้องนำเสนอแบบไหนถึงจะบรรลุเป้าหมาย?</>,
+      ]} />
+
+      <P>โดย Content Strategy Canvas มี 8 องค์ประกอบสำคัญดังนี้</P>
+      <OL items={[
+        <><strong>Business Goal (เป้าหมายธุรกิจ)</strong> — เริ่มที่แบรนด์ต้องการอะไร เช่น เพิ่มยอดขาย หรือเจาะกลุ่ม Gen Z ตรงนี้เราแนะนำให้โฟกัสแค่ 1-2 เป้าหมายต่อแคมเปญ เพื่อไม่ให้ตีกรอบกว้างเกินไป จนไม่รู้จะโฟกัสกับอะไร</>,
+        <><strong>Content Goal (เป้าหมายคอนเทนต์)</strong> — แปลงเป้าธุรกิจมาเป็นการกระทำ เช่น จาก &quot;เพิ่มยอดขาย&quot; เปลี่ยนเป็น &quot;ทำรีวิวเพื่อสร้างความน่าเชื่อถือ&quot;</>,
+        <><strong>Audience (กลุ่มเป้าหมาย)</strong> — ไม่จำเป็นต้องเขียน Persona ยาวๆ แต่เน้นเจาะข้อมูลที่ใช้ได้จริง เช่น เขาชอบดูอะไรและมี Pain Point อะไร ข้อมูลนี้จะช่วยกำหนดทิศทางวิธีการสื่อสารได้ชัดเจนยิ่งขึ้น</>,
+        <><strong>Core Message (แก่นสารหลัก)</strong> — อยากให้คนจำอะไรจากคอนเทนต์นี้? เช่น สวยจบในกระปุกเดียว แล้วนำ Message นี้ไปแตกเป็นคอนเทนต์หลายมุม โดยยังสื่อสารไปในทิศทางเดียวกัน</>,
+        <><strong>Content Pillars (แกนหลักของเนื้อหา)</strong> — กำหนดหัวข้อหลัก 3-5 เรื่องที่แบรนด์ต้องการสื่อสาร เช่น ความรู้ รีวิวสินค้า Lifestyle หรือ Tips เพื่อช่วยให้ทีมคิดคอนเทนต์ได้ง่ายขึ้น และคุมทิศทางไม่ให้เนื้อหาสะเปะสะปะ</>,
+        <><strong>Formats (รูปแบบการนำเสนอ)</strong> — เลือกรูปแบบให้เหมาะกับทั้งเนื้อหาและกลุ่มเป้าหมาย อย่าเลือก Format เพียงเพราะคนอื่นกำลังทำ</>,
+        <><strong>Distribution (ช่องทางเผยแพร่)</strong> — กำหนดว่าคอนเทนต์จะไปอยู่ที่ไหน เช่น TikTok, Instagram หรือ Facebook รวมถึงวางแผนว่า Content ไหนจะใช้ Paid และ Content ไหนจะเน้น Organic เพื่อให้ไปถึงกลุ่มเป้าหมายได้ตรงขึ้น</>,
+        <><strong>KPI (วิธีวัดผล)</strong> — ตัวเลขต้องสอดคล้องไปกับเป้าหมายเสมอ เช่น
+          <UL noBullet items={[
+            "อยากให้คนเห็นเยอะ (Awareness) เน้นดูที่ Reach หรือ Views",
+            "อยากเน้นยอดขาย (Conversion) เน้นดูที่ Add to Cart หรือ ยอดการสั่งซื้อ",
+          ]} />
+        </>,
+      ]} />
+
+      <P>สุดท้ายแล้วปัญหาของคอนเทนต์ที่ไม่เวิร์ก อาจไม่ได้อยู่ที่คอนเทนต์ไม่ดี แต่อาจเป็นเพราะเรายังวาง Content Strategy ไม่ชัดพอว่า ทำไปเพื่ออะไร กำลังสื่อสารกับใคร และจะวัดผลจากอะไร</P>
+      <P>Content Strategy Canvas จึงเป็นอีกหนึ่ง Framework ที่ช่วยให้ทีมเห็นภาพเดียวกันตั้งแต่เป้าหมาย กลุ่มเป้าหมาย Message ไปจนถึง Format, ช่องทางเผยแพร่ และ KPI ทำให้การทำคอนเทนต์ไม่ต้องอาศัยการลองผิดลองถูกอย่างเดียว แต่สามารถวางแผนและปรับจากข้อมูลที่เกิดขึ้นจริงได้</P>
+      <P><strong style={{ color: "#5f26e5" }}>เพราะคอนเทนต์ที่ดีไม่จำเป็นต้องมีแค่คนเห็นเยอะ แต่ต้องไปถึงคนที่ใช่และพาไปสู่เป้าหมายที่แบรนด์ต้องการด้วยนั่นเองครับ</strong></P>
+    </>
+  );
+}
 
 function TikTokContent({ lang }: { lang: Locale }) {
   if (lang === "en") {
@@ -787,7 +868,7 @@ function CopywritingContent({ lang }: { lang: Locale }) {
   );
 }
 
-const SLUGS = ["best-time-to-post-2025", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas", "6-copywriting-techniques"];
+const SLUGS = ["content-strategy-canvas", "best-time-to-post-2025", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas", "6-copywriting-techniques"];
 
 export function generateStaticParams() {
   return SLUGS.map((slug) => ({ slug }));
@@ -857,7 +938,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ lang:
           </h1>
           <div style={{ height: "1px", background: "rgba(255,255,255,0.2)", marginBottom: "32px" }} />
 
-          {post.slug === "tiktok-algorithm-9-techniques" ? (
+          {post.slug === "content-strategy-canvas" ? (
+            <ContentStrategyCanvasContent lang={lang as Locale} />
+          ) : post.slug === "tiktok-algorithm-9-techniques" ? (
             <TikTokContent lang={lang as Locale} />
           ) : post.slug === "best-time-to-post-2025" ? (
             <BestTimeContent lang={lang as Locale} />

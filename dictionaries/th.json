@@ -492,13 +492,25 @@
       ]
     },
     {
+      "slug": "content-strategy-canvas",
+      "title": "ทำคอนเทนต์แทบตาย ทำไมยอด Reach หลักร้อย? แก้เกมง่ายๆ ด้วย Content Strategy Canvas",
+      "desc": "ปัญหายอดฮิตของนักการตลาดและครีเอเตอร์คือทำคอนเทนต์เยอะแต่ยอดไลก์เงียบ Buddy Review ชวนรู้จัก Content Strategy Canvas เครื่องมือที่ช่วยวางแผนคอนเทนต์ให้แม่นยำและตรงกลุ่มเป้าหมายมากขึ้น",
+      "image": "/blogs/blog-1.avif",
+      "categories": [
+        "สำหรับแบรนด์",
+        "สำหรับอินฟลูเอนเซอร์"
+      ],
+      "topics": ["Knowledge"]
+    },
+    {
       "slug": "best-time-to-post-2025",
       "title": "รวมวันและเวลาที่ดีที่สุดในการโพสต์บนโซเชียลมีเดีย ปี 2025",
       "desc": "เคยสงสัยไหมว่า… \"ทำไมบางโพสต์แทบไม่มีคนเห็น แต่บางโพสต์กลับไวรัลขึ้นมาได้?\" ความลับไม่ได้อยู่ที่คอนเทนต์อย่างเดียว แต่ \"เวลา\" ก็เป็นอีกปัจจัยสำคัญที่กำหนดว่าคอนเทนต์ของคุณจะไปโผล่บนฟีดใครบ้าง",
       "image": "/blogs/blog-best-time.png",
       "categories": [
         "สำหรับอินฟลูเอนเซอร์"
-      ]
+      ],
+      "topics": ["Insight"]
     },
     {
       "slug": "tiktok-algorithm-9-techniques",
@@ -508,7 +520,8 @@
       "categories": [
         "สำหรับแบรนด์",
         "สำหรับอินฟลูเอนเซอร์"
-      ]
+      ],
+      "topics": ["Knowledge", "How-to"]
     },
     {
       "slug": "influencer-mapping-canvas",
@@ -517,7 +530,8 @@
       "image": "/blogs/blog-influencer-mapping.png",
       "categories": [
         "สำหรับแบรนด์"
-      ]
+      ],
+      "topics": ["How-to"]
     },
     {
       "slug": "6-copywriting-techniques",
@@ -526,7 +540,8 @@
       "image": "/blogs/blog-copywriting.png",
       "categories": [
         "สำหรับอินฟลูเอนเซอร์"
-      ]
+      ],
+      "topics": ["How-to"]
     }
   ],
   "testimonials": [
