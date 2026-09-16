@@ -365,7 +365,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                     boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
                     display: "flex", flexDirection: "column",
                   }}>
-                  <motion.div layout style={{ position: "relative", width: "100%", aspectRatio: isActive ? "8 / 5" : "3 / 4", flexShrink: 0 }}>
+                  <div style={{ position: "relative", width: "100%", aspectRatio: isActive ? "8 / 5" : "3 / 4", flexShrink: 0 }}>
                     <Image src={item.img} alt={item.title} fill sizes={isActive ? "380px" : "220px"}
                       style={{ objectFit: "cover", objectPosition: item.objectPosition || "center" }} />
                     {/* Fade the image into the card's white body — long, eased, multi-stop
@@ -374,7 +374,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                       position: "absolute", inset: 0, pointerEvents: "none",
                       background: "linear-gradient(to bottom, transparent 0%, transparent 25%, rgba(255,255,255,0.15) 45%, rgba(255,255,255,0.45) 65%, rgba(255,255,255,0.8) 85%, #ffffff 100%)",
                     }} />
-                  </motion.div>
+                  </div>
                   <motion.div layout style={{ padding: isActive ? "24px 26px 28px" : "18px 18px 20px", display: "flex", flexDirection: "column", flex: 1 }}>
                     <h3 style={{ ...KT, fontSize: isActive ? "22px" : "16px", fontWeight: 700, color: "#5f26e5", margin: isActive ? "0 0 10px" : 0, lineHeight: 1.3 }}>
                       {item.title}
