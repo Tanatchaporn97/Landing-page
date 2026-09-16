@@ -159,14 +159,14 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
     card.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
   }, [activeService]);
 
-  // Auto-advance the Our Services row every 2s, looping back to the start;
+  // Auto-advance the Our Services row every 5s, looping back to the start;
   // paused while the user is hovering the row.
   const [servicesAutoPaused, setServicesAutoPaused] = useState(false);
   useEffect(() => {
     if (servicesAutoPaused) return;
     const id = setInterval(() => {
       setActiveService((prev) => (prev + 1) % OUR_SERVICES.length);
-    }, 2000);
+    }, 5000);
     return () => clearInterval(id);
   }, [servicesAutoPaused]);
 
@@ -369,7 +369,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               return (
                 <motion.div key={item.title} layout onClick={() => setActiveService(i)}
                   ref={(el) => { serviceCardRefs.current[i] = el; }}
-                  transition={{ type: "spring", stiffness: 260, damping: 28 }}
+                  transition={{ type: "tween", duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
                   style={{
                     width: isActive ? 380 : 220, flexShrink: 0, scrollSnapAlign: "start",
                     borderRadius: isActive ? 24 : 20, overflow: "hidden", cursor: "pointer",
