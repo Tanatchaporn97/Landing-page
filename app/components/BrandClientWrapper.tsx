@@ -159,6 +159,17 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
     card.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
   }, [activeService]);
 
+  // Auto-advance the Our Services row every 2s, looping back to the start;
+  // paused while the user is hovering the row.
+  const [servicesAutoPaused, setServicesAutoPaused] = useState(false);
+  useEffect(() => {
+    if (servicesAutoPaused) return;
+    const id = setInterval(() => {
+      setActiveService((prev) => (prev + 1) % OUR_SERVICES.length);
+    }, 2000);
+    return () => clearInterval(id);
+  }, [servicesAutoPaused]);
+
   const router = useRouter();
   const catSlug = (cat: string) => cat.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-$/, "");
 
@@ -349,7 +360,10 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
           {/* Single scrollable row — click any card to expand it (image + description),
               all other cards collapse to just image + title */}
-          <div ref={servicesScrollRef} style={{ display: "flex", gap: "20px", overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none", msOverflowStyle: "none" as React.CSSProperties["msOverflowStyle"], alignItems: "center", paddingBottom: "8px" }}>
+          <div ref={servicesScrollRef}
+            onMouseEnter={() => setServicesAutoPaused(true)}
+            onMouseLeave={() => setServicesAutoPaused(false)}
+            style={{ display: "flex", gap: "20px", overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none", msOverflowStyle: "none" as React.CSSProperties["msOverflowStyle"], alignItems: "center", paddingBottom: "8px" }}>
             {OUR_SERVICES.map((item, i) => {
               const isActive = activeService === i;
               return (
@@ -488,7 +502,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                 const TabIcon = STORY_TAB_ICONS[tabLabel];
                 return (
                   <TabsTrigger key={tabLabel} value={tabLabel} style={{ ...KT }}>
-                    <TabIcon className="h-4 w-4 shrink-0" />
+                    <TabIcon className="h-5 w-5 shrink-0" />
                     {tabLabel}
                   </TabsTrigger>
                 );
@@ -521,7 +535,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   overviewEn: "Boosted House Brand products on TikTok and Lemon8 with content designed to drive direct purchase decisions.",
                   stats: [{ label: "Sales Uplift", labelTh: "ยอดขายเพิ่มขึ้น", value: "+40%" }, { label: "Reach", labelTh: "การเข้าถึง", value: "1.5M" }, { label: "Creators", labelTh: "ครีเอเตอร์", value: "25" }] },
               ].map((story) => (
-                <TabsContent key={story.value} value={story.value} className="grid place-items-center gap-10 lg:grid-cols-2">
+                <TabsContent key={story.value} value={story.value} className="grid place-items-center gap-10 lg:grid-cols-[1.5fr_1fr]">
                   <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                     <button
                       onClick={() => router.push(`/${lang}/category/${catSlug(story.cat)}`)}
@@ -554,10 +568,10 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                       {lang === "th" ? "อ่านเพิ่มเติม" : "Read More"}
                     </Link>
                   </div>
-                  <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 3", borderRadius: "20px", overflow: "hidden",
-                    background: story.imgBg || "#f3f0fb" }}>
-                    <Image src={story.img} alt={story.title} fill sizes="(max-width: 1024px) 100vw, 480px"
-                      style={{ objectFit: story.imgFit || "cover", objectPosition: story.imgPosition || "center" }} />
+                  <div style={{ position: "relative", width: "100%", maxWidth: "280px", aspectRatio: "1 / 1", borderRadius: "16px", overflow: "hidden",
+                    background: story.imgBg || "#f3f0fb", border: "1px solid rgba(95,38,229,0.08)", boxShadow: "0 8px 20px -10px rgba(95,38,229,0.15)" }}>
+                    <Image src={story.img} alt={story.title} fill sizes="280px"
+                      style={{ objectFit: story.imgFit || "cover", objectPosition: story.imgPosition || "center", padding: story.imgFit === "contain" ? "24px" : 0 }} />
                   </div>
                 </TabsContent>
               ))}
