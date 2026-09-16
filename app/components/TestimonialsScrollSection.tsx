@@ -7,39 +7,40 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const CARD_GAP = 16;
 const VIEW_H  = 720;
-const BG_TOP  = "#F1EBFA";
-const BG_BOT  = "#E9DFF7";
 
-const QuoteIcon = () => (
-  <svg width="32" height="25" viewBox="0 0 36 28" fill="none" aria-hidden="true">
-    <path
-      d="M0 28V17.2C0 14.0267 0.693333 11.16 2.08 8.6C3.46667 6.04 5.42667 3.85333 7.96 2.04L11.44 5C9.65333 6.38667 8.22667 7.97333 7.16 9.76C6.09333 11.5467 5.56 13.5467 5.56 15.76H10.28V28H0ZM19.72 28V17.2C19.72 14.0267 20.4133 11.16 21.8 8.6C23.1867 6.04 25.1467 3.85333 27.68 2.04L31.16 5C29.3733 6.38667 27.9467 7.97333 26.88 9.76C25.8133 11.5467 25.28 13.5467 25.28 15.76H30V28H19.72Z"
-      fill="#5f26e5" opacity="0.65"
-    />
+const HeartIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+    <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z" />
   </svg>
 );
 
-function Card({ t }: { t: { photo: string; name: string; text: string } }) {
+function Card({ t }: { t: { photo: string; name: string; text: string; time?: string } }) {
   return (
     <div style={{
       background: "#ffffff",
       borderRadius: "16px",
       border: "1px solid rgba(0,0,0,0.07)",
       boxShadow: "0 2px 20px rgba(95,38,229,0.07)",
-      padding: "24px 24px 20px",
-      display: "flex", flexDirection: "column", gap: "14px",
+      padding: "20px 22px",
+      display: "flex", flexDirection: "column", gap: "10px",
       boxSizing: "border-box" as const,
     }}>
-      <QuoteIcon />
-      <p style={{ ...KT, fontSize: "15px", color: "#111827", lineHeight: "1.8", margin: 0 }}>
-        {t.text}
-      </p>
-      <div style={{ display: "flex", alignItems: "center", gap: "12px", paddingTop: "12px", marginTop: "auto" }}>
-        <div style={{ position: "relative", width: "44px", height: "44px", borderRadius: "50%", overflow: "hidden", flexShrink: 0 }}>
-          <Image src={t.photo} alt={t.name} fill sizes="44px"
+      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+        <div style={{ position: "relative", width: "36px", height: "36px", borderRadius: "50%", overflow: "hidden", flexShrink: 0 }}>
+          <Image src={t.photo} alt={t.name} fill sizes="36px"
             style={{ objectFit: "cover", objectPosition: "center top" }} />
         </div>
-        <span style={{ ...KT, fontWeight: 700, fontSize: "16px", color: "#5f26e5" }}>{t.name}</span>
+        <span style={{ ...KT, fontWeight: 700, fontSize: "15px", color: "#5f26e5" }}>{t.name}</span>
+        <span style={{ ...KT, fontSize: "13px", color: "#9ca3af" }}>· {t.time ?? "2d"}</span>
+      </div>
+      <p style={{ ...KT, fontSize: "14.5px", color: "#111827", lineHeight: "1.75", margin: 0 }}>
+        {t.text}
+      </p>
+      <div style={{ display: "flex", alignItems: "center", gap: "16px", paddingTop: "4px" }}>
+        <span style={{ ...KT, display: "flex", alignItems: "center", gap: "5px", fontSize: "13px", fontWeight: 600, color: "#9ca3af" }}>
+          <HeartIcon /> Reply
+        </span>
+        <span style={{ ...KT, fontSize: "13px", fontWeight: 600, color: "#9ca3af" }}>Like</span>
       </div>
     </div>
   );
@@ -201,63 +202,86 @@ export default function TestimonialsScrollSection({
     }}>
       <div
         className="tss-layout"
-        style={{
-          maxWidth: "1294px", margin: "0 auto", width: "100%",
-          display: "flex", gap: "80px", alignItems: "center",
-        }}
+        style={{ maxWidth: "1120px", margin: "0 auto", width: "100%" }}
       >
-        {/* ── Left: title panel ── */}
-        <div className="tss-title" style={{ flex: "0 0 320px" }}>
+        {/* ── Centered title panel ── */}
+        <div className="tss-title" style={{ textAlign: "center", marginBottom: "48px" }}>
           <h2 style={{
-            ...KT, fontSize: "clamp(36px,4vw,58px)", fontWeight: 800,
-            color: "#111827", margin: "0 0 20px", lineHeight: 1.15,
+            ...KT, fontSize: "clamp(28px,3.6vw,44px)", fontWeight: 800,
+            color: "#111827", margin: "0 0 16px", lineHeight: 1.25,
           }}>
-            <span style={{ fontFamily: "var(--font-outfit), sans-serif", fontWeight: 700 }}>What </span>
+            {lang === "th" ? "เสียงจากอินฟลูเอนเซอร์" : "Voices From Creators"}
+            <br />
             <span style={{
-              fontFamily: "var(--font-outfit), sans-serif", fontWeight: 700,
               background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-              backgroundClip: "text", whiteSpace: "nowrap",
+              backgroundClip: "text",
             }}>
-              They Say
+              {lang === "th" ? "ที่เคยร่วมงานกับเรา" : "Who've Worked With Us"}
             </span>
           </h2>
           <p style={{ ...KT, fontSize: "16px", color: "#374151", lineHeight: 1.65, margin: 0 }}>
             {lang === "th"
-              ? "เสียงจริงจากอินฟลูเอนเซอร์ที่ร่วมงานกับ Buddy Review"
-              : "Real voices from influencers who've worked with Buddy Review"}
+              ? "ประสบการณ์จริงจากการทำงานกับแบรนด์ ผ่าน Buddy Review"
+              : "Real experiences working with brands, through Buddy Review"}
           </p>
         </div>
 
-        {/* ── Desktop/Tablet: 2 independent marquee columns ── */}
-        <div
-          className="tss-viewport-multi"
-          style={{
-            flex: 1, display: "flex", gap: `${CARD_GAP}px`,
-            height: `${VIEW_H}px`,
-            position: "relative",
-          }}
-        >
-          <MarqueeColumn items={col1} direction="up" duration={30} className="tss-col1" />
-          <MarqueeColumn items={col2} direction="down" duration={38} style={{ marginTop: "48px" }} className="tss-col2" />
-          <div className="tss-fade-bot" style={{
-            position: "absolute", bottom: 0, left: 0, right: 0, height: "120px",
-            background: `linear-gradient(to top, ${BG_BOT} 0%, transparent 100%)`,
-            pointerEvents: "none", zIndex: 2,
-          }} />
-        </div>
+        {/* ── Browser-window frame wrapping the testimonial columns ── */}
+        <div className="tss-window" style={{
+          background: "#ffffff", borderRadius: "20px", overflow: "hidden",
+          border: "1px solid rgba(0,0,0,0.06)",
+          boxShadow: "0 30px 60px -20px rgba(95,38,229,0.25)",
+        }}>
+          <div style={{
+            display: "flex", alignItems: "center", padding: "14px 20px",
+            background: "#f4f2fb", borderBottom: "1px solid rgba(0,0,0,0.06)", position: "relative",
+          }}>
+            <div style={{ display: "flex", gap: "7px" }}>
+              <span style={{ width: "11px", height: "11px", borderRadius: "50%", background: "#ff5f57" }} />
+              <span style={{ width: "11px", height: "11px", borderRadius: "50%", background: "#febc2e" }} />
+              <span style={{ width: "11px", height: "11px", borderRadius: "50%", background: "#28c840" }} />
+            </div>
+            <span style={{
+              ...KT, position: "absolute", left: "50%", transform: "translateX(-50%)",
+              fontSize: "13px", fontWeight: 700, color: "#374151",
+            }}>
+              {lang === "th" ? "บทสนทนาของครีเอเตอร์" : "Creator conversations"}
+            </span>
+          </div>
 
-        {/* ── Mobile: single merged column (hidden on desktop/tablet via CSS) ── */}
-        <div
-          className="tss-viewport-single"
-          style={{ display: "none", width: "100%", height: `${VIEW_H}px`, position: "relative", overflow: "hidden" }}
-        >
-          <MarqueeColumn items={items} direction="up" duration={35} />
-          <div className="tss-fade-bot" style={{
-            position: "absolute", bottom: 0, left: 0, right: 0, height: "120px",
-            background: `linear-gradient(to top, ${BG_BOT} 0%, transparent 100%)`,
-            pointerEvents: "none", zIndex: 2,
-          }} />
+          <div style={{ padding: "32px 28px" }}>
+            {/* ── Desktop/Tablet: 2 independent marquee columns ── */}
+            <div
+              className="tss-viewport-multi"
+              style={{
+                display: "flex", gap: `${CARD_GAP}px`,
+                height: `${VIEW_H}px`,
+                position: "relative",
+              }}
+            >
+              <MarqueeColumn items={col1} direction="up" duration={30} className="tss-col1" />
+              <MarqueeColumn items={col2} direction="down" duration={38} style={{ marginTop: "48px" }} className="tss-col2" />
+              <div className="tss-fade-bot" style={{
+                position: "absolute", bottom: 0, left: 0, right: 0, height: "120px",
+                background: "linear-gradient(to top, #ffffff 0%, transparent 100%)",
+                pointerEvents: "none", zIndex: 2,
+              }} />
+            </div>
+
+            {/* ── Mobile: single merged column (hidden on desktop/tablet via CSS) ── */}
+            <div
+              className="tss-viewport-single"
+              style={{ display: "none", width: "100%", height: `${VIEW_H}px`, position: "relative", overflow: "hidden" }}
+            >
+              <MarqueeColumn items={items} direction="up" duration={35} />
+              <div className="tss-fade-bot" style={{
+                position: "absolute", bottom: 0, left: 0, right: 0, height: "120px",
+                background: "linear-gradient(to top, #ffffff 0%, transparent 100%)",
+                pointerEvents: "none", zIndex: 2,
+              }} />
+            </div>
+          </div>
         </div>
       </div>
     </div>
