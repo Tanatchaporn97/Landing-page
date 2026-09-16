@@ -1,5 +1,4 @@
 import Link from "next/link";
-import CardFanCarousel from "../../components/CardFanCarousel";
 import VideoScrollFan from "../../components/VideoScrollFan";
 import type { Metadata } from "next";
 
@@ -50,18 +49,18 @@ const UNLOCK_BENTO_META: { gradient: string }[] = [
 const UNLOCK_BENTO_ITEMS_TH: ColorfulBentoItem[] = [
   { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", title: "แบรนด์เชื่อถือได้", desc: "ไม่มีแบรนด์เงียบ ไม่มีงานปลอม มีแต่ความโปร", ...UNLOCK_BENTO_META[0] },
   { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", title: "จ่ายตรง ไม่มีเบี้ยว", desc: "งานจบ เงินไม่หาย กดเบิกเองได้ทุกเมื่อ รับตามรอบแบบตรงเวลา", ...UNLOCK_BENTO_META[1] },
-  { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", title: "รีวิวได้ครบ", desc: "จบทุกแพลตฟอร์ม ให้คุณสามารถมีโอกาส รับงานรีวิวได้หลากหลายช่องทาง", ...UNLOCK_BENTO_META[2] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", title: "รีวิวได้ครบ", desc: "จบทุกแพลตฟอร์ม ให้คุณสามารถมีโอกาส รับงานรีวิวได้หลากหลายช่องทาง", ...UNLOCK_BENTO_META[2] },
   { img: "/unlocked-exclusive/Unlocked Exclusive-04.png", title: "สิทธิพิเศษเฉพาะคุณ", desc: "ร่วมกิจกรรมและรับรางวัลสุดเอ็กซ์คลูซีฟ", ...UNLOCK_BENTO_META[3] },
-  { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", title: "มืออาชีพที่อยู่เคียงข้างคุณ", desc: "ทำงานได้อย่างมั่นใจ ด้วยทีมงานมืออาชีพ และระบบที่ช่วยให้ทุกอย่างง่ายขึ้น", ...UNLOCK_BENTO_META[4] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", title: "มืออาชีพที่อยู่เคียงข้างคุณ", desc: "ทำงานได้อย่างมั่นใจ ด้วยทีมงานมืออาชีพ และระบบที่ช่วยให้ทุกอย่างง่ายขึ้น", ...UNLOCK_BENTO_META[4] },
   { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", title: "แมทช์งานที่ใช่", desc: "รู้งานใหม่ก่อนใคร ด้วยระบบคัดกรองที่แมทช์งานตรงใจ ให้คุณได้ทำงานที่ใช่จากสิ่งที่ชอบ", ...UNLOCK_BENTO_META[5] },
 ];
 
 const UNLOCK_BENTO_ITEMS_EN: ColorfulBentoItem[] = [
   { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", title: "Trusted Brands", desc: "No ghosting, no fake jobs. Just professionalism.", ...UNLOCK_BENTO_META[0] },
   { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", title: "Paid on Time, Every Time", desc: "Finish the job, keep your money — withdraw anytime and get paid on a reliable schedule.", ...UNLOCK_BENTO_META[1] },
-  { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", title: "Review Anywhere", desc: "Covers every platform, giving you the chance to take on review work across multiple channels.", ...UNLOCK_BENTO_META[2] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", title: "Review Anywhere", desc: "Covers every platform, giving you the chance to take on review work across multiple channels.", ...UNLOCK_BENTO_META[2] },
   { img: "/unlocked-exclusive/Unlocked Exclusive-04.png", title: "Exclusive Perks for You", desc: "Join events and win exclusive rewards.", ...UNLOCK_BENTO_META[3] },
-  { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", title: "Professionals By Your Side", desc: "Work with confidence, backed by a professional team and a system that makes everything easier.", ...UNLOCK_BENTO_META[4] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", title: "Professionals By Your Side", desc: "Work with confidence, backed by a professional team and a system that makes everything easier.", ...UNLOCK_BENTO_META[4] },
   { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", title: "The Right Match", desc: "Be first to know about new jobs with a matching system that connects you to work you'll actually love.", ...UNLOCK_BENTO_META[5] },
 ];
 
@@ -70,8 +69,9 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import PathToPartnership from "../../components/PathToPartnership";
 import OpportunityScatter, { OpportunityScatterMobileTop, OpportunityScatterMobileBottom } from "../../components/OpportunityScatter";
-import { ColorfulBentoGrid, type ColorfulBentoItem } from "@/components/ui/colorful-bento-grid";
-import ApplyPartnerships from "../../components/ApplyPartnerships";
+import { type ColorfulBentoItem } from "@/components/ui/colorful-bento-grid";
+import { AnimatedFeatureCard } from "@/components/ui/feature-card-1";
+import BuddyRanksInteractive from "../../components/BuddyRanksInteractive";
 import CreatorStories from "../../components/CreatorStories";
 import MarqueeTicker from "../../components/MarqueeTicker";
 import { type Locale } from "../../../i18n-config";
@@ -134,10 +134,10 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <section style={{ position: "relative", background: "transparent", overflow: "hidden", padding: "140px 0 64px" }}>
         <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "0 16px" }}>
           <h2 style={{ margin: "0 0 24px", lineHeight: 1.1 }}>
-            <span className="vs-line1" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }), display: "block", fontWeight: lang === "th" ? 900 : 700, fontStyle: lang === "th" ? "normal" : "italic", fontSize: "clamp(28px,3.3vw,48px)", color: "#111827", whiteSpace: "nowrap" }}>
+            <span className="vs-line1" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-outfit), sans-serif" }), display: "block", fontWeight: lang === "th" ? 900 : 700, fontSize: "clamp(28px,3.3vw,48px)", color: "#111827", whiteSpace: "nowrap" }}>
               {lang === "th" ? "แมทช์งานที่ใช่" : "Match the Right Job,"}
             </span>
-            <span className="vs-line2" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }), display: "block", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", whiteSpace: "nowrap",
+            <span className="vs-line2" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-outfit), sans-serif" }), display: "block", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", whiteSpace: "nowrap",
               background: "linear-gradient(45deg, #5f26e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               {lang === "th" ? "ได้งานที่ชอบ" : "Get Work You Love"}
             </span>
@@ -150,12 +150,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             )}
           </p>
           <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
-            <a href="https://www.buddyreview.co/app/new-campaigns" target="_blank" rel="noopener noreferrer"
-              className="vs-cta-solid"
-              style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", background: "#5f26e5", color: "#ffffff", borderRadius: "50px", padding: "14px 32px", textDecoration: "none", fontSize: "16px", fontWeight: 700 }}>
-              {lang === "th" ? "สมัครเลย" : "Apply Now"}
-            </a>
-            <a href="https://line.me/R/ti/p/@buddysupport" target="_blank" rel="noopener noreferrer"
+            <a href="https://rank.buddyreview.co/" target="_blank" rel="noopener noreferrer"
               className="vs-cta-line"
               style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none", fontSize: "16px", fontWeight: 700, color: "#06C755", background: "#ffffff", border: "1.5px solid #06C755", borderRadius: "50px", padding: "10px 28px 10px 14px" }}>
               <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style={{ flexShrink: 0 }} aria-hidden="true">
@@ -169,8 +164,6 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <VideoScrollFan videos={INFLUENCER_HEADER_VIDEOS} />
 
         <style>{`
-          .vs-cta-solid{ transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease; }
-          .vs-cta-solid:hover{ background: #111827 !important; color: #ffffff !important; transform: translateY(-2px); }
           .vs-cta-line{ transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease; }
           .vs-cta-line:hover{ background: #06C755 !important; color: #ffffff !important; transform: translateY(-2px); }
           @media (max-width: 760px){
@@ -204,7 +197,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
           <div className="opportunity-grid" style={{ width: "100%", maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", position: "relative", zIndex: 1, boxSizing: "border-box" }}>
           <div style={{ textAlign: "center", width: "100%" }}>
             <h2 className="opportunity-heading" style={{
-              ...(lang === "th" ? KT : { fontFamily: "var(--font-playfair), serif" }),
+              ...(lang === "th" ? KT : { fontFamily: "var(--font-outfit), sans-serif" }),
               fontSize: "clamp(28px,3.3vw,48px)",
               fontWeight: 700,
               lineHeight: 1.2,
@@ -212,7 +205,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               whiteSpace: "nowrap",
               overflowWrap: "break-word",
             }}>
-              <span style={{ fontStyle: lang === "th" ? "normal" : "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 {lang === "th" ? "โอกาสใหม่ " : "New Opportunities, "}
               </span>
               <span style={{ color: "#111827" }}>{lang === "th" ? "เริ่มต้นได้ที่นี่" : "Start Here"}</span>
@@ -258,20 +251,30 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "56px" }}>
             <h2 style={{ fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
-              <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>Unlock Exclusive </span>
-              <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Opportunities</span>
+              <span style={{ fontFamily: "var(--font-outfit), sans-serif", fontWeight: 700 }}>Unlock Exclusive </span>
+              <span style={{ fontFamily: "var(--font-outfit), sans-serif", fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Opportunities</span>
             </h2>
           </div>
 
-          <ColorfulBentoGrid items={lang === "th" ? UNLOCK_BENTO_ITEMS_TH : UNLOCK_BENTO_ITEMS_EN} />
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
+            {(lang === "th" ? UNLOCK_BENTO_ITEMS_TH : UNLOCK_BENTO_ITEMS_EN).map((item) => (
+              <AnimatedFeatureCard
+                key={item.title}
+                tag={item.title}
+                title={item.desc}
+                imageSrc={item.img}
+                color="purple"
+              />
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ── Our Work / Buddy Ranks ── */}
       <section className="inf-section" style={{ background: "transparent", padding: "100px 48px", overflow: "hidden" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
-          <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 24px" }}>
-            <span style={{ fontStyle: lang === "th" ? "normal" : "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-outfit), sans-serif", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 24px" }}>
+            <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               Buddy Ranks
             </span><br />
             {lang === "th" ? (
@@ -291,31 +294,9 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
           </a>
         </div>
 
-        {/* Apply For Partnerships — 3 numbered cards */}
-        <ApplyPartnerships lang={lang as "th" | "en"} />
-
-        {/* Hoverable fan carousel — numeric order left → right, center = 3 */}
-        <div className="buddy-ranks-mockup-bleed">
-          <CardFanCarousel cards={BUDDY_RANKS_CARDS} />
-        </div>
-
-        <style>{`
-          @media (min-width: 768px) and (max-width: 1080px){
-            .buddy-ranks-mockup-bleed{ margin-left: -32px; margin-right: -32px; }
-          }
-          /* Mobile: keep the fan inside the section's side padding instead of
-             bleeding to the screen edge — scale it down per breakpoint so the
-             outermost cards never spill past the viewport. */
-          @media (max-width: 767px){
-            .buddy-ranks-mockup-bleed .fan-layout{ transform: scale(0.85); transform-origin: center center; }
-          }
-          @media (max-width: 639px){
-            .buddy-ranks-mockup-bleed .fan-layout{ transform: scale(0.75); }
-          }
-          @media (max-width: 479px){
-            .buddy-ranks-mockup-bleed .fan-layout{ transform: scale(0.52); }
-          }
-        `}</style>
+        {/* Apply For Partnerships (3 boxes) + hoverable fan carousel — hovering a
+            box bounces its matching mockup phone(s) in the carousel below. */}
+        <BuddyRanksInteractive lang={lang as "th" | "en"} cards={BUDDY_RANKS_CARDS} />
       </section>
 
       {/* ── Path to Partnership ── */}
@@ -326,10 +307,9 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <section style={{ overflow: "hidden", background: "transparent" }} className="py-20">
         <div style={{ maxWidth: "1294px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
           <h2 className="section-title text-center"
-            style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 48px" }}>
+            style={{ fontFamily: "var(--font-outfit), sans-serif", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 48px" }}>
             Influencer{" "}
             <span style={{
-              fontStyle: "italic",
               background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",

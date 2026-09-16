@@ -41,7 +41,7 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
             color: "#111827",
             margin: "0 0 16px", lineHeight: 1.2,
           }}>
-            <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>Path to </span><span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Partnership</span>
+            <span style={{ fontFamily: "var(--font-outfit), sans-serif", fontWeight: 700 }}>Path to </span><span style={{ fontFamily: "var(--font-outfit), sans-serif", fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Partnership</span>
           </h2>
         </div>
 
@@ -65,9 +65,10 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
                     ...KT, fontSize: "13px", fontWeight: 700, flexShrink: 0,
                     width: "40px", height: "40px", borderRadius: "50%",
                     display: "flex", alignItems: "center", justifyContent: "center",
+                    background: isActive ? "#5f26e5" : "transparent",
                     border: isActive ? "1.5px solid #5f26e5" : "1.5px solid rgba(17,24,39,0.15)",
-                    color: isActive ? "#5f26e5" : "rgba(17,24,39,0.35)",
-                    transition: "color 0.3s ease, border-color 0.3s ease",
+                    color: isActive ? "#ffffff" : "rgba(17,24,39,0.35)",
+                    transition: "color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease",
                   }}>
                     {s.step}
                   </span>

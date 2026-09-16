@@ -11,6 +11,8 @@ export interface CardItem {
 
 interface CardFanCarouselProps {
   cards: CardItem[];
+  /** Card indices (into `cards`, not fan slot) to pop upward — driven by an external hover trigger. */
+  bounceIndices?: number[];
 }
 
 const MAX_VISIBLE = 7;
@@ -64,12 +66,13 @@ function getSlotConfig(totalCards: number, slot: number) {
 const ARROW_CLASSES =
   "relative flex items-center justify-center rounded-full border-[1.5px] border-black/10 bg-black/5 backdrop-blur-[16px] text-black/40 cursor-pointer shrink-0 z-30 outline-none shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:border-black/25 hover:text-black/70 active:opacity-70 transition-colors duration-300 before:content-[''] before:absolute before:inset-[3px] before:rounded-full before:border before:border-black/[0.04] before:pointer-events-none";
 
-export default function CardFanCarousel({ cards }: CardFanCarouselProps) {
+export default function CardFanCarousel({ cards, bounceIndices }: CardFanCarouselProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const isAnimating = useRef(false);
   const hasEntered = useRef(false);
   const directionRef = useRef<"left" | "right" | null>(null);
   const prevVisible = useRef<Set<number>>(new Set());
+  const bounceMounted = useRef(false);
 
   const totalCards = cards.length;
   const needsPagination = totalCards > MAX_VISIBLE;
@@ -267,6 +270,46 @@ export default function CardFanCarousel({ cards }: CardFanCarouselProps) {
       if (leaveTimer) clearTimeout(leaveTimer);
     };
   }, [centerIndex, totalCards, getVisibleMap, needsPagination]);
+
+  // External "bounce" trigger — pops specific cards (by original index, not
+  // fan slot) upward, e.g. hovering a feature callout above the carousel.
+  // Skips the very first mount so it never fights the entrance animation.
+  const bounceKey = (bounceIndices || []).join(",");
+  useEffect(() => {
+    if (!bounceMounted.current) { bounceMounted.current = true; return; }
+    const container = containerRef.current;
+    if (!container || !totalCards) return;
+    const cardElements = Array.from(container.querySelectorAll<HTMLElement>(".fan-card"));
+    if (!cardElements.length) return;
+
+    const multiplier = getResponsiveMultiplier(window.innerWidth);
+    const hMult = getHeightMultiplier(window.innerWidth);
+    const slotCount = needsPagination ? MAX_VISIBLE : totalCards;
+    const visibleMap = getVisibleMap(centerIndex);
+    const activeSet = new Set(bounceIndices || []);
+
+    cardElements.forEach((card, cardIndex) => {
+      const slot = visibleMap.get(cardIndex);
+      if (slot === undefined) return;
+      const base = getSlotConfig(slotCount, slot);
+      const isBouncing = activeSet.has(cardIndex);
+      // Bring a bouncing card above its neighbors immediately; only drop it
+      // back to its base stacking order once it has fully settled down again,
+      // so it stays on top for the whole return trip instead of sinking
+      // behind a neighbor mid-animation.
+      if (isBouncing) gsap.set(card, { zIndex: 50 });
+      gsap.to(card, {
+        x: `${base.x * multiplier}rem`,
+        y: `${(isBouncing ? base.y - 3 : base.y) * hMult}rem`,
+        rotation: base.rot,
+        scale: isBouncing ? base.scale * 1.08 : base.scale,
+        duration: 0.45,
+        ease: isBouncing ? "back.out(1.8)" : "power2.out",
+        overwrite: "auto",
+        onComplete: () => { if (!isBouncing) gsap.set(card, { zIndex: base.zIndex }); },
+      });
+    });
+  }, [bounceKey, centerIndex, totalCards, needsPagination, getVisibleMap]);
 
   if (!totalCards) return null;
 

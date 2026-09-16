@@ -72,10 +72,9 @@ export async function generateMetadata(
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const Tag = ({ label, lang }: { label: string; lang: string }) => (
-  <Link href={`/${lang}/blog?cat=${encodeURIComponent(label)}`} style={{ ...KT, background: "rgba(255,255,255,0.15)", color: "#111827",
-    backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
-    border: "1px solid rgba(255,255,255,0.35)", borderRadius: "50px",
-    fontSize: "13px", fontWeight: 600, padding: "4px 14px",
+  <Link href={`/${lang}/blog?cat=${encodeURIComponent(label)}`} style={{ ...KT, background: "#5f26e5", color: "#ffffff",
+    borderRadius: "50px",
+    fontSize: "14px", fontWeight: 600, padding: "8px 24px",
     display: "inline-block", width: "fit-content", textDecoration: "none", cursor: "pointer" }}>
     {label}
   </Link>
@@ -828,7 +827,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ lang:
       </div>
 
       {/* Article */}
-      <article style={{ maxWidth: "800px", margin: "0 auto", padding: "0 24px 0" }}>
+      <article style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px 0" }}>
         {/* Section label */}
         <div style={{ paddingTop: "0", marginBottom: "28px" }}>
           <span style={{ ...KT, color: "#5f26e5", fontSize: "20px", fontWeight: 700, letterSpacing: "0.5px" }}>
@@ -843,9 +842,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ lang:
 
         {/* Content card */}
         <div style={{
-          background: "rgba(255,255,255,0.10)",
-          backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)",
-          border: "1px solid rgba(255,255,255,0.25)",
+          background: "#ffffff",
+          border: "1px solid rgba(0,0,0,0.06)",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.06)",
           borderRadius: "24px", padding: "48px",
           wordBreak: "break-word", overflowWrap: "break-word",
           boxSizing: "border-box", width: "100%",

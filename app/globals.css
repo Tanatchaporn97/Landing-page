@@ -637,9 +637,16 @@ body {
   color: #5f26e5;
 }
 
-/* Hamburger: visible on all screen sizes */
+/* Hamburger: mobile only — desktop/tablet use the inline nav links + buttons instead */
 .hamburger-btn { display: flex; }
 .desktop-nav-btns { display: flex; }
+.desktop-nav-links { display: flex; }
+@media (min-width: 768px) {
+  .hamburger-btn { display: none !important; }
+}
+@media (max-width: 1480px) {
+  .desktop-nav-links { display: none !important; }
+}
 
 /* Fullscreen overlay nav links (CodingNepal style) */
 .nav-overlay-link {

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Kanit, Cantata_One, Playfair_Display } from "next/font/google";
+import { Inter, Kanit, Cantata_One, Playfair_Display, Outfit } from "next/font/google";
 import { i18n, type Locale } from "../../i18n-config";
 import CtaPressEffect from "../components/CtaPressEffect";
 import FloatingContactCTA from "../components/FloatingContactCTA";
@@ -8,6 +8,7 @@ import "../globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const cantataOne = Cantata_One({ weight: "400", subsets: ["latin"], variable: "--font-cantata" });
 const playfair = Playfair_Display({ weight: ["400", "700"], style: ["normal", "italic"], subsets: ["latin"], variable: "--font-playfair" });
+const outfit = Outfit({ weight: ["400", "500", "600", "700", "800"], subsets: ["latin"], variable: "--font-outfit" });
 const kanit = Kanit({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin", "thai"],
@@ -32,7 +33,7 @@ export default async function RootLayout({
 }>) {
   const { lang } = await params;
   return (
-    <html lang={lang} className={`${inter.variable} ${kanit.variable} ${cantataOne.variable} ${playfair.variable} h-full antialiased`}>
+    <html lang={lang} className={`${inter.variable} ${kanit.variable} ${cantataOne.variable} ${playfair.variable} ${outfit.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <CtaPressEffect />
         {children}

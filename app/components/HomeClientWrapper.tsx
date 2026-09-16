@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import Navbar from "./Navbar";
@@ -60,94 +59,138 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       {/* ── Navbar ── */}
       <Navbar variant="home" lang={lang} />
 
-      {/* ── Hero — heading centered at top, 2-column Brand/Influencer split card below it ── */}
+      {/* ── Hero — organic "blob" side panels (Brand ↔ Influencer), headline centered between them ── */}
       <section
-        className="flex flex-col items-center justify-start text-center px-6 relative hero-section hero-header-glow"
+        className="hero-section"
         style={{
-          minHeight: "72vh",
-          paddingTop: "120px",
-          paddingBottom: "64px",
-          overflow: "hidden",
           position: "relative",
+          minHeight: "620px",
+          paddingTop: "110px",
+          overflow: "hidden",
+          background: "linear-gradient(180deg, #FBF8FE 0%, #F3EBFC 100%)",
           zIndex: 10,
         }}
       >
-        {/* Background image */}
-        <Image src="/header-landing-bg3.jpg" alt="" aria-hidden="true" fill priority sizes="100vw" style={{
-          objectFit: "cover", objectPosition: "center",
-          zIndex: 0,
-          pointerEvents: "none",
-          display: "block",
-        }} />
-        <div style={{ position: "absolute", inset: 0, background: "rgba(10,5,20,0.30)", zIndex: 1 }} />
+        <div className="hero-blob-grid" style={{
+          display: "grid",
+          gridTemplateColumns: "1fr minmax(280px, 640px) 1fr",
+          alignItems: "stretch",
+          minHeight: "620px",
+        }}>
+          {/* Left card — For Brands, shaped like the Buddy Review "bd" mark (rounded card + tail), tilted */}
+          <motion.div
+            initial={{ x: "-100%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            style={{ height: "100%", minWidth: 0 }}
+          >
+          <Link href={`/${lang}/brand`} className="hero-blob hero-blob-left" aria-label={lang === "th" ? "สำหรับแบรนด์" : "For Brands"}
+            style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "flex-start", textDecoration: "none", minWidth: 0 }}>
+            <div className="hero-icon-card" style={{ position: "relative", width: "clamp(330px, 37vw, 594px)", aspectRatio: "280 / 280", flexShrink: 0, marginLeft: "clamp(-12.8px, -0.512vw, -2.56px)", transform: "scale(1.28)", transformOrigin: "100% 50%" }}>
+              <svg viewBox="265 450 280 280" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", transform: "rotate(-15deg)", filter: "drop-shadow(0 20px 32px rgba(36,17,71,0.30))" }}>
+                <defs>
+                  <linearGradient id="heroIconGradL" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#241147" />
+                    <stop offset="100%" stopColor="#4a2a86" />
+                  </linearGradient>
+                  <clipPath id="heroIconClipL" clipPathUnits="userSpaceOnUse">
+                    <path d="M485.5,601.5l7-97.4c.3-4.1-2.6-7.7-6.6-8.4-13.5-2.2-45.5-6.5-91.2-6.5s-83.5,3.4-97,4.9c-3.5.4-6.4,3-6.9,6.5-2.5,14.6-9.4,53.2-8.5,94.8.8,41.6,2.3,71.1,3.4,88.8.3,4.4,4.1,7.8,8.5,7.5,18.4-1.5,64.2-5,91.9-5.6,27.4-.6,72.8,1.5,91.8,2.5,4.7.2,8.5-3.6,8.3-8.3l-1.5-36.6s29.1-7.1,34.8-9.2c5.7-2.2,9.5-3,9.5-7.1s-9.1-13.9-43.4-25.8Z" />
+                  </clipPath>
+                </defs>
+                <path d="M485.5,601.5l7-97.4c.3-4.1-2.6-7.7-6.6-8.4-13.5-2.2-45.5-6.5-91.2-6.5s-83.5,3.4-97,4.9c-3.5.4-6.4,3-6.9,6.5-2.5,14.6-9.4,53.2-8.5,94.8.8,41.6,2.3,71.1,3.4,88.8.3,4.4,4.1,7.8,8.5,7.5,18.4-1.5,64.2-5,91.9-5.6,27.4-.6,72.8,1.5,91.8,2.5,4.7.2,8.5-3.6,8.3-8.3l-1.5-36.6s29.1-7.1,34.8-9.2c5.7-2.2,9.5-3,9.5-7.1s-9.1-13.9-43.4-25.8Z" fill="url(#heroIconGradL)" />
+                <image href="/im-brand-dashboard.png" x="265" y="450" width="280" height="280" preserveAspectRatio="xMidYMid slice" clipPath="url(#heroIconClipL)" opacity="0.18" />
+              </svg>
+              <div className="hero-blob-content" style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "12px", padding: "20%" }}>
+                <span style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.12em", color: "rgba(255,255,255,0.7)", textTransform: "uppercase" }}>
+                  For Brands
+                </span>
+                <h3 style={{ ...KT, fontSize: "clamp(19px,2.7vw,29px)", fontWeight: 800, color: "#ffffff", lineHeight: 1.22, margin: 0, overflowWrap: "break-word", wordBreak: "break-word" }}>
+                  {lang === "th" ? <>เปลี่ยนทุกแคมเปญ<br />ให้วัดผลได้</> : "Turn Every Campaign Into Measurable Results"}
+                </h3>
+                <p style={{ ...KT, fontSize: "clamp(14px,1.5vw,16px)", color: "rgba(255,255,255,0.85)", lineHeight: 1.55, margin: 0, overflowWrap: "break-word", wordBreak: "break-word" }}>
+                  {lang === "th" ? <>กลยุทธ์ อินไซต์<br />และทีมที่พาแบรนด์ไปไกลขึ้น</> : "Strategic insights and a team that takes your brand further."}
+                </p>
+                <span className="hero-blob-cta" style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", gap: "8px", background: "#ffffff", color: "#1c1140", borderRadius: "50px", padding: "8px 8px 8px 16px", fontSize: "13px", fontWeight: 700, whiteSpace: "nowrap" }}>
+                  {lang === "th" ? "สำหรับแบรนด์" : "For Brands"}
+                  <span style={{ width: "22px", height: "22px", borderRadius: "50%", background: "#5f26e5", color: "#ffffff", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: "12px", flexShrink: 0 }}>→</span>
+                </span>
+              </div>
+            </div>
+          </Link>
+          </motion.div>
 
-        <div className="relative" style={{ maxWidth: "1100px", zIndex: 2 }}>
-          <h1 className="font-bold uppercase mb-6 hero-h1"
-            style={{ color: "#ffffff", fontSize: "clamp(28px,3.9vw,56px)", lineHeight: 1.3, textAlign: "center",
-              marginTop: "1lh",
-              fontFeatureSettings: "'pnum' on,'lnum' on",
-              textShadow: "0 2px 24px rgba(0,0,0,0.25), 0 1px 6px rgba(0,0,0,0.15)" }}>
-            <span className="hero-h1-line" style={{ display: "block" }}>{t.headline1}</span>
-            <span className="hero-h1-line" style={{ display: "block" }}>{t.headline2}</span>
-          </h1>
-          <h2 className="font-normal mb-12"
-            style={{ color: "#ffffff", fontSize: "clamp(18px,1.8vw,28px)", lineHeight: "1.7", textAlign: "center",
-              textTransform: "capitalize", fontFeatureSettings: "'pnum' on,'lnum' on", margin: "0 0 48px" }}>
-            From Strategy To Insight,<span className="hero-subline-break"> We Turn Influence Into Impact.</span>
-          </h2>
-
-          {/* Split path — left for brands, right for influencers */}
-          <div className="hero-split-row" style={{
-            display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0",
-            maxWidth: "820px", margin: "0 auto",
-            background: "rgba(255,255,255,0.5)",
-            backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
-            border: "1px solid rgba(255,255,255,0.6)",
-            boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
-            borderRadius: "24px", overflow: "hidden",
-          }}>
-            <Link href={`/${lang}/brand`} className="hero-split-panel" style={{
-              ...KT, textDecoration: "none", display: "flex", flexDirection: "column", alignItems: "center",
-              gap: "10px", padding: "32px 24px", color: "#111827",
-              borderRight: "1px solid rgba(95,38,229,0.15)",
+          {/* Center — eyebrow + headline + subhead */}
+          <div className="hero-blob-center" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "48px 20px", gap: "18px", minWidth: 0 }}>
+            <span style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.14em", color: "#5f26e5", textTransform: "uppercase" }}>
+              Buddy Review Connects
+            </span>
+            <h1 className="font-black uppercase hero-h1" style={{
+              background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+              fontSize: "clamp(22px,3.6vw,46px)", lineHeight: 1.25, margin: 0, maxWidth: "620px", fontFeatureSettings: "'pnum' on,'lnum' on",
             }}>
-              <span style={{ fontSize: "26px" }}>🏢</span>
-              <span style={{ fontSize: "18px", fontWeight: 800 }}>{t.imBrand}</span>
-              <span style={{ fontSize: "14px", color: "#6b7280", lineHeight: 1.6 }}>
-                {lang === "th" ? "วางกลยุทธ์และบริหารแคมเปญอินฟลูเอนเซอร์" : "Plan and manage influencer campaigns"}
-              </span>
-              <span className="hero-split-cta" style={{ fontSize: "14px", fontWeight: 700, color: "#5f26e5", marginTop: "6px" }}>
-                {lang === "th" ? "เริ่มต้นเลย →" : "Get Started →"}
-              </span>
-            </Link>
-            <Link href={`/${lang}/influencer`} className="hero-split-panel" style={{
-              ...KT, textDecoration: "none", display: "flex", flexDirection: "column", alignItems: "center",
-              gap: "10px", padding: "32px 24px", color: "#111827",
-            }}>
-              <span style={{ fontSize: "26px" }}>🎤</span>
-              <span style={{ fontSize: "18px", fontWeight: 800 }}>{t.imInfluencer}</span>
-              <span style={{ fontSize: "14px", color: "#6b7280", lineHeight: 1.6 }}>
-                {lang === "th" ? "รับงานรีวิวจากแบรนด์ชั้นนำ สร้างรายได้จากสิ่งที่คุณรัก" : "Get review jobs from top brands, earn from what you love"}
-              </span>
-              <span className="hero-split-cta" style={{ fontSize: "14px", fontWeight: 700, color: "#5f26e5", marginTop: "6px" }}>
-                {lang === "th" ? "เริ่มต้นเลย →" : "Get Started →"}
-              </span>
-            </Link>
+              <span className="hero-h1-line" style={{ display: "block", whiteSpace: "nowrap" }}>{t.headline1?.split(" ")[0]}</span>
+              <span className="hero-h1-line" style={{ display: "block", whiteSpace: "nowrap" }}>{t.headline1?.split(" ").slice(1).join(" ")}</span>
+              <span className="hero-h1-line" style={{ display: "block", whiteSpace: "nowrap" }}>{t.headline2}</span>
+            </h1>
+            <p style={{ ...KT, color: "#4b5563", fontSize: "clamp(18px,1.8vw,28px)", lineHeight: 1.7, margin: 0, maxWidth: "380px" }}>
+              From Strategy To Insight,<br />We Turn Influence Into Impact.
+            </p>
           </div>
+
+          {/* Right card — For Creators, same "bd" mark shape as the brand card, flipped 180° */}
+          <motion.div
+            initial={{ x: "100%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            style={{ height: "100%", minWidth: 0 }}
+          >
+          <Link href={`/${lang}/influencer`} className="hero-blob hero-blob-right" aria-label={lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Creators"}
+            style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "flex-end", textDecoration: "none", minWidth: 0 }}>
+            <div className="hero-icon-card" style={{ position: "relative", width: "clamp(330px, 37vw, 594px)", aspectRatio: "280 / 280", flexShrink: 0, marginRight: "clamp(-12.8px, -0.512vw, -2.56px)", transform: "scale(1.28)", transformOrigin: "0% 50%" }}>
+              <svg viewBox="265 450 280 280" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", transform: "scaleX(-1) rotate(-15deg)", filter: "drop-shadow(0 20px 32px rgba(36,17,71,0.30))" }}>
+                <defs>
+                  <linearGradient id="heroIconGradR" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#241147" />
+                    <stop offset="100%" stopColor="#4a2a86" />
+                  </linearGradient>
+                  <clipPath id="heroIconClipR" clipPathUnits="userSpaceOnUse">
+                    <path d="M485.5,601.5l7-97.4c.3-4.1-2.6-7.7-6.6-8.4-13.5-2.2-45.5-6.5-91.2-6.5s-83.5,3.4-97,4.9c-3.5.4-6.4,3-6.9,6.5-2.5,14.6-9.4,53.2-8.5,94.8.8,41.6,2.3,71.1,3.4,88.8.3,4.4,4.1,7.8,8.5,7.5,18.4-1.5,64.2-5,91.9-5.6,27.4-.6,72.8,1.5,91.8,2.5,4.7.2,8.5-3.6,8.3-8.3l-1.5-36.6s29.1-7.1,34.8-9.2c5.7-2.2,9.5-3,9.5-7.1s-9.1-13.9-43.4-25.8Z" />
+                  </clipPath>
+                </defs>
+                <path d="M485.5,601.5l7-97.4c.3-4.1-2.6-7.7-6.6-8.4-13.5-2.2-45.5-6.5-91.2-6.5s-83.5,3.4-97,4.9c-3.5.4-6.4,3-6.9,6.5-2.5,14.6-9.4,53.2-8.5,94.8.8,41.6,2.3,71.1,3.4,88.8.3,4.4,4.1,7.8,8.5,7.5,18.4-1.5,64.2-5,91.9-5.6,27.4-.6,72.8,1.5,91.8,2.5,4.7.2,8.5-3.6,8.3-8.3l-1.5-36.6s29.1-7.1,34.8-9.2c5.7-2.2,9.5-3,9.5-7.1s-9.1-13.9-43.4-25.8Z" fill="url(#heroIconGradR)" />
+                <image href="/buddy-ranks/2-followers-2-trimmed.png" x="265" y="450" width="280" height="280" preserveAspectRatio="xMidYMid slice" clipPath="url(#heroIconClipR)" opacity="0.16" />
+              </svg>
+              <div className="hero-blob-content" style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "12px", padding: "20%" }}>
+                <span style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.12em", color: "rgba(255,255,255,0.65)", textTransform: "uppercase" }}>
+                  For Creators
+                </span>
+                <h3 style={{ ...KT, fontSize: "clamp(19px,2.7vw,29px)", fontWeight: 800, color: "#ffffff", lineHeight: 1.22, margin: 0, overflowWrap: "break-word", wordBreak: "break-word" }}>
+                  {lang === "th" ? <>สร้างงานที่ใช่<br />จากสิ่งที่คุณรัก</> : "Land Work You Actually Love"}
+                </h3>
+                <p style={{ ...KT, fontSize: "clamp(14px,1.5vw,16px)", color: "rgba(255,255,255,0.85)", lineHeight: 1.55, margin: 0, overflowWrap: "break-word", wordBreak: "break-word" }}>
+                  {lang === "th" ? "เชื่อมต่อแบรนด์ชั้นนำ และเติบโตในแบบของคุณ" : "Connect with top brands and grow in your own way."}
+                </p>
+                <span className="hero-blob-cta" style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", gap: "8px", background: "#ffffff", color: "#1c1140", borderRadius: "50px", padding: "8px 8px 8px 16px", fontSize: "13px", fontWeight: 700, whiteSpace: "nowrap" }}>
+                  {lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Creators"}
+                  <span style={{ width: "22px", height: "22px", borderRadius: "50%", background: "#5f26e5", color: "#ffffff", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: "12px", flexShrink: 0 }}>→</span>
+                </span>
+              </div>
+            </div>
+          </Link>
+          </motion.div>
         </div>
 
         <style>{`
-          .hero-split-panel{ transition: background-color 0.25s ease, transform 0.25s ease; }
-          .hero-split-panel:hover{ background: rgba(95,38,229,0.06); transform: translateY(-2px); }
-          .hero-split-cta{ transition: transform 0.25s ease; }
-          .hero-split-panel:hover .hero-split-cta{ transform: translateX(4px); }
-          .hero-h1-line{ white-space: nowrap; }
-          @media (max-width: 640px){
-            .hero-split-row{ grid-template-columns: 1fr !important; }
-            .hero-split-panel{ border-right: none !important; border-bottom: 1px solid rgba(95,38,229,0.15); }
-          }
+          .hero-blob-cta{ transition: transform 0.25s ease, box-shadow 0.25s ease; }
+          .hero-blob:hover .hero-blob-cta{ transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
           @media (max-width: 900px){
+            .hero-blob-grid{ grid-template-columns: 1fr !important; grid-auto-rows: auto; }
+            .hero-blob-left, .hero-blob-right{ min-height: 320px; }
+          }
+          @media (max-width: 560px){
             .hero-h1-line{ white-space: normal !important; }
+            .hero-icon-card{ transform: scale(1) !important; }
           }
         `}</style>
 
@@ -164,12 +207,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
             ].map((s) => (
               <motion.div key={s.label} className="hero-stat-item" style={{
                 display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", gap: "6px",
-                background: "rgba(255,255,255,0.5)",
-                backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
-                border: "1px solid rgba(255,255,255,0.6)",
-                boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
-                borderRadius: "20px",
-                padding: "26px 20px",
+                padding: "10px 20px",
                 width: "280px",
                 boxSizing: "border-box",
               }}

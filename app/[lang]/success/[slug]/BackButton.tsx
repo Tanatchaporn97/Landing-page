@@ -5,7 +5,7 @@ export default function BackButton({ lang = "th" }: { lang?: "th" | "en" }) {
   const router = useRouter();
   return (
     <button
-      onClick={() => router.back()}
+      onClick={() => router.push(`/${lang}/success`)}
       style={{
         display: "inline-flex", alignItems: "center", gap: "8px",
         background: "rgba(255,255,255,0.12)",

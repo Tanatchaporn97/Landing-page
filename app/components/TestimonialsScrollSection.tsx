@@ -212,9 +212,9 @@ export default function TestimonialsScrollSection({
             ...KT, fontSize: "clamp(36px,4vw,58px)", fontWeight: 800,
             color: "#111827", margin: "0 0 20px", lineHeight: 1.15,
           }}>
-            <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>What </span>
+            <span style={{ fontFamily: "var(--font-outfit), sans-serif", fontWeight: 700 }}>What </span>
             <span style={{
-              fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic",
+              fontFamily: "var(--font-outfit), sans-serif", fontWeight: 700,
               background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
               backgroundClip: "text", whiteSpace: "nowrap",

@@ -143,7 +143,7 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
             style={{
               position: "relative",
               flex: "0 0 auto",
-              width: "clamp(140px, 15vw, 210px)",
+              width: "clamp(168px, 18vw, 252px)",
               aspectRatio: "9 / 16",
               borderRadius: "28px",
               overflow: "hidden",

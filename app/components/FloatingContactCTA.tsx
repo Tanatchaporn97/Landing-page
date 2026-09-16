@@ -1,12 +1,16 @@
 "use client";
-import Link from "next/link";
+import { useState } from "react";
 import Image from "next/image";
+import ContactFormModal from "./ContactFormModal";
 
 export default function FloatingContactCTA({ lang }: { lang: "th" | "en" }) {
+  const [open, setOpen] = useState(false);
+
   return (
     <>
-      <Link
-        href={`/${lang}/contact`}
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
         aria-label={lang === "th" ? "ติดต่อเรา" : "Contact us"}
         className="floating-contact-btn"
         style={{
@@ -24,7 +28,9 @@ export default function FloatingContactCTA({ lang }: { lang: "th" | "en" }) {
         }}>
           <Image src="/bd-mark.svg" alt="Buddy Review" fill sizes="34px" style={{ objectFit: "contain" }} />
         </span>
-      </Link>
+      </button>
+
+      <ContactFormModal open={open} onClose={() => setOpen(false)} lang={lang} />
 
       <style>{`
         .floating-contact-btn:hover{ transform: scale(1.06); }

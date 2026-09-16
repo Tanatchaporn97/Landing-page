@@ -70,7 +70,7 @@ export default function Navbar({
   const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", imBrand: "I'm a Brand", forBrand: "For Brands", applyNow: "Apply Now", applyLine: "Apply via LINE", successStories: "Success Stories", ourWork: "Our Work", blog: "Blog", aboutUs: "About Us", applyAsInfluencer: "Apply as an Influencer", applyViaWebsite: "Apply via Website" };
   const t = lang === "th" ? th : en;
   const isFaqPage = pathname?.includes("/faq");
-  const forceDarkText = scrolled || variant === "influencer" || variant === "brand" || isFaqPage;
+  const forceDarkText = scrolled || variant === "home" || variant === "influencer" || variant === "brand" || isFaqPage;
 
   const navLinks = variant === "influencer"
     ? [
@@ -80,16 +80,16 @@ export default function Navbar({
       ]
     : variant === "brand"
     ? [
-        { label: t.imBrand, href: `/${lang}/brand#our-services` },
-        { label: t.ourWork, href: `/${lang}/brand#success-stories` },
+        { label: t.imBrand, href: `/${lang}/brand` },
+        { label: t.ourWork, href: `/${lang}/success` },
         { label: t.aboutUs, href: `/${lang}/about` },
         { label: t.blog, href: `/${lang}/blog` },
         { label: t.imInfluencer, href: `/${lang}/influencer` },
         { label: t.contactUs, href: `/${lang}/contact` },
       ]
     : [
-        { label: t.imBrand, href: `/${lang}/brand#our-services` },
-        { label: t.ourWork, href: `/${lang}/brand#success-stories` },
+        { label: t.imBrand, href: `/${lang}/brand` },
+        { label: t.ourWork, href: `/${lang}/success` },
         { label: t.aboutUs, href: `/${lang}/about` },
         { label: t.blog, href: `/${lang}/blog` },
         { label: t.imInfluencer, href: `/${lang}/influencer` },
@@ -144,7 +144,7 @@ export default function Navbar({
                 className="nav-overlay-sublink nav-overlay-sublink--purple">
                 {t.applyViaWebsite}
               </a>
-              <a href="https://line.me/R/ti/p/@buddysupport" target="_blank" rel="noopener noreferrer"
+              <a href="https://rank.buddyreview.co/" target="_blank" rel="noopener noreferrer"
                 onClick={() => setMenuOpen(false)} className="nav-overlay-sublink nav-overlay-sublink--line">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style={{ flexShrink: 0 }} aria-hidden="true">
                   <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .348-.281.629-.629.629H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.628-.63.349 0 .63.285.63.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
@@ -195,6 +195,7 @@ export default function Navbar({
           alignItems: "center",
           justifyContent: "space-between",
           padding: "10px 24px",
+          position: "relative",
           transition: "background 0.3s, border 0.3s",
           pointerEvents: "auto",
         }} className="nav-landing-inner">
@@ -209,44 +210,65 @@ export default function Navbar({
             />
           </Link>
 
-          {/* Right-side group: CTA buttons + Hamburger */}
+          {/* Desktop-only nav links — grouped and absolutely centered on the bar's own
+              midpoint, so they line up with the centered hero heading below regardless
+              of the logo/button-group's differing widths (equal-fr grid columns don't
+              work here since the button group's min-content width is much wider than
+              the logo, which breaks a symmetric 1fr/1fr split) */}
+          <div className="desktop-nav-links" style={{
+            display: "flex", alignItems: "center", gap: "18px",
+            position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)",
+          }}>
+            {[
+              { label: t.imBrand, href: `/${lang}/brand` },
+              { label: t.ourWork, href: `/${lang}/success` },
+              { label: t.aboutUs, href: `/${lang}/about` },
+              { label: t.blog, href: `/${lang}/blog` },
+            ].map((link) => (
+              <Link key={link.href} href={link.href}
+                style={{ ...KT, fontSize: "14px", fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap",
+                  color: forceDarkText ? "#1c1140" : "#ffffff" }}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Right-side group: CTA buttons + Hamburger (hamburger hidden on desktop via CSS) */}
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <div className="desktop-nav-btns flex items-center gap-3">
-              {variant === "influencer" ? (
-                <>
-                  <Link href="https://www.buddyreview.co/app/new-campaigns"
-                    className="btn-hero btn-hero-solid-purple px-6 py-3 rounded-full whitespace-nowrap"
-                    style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
-                    {t.applyNow}
-                  </Link>
-                  <a href="https://line.me/R/ti/p/@buddysupport" target="_blank" rel="noopener noreferrer"
-                    className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
-                    style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style={{ flexShrink: 0 }} aria-hidden="true">
-                      <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .348-.281.629-.629.629H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.628-.63.349 0 .63.285.63.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
-                    </svg>
-                    {t.applyLine}
-                  </a>
-                  <Link href={`/${lang}/brand`}
-                    className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
-                    style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
-                    {t.forBrand}
-                  </Link>
-                </>
-              ) : (
-                <>
-                  <a href={`/${lang}/contact`}
-                    className="btn-hero btn-hero-solid-purple px-6 py-3 rounded-full whitespace-nowrap"
-                    style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
-                    {t.contactUs}
-                  </a>
-                  <Link href={`/${lang}/influencer`}
-                    className="btn-hero px-6 py-3 rounded-full whitespace-nowrap"
-                    style={{ ...KT, fontSize: "16px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
-                    {t.imInfluencer}
-                  </Link>
-                </>
-              )}
+            <div className="desktop-nav-btns flex items-center gap-2">
+              <Link href={`/${lang}/brand`}
+                className="btn-hero px-4 py-3 rounded-full whitespace-nowrap"
+                style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
+                {t.forBrand}
+              </Link>
+              <Link href={`/${lang}/influencer`}
+                className="btn-hero px-4 py-3 rounded-full whitespace-nowrap"
+                style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
+                {t.imInfluencer}
+              </Link>
+              <a href={`/${lang}/contact`}
+                className="btn-hero btn-hero-solid-purple px-5 py-3 rounded-full whitespace-nowrap"
+                style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none" }}>
+                {t.contactUs}
+              </a>
+              <button
+                onClick={toggleLang}
+                className="nav-lang-toggle-inline"
+                style={{
+                  ...KT,
+                  background: "transparent",
+                  border: forceDarkText ? "1.5px solid rgba(95,38,229,0.35)" : "1.5px solid rgba(255,255,255,0.55)",
+                  borderRadius: "50px",
+                  padding: "10px 20px",
+                  color: forceDarkText ? "#5f26e5" : "#ffffff",
+                  fontSize: "15px",
+                  fontWeight: 700,
+                  cursor: "pointer",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {lang === "th" ? "EN" : "TH"}
+              </button>
             </div>
 
             <MenuToggle

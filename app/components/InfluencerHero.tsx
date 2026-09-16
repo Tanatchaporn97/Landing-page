@@ -58,7 +58,7 @@ export default function InfluencerHero({ lang = "th" }: { lang?: "th" | "en" }) 
               style={{ ...KT, display: "inline-flex", alignItems: "center", borderRadius: "50px", padding: "14px 32px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
               {t.applyNow}
             </a>
-            <a href="https://line.me/R/ti/p/@buddysupport" target="_blank" rel="noopener noreferrer"
+            <a href="https://rank.buddyreview.co/" target="_blank" rel="noopener noreferrer"
               className="btn-line hero-cta-btn-inf"
               style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "10px", borderRadius: "50px", padding: "14px 28px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
               <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style={{ flexShrink: 0 }} aria-hidden="true">
