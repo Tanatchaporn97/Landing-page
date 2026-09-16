@@ -41,7 +41,7 @@ type StatItem = {
 const STATS: StatItem[] = [
   { top: "20%", left: "22%", rotate: -4, emoji: "📊", value: "ฟรี!" },
   { top: "16%", left: "58%", rotate: 3,  emoji: "🎯", value: "งานที่ใช่" },
-  { top: "68%", left: "40%", rotate: -3, emoji: "💸", value: "ชัดเจน" },
+  { top: "68%", left: "40%", rotate: -3, emoji: "💸", value: "โดยเฉพาะ" },
 ].map((s, i) => ({
   ...s,
   labelTh: ["วิเคราะห์ช่องและ Audience", "คัดงานตามโปรไฟล์คุณ", "เห็นเงื่อนไขก่อนรับงาน"][i],

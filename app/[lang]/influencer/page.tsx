@@ -293,9 +293,6 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <section className="inf-section" style={{ background: "transparent", padding: "100px 48px", overflow: "hidden" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
           <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-outfit), sans-serif", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 24px" }}>
-            <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              Buddy Ranks
-            </span><br />
             {lang === "th" ? (
               <span style={{ color: "#111827" }}>รู้จักช่องตัวเองให้มากขึ้น<br />แล้วโตได้แบบมีทิศทาง</span>
             ) : (
@@ -304,8 +301,8 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
           </h2>
           <p className="desc-text" style={{ ...KT, fontSize: "18px", color: "#374151", lineHeight: 1.7, margin: "0 auto 32px", maxWidth: "620px" }}>
             {lang === "th"
-              ? "Buddy Ranks ใช้ AI ในการช่วยวิเคราะห์ผู้ติดตาม คอนเทนต์ และ Performance รู้ว่า คนดูคือใคร คอนเทนต์แบบไหนเวิร์ก และควรทำอะไรต่อ"
-              : "Buddy Ranks uses AI to help analyze your followers, content, and performance — know who your audience is, what content works, and what to do next."}
+              ? "ใช้ AI ในการช่วยวิเคราะห์ผู้ติดตาม คอนเทนต์ และ Performance รู้ว่า คนดูคือใคร คอนเทนต์แบบไหนเวิร์ก และควรทำอะไรต่อ"
+              : "Uses AI to help analyze your followers, content, and performance — know who your audience is, what content works, and what to do next."}
           </p>
           <a href="https://rank.buddyreview.co/" target="_blank" rel="noopener noreferrer" className="btn-insight"
             style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", borderRadius: "50px", fontSize: "16px", fontWeight: 600, padding: "14px 32px", textDecoration: "none" }}>

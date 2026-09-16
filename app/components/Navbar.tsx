@@ -266,14 +266,16 @@ export default function Navbar({
                 style={{
                   ...KT,
                   background: "transparent",
-                  border: forceDarkText ? "1.5px solid rgba(95,38,229,0.35)" : "1.5px solid rgba(255,255,255,0.55)",
-                  borderRadius: "50px",
-                  padding: "10px 20px",
+                  border: "none",
+                  textDecoration: "underline",
+                  textUnderlineOffset: "4px",
+                  padding: "10px 8px",
                   color: forceDarkText ? "#5f26e5" : "#ffffff",
                   fontSize: "15px",
                   fontWeight: 700,
                   cursor: "pointer",
                   whiteSpace: "nowrap",
+                  display: "inline-block",
                 }}
               >
                 {lang === "th" ? "EN" : "TH"}

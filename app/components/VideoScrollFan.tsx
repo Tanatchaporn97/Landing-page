@@ -8,6 +8,7 @@ export interface FanVideo {
 
 const EDGE_ZONE = 0.22;
 const HOVER_SPEED_MAX = 9;
+const AUTO_SPEED = 0.7;
 
 export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -16,6 +17,7 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
   const dragStartX = useRef(0);
   const dragStartScroll = useRef(0);
   const hoverSpeedRef = useRef(0);
+  const looped = [...videos, ...videos, ...videos];
 
   useEffect(() => {
     const scroller = scrollerRef.current;
@@ -24,8 +26,17 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
     const cards = Array.from(scroller.querySelectorAll<HTMLElement>(".vsf-card"));
 
     const applyLayout = () => {
-      if (hoverSpeedRef.current !== 0 && !draggingRef.current) {
-        scroller.scrollLeft += hoverSpeedRef.current;
+      if (!draggingRef.current) {
+        scroller.scrollLeft += AUTO_SPEED + hoverSpeedRef.current;
+      }
+
+      const setWidth = scroller.scrollWidth / 3;
+      if (setWidth > 0) {
+        if (scroller.scrollLeft >= setWidth * 2) {
+          scroller.scrollLeft -= setWidth;
+        } else if (scroller.scrollLeft <= 0) {
+          scroller.scrollLeft += setWidth;
+        }
       }
 
       const containerRect = scroller.getBoundingClientRect();
@@ -104,7 +115,7 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
     scroller.addEventListener("pointercancel", endDrag);
     scroller.addEventListener("mouseleave", onMouseLeave);
 
-    scroller.scrollLeft = (scroller.scrollWidth - scroller.clientWidth) / 2;
+    scroller.scrollLeft = scroller.scrollWidth / 3;
 
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
@@ -136,7 +147,7 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
           touchAction: "pan-y",
         }}
       >
-        {videos.map((v, i) => (
+        {looped.map((v, i) => (
           <div
             key={v.src + i}
             className="vsf-card"
@@ -159,18 +170,6 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
               playsInline
               style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", pointerEvents: "none" }}
             />
-            {i === videos.length - 1 && (
-              <div style={{
-                position: "absolute", bottom: "12px", right: "12px",
-                width: "30px", height: "30px", borderRadius: "50%",
-                background: "rgba(255,255,255,0.85)", display: "flex", alignItems: "center", justifyContent: "center",
-                pointerEvents: "none",
-              }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                </svg>
-              </div>
-            )}
           </div>
         ))}
       </div>

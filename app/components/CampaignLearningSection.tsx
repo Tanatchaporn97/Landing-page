@@ -1,5 +1,7 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
+
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const STEPS = [
@@ -34,9 +36,9 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
     <div className="cl-grid" style={{ display: "grid", gridTemplateColumns: "0.72fr 1.28fr", gap: "56px", alignItems: "center" }}>
       {/* Left — eyebrow, heading, description, 3-step list */}
       <div className="cl-left" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-        <span style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.14em", color: "#5f26e5", textTransform: "uppercase" }}>
-          {lang === "th" ? "การเรียนรู้จากแคมเปญ" : "Campaign Learning"}
-        </span>
+        <div>
+          <Badge variant="outline">Creator Selection</Badge>
+        </div>
         <h3 style={{ ...KT, fontSize: "clamp(28px,3.3vw,44px)", fontWeight: 800, margin: 0, lineHeight: 1.2 }}>
           <span style={{ color: "#111827" }}>{lang === "th" ? "วัดผล เรียนรู้" : "Measure, Learn,"}</span>
           <br />

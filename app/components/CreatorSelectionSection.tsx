@@ -215,11 +215,13 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
           <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
             {SIMILAR_CREATORS.map((creator) => (
               <div key={creator.name} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <div style={{ position: "relative", width: "28px", height: "28px", borderRadius: "50%", overflow: "hidden",
-                  border: "2px solid #ffffff", boxShadow: "0 2px 6px -1px rgba(95,38,229,0.3)", flexShrink: 0 }}>
-                  <Image src={creator.img} alt={creator.name} fill sizes="28px" style={{ objectFit: "cover" }} />
+                <div style={{ position: "relative", width: "28px", height: "28px", borderRadius: "50%", flexShrink: 0,
+                  background: "#e5e7eb", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#9ca3af" aria-hidden="true">
+                    <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12Zm0 2.5c-3.3 0-9.8 1.6-9.8 4.9v1.4a1 1 0 0 0 1 1h17.6a1 1 0 0 0 1-1v-1.4c0-3.3-6.5-4.9-9.8-4.9Z" />
+                  </svg>
                 </div>
-                <span style={{ ...KT, fontSize: "13px", color: "#4b5563" }}>{creator.name}</span>
+                <span style={{ ...KT, fontSize: "13px", color: "#9ca3af" }}>{creator.name}</span>
               </div>
             ))}
           </div>
