@@ -10,6 +10,14 @@ import { getDictionary } from "../../../../get-dictionary";
 import { type Locale } from "../../../../i18n-config";
 
 const BLOG_DESCRIPTIONS: Record<string, Record<string, string>> = {
+  "content-per-platform-fb-tiktok-ig": {
+    th: "ทำไมคอนเทนต์เดียวกันโพสต์ต่างช่องทางถึงได้ยอดต่างกัน? Buddy Review เจาะลึกวิธีปรับ Core Message ให้เข้ากับธรรมชาติของ Facebook, TikTok และ Instagram",
+    en: "Why does the same content perform differently across channels? Buddy Review breaks down how to adapt one Core Message to fit Facebook, TikTok, and Instagram.",
+  },
+  "social-media-insight-2026": {
+    th: "สรุปอินไซต์ Social Media ปี 2026 พร้อมแนวทางปรับคอนเทนต์ให้เหมาะกับ Facebook, Instagram, TikTok, YouTube, X และ Lemon8 สำหรับแบรนด์และครีเอเตอร์",
+    en: "A 2026 social media insight recap with content guidance tailored to Facebook, Instagram, TikTok, YouTube, X, and Lemon8 for brands and creators.",
+  },
   "content-strategy-canvas": {
     th: "รู้จัก Content Strategy Canvas เครื่องมือวางแผนคอนเทนต์แบบหน้าเดียว ที่ช่วยตอบ Purpose, Audience และ Execution ให้ชัดเจน เพิ่ม Reach และ Engagement ได้อย่างแม่นยำ",
     en: "Discover the Content Strategy Canvas — a one-page framework that clarifies Purpose, Audience, and Execution to plan content that actually reaches and engages the right people.",
@@ -124,6 +132,140 @@ const OL = ({ items }: { items: React.ReactNode[] }) => (
     ))}
   </ol>
 );
+
+function ContentPerPlatformContent({ lang }: { lang: Locale }) {
+  if (lang === "en") {
+    return (
+      <>
+        <P>Ever notice this? The same content posted on one channel does great, but posted on another it goes completely silent — even though it&apos;s the exact same story.</P>
+        <P>The real problem usually isn&apos;t the content itself — it&apos;s that people on each platform have different content-consumption habits. Making one piece of content and posting it identically everywhere isn&apos;t necessarily the most effective approach.</P>
+        <P>What you should do instead is keep the same Core Message, but adapt how you tell it to fit the nature of each platform. Let&apos;s look at how Facebook, TikTok, and Instagram should each be communicated differently.</P>
+        <P>Here&apos;s a guide for adapting your communication style to fit these 3 popular platforms, so brands and creators can create more on-target content.</P>
+
+        <Divider />
+        <H2>Facebook: Tell it in detail, and invite people to keep talking</H2>
+        <UL items={[
+          <><strong>How to communicate:</strong> Facebook users tend to spend time reading detailed content. Brands should use this space to explain information, tell in-depth stories, break down an issue, or give clear, illustrative examples.</>,
+          <><strong>Goal:</strong> Build community. Content should end with an open-ended question to spark comments and an exchange of opinions.</>,
+        ]} />
+
+        <H2>TikTok: Get to the point fast, and keep it real</H2>
+        <UL items={[
+          <><strong>How to communicate:</strong> TikTok&apos;s nature is scrolling through clip after clip, so content needs a strong &quot;Hook&quot; to keep people watching from the very start — maybe opening with a problem or an issue that resonates with the viewer.</>,
+          <><strong>Goal:</strong> Make the content feel natural, not overly like an ad. Telling it from real experience, a review, or a hands-on trial makes it easier for people to feel connected to the content.</>,
+        ]} />
+
+        <H2>Instagram: Tell the story through images, and make people want to share</H2>
+        <UL items={[
+          <><strong>How to communicate:</strong> Instagram is a space where images and visuals play a huge role, so content needs to be planned around both the story and how it&apos;s presented — whether that&apos;s product shots, outfit ideas, a café, or a lifestyle moment people can draw inspiration from.</>,
+          <><strong>Goal:</strong> Build an image. The brand needs to show how the product can fit into a user&apos;s everyday life — through outfit ideas, atmosphere, or a mood in the image that makes people want to remember and save it.</>,
+        ]} />
+
+        <Divider />
+        <P>A single piece of content doesn&apos;t need a new Core Message every time you switch platforms — what should change is <strong style={{ color: "#5f26e5" }}>how you tell it</strong>.</P>
+        <P>People on Facebook might want to read a story and join the conversation, people on TikTok might want content that gets to the point fast and feels natural, while Instagram might suit storytelling through images and lifestyle more.</P>
+        <P><strong style={{ color: "#5f26e5" }}>So making social media work isn&apos;t about making identical content for every channel — it&apos;s about understanding what people on each platform are looking for, then telling the same story in a way that fits that platform.</strong></P>
+      </>
+    );
+  }
+  return (
+    <>
+      <P>เคยไหม? คอนเทนต์เดียวกัน โพสต์ลงช่องหนึ่งยอดดี แต่พอเอาไปลงอีกช่องกลับเงียบสนิท ทั้งที่เป็นเรื่องเดียวกัน</P>
+      <P>จริงๆ แล้วปัญหาอาจไม่ได้อยู่ที่คอนเทนต์ แต่เป็นเพราะคนแต่ละแพลตฟอร์มมีพฤติกรรมการเสพคอนเทนต์ต่างกัน การทำคอนเทนต์ชิ้นเดียวแล้วนำไปโพสต์เหมือนกันทุกช่องทาง จึงอาจไม่ใช่วิธีที่ได้ผลที่สุด</P>
+      <P>สิ่งที่ควรทำคือเก็บ Core Message เดิมไว้ แต่ปรับวิธีเล่าให้เข้ากับธรรมชาติของแต่ละแพลตฟอร์ม มาดูกันว่า Facebook, TikTok และ Instagram ควรสื่อสารต่างกันอย่างไร</P>
+      <P>นี่คือแนวทางการปรับวิธีสื่อสารให้เข้ากับรูปแบบของ 3 แพลตฟอร์มยอดฮิต เพื่อให้แบรนด์และครีเอเตอร์ทำคอนเทนต์ได้ตรงจุดมากขึ้น</P>
+
+      <Divider />
+      <H2>Facebook: เล่าให้ละเอียด และชวนคนคุยต่อ</H2>
+      <UL items={[
+        <><strong>วิธีสื่อสาร:</strong> ผู้ใช้ Facebook มักให้เวลากับการอ่านเนื้อหาที่มีรายละเอียด แบรนด์ควรใช้พื้นที่นี้อธิบายข้อมูล เล่าเรื่องราวเชิงลึก วิเคราะห์ประเด็น หรือยกตัวอย่างประกอบให้ชัดเจน</>,
+        <><strong>เป้าหมาย:</strong> สร้างคอมมูนิตี้ คอนเทนต์ควรจบด้วยการตั้งคำถามปลายเปิด เพื่อกระตุ้นให้เกิดการคอมเมนต์และการแลกเปลี่ยนความคิดเห็น</>,
+      ]} />
+
+      <H2>TikTok: เข้าเรื่องไว และเล่าให้เรียล</H2>
+      <UL items={[
+        <><strong>วิธีสื่อสาร:</strong> ธรรมชาติของ TikTok คือการไถฟีดดูคลิปไปเรื่อยๆ คอนเทนต์จึงต้องมี &quot;Hook&quot; ที่แข็งแรงเพื่อดึงคนให้อยู่ตั้งแต่ช่วงแรกที่เปิดคลิป อาจเริ่มด้วยปัญหา หรือประเด็นที่ตรงใจผู้ชม</>,
+        <><strong>เป้าหมาย:</strong> ทำให้คอนเทนต์ดูเป็นธรรมชาติและไม่รู้สึกเหมือนโฆษณาเกินไป การเล่าจากประสบการณ์จริง รีวิว หรือทดลองใช้ให้ดู จึงเป็นวิธีที่ช่วยให้คนรู้สึกเชื่อมโยงกับคอนเทนต์ได้ง่ายขึ้น</>,
+      ]} />
+
+      <H2>Instagram: เล่าเรื่องผ่านภาพและทำให้คนอยากแชร์</H2>
+      <UL items={[
+        <><strong>วิธีสื่อสาร:</strong> Instagram เป็นพื้นที่ที่ภาพและ Visual มีบทบาทสูง คอนเทนต์จึงควรคิดไปพร้อมกันทั้งเรื่องที่จะเล่าและวิธีนำเสนอ ไม่ว่าจะเป็นภาพสินค้า ไอเดียแต่งตัว คาเฟ่ หรือ Lifestyle ที่คนสามารถนำไปเป็นแรงบันดาลใจได้</>,
+        <><strong>เป้าหมาย:</strong> สร้างภาพลักษณ์ แบรนด์ต้องทำให้เห็นว่าสินค้าสามารถเข้าไปอยู่ในชีวิตประจำวันของผู้ใช้งานได้ยังไง ไม่ว่าจะผ่านไอเดียการแต่งตัว บรรยากาศ หรือมู้ดของภาพที่กระตุ้นให้อยากจดจำและบันทึกเก็บไว้</>,
+      ]} />
+
+      <Divider />
+      <P>คอนเทนต์หนึ่งเรื่องไม่จำเป็นต้องเปลี่ยน Core Message ทุกครั้งที่เปลี่ยนแพลตฟอร์ม แต่สิ่งที่ควรเปลี่ยนคือ <strong style={{ color: "#5f26e5" }}>วิธีเล่า</strong></P>
+      <P>เพราะคนบน Facebook อาจอยากอ่านเรื่องราวและเข้ามาพูดคุย คนบน TikTok อาจอยากได้คอนเทนต์ที่เข้าเรื่องไวและเป็นธรรมชาติ ส่วน Instagram อาจเหมาะกับการเล่าผ่านภาพและ Lifestyle มากกว่า</P>
+      <P><strong style={{ color: "#5f26e5" }}>ดังนั้นการทำ Social Media ให้ได้ผลจึงไม่ใช่การทำคอนเทนต์ให้เหมือนกันทุกช่องทาง แต่คือการเข้าใจว่าคนแต่ละที่กำลังมองหาอะไร แล้วนำเรื่องเดียวกันไปเล่าในแบบที่เข้ากับแพลตฟอร์มนั้นๆ</strong></P>
+    </>
+  );
+}
+
+function SocialMediaInsight2026Content({ lang }: { lang: Locale }) {
+  if (lang === "en") {
+    return (
+      <>
+        <P>These days, the social media world isn&apos;t measured by &quot;mass appeal&quot; alone anymore. Doing social media in 2026 is no longer about pumping out as much content as possible, or using the same approach across every platform — because each channel has its own audience behavior and content style.</P>
+        <P>What matters more and more is understanding what people on each platform are actually looking for, and what kind of content makes them want to keep watching, engage, or share.</P>
+        <P>Buddy Review wants to share key insights for brands and creators on planning content strategy for each platform.</P>
+
+        <Divider />
+        <H3>Facebook | Content that invites conversation</H3>
+        <P>Facebook is still a space where conversational, discussion-driving content matters. Posts that open up a topic, ask a question, or invite people to share their opinion have a better chance of driving Engagement than one-way informational posts. And when a brand steps in to reply or chat in the comments, that helps build a relationship with the community too.</P>
+
+        <H3>Instagram | Make people want to share it</H3>
+        <P>This year is all about &quot;Emotion-first&quot; — content needs to touch the viewer&apos;s emotions, whether that&apos;s humor, sentimentality, or a relatable meme, because the algorithm values DM shares more than regular likes. As for Reels, 15–30 seconds is the sweet spot for length — you don&apos;t need to post very often, but prioritize quality and a strong visual look.</P>
+
+        <H3>TikTok | Realness and storytelling</H3>
+        <P>TikTok is still a platform where storytelling and authenticity matter a great deal. Content that feels like someone sharing a real experience or telling a story to a friend can spark more interest than a clip that tries to sell from the very first second. What still matters is grabbing attention early and telling a story people want to watch all the way through.</P>
+
+        <H3>YouTube | Where depth and expertise live</H3>
+        <P>YouTube suits content that needs to tell a story or share information in depth, from video podcasts to niche content that answers viewers&apos; questions or interests. Making people want to keep watching matters just as much as getting them to click in the first place — meanwhile, the Title and Thumbnail are still the critical gate that decides whether someone clicks at all.</P>
+
+        <H3>X (Twitter) | Speed needs a point of view</H3>
+        <P>Speed is still essential, but going viral now also requires layering in real analysis. Posts with a fresh perspective that invite further discussion tend to do very well in the feed — and it&apos;s crucial to always fact-check, because the X community verifies information fast.</P>
+
+        <H3>Lemon8 | Easy-to-digest, useful content</H3>
+        <P>Lemon8 still suits How-to, review, and lifestyle content — especially content people can save to reference later. So beyond an eye-catching cover, the content itself should be easy to read, broken into clear sections, with details people can actually put to use. Useful content doesn&apos;t end once someone reads it — it also has a chance of being saved and revisited.</P>
+
+        <Divider />
+        <P>Social media in 2026 doesn&apos;t have one single formula that works across every platform, because the same story might need to be told differently on each channel.</P>
+        <P><strong style={{ color: "#5f26e5" }}>Once you understand the nature of each channel, you don&apos;t need to create entirely new content for every platform — you can take the same idea and adapt the way it&apos;s told, the format, and where you want people to engage, to fit each channel.</strong></P>
+      </>
+    );
+  }
+  return (
+    <>
+      <P>ทุกวันนี้โลกโซเชียลไม่ได้วัดกันแค่ &quot;ความแมส&quot; อีกต่อไป เพราะการทำ Social Media ในปี 2026 อาจไม่ใช่เรื่องของการทำคอนเทนต์ให้เยอะที่สุด หรือพยายามทำทุกแพลตฟอร์มด้วยวิธีเดียวกันอีกต่อไป เพราะแต่ละช่องทางมีทั้งพฤติกรรมของคนดูและรูปแบบคอนเทนต์ที่แตกต่างกัน</P>
+      <P>สิ่งที่สำคัญขึ้นเรื่อยๆ คือการเข้าใจว่าคนบนแต่ละแพลตฟอร์มกำลังมองหาอะไร และคอนเทนต์แบบไหนที่ทำให้พวกเขาอยากดูต่อ มีส่วนร่วม หรือส่งต่อ</P>
+      <P>Buddy Review เลยอยากจะมาแชร์อินไซต์สำคัญสำหรับแบรนด์และครีเอเตอร์ ในการวางกลยุทธ์คอนเทนต์ในแต่ละแพลตฟอร์ม</P>
+
+      <Divider />
+      <H3>Facebook | คอนเทนต์ที่ชวนคนเข้ามาคุย</H3>
+      <P>Facebook ยังคงเป็นพื้นที่ที่คอนเทนต์แบบพูดคุยและสร้างบทสนทนามีความสำคัญ โพสต์ที่เปิดประเด็น ตั้งคำถาม หรือชวนให้คนแชร์ความคิดเห็น จึงมีโอกาสสร้าง Engagement ได้มากกว่าการโพสต์ข้อมูลแบบทางเดียว และการที่แบรนด์เข้ามาตอบหรือพูดคุยกับคนในคอมเมนต์ก็ช่วยสร้างความสัมพันธ์กับ Community ได้ด้วย</P>
+
+      <H3>Instagram | ทำให้คนอยากส่งต่อ</H3>
+      <P>ปีนี้เน้นแนวคิด Emotion-first คอนเทนต์ต้องแตะอารมณ์คนดู ไม่ว่าจะขำ ซึ้ง หรือมีมโดนใจ เพราะอัลกอริทึมจะให้ค่ายอด Share ต่อใน DM มากกว่ายอดไลก์ทั่วไป ส่วน Reels ความยาวกำลังดีอยู่ที่ 15-30 วินาที โพสต์ไม่ต้องถี่มาก แต่เน้นคุณภาพและภาพลักษณ์ที่ดีไว้ก่อน</P>
+
+      <H3>TikTok | ความเรียลและ Storytelling</H3>
+      <P>TikTok ยังคงเป็นแพลตฟอร์มที่การเล่าเรื่องและความเป็นธรรมชาติสำคัญมาก คอนเทนต์ที่ดูเหมือนคนกำลังแชร์ประสบการณ์จริงหรือเล่าเรื่องให้เพื่อนฟัง อาจสร้างความสนใจได้มากกว่าคลิปที่พยายามขายสินค้าตั้งแต่ต้น สิ่งที่ยังสำคัญคือการดึงความสนใจตั้งแต่ช่วงแรกและเล่าเรื่องให้คนอยากดูต่อจนจบ</P>
+
+      <H3>YouTube | แหล่งรวมความลึกและผู้เชี่ยวชาญ</H3>
+      <P>YouTube เหมาะกับคอนเทนต์ที่ต้องการเล่าเรื่องหรือให้ข้อมูลแบบลงลึก ตั้งแต่ Video Podcast ไปจนถึงคอนเทนต์เฉพาะทางที่ตอบคำถามหรือความสนใจของคนดู การทำให้คนอยากดูต่อจึงสำคัญไม่แพ้การดึงคนให้กดเข้ามาดูตั้งแต่แรก ขณะเดียวกัน Title และ Thumbnail ก็ยังเป็นด่านสำคัญในการทำให้คนตัดสินใจคลิก</P>
+
+      <H3>X (Twitter) | ความเร็วต้องมาพร้อมมุมมอง</H3>
+      <P>ความไวยังจำเป็น แต่ถ้าจะให้ไวรัลต้องบวกการวิเคราะห์เชิงลึกเข้าไปด้วย โพสต์ที่มีมุมมองใหม่ๆ ชวนคุยต่อ จะติดฟีดได้ดีมาก และที่สำคัญคือต้องเช็กความถูกต้องของข้อมูลเสมอ เพราะสังคมใน X ตรวจสอบไวมาก</P>
+
+      <H3>Lemon8 | คอนเทนต์ที่ย่อยง่ายและมีประโยชน์</H3>
+      <P>Lemon8 ยังคงเหมาะกับคอนเทนต์แนว How-to, รีวิว และ Lifestyle โดยเฉพาะเนื้อหาที่คนสามารถเก็บไว้อ้างอิงภายหลังได้ ดังนั้นนอกจากภาพปกที่ต้องดึงดูดแล้ว เนื้อหาควรอ่านง่าย แบ่งข้อมูลเป็นส่วนๆ และมีรายละเอียดที่นำไปใช้ได้จริง เพราะคอนเทนต์ที่มีประโยชน์ไม่ได้จบแค่ตอนคนอ่าน แต่ยังมีโอกาสถูก Save กลับมาดูอีกครั้ง</P>
+
+      <Divider />
+      <P>Social Media ในปี 2026 จึงไม่ได้มีสูตรเดียวที่ใช้ได้กับทุกแพลตฟอร์ม เพราะคอนเทนต์เรื่องเดียวกันอาจต้องเล่าคนละแบบในแต่ละช่องทาง</P>
+      <P><strong style={{ color: "#5f26e5" }}>เมื่อเข้าใจธรรมชาติของแต่ละช่องทางแล้ว เราก็ไม่จำเป็นต้องทำคอนเทนต์ใหม่ทั้งหมดสำหรับทุกแพลตฟอร์ม แต่สามารถนำไอเดียเดียวกันมาปรับวิธีเล่า Format และจุดที่ต้องการให้คนมีส่วนร่วมให้เหมาะกับแต่ละช่องทางได้</strong></P>
+    </>
+  );
+}
 
 function ContentStrategyCanvasContent({ lang }: { lang: Locale }) {
   if (lang === "en") {
@@ -868,7 +1010,7 @@ function CopywritingContent({ lang }: { lang: Locale }) {
   );
 }
 
-const SLUGS = ["content-strategy-canvas", "best-time-to-post-2025", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas", "6-copywriting-techniques"];
+const SLUGS = ["content-per-platform-fb-tiktok-ig", "social-media-insight-2026", "content-strategy-canvas", "best-time-to-post-2025", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas", "6-copywriting-techniques"];
 
 export function generateStaticParams() {
   return SLUGS.map((slug) => ({ slug }));
@@ -938,7 +1080,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ lang:
           </h1>
           <div style={{ height: "1px", background: "rgba(255,255,255,0.2)", marginBottom: "32px" }} />
 
-          {post.slug === "content-strategy-canvas" ? (
+          {post.slug === "content-per-platform-fb-tiktok-ig" ? (
+            <ContentPerPlatformContent lang={lang as Locale} />
+          ) : post.slug === "social-media-insight-2026" ? (
+            <SocialMediaInsight2026Content lang={lang as Locale} />
+          ) : post.slug === "content-strategy-canvas" ? (
             <ContentStrategyCanvasContent lang={lang as Locale} />
           ) : post.slug === "tiktok-algorithm-9-techniques" ? (
             <TikTokContent lang={lang as Locale} />
