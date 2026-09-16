@@ -112,13 +112,13 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
               { src: "/co-founder/co-founder-1.jpg", name: "ณัฏฐดนัย รักตประจิต (นิค)", title: "Co-founder",
                 quote: "เราสร้างการตลาดอินฟลูเอนเซอร์ที่ไม่ได้แค่ 'ดัง' แต่สร้าง 'กำไรจริง'" },
               { src: "/co-founder/co-founder-2.jpg", name: "ณพัชร รัตนถาวรกิติ (พัชร)", title: "CEO, Co-founder",
-                quote: "เราสร้างอนาคตของ Influencer Marketing ด้วยวิสัยทัศน์ที่ชัดเจนและผลลัพธ์ที่พิสูจน์ได้" },
+                quote: "เราสร้างอนาคตของ Influencer Marketing ด้วยวิสัยทัศน์ที่ชัดเจนและผลลัพธ์ที่พิสูจน์ได้", objectPosition: "center top" },
               { src: "/co-founder/co-founder-3.jpg", name: "เศรษฐพร ศรีวิไล (บอส)", title: "Co-founder",
                 quote: "เทคโนโลยีของเราคือขุมพลังที่เปลี่ยนทุกข้อมูล สู่ผลลัพธ์ที่แม่นยำ" },
             ].map((person) => (
               <div key={person.src} style={{ textAlign: "center" }}>
                 <div className="cofounder-photo" style={{ position: "relative", aspectRatio: "3 / 4", borderRadius: "24px", overflow: "hidden", background: "#f3f3f3" }}>
-                  <Image src={person.src} alt={person.name} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
+                  <Image src={person.src} alt={person.name} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover", objectPosition: person.objectPosition ?? "center" }} />
                 </div>
                 <p style={{ ...KT, fontSize: "18px", fontWeight: 700, color: "#5f26e5", margin: "20px 0 4px" }}>
                   {person.name}

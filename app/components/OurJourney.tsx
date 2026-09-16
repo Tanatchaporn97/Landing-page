@@ -26,7 +26,7 @@ const JOURNEY_STEPS = [
     subtitle: "ขยายทีมครั้งใหญ่", subtitleEn: "A Major Team Expansion",
     desc: "แม้จะเป็นช่วงที่ท้าทายสำหรับหลายธุรกิจ แต่ Buddy Review ยังคงมุ่งมั่นพัฒนาบริการและแพลตฟอร์มอย่างต่อเนื่อง พร้อมยังทำแคมเปญช่วยเหลือแบรนด์ SME และร่วมมือกับอินฟลูเอนเซอร์ที่มีจิตอาสาในช่วง COVID-19 เพื่อก้าวข้ามและเติบโตผ่านเวลาที่ลำบากไปด้วยกัน",
     descEn: "Even through a challenging time for many businesses, Buddy Review kept developing our services and platform — running campaigns to support SME brands and partnering with volunteer-minded influencers through COVID-19, growing through hard times together." },
-  { year: "2024", img: "/about-us/2024.png", ratio: "1328 / 600", wide: true, maxWidth: "554px",
+  { year: "2024", img: "/about-us/2024.png", ratio: "1328 / 600", wide: true, maxWidth: "388px",
     subtitle: "อีกก้าวความสำเร็จ", subtitleEn: "Another Milestone of Success",
     desc: "เราได้ถูกจัดอันดับเป็นอันดับ 4 บริษัทหมวด Advertising & Marketing ที่เติบโตเร็วที่สุดในเอเชียแปซิฟิกจากการจัดอันดับโดย Financial Times",
     descEn: "We were ranked No. 4 among the fastest-growing Advertising & Marketing companies in Asia-Pacific by the Financial Times." },

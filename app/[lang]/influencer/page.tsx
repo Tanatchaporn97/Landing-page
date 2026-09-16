@@ -132,16 +132,27 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
 
       {/* ── Video Showcase ── */}
-      <section style={{ position: "relative", background: "transparent", overflow: "hidden", padding: "140px 0 64px" }}>
+      <section style={{ position: "relative", background: "transparent", overflow: "hidden", padding: "295px 0 64px" }}>
         <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "0 16px" }}>
           <h2 style={{ margin: "0 0 24px", lineHeight: 1.1 }}>
-            <span className="vs-line1" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-outfit), sans-serif" }), display: "block", fontWeight: lang === "th" ? 900 : 700, fontSize: "clamp(28px,3.3vw,48px)", color: "#111827", whiteSpace: "nowrap" }}>
-              {lang === "th" ? "แมทช์งานที่ใช่" : "Match the Right Job,"}
-            </span>
-            <span className="vs-line2" style={{ ...(lang === "th" ? KT : { fontFamily: "var(--font-outfit), sans-serif" }), display: "block", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", whiteSpace: "nowrap",
-              background: "linear-gradient(45deg, #5f26e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              {lang === "th" ? "ได้งานที่ชอบ" : "Get Work You Love"}
-            </span>
+            {lang === "th" ? (
+              <span className="vs-line1" style={{ ...KT, display: "block", fontWeight: 900, fontSize: "clamp(28px,3.3vw,48px)", whiteSpace: "nowrap" }}>
+                <span style={{ color: "#111827" }}>แมทช์งานที่ใช่ </span>
+                <span style={{ fontWeight: 700, background: "linear-gradient(45deg, #5f26e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                  ได้งานที่ชอบ
+                </span>
+              </span>
+            ) : (
+              <>
+                <span className="vs-line1" style={{ fontFamily: "var(--font-outfit), sans-serif", display: "block", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", color: "#111827", whiteSpace: "nowrap" }}>
+                  Match the Right Job,
+                </span>
+                <span className="vs-line2" style={{ fontFamily: "var(--font-outfit), sans-serif", display: "block", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", whiteSpace: "nowrap",
+                  background: "linear-gradient(45deg, #5f26e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                  Get Work You Love
+                </span>
+              </>
+            )}
           </h2>
           <p style={{ ...KT, fontWeight: 700, fontSize: "clamp(18px,1.8vw,28px)", color: "rgba(17,24,39,0.75)", maxWidth: "900px", lineHeight: 1.7, margin: "0 0 32px" }}>
             {lang === "th" ? (
@@ -332,11 +343,9 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       {/* ── Testimonials — scroll-jacking section (desktop) / static (mobile) ── */}
       <TestimonialsScrollSection dict={dict} lang={lang} />
 
-      {/* ── Creator Stories (videos only, no heading) ── */}
-      <section style={{ background: "transparent", padding: "100px 48px" }}>
-        <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
-          <CreatorStories />
-        </div>
+      {/* ── Creator Stories (videos only, no heading) — full width ── */}
+      <section style={{ background: "transparent", padding: "100px 0", width: "100%" }}>
+        <CreatorStories />
       </section>
 
       {/* ── Industry Insights → FAQs → Pre-footer CTA ── */}

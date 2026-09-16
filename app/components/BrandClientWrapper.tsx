@@ -197,7 +197,10 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         className="flex items-start px-6 relative"
         style={{
           minHeight: "72vh",
-          padding: "100px 24px",
+          paddingTop: "240px",
+          paddingBottom: "100px",
+          paddingLeft: "24px",
+          paddingRight: "24px",
           overflow: "hidden",
           position: "relative",
           zIndex: 10,

@@ -71,10 +71,13 @@ function StoryCard({ src, name }: { src: string; name: string }) {
 
 export default function CreatorStories() {
   return (
-    <div className="creator-stories-row" style={{ display: "flex", gap: "24px", overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none", paddingBottom: "8px" }}>
+    <div className="creator-stories-row" style={{ display: "flex", gap: "24px", overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none", paddingBottom: "8px", paddingLeft: "48px", paddingRight: "48px", width: "100%", boxSizing: "border-box" }}>
       {VIDEOS.map((v) => <StoryCard key={v.src} src={v.src} name={v.name} />)}
       <style>{`
         .creator-stories-row::-webkit-scrollbar{ display: none; }
+        @media (max-width: 768px){
+          .creator-stories-row{ padding-left: 20px !important; padding-right: 20px !important; }
+        }
       `}</style>
     </div>
   );
