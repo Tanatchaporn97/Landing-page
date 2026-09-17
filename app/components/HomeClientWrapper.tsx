@@ -94,10 +94,10 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                     <stop offset="100%" stopColor="#4a2a86" />
                   </linearGradient>
                   <clipPath id="heroIconClipL" clipPathUnits="userSpaceOnUse">
-                    <path d="M485.5,601.5l7-97.4c.3-4.1-2.6-7.7-6.6-8.4-13.5-2.2-45.5-6.5-91.2-6.5s-83.5,3.4-97,4.9c-3.5.4-6.4,3-6.9,6.5-2.5,14.6-9.4,53.2-8.5,94.8.8,41.6,2.3,71.1,3.4,88.8.3,4.4,4.1,7.8,8.5,7.5,18.4-1.5,64.2-5,91.9-5.6,27.4-.6,72.8,1.5,91.8,2.5,4.7.2,8.5-3.6,8.3-8.3l-1.5-36.6s29.1-7.1,34.8-9.2c5.7-2.2,9.5-3,9.5-7.1s-9.1-13.9-43.4-25.8Z" />
+                    <path d="M556.7,590.0C560.7,615.5 529.9,657.3 508.0,676.4 C486.1,695.6 452.3,702.1 425.3,704.9 C398.2,707.6 365.3,706.1 345.6,692.9 C325.8,679.7 321.3,651.7 306.8,625.7 C292.4,599.7 254.1,562.6 259.0,536.9 C264.0,511.2 309.2,479.6 336.6,471.5 C363.9,463.3 398.4,479.4 423.0,488.1 C447.6,496.7 461.8,506.7 484.1,523.7 C506.4,540.6 552.7,564.5 556.7,590.0 Z" />
                   </clipPath>
                 </defs>
-                <path d="M485.5,601.5l7-97.4c.3-4.1-2.6-7.7-6.6-8.4-13.5-2.2-45.5-6.5-91.2-6.5s-83.5,3.4-97,4.9c-3.5.4-6.4,3-6.9,6.5-2.5,14.6-9.4,53.2-8.5,94.8.8,41.6,2.3,71.1,3.4,88.8.3,4.4,4.1,7.8,8.5,7.5,18.4-1.5,64.2-5,91.9-5.6,27.4-.6,72.8,1.5,91.8,2.5,4.7.2,8.5-3.6,8.3-8.3l-1.5-36.6s29.1-7.1,34.8-9.2c5.7-2.2,9.5-3,9.5-7.1s-9.1-13.9-43.4-25.8Z" fill="url(#heroIconGradL)" />
+                <path d="M556.7,590.0C560.7,615.5 529.9,657.3 508.0,676.4 C486.1,695.6 452.3,702.1 425.3,704.9 C398.2,707.6 365.3,706.1 345.6,692.9 C325.8,679.7 321.3,651.7 306.8,625.7 C292.4,599.7 254.1,562.6 259.0,536.9 C264.0,511.2 309.2,479.6 336.6,471.5 C363.9,463.3 398.4,479.4 423.0,488.1 C447.6,496.7 461.8,506.7 484.1,523.7 C506.4,540.6 552.7,564.5 556.7,590.0 Z" fill="url(#heroIconGradL)" />
                 <image href="/im-brand-dashboard.png" x="265" y="450" width="280" height="280" preserveAspectRatio="xMidYMid slice" clipPath="url(#heroIconClipL)" opacity="0.18" />
               </svg>
               <div className="hero-blob-content" style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "12px", padding: "20%" }}>
@@ -120,18 +120,19 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           </motion.div>
 
           {/* Center — eyebrow + headline + subhead */}
-          <div className="hero-blob-center" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "48px 20px", gap: "18px", minWidth: 0 }}>
+          <div className="hero-blob-center" style={{ position: "relative", zIndex: 5, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "48px 20px", gap: "18px", minWidth: 0 }}>
             <span style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.14em", color: "#5f26e5", textTransform: "uppercase" }}>
               Buddy Review Connects
             </span>
             <h1 className="font-black uppercase hero-h1" style={{
               background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-              fontSize: "clamp(22px,3.6vw,46px)", lineHeight: 1.25, margin: 0, maxWidth: "620px", fontFeatureSettings: "'pnum' on,'lnum' on",
+              fontSize: "clamp(22px,3.6vw,46px)", lineHeight: 1.25, margin: 0, width: "100%", maxWidth: "620px",
+              overflowWrap: "break-word", wordBreak: "break-word", fontFeatureSettings: "'pnum' on,'lnum' on",
             }}>
-              <span className="hero-h1-line" style={{ display: "block", whiteSpace: "nowrap" }}>{t.headline1?.split(" ")[0]}</span>
-              <span className="hero-h1-line" style={{ display: "block", whiteSpace: "nowrap" }}>{t.headline1?.split(" ").slice(1).join(" ")}</span>
-              <span className="hero-h1-line" style={{ display: "block", whiteSpace: "nowrap" }}>{t.headline2}</span>
+              <span className="hero-h1-line" style={{ display: "block" }}>{t.headline1?.split(" ")[0]}</span>
+              <span className="hero-h1-line" style={{ display: "block" }}>{t.headline1?.split(" ").slice(1).join(" ")}</span>
+              <span className="hero-h1-line" style={{ display: "block" }}>{t.headline2}</span>
             </h1>
             <p style={{ ...KT, color: "#4b5563", fontSize: "clamp(18px,1.8vw,28px)", lineHeight: 1.7, margin: 0, maxWidth: "380px" }}>
               From Strategy To Insight,<br />We Turn Influence Into Impact.
@@ -155,10 +156,10 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                     <stop offset="100%" stopColor="#4a2a86" />
                   </linearGradient>
                   <clipPath id="heroIconClipR" clipPathUnits="userSpaceOnUse">
-                    <path d="M485.5,601.5l7-97.4c.3-4.1-2.6-7.7-6.6-8.4-13.5-2.2-45.5-6.5-91.2-6.5s-83.5,3.4-97,4.9c-3.5.4-6.4,3-6.9,6.5-2.5,14.6-9.4,53.2-8.5,94.8.8,41.6,2.3,71.1,3.4,88.8.3,4.4,4.1,7.8,8.5,7.5,18.4-1.5,64.2-5,91.9-5.6,27.4-.6,72.8,1.5,91.8,2.5,4.7.2,8.5-3.6,8.3-8.3l-1.5-36.6s29.1-7.1,34.8-9.2c5.7-2.2,9.5-3,9.5-7.1s-9.1-13.9-43.4-25.8Z" />
+                    <path d="M556.7,590.0C560.7,615.5 529.9,657.3 508.0,676.4 C486.1,695.6 452.3,702.1 425.3,704.9 C398.2,707.6 365.3,706.1 345.6,692.9 C325.8,679.7 321.3,651.7 306.8,625.7 C292.4,599.7 254.1,562.6 259.0,536.9 C264.0,511.2 309.2,479.6 336.6,471.5 C363.9,463.3 398.4,479.4 423.0,488.1 C447.6,496.7 461.8,506.7 484.1,523.7 C506.4,540.6 552.7,564.5 556.7,590.0 Z" />
                   </clipPath>
                 </defs>
-                <path d="M485.5,601.5l7-97.4c.3-4.1-2.6-7.7-6.6-8.4-13.5-2.2-45.5-6.5-91.2-6.5s-83.5,3.4-97,4.9c-3.5.4-6.4,3-6.9,6.5-2.5,14.6-9.4,53.2-8.5,94.8.8,41.6,2.3,71.1,3.4,88.8.3,4.4,4.1,7.8,8.5,7.5,18.4-1.5,64.2-5,91.9-5.6,27.4-.6,72.8,1.5,91.8,2.5,4.7.2,8.5-3.6,8.3-8.3l-1.5-36.6s29.1-7.1,34.8-9.2c5.7-2.2,9.5-3,9.5-7.1s-9.1-13.9-43.4-25.8Z" fill="url(#heroIconGradR)" />
+                <path d="M556.7,590.0C560.7,615.5 529.9,657.3 508.0,676.4 C486.1,695.6 452.3,702.1 425.3,704.9 C398.2,707.6 365.3,706.1 345.6,692.9 C325.8,679.7 321.3,651.7 306.8,625.7 C292.4,599.7 254.1,562.6 259.0,536.9 C264.0,511.2 309.2,479.6 336.6,471.5 C363.9,463.3 398.4,479.4 423.0,488.1 C447.6,496.7 461.8,506.7 484.1,523.7 C506.4,540.6 552.7,564.5 556.7,590.0 Z" fill="url(#heroIconGradR)" />
                 <image href="/buddy-ranks/2-followers-2-trimmed.png" x="265" y="450" width="280" height="280" preserveAspectRatio="xMidYMid slice" clipPath="url(#heroIconClipR)" opacity="0.16" />
               </svg>
               <div className="hero-blob-content" style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "12px", padding: "20%" }}>
