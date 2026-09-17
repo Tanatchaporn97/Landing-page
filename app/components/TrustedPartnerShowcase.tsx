@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import { motion } from "motion/react";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -10,11 +10,24 @@ const ITEMS = [
   { src: "/service/result.svg",                  title: "Results That Matter",        desc: "วัดผลให้สอดคล้องกับเป้าหมายของแบรนด์",   descEn: "Measuring results that align with your brand's goals." },
 ];
 
+// Same hover-animation approach as components/ui/gradient-card.tsx's GradientCard
+// (Brand page "Think Smarter, Execute Better" section): the card lifts/scales as
+// a whole while its icon independently zooms and tilts, on a spring.
+const cardAnimation = {
+  rest: { scale: 1, y: 0 },
+  hover: { scale: 1.03, y: -4 },
+};
+
+const iconAnimation = {
+  rest: { scale: 1, rotate: 0 },
+  hover: { scale: 1.1, rotate: 3 },
+};
+
 export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) {
   return (
-    <div className="tps-grid" style={{ display: "grid", gridTemplateColumns: "0.62fr 2fr", gap: "48px", alignItems: "start" }}>
-      {/* Left — heading, description */}
-      <div className="tps-left" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+    <div className="tps-wrap">
+      {/* Heading, description */}
+      <div className="tps-left" style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "32px" }}>
         <h3 style={{
           ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800,
           margin: 0, lineHeight: 1.15,
@@ -23,40 +36,42 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
         }}>
           Our Standard
         </h3>
-        <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0, maxWidth: "320px" }}>
+        <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0, maxWidth: "480px" }}>
           {lang === "th"
             ? "หลักการที่อยู่เบื้องหลังวิธีคิด การทำงาน และการส่งมอบผลลัพธ์ของเรา"
             : "The principles behind how we think, work, and deliver."}
         </p>
       </div>
 
-      {/* Right — row of benefit cards */}
-      <div className="tps-cards-row" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "20px" }}>
+      {/* 2x2 grid of soft-gray cards, icon anchored to the bottom-right corner */}
+      <div className="tps-cards-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "20px" }}>
         {ITEMS.map((item) => (
-          <div key={item.title} className="tps-card" style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", aspectRatio: "4 / 3", marginBottom: "16px" }}>
-              <Image src={item.src} alt={item.title} fill sizes="(max-width: 900px) 50vw, 25vw" style={{ objectFit: "cover" }} />
-            </div>
-            <h4 style={{ ...KT, fontSize: "22px", fontWeight: 700, color: "#5f26e5", margin: "0 0 10px", lineHeight: 1.35 }}>
+          <motion.div key={item.title} className="tps-card"
+            variants={cardAnimation} initial="rest" whileHover="hover" animate="rest"
+            style={{
+              position: "relative", overflow: "hidden", borderRadius: "20px",
+              background: "#f4f3f8", padding: "24px", minHeight: "220px",
+              display: "flex", flexDirection: "column", cursor: "pointer",
+            }}>
+            <h4 style={{ ...KT, fontSize: "18px", fontWeight: 700, color: "#111827", margin: 0, position: "relative", zIndex: 1 }}>
               {item.title}
             </h4>
-            <p style={{ ...KT, fontSize: "14px", lineHeight: 1.7, color: "#111827", margin: 0 }}>
+            <p style={{ ...KT, fontSize: "13px", lineHeight: 1.6, color: "#6b7280", margin: "8px 0 0", maxWidth: "60%", position: "relative", zIndex: 1 }}>
               {lang === "th" ? item.desc : item.descEn}
             </p>
-          </div>
+            <motion.img
+              src={item.src} alt={item.title}
+              variants={iconAnimation}
+              transition={{ type: "spring", stiffness: 400, damping: 15 }}
+              style={{ position: "absolute", right: "-8%", bottom: "-10%", width: "58%", pointerEvents: "none" }}
+            />
+          </motion.div>
         ))}
       </div>
 
       <style>{`
-        @media (max-width: 1080px){
-          .tps-cards-row{ grid-template-columns: repeat(2, 1fr) !important; }
-        }
-        @media (max-width: 900px){
-          .tps-grid{ grid-template-columns: 1fr !important; }
-          .tps-left{ max-width: none !important; }
-        }
-        @media (max-width: 560px){
-          .tps-cards-row{ grid-template-columns: 1fr !important; }
+        @media (max-width: 700px){
+          .tps-cards-grid{ grid-template-columns: 1fr !important; }
         }
       `}</style>
     </div>
