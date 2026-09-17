@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -17,12 +18,7 @@ export default function CreatorChannelsSection({ lang }: { lang: "th" | "en" }) 
   return (
     <div className="cc2-grid" style={{ display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: "56px", alignItems: "center" }}>
       <div className="cc2-left">
-        <span style={{
-          ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.14em", color: "#5f26e5", textTransform: "uppercase",
-          display: "inline-block", padding: "6px 16px", borderRadius: "50px", border: "1.5px solid rgba(95,38,229,0.25)",
-        }}>
-          One Creator, Many Channels
-        </span>
+        <Badge variant="outline" style={{ ...KT }}>One Creator, Many Channels</Badge>
         <h2 style={{ ...KT, fontSize: "clamp(28px,3.3vw,44px)", fontWeight: 800, margin: "16px 0 0", lineHeight: 1.25 }}>
           <span style={{ color: "#111827" }}>
             {lang === "th" ? "คอนเทนต์ของคุณอยู่ที่ไหน" : "Wherever your content lives,"}
