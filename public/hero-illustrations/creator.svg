@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="hcPhone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e6dcff"/>
+    </linearGradient>
+    <linearGradient id="hcScreen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff8fc7"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="hcScreenShine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="hcHeart" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffb3d9"/>
+      <stop offset="1" stop-color="#ff0089"/>
+    </linearGradient>
+    <linearGradient id="hcBubble" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffe27a"/>
+      <stop offset="1" stop-color="#f5a623"/>
+    </linearGradient>
+    <radialGradient id="hcGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <circle cx="200" cy="200" r="185" fill="url(#hcGlow)"/>
+
+  <!-- tilted phone / content mockup -->
+  <g transform="rotate(7 200 210)">
+    <rect x="130" y="90" width="150" height="230" rx="30" fill="url(#hcPhone)"/>
+    <rect x="146" y="112" width="118" height="150" rx="16" fill="url(#hcScreen)"/>
+    <rect x="146" y="112" width="118" height="60" rx="16" fill="url(#hcScreenShine)"/>
+
+    <!-- play button on screen -->
+    <circle cx="205" cy="187" r="26" fill="#ffffff" opacity="0.9"/>
+    <path d="M198 174 L222 187 L198 200 Z" fill="#5f26e5"/>
+
+    <!-- caption lines below screen -->
+    <rect x="146" y="276" width="80" height="8" rx="4" fill="#c9b8ff"/>
+    <rect x="146" y="292" width="55" height="6" rx="3" fill="#e6dcff"/>
+
+    <!-- home indicator -->
+    <rect x="185" y="304" width="30" height="5" rx="2.5" fill="#c9b8ff"/>
+  </g>
+
+  <!-- floating heart (like) badge -->
+  <g transform="translate(300 155) rotate(-10)">
+    <circle cx="0" cy="0" r="34" fill="url(#hcHeart)"/>
+    <path d="M0 12 C-16 0 -16 -14 -6 -14 C-2 -14 0 -11 0 -11 C0 -11 2 -14 6 -14 C16 -14 16 0 0 12 Z" fill="#ffffff"/>
+  </g>
+
+  <!-- floating comment bubble badge -->
+  <g transform="translate(95 265) rotate(8)">
+    <circle cx="0" cy="0" r="30" fill="url(#hcBubble)"/>
+    <circle cx="-8" cy="0" r="4" fill="#7a4b1e"/>
+    <circle cx="0" cy="0" r="4" fill="#7a4b1e"/>
+    <circle cx="8" cy="0" r="4" fill="#7a4b1e"/>
+  </g>
+
+  <!-- sparkle accents -->
+  <g fill="#ffffff">
+    <path d="M110 110 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5 z" opacity="0.8"/>
+    <path d="M300 300 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 z" opacity="0.6"/>
+  </g>
+</svg>

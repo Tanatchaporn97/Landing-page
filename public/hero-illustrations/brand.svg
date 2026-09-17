@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="hbCard" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e6dcff"/>
+    </linearGradient>
+    <linearGradient id="hbCardShine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="hbBar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff8fc7"/>
+      <stop offset="1" stop-color="#ff0089"/>
+    </linearGradient>
+    <linearGradient id="hbArrowBadge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffe27a"/>
+      <stop offset="1" stop-color="#f5a623"/>
+    </linearGradient>
+    <radialGradient id="hbGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <circle cx="200" cy="200" r="185" fill="url(#hbGlow)"/>
+
+  <!-- tilted campaign/analytics card -->
+  <g transform="rotate(-8 200 210)">
+    <rect x="80" y="120" width="240" height="170" rx="24" fill="url(#hbCard)"/>
+    <rect x="80" y="120" width="240" height="60" rx="24" fill="url(#hbCardShine)"/>
+
+    <!-- header row -->
+    <circle cx="112" cy="150" r="10" fill="#5f26e5"/>
+    <rect x="132" y="143" width="90" height="8" rx="4" fill="#c9b8ff"/>
+    <rect x="132" y="157" width="60" height="6" rx="3" fill="#e6dcff"/>
+
+    <!-- bar chart -->
+    <rect x="112" y="230" width="20" height="40" rx="6" fill="url(#hbBar)" opacity="0.55"/>
+    <rect x="142" y="205" width="20" height="65" rx="6" fill="url(#hbBar)" opacity="0.75"/>
+    <rect x="172" y="185" width="20" height="85" rx="6" fill="url(#hbBar)"/>
+    <rect x="202" y="215" width="20" height="55" rx="6" fill="url(#hbBar)" opacity="0.65"/>
+    <rect x="232" y="195" width="20" height="75" rx="6" fill="url(#hbBar)" opacity="0.9"/>
+
+    <!-- trend line -->
+    <path d="M112 250 L142 220 L172 195 L202 225 L252 200" fill="none" stroke="#5f26e5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="252" cy="200" r="6" fill="#5f26e5"/>
+  </g>
+
+  <!-- growth arrow badge, overlapping the card corner -->
+  <g transform="translate(272 110) rotate(-8)">
+    <circle cx="0" cy="0" r="38" fill="url(#hbArrowBadge)"/>
+    <path d="M-14 8 L-2 -8 L8 2 L16 -12" fill="none" stroke="#7a4b1e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8 -16 L16 -12 L14 -3" fill="none" stroke="#7a4b1e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- small floating sparkle accents -->
+  <g fill="#ffffff">
+    <path d="M100 320 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5 z" opacity="0.8"/>
+    <path d="M310 300 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 z" opacity="0.6"/>
+  </g>
+</svg>
