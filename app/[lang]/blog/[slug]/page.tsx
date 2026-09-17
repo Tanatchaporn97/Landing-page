@@ -1550,7 +1550,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ lang:
 
         {/* Cover image */}
         <div style={{ position: "relative", borderRadius: "20px", overflow: "hidden", marginBottom: "40px" }}>
-          <Image src={post.image} alt={post.title} width={800} height={420} style={{ width: "100%", height: "420px", objectFit: "cover" }} />
+          <Image src={post.detailImage || post.image} alt={post.title} width={800} height={420} style={{ width: "100%", height: "420px", objectFit: "cover" }} />
         </div>
 
         {/* Content card */}
