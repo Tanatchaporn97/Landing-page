@@ -85,6 +85,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           position: "relative", borderRadius: "24px", padding: "24px",
           background: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.8)",
           boxShadow: "0 24px 50px -18px rgba(95,38,229,0.25)", backdropFilter: "blur(10px)",
+          transform: "scale(0.8)",
         }}>
           <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#6b7280", margin: "0 0 14px" }}>
             {lang === "th" ? "กิจกรรมแคมเปญ" : "Campaign Activity"}
@@ -102,6 +103,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           background: "#ffffff", borderRadius: "16px", padding: "16px 18px",
           boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
           opacity: 0.55,
+          transform: "scale(1.1)",
           transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
         }}>
           <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#9ca3af", margin: "0 0 10px" }}>
@@ -121,6 +123,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           background: "#ffffff", borderRadius: "16px", padding: "16px 18px",
           boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
           opacity: 0.55,
+          transform: "scale(1.1)",
           transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
         }}>
           <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#9ca3af", margin: "0 0 10px" }}>
@@ -142,6 +145,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           background: "#ffffff", borderRadius: "16px", padding: "16px 18px",
           boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
           opacity: 0.55,
+          transform: "scale(1.1)",
           transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
         }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px" }}>
@@ -163,6 +167,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           background: "#ffffff", borderRadius: "16px", padding: "16px 18px",
           boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
           opacity: 0.55,
+          transform: "scale(1.1)",
           transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
         }}>
           <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#9ca3af", margin: "0 0 10px" }}>
@@ -188,6 +193,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           background: "#ffffff", borderRadius: "16px", padding: "16px 18px",
           boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
           opacity: 0.55,
+          transform: "scale(1.1)",
           transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
         }}>
           <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#9ca3af", margin: "0 0 10px" }}>
@@ -215,7 +221,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
         .cl-grid:has(.cl-step-hover-2:hover) .cl-target-sentiment,
         .cl-grid:has(.cl-step-hover-2:hover) .cl-target-whatsaid,
         .cl-grid:has(.cl-step-hover-3:hover) .cl-target-nextmove{
-          transform: translateY(-10px);
+          transform: translateY(-10px) scale(1.1);
           box-shadow: 0 24px 40px -12px rgba(95,38,229,0.4);
           opacity: 1 !important;
           border: 1.5px solid rgba(95,38,229,0.35);
