@@ -90,8 +90,8 @@ export default function FAQAccordion({
             <h2 className="section-title font-bold section-h2-fixed" style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px", fontFeatureSettings: "'pnum' on,'lnum' on", margin: 0 }}>
               {variant === "influencer" ? (
                 <>
-                  <span style={{ ...PIERSON, fontWeight: 700 }}>Frequently Asked </span>
-                  <span style={{ ...PIERSON, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Questions</span>
+                  <span style={{ ...KT, fontWeight: 700 }}>Frequently Asked </span>
+                  <span style={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Questions</span>
                 </>
               ) : (
                 <>

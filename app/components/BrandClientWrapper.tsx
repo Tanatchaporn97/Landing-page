@@ -270,7 +270,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
           {/* Left: real hero copy, playful stacked layout + underline squiggle + pill CTA */}
           <div style={{ position: "relative" }}>
-            <h2 className="font-bold uppercase" style={{ ...PIERSON, color: "#111827", fontSize: "clamp(28px,3.6vw,46px)", lineHeight: 1.2, margin: "1lh 0 24px" }}>
+            <h2 className="font-bold uppercase" style={{ ...KT, color: "#111827", fontSize: "clamp(28px,3.6vw,46px)", lineHeight: 1.2, margin: "1lh 0 24px" }}>
               {lang === "th" ? (
                 <>ไม่ใช่แค่กลยุทธ์<br/></>
               ) : (
@@ -347,7 +347,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       {/* ── Tagline ── */}
       <section className="pt-20 px-6" style={{ paddingBottom: 0 }}>
         <div className="text-center" style={{ maxWidth: "860px", margin: "0 auto" }}>
-          <h2 style={{ ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, lineHeight: 1.3, margin: "0 0 20px" }}>
+          <h2 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, lineHeight: 1.3, margin: "0 0 20px" }}>
             <span style={{ color: "#111827" }}>{lang === "th" ? "แคมเปญอินฟลูเอนเซอร์" : "Influencer Campaigns"}</span>{" "}
             <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>

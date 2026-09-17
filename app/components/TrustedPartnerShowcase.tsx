@@ -4,10 +4,10 @@ import Image from "next/image";
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const ITEMS = [
-  { src: "/service/built-on-clarity.jpg", title: "Built on Clarity",           desc: "ทำงานเป็นระบบชัดเจนตามมาตรฐาน",         descEn: "Working within a clear, standardized system." },
-  { src: "/service/teamwork.jpg",                title: "Teamwork with Intelligence", desc: "ทีมที่เข้าใจทั้งแบรนด์และอินฟลูเอนเซอร์", descEn: "A team that understands both brands and influencers.", objectPosition: "35% center" },
-  { src: "/service/data-driven-precision.jpg",   title: "Data-Driven Precision",      desc: "ใช้ข้อมูลช่วยตัดสินใจได้แม่นขึ้น",       descEn: "Data that helps you make sharper decisions." },
-  { src: "/service/result.jpg",                  title: "Results That Matter",        desc: "วัดผลให้สอดคล้องกับเป้าหมายของแบรนด์",   descEn: "Measuring results that align with your brand's goals." },
+  { src: "/service/built-on-clarity.svg", title: "Built on Clarity",           desc: "ทำงานเป็นระบบชัดเจนตามมาตรฐาน",         descEn: "Working within a clear, standardized system." },
+  { src: "/service/teamwork.svg",                title: "Teamwork with Intelligence", desc: "ทีมที่เข้าใจทั้งแบรนด์และอินฟลูเอนเซอร์", descEn: "A team that understands both brands and influencers." },
+  { src: "/service/data-driven-precision.svg",   title: "Data-Driven Precision",      desc: "ใช้ข้อมูลช่วยตัดสินใจได้แม่นขึ้น",       descEn: "Data that helps you make sharper decisions." },
+  { src: "/service/result.svg",                  title: "Results That Matter",        desc: "วัดผลให้สอดคล้องกับเป้าหมายของแบรนด์",   descEn: "Measuring results that align with your brand's goals." },
 ];
 
 export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) {
@@ -35,7 +35,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
         {ITEMS.map((item) => (
           <div key={item.title} className="tps-card" style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", aspectRatio: "4 / 3", marginBottom: "16px" }}>
-              <Image src={item.src} alt={item.title} fill sizes="(max-width: 900px) 50vw, 25vw" style={{ objectFit: "cover", objectPosition: item.objectPosition || "top" }} />
+              <Image src={item.src} alt={item.title} fill sizes="(max-width: 900px) 50vw, 25vw" style={{ objectFit: "cover" }} />
             </div>
             <h4 style={{ ...KT, fontSize: "22px", fontWeight: 700, color: "#5f26e5", margin: "0 0 10px", lineHeight: 1.35 }}>
               {item.title}

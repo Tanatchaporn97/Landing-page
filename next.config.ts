@@ -5,6 +5,11 @@ const nextConfig: NextConfig = {
     turbopackFileSystemCacheForDev: false,
   },
   allowedDevOrigins: ["192.168.0.31", "192.168.0.34", "192.168.0.38", "localhost", "127.0.0.1"],
+  images: {
+    dangerouslyAllowSVG: true,
+    contentDispositionType: "attachment",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
 };
 
 export default nextConfig;

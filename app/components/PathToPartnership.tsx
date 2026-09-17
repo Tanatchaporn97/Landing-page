@@ -3,7 +3,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
-const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
 
 const PTP_STEPS_TH = [
   { step: "01", img: "/path-to-partnership/Step-1.png", title: "สมัครเป็นอินฟลูกับเรา", desc: "สมัครบัญชีอินฟลูเอนเซอร์ง่ายๆ แค่ 5 นาที พร้อมเชื่อมต่อช่องทางโซเชียลมีเดีย ให้เรารู้จักคุณมากขึ้นและเปิดโอกาสในการร่วมงานกับแบรนด์ชั้นนำ" },
@@ -42,7 +41,7 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
             color: "#111827",
             margin: "0 0 16px", lineHeight: 1.2,
           }}>
-            <span style={{ ...PIERSON, fontWeight: 700 }}>Path to </span><span style={{ ...PIERSON, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Partnership</span>
+            <span style={{ ...KT, fontWeight: 700 }}>Path to </span><span style={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Partnership</span>
           </h2>
         </div>
 

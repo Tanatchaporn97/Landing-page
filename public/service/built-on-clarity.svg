@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7f6fb"/>
+      <stop offset="1" stop-color="#efedf9"/>
+    </linearGradient>
+    <linearGradient id="gem" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c9b8ff"/>
+      <stop offset="0.5" stop-color="#8b6cf0"/>
+      <stop offset="1" stop-color="#5f26e5"/>
+    </linearGradient>
+    <linearGradient id="gemFacetLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.65"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="shadow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#5f26e5" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#5f26e5" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <ellipse cx="200" cy="230" rx="95" ry="18" fill="url(#shadow)"/>
+
+  <!-- faceted diamond / gem symbolizing clarity -->
+  <g>
+    <polygon points="200,60 260,110 240,110 200,60 160,110 140,110" fill="url(#gem)"/>
+    <polygon points="140,110 260,110 200,220 " fill="url(#gem)"/>
+    <polygon points="140,110 200,140 200,220" fill="#7343e0"/>
+    <polygon points="260,110 200,140 200,220" fill="#4c1ec7"/>
+    <polygon points="160,110 200,60 200,140" fill="#a98cf5"/>
+    <polygon points="240,110 200,60 200,140" fill="#7343e0"/>
+    <polygon points="140,110 160,110 200,140" fill="#8b6cf0"/>
+    <polygon points="260,110 240,110 200,140" fill="#6431d6"/>
+    <polygon points="160,110 200,110 200,140" fill="#9a7bf2" opacity="0.9"/>
+    <polygon points="200,110 240,110 200,140" fill="#7f57e8" opacity="0.9"/>
+    <!-- glossy highlight -->
+    <polygon points="170,75 200,60 190,95" fill="url(#gemFacetLight)"/>
+  </g>
+
+  <!-- sparkle accents -->
+  <g fill="#5f26e5">
+    <path d="M300 90 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5 z" opacity="0.85"/>
+    <path d="M110 150 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 z" opacity="0.6"/>
+  </g>
+</svg>
