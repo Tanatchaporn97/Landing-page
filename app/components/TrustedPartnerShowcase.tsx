@@ -4,10 +4,10 @@ import { GradientCard } from "@/components/ui/gradient-card";
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const ITEMS = [
-  { src: "/service/built-on-clarity.svg", title: "Built on Clarity",           desc: "ทำงานเป็นระบบชัดเจนตามมาตรฐาน",         descEn: "Working within a clear, standardized system.", badgeText: "Standardized", badgeColor: "#5f26e5" },
-  { src: "/service/teamwork.svg",                title: "Teamwork with Intelligence", desc: "ทีมที่เข้าใจทั้งแบรนด์และอินฟลูเอนเซอร์", descEn: "A team that understands both brands and influencers.", badgeText: "Collaborative", badgeColor: "#ff0089" },
-  { src: "/service/data-driven-precision.svg",   title: "Data-Driven Precision",      desc: "ใช้ข้อมูลช่วยตัดสินใจได้แม่นขึ้น",       descEn: "Data that helps you make sharper decisions.", badgeText: "Data-Driven", badgeColor: "#2e1a7a" },
-  { src: "/service/result.svg",                  title: "Results That Matter",        desc: "วัดผลให้สอดคล้องกับเป้าหมายของแบรนด์",   descEn: "Measuring results that align with your brand's goals.", badgeText: "Outcome-Focused", badgeColor: "#b6146e" },
+  { src: "/service/built-on-clarity.svg", title: "Built on Clarity",           desc: "ทำงานเป็นระบบชัดเจนตามมาตรฐาน",         descEn: "Working within a clear, standardized system." },
+  { src: "/service/teamwork.svg",                title: "Teamwork with Intelligence", desc: "ทีมที่เข้าใจทั้งแบรนด์และอินฟลูเอนเซอร์", descEn: "A team that understands both brands and influencers." },
+  { src: "/service/data-driven-precision.svg",   title: "Data-Driven Precision",      desc: "ใช้ข้อมูลช่วยตัดสินใจได้แม่นขึ้น",       descEn: "Data that helps you make sharper decisions." },
+  { src: "/service/result.svg",                  title: "Results That Matter",        desc: "วัดผลให้สอดคล้องกับเป้าหมายของแบรนด์",   descEn: "Measuring results that align with your brand's goals." },
 ];
 
 export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) {
@@ -36,12 +36,13 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
           <GradientCard
             key={item.title}
             gradient="purple"
-            badgeText={item.badgeText}
-            badgeColor={item.badgeColor}
             title={item.title}
             description={lang === "th" ? item.desc : item.descEn}
             imageUrl={item.src}
-            style={{ ...KT, minHeight: "180px", padding: "20px" }}
+            style={{
+              ...KT, minHeight: "180px", padding: "20px",
+              background: "linear-gradient(135deg, #f2edfd 0%, #ddccfb 100%)",
+            }}
           />
         ))}
       </div>

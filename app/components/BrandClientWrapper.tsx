@@ -331,9 +331,6 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             >
               <Image src="/heading-brand.png" alt={lang === "th" ? "แดชบอร์ดแคมเปญ" : "Campaign dashboard"} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "contain" }} />
             </motion.div>
-
-            <span style={{ position: "absolute", top: "6%", left: "0%", fontSize: "28px", zIndex: 2 }}>✨</span>
-            <span style={{ position: "absolute", bottom: "10%", right: "2%", fontSize: "24px", zIndex: 2 }}>💜</span>
           </div>
         </div>
       </section>

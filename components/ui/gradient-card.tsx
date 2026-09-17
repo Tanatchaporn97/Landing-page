@@ -25,8 +25,8 @@ const cardVariants = cva(
 
 // Define the props interface for type safety and reusability
 export interface GradientCardProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof cardVariants> {
-  badgeText: string;
-  badgeColor: string; // Expecting a hex color string, e.g., "#FF5733"
+  badgeText?: string;
+  badgeColor?: string; // Expecting a hex color string, e.g., "#FF5733"
   title: string;
   description: string;
   ctaText?: string;
@@ -73,13 +73,15 @@ const GradientCard = React.forwardRef<HTMLDivElement, GradientCardProps>(
           {/* Card Content */}
           <div className="z-10 flex flex-col h-full">
             {/* Badge */}
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/50 px-3 py-1 text-sm font-medium text-gray-800/80 backdrop-blur-sm w-fit">
-              <span
-                className="h-2 w-2 rounded-full"
-                style={{ backgroundColor: badgeColor }}
-              />
-              {badgeText}
-            </div>
+            {badgeText && (
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/50 px-3 py-1 text-sm font-medium text-gray-800/80 backdrop-blur-sm w-fit">
+                <span
+                  className="h-2 w-2 rounded-full"
+                  style={{ backgroundColor: badgeColor }}
+                />
+                {badgeText}
+              </div>
+            )}
 
             {/* Title and Description */}
             <div className="flex-grow">
