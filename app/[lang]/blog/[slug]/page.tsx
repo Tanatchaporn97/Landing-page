@@ -10,6 +10,10 @@ import { getDictionary } from "../../../../get-dictionary";
 import { type Locale } from "../../../../i18n-config";
 
 const BLOG_DESCRIPTIONS: Record<string, Record<string, string>> = {
+  "instagram-2026-benchmark": {
+    th: "สรุป Instagram Benchmark 2026 จาก Socialinsider พร้อม 4 อินไซต์สำคัญเรื่อง Carousel, Reels, Single Image และการเติบโตของ Followers พร้อมวิธีปรับกลยุทธ์",
+    en: "A recap of Socialinsider's Instagram Benchmark 2026 report with 4 key insights on Carousels, Reels, Single Images, and follower growth — plus how to adjust your strategy.",
+  },
   "content-per-platform-fb-tiktok-ig": {
     th: "ทำไมคอนเทนต์เดียวกันโพสต์ต่างช่องทางถึงได้ยอดต่างกัน? Buddy Review เจาะลึกวิธีปรับ Core Message ให้เข้ากับธรรมชาติของ Facebook, TikTok และ Instagram",
     en: "Why does the same content perform differently across channels? Buddy Review breaks down how to adapt one Core Message to fit Facebook, TikTok, and Instagram.",
@@ -132,6 +136,91 @@ const OL = ({ items }: { items: React.ReactNode[] }) => (
     ))}
   </ol>
 );
+
+function Instagram2026BenchmarkContent({ lang }: { lang: Locale }) {
+  if (lang === "en") {
+    return (
+      <>
+        <P>If you&apos;ve been trying to grow Reach by posting on Instagram more often, it might be time to take a step back and ask whether what you&apos;re posting — and the Format you&apos;re choosing — actually fits the content.</P>
+        <P>Socialinsider&apos;s Instagram Benchmark 2026 report, which analyzed over 35 million posts worldwide, shows that overall Engagement is declining, while each Format delivers clearly different results.</P>
+        <P>So in 2026, doing well on Instagram may not be about posting as much as possible — it&apos;s about choosing the Format and content that fit what you want viewers to do next.</P>
+
+        <Divider />
+        <H2>4 Key Instagram Insights for 2026</H2>
+
+        <H3>1. Carousels still stand out for Engagement</H3>
+        <P>Even though overall Instagram Engagement has dropped by about 24%, Carousels remain the highest-Engagement Format in the report, at around 0.55%.</P>
+        <P>The strength of Carousels is being able to tell several points within a single post, making them well suited to How-tos, checklists, tips, or step-by-step storytelling — especially content people want to Save and revisit later.</P>
+
+        <H3>2. Reels are still key for reaching new people</H3>
+        <P>Reels have Engagement close to Carousels, at around 0.52%, and remain an important Format for building Reach and introducing your channel to people who don&apos;t yet follow you.</P>
+        <P>That doesn&apos;t mean every piece of content needs to be a Reel, though — if the content needs room for detailed explanation or for people to come back and re-read it, a Carousel may be the better fit.</P>
+
+        <H3>3. Single images are playing a smaller role</H3>
+        <P>The number of Single Image posts brands publish has been trending down, from an average of around 10 to 7 posts a month, while this Format&apos;s Engagement sits at around 0.37% — lower than both Carousels and Reels.</P>
+        <P>That said, it doesn&apos;t mean single images no longer work — there just needs to be a clear reason to use one, such as a visual strong enough to stand alone, or a message that can be fully communicated within a single image.</P>
+
+        <H3>4. Follower growth is slowing down</H3>
+        <P>Organic follower growth has slowed across many account sizes — for example, accounts with 1K–5K followers saw growth drop from 38% to 22%.</P>
+        <P>As finding new followers gets harder, brands should place more importance on maintaining relationships with people who already follow them — whether through useful content, opening up engagement, or making people want to keep coming back to the channel.</P>
+
+        <Divider />
+        <H2>So how should you adjust your Instagram strategy?</H2>
+        <OL items={[
+          <><strong>Want people to Save content and spend time with it?</strong> Choose Carousels for How-tos, tips, checklists, or content with several points.</>,
+          <><strong>Want to grow Reach and reach new people?</strong> Use Reels to tell a story or create content that grabs the attention of people who don&apos;t yet know your channel.</>,
+          <><strong>Use Single Images when there&apos;s a reason to.</strong> You don&apos;t need to stop using single images — just choose them for content with a strong visual or a clear message.</>,
+          <><strong>Don&apos;t measure Instagram by Followers alone.</strong> Beyond follower count, look at Reach, Engagement, Saves, Shares, and each Format&apos;s performance to understand what content genuinely fits your target audience.</>,
+        ]} />
+
+        <Divider />
+        <P>In summary, Instagram in 2026 doesn&apos;t mean posting less is automatically better, or that you must only do Carousels — what&apos;s become clearer is that each Format has its own strengths.</P>
+        <P>Carousels suit telling content and creating value people want to keep, Reels suit building visibility and reaching new people, while Single Images still work when the visual or message is strong enough.</P>
+        <P><strong style={{ color: "#5f26e5" }}>Because on a day when viewers have more content to choose from than ever, making Instagram work may not be about posting more than before — it&apos;s about choosing what&apos;s worth posting and telling it in the way that actually fits your viewers.</strong></P>
+      </>
+    );
+  }
+  return (
+    <>
+      <P>ถ้าคุณกำลังพยายามเพิ่ม Reach ด้วยการโพสต์ Instagram ให้ถี่ขึ้น อาจถึงเวลาต้องกลับมาดูว่า เราโพสต์อะไร และเลือก Format ได้เหมาะกับคอนเทนต์หรือยัง</P>
+      <P>รายงาน Instagram Benchmark 2026 จาก Socialinsider ซึ่งวิเคราะห์ข้อมูลกว่า 35 ล้านโพสต์ทั่วโลก สะท้อนให้เห็นว่า Engagement โดยรวมกำลังลดลง ขณะที่แต่ละ Format ก็ให้ผลลัพธ์แตกต่างกันอย่างชัดเจน</P>
+      <P>ดังนั้น ในปี 2026 การทำ Instagram อาจไม่ใช่เรื่องของการโพสต์ให้มากที่สุด แต่คือการเลือก Format และเนื้อหาให้เหมาะกับสิ่งที่ต้องการให้คนดูทำต่อ</P>
+
+      <Divider />
+      <H2>4 อินไซต์สำคัญบน Instagram ปี 2026</H2>
+
+      <H3>1. Carousel ยังโดดเด่นเรื่อง Engagement</H3>
+      <P>แม้ภาพรวม Engagement บน Instagram จะลดลงประมาณ 24% แต่ Carousel ยังคงเป็น Format ที่ทำ Engagement ได้สูงที่สุดในรายงาน โดยอยู่ที่ประมาณ 0.55%</P>
+      <P>จุดแข็งของ Carousel คือสามารถเล่าข้อมูลได้หลายประเด็นในโพสต์เดียว จึงเหมาะกับคอนเทนต์อย่าง How-to, Checklist, Tips หรือการเล่าเรื่องเป็นลำดับ โดยเฉพาะเนื้อหาที่คนอยาก Save ไว้กลับมาอ่านภายหลัง</P>
+
+      <H3>2. Reels ยังสำคัญสำหรับการเข้าถึงคนใหม่</H3>
+      <P>Reels มี Engagement ใกล้เคียงกับ Carousel ที่ประมาณ 0.52% และยังเป็น Format สำคัญสำหรับการสร้าง Reach และดึงคนที่ยังไม่ได้ติดตามเข้ามารู้จักช่อง</P>
+      <P>แต่ไม่ได้หมายความว่าทุกคอนเทนต์ต้องทำเป็น Reels เพราะถ้าเนื้อหาต้องการพื้นที่สำหรับอธิบายรายละเอียดหรือให้คนกลับมาอ่านซ้ำ Carousel อาจเหมาะกว่า</P>
+
+      <H3>3. ภาพเดี่ยวมีบทบาทลดลง</H3>
+      <P>จำนวนการโพสต์ Single Image ของแบรนด์มีแนวโน้มลดลง จากเฉลี่ยประมาณ 10 เหลือ 7 โพสต์ต่อเดือน ขณะที่ Engagement ของ Format นี้อยู่ที่ประมาณ 0.37% ซึ่งต่ำกว่า Carousel และ Reels</P>
+      <P>อย่างไรก็ตาม ไม่ได้แปลว่าภาพเดี่ยวใช้ไม่ได้ แต่ควรมีเหตุผลในการเลือกใช้ เช่น ภาพที่โดดเด่นมากพอ หรือมี Message ที่สามารถสื่อสารได้จบภายในภาพเดียว</P>
+
+      <H3>4. ยอด Followers โตช้าลง</H3>
+      <P>การเติบโตของ Followers แบบ Organic ชะลอตัวลงในหลายขนาดของบัญชี เช่น บัญชีที่มี 1K–5K Followers มีอัตราการเติบโตลดลงจาก 38% เหลือ 22%</P>
+      <P>เมื่อการหาผู้ติดตามใหม่ทำได้ยากขึ้น แบรนด์จึงควรให้ความสำคัญกับการรักษาความสัมพันธ์กับคนที่ติดตามอยู่แล้วด้วย ไม่ว่าจะเป็นการสร้างคอนเทนต์ที่มีประโยชน์ เปิดให้มีส่วนร่วม หรือทำให้คนรู้สึกว่าอยากกลับมาดูคอนเทนต์ของช่องต่อ</P>
+
+      <Divider />
+      <H2>แล้วควรปรับ Instagram Strategy ยังไง?</H2>
+      <OL items={[
+        <><strong>อยากให้คน Save และใช้เวลากับเนื้อหา</strong> — เลือก Carousel สำหรับ How-to, Tips, Checklist หรือเนื้อหาที่มีหลายประเด็น</>,
+        <><strong>อยากเพิ่ม Reach และเข้าถึงคนใหม่</strong> — ใช้ Reels เพื่อเล่าเรื่องหรือสร้างคอนเทนต์ที่ดึงความสนใจจากคนที่ยังไม่รู้จักช่อง</>,
+        <><strong>ใช้ Single Image เมื่อมีเหตุผล</strong> — ไม่จำเป็นต้องเลิกใช้ภาพเดี่ยว แต่ควรเลือกใช้กับคอนเทนต์ที่ Visual แข็งแรงหรือมี Message ที่ชัดเจน</>,
+        <><strong>อย่าวัด Instagram จาก Followers อย่างเดียว</strong> — นอกจากยอดผู้ติดตาม ควรดูทั้ง Reach, Engagement, Saves, Shares และ Performance ของแต่ละ Format เพื่อรู้ว่าคอนเทนต์แบบไหนเหมาะกับกลุ่มเป้าหมายของเราจริงๆ</>,
+      ]} />
+
+      <Divider />
+      <P>สรุป Instagram ในปี 2026 นี้ไม่ได้หมายความว่าโพสต์น้อยแล้วจะดี หรือต้องทำ Carousel เท่านั้น แต่สิ่งที่เห็นชัดขึ้นคือแต่ละ Format มีจุดแข็งต่างกัน</P>
+      <P>Carousel เหมาะกับการเล่าเนื้อหาและสร้างคุณค่าที่คนอยากเก็บไว้ ส่วน Reels เหมาะกับการสร้างการมองเห็นและเข้าถึงคนใหม่ ขณะที่ Single Image ยังใช้ได้เมื่อมี Visual หรือ Message ที่แข็งแรงพอ</P>
+      <P><strong style={{ color: "#5f26e5" }}>เพราะในวันที่คนดูมีคอนเทนต์ให้เลือกมากขึ้น การทำ Instagram ให้ได้ผลอาจไม่ได้อยู่ที่การโพสต์ให้เยอะกว่าเดิม แต่อยู่ที่การเลือกสิ่งที่ควรโพสต์และเลือกวิธีเล่าให้ถูกกับคนดูมากกว่าเดิม</strong></P>
+    </>
+  );
+}
 
 function ContentPerPlatformContent({ lang }: { lang: Locale }) {
   if (lang === "en") {
@@ -1010,7 +1099,7 @@ function CopywritingContent({ lang }: { lang: Locale }) {
   );
 }
 
-const SLUGS = ["content-per-platform-fb-tiktok-ig", "social-media-insight-2026", "content-strategy-canvas", "best-time-to-post-2025", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas", "6-copywriting-techniques"];
+const SLUGS = ["instagram-2026-benchmark", "content-per-platform-fb-tiktok-ig", "social-media-insight-2026", "content-strategy-canvas", "best-time-to-post-2025", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas", "6-copywriting-techniques"];
 
 export function generateStaticParams() {
   return SLUGS.map((slug) => ({ slug }));
@@ -1080,7 +1169,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ lang:
           </h1>
           <div style={{ height: "1px", background: "rgba(255,255,255,0.2)", marginBottom: "32px" }} />
 
-          {post.slug === "content-per-platform-fb-tiktok-ig" ? (
+          {post.slug === "instagram-2026-benchmark" ? (
+            <Instagram2026BenchmarkContent lang={lang as Locale} />
+          ) : post.slug === "content-per-platform-fb-tiktok-ig" ? (
             <ContentPerPlatformContent lang={lang as Locale} />
           ) : post.slug === "social-media-insight-2026" ? (
             <SocialMediaInsight2026Content lang={lang as Locale} />
