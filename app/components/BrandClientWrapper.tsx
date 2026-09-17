@@ -270,7 +270,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
           {/* Left: real hero copy, playful stacked layout + underline squiggle + pill CTA */}
           <div style={{ position: "relative" }}>
-            <h2 className="font-bold uppercase" style={{ ...KT, color: "#111827", fontSize: "clamp(28px,3.6vw,46px)", lineHeight: 1.2, margin: "1lh 0 24px" }}>
+            <h2 className="font-bold uppercase" style={{ ...KT, color: "#111827", fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "1lh 0 24px" }}>
               {lang === "th" ? (
                 <>ไม่ใช่แค่กลยุทธ์<br/></>
               ) : (
@@ -282,7 +282,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               </span>
             </h2>
 
-            <p style={{ ...KT, color: "#111827", fontSize: "clamp(18px,1.8vw,28px)", lineHeight: 1.7, margin: "40px 0 32px" }}>
+            <p style={{ ...KT, color: "#111827", fontSize: "16px", lineHeight: 1.7, margin: "40px 0 32px" }}>
               {lang === "th" ? (
                 "วางกลยุทธ์ คัดเลือก Creator และบริหารแคมเปญให้ตรงเป้าหมายของแบรนด์ ตั้งแต่ Brief จนถึงรายงานผล"
               ) : (
@@ -351,7 +351,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               {lang === "th" ? "ที่เราพร้อมดูแลคุณในทุกขั้นตอนอย่างเหนือระดับ" : "Elevated at Every Step"}
             </span>
           </h2>
-          <p style={{ ...KT, fontSize: "18px", lineHeight: "1.7", color: "#111827", margin: 0 }}>
+          <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: 0 }}>
             {lang === "th"
               ? "ทุกกลยุทธ์ต่อยอดด้วยดาต้าและทีมงานมืออาชีพ เพื่อให้แคมเปญของคุณไปถึงผลลัพธ์ที่วางไว้"
               : "Every strategy is powered by data and a professional team, driving your campaign to the results you set out to achieve."}
@@ -454,7 +454,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                     </h3>
                     {isActive && (
                       <p style={{
-                        ...KT, fontSize: "14px", lineHeight: 1.7, color: "#4b5563", margin: 0,
+                        ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: 0,
                         display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden",
                       }}>
                         {lang === "th" ? item.desc : item.descEn}
@@ -612,7 +612,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                     <p style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#5f26e5", margin: 0 }}>
                       {lang === "th" ? "ภาพรวม" : "Overview"}
                     </p>
-                    <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#4b5563", margin: "-12px 0 0" }}>
+                    <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: "-12px 0 0" }}>
                       {lang === "th" ? story.overview : story.overviewEn}
                     </p>
                     <div style={{ display: "flex", gap: "28px", flexWrap: "wrap", marginTop: "4px" }}>
@@ -802,7 +802,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                     cursor: "pointer", opacity: i === activeCampaignStep ? 1 : 0.55, transition: "opacity 0.2s" }}>
                   <h3 style={{ ...KT, fontSize: "20px", fontWeight: 700, margin: "0 0 6px", transition: "color 0.2s",
                     color: i === activeCampaignStep ? "#5f26e5" : "#111827" }}>{lang === "th" ? step.title : step.titleEn}</h3>
-                  <p style={{ ...KT, fontSize: "15px", lineHeight: "1.7", color: "#111827", margin: 0 }}>{lang === "th" ? step.desc : step.descEn}</p>
+                  <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: 0 }}>{lang === "th" ? step.desc : step.descEn}</p>
                 </div>
               ))}
             </div>

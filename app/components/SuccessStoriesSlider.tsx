@@ -37,7 +37,7 @@ export default function SuccessStoriesSlider({ lang = "th" }: { lang?: "th" | "e
         {/* Header row */}
         <div className="cs-header-row" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "48px" }}>
           <div>
-            <h2 style={{ fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, color: "#111827", margin: "0 0 10px", lineHeight: 1.2 }}>
+            <h2 style={{ fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, color: "#111827", margin: "0 0 10px", lineHeight: 1.2 }}>
               <span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>Success </span><span style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontStyle: "italic", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Stories</span>
             </h2>
             <p style={{ ...KT, fontSize: "16px", color: "#374151", margin: 0 }}>{subheading}</p>

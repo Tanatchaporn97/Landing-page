@@ -36,7 +36,7 @@ export function ColorfulBentoGrid({ items }: { items: ColorfulBentoItem[] }) {
             <h3 className="text-white font-bold" style={{ ...KT, fontSize: "clamp(19px,1.8vw,24px)", lineHeight: 1.3 }}>
               {item.title}
             </h3>
-            <p className="text-white/85 font-medium" style={{ ...KT, fontSize: "14px", lineHeight: 1.6, marginTop: "8px", maxWidth: "34ch" }}>
+            <p className="text-white/85 font-medium" style={{ ...KT, fontSize: "16px", lineHeight: 1.6, marginTop: "8px", maxWidth: "34ch" }}>
               {item.desc}
             </p>
           </div>

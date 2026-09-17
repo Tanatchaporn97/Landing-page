@@ -142,7 +142,7 @@ export default function FAQAccordion({
                     </span>
                   </button>
                   {isOpen && (
-                    <p style={{ ...KT, fontSize: "15px", color: colors.desc, lineHeight: 1.85, margin: 0, padding: "0 24px 20px" }}>
+                    <p style={{ ...KT, fontSize: "16px", color: colors.desc, lineHeight: 1.85, margin: 0, padding: "0 24px 20px" }}>
                       {lang === "en" && item.aEn ? item.aEn : item.a}
                     </p>
                   )}
@@ -188,7 +188,7 @@ export default function FAQAccordion({
                     </span>
                   </button>
                   {isOpen && (
-                    <p style={{ ...KT, fontSize: "15px", color: colors.desc, lineHeight: 1.85, margin: 0, padding: "0 24px 20px" }}>
+                    <p style={{ ...KT, fontSize: "16px", color: colors.desc, lineHeight: 1.85, margin: 0, padding: "0 24px 20px" }}>
                       {lang === "en" && item.aEn ? item.aEn : item.a}
                     </p>
                   )}
@@ -202,7 +202,7 @@ export default function FAQAccordion({
         {/* Still have a question */}
         {!hideCta && (
           <div style={{ textAlign: "center", marginTop: "64px", display: "flex", flexDirection: "column", alignItems: "center", gap: "24px" }}>
-            <h3 style={{ ...KT, fontSize: "clamp(24px,2.5vw,36px)", fontWeight: 800, color: "#111827", margin: 0 }}>
+            <h3 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, color: "#111827", margin: 0 }}>
               {variant === "influencer"
                 ? (dict?.home?.ctaTitleInfluencer || (lang === "en" ? "Still have questions?" : "มีคำถามเพิ่มเติมไหม?"))
                 : (dict?.home?.ctaTitle || (lang === "en" ? "Still have questions?" : "มีคำถามเพิ่มเติมไหม?"))}

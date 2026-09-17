@@ -39,7 +39,7 @@ export default function CreatorChannelsSection({ lang }: { lang: "th" | "en" }) 
     <div className="cc2-grid" style={{ display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: "56px", alignItems: "center" }}>
       <div className="cc2-left">
         <Badge variant="outline" style={{ ...KT }}>One Creator, Many Channels</Badge>
-        <h2 style={{ ...KT, fontSize: "clamp(28px,3.3vw,44px)", fontWeight: 800, margin: "16px 0 0", lineHeight: 1.25 }}>
+        <h2 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, margin: "16px 0 0", lineHeight: 1.25 }}>
           <span style={{ color: "#111827" }}>
             {lang === "th" ? "คอนเทนต์ของคุณอยู่ที่ไหน" : "Wherever your content lives,"}
           </span>

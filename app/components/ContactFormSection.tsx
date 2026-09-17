@@ -163,7 +163,7 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
                 transition: "background 0.2s, border 0.2s" }}>
                 {consented && <IconCheck color="#ffffff" />}
               </div>
-              <p style={{ ...KT, margin: 0, fontSize: "14px", lineHeight: "1.6", color: "#666666" }}>
+              <p style={{ ...KT, margin: 0, fontSize: "16px", lineHeight: "1.6", color: "#111827" }}>
                 {t.consent2}{" "}
                 <a href="https://docs.google.com/viewer?url=https://business.buddyreview.co/document/terms_and_conditions.pdf"
                   target="_blank" rel="noopener noreferrer" style={{ color: "#5f26e5", textDecoration: "underline" }}>{t.terms}</a>{" "}
@@ -173,7 +173,7 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
               </p>
             </div>
             
-            <p style={{ ...KT, margin: 0, fontSize: "14px", lineHeight: "1.6", color: "#666666" }}>
+            <p style={{ ...KT, margin: 0, fontSize: "16px", lineHeight: "1.6", color: "#111827" }}>
               {t.consent1}
             </p>
 

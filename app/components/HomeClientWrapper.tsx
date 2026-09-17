@@ -134,7 +134,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
               <span className="hero-h1-line" style={{ display: "block" }}>{t.headline1?.split(" ").slice(1).join(" ")}</span>
               <span className="hero-h1-line" style={{ display: "block" }}>{t.headline2}</span>
             </h1>
-            <p style={{ ...KT, color: "#4b5563", fontSize: "clamp(18px,1.8vw,28px)", lineHeight: 1.7, margin: 0, maxWidth: "380px" }}>
+            <p style={{ ...KT, color: "#4b5563", fontSize: "16px", lineHeight: 1.7, margin: 0, maxWidth: "380px" }}>
               From Strategy To Insight,<br />We Turn Influence Into Impact.
             </p>
           </div>
@@ -258,7 +258,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
               </span>
             </h2>
             <p className="font-normal desc-text"
-              style={{ fontSize: "18px", lineHeight: "1.7", textAlign: "center",
+              style={{ fontSize: "16px", lineHeight: "1.7", textAlign: "center",
                 color: "#111827" }}>
               {lang === "th" ? (
                 <>Buddy Review ช่วยแบรนด์วางแผนและบริหาร Influencer Marketing ตั้งแต่การวางกลยุทธ์<br/>

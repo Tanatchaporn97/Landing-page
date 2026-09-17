@@ -137,7 +137,7 @@ export default function ContactFormModal({ open, onClose, lang }: { open: boolea
             </button>
 
             <h2 style={{
-              ...KT, fontSize: "clamp(24px,3vw,32px)", fontWeight: 900, margin: "0 0 24px",
+              ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 900, margin: "0 0 24px",
               background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
             }}>
@@ -201,7 +201,7 @@ export default function ContactFormModal({ open, onClose, lang }: { open: boolea
                 }}>
                   {consented && <IconCheck color="#ffffff" />}
                 </div>
-                <p style={{ ...KT, margin: 0, fontSize: "13px", lineHeight: 1.6, color: "#666666" }}>
+                <p style={{ ...KT, margin: 0, fontSize: "16px", lineHeight: 1.6, color: "#111827" }}>
                   {t.consent2}{" "}
                   <a href="https://docs.google.com/viewer?url=https://business.buddyreview.co/document/terms_and_conditions.pdf"
                     target="_blank" rel="noopener noreferrer" style={{ color: "#5f26e5", textDecoration: "underline" }}>{t.terms}</a>{" "}
@@ -211,7 +211,7 @@ export default function ContactFormModal({ open, onClose, lang }: { open: boolea
                 </p>
               </div>
 
-              <p style={{ ...KT, margin: 0, fontSize: "13px", lineHeight: 1.6, color: "#666666" }}>{t.consent1}</p>
+              <p style={{ ...KT, margin: 0, fontSize: "16px", lineHeight: 1.6, color: "#111827" }}>{t.consent1}</p>
 
               {showConsentWarning && !consented && (
                 <p style={{ ...KT, color: "#dc2626", fontSize: "13px", fontWeight: 600, margin: 0 }}>{t.consentWarning}</p>

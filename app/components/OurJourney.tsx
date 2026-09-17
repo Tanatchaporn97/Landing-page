@@ -87,7 +87,7 @@ export default function OurJourney({ lang }: { lang: Locale }) {
             Journey
           </span>
         </h2>
-        <p className="desc-text" style={{ ...KT, fontSize: "18px", color: "#111827", lineHeight: 1.85, margin: 0 }}>
+        <p className="desc-text" style={{ ...KT, fontSize: "16px", color: "#111827", lineHeight: 1.85, margin: 0 }}>
           {lang === "th"
             ? "จากจุดเริ่มต้นของ Influencer Marketing Platform สู่ Partner ที่ช่วยแบรนด์วางแผน บริหาร และวัดผล Influencer Marketing แบบ End-to-End ผ่านทีมผู้เชี่ยวชาญ Data และ Technology"
             : "From our beginnings as an influencer marketing platform to a partner that helps brands plan, manage, and measure influencer marketing end-to-end, powered by a team of data and technology experts."}
@@ -134,7 +134,7 @@ export default function OurJourney({ lang }: { lang: Locale }) {
                 <p style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: "0 0 10px", lineHeight: 1.4, color: "#111827" }}>
                   {lang === "th" ? s.subtitle : s.subtitleEn}
                 </p>
-                <p style={{ ...KT, fontSize: "14px", lineHeight: "1.7", color: "#374151", margin: s.wide ? 0 : "0 0 24px" }}>
+                <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: s.wide ? 0 : "0 0 24px" }}>
                   {lang === "th" ? s.desc : s.descEn}
                 </p>
                 {!s.wide && (

@@ -96,7 +96,7 @@ export default function TestimonialsCarousel({ lang = "th" }: { lang?: "th" | "e
         <p style={{ ...KT, color: "#5f26e5", fontSize: active ? "20px" : "17px", fontWeight: 700, margin: 0 }}>{item.name}</p>
       </div>
       <p style={{
-        ...KT, color: active ? "#374151" : "#9ca3af", fontSize: active ? "16px" : "14px", lineHeight: "1.65",
+        ...KT, color: "#111827", fontSize: "16px", lineHeight: "1.65",
         textAlign: "center", fontWeight: 400, margin: 0, display: "-webkit-box",
         WebkitLineClamp: active ? 4 : 3, WebkitBoxOrient: "vertical" as React.CSSProperties["WebkitBoxOrient"], overflow: "hidden",
       }}>{lang === "th" ? item.text : item.textEn}</p>

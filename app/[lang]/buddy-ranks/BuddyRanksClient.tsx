@@ -61,7 +61,7 @@ export default function BuddyRanksClient({ lang = "th" }: { lang?: Locale }) {
         </h1>
 
         {/* Subtext */}
-        <p className="br-desc" style={{ fontSize: "17px", lineHeight: 1.7, color: "rgba(255,255,255,0.75)", maxWidth: "540px", margin: "0 0 36px" }}>
+        <p className="br-desc" style={{ fontSize: "16px", lineHeight: 1.7, color: "rgba(255,255,255,0.75)", maxWidth: "540px", margin: "0 0 36px" }}>
           {t.desc}
         </p>
 

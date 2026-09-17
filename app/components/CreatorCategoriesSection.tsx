@@ -50,7 +50,7 @@ export default function CreatorCategoriesSection({ lang }: { lang: "th" | "en" }
       <div className="cc-header-row" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "32px", marginBottom: "40px", flexWrap: "wrap" }}>
         <div>
           <Badge variant="outline">Creator Categories</Badge>
-          <h3 style={{ ...PIERSON, fontSize: "clamp(28px,3.6vw,48px)", fontWeight: 800, margin: "10px 0 0", lineHeight: 1.15 }}>
+          <h3 style={{ ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, margin: "10px 0 0", lineHeight: 1.15 }}>
             <span style={{ color: "#111827" }}>Explore Every Creator</span>
             <br />
             <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
@@ -84,7 +84,7 @@ export default function CreatorCategoriesSection({ lang }: { lang: "th" | "en" }
               <h4 style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: "0 0 8px", lineHeight: 1.3, color: "#111827" }}>
                 {cat.title}
               </h4>
-              <p style={{ ...KT, fontSize: "14px", lineHeight: 1.7, margin: 0, color: "#6b7280" }}>
+              <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, margin: 0, color: "#111827" }}>
                 {lang === "th" ? cat.desc : cat.descEn}
               </p>
             </div>

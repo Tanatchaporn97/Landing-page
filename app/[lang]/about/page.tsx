@@ -53,7 +53,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
         </div>
 
         <div style={{ maxWidth: "960px", margin: "0 auto", padding: "0 48px" }}>
-          <p className="desc-text" style={{ ...KT, fontSize: "18px", color: "#111827", lineHeight: 1.85, margin: "32px 0 0" }}>
+          <p className="desc-text" style={{ ...KT, fontSize: "16px", color: "#111827", lineHeight: 1.85, margin: "32px 0 0" }}>
             {lang === "th"
               ? "Buddy Review คือ Influencer Marketing Agency ที่ให้บริการครบวงจร ตั้งแต่การวางกลยุทธ์ คัดเลือกอินฟลูเอนเซอร์ บริหารแคมเปญ ไปจนถึงการวัดผล โดยผสานความเชี่ยวชาญของทีมเข้ากับ Data และ Technology เพื่อช่วยให้แบรนด์ทำ Influencer Marketing ได้แม่นยำและวัดผลได้ชัดเจน"
               : "Buddy Review is a full-service influencer marketing agency — from strategy and influencer selection to campaign management and measurement. We combine our team's expertise with data and technology to help brands run influencer marketing that's precise and clearly measurable."}
@@ -86,7 +86,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
                   background: "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                   {item.title}
                 </h3>
-                <p style={{ ...KT, fontSize: "16px", color: "#374151", lineHeight: 1.8, margin: 0 }}>
+                <p style={{ ...KT, fontSize: "16px", color: "#111827", lineHeight: 1.8, margin: 0 }}>
                   {item.desc}
                 </p>
               </div>

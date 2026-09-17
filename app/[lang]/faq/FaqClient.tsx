@@ -35,7 +35,7 @@ export default function FaqClient({ lang, dict }: { lang: Locale, dict: any }) {
             style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px", fontFeatureSettings: "'pnum' on,'lnum' on", margin: "0 0 20px" }}>
             <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{dict?.faqPage?.title || "FAQs"}</span>
           </h1>
-          <p className="desc-text" style={{ ...KT, fontSize: "18px", color: "#374151", lineHeight: 1.7, margin: 0 }}>
+          <p className="desc-text" style={{ ...KT, fontSize: "16px", color: "#374151", lineHeight: 1.7, margin: 0 }}>
             {dict?.faqPage?.desc || "ค้นหาคำตอบสำหรับคำถามที่พบบ่อย หรือติดต่อทีมงานของเราได้ตลอดเวลา"}
           </p>
         </div>

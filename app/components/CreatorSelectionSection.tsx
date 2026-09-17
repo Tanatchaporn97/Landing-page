@@ -59,7 +59,7 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
           ))}
         </div>
 
-        <p style={{ ...KT, fontSize: "14px", lineHeight: 1.7, color: "#6b7280", margin: "4px 0 0", maxWidth: "340px" }}>
+        <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: "4px 0 0", maxWidth: "340px" }}>
           {lang === "th"
             ? "ลูกค้าเห็น Creator ที่เราแนะนำ พร้อมข้อมูลสำคัญประกอบการตัดสินใจก่อนเริ่มแคมเปญ"
             : "Clients see our recommended Creators along with the key data behind every decision — before the campaign even starts."}

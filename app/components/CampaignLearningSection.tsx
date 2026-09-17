@@ -40,7 +40,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
         <div>
           <Badge variant="outline">Campaign Learning</Badge>
         </div>
-        <h3 style={{ ...PIERSON, fontSize: "clamp(28px,3.3vw,44px)", fontWeight: 800, margin: 0, lineHeight: 1.2 }}>
+        <h3 style={{ ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, margin: 0, lineHeight: 1.2 }}>
           <span style={{ color: "#111827" }}>Measure, Learn,</span>
           <br />
           <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
@@ -70,7 +70,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
                   {step.title}
                 </h4>
               </div>
-              <p style={{ ...KT, fontSize: "14px", lineHeight: 1.7, color: "#6b7280", margin: 0 }}>
+              <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: 0 }}>
                 {lang === "th" ? step.desc : step.descEn}
               </p>
             </div>

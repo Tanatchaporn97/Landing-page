@@ -87,7 +87,7 @@ export default function BusinessGoalsSection({ lang }: { lang: "th" | "en" }) {
                     {item.title}
                   </h4>
                 </div>
-                <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, margin: 0, color: "#4b5563" }}>
+                <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, margin: 0, color: "#111827" }}>
                   {lang === "th" ? item.desc : item.descEn}
                 </p>
               </div>

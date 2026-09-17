@@ -26,7 +26,7 @@ export default function TestimonialsGrid({ dict }: { dict?: any }) {
       gap: "14px",
     }}>
       <QuoteIcon />
-      <p style={{ ...KT, fontSize: "15px", color: "#111827", lineHeight: "1.75", margin: 0, flex: 1 }}>{t.text}</p>
+      <p style={{ ...KT, fontSize: "16px", color: "#111827", lineHeight: "1.75", margin: 0, flex: 1 }}>{t.text}</p>
       <div style={{ display: "flex", alignItems: "center", gap: "12px", paddingTop: "8px", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
         <div style={{ position: "relative", width: "44px", height: "44px", borderRadius: "50%", overflow: "hidden", flexShrink: 0 }}>
           <Image src={t.photo} alt={t.name} fill sizes="44px" style={{ objectFit: "cover", objectPosition: "center top" }} />

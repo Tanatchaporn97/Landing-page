@@ -82,7 +82,7 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
               {featured.title}
             </h3>
             <p style={{
-              ...KT, fontSize: "16px", lineHeight: 1.75, color: "#6b7280", margin: 0,
+              ...KT, fontSize: "16px", lineHeight: 1.75, color: "#111827", margin: 0,
               display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden",
             }}>
               {featured.desc}
@@ -123,7 +123,7 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
                   {post.title}
                 </h3>
                 <p style={{
-                  ...KT, fontSize: "14px", lineHeight: 1.7, color: "#6b7280", margin: 0,
+                  ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: 0,
                   display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden",
                 }}>
                   {post.desc}

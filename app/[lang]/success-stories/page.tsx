@@ -60,7 +60,7 @@ export default async function SuccessStoriesPage({ params }: { params: Promise<{
               Stories
             </span>
           </h1>
-          <p style={{ ...KT, fontSize: "18px", color: "#374151", lineHeight: 1.7, margin: 0 }}>
+          <p style={{ ...KT, fontSize: "16px", color: "#374151", lineHeight: 1.7, margin: 0 }}>
             {lang === "th"
               ? "ผลลัพธ์จริงจากแคมเปญของแบรนด์ชั้นนำที่ไว้วางใจ Buddy Review"
               : "Real results from leading brands that trust Buddy Review"}
@@ -90,7 +90,7 @@ export default async function SuccessStoriesPage({ params }: { params: Promise<{
                       {story.industry}
                     </span>
                     <h2 style={{ ...KT, fontSize: "22px", fontWeight: 800, color: "#ffffff", margin: "6px 0 8px", lineHeight: 1.2 }}>{story.brand}</h2>
-                    <p style={{ ...KT, fontSize: "14px", color: "rgba(255,255,255,0.85)", lineHeight: 1.6, margin: 0 }}>
+                    <p style={{ ...KT, fontSize: "16px", color: "rgba(255,255,255,0.85)", lineHeight: 1.6, margin: 0 }}>
                       {lang === "th" ? story.tagline : (story.taglineEn ?? story.tagline)}
                     </p>
                   </div>

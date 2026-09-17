@@ -33,7 +33,7 @@ function Card({ t }: { t: { photo: string; name: string; text: string; time?: st
         <span style={{ ...KT, fontWeight: 700, fontSize: "15px", color: "#5f26e5" }}>{t.name}</span>
         <span style={{ ...KT, fontSize: "13px", color: "#9ca3af" }}>· {t.time ?? "2d"}</span>
       </div>
-      <p style={{ ...KT, fontSize: "14.5px", color: "#111827", lineHeight: "1.75", margin: 0 }}>
+      <p style={{ ...KT, fontSize: "16px", color: "#111827", lineHeight: "1.75", margin: 0 }}>
         {t.text}
       </p>
       <div style={{ display: "flex", alignItems: "center", gap: "16px", paddingTop: "4px" }}>
@@ -207,7 +207,7 @@ export default function TestimonialsScrollSection({
         {/* ── Centered title panel ── */}
         <div className="tss-title" style={{ textAlign: "center", marginBottom: "48px" }}>
           <h2 style={{
-            ...KT, fontSize: "clamp(28px,3.6vw,44px)", fontWeight: 800,
+            ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800,
             color: "#111827", margin: "0 0 16px", lineHeight: 1.25,
           }}>
             {lang === "th" ? "เสียงจากอินฟลูเอนเซอร์" : "Voices From Creators"}

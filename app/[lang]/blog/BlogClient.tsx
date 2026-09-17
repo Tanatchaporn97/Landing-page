@@ -103,7 +103,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
                   {post.title}
                 </h2>
 
-                <p style={{ ...KT, color: "#111827", fontSize: "14px", lineHeight: 1.7, margin: 0, display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+                <p style={{ ...KT, color: "#111827", fontSize: "16px", lineHeight: 1.7, margin: 0, display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
                   {post.desc}
                 </p>
 

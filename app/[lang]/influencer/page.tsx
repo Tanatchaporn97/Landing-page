@@ -160,7 +160,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               </>
             )}
           </h2>
-          <p style={{ ...KT, fontWeight: 700, fontSize: "clamp(18px,1.8vw,28px)", color: "rgba(17,24,39,0.75)", maxWidth: "900px", lineHeight: 1.7, margin: "0 0 32px" }}>
+          <p style={{ ...KT, fontWeight: 700, fontSize: "16px", color: "rgba(17,24,39,0.75)", maxWidth: "900px", lineHeight: 1.7, margin: "0 0 32px" }}>
             {lang === "th" ? (
               <>จบปัญหาความยุ่งยากในการรีวิวแบบเดิม ๆ<br />เชื่อมต่อกับแบรนด์ชั้นนำและสร้างรายได้จากสิ่งที่คุณรัก</>
             ) : (
@@ -226,7 +226,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             <p className="desc-text" style={{
               ...KT,
               color: "#111827",
-              fontSize: "18px",
+              fontSize: "16px",
               lineHeight: 1.7,
               margin: "0 auto 48px",
               fontWeight: 400,
@@ -300,7 +300,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               <span style={{ color: "#111827" }}>Know your channel better, grow with direction</span>
             )}
           </h2>
-          <p className="desc-text" style={{ ...KT, fontSize: "18px", color: "#374151", lineHeight: 1.7, margin: "0 auto 32px", maxWidth: "620px" }}>
+          <p className="desc-text" style={{ ...KT, fontSize: "16px", color: "#374151", lineHeight: 1.7, margin: "0 auto 32px", maxWidth: "620px" }}>
             {lang === "th" ? (
               <>ใช้ AI ในการช่วยวิเคราะห์ผู้ติดตาม คอนเทนต์ และ Performance<br />รู้ว่าคนดูคือใคร คอนเทนต์แบบไหนเวิร์ก และควรทำอะไรต่อ</>
             ) : (
@@ -377,12 +377,12 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
                 {lang === "th" ? (
                   <>
-                    <h3 style={{ ...KT, fontSize: "clamp(26px,3.4vw,42px)", fontWeight: 800, margin: 0, lineHeight: 1.3,
+                    <h3 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, margin: 0, lineHeight: 1.3,
                       background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
                       WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                       อยากเป็น Influencer แต่ไม่รู้จะเริ่มตรงไหน?
                     </h3>
-                    <p style={{ ...KT, fontSize: "clamp(16px,1.9vw,20px)", fontWeight: 400, color: "rgba(1,8,47,0.78)", margin: 0, lineHeight: 1.7 }}>
+                    <p style={{ ...KT, fontSize: "16px", fontWeight: 400, color: "rgba(1,8,47,0.78)", margin: 0, lineHeight: 1.7 }}>
                       เริ่มต้นง่าย ๆ กับ <span style={{ color: "#5f26e5", fontWeight: 700 }}>Buddy Review</span> เปิดรับโอกาสใหม่ ๆ และเติบโตไปพร้อมกับเรา
                     </p>
                     <p style={{ ...KT, fontSize: "clamp(18px,2.1vw,24px)", fontWeight: 700, color: "#2d137d", margin: 0, lineHeight: 1.5 }}>
@@ -391,10 +391,10 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
                   </>
                 ) : (
                   <>
-                    <h3 style={{ ...KT, fontSize: "clamp(26px,3.4vw,42px)", fontWeight: 800, color: "#01082F", margin: 0, lineHeight: 1.3 }}>
+                    <h3 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, color: "#01082F", margin: 0, lineHeight: 1.3 }}>
                       Want to be an influencer but don&apos;t know where to start?
                     </h3>
-                    <p style={{ ...KT, fontSize: "clamp(16px,1.9vw,20px)", fontWeight: 400, color: "rgba(1,8,47,0.78)", margin: 0, lineHeight: 1.7 }}>
+                    <p style={{ ...KT, fontSize: "16px", fontWeight: 400, color: "rgba(1,8,47,0.78)", margin: 0, lineHeight: 1.7 }}>
                       It&apos;s easy with <span style={{ color: "#5f26e5", fontWeight: 700 }}>Buddy Review</span> — unlock new opportunities and grow together with us.
                     </p>
                     <p style={{ ...KT, fontSize: "clamp(18px,2.1vw,24px)", fontWeight: 700, color: "#2d137d", margin: 0, lineHeight: 1.5 }}>

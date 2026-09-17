@@ -48,7 +48,7 @@ export default function InfluencerHero({ lang = "th" }: { lang?: "th" | "en" }) 
               {t.h1Line2}
             </span>
           </h1>
-          <h2 style={{ ...KT, color: "#111827", fontSize: "clamp(18px,1.8vw,28px)", fontWeight: 700, lineHeight: 1.7, margin: "0 0 32px", maxWidth: "460px" }}>
+          <h2 style={{ ...KT, color: "#111827", fontSize: "16px", fontWeight: 700, lineHeight: 1.7, margin: "0 0 32px", maxWidth: "460px" }}>
             {t.subhead}
           </h2>
 

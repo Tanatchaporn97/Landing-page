@@ -31,7 +31,7 @@ export default function UnlockCards({ items }: { items: Item[] }) {
               <h3 className="card-h3 unlock-title" style={{ ...KT, fontSize: "clamp(22px,2.2vw,30px)", fontWeight: 700, color: "#5f26e5", margin: 0, lineHeight: 1.3 }}>{item.title}</h3>
             </div>
 
-            <p className="unlock-desc" style={{ ...KT, fontSize: "16px", color: "#6b7280", lineHeight: 1.7 }}>{item.desc}</p>
+            <p className="unlock-desc" style={{ ...KT, fontSize: "16px", color: "#111827", lineHeight: 1.7 }}>{item.desc}</p>
 
             <div className="unlock-readmore-row" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <span style={{ ...KT, fontSize: "14px", fontWeight: 600, color: "#111827" }}>Read More</span>

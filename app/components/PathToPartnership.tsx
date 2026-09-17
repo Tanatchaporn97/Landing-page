@@ -78,7 +78,7 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
                       {s.title}
                     </h3>
                     <p style={{
-                      ...KT, fontSize: "15px", lineHeight: 1.7, color: "#374151",
+                      ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827",
                       margin: 0, maxWidth: "400px", overflow: "hidden",
                       maxHeight: isActive ? "120px" : "0px",
                       opacity: isActive ? 1 : 0,
