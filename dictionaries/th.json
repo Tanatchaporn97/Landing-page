@@ -499,7 +499,10 @@
       "categories": [
         "สำหรับแบรนด์"
       ],
-      "topics": ["Knowledge"]
+      "topics": [
+        "Knowledge",
+        "How-to"
+      ]
     },
     {
       "slug": "how-to-choose-influencer-marketing-agency",
@@ -509,7 +512,10 @@
       "categories": [
         "สำหรับแบรนด์"
       ],
-      "topics": ["Knowledge"]
+      "topics": [
+        "Knowledge",
+        "How-to"
+      ]
     },
     {
       "slug": "how-to-find-the-right-influencer",
@@ -519,7 +525,10 @@
       "categories": [
         "สำหรับแบรนด์"
       ],
-      "topics": ["Knowledge"]
+      "topics": [
+        "Knowledge",
+        "How-to"
+      ]
     },
     {
       "slug": "influencer-marketing-budget-by-objective",
@@ -529,7 +538,10 @@
       "categories": [
         "สำหรับแบรนด์"
       ],
-      "topics": ["Knowledge"]
+      "topics": [
+        "Knowledge",
+        "How-to"
+      ]
     },
     {
       "slug": "how-to-choose-influencer-checklist",
@@ -539,7 +551,10 @@
       "categories": [
         "สำหรับแบรนด์"
       ],
-      "topics": ["Knowledge"]
+      "topics": [
+        "Knowledge",
+        "How-to"
+      ]
     },
     {
       "slug": "instagram-2026-benchmark",
@@ -550,7 +565,10 @@
         "สำหรับแบรนด์",
         "สำหรับอินฟลูเอนเซอร์"
       ],
-      "topics": ["Knowledge"]
+      "topics": [
+        "Knowledge",
+        "Insight"
+      ]
     },
     {
       "slug": "content-per-platform-fb-tiktok-ig",
@@ -561,7 +579,10 @@
         "สำหรับแบรนด์",
         "สำหรับอินฟลูเอนเซอร์"
       ],
-      "topics": ["Knowledge"]
+      "topics": [
+        "Knowledge",
+        "Insight"
+      ]
     },
     {
       "slug": "social-media-insight-2026",
@@ -572,7 +593,10 @@
         "สำหรับแบรนด์",
         "สำหรับอินฟลูเอนเซอร์"
       ],
-      "topics": ["Knowledge"]
+      "topics": [
+        "Knowledge",
+        "Insight"
+      ]
     },
     {
       "slug": "content-strategy-canvas",
@@ -583,7 +607,9 @@
         "สำหรับแบรนด์",
         "สำหรับอินฟลูเอนเซอร์"
       ],
-      "topics": ["Knowledge"]
+      "topics": [
+        "Knowledge"
+      ]
     },
     {
       "slug": "best-time-to-post-2025",
@@ -593,7 +619,9 @@
       "categories": [
         "สำหรับอินฟลูเอนเซอร์"
       ],
-      "topics": ["Insight"]
+      "topics": [
+        "Insight"
+      ]
     },
     {
       "slug": "tiktok-algorithm-9-techniques",
@@ -604,17 +632,22 @@
         "สำหรับแบรนด์",
         "สำหรับอินฟลูเอนเซอร์"
       ],
-      "topics": ["Knowledge", "How-to"]
+      "topics": [
+        "Knowledge",
+        "How-to"
+      ]
     },
     {
       "slug": "influencer-mapping-canvas",
       "title": "วิธีเลือกอินฟลูเอนเซอร์ที่ใช่สำหรับแบรนด์ ด้วย Influencer Mapping Canvas",
       "desc": "ยุคนี้อินฟลูเอนเซอร์ไม่ได้เป็นเพียงแค่ \"คนดังบนโลกออนไลน์\" แต่คือผู้ทรงอิทธิพลที่สามารถเปลี่ยนการตัดสินใจซื้อของผู้บริโภคได้จริง",
-      "image": "/blogs/blog-influencer-mapping.png",
+      "image": "/blogs/blog-influencer-mapping-canvas.jpg",
       "categories": [
         "สำหรับแบรนด์"
       ],
-      "topics": ["How-to"]
+      "topics": [
+        "How-to"
+      ]
     },
     {
       "slug": "6-copywriting-techniques",
@@ -624,7 +657,9 @@
       "categories": [
         "สำหรับอินฟลูเอนเซอร์"
       ],
-      "topics": ["How-to"]
+      "topics": [
+        "How-to"
+      ]
     }
   ],
   "testimonials": [

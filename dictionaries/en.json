@@ -497,7 +497,10 @@
       "categories": [
         "For Brands"
       ],
-      "topics": ["Knowledge"]
+      "topics": [
+        "Knowledge",
+        "How-to"
+      ]
     },
     {
       "slug": "how-to-choose-influencer-marketing-agency",
@@ -507,7 +510,10 @@
       "categories": [
         "For Brands"
       ],
-      "topics": ["Knowledge"]
+      "topics": [
+        "Knowledge",
+        "How-to"
+      ]
     },
     {
       "slug": "how-to-find-the-right-influencer",
@@ -517,7 +523,10 @@
       "categories": [
         "For Brands"
       ],
-      "topics": ["Knowledge"]
+      "topics": [
+        "Knowledge",
+        "How-to"
+      ]
     },
     {
       "slug": "influencer-marketing-budget-by-objective",
@@ -527,7 +536,10 @@
       "categories": [
         "For Brands"
       ],
-      "topics": ["Knowledge"]
+      "topics": [
+        "Knowledge",
+        "How-to"
+      ]
     },
     {
       "slug": "how-to-choose-influencer-checklist",
@@ -537,7 +549,10 @@
       "categories": [
         "For Brands"
       ],
-      "topics": ["Knowledge"]
+      "topics": [
+        "Knowledge",
+        "How-to"
+      ]
     },
     {
       "slug": "instagram-2026-benchmark",
@@ -548,7 +563,10 @@
         "For Brands",
         "For Influencers"
       ],
-      "topics": ["Knowledge"]
+      "topics": [
+        "Knowledge",
+        "Insight"
+      ]
     },
     {
       "slug": "content-per-platform-fb-tiktok-ig",
@@ -559,7 +577,10 @@
         "For Brands",
         "For Influencers"
       ],
-      "topics": ["Knowledge"]
+      "topics": [
+        "Knowledge",
+        "Insight"
+      ]
     },
     {
       "slug": "social-media-insight-2026",
@@ -570,7 +591,10 @@
         "For Brands",
         "For Influencers"
       ],
-      "topics": ["Knowledge"]
+      "topics": [
+        "Knowledge",
+        "Insight"
+      ]
     },
     {
       "slug": "content-strategy-canvas",
@@ -581,7 +605,9 @@
         "For Brands",
         "For Influencers"
       ],
-      "topics": ["Knowledge"]
+      "topics": [
+        "Knowledge"
+      ]
     },
     {
       "slug": "best-time-to-post-2025",
@@ -591,7 +617,9 @@
       "categories": [
         "For Influencers"
       ],
-      "topics": ["Insight"]
+      "topics": [
+        "Insight"
+      ]
     },
     {
       "slug": "tiktok-algorithm-9-techniques",
@@ -602,17 +630,22 @@
         "For Brands",
         "For Influencers"
       ],
-      "topics": ["Knowledge", "How-to"]
+      "topics": [
+        "Knowledge",
+        "How-to"
+      ]
     },
     {
       "slug": "influencer-mapping-canvas",
       "title": "How to Choose the Right Influencers for Your Brand with the Influencer Mapping Canvas",
       "desc": "In this era, influencers are no longer just \"famous people online\"—they are powerful voices capable of genuinely influencing consumer purchasing decisions.",
-      "image": "/blogs/blog-influencer-mapping.png",
+      "image": "/blogs/blog-influencer-mapping-canvas.jpg",
       "categories": [
         "For Brands"
       ],
-      "topics": ["How-to"]
+      "topics": [
+        "How-to"
+      ]
     },
     {
       "slug": "6-copywriting-techniques",
@@ -622,7 +655,9 @@
       "categories": [
         "For Influencers"
       ],
-      "topics": ["How-to"]
+      "topics": [
+        "How-to"
+      ]
     }
   ],
   "testimonials": [

@@ -39,8 +39,8 @@ type StatItem = {
 // 3 feature callout cards (same hover-animate treatment) — placed in the
 // top-left / top-right / bottom-right corners on desktop.
 const STATS: StatItem[] = [
-  { top: "25%", left: "27%", rotate: -4, emoji: "📊", value: "ฟรี!" },
-  { top: "22%", left: "57%", rotate: 3,  emoji: "🎯", value: "งานที่ใช่" },
+  { top: "15%", left: "27%", rotate: -4, emoji: "📊", value: "ฟรี!" },
+  { top: "17%", left: "57%", rotate: 3,  emoji: "🎯", value: "งานที่ใช่" },
   { top: "65%", left: "42%", rotate: -3, emoji: "💸", value: "โดยเฉพาะ" },
 ].map((s, i) => ({
   ...s,
