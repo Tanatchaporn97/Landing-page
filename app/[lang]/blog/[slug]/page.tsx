@@ -10,6 +10,26 @@ import { getDictionary } from "../../../../get-dictionary";
 import { type Locale } from "../../../../i18n-config";
 
 const BLOG_DESCRIPTIONS: Record<string, Record<string, string>> = {
+  "how-to-start-influencer-campaign": {
+    th: "4 ขั้นตอนสำคัญก่อนเริ่ม Influencer Campaign ตั้งแต่การตั้ง Objective, กำหนด Target Audience, วาง Budget ไปจนถึงการคัดเลือก Influencer และทำ Brief",
+    en: "4 essential steps before launching an Influencer Campaign — setting the Objective, defining the Target Audience, planning the Budget, and selecting influencers with a clear Brief.",
+  },
+  "how-to-choose-influencer-marketing-agency": {
+    th: "7 เช็กลิสต์สำคัญก่อนเลือก Influencer Marketing Agency ตั้งแต่ Network, Case Study, การใช้ Data, Strategy, ราคาและ Scope งาน ไปจนถึงการรับมือปัญหาและ Report หลังแคมเปญ",
+    en: "7 essential checks before choosing an Influencer Marketing Agency — network, case studies, data-driven selection, strategy, pricing and scope, problem handling, and post-campaign reporting.",
+  },
+  "how-to-find-the-right-influencer": {
+    th: "รวมแหล่งค้นหา Influencer ทั้ง TikTok Creator Marketplace, Influencer Platform, Social Media Community และ Keyword Search พร้อม 4 เช็กลิสต์คัดกรองก่อนตัดสินใจร่วมงาน",
+    en: "A roundup of where to find influencers — TikTok Creator Marketplace, Influencer Platforms, social media communities, and keyword search — plus 4 checks to run before you partner up.",
+  },
+  "influencer-marketing-budget-by-objective": {
+    th: "สูตรแบ่งสัดส่วน Budget สำหรับ Influencer Marketing ตาม 3 Objective หลัก ยอดขาย ความน่าเชื่อถือ และ Brand Awareness พร้อมสัดส่วน KOC, Micro, Mid-Tier และ Macro ที่แนะนำ",
+    en: "A budget-split formula for Influencer Marketing across 3 core objectives — sales, credibility, and brand awareness — with recommended KOC, Micro, Mid-Tier, and Macro ratios.",
+  },
+  "how-to-choose-influencer-checklist": {
+    th: "4 เช็กลิสต์สำคัญก่อนจ้างอินฟลูเอนเซอร์ ตั้งแต่ความเชี่ยวชาญ คุณภาพ Community ความเข้ากันกับแบรนด์ ไปจนถึงความเป็นมืออาชีพ ช่วยแบรนด์เลือกคนที่ใช่ไม่ใช่แค่คนที่ Followers เยอะ",
+    en: "4 essential checks before hiring an influencer — expertise, community quality, brand fit, and professionalism — so brands pick the right person, not just the one with the most followers.",
+  },
   "instagram-2026-benchmark": {
     th: "สรุป Instagram Benchmark 2026 จาก Socialinsider พร้อม 4 อินไซต์สำคัญเรื่อง Carousel, Reels, Single Image และการเติบโตของ Followers พร้อมวิธีปรับกลยุทธ์",
     en: "A recap of Socialinsider's Instagram Benchmark 2026 report with 4 key insights on Carousels, Reels, Single Images, and follower growth — plus how to adjust your strategy.",
@@ -136,6 +156,387 @@ const OL = ({ items }: { items: React.ReactNode[] }) => (
     ))}
   </ol>
 );
+
+function StartCampaignContent({ lang }: { lang: Locale }) {
+  if (lang === "en") {
+    return (
+      <>
+        <P>Many people assume Influencer Marketing is just finding an interested influencer to review a product and post it on social media. But running an Influencer Campaign is actually a more complex process — from planning and setting an Objective, defining the Target, and planning the Budget, all the way to selecting influencers and writing a work Brief.</P>
+        <P>Because if a brand starts by listing influencer names before knowing what result the campaign needs, you may end up with influencers who look right but don&apos;t actually serve the marketing goal. If you&apos;re about to start an Influencer Campaign, walk through these 4 steps.</P>
+
+        <Divider />
+        <H2>1. Set a clear Objective first</H2>
+        <P>Before opening the search for influencers, you need to know what this campaign actually needs. Each type of goal leads to a different influencer selection and different KPIs, for example:</P>
+        <UL items={[
+          <><strong>Brand Awareness:</strong> you want people to know your brand or new product — you may focus on Reach and Views.</>,
+          <><strong>Engagement &amp; Trust:</strong> you want to build engagement and credibility — you may look at Engagement, Comments, Shares, or Saves.</>,
+          <><strong>Conversion:</strong> you want to drive sales — you may measure Clicks, Code Usage, Orders, or Conversion.</>,
+        ]} />
+
+        <H2>2. Define your Target Audience in more detail</H2>
+        <P>Once you know what result you want, the next step is answering who you&apos;re actually talking to. Beyond age and gender, look into behavior and interests, such as:</P>
+        <UL items={[
+          "What are they interested in, or what problem can your product solve for them?",
+          "Which Platform do they primarily use?",
+          "What type of Content do they like to watch — reviews, How-tos, Entertainment, or Lifestyle?",
+        ]} />
+        <P>This information sharpens your influencer selection, because the goal isn&apos;t just finding influencers with a lot of followers — it&apos;s finding influencers whose Audience is close to your brand&apos;s actual customers.</P>
+
+        <H2>3. Plan the Budget to align with your Objective</H2>
+        <P>Once you know your Objective and Target, take the budget you have and plan what type of influencer to use and how to split the spend.</P>
+        <P>If the focus is Conversion, you might spread the budget across several KOCs or Micro Influencers to produce multiple content formats, and use Affiliate or Tracking Links to help measure results.</P>
+        <P>But if the focus is Awareness or Brand Image, you might weight the budget toward Macro or Mid-Tier influencers who can generate Reach and produce the campaign&apos;s core content, then use other influencer tiers to help extend the conversation further.</P>
+        <P>Beyond influencer fees, don&apos;t forget to budget for other costs too — Production, Paid Media, Usage Rights, Affiliate Commission, and Campaign Management — since all of these can also be part of a campaign&apos;s cost.</P>
+
+        <H2>4. Select influencers and write the Brief</H2>
+        <P>Once you have all the information ready, you move into the Select &amp; Brief stage. Start by screening influencers on Audience, Content Performance, Engagement, brand fit, and past work history — you shouldn&apos;t decide based on Follower count alone.</P>
+        <P>Then write a clear Brief covering what the brand wants to communicate — including the Key Message, what should be said, what to avoid, Deliverables, Timeline, and Tracking.</P>
+        <P>But a good Brief shouldn&apos;t be written in so much detail that the influencer has to repeat every word verbatim — because an influencer&apos;s strength is telling the same story in language that fits their own Audience. So the key principle is: define the Message clearly, but leave room for the influencer to choose how to tell it.</P>
+
+        <Divider />
+        <H2>So what happens after these 4 steps?</H2>
+        <P>Once the Objective, Target, Budget, and influencers are ready, the work isn&apos;t over — the next step is managing the Campaign so the content comes out according to plan.</P>
+        <P>From sending products and Briefs, tracking the Timeline, reviewing Drafts, coordinating revisions, all the way to tracking results after posting and compiling the data into a Report.</P>
+        <P>This is why good Influencer Marketing doesn&apos;t start with &quot;finding someone to post for us&quot; — it starts with clearly laying out the Campaign Structure first.</P>
+        <P><strong style={{ color: "#5f26e5" }}>Because once you know why you&apos;re doing this, who you&apos;re talking to, how you&apos;re spending the budget, and who you&apos;ve chosen to help communicate, everything left becomes much easier to plan and measure.</strong></P>
+      </>
+    );
+  }
+  return (
+    <>
+      <P>หลายคนอาจคิดว่า Influencer Marketing คือการหา Influencer ที่สนใจมารีวิวสินค้าแล้วโพสต์ลง Social Media แต่จริงๆ แล้ว การทำ Influencer Campaign มีขั้นตอนที่ซับซ้อนกว่านั้น ตั้งแต่วางแผนตั้ง Objective กำหนด Target วาง Budget ไปจนถึงการเลือก Influencer และสร้าง Brief งาน</P>
+      <P>เพราะถ้าแบรนด์เริ่มจากการลิสต์ชื่อ Influencer ก่อนโดยยังไม่รู้ว่าแคมเปญต้องการผลลัพธ์อะไร สุดท้ายอาจได้ Influencer ที่ดูเหมาะ แต่ไม่ตอบโจทย์ทางการตลาด ถ้ากำลังจะเริ่มทำ Influencer Campaign ลองไล่ตาม 4 ขั้นตอนนี้ได้เลย</P>
+
+      <Divider />
+      <H2>1. ตั้ง Objective ให้ชัดก่อน</H2>
+      <P>ก่อนเปิดหา Influencer ต้องรู้ก่อนว่า แคมเปญนี้ต้องการอะไร เป้าหมายแต่ละแบบจะนำไปสู่การเลือก Influencer และ KPI ที่ต่างกัน เช่น</P>
+      <UL items={[
+        <><strong>Brand Awareness:</strong> ต้องการให้คนรู้จักแบรนด์หรือสินค้าใหม่ อาจเน้น Reach และ Views</>,
+        <><strong>Engagement &amp; Trust:</strong> ต้องการสร้างการมีส่วนร่วมและความน่าเชื่อถือ อาจดู Engagement, Comments, Shares หรือ Saves</>,
+        <><strong>Conversion:</strong> ต้องการกระตุ้นยอดขาย อาจวัดจาก Clicks, Code Usage, Orders หรือ Conversion</>,
+      ]} />
+
+      <H2>2. กำหนด Target Audience ให้ละเอียดขึ้น</H2>
+      <P>เมื่อรู้ว่าอยากได้ผลลัพธ์อะไร ขั้นต่อมาคือการตอบให้ได้ว่าเรากำลังสื่อสารกับใคร นอกจากอายุและเพศแล้ว ควรดูไปถึงพฤติกรรมและความสนใจ เช่น</P>
+      <UL items={[
+        "สนใจเรื่องอะไร หรือมีปัญหาอะไรที่สินค้าของเราช่วยแก้ได้",
+        "ใช้ Platform ไหนเป็นหลัก",
+        "ชอบดู Content รูปแบบไหน เช่น รีวิว, How-to, Entertainment หรือ Lifestyle",
+      ]} />
+      <P>ข้อมูลเหล่านี้จะช่วยให้การเลือก Influencer แม่นขึ้น เพราะเป้าหมายไม่ใช่แค่หา Influencer ที่มีคนติดตามเยอะ แต่ต้องหา Influencer ที่มี Audience ใกล้กับลูกค้าของแบรนด์</P>
+
+      <H2>3. วาง Budget ให้สอดคล้องกับ Objective</H2>
+      <P>เมื่อรู้ Objective และ Target แล้ว ค่อยนำ Budget ที่มีมาวางแผนว่าควรใช้ Influencer แบบไหน และกระจายงบอย่างไร</P>
+      <P>ถ้าเน้น Conversion อาจกระจายไปยัง KOC หรือ Micro Influencer หลายคน เพื่อสร้างคอนเทนต์หลายรูปแบบและใช้ Affiliate หรือ Tracking Link ช่วยวัดผล</P>
+      <P>แต่ถ้าเน้น Awareness หรือ Brand Image อาจให้น้ำหนักกับ Macro หรือ Mid-Tier Influencer ที่สามารถสร้าง Reach และผลิตคอนเทนต์หลักของแคมเปญได้ แล้วใช้ Influencer กลุ่มอื่นช่วยขยายการพูดถึงเพิ่มเติม</P>
+      <P>นอกจากค่าตัว Influencer อย่าลืมเผื่องบส่วนอื่นด้วย เช่น Production, Paid Media, Usage Rights, Affiliate Commission และ Campaign Management เพราะทั้งหมดนี้อาจเป็นต้นทุนของแคมเปญเช่นกัน</P>
+
+      <H2>4. คัดเลือก Influencer และทำ Brief</H2>
+      <P>เมื่อมีข้อมูลพร้อมแล้ว จึงเข้าสู่ขั้นตอน Select &amp; Brief เริ่มจากคัด Influencer โดยดูทั้ง Audience, Content Performance, Engagement, ความเหมาะสมกับ Brand และประวัติการทำงานที่ผ่านมา ไม่ควรตัดสินจาก Followers เพียงตัวเลขเดียว</P>
+      <P>จากนั้นทำ Brief ให้ชัดว่าแบรนด์ต้องการสื่อสารอะไร โดยควรมี Key Message, สิ่งที่ต้องพูด, สิ่งที่ควรหลีกเลี่ยง, Deliverables, Timeline และ Tracking ให้ครบ</P>
+      <P>แต่ Brief ที่ดีไม่ควรเขียนละเอียดจน Influencer ต้องพูดตามทุกคำ เพราะจุดแข็งของ Influencer คือการนำเรื่องเดียวกันไปเล่าในภาษาที่เข้ากับ Audience ของตัวเอง ดังนั้น หลักคิดที่สำคัญคือกำหนด Message ให้ชัด แต่เปิดพื้นที่ให้ Influencer เลือกวิธีเล่า</P>
+
+      <Divider />
+      <H2>แล้วหลังจาก 4 Steps นี้ต้องทำอะไรต่อ?</H2>
+      <P>เมื่อ Objective, Target, Budget และ Influencer พร้อมแล้ว งานยังไม่จบ เพราะขั้นต่อไปคือการบริหาร Campaign ให้คอนเทนต์ออกมาตามแผน</P>
+      <P>ตั้งแต่การส่งสินค้าและ Brief, ติดตาม Timeline, ตรวจ Draft, ประสานงานแก้ไข ไปจนถึงติดตามผลหลังโพสต์และรวบรวมข้อมูลมาทำ Report</P>
+      <P>นี่จึงเป็นเหตุผลว่าทำไม Influencer Marketing ที่ดีไม่ได้เริ่มจากการ &quot;หาคนมาช่วยโพสต์&quot; แต่เริ่มจากการวาง Campaign Structure ให้ชัดก่อน</P>
+      <P><strong style={{ color: "#5f26e5" }}>เพราะเมื่อรู้ว่า ทำไปเพื่ออะไร, พูดกับใคร, ใช้งบอย่างไร และเลือกใครมาช่วยสื่อสาร ขั้นตอนที่เหลือก็จะวางแผนและวัดผลได้ง่ายขึ้นมาก</strong></P>
+    </>
+  );
+}
+
+function ChooseAgencyContent({ lang }: { lang: Locale }) {
+  if (lang === "en") {
+    return (
+      <>
+        <P>When a campaign involves dozens or hundreds of influencers, sourcing them, reaching out, sending Briefs, chasing deliverables, reviewing Drafts, and pulling together a Report yourself can turn into a much bigger job than your marketing team expected.</P>
+        <P>That&apos;s why many brands choose to work with an Influencer Marketing Agency — but choosing an agency isn&apos;t just about &quot;do they have a lot of influencers?&quot; Every agency has a different way of working and a different area of expertise.</P>
+        <P>Before deciding to hire one, run through these 7 checks to see how well the agency you&apos;re talking to can actually deliver on your campaign.</P>
+
+        <Divider />
+        <H2>7 checklists to review before choosing an Influencer Marketing Agency</H2>
+
+        <H3>1. How diverse is their influencer selection?</H3>
+        <P>The first thing to look at is the agency&apos;s Network and Database — what range of influencers do they cover, from Nano and Micro to Macro and Mega — and do they have influencers in categories relevant to your business? A long list of names alone isn&apos;t as important as having people who genuinely match your brand&apos;s Target.</P>
+
+        <H3>2. Have they run campaigns similar to yours?</H3>
+        <P>Ask to see past Case Studies, especially work with an Objective, Target, or Industry close to your brand&apos;s. Beyond the Performance numbers, look at how the agency chose influencers and designed the campaign — a good Case Study should show you how the agency solved a marketing problem, not just how many views a campaign got.</P>
+
+        <H3>3. Do they use Data to help select influencers?</H3>
+        <P>An agency doing Influencer Marketing shouldn&apos;t pick influencers based on familiarity or follower count alone.</P>
+        <P>They should have data that helps analyze Audience, Engagement, Content Performance, and fit with the Target — and check for anomalies in the data, like Audience Quality or Engagement that doesn&apos;t line up with the follower count. Data gives influencer selection a stronger rationale behind it.</P>
+
+        <H3>4. Do they help shape Strategy, or just take the Brief and go find people?</H3>
+        <P>This one matters a lot, because an agency&apos;s job shouldn&apos;t end at just receiving a brief. See whether the agency can actually help answer which Platform to use, what tier of influencer, how to split the Budget, and how Content should be designed to serve the campaign&apos;s Objective.</P>
+        <P>If an agency can push back on the Brief and offer better alternatives, that reflects that they&apos;re helping solve a marketing problem — not just acting as a middleman to reach influencers.</P>
+
+        <H3>5. Is pricing and scope of work clear?</H3>
+        <P>Before starting, get clear details on exactly what the budget covers — Influencer Fee, Management Fee, Production, Usage Rights, or Paid Media.</P>
+        <P>You also need to know which steps the agency actually handles — contacting influencers, sending Briefs, reviewing Drafts, tracking posts, and compiling a Report — and whether those are included in the management fee. Seeing a price alone isn&apos;t enough; you need to see what that budget actually gets you.</P>
+
+        <H3>6. If something goes wrong, how do they handle it?</H3>
+        <P>Influencer work doesn&apos;t go smoothly on every campaign. Sometimes an influencer misses a deadline, a Draft needs several rounds of revision, or something happens that forces a change of plan.</P>
+        <P>An agency should have a process for tracking work and handling issues, along with a backup plan for when an influencer can&apos;t deliver on the Timeline. You may not see this during the Pitch, but it becomes very clear once real work starts.</P>
+
+        <H3>7. What can the post-campaign Report actually tell you?</H3>
+        <P>A good Report shouldn&apos;t stop at Follower count, Reach, Views, and Engagement.</P>
+        <P>It should also show which influencer or which type of Content performed well, and why — plus KPIs tied to the Objective, such as Cost per Engagement, Cost per View, Clicks, or Conversion, if the campaign has Tracking in place.</P>
+
+        <Divider />
+        <P>If it&apos;s a small campaign using only a few influencers and your team has the time, managing it yourself may not be difficult. But once the number of influencers grows, or a campaign needs Strategy, Data, Content Management, and Reporting all at once, bringing in an agency can take a lot of the load off your team.</P>
+      </>
+    );
+  }
+  return (
+    <>
+      <P>เมื่อแคมเปญมี Influencer หลักสิบหรือหลักร้อยคน การค้นหา ติดต่อ ส่ง Brief ตามงาน ตรวจ Draft และรวบรวม Report ด้วยตัวเองอาจกลายเป็นงานใหญ่ที่กินเวลาทีมการตลาดมากกว่าที่คิด</P>
+      <P>นี่จึงเป็นเหตุผลที่หลายแบรนด์เลือกทำงานกับ Influencer Marketing Agency แต่การเลือก Agency ก็ไม่ได้ดูแค่ว่า &quot;มี Influencer เยอะไหม&quot; เพราะแต่ละเจ้ามีวิธีทำงานและความเชี่ยวชาญที่แตกต่างกัน</P>
+      <P>ก่อนตัดสินใจจ้าง ลองเช็ก 7 เรื่องนี้ เพื่อดูว่า Agency ที่กำลังคุยอยู่สามารถตอบโจทย์แคมเปญของเราได้มากแค่ไหน</P>
+
+      <Divider />
+      <H2>7 เช็กลิสต์ที่ควรดู ก่อนเลือก Influencer Marketing Agency</H2>
+
+      <H3>1. มี Influencer ให้เลือกหลากหลายแค่ไหน?</H3>
+      <P>สิ่งแรกที่ควรดูคือ Network และ Database ของ Agency ว่าครอบคลุม Influencer แบบไหนบ้าง ตั้งแต่ Nano, Micro ไปจนถึง Macro และ Mega รวมถึงมี Influencer ใน Category ที่เกี่ยวข้องกับธุรกิจของเราหรือไม่ เพราะการมีรายชื่อจำนวนมากอย่างเดียวไม่ได้สำคัญเท่ากับการมีคนที่ตรงกับ Target ของแบรนด์จริงๆ</P>
+
+      <H3>2. เคยทำแคมเปญที่ใกล้เคียงกับเราหรือไม่?</H3>
+      <P>ขอดู Case Study ที่ผ่านมา โดยเฉพาะงานที่มี Objective, Target หรือ Industry ใกล้เคียงกับแบรนด์เรา นอกจากดูตัวเลข Performance แล้ว ลองดูด้วยว่า Agency มีวิธีเลือก Influencer และออกแบบ Campaign อย่างไร เพราะ Case Study ที่ดีควรทำให้เราเห็นได้ว่า Agency แก้โจทย์ทางการตลาดอย่างไร ไม่ใช่แค่แคมเปญได้ยอดวิวเท่าไหร่</P>
+
+      <H3>3. ใช้ Data ช่วยเลือก Influencer หรือไม่?</H3>
+      <P>Agency ที่ทำ Influencer Marketing ไม่ควรเลือก Influencer จากความคุ้นชื่อหรือจำนวน Followers เพียงอย่างเดียว</P>
+      <P>ควรมีข้อมูลที่ช่วยวิเคราะห์ทั้ง Audience, Engagement, Content Performance และความเหมาะสมกับ Target รวมถึงตรวจสอบความผิดปกติของข้อมูล เช่น Audience Quality หรือ Engagement ที่ไม่สอดคล้องกับยอดผู้ติดตาม เพราะ Data ช่วยให้การเลือก Influencer มีเหตุผลรองรับมากขึ้น</P>
+
+      <H3>4. ช่วยคิด Strategy หรือแค่รับ Brief ไปหาคน?</H3>
+      <P>ข้อนี้สำคัญมาก เพราะหน้าที่ของ Agency ไม่ควรจบแค่การรับบรีฟ ลองดูว่า Agency สามารถช่วยตอบได้หรือไม่ว่าควรใช้ Platform ไหน, Influencer ระดับไหน, ควรแบ่ง Budget อย่างไร และควรออกแบบ Content ให้ตอบ Objective ของแคมเปญอย่างไร</P>
+      <P>ถ้า Agency สามารถช่วยตั้งคำถามกับ Brief และเสนอทางเลือกที่ดีขึ้นได้ นั่นสะท้อนว่าเขาเข้ามาช่วยแก้โจทย์การตลาด ไม่ได้เป็นเพียงคนกลางในการติดต่อ Influencer</P>
+
+      <H3>5. ราคาและ Scope งานชัดเจนหรือไม่?</H3>
+      <P>ก่อนเริ่มงานควรขอรายละเอียดค่าใช้จ่ายให้ชัดเจนว่า Budget ครอบคลุมอะไรบ้าง เช่น Influencer Fee, Management Fee, Production, Usage Rights หรือ Paid Media</P>
+      <P>รวมถึงต้องรู้ว่า Agency ดูแลถึงขั้นตอนไหน เช่น ติดต่อ Influencer, ส่ง Brief, ตรวจ Draft, ติดตามโพสต์ และสรุป Report รวมอยู่ในค่าบริหารจัดการหรือไม่ การเห็นราคาอย่างเดียวจึงยังไม่พอ ต้องดูด้วยว่า สิ่งที่ได้จาก Budget นั้นมีอะไรบ้าง</P>
+
+      <H3>6. ถ้าเกิดปัญหา มีทีมจัดการอย่างไร?</H3>
+      <P>งาน Influencer ไม่ได้ราบรื่นทุกแคมเปญ บางครั้ง Influencer ส่งงานไม่ทัน แก้ Draft หลายรอบ หรือมีเหตุการณ์ที่ทำให้ต้องเปลี่ยนแผน</P>
+      <P>Agency จึงควรมี Process สำหรับติดตามงานและจัดการปัญหา รวมถึงมีแผนสำรองเมื่อ Influencer ไม่สามารถทำงานตาม Timeline ได้ เรื่องนี้อาจไม่เห็นในตอน Pitch แต่จะเห็นชัดมากเมื่อเริ่มทำงานจริง</P>
+
+      <H3>7. Report หลังจบแคมเปญบอกอะไรเราได้บ้าง?</H3>
+      <P>Report ที่ดีไม่ควรมีแค่ยอด Followers, Reach, Views และ Engagement แล้วจบ</P>
+      <P>ควรดูด้วยว่า Influencer คนไหนหรือ Content แบบไหนทำผลงานได้ดี เพราะอะไร รวมถึง KPI ที่เกี่ยวข้องกับ Objective เช่น Cost per Engagement, Cost per View, Clicks หรือ Conversion หากแคมเปญมีการ Tracking</P>
+
+      <Divider />
+      <P>ถ้าเป็นแคมเปญเล็กที่ใช้ Influencer ไม่กี่คนและทีมมีเวลา การจัดการเองอาจทำได้ไม่ยาก แต่เมื่อจำนวน Influencer เพิ่มขึ้น หรือแคมเปญต้องใช้ทั้ง Strategy, Data, Content Management และ Reporting การมี Agency เข้ามาช่วยก็สามารถลดภาระของทีมได้มาก</P>
+    </>
+  );
+}
+
+function FindInfluencerContent({ lang }: { lang: Locale }) {
+  if (lang === "en") {
+    return (
+      <>
+        <P>When it&apos;s time to run Influencer Marketing, the first question many brands ask isn&apos;t &quot;how much budget do we need?&quot; — it&apos;s &quot;where do we even find an influencer?&quot;</P>
+        <P>Because today, influencers are everywhere, but finding someone who makes great content doesn&apos;t always mean they&apos;re the right fit for your brand. Choosing based on follower count or likes alone can leave a campaign with pretty numbers that never actually reach the customers you wanted.</P>
+        <P>So finding a good influencer should start with choosing the right sourcing channel, all the way through to screening the data before you decide to hire.</P>
+
+        <Divider />
+        <H2>So where can you actually find influencers?</H2>
+
+        <H3>TikTok Creator Marketplace and platform-native tools</H3>
+        <P>If you want data straight from the platform, tools like TikTok Creator Marketplace let brands search influencers by Category and view data on Performance and Audience.</P>
+        <P>The upside is that your search starts from real data rather than just scrolling the Feed. It suits brands that want to filter influencers by target audience and specific numbers.</P>
+
+        <H3>Influencer Platforms and Agencies</H3>
+        <P>If a campaign needs a large number of influencers, or your team doesn&apos;t have time to search and reach out on their own, using an Influencer Platform or Agency is another option.</P>
+        <P>Beyond having an influencer database, some services also help with selection, outreach, coordination, content review, and campaign wrap-up reports — so your brand team doesn&apos;t have to manage every step alone. Buddy Review offers this service too — if you&apos;d like us to manage your influencer campaign, feel free to reach out.</P>
+
+        <H3>Social media and communities</H3>
+        <P>For finding a large volume of Nano influencers or KOCs, searching Facebook Groups, TikTok, or communities related to your product&apos;s category is still an effective method.</P>
+        <P>The upside is a real chance of finding people genuinely within a niche interest group — the trade-off is your team needs to spend more time screening profiles and verifying information themselves.</P>
+
+        <H3>Searching by keyword and hashtag</H3>
+        <P>Another method many brands overlook is searching by keywords related to the product. This helps you find influencers already creating content in the same category as your brand — and sometimes you&apos;ll even find someone who&apos;s already talked about your product or brand before.</P>
+
+        <Divider />
+        <H2>2. Found some influencers — what should you check next?</H2>
+        <P>Having a long list of influencers doesn&apos;t mean you have good options — the real key step is screening for people who match your campaign&apos;s Objective and Target.</P>
+
+        <H3>1. Look at Audience before Followers</H3>
+        <P>Followers tell you how famous someone is, but not whether that group is who your brand actually wants. Look into Audience data — age, gender, country or region, and interests. If the platform provides deeper data, factor that into your decision too.</P>
+
+        <H3>2. Look at Engagement and the quality of who&apos;s engaging</H3>
+        <P>Don&apos;t just look at Like counts — read the Comments and look at Shares, Saves, or Views as well.</P>
+        <P>What matters more than the total numbers is how genuinely engaged viewers are with the influencer — and you shouldn&apos;t rely on a single Engagement Rate figure as your criteria, since each platform, category, and follower size has its own benchmark.</P>
+
+        <H3>3. Check whether their content actually fits your brand</H3>
+        <P>Go back through at least 10–20 of their past posts and ask yourself: if you swapped the product in the clip for your brand, would it still feel natural?</P>
+        <P>Look at their tone of voice, language, filming style, and storytelling — because an influencer who fits your brand doesn&apos;t need to recite a script perfectly; they should be able to carry your brand&apos;s message in their own style.</P>
+
+        <H3>4. Check their work history and credibility</H3>
+        <P>Look into what kinds of brands they&apos;ve worked with before, whether they&apos;ve taken on too many similar/competing jobs, and whether their past Sponsored Content has been consistently good quality.</P>
+      </>
+    );
+  }
+  return (
+    <>
+      <P>เวลาจะทำ Influencer Marketing คำถามแรกที่หลายแบรนด์ตั้งคำถามอาจไม่ใช่จะใช้งบเท่าไหร่? แต่คือ แล้วจะหา Influencer จากไหน?</P>
+      <P>เพราะวันนี้มี Influencer อยู่เต็มไปหมด แต่การเจอคนที่ทำคอนเทนต์เก่ง ไม่ได้แปลว่าจะเป็นคนที่เหมาะกับแบรนด์เสมอไป ยิ่งเลือกจากแค่ยอด Followers หรือยอดไลก์ ก็มีโอกาสที่แคมเปญจะได้ตัวเลขสวย แต่ไม่ถึงกลุ่มลูกค้าที่ต้องการ</P>
+      <P>ดังนั้น การหา Influencer ที่ดีควรเริ่มตั้งแต่เลือกแหล่งค้นหา ไปจนถึงการคัดกรองข้อมูลก่อนตัดสินใจจ้าง</P>
+
+      <Divider />
+      <H2>แล้วเราจะหา Influencer จากที่ไหนได้บ้าง?</H2>
+
+      <H3>TikTok Creator Marketplace และเครื่องมือของแพลตฟอร์ม</H3>
+      <P>ถ้าต้องการข้อมูลจาก Platform โดยตรง เครื่องมืออย่าง TikTok Creator Marketplace ช่วยให้แบรนด์ค้นหา Influencer ตาม Category และดูข้อมูลเกี่ยวกับ Performance และ Audience ได้</P>
+      <P>ข้อดีคือช่วยให้การค้นหาเริ่มจากข้อมูลมากกว่าการไล่หาจากหน้า Feed เพียงอย่างเดียว เหมาะกับแบรนด์ที่ต้องการคัด Influencer ตามกลุ่มเป้าหมายและตัวเลขที่กำหนดไว้</P>
+
+      <H3>Influencer Platform และ Agency</H3>
+      <P>ถ้าแคมเปญต้องใช้ Influencer จำนวนมาก หรือทีมไม่มีเวลาค้นหาและติดต่อเอง การใช้ Influencer Platform หรือ Agency ก็เป็นอีกทางเลือกหนึ่ง</P>
+      <P>นอกจากมีฐานข้อมูล Influencer แล้ว บางบริการยังช่วยเรื่องการคัดเลือก ติดต่อ ประสานงาน ตรวจงาน และสรุปผลแคมเปญ ทำให้ทีมแบรนด์ไม่ต้องจัดการทุกขั้นตอนด้วยตัวเอง อย่าง Buddy Review เองก็มีบริการนี้เหมือนกันนะ หากต้องการให้เราจัดการแคมเปญอินฟลูเอนเซอร์ก็ติดต่อเราได้เลย</P>
+
+      <H3>Social Media และ Community</H3>
+      <P>สำหรับการหา Nano Influencer หรือ KOC จำนวนมาก การเข้าไปค้นหาจาก Facebook Groups, TikTok หรือ Community ที่เกี่ยวข้องกับ Category ของสินค้า ก็ยังเป็นวิธีที่ใช้ได้</P>
+      <P>ข้อดีคือมีโอกาสเจอคนที่อยู่ในกลุ่มความสนใจเฉพาะทางจริงๆ แต่ข้อแลกเปลี่ยนคือทีมต้องใช้เวลาคัดกรองโปรไฟล์และตรวจสอบข้อมูลเองมากขึ้น</P>
+
+      <H3>Search จาก Keyword และ Hashtag</H3>
+      <P>อีกวิธีที่หลายแบรนด์มองข้ามคือการค้นหาจาก Keyword ที่เกี่ยวข้องกับสินค้า วิธีนี้ช่วยให้เจอ Influencer ที่กำลังทำคอนเทนต์เกี่ยวกับ Category เดียวกับแบรนด์อยู่แล้ว และบางครั้งอาจเจอคนที่เคยพูดถึงสินค้าหรือแบรนด์มาก่อนด้วย</P>
+
+      <Divider />
+      <H2>2. เจอ Influencer แล้ว ต้องเช็กอะไรบ้าง?</H2>
+      <P>การมีรายชื่อ Influencer จำนวนมากไม่ได้แปลว่าเรามีตัวเลือกที่ดี เพราะขั้นตอนสำคัญจริงๆ คือการคัดคนที่ตรงกับ Objective และ Target ของแคมเปญ</P>
+
+      <H3>1. ดู Audience ก่อนดู Followers</H3>
+      <P>Followers บอกได้ว่าคนๆ นั้นดังแค่ไหน แต่ไม่ได้บอกว่าคนกลุ่มนั้นคือคนที่แบรนด์ต้องการหรือไม่ ลองดูข้อมูล Audience ทั้งอายุ เพศ ประเทศหรือพื้นที่ และความสนใจ หากมีข้อมูลเชิงลึกจาก Platform ให้ใช้ประกอบการตัดสินใจด้วย</P>
+
+      <H3>2. ดู Engagement และคุณภาพของคนที่เข้ามามีส่วนร่วม</H3>
+      <P>อย่าดูแค่ยอด Likes แต่ลองอ่าน Comments และดู Shares, Saves หรือ Views ประกอบด้วย</P>
+      <P>สิ่งที่น่าสนใจกว่าตัวเลขรวมคือ คนดูมีส่วนร่วมกับ Influencer มากน้อยแค่ไหน และไม่ควรใช้ค่า Engagement Rate ตัวเลขเดียวเป็นเกณฑ์ตัดสิน เพราะแต่ละ Platform หรือ Category และขนาด Followers ต่างมี Benchmark ที่แตกต่างกัน</P>
+
+      <H3>3. ดูว่า Content ของเขาเข้ากับ Brand ไหม</H3>
+      <P>ลองย้อนดูคอนเทนต์ที่ผ่านมาอย่างน้อย 10–20 โพสต์ แล้วถามตัวเองว่า ถ้าเปลี่ยนสินค้าในคลิปมาเป็นแบรนด์ของเรามันจะยังดูเป็นธรรมชาติอยู่ไหม</P>
+      <P>ดูทั้งวิธีพูด ภาษาที่ใช้ วิธีถ่าย และวิธีเล่าเรื่อง เพราะ Influencer ที่เหมาะกับแบรนด์ไม่จำเป็นต้องพูดตาม Script ได้เป๊ะที่สุด แต่ควรสามารถนำ Message ของแบรนด์ไปเล่าในสไตล์ของตัวเองได้</P>
+
+      <H3>4. เช็กประวัติการรับงานและความน่าเชื่อถือ</H3>
+      <P>ลองดูว่าเคยร่วมงานกับแบรนด์ประเภทไหนบ้าง มีการรับงานที่ใกล้เคียงกันมากเกินไปหรือไม่ และที่ผ่านมาโพสต์ Sponsored Content มีคุณภาพสม่ำเสมอหรือเปล่า</P>
+    </>
+  );
+}
+
+function InfluencerBudgetContent({ lang }: { lang: Locale }) {
+  if (lang === "en") {
+    return (
+      <>
+        <P>When a brand wants to run an Influencer Marketing campaign, the first question is always: how much budget should we set? In truth, there&apos;s no fixed number, because the right budget depends on the goal, the product, the target audience, and what you want the influencer to actually do.</P>
+        <P>So instead of starting with &quot;how much budget do we have?&quot;, start with &quot;what result does this campaign need?&quot; — then work backward to set the Budget and choose influencers that fit the Objective. Buddy Review walks through formulas for splitting your budget so it&apos;s as cost-effective and on-target as possible.</P>
+
+        <Divider />
+        <H2>1. If the goal is Conversion &amp; Sales</H2>
+        <P>For e-commerce or products that need to drive purchases directly, putting the whole budget into just a few big influencers may not work as well as spreading it across influencers at multiple tiers.</P>
+        <Note>Recommended split: KOC &amp; Nano (60%), reserved for Paid ads (30%), Micro (10%)</Note>
+        <P>This approach focuses on generating a large volume of content from smaller influencers, which can be run as paid work, Barter, or Affiliate to add extra motivation tied to actual sales.</P>
+        <P>The Paid Media budget should go toward amplifying content that&apos;s already performing well — for example, boosting a clip that&apos;s already driving sales or Engagement — rather than spreading spend equally across every piece.</P>
+
+        <H2>2. If the goal is Trust &amp; Engagement</H2>
+        <P>Suited to products that need a longer decision time or carry a higher price tag, such as skincare, supplements, clinics, or IT products.</P>
+        <Note>Recommended split: Micro (50%), Mid-Tier (40%), content promotion (10%)</Note>
+        <P>The key here is choosing influencers with genuine expertise or experience in the product&apos;s category. Even without a huge follower count, if the follower base matches your customers and real conversation is happening, it can build more credibility than a high-Reach influencer with no real connection to the product.</P>
+        <P>Another thing not to overlook: give enough time for the influencer to actually try the product, since reviews from real experience tend to feel more natural and detailed than content rushed to match a Brief.</P>
+
+        <H2>3. If the goal is Brand Awareness</H2>
+        <P>If you&apos;re launching a new product or want a big campaign that gets the whole city talking, this calls for major influencers to create real Impact.</P>
+        <Note>Recommended split: Macro &amp; Mega (60%), Mid-Tier (30%), KOC (10%)</Note>
+        <P>Most of the budget goes to top-tier influencers who serve as the Hero Content or Key Voice of the campaign, while Mid-Tier and KOC help extend the conversation from other angles, so the campaign isn&apos;t left resting on just a handful of famous names.</P>
+        <P>But the key thing is not to look at follower count alone, because good Awareness isn&apos;t just about a lot of people seeing it — you also need to check whether the people seeing it are actually your brand&apos;s target audience.</P>
+
+        <Divider />
+        <P>In summary, there&apos;s no minimum budget for Influencer Marketing that works for every brand, because a campaign using 10 influencers to drive sales naturally has a different budget structure than one using 1–2 influencers to build Awareness.</P>
+        <P>If you want sales, you may need to focus on volume and Performance. If you want credibility, you may need to weight toward influencers with genuine expertise. And if you want to build Awareness, you need to budget for influencers who can create real Impact.</P>
+        <P><strong style={{ color: "#5f26e5" }}>Because cost-effective Influencer Marketing isn&apos;t about putting your whole budget into the biggest name — it&apos;s about allocating the budget to fit what the brand actually wants to happen.</strong></P>
+      </>
+    );
+  }
+  return (
+    <>
+      <P>เวลาแบรนด์อยากทำแคมเปญ Influencer Marketing คำถามแรกคือ ต้องวางงบเท่าไหร่? จริงๆ แล้วคือไม่มีตัวเลขตายตัว เพราะงบที่เหมาะสมขึ้นอยู่กับทั้งเป้าหมาย สินค้า กลุ่มเป้าหมาย และสิ่งที่ต้องการให้ Influencer ทำ</P>
+      <P>ดังนั้นแทนที่จะเริ่มจากคำถามว่ามีงบเท่าไหร่? ลองเริ่มจากแคมเปญนี้ต้องการผลลัพธ์อะไร? แล้วค่อยย้อนกลับมาวาง Budget และเลือก Influencer ให้เหมาะกับ Objective โดย Buddy Review จะพามาดูสูตรการแบ่งสัดส่วน Budget ให้คุ้มค่าและตรงเป้าที่สุดกันครับ</P>
+
+      <Divider />
+      <H2>1. ถ้าเป้าหมายเน้นยอดขาย (Conversion &amp; Sales)</H2>
+      <P>สำหรับ E-commerce หรือสินค้าที่ต้องการกระตุ้นการซื้อโดยตรง การใช้งบทั้งหมดกับ Influencer รายใหญ่เพียงไม่กี่คน อาจไม่ได้ตอบโจทย์เท่ากับการกระจายงบไปยัง Influencer หลายระดับ</P>
+      <Note>สัดส่วนงบแนะนำ: KOC &amp; Nano (60%), กันงบไว้ยิงแอด (30%), Micro (10%)</Note>
+      <P>วิธีนี้เน้นสร้างคอนเทนต์จำนวนมากจาก Influencer ไซส์เล็ก ซึ่งสามารถใช้ทั้งการจ้างงาน, Barter หรือ Affiliate เพื่อเพิ่มแรงจูงใจจากยอดขายจริงได้</P>
+      <P>ส่วนงบ Paid Media ควรใช้สำหรับนำคอนเทนต์ที่มี Performance ดีอยู่แล้วมาต่อยอด เช่น การนำคลิปที่สร้างยอดขายหรือ Engagement ได้ดีไปทำโฆษณาเพิ่มเติม แทนที่จะกระจายงบเท่ากันทุกชิ้น</P>
+
+      <H2>2. ถ้าเป้าหมายเน้นความน่าเชื่อถือ (Trust &amp; Engagement)</H2>
+      <P>เหมาะกับสินค้าที่ต้องใช้เวลาตัดสินใจ หรือมีราคาสูง เช่น สกินแคร์ อาหารเสริม คลินิก หรือสินค้าไอที</P>
+      <Note>สัดส่วนงบแนะนำ: Micro (50%), Mid-Tier (40%), โปรโมตคอนเทนต์ (10%)</Note>
+      <P>หัวใจสำคัญจึงอยู่ที่การเลือก Influencer ที่มีความเชี่ยวชาญหรือมีประสบการณ์ตรงกับ Category ของสินค้า แม้จะมี Followers ไม่ได้สูงมาก แต่ถ้ากลุ่มผู้ติดตามตรงกับลูกค้าและมีการพูดคุยกันจริง ก็สามารถสร้างความน่าเชื่อถือได้มากกว่า Influencer ที่มี Reach สูงแต่ไม่เกี่ยวข้องกับสินค้า</P>
+      <P>อีกเรื่องที่ไม่ควรมองข้ามคือ เวลาในการทดลองใช้สินค้า เพราะรีวิวที่เกิดจากประสบการณ์จริงมักมีรายละเอียดที่เป็นธรรมชาติมากกว่าคอนเทนต์ที่ต้องรีบพูดตาม Brief</P>
+
+      <H2>3. ถ้าเป้าหมายเน้นสร้างภาพจำและสร้างกระแส (Brand Awareness)</H2>
+      <P>หากเพิ่งเปิดตัวสินค้าใหม่ หรืออยากทำแคมเปญใหญ่ให้คนพูดถึงทั้งเมือง งานนี้ต้องพึ่งอินฟลูฯ เบอร์ใหญ่เพื่อสร้าง Impact</P>
+      <Note>สัดส่วนงบแนะนำ: Macro &amp; Mega (60%), Mid-Tier (30%), KOC (10%)</Note>
+      <P>งบส่วนใหญ่จะใช้กับ Influencer ระดับใหญ่เพื่อทำหน้าที่เป็น Hero Content หรือ Key Voice ของแคมเปญ ขณะที่ Mid-Tier และ KOC สามารถช่วยขยายการพูดถึงในมุมอื่นๆ ให้แคมเปญไม่ได้จบอยู่แค่คอนเทนต์จากคนดังเพียงไม่กี่คน</P>
+      <P>แต่สิ่งสำคัญคืออย่ามองแค่จำนวน Followers เพราะ Awareness ที่ดีไม่ได้หมายถึงแค่คนเห็นเยอะ แต่ต้องดูด้วยว่า คนที่เห็นคือกลุ่มเป้าหมายของแบรนด์หรือไม่</P>
+
+      <Divider />
+      <P>สรุปแล้วการทำ Influencer Marketing ไม่มี Minimum Budget ที่ใช้ได้กับทุกแบรนด์ เพราะแคมเปญที่ใช้ Influencer 10 คนเพื่อสร้างยอดขาย ย่อมมีโครงสร้างงบต่างจากแคมเปญที่ใช้ Influencer 1–2 คนเพื่อสร้าง Awareness</P>
+      <P>ถ้าต้องการยอดขาย อาจต้องเน้นจำนวนและ Performance ถ้าต้องการความน่าเชื่อถือ อาจต้องให้น้ำหนักกับ Influencer ที่มีความเชี่ยวชาญ และถ้าต้องการสร้าง Awareness ก็ต้องวางงบสำหรับ Influencer ที่สามารถสร้าง Impact ได้</P>
+      <P><strong style={{ color: "#5f26e5" }}>เพราะการทำ Influencer Marketing ที่คุ้มค่า ไม่ใช่การเอางบทั้งหมดไปลงกับคนที่ดังที่สุด แต่คือการวางงบให้เหมาะกับสิ่งที่แบรนด์ต้องการให้เกิดขึ้นจริง</strong></P>
+    </>
+  );
+}
+
+function InfluencerChecklistContent({ lang }: { lang: Locale }) {
+  if (lang === "en") {
+    return (
+      <>
+        <P>When choosing an influencer, many brands start by looking at who has the most followers, or who&apos;s trending right now. But those numbers don&apos;t tell you the whole story of whether that influencer actually fits the campaign.</P>
+        <P>Because effective Influencer Marketing doesn&apos;t depend on who has the most followers — it depends on <strong style={{ color: "#5f26e5" }}>who has an identity and a following that genuinely matches what the brand wants to communicate</strong>. Before deciding to hire, run through these 4 checks to see which influencer fits your brand best.</P>
+
+        <Divider />
+        <H2>1. Expertise and credibility</H2>
+        <P>Check whether this influencer actually has expertise in the topic the brand wants to communicate, and how consistently they&apos;ve produced content in that category. Consistency of content helps viewers remember what they&apos;re knowledgeable about, giving people a reason to trust their recommendations.</P>
+
+        <H2>2. Community quality</H2>
+        <P>Don&apos;t just look at follower count — look at who&apos;s actually following and engaging with that influencer. For example: are comments relevant to the content, does further conversation happen, and how closely does the follower base match the brand&apos;s target audience? A well-matched community can be worth more than a large follower base with no real connection to the product.</P>
+
+        <H2>3. Brand fit</H2>
+        <P>Every influencer has a different personality, image, and storytelling style. Ask yourself: would it feel natural for them to talk about our brand, and does their identity align with the image the brand wants to project? This fit has a direct effect on how credible the content feels.</P>
+
+        <H2>4. Professionalism</H2>
+        <P>Beyond the numbers and the content, don&apos;t forget to look at how they work — from responsiveness and delivering on time, to understanding the Brief, receiving feedback, and offering additional ideas. An influencer who works in an organized way helps the campaign move forward smoothly and reduces problems that can come up during the collaboration.</P>
+
+        <Divider />
+        <P>Choosing the right influencer for your brand shouldn&apos;t end at &quot;how many followers does this person have?&quot; — it should start from &quot;how well does this person fit what we want to communicate?&quot;</P>
+        <P>The influencer&apos;s credibility, the quality of their community, brand fit, and how they work all help brands make a more well-rounded decision.</P>
+        <P><strong style={{ color: "#5f26e5" }}>Because in the end, the best influencer may not be the one with the highest numbers — but the one who genuinely reaches your target audience and makes your brand talked about in a way that feels natural.</strong></P>
+      </>
+    );
+  }
+  return (
+    <>
+      <P>การเลือกอินฟลูเอนเซอร์สักคน หลายแบรนด์อาจเริ่มต้นจากการดูว่าใครมี Followers เยอะ หรือใครกำลังเป็นกระแส แต่ตัวเลขเหล่านี้ไม่ได้บอกทั้งหมดว่าอินฟลูเอนเซอร์คนนั้นเหมาะกับแคมเปญหรือไม่</P>
+      <P>เพราะ Influencer Marketing ที่ได้ผล ไม่ได้ขึ้นอยู่กับว่าใครมีคนตามเยอะที่สุด แต่คือ <strong style={{ color: "#5f26e5" }}>ใครมีตัวตนและกลุ่มผู้ติดตามที่ตรงกับสิ่งที่แบรนด์ต้องการสื่อสาร</strong> ก่อนตัดสินใจจ้าง ลองเช็ก 4 ข้อนี้ เพื่อดูว่าอินฟลูเอนเซอร์คนไหนเหมาะกับแบรนด์มากที่สุด</P>
+
+      <Divider />
+      <H2>1. ความเชี่ยวชาญและความน่าเชื่อถือ</H2>
+      <P>ลองดูว่าอินฟลูเอนเซอร์คนนี้มีความเชี่ยวชาญในเรื่องที่แบรนด์ต้องการสื่อสารหรือไม่ และที่ผ่านมาเขาทำคอนเทนต์ในหมวดนั้นอย่างต่อเนื่องมากน้อยแค่ไหน เพราะความสม่ำเสมอของเนื้อหาช่วยให้คนดูจดจำว่าเขาเชี่ยวชาญเรื่องอะไรและมีเหตุผลที่จะเชื่อคำแนะนำของเขา</P>
+
+      <H2>2. คุณภาพของ Community</H2>
+      <P>อย่าดูแค่จำนวน Followers แต่ลองดูว่าใครกำลังติดตามและมีส่วนร่วมกับอินฟลูเอนเซอร์คนนั้นจริงๆ เช่น คอมเมนต์มีความเกี่ยวข้องกับคอนเทนต์หรือไม่ มีการพูดคุยต่อหรือเปล่า และกลุ่มผู้ติดตามตรงกับกลุ่มเป้าหมายของแบรนด์มากแค่ไหน เพราะ Community ที่ตรงกลุ่มอาจมีค่ามากกว่าฐานผู้ติดตามที่มีจำนวนมากแต่ไม่ได้มีความเกี่ยวข้องกับสินค้า</P>
+
+      <H2>3. ความเหมาะสมกับแบรนด์</H2>
+      <P>อินฟลูเอนเซอร์แต่ละคนมีทั้งบุคลิก ภาพลักษณ์ และสไตล์การเล่าที่แตกต่างกัน ลองถามตัวเองว่าถ้าให้เขาพูดถึงแบรนด์ของเราแล้วจะรู้สึกเป็นธรรมชาติไหม และตัวตนของเขาสอดคล้องกับภาพที่แบรนด์ต้องการสื่อสารหรือไม่ เพราะความเข้ากันตรงนี้มีผลโดยตรงต่อความน่าเชื่อถือของคอนเทนต์</P>
+
+      <H2>4. ความเป็นมืออาชีพ</H2>
+      <P>นอกจากตัวเลขและคอนเทนต์แล้ว อย่าลืมดูวิธีทำงานด้วย ตั้งแต่การตอบกลับ การส่งงานตรงเวลา การทำความเข้าใจ Brief ไปจนถึงการรับ Feedback และเสนอไอเดียเพิ่มเติม อินฟลูเอนเซอร์ที่ทำงานเป็นระบบจะช่วยให้แคมเปญเดินหน้าได้ราบรื่น และลดปัญหาที่อาจเกิดขึ้นระหว่างการทำงาน</P>
+
+      <Divider />
+      <P>การเลือกอินฟลูเอนเซอร์ที่เหมาะกับแบรนด์จึงไม่ควรจบที่คำถามว่าคนนี้มี Followers เท่าไหร่ แต่ควรตั้งโจทย์ว่า คนนี้เหมาะกับสิ่งที่เราต้องการสื่อสารแค่ไหน</P>
+      <P>ทั้งความน่าเชื่อถือของตัวอินฟลูเอนเซอร์ คุณภาพของ Community ความเข้ากันกับแบรนด์ และวิธีการทำงานล้วนเป็นส่วนที่ช่วยให้แบรนด์ตัดสินใจได้รอบด้านมากขึ้น</P>
+      <P><strong style={{ color: "#5f26e5" }}>เพราะสุดท้ายแล้วอินฟลูเอนเซอร์ที่ดีที่สุดอาจไม่ใช่คนที่มีตัวเลขสูงที่สุด แต่คือคนที่เข้าถึงกลุ่มเป้าหมายได้ตรง และทำให้แบรนด์ถูกพูดถึงในแบบที่เป็นธรรมชาติ</strong></P>
+    </>
+  );
+}
 
 function Instagram2026BenchmarkContent({ lang }: { lang: Locale }) {
   if (lang === "en") {
@@ -1099,7 +1500,7 @@ function CopywritingContent({ lang }: { lang: Locale }) {
   );
 }
 
-const SLUGS = ["instagram-2026-benchmark", "content-per-platform-fb-tiktok-ig", "social-media-insight-2026", "content-strategy-canvas", "best-time-to-post-2025", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas", "6-copywriting-techniques"];
+const SLUGS = ["how-to-start-influencer-campaign", "how-to-choose-influencer-marketing-agency", "how-to-find-the-right-influencer", "influencer-marketing-budget-by-objective", "how-to-choose-influencer-checklist", "instagram-2026-benchmark", "content-per-platform-fb-tiktok-ig", "social-media-insight-2026", "content-strategy-canvas", "best-time-to-post-2025", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas", "6-copywriting-techniques"];
 
 export function generateStaticParams() {
   return SLUGS.map((slug) => ({ slug }));
@@ -1169,7 +1570,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ lang:
           </h1>
           <div style={{ height: "1px", background: "rgba(255,255,255,0.2)", marginBottom: "32px" }} />
 
-          {post.slug === "instagram-2026-benchmark" ? (
+          {post.slug === "how-to-start-influencer-campaign" ? (
+            <StartCampaignContent lang={lang as Locale} />
+          ) : post.slug === "how-to-choose-influencer-marketing-agency" ? (
+            <ChooseAgencyContent lang={lang as Locale} />
+          ) : post.slug === "how-to-find-the-right-influencer" ? (
+            <FindInfluencerContent lang={lang as Locale} />
+          ) : post.slug === "influencer-marketing-budget-by-objective" ? (
+            <InfluencerBudgetContent lang={lang as Locale} />
+          ) : post.slug === "how-to-choose-influencer-checklist" ? (
+            <InfluencerChecklistContent lang={lang as Locale} />
+          ) : post.slug === "instagram-2026-benchmark" ? (
             <Instagram2026BenchmarkContent lang={lang as Locale} />
           ) : post.slug === "content-per-platform-fb-tiktok-ig" ? (
             <ContentPerPlatformContent lang={lang as Locale} />
