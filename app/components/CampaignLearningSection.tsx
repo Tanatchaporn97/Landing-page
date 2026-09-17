@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
+const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
 
 const STEPS = [
   { num: "01", title: "See What Worked", titleTh: "ดูว่าอะไรได้ผล",
@@ -39,7 +40,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
         <div>
           <Badge variant="outline">Campaign Learning</Badge>
         </div>
-        <h3 style={{ ...KT, fontSize: "clamp(28px,3.3vw,44px)", fontWeight: 800, margin: 0, lineHeight: 1.2 }}>
+        <h3 style={{ ...PIERSON, fontSize: "clamp(28px,3.3vw,44px)", fontWeight: 800, margin: 0, lineHeight: 1.2 }}>
           <span style={{ color: "#111827" }}>Measure, Learn,</span>
           <br />
           <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",

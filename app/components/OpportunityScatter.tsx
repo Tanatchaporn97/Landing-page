@@ -50,18 +50,22 @@ const STATS: StatItem[] = [
 
 function CategoryPillCard({ icon, label }: { icon: string; label: string }) {
   return (
-    <div style={{
-      display: "flex", alignItems: "center", gap: "10px",
-      background: "#ffffff", borderRadius: "50px",
-      padding: "10px 20px 10px 10px",
-      boxShadow: "0 12px 28px rgba(95,38,229,0.14)",
-      whiteSpace: "nowrap",
-    }}>
+    <motion.div
+      whileHover={{ y: -10, scale: 1.06, boxShadow: "0 20px 40px rgba(95,38,229,0.24)" }}
+      transition={{ type: "spring", stiffness: 320, damping: 22 }}
+      style={{
+        display: "flex", alignItems: "center", gap: "10px",
+        background: "#ffffff", borderRadius: "50px",
+        padding: "10px 20px 10px 10px",
+        boxShadow: "0 12px 28px rgba(95,38,229,0.14)",
+        whiteSpace: "nowrap",
+        pointerEvents: "auto", cursor: "pointer",
+      }}>
       <div style={{ width: "36px", height: "36px", borderRadius: "50%", background: "#f3f4f6", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "16px", flexShrink: 0 }}>
         {icon}
       </div>
       <span style={{ ...KT, fontSize: "13px", fontWeight: 700, color: "#111827" }}>{label}</span>
-    </div>
+    </motion.div>
   );
 }
 

@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, animate } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -25,12 +25,16 @@ const ContactFormSection = dynamic(() => import("./ContactFormSection"));
 
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
+const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
 
 
 const DARK_BG = "transparent";
 
 // Hoisted to a stable reference so it doesn't get recreated (and break
 // memoized scroll-progress calculations) on every render.
+const SERVICE_CARD_WIDTH = 220; // inactive card width, px
+const SERVICE_CARD_GAP = 20; // gap between cards in the scroll row, px
+
 const OUR_SERVICES = [
   { img: "/services/campaign-reviews.jpg", title: "Campaign Reviews",
     desc: "รีวิวสินค้าและบริการผ่านอินฟลูเอนเซอร์ที่ใช่ พร้อมสื่อสารข้อความและจุดเด่นของแบรนด์ได้อย่างมีประสิทธิภาพ เปลี่ยนให้ทุกความสนใจเป็นยอดขาย",
@@ -159,22 +163,47 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
   // ancestor, including the page itself, so once this section scrolled out
   // of view the 5s auto-advance timer below kept yanking the whole page
   // back up into view to satisfy "block: nearest".
+  //
+  // The target is computed from the fixed card width/gap constants instead
+  // of a live getBoundingClientRect() read: at the instant activeService
+  // changes, the card is still mid-tween from its old width (220 → 380),
+  // so measuring it in the moment produced a target based on the stale,
+  // narrower size.
+  //
+  // Animated with motion's own animate() rather than scrollTo({behavior:
+  // "smooth"}): the browser's native smooth-scroll runs on its own timing,
+  // independent of the card's 0.5s width tween, so the two fought each
+  // other — the card visibly overshot off-screen to the left before
+  // snapping back once the two animations happened to converge. Driving
+  // scrollLeft with the exact same duration/easing as the card's layout
+  // transition keeps them perfectly in lockstep.
+  //
+  // A step to a non-adjacent card — the 12→0 auto-advance wraparound, or
+  // clicking a card far from the current one — covers ~2000px of scroll
+  // in the same 0.5s the width tween runs. The card sits scrolled out of
+  // view for nearly the whole transition and only snaps into frame right
+  // at the end, reading as if it got clipped at the row's edge. Jumping
+  // straight to the target for these long hops (and only animating the
+  // short, adjacent-card case) avoids that off-screen sweep entirely.
+  const prevActiveServiceRef = useRef(0);
   const scrollActiveCardIntoView = () => {
     const container = servicesScrollRef.current;
-    const card = serviceCardRefs.current[activeService];
-    if (!container || !card) return;
-    const delta = card.getBoundingClientRect().left - container.getBoundingClientRect().left;
-    container.scrollTo({ left: container.scrollLeft + delta, behavior: "smooth" });
+    if (!container) return;
+    const prev = prevActiveServiceRef.current;
+    const target = activeService * (SERVICE_CARD_WIDTH + SERVICE_CARD_GAP);
+    if (Math.abs(activeService - prev) === 1) {
+      animate(container.scrollLeft, target, {
+        duration: 0.5,
+        ease: [0.4, 0, 0.2, 1],
+        onUpdate: (v) => { container.scrollLeft = v; },
+      });
+    } else {
+      container.scrollLeft = target;
+    }
   };
   useEffect(() => {
     scrollActiveCardIntoView();
-    // The clicked/auto-advanced card is still mid-expand (220px → 380px) at this
-    // point, so the browser computes the scroll target from its old, narrower
-    // rect. Re-issue the scroll once the width tween settles so the final
-    // resting position lines up with the fully-expanded card — otherwise the
-    // first card in the loop can end up partially clipped at the left edge.
-    const id = setTimeout(scrollActiveCardIntoView, 520);
-    return () => clearTimeout(id);
+    prevActiveServiceRef.current = activeService;
   }, [activeService]);
 
   // Auto-advance the Our Services row every 5s, looping back to the start;
@@ -241,7 +270,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
           {/* Left: real hero copy, playful stacked layout + underline squiggle + pill CTA */}
           <div style={{ position: "relative" }}>
-            <h2 className="font-bold uppercase" style={{ ...KT, color: "#111827", fontSize: "clamp(28px,3.6vw,46px)", lineHeight: 1.2, margin: "1lh 0 24px" }}>
+            <h2 className="font-bold uppercase" style={{ ...PIERSON, color: "#111827", fontSize: "clamp(28px,3.6vw,46px)", lineHeight: 1.2, margin: "1lh 0 24px" }}>
               {lang === "th" ? (
                 <>ไม่ใช่แค่กลยุทธ์<br/></>
               ) : (
@@ -318,7 +347,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       {/* ── Tagline ── */}
       <section className="pt-20 px-6" style={{ paddingBottom: 0 }}>
         <div className="text-center" style={{ maxWidth: "860px", margin: "0 auto" }}>
-          <h2 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, lineHeight: 1.3, margin: "0 0 20px" }}>
+          <h2 style={{ ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, lineHeight: 1.3, margin: "0 0 20px" }}>
             <span style={{ color: "#111827" }}>{lang === "th" ? "แคมเปญอินฟลูเอนเซอร์" : "Influencer Campaigns"}</span>{" "}
             <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
@@ -349,7 +378,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               <div>
                 <Badge variant="outline">What We Do</Badge>
               </div>
-              <h2 className="font-bold section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: 0,
+              <h2 className="font-bold section-h2-fixed" style={{ ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: 0,
                 fontFeatureSettings: "'pnum' on,'lnum' on", color: "#111827" }}>
                 Solutions for Every{" "}
                 <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
@@ -382,7 +411,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             onMouseEnter={() => setServicesAutoPaused(true)}
             onMouseLeave={() => setServicesAutoPaused(false)}
             style={{
-              display: "flex", gap: "20px", overflowX: "auto", scrollSnapType: "x mandatory",
+              display: "flex", gap: `${SERVICE_CARD_GAP}px`, overflowX: "auto", scrollSnapType: "x mandatory",
               scrollbarWidth: "none", msOverflowStyle: "none" as React.CSSProperties["msOverflowStyle"],
               alignItems: "center", paddingBottom: "8px",
             }}>
@@ -393,7 +422,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   ref={(el) => { serviceCardRefs.current[i] = el; }}
                   transition={{ type: "tween", duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
                   style={{
-                    width: isActive ? 380 : 220,
+                    width: isActive ? 380 : SERVICE_CARD_WIDTH,
                     // Fixed regardless of active state — otherwise the varying description
                     // length made the row (and everything below it) resize on every 5s
                     // auto-advance tick, which felt like the page yanking itself back up
@@ -466,7 +495,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", textAlign: "center", marginBottom: "56px" }}>
             <Badge variant="outline">Why Buddy Review</Badge>
-            <h2 className="font-bold section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2,
+            <h2 className="font-bold section-h2-fixed" style={{ ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2,
               fontFeatureSettings: "'pnum' on,'lnum' on", color: "#111827", margin: 0 }}>
               Think Smarter,{" "}
               <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
@@ -515,7 +544,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", textAlign: "center", marginBottom: "8px" }}>
             <Badge variant="outline">Selected Campaigns</Badge>
             <h2 className="section-title font-bold section-h2-fixed"
-              style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "1.2", margin: 0,
+              style={{ ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "1.2", margin: 0,
                 fontFeatureSettings: "'pnum' on,'lnum' on" }}>
               See the Work{" "}
               <span style={{
@@ -637,7 +666,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
 
           <h2 className="section-title text-center font-bold mb-12 section-h2-fixed"
-            style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
+            style={{ ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
               fontFeatureSettings: "'pnum' on,'lnum' on" }}>
             Success{" "}
             <span style={{
@@ -730,7 +759,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <div className="text-center" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", maxWidth: "760px", margin: "0 auto 56px" }}>
             <Badge variant="outline">Campaign Flow</Badge>
-            <h2 className="section-h2-fixed" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, lineHeight: 1.3, color: "#111827", margin: 0 }}>
+            <h2 className="section-h2-fixed" style={{ ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, lineHeight: 1.3, color: "#111827", margin: 0 }}>
               Keep Every Step{" "}
               <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
                 WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
@@ -786,7 +815,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
       {/* ── Campaign Learning — Measure, Learn, Improve ── */}
       <section style={{
-        backgroundImage: "url('/creator-mockup/campaign-learning-bg2.jpg')",
+        backgroundImage: "url('/creator-mockup/light-gradient-bg.jpg')",
         backgroundSize: "cover", backgroundPosition: "center",
         position: "relative", overflow: "hidden",
       }} className="py-20 px-6">

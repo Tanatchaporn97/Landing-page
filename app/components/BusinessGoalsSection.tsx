@@ -5,6 +5,7 @@ import { TiltCard } from "@/components/ui/standard-card";
 import { Badge } from "@/components/ui/badge";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
+const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
 
 const GOALS = [
   { num: "01", Icon: Rocket, title: "Launch",
@@ -36,7 +37,7 @@ export default function BusinessGoalsSection({ lang }: { lang: "th" | "en" }) {
           <Badge variant="outline">Business Objectives</Badge>
         </div>
         <h3 style={{
-          ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800,
+          ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800,
           margin: 0, lineHeight: 1.15,
         }}>
           <span style={{ color: "#111827" }}>Start With Your </span>

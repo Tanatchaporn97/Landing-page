@@ -4,6 +4,7 @@ import type { CSSProperties } from "react";
 import { Badge } from "@/components/ui/badge";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
+const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
 
 const TAGS = ["Location", "Demographic", "Content Category", "Occupation", "Persona", "Storytelling"];
 const KEYWORDS = ["Skincare", "Beauty Routine", "Makeup", "Lifestyle"];
@@ -32,7 +33,7 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
         <div>
           <Badge variant="outline">Creator Selection</Badge>
         </div>
-        <h3 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, margin: 0, lineHeight: 1.15 }}>
+        <h3 style={{ ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, margin: 0, lineHeight: 1.15 }}>
           <span style={{ color: "#111827" }}>Find the Right </span>
           <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
