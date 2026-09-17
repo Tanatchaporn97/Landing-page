@@ -32,7 +32,6 @@
       <stop offset="1" stop-color="#ffc93f"/>
     </linearGradient>
   </defs>
-  <rect width="400" height="300" fill="url(#bg2)"/>
 
   <!-- three teammates, overlapping rounded silhouettes with radial shading for volume -->
   <g>

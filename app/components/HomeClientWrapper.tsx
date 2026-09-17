@@ -195,7 +195,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           }
         `}</style>
 
-        <div className="relative" style={{ zIndex: 3 }}>
+        <div className="relative" style={{ zIndex: 12 }}>
           {/* Impact Stats — static figures from Success Stories section */}
           <div className="hero-stats-strip" style={{
             display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "22px",

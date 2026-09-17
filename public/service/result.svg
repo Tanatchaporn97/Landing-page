@@ -26,7 +26,6 @@
       <stop offset="1" stop-color="#5f26e5"/>
     </linearGradient>
   </defs>
-  <rect width="400" height="300" fill="url(#bg4)"/>
 
   <!-- trophy cup, radial shading for a rounder, glossier body -->
   <g>

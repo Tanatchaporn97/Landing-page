@@ -66,7 +66,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
             }}>
               <div style={{ display: "flex", alignItems: "baseline", gap: "12px", marginBottom: "6px" }}>
                 <span style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#9ca3af" }}>{step.num}</span>
-                <h4 style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: 0, color: "#111827" }}>
+                <h4 style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: 0, color: "#5f26e5", opacity: 1 }}>
                   {step.title}
                 </h4>
               </div>
