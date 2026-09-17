@@ -1,27 +1,14 @@
 "use client";
-import { motion } from "motion/react";
+import { GradientCard } from "@/components/ui/gradient-card";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const ITEMS = [
-  { src: "/service/built-on-clarity.svg", title: "Built on Clarity",           desc: "ทำงานเป็นระบบชัดเจนตามมาตรฐาน",         descEn: "Working within a clear, standardized system." },
-  { src: "/service/teamwork.svg",                title: "Teamwork with Intelligence", desc: "ทีมที่เข้าใจทั้งแบรนด์และอินฟลูเอนเซอร์", descEn: "A team that understands both brands and influencers." },
-  { src: "/service/data-driven-precision.svg",   title: "Data-Driven Precision",      desc: "ใช้ข้อมูลช่วยตัดสินใจได้แม่นขึ้น",       descEn: "Data that helps you make sharper decisions." },
-  { src: "/service/result.svg",                  title: "Results That Matter",        desc: "วัดผลให้สอดคล้องกับเป้าหมายของแบรนด์",   descEn: "Measuring results that align with your brand's goals." },
+  { src: "/service/built-on-clarity.svg", title: "Built on Clarity",           desc: "ทำงานเป็นระบบชัดเจนตามมาตรฐาน",         descEn: "Working within a clear, standardized system.", badgeText: "Standardized", badgeColor: "#5f26e5" },
+  { src: "/service/teamwork.svg",                title: "Teamwork with Intelligence", desc: "ทีมที่เข้าใจทั้งแบรนด์และอินฟลูเอนเซอร์", descEn: "A team that understands both brands and influencers.", badgeText: "Collaborative", badgeColor: "#ff0089" },
+  { src: "/service/data-driven-precision.svg",   title: "Data-Driven Precision",      desc: "ใช้ข้อมูลช่วยตัดสินใจได้แม่นขึ้น",       descEn: "Data that helps you make sharper decisions.", badgeText: "Data-Driven", badgeColor: "#2e1a7a" },
+  { src: "/service/result.svg",                  title: "Results That Matter",        desc: "วัดผลให้สอดคล้องกับเป้าหมายของแบรนด์",   descEn: "Measuring results that align with your brand's goals.", badgeText: "Outcome-Focused", badgeColor: "#b6146e" },
 ];
-
-// Same hover-animation approach as components/ui/gradient-card.tsx's GradientCard
-// (Brand page "Think Smarter, Execute Better" section): the card lifts/scales as
-// a whole while its icon independently zooms and tilts, on a spring.
-const cardAnimation = {
-  rest: { scale: 1, y: 0 },
-  hover: { scale: 1.03, y: -4 },
-};
-
-const iconAnimation = {
-  rest: { scale: 1, rotate: 0 },
-  hover: { scale: 1.1, rotate: 3 },
-};
 
 export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) {
   return (
@@ -43,29 +30,19 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
         </p>
       </div>
 
-      {/* Right — 2x2 grid of soft-gray cards, icon anchored to the bottom-right corner */}
+      {/* Right — 2x2 grid, same GradientCard used by Brand's "Think Smarter, Execute Better" */}
       <div className="tps-cards-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "16px" }}>
         {ITEMS.map((item) => (
-          <motion.div key={item.title} className="tps-card"
-            variants={cardAnimation} initial="rest" whileHover="hover" animate="rest"
-            style={{
-              position: "relative", overflow: "hidden", borderRadius: "16px",
-              background: "#f4f3f8", padding: "16px", minHeight: "140px",
-              display: "flex", flexDirection: "column", cursor: "pointer",
-            }}>
-            <h4 style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#111827", margin: 0, position: "relative", zIndex: 1 }}>
-              {item.title}
-            </h4>
-            <p style={{ ...KT, fontSize: "11px", lineHeight: 1.5, color: "#6b7280", margin: "6px 0 0", maxWidth: "62%", position: "relative", zIndex: 1 }}>
-              {lang === "th" ? item.desc : item.descEn}
-            </p>
-            <motion.img
-              src={item.src} alt={item.title}
-              variants={iconAnimation}
-              transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              style={{ position: "absolute", right: "-6%", bottom: "-8%", width: "44%", pointerEvents: "none" }}
-            />
-          </motion.div>
+          <GradientCard
+            key={item.title}
+            gradient="purple"
+            badgeText={item.badgeText}
+            badgeColor={item.badgeColor}
+            title={item.title}
+            description={lang === "th" ? item.desc : item.descEn}
+            imageUrl={item.src}
+            style={{ ...KT, minHeight: "180px", padding: "20px" }}
+          />
         ))}
       </div>
 

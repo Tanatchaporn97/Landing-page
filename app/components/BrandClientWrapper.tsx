@@ -324,12 +324,12 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               top: "50%", left: "50%", transform: "translate(-50%,-50%)", zIndex: 0,
             }} />
             <motion.div
-              style={{ position: "relative", aspectRatio: "6251 / 4239", zIndex: 1 }}
+              style={{ position: "relative", aspectRatio: "2457 / 2529", zIndex: 1 }}
               animate={{ rotate: -3 }}
               whileHover={{ rotate: 0, scale: 1.03 }}
               transition={{ type: "spring", stiffness: 200, damping: 18 }}
             >
-              <Image src="/im-brand-dashboard.png" alt={lang === "th" ? "แดชบอร์ดแคมเปญ" : "Campaign dashboard"} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "contain" }} />
+              <Image src="/heading-brand.png" alt={lang === "th" ? "แดชบอร์ดแคมเปญ" : "Campaign dashboard"} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "contain" }} />
             </motion.div>
 
             <span style={{ position: "absolute", top: "6%", left: "0%", fontSize: "28px", zIndex: 2 }}>✨</span>
@@ -427,7 +427,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                     // length made the row (and everything below it) resize on every 5s
                     // auto-advance tick, which felt like the page yanking itself back up
                     // whenever this section had already scrolled out of view.
-                    height: "460px",
+                    height: "486px",
                     flexShrink: 0, scrollSnapAlign: "start",
                     borderRadius: isActive ? 24 : 20, overflow: "hidden", cursor: "pointer",
                     background: "rgba(255,255,255,0.22)",
@@ -449,10 +449,10 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   <motion.div layout style={{
                     padding: isActive ? "24px 26px 28px" : "18px 18px 20px",
                     display: "flex", flexDirection: "column",
-                    height: isActive ? "170px" : "68px", flexShrink: 0, overflow: "hidden",
+                    height: isActive ? "196px" : "80px", flexShrink: 0, overflow: "hidden",
                   }}>
                     <h3 style={{ ...KT, fontSize: isActive ? "22px" : "16px", fontWeight: 700, color: "#5f26e5", margin: isActive ? "0 0 10px" : 0, lineHeight: 1.3,
-                      display: "-webkit-box", WebkitLineClamp: isActive ? 1 : 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+                      display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
                       {item.title}
                     </h3>
                     {isActive && (
