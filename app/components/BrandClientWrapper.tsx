@@ -153,18 +153,27 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
   // previous one. This keeps the expand animation and the scroll position
   // moving together as a single connected motion, instead of the strip
   // jumping to wherever a fixed-pixel scrollBy happened to land.
-  useEffect(() => {
+  //
+  // Deliberately scrolls only servicesScrollRef's own scrollLeft instead of
+  // using card.scrollIntoView(): scrollIntoView walks up every scrollable
+  // ancestor, including the page itself, so once this section scrolled out
+  // of view the 5s auto-advance timer below kept yanking the whole page
+  // back up into view to satisfy "block: nearest".
+  const scrollActiveCardIntoView = () => {
+    const container = servicesScrollRef.current;
     const card = serviceCardRefs.current[activeService];
-    if (!card) return;
-    card.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    if (!container || !card) return;
+    const delta = card.getBoundingClientRect().left - container.getBoundingClientRect().left;
+    container.scrollTo({ left: container.scrollLeft + delta, behavior: "smooth" });
+  };
+  useEffect(() => {
+    scrollActiveCardIntoView();
     // The clicked/auto-advanced card is still mid-expand (220px → 380px) at this
     // point, so the browser computes the scroll target from its old, narrower
     // rect. Re-issue the scroll once the width tween settles so the final
     // resting position lines up with the fully-expanded card — otherwise the
     // first card in the loop can end up partially clipped at the left edge.
-    const id = setTimeout(() => {
-      serviceCardRefs.current[activeService]?.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
-    }, 520);
+    const id = setTimeout(scrollActiveCardIntoView, 520);
     return () => clearTimeout(id);
   }, [activeService]);
 
@@ -372,7 +381,11 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           <div ref={servicesScrollRef}
             onMouseEnter={() => setServicesAutoPaused(true)}
             onMouseLeave={() => setServicesAutoPaused(false)}
-            style={{ display: "flex", gap: "20px", overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none", msOverflowStyle: "none" as React.CSSProperties["msOverflowStyle"], alignItems: "center", paddingBottom: "8px" }}>
+            style={{
+              display: "flex", gap: "20px", overflowX: "auto", scrollSnapType: "x mandatory",
+              scrollbarWidth: "none", msOverflowStyle: "none" as React.CSSProperties["msOverflowStyle"],
+              alignItems: "center", paddingBottom: "8px",
+            }}>
             {OUR_SERVICES.map((item, i) => {
               const isActive = activeService === i;
               return (
@@ -380,7 +393,13 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   ref={(el) => { serviceCardRefs.current[i] = el; }}
                   transition={{ type: "tween", duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
                   style={{
-                    width: isActive ? 380 : 220, flexShrink: 0, scrollSnapAlign: "start",
+                    width: isActive ? 380 : 220,
+                    // Fixed regardless of active state — otherwise the varying description
+                    // length made the row (and everything below it) resize on every 5s
+                    // auto-advance tick, which felt like the page yanking itself back up
+                    // whenever this section had already scrolled out of view.
+                    height: "460px",
+                    flexShrink: 0, scrollSnapAlign: "start",
                     borderRadius: isActive ? 24 : 20, overflow: "hidden", cursor: "pointer",
                     background: "rgba(255,255,255,0.22)",
                     backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
@@ -388,7 +407,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                     boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
                     display: "flex", flexDirection: "column",
                   }}>
-                  <div style={{ position: "relative", width: "100%", aspectRatio: isActive ? "8 / 5" : "3 / 4", flexShrink: 0 }}>
+                  <div style={{ position: "relative", width: "100%", flex: 1, minHeight: 0 }}>
                     <Image src={item.img} alt={item.title} fill sizes={isActive ? "380px" : "220px"}
                       style={{ objectFit: "cover", objectPosition: item.objectPosition || "center" }} />
                     {/* Fade the image into the card's white body — long, eased, multi-stop
@@ -398,12 +417,20 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                       background: "linear-gradient(to bottom, transparent 0%, transparent 25%, rgba(255,255,255,0.15) 45%, rgba(255,255,255,0.45) 65%, rgba(255,255,255,0.8) 85%, #ffffff 100%)",
                     }} />
                   </div>
-                  <motion.div layout style={{ padding: isActive ? "24px 26px 28px" : "18px 18px 20px", display: "flex", flexDirection: "column", flex: 1 }}>
-                    <h3 style={{ ...KT, fontSize: isActive ? "22px" : "16px", fontWeight: 700, color: "#5f26e5", margin: isActive ? "0 0 10px" : 0, lineHeight: 1.3 }}>
+                  <motion.div layout style={{
+                    padding: isActive ? "24px 26px 28px" : "18px 18px 20px",
+                    display: "flex", flexDirection: "column",
+                    height: isActive ? "170px" : "68px", flexShrink: 0, overflow: "hidden",
+                  }}>
+                    <h3 style={{ ...KT, fontSize: isActive ? "22px" : "16px", fontWeight: 700, color: "#5f26e5", margin: isActive ? "0 0 10px" : 0, lineHeight: 1.3,
+                      display: "-webkit-box", WebkitLineClamp: isActive ? 1 : 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
                       {item.title}
                     </h3>
                     {isActive && (
-                      <p style={{ ...KT, fontSize: "14px", lineHeight: 1.7, color: "#4b5563", margin: 0 }}>
+                      <p style={{
+                        ...KT, fontSize: "14px", lineHeight: 1.7, color: "#4b5563", margin: 0,
+                        display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden",
+                      }}>
                         {lang === "th" ? item.desc : item.descEn}
                       </p>
                     )}
