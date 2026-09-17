@@ -41,7 +41,7 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
             color: "#111827",
             margin: "0 0 16px", lineHeight: 1.2,
           }}>
-            <span style={{ fontFamily: "var(--font-outfit), sans-serif", fontWeight: 700 }}>Path to </span><span style={{ fontFamily: "var(--font-outfit), sans-serif", fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Partnership</span>
+            <span style={{ ...KT, fontWeight: 700 }}>Path to </span><span style={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Partnership</span>
           </h2>
         </div>
 

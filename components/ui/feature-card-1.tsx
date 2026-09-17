@@ -3,6 +3,8 @@ import * as React from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
+const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
+
 // Define the props for the component
 type ConflictingMotionProps =
   | "title"
@@ -100,7 +102,7 @@ const AnimatedFeatureCard = React.forwardRef<
       <div className="relative z-20 rounded-lg border border-black/5 bg-white/80 p-4 backdrop-blur-sm">
         <p
           className="mb-1.5 text-xl font-bold leading-snug"
-          style={{ color: "var(--feature-color)" }}
+          style={{ ...KT, color: "var(--feature-color)" }}
         >
           {tag}
         </p>

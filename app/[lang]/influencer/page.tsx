@@ -81,7 +81,6 @@ import { AnimatedFeatureCard } from "@/components/ui/feature-card-1";
 import BuddyRanksInteractive from "../../components/BuddyRanksInteractive";
 import CreatorChannelsSection from "../../components/CreatorChannelsSection";
 import CreatorStories from "../../components/CreatorStories";
-import MarqueeTicker from "../../components/MarqueeTicker";
 import { type Locale } from "../../../i18n-config";
 
 const META = {
@@ -151,10 +150,10 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               </span>
             ) : (
               <>
-                <span className="vs-line1" style={{ fontFamily: "var(--font-outfit), sans-serif", display: "block", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", color: "#111827", whiteSpace: "nowrap" }}>
+                <span className="vs-line1" style={{ ...KT, display: "block", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", color: "#111827", whiteSpace: "nowrap" }}>
                   Match the Right Job,
                 </span>
-                <span className="vs-line2" style={{ fontFamily: "var(--font-outfit), sans-serif", display: "block", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", whiteSpace: "nowrap",
+                <span className="vs-line2" style={{ ...KT, display: "block", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", whiteSpace: "nowrap",
                   background: "linear-gradient(45deg, #5f26e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                   Get Work You Love
                 </span>
@@ -191,11 +190,6 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         `}</style>
       </section>
 
-      {/* ── Ticker ── */}
-      <MarqueeTicker items={lang === "th"
-        ? ["เปิดรับ Creator ใหม่", "รับงานจากแบรนด์ชั้นนำ", "สมัครฟรี ไม่มีค่าใช้จ่าย", "จ่ายตรงเวลาทุกแคมเปญ"]
-        : ["Now Accepting New Creators", "Work With Top Brands", "Apply Free — No Cost", "Paid On Time, Every Time"]} />
-
       {/* ── Brand Logos Marquee ── */}
       <LogoMarquee bgClassName="inf-logo-bg" fadeColor="#F7F1FC" />
 
@@ -216,7 +210,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
           <div className="opportunity-grid" style={{ width: "100%", maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", position: "relative", zIndex: 1, boxSizing: "border-box" }}>
           <div style={{ textAlign: "center", width: "100%" }}>
             <h2 className="opportunity-heading" style={{
-              ...(lang === "th" ? KT : { fontFamily: "var(--font-outfit), sans-serif" }),
+              ...KT,
               fontSize: "clamp(28px,3.3vw,48px)",
               fontWeight: 700,
               lineHeight: 1.2,
@@ -277,8 +271,8 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "56px" }}>
             <h2 style={{ fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
-              <span style={{ fontFamily: "var(--font-outfit), sans-serif", fontWeight: 700 }}>Unlock Exclusive </span>
-              <span style={{ fontFamily: "var(--font-outfit), sans-serif", fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Opportunities</span>
+              <span style={{ ...KT, fontWeight: 700 }}>Unlock Exclusive </span>
+              <span style={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Opportunities</span>
             </h2>
           </div>
 
@@ -299,7 +293,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       {/* ── Our Work / Buddy Ranks ── */}
       <section className="inf-section" style={{ background: "transparent", padding: "100px 48px", overflow: "hidden" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
-          <h2 style={{ fontFamily: lang === "th" ? "var(--font-kanit),'Noto Sans Thai',sans-serif" : "var(--font-outfit), sans-serif", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 24px" }}>
+          <h2 style={{ ...KT, fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 24px" }}>
             {lang === "th" ? (
               <span style={{ color: "#111827" }}>รู้จักช่องตัวเองให้มากขึ้น<br />แล้วโตได้แบบมีทิศทาง</span>
             ) : (
@@ -332,7 +326,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <section style={{ overflow: "hidden", background: "transparent" }} className="py-20">
         <div style={{ maxWidth: "1294px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
           <h2 className="section-title text-center"
-            style={{ fontFamily: "var(--font-outfit), sans-serif", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 48px" }}>
+            style={{ ...KT, fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 48px" }}>
             Influencer{" "}
             <span style={{
               background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",

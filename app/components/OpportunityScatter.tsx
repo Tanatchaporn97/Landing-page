@@ -16,14 +16,14 @@ type ScatterCategoryItem = {
 // Category names stay in English regardless of site language, matching the
 // convention already used by CategoriesMarquee / InfluencerHero.
 const ITEMS: ScatterCategoryItem[] = [
-  { label: "Beauty",        icon: "💄", top: "6%",  left: "6%",  rotate: -2 },
-  { label: "Food & Travel", icon: "🍜", top: "6%",  left: "88%", rotate: 2 },
-  { label: "Fashion",       icon: "👗", top: "38%", left: "2%",  rotate: -1 },
-  { label: "Lifestyle",     icon: "✨", top: "38%", left: "93%", rotate: 1 },
-  { label: "Gaming",        icon: "🎮", top: "68%", left: "4%",  rotate: 2 },
-  { label: "TikTok Creator",icon: "🎵", top: "68%", left: "90%", rotate: -2 },
-  { label: "Tech",          icon: "📱", top: "88%", left: "16%", rotate: -1 },
-  { label: "Family",        icon: "🧸", top: "88%", left: "82%", rotate: 1 },
+  { label: "Beauty",        icon: "💄", top: "14%", left: "14%", rotate: -2 },
+  { label: "Food & Travel", icon: "🍜", top: "14%", left: "81%", rotate: 2 },
+  { label: "Fashion",       icon: "👗", top: "40%", left: "11%", rotate: -1 },
+  { label: "Lifestyle",     icon: "✨", top: "40%", left: "85%", rotate: 1 },
+  { label: "Gaming",        icon: "🎮", top: "65%", left: "12%", rotate: 2 },
+  { label: "TikTok Creator",icon: "🎵", top: "65%", left: "83%", rotate: -2 },
+  { label: "Tech",          icon: "📱", top: "81%", left: "22%", rotate: -1 },
+  { label: "Family",        icon: "🧸", top: "81%", left: "76%", rotate: 1 },
 ];
 
 type StatItem = {
@@ -39,9 +39,9 @@ type StatItem = {
 // 3 feature callout cards (same hover-animate treatment) — placed in the
 // top-left / top-right / bottom-right corners on desktop.
 const STATS: StatItem[] = [
-  { top: "20%", left: "22%", rotate: -4, emoji: "📊", value: "ฟรี!" },
-  { top: "16%", left: "58%", rotate: 3,  emoji: "🎯", value: "งานที่ใช่" },
-  { top: "68%", left: "40%", rotate: -3, emoji: "💸", value: "โดยเฉพาะ" },
+  { top: "25%", left: "27%", rotate: -4, emoji: "📊", value: "ฟรี!" },
+  { top: "22%", left: "57%", rotate: 3,  emoji: "🎯", value: "งานที่ใช่" },
+  { top: "65%", left: "42%", rotate: -3, emoji: "💸", value: "โดยเฉพาะ" },
 ].map((s, i) => ({
   ...s,
   labelTh: ["วิเคราะห์ช่องและ Audience", "คัดงานตามโปรไฟล์คุณ", "เห็นเงื่อนไขก่อนรับงาน"][i],

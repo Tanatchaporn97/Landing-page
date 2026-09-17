@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
+
 export interface ColorfulBentoItem {
   img: string;
   title: string;
@@ -31,10 +33,10 @@ export function ColorfulBentoGrid({ items }: { items: ColorfulBentoItem[] }) {
           style={{ background: item.gradient, ...SLOTS[i % SLOTS.length] }}
         >
           <div className="relative z-10 px-7 pt-7">
-            <h3 className="text-white font-bold" style={{ fontSize: "clamp(19px,1.8vw,24px)", lineHeight: 1.3 }}>
+            <h3 className="text-white font-bold" style={{ ...KT, fontSize: "clamp(19px,1.8vw,24px)", lineHeight: 1.3 }}>
               {item.title}
             </h3>
-            <p className="text-white/85 font-medium" style={{ fontSize: "14px", lineHeight: 1.6, marginTop: "8px", maxWidth: "34ch" }}>
+            <p className="text-white/85 font-medium" style={{ ...KT, fontSize: "14px", lineHeight: 1.6, marginTop: "8px", maxWidth: "34ch" }}>
               {item.desc}
             </p>
           </div>

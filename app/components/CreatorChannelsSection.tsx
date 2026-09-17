@@ -18,7 +18,7 @@ export default function CreatorChannelsSection({ lang }: { lang: "th" | "en" }) 
     <div className="cc2-grid" style={{ display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: "56px", alignItems: "center" }}>
       <div className="cc2-left">
         <span style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.14em", color: "#5f26e5", textTransform: "uppercase" }}>
-          {lang === "th" ? "หนึ่งครีเอเตอร์ หลายช่องทาง" : "One Creator, Many Channels"}
+          One Creator, Many Channels
         </span>
         <h2 style={{ ...KT, fontSize: "clamp(28px,3.3vw,44px)", fontWeight: 800, margin: "16px 0 0", lineHeight: 1.25 }}>
           <span style={{ color: "#111827" }}>
