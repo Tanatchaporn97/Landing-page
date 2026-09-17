@@ -94,10 +94,10 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                     <stop offset="100%" stopColor="#4a2a86" />
                   </linearGradient>
                   <clipPath id="heroIconClipL" clipPathUnits="userSpaceOnUse">
-                    <path d="M556.7,590.0C560.7,615.5 529.9,657.3 508.0,676.4 C486.1,695.6 452.3,702.1 425.3,704.9 C398.2,707.6 365.3,706.1 345.6,692.9 C325.8,679.7 321.3,651.7 306.8,625.7 C292.4,599.7 254.1,562.6 259.0,536.9 C264.0,511.2 309.2,479.6 336.6,471.5 C363.9,463.3 398.4,479.4 423.0,488.1 C447.6,496.7 461.8,506.7 484.1,523.7 C506.4,540.6 552.7,564.5 556.7,590.0 Z" />
+                    <path d="M365,500 L445,500 A90,90 0 0 1 445,680 L365,680 A90,90 0 0 1 365,500 Z" />
                   </clipPath>
                 </defs>
-                <path d="M556.7,590.0C560.7,615.5 529.9,657.3 508.0,676.4 C486.1,695.6 452.3,702.1 425.3,704.9 C398.2,707.6 365.3,706.1 345.6,692.9 C325.8,679.7 321.3,651.7 306.8,625.7 C292.4,599.7 254.1,562.6 259.0,536.9 C264.0,511.2 309.2,479.6 336.6,471.5 C363.9,463.3 398.4,479.4 423.0,488.1 C447.6,496.7 461.8,506.7 484.1,523.7 C506.4,540.6 552.7,564.5 556.7,590.0 Z" fill="url(#heroIconGradL)" />
+                <path d="M365,500 L445,500 A90,90 0 0 1 445,680 L365,680 A90,90 0 0 1 365,500 Z" fill="url(#heroIconGradL)" />
                 <image href="/im-brand-dashboard.png" x="265" y="450" width="280" height="280" preserveAspectRatio="xMidYMid slice" clipPath="url(#heroIconClipL)" opacity="0.18" />
               </svg>
               <div className="hero-blob-content" style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "12px", padding: "20%" }}>
@@ -156,10 +156,10 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                     <stop offset="100%" stopColor="#4a2a86" />
                   </linearGradient>
                   <clipPath id="heroIconClipR" clipPathUnits="userSpaceOnUse">
-                    <path d="M556.7,590.0C560.7,615.5 529.9,657.3 508.0,676.4 C486.1,695.6 452.3,702.1 425.3,704.9 C398.2,707.6 365.3,706.1 345.6,692.9 C325.8,679.7 321.3,651.7 306.8,625.7 C292.4,599.7 254.1,562.6 259.0,536.9 C264.0,511.2 309.2,479.6 336.6,471.5 C363.9,463.3 398.4,479.4 423.0,488.1 C447.6,496.7 461.8,506.7 484.1,523.7 C506.4,540.6 552.7,564.5 556.7,590.0 Z" />
+                    <path d="M365,500 L445,500 A90,90 0 0 1 445,680 L365,680 A90,90 0 0 1 365,500 Z" />
                   </clipPath>
                 </defs>
-                <path d="M556.7,590.0C560.7,615.5 529.9,657.3 508.0,676.4 C486.1,695.6 452.3,702.1 425.3,704.9 C398.2,707.6 365.3,706.1 345.6,692.9 C325.8,679.7 321.3,651.7 306.8,625.7 C292.4,599.7 254.1,562.6 259.0,536.9 C264.0,511.2 309.2,479.6 336.6,471.5 C363.9,463.3 398.4,479.4 423.0,488.1 C447.6,496.7 461.8,506.7 484.1,523.7 C506.4,540.6 552.7,564.5 556.7,590.0 Z" fill="url(#heroIconGradR)" />
+                <path d="M365,500 L445,500 A90,90 0 0 1 445,680 L365,680 A90,90 0 0 1 365,500 Z" fill="url(#heroIconGradR)" />
                 <image href="/buddy-ranks/2-followers-2-trimmed.png" x="265" y="450" width="280" height="280" preserveAspectRatio="xMidYMid slice" clipPath="url(#heroIconClipR)" opacity="0.16" />
               </svg>
               <div className="hero-blob-content" style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "12px", padding: "20%" }}>
