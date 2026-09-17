@@ -4,45 +4,51 @@
       <stop offset="0" stop-color="#f7f6fb"/>
       <stop offset="1" stop-color="#efedf9"/>
     </linearGradient>
-    <linearGradient id="cup" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#c9b8ff"/>
-      <stop offset="0.5" stop-color="#8b6cf0"/>
-      <stop offset="1" stop-color="#5f26e5"/>
-    </linearGradient>
+    <radialGradient id="cup" cx="0.35" cy="0.25" r="0.9">
+      <stop offset="0" stop-color="#e6dcff"/>
+      <stop offset="0.5" stop-color="#9a7bf2"/>
+      <stop offset="1" stop-color="#5017b8"/>
+    </radialGradient>
+    <radialGradient id="handle" cx="0.3" cy="0.2" r="1">
+      <stop offset="0" stop-color="#cbb8f8"/>
+      <stop offset="1" stop-color="#6431d6"/>
+    </radialGradient>
     <linearGradient id="cupShine" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.7"/>
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="base" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#8b6cf0"/>
-      <stop offset="1" stop-color="#4c1ec7"/>
+      <stop offset="1" stop-color="#3d15a8"/>
     </linearGradient>
-    <radialGradient id="shadow4" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#5f26e5" stop-opacity="0.28"/>
-      <stop offset="1" stop-color="#5f26e5" stop-opacity="0"/>
-    </radialGradient>
+    <linearGradient id="baseTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a98cf5"/>
+      <stop offset="1" stop-color="#5f26e5"/>
+    </linearGradient>
   </defs>
   <rect width="400" height="300" fill="url(#bg4)"/>
-  <ellipse cx="200" cy="235" rx="95" ry="18" fill="url(#shadow4)"/>
 
-  <!-- trophy cup -->
+  <!-- trophy cup, radial shading for a rounder, glossier body -->
   <g>
     <!-- handles -->
-    <path d="M150 100 q-40 0 -40 35 q0 35 40 30" fill="none" stroke="url(#cup)" stroke-width="12" stroke-linecap="round"/>
-    <path d="M250 100 q40 0 40 35 q0 35 -40 30" fill="none" stroke="url(#cup)" stroke-width="12" stroke-linecap="round"/>
+    <path d="M150 100 q-40 0 -40 35 q0 35 40 30" fill="none" stroke="url(#handle)" stroke-width="12" stroke-linecap="round"/>
+    <path d="M250 100 q40 0 40 35 q0 35 -40 30" fill="none" stroke="url(#handle)" stroke-width="12" stroke-linecap="round"/>
 
     <!-- cup body -->
     <path d="M150 90 h100 l-10 70 q-10 40 -40 40 q-30 0 -40 -40 z" fill="url(#cup)"/>
-    <path d="M150 90 h40 l-4 60 q-4 25 -20 30 q-16 -12 -18 -40 z" fill="url(#cupShine)"/>
+    <path d="M150 90 h34 l-3 55 q-3 30 -22 38 q-19 -14 -21 -45 z" fill="url(#cupShine)"/>
+    <ellipse cx="200" cy="92" rx="50" ry="7" fill="#ffffff" opacity="0.35"/>
 
     <!-- stem -->
     <rect x="188" y="198" width="24" height="28" fill="url(#base)"/>
+    <rect x="188" y="198" width="8" height="28" fill="#ffffff" opacity="0.2"/>
 
     <!-- base -->
-    <path d="M155 226 h90 l8 24 h-106 z" fill="url(#base)"/>
-    <rect x="145" y="250" width="110" height="14" rx="4" fill="#4c1ec7"/>
+    <path d="M155 226 h90 l8 24 h-106 z" fill="url(#baseTop)"/>
+    <rect x="145" y="250" width="110" height="14" rx="4" fill="#3d15a8"/>
 
     <!-- star / #1 emblem on cup -->
     <path d="M200 108 l7 14 15 2 -11 11 3 15 -14 -8 -14 8 3 -15 -11 -11 15 -2 z" fill="#ffd23f"/>
+    <path d="M200 108 l3 7 -3 4 -3 -4 z" fill="#fff3c4" opacity="0.8"/>
   </g>
 </svg>

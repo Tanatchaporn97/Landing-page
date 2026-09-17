@@ -35,7 +35,7 @@ export default function FAQAccordion({
 }: {
   faqs?: Array<{ q: string; a: string; qEn?: string; aEn?: string }>;
   lang?: "th" | "en";
-  variant?: "home" | "influencer";
+  variant?: "home" | "influencer" | "brand";
   hideCta?: boolean;
   oneColumn?: boolean;
   hideTitle?: boolean;
@@ -48,9 +48,9 @@ export default function FAQAccordion({
   const leftFaqs = faqs.slice(0, half);
   const rightFaqs = faqs.slice(half);
 
-  // Home page uses a glassmorphism style while influencer page uses solid white cards
+  // Home and Brand pages use a glassmorphism style while the influencer page uses solid white cards
   const getCardStyle = (isOpen: boolean) => {
-    if (variant === "home") {
+    if (variant === "home" || variant === "brand") {
       return {
         background: isOpen ? "#5f26e5" : "rgba(255,255,255,0.22)",
         backdropFilter: isOpen ? "none" : "blur(18px)",
@@ -68,7 +68,7 @@ export default function FAQAccordion({
   };
 
   const getTextColor = (isOpen: boolean) => {
-    if (variant === "home") {
+    if (variant === "home" || variant === "brand") {
       return {
         title: isOpen ? "#ffffff" : "#111827",
         desc: "rgba(255,255,255,0.85)",
@@ -88,15 +88,15 @@ export default function FAQAccordion({
         {!hideTitle && (
           <div style={{ textAlign: "center", marginBottom: "64px" }}>
             <h2 className="section-title font-bold section-h2-fixed" style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px", fontFeatureSettings: "'pnum' on,'lnum' on", margin: 0 }}>
-              {variant === "influencer" ? (
-                <>
-                  <span style={{ ...KT, fontWeight: 700 }}>Frequently Asked </span>
-                  <span style={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Questions</span>
-                </>
-              ) : (
+              {variant === "brand" ? (
                 <>
                   <span style={{ ...PIERSON }}>Frequently Asked{" "}</span>
                   <span style={{ ...PIERSON, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Questions</span>
+                </>
+              ) : (
+                <>
+                  <span style={{ ...KT, fontWeight: 700 }}>Frequently Asked </span>
+                  <span style={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Questions</span>
                 </>
               )}
             </h2>

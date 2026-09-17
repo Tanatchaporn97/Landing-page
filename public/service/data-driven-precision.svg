@@ -4,43 +4,51 @@
       <stop offset="0" stop-color="#f7f6fb"/>
       <stop offset="1" stop-color="#efedf9"/>
     </linearGradient>
-    <linearGradient id="ring1" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#c9b8ff"/>
+    <radialGradient id="ringOuter" cx="0.35" cy="0.3" r="0.85">
+      <stop offset="0" stop-color="#e6dcff"/>
+      <stop offset="0.6" stop-color="#a98cf5"/>
       <stop offset="1" stop-color="#5f26e5"/>
-    </linearGradient>
-    <linearGradient id="ring2" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#a98cf5"/>
-      <stop offset="1" stop-color="#6431d6"/>
-    </linearGradient>
+    </radialGradient>
+    <radialGradient id="ringMid" cx="0.35" cy="0.3" r="0.85">
+      <stop offset="0" stop-color="#cbb8f8"/>
+      <stop offset="0.6" stop-color="#8b6cf0"/>
+      <stop offset="1" stop-color="#4c1ec7"/>
+    </radialGradient>
+    <radialGradient id="ringCenter" cx="0.35" cy="0.3" r="0.85">
+      <stop offset="0" stop-color="#9a7bf2"/>
+      <stop offset="0.6" stop-color="#6431d6"/>
+      <stop offset="1" stop-color="#3d15a8"/>
+    </radialGradient>
     <linearGradient id="dart" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ffd23f"/>
+      <stop offset="0" stop-color="#ffe27a"/>
       <stop offset="1" stop-color="#f5a623"/>
     </linearGradient>
-    <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#a98cf5"/>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#cbb8f8"/>
       <stop offset="1" stop-color="#6431d6"/>
     </linearGradient>
-    <radialGradient id="shadow3" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#5f26e5" stop-opacity="0.28"/>
-      <stop offset="1" stop-color="#5f26e5" stop-opacity="0"/>
+    <radialGradient id="specular" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="400" height="300" fill="url(#bg3)"/>
-  <ellipse cx="220" cy="235" rx="100" ry="18" fill="url(#shadow3)"/>
 
-  <!-- small bar chart on the left -->
+  <!-- small bar chart on the left, beveled for depth -->
   <g>
     <rect x="90" y="160" width="18" height="55" rx="4" fill="url(#bar)" opacity="0.85"/>
+    <rect x="90" y="160" width="6" height="55" rx="3" fill="#ffffff" opacity="0.25"/>
     <rect x="115" y="130" width="18" height="85" rx="4" fill="url(#bar)"/>
+    <rect x="115" y="130" width="6" height="85" rx="3" fill="#ffffff" opacity="0.3"/>
     <rect x="140" y="145" width="18" height="70" rx="4" fill="url(#bar)" opacity="0.7"/>
   </g>
 
-  <!-- target / bullseye -->
-  <circle cx="235" cy="150" r="70" fill="#ffffff"/>
-  <circle cx="235" cy="150" r="70" fill="url(#ring1)" opacity="0.18"/>
-  <circle cx="235" cy="150" r="70" fill="none" stroke="url(#ring1)" stroke-width="10"/>
-  <circle cx="235" cy="150" r="46" fill="none" stroke="url(#ring2)" stroke-width="10"/>
-  <circle cx="235" cy="150" r="22" fill="url(#ring1)"/>
+  <!-- target / bullseye, raised rings with specular highlight for a glossy 3D look -->
+  <circle cx="235" cy="150" r="72" fill="#ffffff"/>
+  <circle cx="235" cy="150" r="72" fill="url(#ringOuter)"/>
+  <circle cx="235" cy="150" r="48" fill="url(#ringMid)"/>
+  <circle cx="235" cy="150" r="24" fill="url(#ringCenter)"/>
+  <ellipse cx="210" cy="120" rx="26" ry="16" fill="url(#specular)"/>
 
   <!-- dart hitting center -->
   <g transform="translate(235,150) rotate(-40)">

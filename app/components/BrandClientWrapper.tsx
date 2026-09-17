@@ -831,7 +831,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       <NewsroomSection lang={lang} dict={dict} variant="brand" />
 
       {/* ── FAQs ── */}
-      <FAQAccordion faqs={dict?.homeFaqs} lang={lang} variant="home" dict={dict} />
+      <FAQAccordion faqs={dict?.homeFaqs} lang={lang} variant="brand" dict={dict} />
 
       <div id="contact" className="contact-bg" style={{ padding: "80px 0" }}>
         <ContactFormSection lang={lang} dict={dict?.contactForm}

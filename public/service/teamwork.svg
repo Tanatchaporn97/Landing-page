@@ -4,35 +4,42 @@
       <stop offset="0" stop-color="#f7f6fb"/>
       <stop offset="1" stop-color="#efedf9"/>
     </linearGradient>
-    <linearGradient id="person1" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#a98cf5"/>
-      <stop offset="1" stop-color="#6431d6"/>
-    </linearGradient>
-    <linearGradient id="person2" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#c9b8ff"/>
-      <stop offset="1" stop-color="#8b6cf0"/>
-    </linearGradient>
-    <linearGradient id="person3" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#8b6cf0"/>
+    <radialGradient id="person1" cx="0.35" cy="0.3" r="0.9">
+      <stop offset="0" stop-color="#d6c6ff"/>
+      <stop offset="0.55" stop-color="#8b6cf0"/>
       <stop offset="1" stop-color="#5017b8"/>
-    </linearGradient>
-    <radialGradient id="shadow2" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#5f26e5" stop-opacity="0.28"/>
-      <stop offset="1" stop-color="#5f26e5" stop-opacity="0"/>
     </radialGradient>
+    <radialGradient id="person2" cx="0.35" cy="0.3" r="0.9">
+      <stop offset="0" stop-color="#e6dcff"/>
+      <stop offset="0.55" stop-color="#a98cf5"/>
+      <stop offset="1" stop-color="#6431d6"/>
+    </radialGradient>
+    <radialGradient id="person3" cx="0.35" cy="0.3" r="0.9">
+      <stop offset="0" stop-color="#cbb8f8"/>
+      <stop offset="0.55" stop-color="#7343e0"/>
+      <stop offset="1" stop-color="#3d15a8"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
     <radialGradient id="bulbGlow" cx="0.5" cy="0.5" r="0.5">
       <stop offset="0" stop-color="#ffe27a" stop-opacity="0.9"/>
       <stop offset="1" stop-color="#ffe27a" stop-opacity="0"/>
     </radialGradient>
+    <linearGradient id="bulbBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff3c4"/>
+      <stop offset="1" stop-color="#ffc93f"/>
+    </linearGradient>
   </defs>
   <rect width="400" height="300" fill="url(#bg2)"/>
-  <ellipse cx="200" cy="235" rx="105" ry="18" fill="url(#shadow2)"/>
 
-  <!-- three teammates, overlapping rounded silhouettes -->
+  <!-- three teammates, overlapping rounded silhouettes with radial shading for volume -->
   <g>
     <!-- left person -->
     <circle cx="140" cy="140" r="30" fill="url(#person2)"/>
     <path d="M90 220 q0 -55 50 -55 q50 0 50 55 z" fill="url(#person2)"/>
+    <path d="M115 90 q10 -12 25 -12" stroke="url(#rim)" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.7"/>
 
     <!-- right person -->
     <circle cx="260" cy="140" r="30" fill="url(#person3)"/>
@@ -41,11 +48,13 @@
     <!-- center/front person -->
     <circle cx="200" cy="122" r="34" fill="url(#person1)"/>
     <path d="M145 215 q0 -62 55 -62 q55 0 55 62 z" fill="url(#person1)"/>
+    <ellipse cx="188" cy="104" rx="12" ry="8" fill="#ffffff" opacity="0.3"/>
+    <path d="M150 205 q10 -35 45 -40" stroke="url(#rim)" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.5"/>
   </g>
 
   <!-- connecting network lines to an intelligence node -->
-  <g stroke="#5f26e5" stroke-width="2.5" stroke-linecap="round" opacity="0.55">
-    <line x1="200" y1="88" x2="200" y2="60"/>
+  <g stroke="#5f26e5" stroke-width="2.5" stroke-linecap="round" opacity="0.5">
+    <line x1="200" y1="88" x2="200" y2="62"/>
     <line x1="200" y1="88" x2="150" y2="70"/>
     <line x1="200" y1="88" x2="250" y2="70"/>
   </g>
@@ -53,8 +62,9 @@
   <circle cx="150" cy="66" r="3.5" fill="#8b6cf0"/>
   <circle cx="250" cy="66" r="3.5" fill="#8b6cf0"/>
 
-  <!-- intelligence spark / lightbulb above center -->
-  <circle cx="200" cy="40" r="20" fill="url(#bulbGlow)"/>
-  <path d="M200 26 a14 14 0 0 1 8 26 l-2 6 h-12 l-2 -6 a14 14 0 0 1 8 -26 z" fill="#ffd23f"/>
-  <rect x="193" y="58" width="14" height="5" rx="2" fill="#b8860b"/>
+  <!-- intelligence spark / lightbulb above center, rounder with a clear highlight -->
+  <circle cx="200" cy="40" r="22" fill="url(#bulbGlow)"/>
+  <path d="M200 24 a15 15 0 0 1 9 27 l-2 7 h-14 l-2 -7 a15 15 0 0 1 9 -27 z" fill="url(#bulbBody)"/>
+  <ellipse cx="195" cy="30" rx="4" ry="7" fill="#ffffff" opacity="0.7"/>
+  <rect x="192" y="58" width="16" height="6" rx="2" fill="#b8860b"/>
 </svg>

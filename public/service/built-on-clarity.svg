@@ -4,37 +4,58 @@
       <stop offset="0" stop-color="#f7f6fb"/>
       <stop offset="1" stop-color="#efedf9"/>
     </linearGradient>
-    <linearGradient id="gem" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#c9b8ff"/>
-      <stop offset="0.5" stop-color="#8b6cf0"/>
-      <stop offset="1" stop-color="#5f26e5"/>
+
+    <!-- top-facing facets catch the most light -->
+    <linearGradient id="facetTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6dcff"/>
+      <stop offset="1" stop-color="#b79bf7"/>
+    </linearGradient>
+    <linearGradient id="facetLeft" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a98cf5"/>
+      <stop offset="1" stop-color="#7343e0"/>
+    </linearGradient>
+    <linearGradient id="facetRight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7343e0"/>
+      <stop offset="1" stop-color="#4c1ec7"/>
+    </linearGradient>
+    <linearGradient id="facetLeftDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5f26e5"/>
+      <stop offset="1" stop-color="#3d15a8"/>
+    </linearGradient>
+    <linearGradient id="facetRightDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4c1ec7"/>
+      <stop offset="1" stop-color="#2e0f8f"/>
     </linearGradient>
     <linearGradient id="gemFacetLight" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.65"/>
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.85"/>
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-    <radialGradient id="shadow" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#5f26e5" stop-opacity="0.28"/>
-      <stop offset="1" stop-color="#5f26e5" stop-opacity="0"/>
-    </radialGradient>
   </defs>
   <rect width="400" height="300" fill="url(#bg)"/>
-  <ellipse cx="200" cy="230" rx="95" ry="18" fill="url(#shadow)"/>
 
-  <!-- faceted diamond / gem symbolizing clarity -->
+  <!-- faceted diamond / gem symbolizing clarity, layered for a raised 3D feel -->
   <g>
-    <polygon points="200,60 260,110 240,110 200,60 160,110 140,110" fill="url(#gem)"/>
-    <polygon points="140,110 260,110 200,220 " fill="url(#gem)"/>
-    <polygon points="140,110 200,140 200,220" fill="#7343e0"/>
-    <polygon points="260,110 200,140 200,220" fill="#4c1ec7"/>
-    <polygon points="160,110 200,60 200,140" fill="#a98cf5"/>
-    <polygon points="240,110 200,60 200,140" fill="#7343e0"/>
-    <polygon points="140,110 160,110 200,140" fill="#8b6cf0"/>
-    <polygon points="260,110 240,110 200,140" fill="#6431d6"/>
-    <polygon points="160,110 200,110 200,140" fill="#9a7bf2" opacity="0.9"/>
-    <polygon points="200,110 240,110 200,140" fill="#7f57e8" opacity="0.9"/>
-    <!-- glossy highlight -->
-    <polygon points="170,75 200,60 190,95" fill="url(#gemFacetLight)"/>
+    <!-- crown facets (top, catches most light) -->
+    <polygon points="200,55 245,105 200,90 155,105" fill="url(#facetTop)"/>
+    <polygon points="155,105 200,90 200,55" fill="url(#facetLeft)" opacity="0.9"/>
+    <polygon points="245,105 200,90 200,55" fill="url(#facetRight)" opacity="0.9"/>
+
+    <!-- upper girdle -->
+    <polygon points="140,112 200,90 245,105 165,112" fill="url(#facetLeft)"/>
+    <polygon points="260,112 200,90 245,105 235,112" fill="url(#facetRight)"/>
+
+    <!-- pavilion (lower body) facets -->
+    <polygon points="140,112 200,225 165,112" fill="url(#facetLeftDark)"/>
+    <polygon points="165,112 200,225 200,140" fill="url(#facetLeft)"/>
+    <polygon points="200,140 200,225 235,112" fill="url(#facetRight)"/>
+    <polygon points="235,112 200,225 260,112" fill="url(#facetRightDark)"/>
+
+    <!-- central bright ridge -->
+    <polygon points="165,112 200,140 235,112 200,90" fill="url(#facetTop)" opacity="0.7"/>
+
+    <!-- glossy highlight streak -->
+    <polygon points="172,80 200,60 195,105 178,100" fill="url(#gemFacetLight)"/>
+    <polygon points="170,120 195,145 185,175 168,150" fill="#ffffff" opacity="0.18"/>
   </g>
 
   <!-- sparkle accents -->

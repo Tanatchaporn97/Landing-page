@@ -47,7 +47,7 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
         {/* Heading row */}
         <div className="newsroom-header-row" style={{ marginBottom: "56px" }}>
           <h2 style={{
-            ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800,
+            ...(variant === "brand" ? PIERSON : KT), fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800,
             margin: 0, lineHeight: 1.15,
             background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
