@@ -157,6 +157,15 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
     const card = serviceCardRefs.current[activeService];
     if (!card) return;
     card.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    // The clicked/auto-advanced card is still mid-expand (220px → 380px) at this
+    // point, so the browser computes the scroll target from its old, narrower
+    // rect. Re-issue the scroll once the width tween settles so the final
+    // resting position lines up with the fully-expanded card — otherwise the
+    // first card in the loop can end up partially clipped at the left edge.
+    const id = setTimeout(() => {
+      serviceCardRefs.current[activeService]?.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    }, 520);
+    return () => clearTimeout(id);
   }, [activeService]);
 
   // Auto-advance the Our Services row every 5s, looping back to the start;

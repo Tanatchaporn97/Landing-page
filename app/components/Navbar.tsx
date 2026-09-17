@@ -236,11 +236,13 @@ export default function Navbar({
           {/* Right-side group: CTA buttons + Hamburger (hamburger hidden on desktop via CSS) */}
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <div className="desktop-nav-btns flex items-center gap-2">
-              <Link href={`/${lang}/brand`}
-                className="btn-hero px-4 py-3 rounded-full whitespace-nowrap"
-                style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
-                {t.forBrand}
-              </Link>
+              {variant !== "brand" && (
+                <Link href={`/${lang}/brand`}
+                  className="btn-hero px-4 py-3 rounded-full whitespace-nowrap"
+                  style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
+                  {t.forBrand}
+                </Link>
+              )}
               {variant !== "influencer" && (
                 <Link href={`/${lang}/influencer`}
                   className="btn-hero px-4 py-3 rounded-full whitespace-nowrap"
