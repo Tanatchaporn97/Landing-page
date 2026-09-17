@@ -87,20 +87,20 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           <Link href={`/${lang}/brand`} className="hero-blob hero-blob-left" aria-label={lang === "th" ? "สำหรับแบรนด์" : "For Brands"}
             style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "flex-start", textDecoration: "none", minWidth: 0 }}>
             <div className="hero-icon-card" style={{ position: "relative", width: "clamp(330px, 37vw, 594px)", aspectRatio: "280 / 280", flexShrink: 0, marginLeft: "clamp(-12.8px, -0.512vw, -2.56px)", transform: "scale(1.28)", transformOrigin: "100% 50%" }}>
-              <svg viewBox="265 450 280 280" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", transform: "rotate(-15deg)", filter: "drop-shadow(0 20px 32px rgba(36,17,71,0.30))" }}>
+              <svg viewBox="265 450 280 280" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", filter: "drop-shadow(0 20px 32px rgba(36,17,71,0.30))" }}>
                 <defs>
                   <linearGradient id="heroIconGradL" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#241147" />
                     <stop offset="100%" stopColor="#4a2a86" />
                   </linearGradient>
                   <clipPath id="heroIconClipL" clipPathUnits="userSpaceOnUse">
-                    <path d="M365,500 L445,500 A90,90 0 0 1 445,680 L365,680 A90,90 0 0 1 365,500 Z" />
+                    <path d="M265,500 L445,500 A90,90 0 0 1 445,680 L265,680 Z" />
                   </clipPath>
                 </defs>
-                <path d="M365,500 L445,500 A90,90 0 0 1 445,680 L365,680 A90,90 0 0 1 365,500 Z" fill="url(#heroIconGradL)" />
+                <path d="M265,500 L445,500 A90,90 0 0 1 445,680 L265,680 Z" fill="url(#heroIconGradL)" />
                 <image href="/im-brand-dashboard.png" x="265" y="450" width="280" height="280" preserveAspectRatio="xMidYMid slice" clipPath="url(#heroIconClipL)" opacity="0.18" />
               </svg>
-              <div className="hero-blob-content" style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "12px", padding: "20%" }}>
+              <div className="hero-blob-content" style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "12px", padding: "20% 10px" }}>
                 <span style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.12em", color: "rgba(255,255,255,0.7)", textTransform: "uppercase" }}>
                   For Brands
                 </span>
@@ -149,20 +149,20 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           <Link href={`/${lang}/influencer`} className="hero-blob hero-blob-right" aria-label={lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Creators"}
             style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "flex-end", textDecoration: "none", minWidth: 0 }}>
             <div className="hero-icon-card" style={{ position: "relative", width: "clamp(330px, 37vw, 594px)", aspectRatio: "280 / 280", flexShrink: 0, marginRight: "clamp(-12.8px, -0.512vw, -2.56px)", transform: "scale(1.28)", transformOrigin: "0% 50%" }}>
-              <svg viewBox="265 450 280 280" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", transform: "scaleX(-1) rotate(-15deg)", filter: "drop-shadow(0 20px 32px rgba(36,17,71,0.30))" }}>
+              <svg viewBox="265 450 280 280" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", transform: "scaleX(-1)", filter: "drop-shadow(0 20px 32px rgba(36,17,71,0.30))" }}>
                 <defs>
                   <linearGradient id="heroIconGradR" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#241147" />
                     <stop offset="100%" stopColor="#4a2a86" />
                   </linearGradient>
                   <clipPath id="heroIconClipR" clipPathUnits="userSpaceOnUse">
-                    <path d="M365,500 L445,500 A90,90 0 0 1 445,680 L365,680 A90,90 0 0 1 365,500 Z" />
+                    <path d="M265,500 L445,500 A90,90 0 0 1 445,680 L265,680 Z" />
                   </clipPath>
                 </defs>
-                <path d="M365,500 L445,500 A90,90 0 0 1 445,680 L365,680 A90,90 0 0 1 365,500 Z" fill="url(#heroIconGradR)" />
+                <path d="M265,500 L445,500 A90,90 0 0 1 445,680 L265,680 Z" fill="url(#heroIconGradR)" />
                 <image href="/buddy-ranks/2-followers-2-trimmed.png" x="265" y="450" width="280" height="280" preserveAspectRatio="xMidYMid slice" clipPath="url(#heroIconClipR)" opacity="0.16" />
               </svg>
-              <div className="hero-blob-content" style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "12px", padding: "20%" }}>
+              <div className="hero-blob-content" style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "12px", padding: "20% 10px" }}>
                 <span style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.12em", color: "rgba(255,255,255,0.65)", textTransform: "uppercase" }}>
                   For Creators
                 </span>
