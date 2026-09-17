@@ -1,20 +1,40 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
-const CHANNELS = [
-  { name: "TikTok", icon: "/social-icons/tiktok.png" },
-  { name: "Facebook", icon: "/social-icons/facebook.png" },
-  { name: "Instagram", icon: "/social-icons/instagram.png" },
-  { name: "YouTube", icon: "/social-icons/youtube.png" },
-  { name: "Lemon8", icon: "/social-icons/lemon8.png" },
-  { name: "X", icon: "/social-icons/x.png" },
+type ChannelBadge = {
+  name: string;
+  icon: string;
+  size: "sm" | "md" | "lg";
+  rotation: number;
+  zIndex: number;
+  offsetXPct: number; // % of container width — scales with the column instead of overflowing narrow ones
+  offsetY: number;
+};
+
+const CHANNELS: ChannelBadge[] = [
+  { name: "TikTok", icon: "/social-icons/tiktok.png", size: "lg", rotation: -4, zIndex: 1, offsetXPct: -22, offsetY: -100 },
+  { name: "Facebook", icon: "/social-icons/facebook.png", size: "md", rotation: 3, zIndex: 2, offsetXPct: 13, offsetY: -140 },
+  { name: "Instagram", icon: "/social-icons/instagram.png", size: "lg", rotation: -2, zIndex: 3, offsetXPct: 25, offsetY: -10 },
+  { name: "YouTube", icon: "/social-icons/youtube.png", size: "md", rotation: 2, zIndex: 4, offsetXPct: -27, offsetY: 45 },
+  { name: "Lemon8", icon: "/social-icons/lemon8.png", size: "lg", rotation: -3, zIndex: 5, offsetXPct: 1, offsetY: 100 },
+  { name: "X", icon: "/social-icons/x.png", size: "sm", rotation: 4, zIndex: 6, offsetXPct: 24, offsetY: 140 },
 ];
 
+const SIZE_STYLES = {
+  sm: { padding: "10px 20px 10px 10px", iconSize: 30, fontSize: "13px" },
+  md: { padding: "13px 24px 13px 12px", iconSize: 36, fontSize: "15px" },
+  lg: { padding: "16px 28px 16px 14px", iconSize: 42, fontSize: "16px" },
+};
+
 export default function CreatorChannelsSection({ lang }: { lang: "th" | "en" }) {
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [clickedId, setClickedId] = useState<string | null>(null);
+
   return (
     <div className="cc2-grid" style={{ display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: "56px", alignItems: "center" }}>
       <div className="cc2-left">
@@ -31,37 +51,52 @@ export default function CreatorChannelsSection({ lang }: { lang: "th" | "en" }) 
         </h2>
       </div>
 
-      <div className="cc2-right" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px" }}>
-        {CHANNELS.map((ch) => (
-          <div key={ch.name} className="cc2-card" style={{
-            display: "flex", alignItems: "center", gap: "12px",
-            background: "#ffffff", borderRadius: "16px", padding: "18px 16px",
-            border: "1px solid rgba(95,38,229,0.08)",
-            boxShadow: "0 10px 24px -14px rgba(95,38,229,0.18)",
-            transition: "transform 0.3s ease, box-shadow 0.3s ease",
-          }}>
-            <div style={{
-              width: "38px", height: "38px", borderRadius: "50%", flexShrink: 0,
-              display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden",
-            }}>
-              <Image src={ch.icon} alt={ch.name} width={38} height={38} style={{ objectFit: "contain" }} />
+      <div className="cc2-right" style={{ position: "relative", height: "380px" }}>
+        {CHANNELS.map((ch) => {
+          const isHovered = hoveredId === ch.name;
+          const isClicked = clickedId === ch.name;
+          const isOtherHovered = hoveredId !== null && hoveredId !== ch.name;
+          const s = SIZE_STYLES[ch.size];
+          return (
+            <div
+              key={ch.name}
+              className="cc2-badge"
+              onMouseEnter={() => setHoveredId(ch.name)}
+              onMouseLeave={() => setHoveredId(null)}
+              onClick={() => setClickedId(clickedId === ch.name ? null : ch.name)}
+              style={{
+                position: "absolute", top: "50%", left: "50%",
+                display: "flex", alignItems: "center", gap: "12px",
+                background: "#ffffff", borderRadius: "50px", padding: s.padding,
+                cursor: "pointer", userSelect: "none",
+                transition: "transform 0.5s ease-out, box-shadow 0.5s ease-out",
+                transform: `translate(-50%,-50%) translate(${ch.offsetXPct}%, ${ch.offsetY}px) rotate(${isHovered ? 0 : ch.rotation}deg) scale(${isClicked ? 1.12 : isHovered ? 1.08 : isOtherHovered ? 0.95 : 1}) translateY(${isHovered ? -8 : 0}px)`,
+                zIndex: isHovered || isClicked ? 100 : ch.zIndex,
+                boxShadow: isHovered
+                  ? "0 20px 40px -10px rgba(95,38,229,0.35)"
+                  : isClicked
+                    ? "0 24px 48px -12px rgba(95,38,229,0.4)"
+                    : "0 10px 24px -14px rgba(95,38,229,0.18)",
+              }}>
+              <div style={{
+                width: s.iconSize, height: s.iconSize, borderRadius: "50%", flexShrink: 0,
+                display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden",
+              }}>
+                <Image src={ch.icon} alt={ch.name} width={s.iconSize} height={s.iconSize} style={{ objectFit: "contain" }} />
+              </div>
+              <span style={{ ...KT, fontSize: s.fontSize, fontWeight: 700, color: "#111827", whiteSpace: "nowrap" }}>{ch.name}</span>
             </div>
-            <span style={{ ...KT, fontSize: "15px", fontWeight: 700, color: "#111827" }}>{ch.name}</span>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <style>{`
-        .cc2-card:hover{
-          transform: translateY(-4px);
-          box-shadow: 0 16px 32px -14px rgba(95,38,229,0.3);
-        }
         @media (max-width: 900px){
           .cc2-grid{ grid-template-columns: 1fr !important; gap: 32px !important; }
           .cc2-left{ text-align: center; }
         }
         @media (max-width: 560px){
-          .cc2-right{ grid-template-columns: repeat(2, 1fr) !important; }
+          .cc2-right{ height: 320px !important; }
         }
       `}</style>
     </div>

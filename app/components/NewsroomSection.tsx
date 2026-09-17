@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
+const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
 
 type Post = { slug: string; title: string; desc: string; image: string; categories: string[] };
 
@@ -46,7 +47,7 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
         {/* Heading row */}
         <div className="newsroom-header-row" style={{ marginBottom: "56px" }}>
           <h2 style={{
-            ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800,
+            ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800,
             margin: 0, lineHeight: 1.15,
             background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",

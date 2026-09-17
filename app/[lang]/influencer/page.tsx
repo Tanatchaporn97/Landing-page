@@ -3,6 +3,7 @@ import VideoScrollFan from "../../components/VideoScrollFan";
 import type { Metadata } from "next";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
+const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
 
 // Single continuous background for the whole page — every section below sets
 // its own background to transparent so this one gradient shows through with
@@ -271,8 +272,8 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "56px" }}>
             <h2 style={{ fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
-              <span style={{ ...KT, fontWeight: 700 }}>Unlock Exclusive </span>
-              <span style={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Opportunities</span>
+              <span style={{ ...PIERSON, fontWeight: 700 }}>Unlock Exclusive </span>
+              <span style={{ ...PIERSON, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Opportunities</span>
             </h2>
           </div>
 
@@ -326,7 +327,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <section style={{ overflow: "hidden", background: "transparent" }} className="py-20">
         <div style={{ maxWidth: "1294px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
           <h2 className="section-title text-center"
-            style={{ ...KT, fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 48px" }}>
+            style={{ ...PIERSON, fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 48px" }}>
             Influencer{" "}
             <span style={{
               background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",

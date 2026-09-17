@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
+const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
 
 const DEFAULT_FAQS = [
   { q: "สมัครแล้วจะได้งานทันทีไหม?", a: "หลังจากสมัครเรียบร้อย ระบบจะพิจารณาความเหมาะสมของแคมเปญที่เข้ามา หากมีแคมเปญที่ตรงกับโปรไฟล์ของคุณ ระบบจะแจ้งเตือนเพื่อให้คุณเข้าร่วมได้ทันที",
@@ -89,13 +90,13 @@ export default function FAQAccordion({
             <h2 className="section-title font-bold section-h2-fixed" style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px", fontFeatureSettings: "'pnum' on,'lnum' on", margin: 0 }}>
               {variant === "influencer" ? (
                 <>
-                  <span style={{ ...KT, fontWeight: 700 }}>Frequently Asked </span>
-                  <span style={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Questions</span>
+                  <span style={{ ...PIERSON, fontWeight: 700 }}>Frequently Asked </span>
+                  <span style={{ ...PIERSON, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Questions</span>
                 </>
               ) : (
                 <>
-                  Frequently Asked{" "}
-                  <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Questions</span>
+                  <span style={{ ...PIERSON }}>Frequently Asked{" "}</span>
+                  <span style={{ ...PIERSON, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Questions</span>
                 </>
               )}
             </h2>

@@ -2,6 +2,7 @@
 import { useState } from "react";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
+const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
 
 const KOL_PACKAGES = [
   {
@@ -44,7 +45,7 @@ export default function KolPackagesSection({ lang = "th" }: { lang?: "th" | "en"
     <section className="py-20 px-6 package-bg">
       <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
         <h2 className="section-title text-center font-bold mb-14 section-h2-fixed"
-          style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
+          style={{ ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
             fontFeatureSettings: "'pnum' on,'lnum' on" }}>
           KOL Campaign{" "}
           <span style={{
