@@ -66,11 +66,11 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           position: "relative",
           minHeight: "620px",
           paddingTop: "110px",
-          overflow: "hidden",
           background: "linear-gradient(180deg, #FBF8FE 0%, #F3EBFC 100%)",
           zIndex: 10,
         }}
       >
+        <div style={{ overflow: "hidden", marginLeft: "30px", marginRight: "30px", minHeight: "620px" }}>
         <div className="hero-blob-grid" style={{
           display: "grid",
           gridTemplateColumns: "1fr minmax(280px, 640px) 1fr",
@@ -180,6 +180,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
             </div>
           </Link>
           </motion.div>
+        </div>
         </div>
 
         <style>{`
