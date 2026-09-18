@@ -24,12 +24,12 @@ const SENTIMENT = [
 ];
 
 const ACTIVITY_TILES = [
-  { bg: "linear-gradient(135deg, #d1d5db 0%, #9ca3af 100%)", type: "video", duration: "0:15" },
-  { bg: "linear-gradient(135deg, #e5e7eb 0%, #b0b5bd 100%)", type: "photo", likes: "2.4k" },
-  { bg: "linear-gradient(135deg, #c7ccd3 0%, #8b93a1 100%)", type: "review", rating: 5 },
-  { bg: "linear-gradient(135deg, #dadde1 0%, #a4aab3 100%)", type: "video", duration: "0:30" },
-  { bg: "linear-gradient(135deg, #e5e7eb 0%, #b0b5bd 100%)", type: "photo", likes: "1.8k" },
-  { bg: "linear-gradient(135deg, #c7ccd3 0%, #8b93a1 100%)", type: "review", rating: 4 },
+  { bg: "linear-gradient(135deg, #e9ebee 0%, #d1d5db 100%)", type: "video", duration: "0:15" },
+  { bg: "linear-gradient(135deg, #f1f2f4 0%, #dde0e4 100%)", type: "photo", likes: "2.4k" },
+  { bg: "linear-gradient(135deg, #e5e7eb 0%, #ced2d8 100%)", type: "review", rating: 5 },
+  { bg: "linear-gradient(135deg, #eceef0 0%, #d6dade 100%)", type: "video", duration: "0:30" },
+  { bg: "linear-gradient(135deg, #f1f2f4 0%, #dde0e4 100%)", type: "photo", likes: "1.8k" },
+  { bg: "linear-gradient(135deg, #e5e7eb 0%, #ced2d8 100%)", type: "review", rating: 4 },
 ] as const;
 
 export default function CampaignLearningSection({ lang }: { lang: "th" | "en" }) {
@@ -65,7 +65,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
               marginBottom: 0,
             }}>
               <div style={{ display: "flex", alignItems: "baseline", gap: "12px", marginBottom: "6px" }}>
-                <span style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#9ca3af" }}>{step.num}</span>
+                <span style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#5f26e5" }}>{step.num}</span>
                 <h4 style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: 0, color: "#5f26e5", opacity: 1 }}>
                   {step.title}
                 </h4>
