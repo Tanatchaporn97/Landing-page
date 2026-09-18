@@ -60,7 +60,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       {/* ── Navbar ── */}
       <Navbar variant="home" lang={lang} />
 
-      {/* ── Hero — diagonal-cut band (Brand ↔ Influencer), side text slides in ── */}
+      {/* ── Hero — one continuous diagonal-split background (Brand ↔ Influencer), side text slides in ── */}
       <section
         className="hero-section"
         style={{
@@ -68,22 +68,10 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           minHeight: "620px",
           paddingTop: "110px",
           overflow: "hidden",
-          background: "#ffffff",
-          borderTop: "2px solid #111827",
+          background: "linear-gradient(100deg, #1c1140 0%, #3d2270 16%, #6b46c9 28%, #f2eefb 40%, #ffffff 50%, #f2eefb 60%, #6b46c9 72%, #3d2270 84%, #1c1140 100%)",
           zIndex: 10,
         }}
       >
-        {/* Diagonal gradient band */}
-        <div style={{ position: "absolute", inset: 0, zIndex: 0, overflow: "hidden" }}>
-          <div className="hero-diagonal-band" style={{
-            position: "absolute", top: "-15%", left: "31%", width: "38%", height: "130%",
-            transform: "skewX(-15deg)",
-            background: "linear-gradient(160deg, rgba(197,181,255,0.05) 0%, rgba(197,181,255,0.6) 55%, rgba(255,255,255,0.15) 100%)",
-            borderLeft: "2px solid #111827",
-            borderRight: "2px solid #111827",
-          }} />
-        </div>
-
         <div className="hero-diagonal-grid" style={{
           position: "relative", zIndex: 2,
           display: "grid",
@@ -100,11 +88,11 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           >
             <Link href={`/${lang}/brand`} className="hero-side-card" style={{
               position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-              textAlign: "center", gap: "10px", minHeight: "420px", padding: "32px 24px",
-              border: "2px solid #111827", borderRadius: "16px", overflow: "hidden", textDecoration: "none",
+              textAlign: "center", gap: "10px", minHeight: "460px", padding: "32px 24px",
+              overflow: "hidden", textDecoration: "none",
             }}>
-              <Image src="/services/influencer-campaign-management.jpg" alt="" fill sizes="30vw" style={{ objectFit: "cover", zIndex: 0 }} />
-              <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(180deg, rgba(17,10,38,0.35) 0%, rgba(17,10,38,0.68) 100%)" }} />
+              <Image src="/services/influencer-campaign-management.jpg" alt="" fill sizes="30vw" style={{ objectFit: "cover", zIndex: 0, opacity: 0.55 }} />
+              <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(200deg, rgba(74,42,134,0.35) 0%, rgba(28,17,64,0.82) 100%)" }} />
               <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
                 <span style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#ffffff" }}>For Brand</span>
                 <h3 style={{ ...KT, fontSize: "clamp(19px,2.2vw,30px)", fontWeight: 800, color: "#ffffff", margin: 0, lineHeight: 1.25 }}>
@@ -113,7 +101,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                 <p style={{ ...KT, fontSize: "14px", color: "rgba(255,255,255,0.85)", margin: 0, lineHeight: 1.5 }}>
                   {lang === "th" ? "กลยุทธ์ อินไซต์ และทีมที่พาแบรนด์ไปไกลขึ้น" : "Strategic insights and a team that takes your brand further."}
                 </p>
-                <span style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", padding: "10px 26px", background: "#ffffff", borderRadius: "50px", color: "#111827", fontSize: "14px", fontWeight: 700 }}>
+                <span style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", padding: "10px 26px", border: "1.5px solid #ffffff", borderRadius: "50px", color: "#ffffff", fontSize: "14px", fontWeight: 700 }}>
                   {lang === "th" ? "สำหรับแบรนด์" : "For Brands"}
                 </span>
               </div>
@@ -146,11 +134,11 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           >
             <Link href={`/${lang}/influencer`} className="hero-side-card" style={{
               position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-              textAlign: "center", gap: "10px", minHeight: "420px", padding: "32px 24px",
-              border: "2px solid #111827", borderRadius: "16px", overflow: "hidden", textDecoration: "none",
+              textAlign: "center", gap: "10px", minHeight: "460px", padding: "32px 24px",
+              overflow: "hidden", textDecoration: "none",
             }}>
-              <Image src="/header-influencer-poster.jpg" alt="" fill sizes="30vw" style={{ objectFit: "cover", zIndex: 0 }} />
-              <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(180deg, rgba(17,10,38,0.35) 0%, rgba(17,10,38,0.68) 100%)" }} />
+              <Image src="/header-influencer-poster.jpg" alt="" fill sizes="30vw" style={{ objectFit: "cover", zIndex: 0, opacity: 0.55 }} />
+              <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(200deg, rgba(74,42,134,0.35) 0%, rgba(28,17,64,0.82) 100%)" }} />
               <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
                 <span style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#ffffff" }}>For Creators</span>
                 <h3 style={{ ...KT, fontSize: "clamp(19px,2.2vw,30px)", fontWeight: 800, color: "#ffffff", margin: 0, lineHeight: 1.25 }}>
@@ -159,7 +147,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                 <p style={{ ...KT, fontSize: "14px", color: "rgba(255,255,255,0.85)", margin: 0, lineHeight: 1.5 }}>
                   {lang === "th" ? "เชื่อมต่อแบรนด์ชั้นนำ และเติบโตในแบบของคุณ" : "Connect with top brands and grow in your own way."}
                 </p>
-                <span style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", padding: "10px 26px", background: "#ffffff", borderRadius: "50px", color: "#111827", fontSize: "14px", fontWeight: 700 }}>
+                <span style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", padding: "10px 26px", background: "#ffffff", borderRadius: "50px", color: "#5f26e5", fontSize: "14px", fontWeight: 700 }}>
                   {lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Creators"}
                 </span>
               </div>
@@ -169,8 +157,8 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
 
         <style>{`
           @media (max-width: 900px){
+            .hero-section{ background: linear-gradient(180deg, #f2eefb 0%, #ffffff 100%) !important; }
             .hero-diagonal-grid{ grid-template-columns: 1fr !important; grid-auto-rows: auto; row-gap: 40px; padding: 40px 0; }
-            .hero-diagonal-band{ display: none; }
           }
         `}</style>
 
