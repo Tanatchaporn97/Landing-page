@@ -100,14 +100,14 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                 <path d="M265,500 L445,500 A90,90 0 0 1 445,680 L265,680 Z" fill="url(#heroIconGradL)" />
                 <image href="/hero-illustrations/brand.svg" x="265" y="450" width="280" height="280" preserveAspectRatio="xMidYMid slice" clipPath="url(#heroIconClipL)" opacity="0.6" />
               </svg>
-              <div className="hero-blob-content" style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "12px", padding: "20% 100px" }}>
+              <div className="hero-blob-content" style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "12px", paddingTop: "20%", paddingBottom: "20%", paddingLeft: "clamp(20px, 13.2vw, 190px)", paddingRight: "clamp(20px, 13.2vw, 190px)" }}>
                 <span style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.12em", color: "rgba(255,255,255,0.7)", textTransform: "uppercase" }}>
                   For Brands
                 </span>
-                <h3 style={{ ...KT, fontSize: "clamp(19px,2.7vw,29px)", fontWeight: 800, color: "#ffffff", lineHeight: 1.22, margin: 0, overflowWrap: "break-word", wordBreak: "break-word" }}>
+                <h3 style={{ ...KT, fontSize: "clamp(19px,2.7vw,29px)", fontWeight: 800, color: "#ffffff", lineHeight: 1.22, margin: 0, width: "100%", overflowWrap: "break-word", wordBreak: "break-word" }}>
                   {lang === "th" ? <>เปลี่ยนทุกแคมเปญ<br />ให้วัดผลได้</> : "Turn Every Campaign Into Measurable Results"}
                 </h3>
-                <p style={{ ...KT, fontSize: "clamp(14px,1.5vw,16px)", color: "rgba(255,255,255,0.85)", lineHeight: 1.55, margin: 0, overflowWrap: "break-word", wordBreak: "break-word" }}>
+                <p style={{ ...KT, fontSize: "clamp(14px,1.5vw,16px)", color: "rgba(255,255,255,0.85)", lineHeight: 1.55, margin: 0, width: "100%", overflowWrap: "break-word", wordBreak: "break-word" }}>
                   {lang === "th" ? <>กลยุทธ์ อินไซต์<br />และทีมที่พาแบรนด์ไปไกลขึ้น</> : "Strategic insights and a team that takes your brand further."}
                 </p>
                 <span className="hero-blob-cta" style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", gap: "8px", background: "#ffffff", color: "#1c1140", borderRadius: "50px", padding: "8px 8px 8px 16px", fontSize: "13px", fontWeight: 700, whiteSpace: "nowrap" }}>
@@ -162,14 +162,14 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                 <path d="M265,500 L445,500 A90,90 0 0 1 445,680 L265,680 Z" fill="url(#heroIconGradR)" />
                 <image href="/hero-illustrations/creator.svg" x="265" y="450" width="280" height="280" preserveAspectRatio="xMidYMid slice" clipPath="url(#heroIconClipR)" opacity="0.6" />
               </svg>
-              <div className="hero-blob-content" style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "12px", padding: "20% 100px" }}>
+              <div className="hero-blob-content" style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "12px", paddingTop: "20%", paddingBottom: "20%", paddingLeft: "clamp(20px, 13.2vw, 190px)", paddingRight: "clamp(20px, 13.2vw, 190px)" }}>
                 <span style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.12em", color: "rgba(255,255,255,0.65)", textTransform: "uppercase" }}>
                   For Creators
                 </span>
-                <h3 style={{ ...KT, fontSize: "clamp(19px,2.7vw,29px)", fontWeight: 800, color: "#ffffff", lineHeight: 1.22, margin: 0, overflowWrap: "break-word", wordBreak: "break-word" }}>
+                <h3 style={{ ...KT, fontSize: "clamp(19px,2.7vw,29px)", fontWeight: 800, color: "#ffffff", lineHeight: 1.22, margin: 0, width: "100%", overflowWrap: "break-word", wordBreak: "break-word" }}>
                   {lang === "th" ? <>สร้างงานที่ใช่<br />จากสิ่งที่คุณรัก</> : "Land Work You Actually Love"}
                 </h3>
-                <p style={{ ...KT, fontSize: "clamp(14px,1.5vw,16px)", color: "rgba(255,255,255,0.85)", lineHeight: 1.55, margin: 0, overflowWrap: "break-word", wordBreak: "break-word" }}>
+                <p style={{ ...KT, fontSize: "clamp(14px,1.5vw,16px)", color: "rgba(255,255,255,0.85)", lineHeight: 1.55, margin: 0, width: "100%", overflowWrap: "break-word", wordBreak: "break-word" }}>
                   {lang === "th" ? "เชื่อมต่อแบรนด์ชั้นนำ และเติบโตในแบบของคุณ" : "Connect with top brands and grow in your own way."}
                 </p>
                 <span className="hero-blob-cta" style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", gap: "8px", background: "#ffffff", color: "#1c1140", borderRadius: "50px", padding: "8px 8px 8px 16px", fontSize: "13px", fontWeight: 700, whiteSpace: "nowrap" }}>
