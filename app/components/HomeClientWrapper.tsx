@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -95,17 +96,27 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
             initial={{ x: "-100%", opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: "10px", padding: "0 24px" }}
+            style={{ padding: "0 24px" }}
           >
-            <span style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#111827" }}>For Brand</span>
-            <h3 style={{ ...KT, fontSize: "clamp(19px,2.2vw,30px)", fontWeight: 800, color: "#111827", margin: 0, lineHeight: 1.25 }}>
-              {lang === "th" ? <>เปลี่ยนทุกแคมเปญ<br />ให้วัดผลได้</> : <>Turn Every Campaign<br />Into Measurable Results</>}
-            </h3>
-            <p style={{ ...KT, fontSize: "14px", color: "#374151", margin: 0, lineHeight: 1.5 }}>
-              {lang === "th" ? "กลยุทธ์ อินไซต์ และทีมที่พาแบรนด์ไปไกลขึ้น" : "Strategic insights and a team that takes your brand further."}
-            </p>
-            <Link href={`/${lang}/brand`} style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", padding: "10px 26px", border: "1.5px solid #111827", borderRadius: "50px", color: "#111827", fontSize: "14px", fontWeight: 700, textDecoration: "none" }}>
-              {lang === "th" ? "สำหรับแบรนด์" : "For Brands"}
+            <Link href={`/${lang}/brand`} className="hero-side-card" style={{
+              position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+              textAlign: "center", gap: "10px", minHeight: "420px", padding: "32px 24px",
+              border: "2px solid #111827", borderRadius: "16px", overflow: "hidden", textDecoration: "none",
+            }}>
+              <Image src="/services/influencer-campaign-management.jpg" alt="" fill sizes="30vw" style={{ objectFit: "cover", zIndex: 0 }} />
+              <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(180deg, rgba(17,10,38,0.35) 0%, rgba(17,10,38,0.68) 100%)" }} />
+              <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
+                <span style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#ffffff" }}>For Brand</span>
+                <h3 style={{ ...KT, fontSize: "clamp(19px,2.2vw,30px)", fontWeight: 800, color: "#ffffff", margin: 0, lineHeight: 1.25 }}>
+                  {lang === "th" ? <>เปลี่ยนทุกแคมเปญ<br />ให้วัดผลได้</> : <>Turn Every Campaign<br />Into Measurable Results</>}
+                </h3>
+                <p style={{ ...KT, fontSize: "14px", color: "rgba(255,255,255,0.85)", margin: 0, lineHeight: 1.5 }}>
+                  {lang === "th" ? "กลยุทธ์ อินไซต์ และทีมที่พาแบรนด์ไปไกลขึ้น" : "Strategic insights and a team that takes your brand further."}
+                </p>
+                <span style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", padding: "10px 26px", background: "#ffffff", borderRadius: "50px", color: "#111827", fontSize: "14px", fontWeight: 700 }}>
+                  {lang === "th" ? "สำหรับแบรนด์" : "For Brands"}
+                </span>
+              </div>
             </Link>
           </motion.div>
 
@@ -131,17 +142,27 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
             initial={{ x: "100%", opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: "10px", padding: "0 24px" }}
+            style={{ padding: "0 24px" }}
           >
-            <span style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#111827" }}>For Creators</span>
-            <h3 style={{ ...KT, fontSize: "clamp(19px,2.2vw,30px)", fontWeight: 800, color: "#111827", margin: 0, lineHeight: 1.25 }}>
-              {lang === "th" ? <>สร้างงานที่ใช่<br />จากสิ่งที่คุณรัก</> : <>Land Work You<br />Actually Love</>}
-            </h3>
-            <p style={{ ...KT, fontSize: "14px", color: "#374151", margin: 0, lineHeight: 1.5 }}>
-              {lang === "th" ? "เชื่อมต่อแบรนด์ชั้นนำ และเติบโตในแบบของคุณ" : "Connect with top brands and grow in your own way."}
-            </p>
-            <Link href={`/${lang}/influencer`} style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", padding: "10px 26px", border: "1.5px solid #111827", borderRadius: "50px", color: "#111827", fontSize: "14px", fontWeight: 700, textDecoration: "none" }}>
-              {lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Creators"}
+            <Link href={`/${lang}/influencer`} className="hero-side-card" style={{
+              position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+              textAlign: "center", gap: "10px", minHeight: "420px", padding: "32px 24px",
+              border: "2px solid #111827", borderRadius: "16px", overflow: "hidden", textDecoration: "none",
+            }}>
+              <Image src="/header-influencer-poster.jpg" alt="" fill sizes="30vw" style={{ objectFit: "cover", zIndex: 0 }} />
+              <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(180deg, rgba(17,10,38,0.35) 0%, rgba(17,10,38,0.68) 100%)" }} />
+              <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
+                <span style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#ffffff" }}>For Creators</span>
+                <h3 style={{ ...KT, fontSize: "clamp(19px,2.2vw,30px)", fontWeight: 800, color: "#ffffff", margin: 0, lineHeight: 1.25 }}>
+                  {lang === "th" ? <>สร้างงานที่ใช่<br />จากสิ่งที่คุณรัก</> : <>Land Work You<br />Actually Love</>}
+                </h3>
+                <p style={{ ...KT, fontSize: "14px", color: "rgba(255,255,255,0.85)", margin: 0, lineHeight: 1.5 }}>
+                  {lang === "th" ? "เชื่อมต่อแบรนด์ชั้นนำ และเติบโตในแบบของคุณ" : "Connect with top brands and grow in your own way."}
+                </p>
+                <span style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", padding: "10px 26px", background: "#ffffff", borderRadius: "50px", color: "#111827", fontSize: "14px", fontWeight: 700 }}>
+                  {lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Creators"}
+                </span>
+              </div>
             </Link>
           </motion.div>
         </div>
