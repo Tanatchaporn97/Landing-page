@@ -812,7 +812,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
       {/* ── Campaign Learning — Measure, Learn, Improve ── */}
       <section style={{
-        background: "#ffffff",
+        background: "url('/new-landing-bg2.jpg') center / cover no-repeat",
         position: "relative", overflow: "hidden",
       }} className="py-20 px-6">
         <div style={{ maxWidth: "1294px", margin: "0 auto", position: "relative", zIndex: 1 }}>
