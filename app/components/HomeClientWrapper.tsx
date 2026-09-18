@@ -84,7 +84,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
             initial={{ x: "-100%", opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            style={{ padding: "0 24px" }}
+            style={{ paddingRight: "24px" }}
           >
             <Link href={`/${lang}/brand`} className="hero-side-card" style={{
               position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
@@ -131,7 +131,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
             initial={{ x: "100%", opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            style={{ padding: "0 24px" }}
+            style={{ paddingLeft: "24px" }}
           >
             <Link href={`/${lang}/influencer`} className="hero-side-card" style={{
               position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
@@ -161,6 +161,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           @media (max-width: 900px){
             .hero-section{ background: linear-gradient(180deg, #f2eefb 0%, #ffffff 100%) !important; }
             .hero-diagonal-grid{ grid-template-columns: 1fr !important; grid-auto-rows: auto; row-gap: 40px; padding: 40px 0; }
+            .hero-diagonal-grid > div:nth-child(1), .hero-diagonal-grid > div:nth-child(3){ padding-left: 24px !important; padding-right: 24px !important; }
             .hero-side-card{ clip-path: none !important; border-radius: 16px; padding: 32px 24px !important; }
           }
         `}</style>
