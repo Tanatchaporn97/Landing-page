@@ -88,8 +88,9 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           >
             <Link href={`/${lang}/brand`} className="hero-side-card" style={{
               position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-              textAlign: "center", gap: "10px", minHeight: "460px", padding: "32px 24px",
+              textAlign: "center", gap: "10px", minHeight: "460px", padding: "32px 42px 32px 24px",
               overflow: "hidden", textDecoration: "none",
+              clipPath: "polygon(0 0, 100% 0, 85% 100%, 0 100%)",
             }}>
               <Image src="/services/influencer-campaign-management.jpg" alt="" fill sizes="30vw" style={{ objectFit: "cover", zIndex: 0, opacity: 0.55 }} />
               <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(200deg, rgba(74,42,134,0.35) 0%, rgba(28,17,64,0.82) 100%)" }} />
@@ -134,8 +135,9 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           >
             <Link href={`/${lang}/influencer`} className="hero-side-card" style={{
               position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-              textAlign: "center", gap: "10px", minHeight: "460px", padding: "32px 24px",
+              textAlign: "center", gap: "10px", minHeight: "460px", padding: "32px 24px 32px 42px",
               overflow: "hidden", textDecoration: "none",
+              clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0 100%)",
             }}>
               <Image src="/header-influencer-poster.jpg" alt="" fill sizes="30vw" style={{ objectFit: "cover", zIndex: 0, opacity: 0.55 }} />
               <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(200deg, rgba(74,42,134,0.35) 0%, rgba(28,17,64,0.82) 100%)" }} />
@@ -159,6 +161,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           @media (max-width: 900px){
             .hero-section{ background: linear-gradient(180deg, #f2eefb 0%, #ffffff 100%) !important; }
             .hero-diagonal-grid{ grid-template-columns: 1fr !important; grid-auto-rows: auto; row-gap: 40px; padding: 40px 0; }
+            .hero-side-card{ clip-path: none !important; border-radius: 16px; padding: 32px 24px !important; }
           }
         `}</style>
 
