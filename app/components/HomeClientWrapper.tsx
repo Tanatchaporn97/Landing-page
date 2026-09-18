@@ -101,22 +101,9 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
               <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff0089" style={{ position: "absolute", top: "28%", right: "14%", zIndex: 1, opacity: 0.6 }}><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" /></svg>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="#5f26e5" style={{ position: "absolute", top: "58%", left: "8%", zIndex: 1, opacity: 0.5 }}><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" /></svg>
 
-              {/* Photo, bottom-right */}
-              <div style={{ position: "absolute", bottom: 0, right: 0, width: "42%", height: "46%", zIndex: 1, borderTopLeftRadius: "28px", overflow: "hidden", boxShadow: "-8px -8px 32px rgba(95,38,229,0.12)" }}>
-                <Image src="/services/brand-desk-photo.jpg" alt="" fill sizes="20vw" priority style={{ objectFit: "cover" }} />
-              </div>
-              {/* Floating badge pills — anchored to the photo's top/bottom edges, clear of the text column */}
-              <div style={{ position: "absolute", bottom: "8%", right: "38%", zIndex: 3, display: "flex", alignItems: "center", gap: "6px", background: "#ffffff", borderRadius: "50px", padding: "6px 14px 6px 6px", boxShadow: "0 8px 20px rgba(95,38,229,0.18)" }}>
-                <span style={{ width: "22px", height: "22px", borderRadius: "50%", background: "#5f26e5", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12L10 18L20 6" /></svg>
-                </span>
-                <span style={{ width: "40px", height: "6px", borderRadius: "3px", background: "#e5e0f5" }} />
-              </div>
-              <div style={{ position: "absolute", bottom: "44%", right: "4%", zIndex: 3, display: "flex", alignItems: "center", gap: "6px", background: "#ffffff", borderRadius: "50px", padding: "6px 14px 6px 6px", boxShadow: "0 8px 20px rgba(95,38,229,0.18)" }}>
-                <span style={{ width: "22px", height: "22px", borderRadius: "50%", background: "#5f26e5", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="#ffffff"><path d="M6 4 L20 12 L6 20 Z" /></svg>
-                </span>
-                <span style={{ width: "36px", height: "6px", borderRadius: "3px", background: "#e5e0f5" }} />
+              {/* Dashboard mockup, bottom-right, bleeding past the card edges */}
+              <div style={{ position: "absolute", bottom: "-28px", right: "-48px", width: "82%", zIndex: 1, pointerEvents: "none" }}>
+                <Image src="/hero-illustrations/brand-mockup.png" alt="" width={1341} height={1017} priority style={{ width: "100%", height: "auto", display: "block" }} />
               </div>
 
               {/* Text content */}
