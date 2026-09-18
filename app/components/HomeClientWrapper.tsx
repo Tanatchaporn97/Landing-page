@@ -87,8 +87,8 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
             style={{ paddingRight: "24px" }}
           >
             <Link href={`/${lang}/brand`} className="hero-side-card" style={{
-              position: "relative", display: "flex", flexDirection: "column", justifyContent: "center",
-              textAlign: "left", minHeight: "620px", padding: "48px 40px",
+              position: "relative", display: "flex", flexDirection: "column", justifyContent: "flex-start",
+              textAlign: "left", minHeight: "620px", padding: "56px 40px 40px",
               overflow: "hidden", textDecoration: "none",
               clipPath: "polygon(0 0, 100% 0, 85% 100%, 0 100%)",
               background: "linear-gradient(160deg, #ffffff 0%, #f5f2fc 100%)",
