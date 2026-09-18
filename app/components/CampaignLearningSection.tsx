@@ -24,12 +24,12 @@ const SENTIMENT = [
 ];
 
 const ACTIVITY_TILES = [
-  { bg: "linear-gradient(135deg, #f6b88a 0%, #b78ce0 100%)", type: "video", duration: "0:15" },
-  { bg: "linear-gradient(135deg, #ffb3d9 0%, #d9a8ff 100%)", type: "photo", likes: "2.4k" },
-  { bg: "linear-gradient(135deg, #93b8ff 0%, #5f6fd9 100%)", type: "review", rating: 5 },
-  { bg: "linear-gradient(135deg, #ffb3d9 0%, #ff8fc7 100%)", type: "video", duration: "0:30" },
-  { bg: "linear-gradient(135deg, #ffcf8f 0%, #ff9f7a 100%)", type: "photo", likes: "1.8k" },
-  { bg: "linear-gradient(135deg, #8fe8d0 0%, #6fc6c0 100%)", type: "review", rating: 4 },
+  { bg: "linear-gradient(135deg, #d1d5db 0%, #9ca3af 100%)", type: "video", duration: "0:15" },
+  { bg: "linear-gradient(135deg, #e5e7eb 0%, #b0b5bd 100%)", type: "photo", likes: "2.4k" },
+  { bg: "linear-gradient(135deg, #c7ccd3 0%, #8b93a1 100%)", type: "review", rating: 5 },
+  { bg: "linear-gradient(135deg, #dadde1 0%, #a4aab3 100%)", type: "video", duration: "0:30" },
+  { bg: "linear-gradient(135deg, #e5e7eb 0%, #b0b5bd 100%)", type: "photo", likes: "1.8k" },
+  { bg: "linear-gradient(135deg, #c7ccd3 0%, #8b93a1 100%)", type: "review", rating: 4 },
 ] as const;
 
 export default function CampaignLearningSection({ lang }: { lang: "th" | "en" }) {
@@ -83,8 +83,8 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
         {/* Base panel: Campaign activity grid */}
         <div style={{
           position: "relative", borderRadius: "24px", padding: "24px",
-          background: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.8)",
-          boxShadow: "0 24px 50px -18px rgba(95,38,229,0.25)", backdropFilter: "blur(10px)",
+          background: "rgba(255,255,255,0.45)", border: "1px solid rgba(255,255,255,0.7)",
+          boxShadow: "0 16px 32px -18px rgba(95,38,229,0.15)", backdropFilter: "blur(10px)",
           transform: "scale(0.8)",
         }}>
           <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#6b7280", margin: "0 0 14px" }}>
