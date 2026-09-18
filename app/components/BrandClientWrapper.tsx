@@ -69,7 +69,7 @@ const OUR_SERVICES = [
   { img: "/services/creative-content-concept.jpg", title: "Creative Content & Concept Development",
     desc: "พัฒนา Campaign Concept, Key Message และแนวทางคอนเทนต์ให้เหมาะกับแบรนด์และแพลตฟอร์ม ช่วยให้อินฟลูเอนเซอร์สร้างคอนเทนต์ที่น่าสนใจ พร้อมสื่อสารสิ่งที่แบรนด์ต้องการได้อย่างชัดเจน",
     descEn: "Developing campaign concepts, key messages, and content direction tailored to your brand and platform — helping influencers create compelling content that clearly communicates what your brand needs to say." },
-  { img: "/services/photo-video-production.jpg", title: "Photo & Video Production",
+  { img: "/services/photo-video-production2.png", title: "Photo & Video Production",
     desc: "สร้างสรรค์ภาพและวิดีโอตั้งแต่การวาง Concept, Storyboard ไปจนถึงการถ่ายทำและ Post-production เพื่อให้แบรนด์มีคอนเทนต์คุณภาพพร้อมใช้บนทุกช่องทาง",
     descEn: "Creative photo and video production from concept and storyboard through filming and post-production, giving your brand quality, ready-to-use content across every channel." },
   { img: "/services/product-seeding.jpg", title: "Publishing & Advertorial",
