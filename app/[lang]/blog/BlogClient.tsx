@@ -93,7 +93,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
 
                 <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
                   {(post.topics || []).map((cat: any) => (
-                    <span key={cat} style={{ ...KT, background: "rgba(255,255,255,0.15)", color: "#111827", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.35)", borderRadius: "50px", fontSize: "13px", fontWeight: 600, padding: "4px 14px", display: "inline-block", width: "fit-content" }}>
+                    <span key={cat} style={{ ...KT, background: "#ffffff", color: "#5f26e5", border: "1px solid #5f26e5", borderRadius: "50px", fontSize: "13px", fontWeight: 600, padding: "4px 14px", display: "inline-block", width: "fit-content" }}>
                       {cat}
                     </span>
                   ))}
