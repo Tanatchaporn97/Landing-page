@@ -102,7 +102,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                 <p style={{ ...KT, fontSize: "14px", color: "rgba(255,255,255,0.85)", margin: 0, lineHeight: 1.5 }}>
                   {lang === "th" ? "กลยุทธ์ อินไซต์ และทีมที่พาแบรนด์ไปไกลขึ้น" : "Strategic insights and a team that takes your brand further."}
                 </p>
-                <span style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", padding: "10px 26px", border: "1.5px solid #ffffff", borderRadius: "50px", color: "#ffffff", fontSize: "14px", fontWeight: 700 }}>
+                <span className="btn-hero px-4 py-3 rounded-full" style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", whiteSpace: "nowrap", fontSize: "15px", fontWeight: 600 }}>
                   {lang === "th" ? "สำหรับแบรนด์" : "For Brands"}
                 </span>
               </div>
@@ -151,7 +151,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                 <p style={{ ...KT, fontSize: "14px", color: "rgba(255,255,255,0.85)", margin: 0, lineHeight: 1.5 }}>
                   {lang === "th" ? "เชื่อมต่อแบรนด์ชั้นนำ และเติบโตในแบบของคุณ" : "Connect with top brands and grow in your own way."}
                 </p>
-                <span style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", padding: "10px 26px", background: "#ffffff", borderRadius: "50px", color: "#5f26e5", fontSize: "14px", fontWeight: 700 }}>
+                <span className="btn-hero px-4 py-3 rounded-full" style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", whiteSpace: "nowrap", fontSize: "15px", fontWeight: 600 }}>
                   {lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Creators"}
                 </span>
               </div>
