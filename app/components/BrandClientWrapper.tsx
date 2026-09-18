@@ -290,11 +290,11 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               )}
             </p>
 
-            <a href="#contact" className="btn-hero-solid-purple" style={{ ...KT, display: "inline-flex", alignItems: "center", justifyContent: "center",
+            <Link href={`/${lang}/contact`} className="btn-hero-solid-purple" style={{ ...KT, display: "inline-flex", alignItems: "center", justifyContent: "center",
               fontWeight: 600, fontSize: "16px",
               padding: "16px 36px", borderRadius: "50px", textDecoration: "none" }}>
               {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
-            </a>
+            </Link>
 
             {/* Number stats — plain text, no card/box, centered as a group */}
             <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "40px", marginTop: "40px" }}>

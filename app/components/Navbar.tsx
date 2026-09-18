@@ -226,7 +226,7 @@ export default function Navbar({
               { label: t.blog, href: `/${lang}/blog` },
             ].map((link) => (
               <Link key={link.href} href={link.href}
-                style={{ ...KT, fontSize: "14px", fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap",
+                style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap",
                   color: forceDarkText ? "#1c1140" : "#ffffff" }}>
                 {link.label}
               </Link>
