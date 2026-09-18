@@ -115,7 +115,9 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
               Buddy Review Connects
             </span>
             <h1 className="font-black uppercase" style={{
-              ...KT, color: "#111827",
+              ...KT,
+              background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
               fontSize: "clamp(22px,3vw,42px)", lineHeight: 1.25, margin: 0,
               fontFeatureSettings: "'pnum' on,'lnum' on",
             }}>
