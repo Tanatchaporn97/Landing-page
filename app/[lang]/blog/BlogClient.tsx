@@ -57,7 +57,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
 
         {/* Header row — heading left, category CTAs right */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "24px", marginBottom: "48px" }}>
-          <h1 style={{ ...KT, background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", fontSize: "clamp(32px,4.2vw,56px)", fontWeight: 800, letterSpacing: "0.02em", textTransform: "uppercase", margin: 0, lineHeight: 1.15 }}>
+          <h1 style={{ ...KT, background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", fontSize: "clamp(32px,4.2vw,56px)", fontWeight: 800, letterSpacing: "0.02em", margin: 0, lineHeight: 1.15 }}>
             Blog
           </h1>
 
