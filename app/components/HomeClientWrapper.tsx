@@ -77,7 +77,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           display: "grid",
           gridTemplateColumns: "1fr 1.5fr 1fr",
           alignItems: "center",
-          minHeight: "460px",
+          minHeight: "620px",
         }}>
           {/* Left — For Brand */}
           <motion.div
@@ -88,21 +88,21 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           >
             <Link href={`/${lang}/brand`} className="hero-side-card" style={{
               position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-              textAlign: "center", gap: "10px", minHeight: "460px", padding: "32px 42px 32px 24px",
+              textAlign: "center", gap: "10px", minHeight: "620px", padding: "32px 42px 32px 24px",
               overflow: "hidden", textDecoration: "none",
               clipPath: "polygon(0 0, 100% 0, 85% 100%, 0 100%)",
             }}>
               <Image src="/services/influencer-campaign-management.jpg" alt="" fill sizes="30vw" style={{ objectFit: "cover", zIndex: 0, opacity: 0.55 }} />
               <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(200deg, rgba(74,42,134,0.35) 0%, rgba(28,17,64,0.82) 100%)" }} />
               <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
-                <span style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#ffffff" }}>For Brand</span>
-                <h3 style={{ ...KT, fontSize: "clamp(19px,2.2vw,30px)", fontWeight: 800, color: "#ffffff", margin: 0, lineHeight: 1.25 }}>
+                <span style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#ffffff" }}>For Brand</span>
+                <h3 style={{ ...KT, fontSize: "clamp(24px,2.8vw,38px)", fontWeight: 800, color: "#ffffff", margin: 0, lineHeight: 1.25 }}>
                   {lang === "th" ? <>เปลี่ยนทุกแคมเปญ<br />ให้วัดผลได้</> : <>Turn Every Campaign<br />Into Measurable Results</>}
                 </h3>
-                <p style={{ ...KT, fontSize: "14px", color: "rgba(255,255,255,0.85)", margin: 0, lineHeight: 1.5 }}>
+                <p style={{ ...KT, fontSize: "16px", color: "rgba(255,255,255,0.85)", margin: 0, lineHeight: 1.6 }}>
                   {lang === "th" ? "กลยุทธ์ อินไซต์ และทีมที่พาแบรนด์ไปไกลขึ้น" : "Strategic insights and a team that takes your brand further."}
                 </p>
-                <span className="btn-hero px-4 py-3 rounded-full" style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", whiteSpace: "nowrap", fontSize: "15px", fontWeight: 600 }}>
+                <span className="btn-hero px-4 py-3 rounded-full" style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", whiteSpace: "nowrap", fontSize: "16px", fontWeight: 600 }}>
                   {lang === "th" ? "สำหรับแบรนด์" : "For Brands"}
                 </span>
               </div>
@@ -137,21 +137,21 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           >
             <Link href={`/${lang}/influencer`} className="hero-side-card" style={{
               position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-              textAlign: "center", gap: "10px", minHeight: "460px", padding: "32px 24px 32px 42px",
+              textAlign: "center", gap: "10px", minHeight: "620px", padding: "32px 24px 32px 42px",
               overflow: "hidden", textDecoration: "none",
               clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0 100%)",
             }}>
               <Image src="/header-influencer-poster.jpg" alt="" fill sizes="30vw" style={{ objectFit: "cover", zIndex: 0, opacity: 0.55 }} />
               <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(200deg, rgba(74,42,134,0.35) 0%, rgba(28,17,64,0.82) 100%)" }} />
               <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
-                <span style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#ffffff" }}>For Creators</span>
-                <h3 style={{ ...KT, fontSize: "clamp(19px,2.2vw,30px)", fontWeight: 800, color: "#ffffff", margin: 0, lineHeight: 1.25 }}>
+                <span style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#ffffff" }}>For Creators</span>
+                <h3 style={{ ...KT, fontSize: "clamp(24px,2.8vw,38px)", fontWeight: 800, color: "#ffffff", margin: 0, lineHeight: 1.25 }}>
                   {lang === "th" ? <>สร้างงานที่ใช่<br />จากสิ่งที่คุณรัก</> : <>Land Work You<br />Actually Love</>}
                 </h3>
-                <p style={{ ...KT, fontSize: "14px", color: "rgba(255,255,255,0.85)", margin: 0, lineHeight: 1.5 }}>
+                <p style={{ ...KT, fontSize: "16px", color: "rgba(255,255,255,0.85)", margin: 0, lineHeight: 1.6 }}>
                   {lang === "th" ? "เชื่อมต่อแบรนด์ชั้นนำ และเติบโตในแบบของคุณ" : "Connect with top brands and grow in your own way."}
                 </p>
-                <span className="btn-hero px-4 py-3 rounded-full" style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", whiteSpace: "nowrap", fontSize: "15px", fontWeight: 600 }}>
+                <span className="btn-hero px-4 py-3 rounded-full" style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", whiteSpace: "nowrap", fontSize: "16px", fontWeight: 600 }}>
                   {lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Creators"}
                 </span>
               </div>
