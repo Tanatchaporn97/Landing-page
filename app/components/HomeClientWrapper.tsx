@@ -68,7 +68,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           minHeight: "620px",
           paddingTop: "110px",
           overflow: "hidden",
-          background: "linear-gradient(100deg, #1c1140 0%, #3d2270 16%, #6b46c9 28%, #f2eefb 40%, #ffffff 50%, #f2eefb 60%, #6b46c9 72%, #3d2270 84%, #1c1140 100%)",
+          background: "linear-gradient(100deg, #e8dcf8 0%, #ecdff5 16%, #f2e6f6 28%, #f8f2fa 40%, #ffffff 50%, #f8f2fa 60%, #f2e6f6 72%, #ecdff5 84%, #e8dcf8 100%)",
           zIndex: 10,
         }}
       >
