@@ -280,10 +280,10 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
         <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "48px" }}>
           {CATS.map((cat) => (
             <button key={cat} onClick={() => setActiveCat(cat)} style={{ ...KT,
-              background: activeCat === cat ? "#5f26e5" : "rgba(255,255,255,0.12)",
+              background: activeCat === cat ? "#5f26e5" : "#ffffff",
               backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
               color: activeCat === cat ? "#ffffff" : "#5f26e5",
-              border: activeCat === cat ? "1px solid #5f26e5" : "1px solid rgba(255,255,255,0.35)",
+              border: activeCat === cat ? "1px solid #5f26e5" : "1px solid rgba(95,38,229,0.25)",
               borderRadius: "50px", fontSize: "14px", fontWeight: 600,
               padding: "7px 20px", cursor: "pointer" }}>
               {cat}
