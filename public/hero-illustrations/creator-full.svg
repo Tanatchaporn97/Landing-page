@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 620" width="400" height="620">
+  <defs>
+    <linearGradient id="hcfBg" x1="100%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#6b46c9" />
+      <stop offset="50%" stop-color="#3d2270" />
+      <stop offset="100%" stop-color="#1c1140" />
+    </linearGradient>
+    <radialGradient id="hcfGlow" cx="50%" cy="18%" r="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="hcfPhone" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#e7ddfb" />
+    </linearGradient>
+    <linearGradient id="hcfScreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff8fc7" />
+      <stop offset="100%" stop-color="#8a5cf6" />
+    </linearGradient>
+    <linearGradient id="hcfHeart" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff8fc7" />
+      <stop offset="100%" stop-color="#ff0089" />
+    </linearGradient>
+    <linearGradient id="hcfBubble" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd580" />
+      <stop offset="100%" stop-color="#ff9f4a" />
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="620" fill="url(#hcfBg)" />
+  <rect width="400" height="620" fill="url(#hcfGlow)" />
+
+  <!-- Top cluster: phone mockup + heart / comment badges -->
+  <g transform="translate(200,90) rotate(6) scale(0.72) translate(-72,-105)">
+    <rect x="0" y="0" width="144" height="210" rx="26" fill="url(#hcfPhone)" opacity="0.95" />
+    <rect x="12" y="14" width="120" height="152" rx="14" fill="url(#hcfScreen)" />
+    <circle cx="72" cy="90" r="26" fill="#ffffff" opacity="0.92" />
+    <path d="M64,78 L64,102 L86,90 Z" fill="#7c3aed" />
+    <rect x="26" y="176" width="92" height="8" rx="4" fill="#d9cdf5" />
+    <rect x="42" y="192" width="60" height="6" rx="3" fill="#e6dcf9" />
+  </g>
+  <circle cx="108" cy="48" r="29" fill="url(#hcfHeart)" />
+  <path d="M108,60 C97,50 94,42 99,37 C103,32 109,34 109,40 C109,34 115,32 119,37 C124,42 121,50 108,60 Z" fill="#ffffff" />
+  <circle cx="303" cy="62" r="24" fill="url(#hcfBubble)" />
+  <circle cx="294" cy="62" r="2.6" fill="#8a4a12" />
+  <circle cx="303" cy="62" r="2.6" fill="#8a4a12" />
+  <circle cx="312" cy="62" r="2.6" fill="#8a4a12" />
+
+  <path d="M60 148 l5 11 11 5 -11 5 -5 11 -5-11 -11-5 11-5z" fill="#ffffff" opacity="0.5" />
+  <path d="M340 155 l4 9 9 4 -9 4 -4 9 -4-9 -9-4 9-4z" fill="#ffffff" opacity="0.4" />
+
+  <!-- Bottom cluster: smaller like badge -->
+  <g transform="translate(200,540) rotate(-5)">
+    <circle cx="0" cy="0" r="52" fill="#ffffff" opacity="0.12" />
+    <circle cx="0" cy="0" r="38" fill="url(#hcfHeart)" opacity="0.95" />
+    <path d="M0,15 C-13,4 -17,-5 -11,-11 C-6,-17 1,-15 1,-9 C1,-15 8,-17 13,-11 C19,-5 15,4 0,15 Z" fill="#ffffff" />
+  </g>
+  <path d="M110 565 l5 11 11 5 -11 5 -5 11 -5-11 -11-5 11-5z" fill="#ffffff" opacity="0.5" />
+  <path d="M290 575 l4 9 9 4 -9 4 -4 9 -4-9 -9-4 9-4z" fill="#ffffff" opacity="0.4" />
+</svg>

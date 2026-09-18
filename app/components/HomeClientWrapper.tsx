@@ -92,8 +92,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
               overflow: "hidden", textDecoration: "none",
               clipPath: "polygon(0 0, 100% 0, 85% 100%, 0 100%)",
             }}>
-              <Image src="/services/influencer-campaign-management.jpg" alt="" fill sizes="30vw" style={{ objectFit: "cover", zIndex: 0, opacity: 0.55 }} />
-              <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(200deg, rgba(74,42,134,0.35) 0%, rgba(28,17,64,0.82) 100%)" }} />
+              <Image src="/hero-illustrations/brand-full.svg" alt="" fill sizes="30vw" style={{ objectFit: "cover", zIndex: 0 }} />
               <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
                 <span style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#ffffff" }}>For Brand</span>
                 <h3 style={{ ...KT, fontSize: "clamp(24px,2.8vw,38px)", fontWeight: 800, color: "#ffffff", margin: 0, lineHeight: 1.25 }}>
@@ -141,8 +140,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
               overflow: "hidden", textDecoration: "none",
               clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0 100%)",
             }}>
-              <Image src="/header-influencer-poster.jpg" alt="" fill sizes="30vw" style={{ objectFit: "cover", zIndex: 0, opacity: 0.55 }} />
-              <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(200deg, rgba(74,42,134,0.35) 0%, rgba(28,17,64,0.82) 100%)" }} />
+              <Image src="/hero-illustrations/creator-full.svg" alt="" fill sizes="30vw" style={{ objectFit: "cover", zIndex: 0 }} />
               <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
                 <span style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#ffffff" }}>For Creators</span>
                 <h3 style={{ ...KT, fontSize: "clamp(24px,2.8vw,38px)", fontWeight: 800, color: "#ffffff", margin: 0, lineHeight: 1.25 }}>
