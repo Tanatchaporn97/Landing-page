@@ -24,13 +24,13 @@ const SENTIMENT = [
 ];
 
 const ACTIVITY_TILES = [
-  "linear-gradient(135deg, #f6b88a 0%, #b78ce0 100%)",
-  "linear-gradient(135deg, #ffb3d9 0%, #d9a8ff 100%)",
-  "linear-gradient(135deg, #93b8ff 0%, #5f6fd9 100%)",
-  "linear-gradient(135deg, #ffb3d9 0%, #ff8fc7 100%)",
-  "linear-gradient(135deg, #ffcf8f 0%, #ff9f7a 100%)",
-  "linear-gradient(135deg, #8fe8d0 0%, #6fc6c0 100%)",
-];
+  { bg: "linear-gradient(135deg, #f6b88a 0%, #b78ce0 100%)", type: "video", duration: "0:15" },
+  { bg: "linear-gradient(135deg, #ffb3d9 0%, #d9a8ff 100%)", type: "photo", likes: "2.4k" },
+  { bg: "linear-gradient(135deg, #93b8ff 0%, #5f6fd9 100%)", type: "review", rating: 5 },
+  { bg: "linear-gradient(135deg, #ffb3d9 0%, #ff8fc7 100%)", type: "video", duration: "0:30" },
+  { bg: "linear-gradient(135deg, #ffcf8f 0%, #ff9f7a 100%)", type: "photo", likes: "1.8k" },
+  { bg: "linear-gradient(135deg, #8fe8d0 0%, #6fc6c0 100%)", type: "review", rating: 4 },
+] as const;
 
 export default function CampaignLearningSection({ lang }: { lang: "th" | "en" }) {
   return (
@@ -91,8 +91,53 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
             {lang === "th" ? "กิจกรรมแคมเปญ" : "Campaign Activity"}
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px" }}>
-            {ACTIVITY_TILES.map((bg, i) => (
-              <div key={i} style={{ aspectRatio: "1 / 1", borderRadius: "14px", background: bg }} />
+            {ACTIVITY_TILES.map((tile, i) => (
+              <div key={i} style={{
+                position: "relative", aspectRatio: "1 / 1", borderRadius: "14px", background: tile.bg,
+                overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center",
+              }}>
+                {tile.type === "video" && (
+                  <>
+                    <div style={{
+                      width: "36%", aspectRatio: "1 / 1", borderRadius: "50%", background: "rgba(255,255,255,0.92)",
+                      display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 10px rgba(0,0,0,0.18)",
+                    }}>
+                      <div style={{ width: 0, height: 0, borderTop: "6px solid transparent", borderBottom: "6px solid transparent", borderLeft: "9px solid #5f26e5", marginLeft: "2px" }} />
+                    </div>
+                    <span style={{
+                      position: "absolute", bottom: "8%", right: "8%", ...KT, fontSize: "9px", fontWeight: 700,
+                      color: "#ffffff", background: "rgba(0,0,0,0.35)", borderRadius: "6px", padding: "2px 5px",
+                    }}>
+                      {tile.duration}
+                    </span>
+                  </>
+                )}
+                {tile.type === "photo" && (
+                  <>
+                    <svg width="36%" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1.8" style={{ opacity: 0.95 }}>
+                      <rect x="3" y="5" width="18" height="14" rx="2" />
+                      <circle cx="8.5" cy="10" r="1.5" fill="#ffffff" stroke="none" />
+                      <path d="M21 15l-5-5-4 4-3-3-6 6" />
+                    </svg>
+                    <span style={{
+                      position: "absolute", bottom: "8%", left: "8%", display: "flex", alignItems: "center", gap: "3px",
+                      ...KT, fontSize: "9px", fontWeight: 700, color: "#ffffff", background: "rgba(0,0,0,0.3)",
+                      borderRadius: "6px", padding: "2px 5px",
+                    }}>
+                      ♥ {tile.likes}
+                    </span>
+                  </>
+                )}
+                {tile.type === "review" && (
+                  <div style={{ display: "flex", gap: "1.5px" }}>
+                    {Array.from({ length: 5 }).map((_, si) => (
+                      <svg key={si} width="10" height="10" viewBox="0 0 20 20" fill={si < tile.rating ? "#ffffff" : "rgba(255,255,255,0.35)"}>
+                        <path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 15l-5.6 3 1.4-6.2L1 7.5l6.4-.6L10 1z" />
+                      </svg>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </div>
         </div>
