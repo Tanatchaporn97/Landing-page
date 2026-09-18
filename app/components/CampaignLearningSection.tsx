@@ -18,9 +18,9 @@ const STEPS = [
 ];
 
 const SENTIMENT = [
-  { label: "Positive", labelTh: "เชิงบวก", value: 78, color: "#5f26e5" },
-  { label: "Neutral", labelTh: "กลาง ๆ", value: 18, color: "#c4b5fd" },
-  { label: "Negative", labelTh: "เชิงลบ", value: 4, color: "#ff0089" },
+  { label: "Positive", labelTh: "เชิงบวก", value: 78, color: "#111827" },
+  { label: "Neutral", labelTh: "กลาง ๆ", value: 18, color: "#111827" },
+  { label: "Negative", labelTh: "เชิงลบ", value: 4, color: "#111827" },
 ];
 
 const ACTIVITY_TILES = [
@@ -151,13 +151,13 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           transform: "scale(1.1)",
           transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
         }}>
-          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#9ca3af", margin: "0 0 10px" }}>
+          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#111827", margin: "0 0 10px" }}>
             {lang === "th" ? "ความรู้สึก" : "Sentiment"}
           </p>
           {SENTIMENT.map((s) => (
             <div key={s.label} style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px", ...KT, fontSize: "13px" }}>
-              <span style={{ color: s.color, fontWeight: 700 }}>{lang === "th" ? s.labelTh : s.label}</span>
-              <span style={{ color: "#111827", fontWeight: 700 }}>{s.value}%</span>
+              <span style={{ color: "#111827", fontWeight: 700 }}>{lang === "th" ? s.labelTh : s.label}</span>
+              <span style={{ color: "#5f26e5", fontWeight: 700 }}>{s.value}%</span>
             </div>
           ))}
         </div>
@@ -171,14 +171,14 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           transform: "scale(1.1)",
           transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
         }}>
-          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#9ca3af", margin: "0 0 10px" }}>
+          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#111827", margin: "0 0 10px" }}>
             {lang === "th" ? "ผลลัพธ์แคมเปญ" : "Campaign Result"}
           </p>
           <div style={{ display: "flex", gap: "14px" }}>
             {[{ v: "161%", l: lang === "th" ? "การเข้าถึง" : "Reach" }, { v: "219%", l: lang === "th" ? "ยอดวิว" : "Views" }, { v: "5.33%", l: "ER" }].map((s) => (
               <div key={s.l}>
                 <p style={{ ...KT, fontSize: "16px", fontWeight: 800, color: "#5f26e5", margin: "0 0 2px" }}>{s.v}</p>
-                <p style={{ ...KT, fontSize: "10px", color: "#9ca3af", margin: 0 }}>{s.l}</p>
+                <p style={{ ...KT, fontSize: "10px", color: "#111827", margin: 0 }}>{s.l}</p>
               </div>
             ))}
           </div>
@@ -194,9 +194,9 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
         }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px" }}>
-            <span style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#9ca3af" }}>{lang === "th" ? "ก้าวต่อไป" : "Next Move"}</span>
-            <span style={{ display: "flex", alignItems: "center", gap: "4px", ...KT, fontSize: "10px", fontWeight: 700, color: "#ff0089" }}>
-              <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#ff0089" }} />Live
+            <span style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#111827" }}>{lang === "th" ? "ก้าวต่อไป" : "Next Move"}</span>
+            <span style={{ display: "flex", alignItems: "center", gap: "4px", ...KT, fontSize: "10px", fontWeight: 700, color: "#5f26e5" }}>
+              <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#5f26e5" }} />Live
             </span>
           </div>
           <p style={{ ...KT, fontSize: "13px", lineHeight: 1.6, color: "#111827", margin: 0, fontWeight: 600 }}>
@@ -215,7 +215,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           transform: "scale(1.1)",
           transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
         }}>
-          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#9ca3af", margin: "0 0 10px" }}>
+          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#111827", margin: "0 0 10px" }}>
             {lang === "th" ? "คนพูดว่ายังไง" : "What People Said"}
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
@@ -241,7 +241,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           transform: "scale(1.1)",
           transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
         }}>
-          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#9ca3af", margin: "0 0 10px" }}>
+          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#111827", margin: "0 0 10px" }}>
             {lang === "th" ? "การเข้าถึงรายวัน" : "Reach by Day"}
           </p>
           <svg viewBox="0 0 200 50" width="100%" height="44" preserveAspectRatio="none">
@@ -254,7 +254,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
             <path d="M0,35 C15,33 25,10 40,15 C55,20 60,40 75,38 C90,36 95,15 110,18 C125,21 130,33 145,30 C160,27 165,18 180,20 L200,22 L200,50 L0,50 Z" fill="url(#cl-area)" />
             <path d="M0,35 C15,33 25,10 40,15 C55,20 60,40 75,38 C90,36 95,15 110,18 C125,21 130,33 145,30 C160,27 165,18 180,20 L200,22" fill="none" stroke="#5f25e5" strokeWidth="2" />
           </svg>
-          <p style={{ ...KT, fontSize: "11px", color: "#9ca3af", margin: "6px 0 0" }}>
+          <p style={{ ...KT, fontSize: "11px", color: "#111827", margin: "6px 0 0" }}>
             {lang === "th" ? "ดูช่วงพีค แล้วทำซ้ำสิ่งที่ได้ผล" : "Watch the spike, then reuse the cue."}
           </p>
         </div>
