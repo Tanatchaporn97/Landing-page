@@ -87,22 +87,55 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
             style={{ paddingRight: "24px" }}
           >
             <Link href={`/${lang}/brand`} className="hero-side-card" style={{
-              position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-              textAlign: "center", gap: "10px", minHeight: "620px", padding: "32px 42px 32px 24px",
+              position: "relative", display: "flex", flexDirection: "column", justifyContent: "center",
+              textAlign: "left", minHeight: "620px", padding: "48px 40px",
               overflow: "hidden", textDecoration: "none",
               clipPath: "polygon(0 0, 100% 0, 85% 100%, 0 100%)",
+              background: "linear-gradient(160deg, #ffffff 0%, #f5f2fc 100%)",
             }}>
-              <Image src="/hero-illustrations/brand-full.svg" alt="" fill sizes="30vw" style={{ objectFit: "cover", zIndex: 0 }} />
-              <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
-                <span style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#ffffff" }}>For Brand</span>
-                <h3 style={{ ...KT, fontSize: "clamp(24px,2.8vw,38px)", fontWeight: 800, color: "#ffffff", margin: 0, lineHeight: 1.25 }}>
-                  {lang === "th" ? <>เปลี่ยนทุกแคมเปญ<br />ให้วัดผลได้</> : <>Turn Every Campaign<br />Into Measurable Results</>}
+              {/* Dotted grid pattern */}
+              <div style={{ position: "absolute", inset: 0, zIndex: 0, backgroundImage: "radial-gradient(rgba(95,38,229,0.12) 1px, transparent 1px)", backgroundSize: "22px 22px" }} />
+              {/* Soft purple blob */}
+              <div style={{ position: "absolute", bottom: "-100px", left: "-100px", width: "300px", height: "300px", borderRadius: "50%", background: "radial-gradient(circle, rgba(155,110,255,0.4) 0%, transparent 70%)", zIndex: 0 }} />
+              {/* Sparkles */}
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff0089" style={{ position: "absolute", top: "28%", right: "14%", zIndex: 1, opacity: 0.6 }}><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" /></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#5f26e5" style={{ position: "absolute", top: "58%", left: "8%", zIndex: 1, opacity: 0.5 }}><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" /></svg>
+
+              {/* Photo, bottom-right */}
+              <div style={{ position: "absolute", bottom: 0, right: 0, width: "42%", height: "46%", zIndex: 1, borderTopLeftRadius: "28px", overflow: "hidden", boxShadow: "-8px -8px 32px rgba(95,38,229,0.12)" }}>
+                <Image src="/services/brand-desk-photo.jpg" alt="" fill sizes="20vw" priority style={{ objectFit: "cover" }} />
+              </div>
+              {/* Floating badge pills — anchored to the photo's top/bottom edges, clear of the text column */}
+              <div style={{ position: "absolute", bottom: "8%", right: "38%", zIndex: 3, display: "flex", alignItems: "center", gap: "6px", background: "#ffffff", borderRadius: "50px", padding: "6px 14px 6px 6px", boxShadow: "0 8px 20px rgba(95,38,229,0.18)" }}>
+                <span style={{ width: "22px", height: "22px", borderRadius: "50%", background: "#5f26e5", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12L10 18L20 6" /></svg>
+                </span>
+                <span style={{ width: "40px", height: "6px", borderRadius: "3px", background: "#e5e0f5" }} />
+              </div>
+              <div style={{ position: "absolute", bottom: "44%", right: "4%", zIndex: 3, display: "flex", alignItems: "center", gap: "6px", background: "#ffffff", borderRadius: "50px", padding: "6px 14px 6px 6px", boxShadow: "0 8px 20px rgba(95,38,229,0.18)" }}>
+                <span style={{ width: "22px", height: "22px", borderRadius: "50%", background: "#5f26e5", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="#ffffff"><path d="M6 4 L20 12 L6 20 Z" /></svg>
+                </span>
+                <span style={{ width: "36px", height: "6px", borderRadius: "3px", background: "#e5e0f5" }} />
+              </div>
+
+              {/* Text content */}
+              <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "14px", maxWidth: "185px" }}>
+                <span style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 700, color: "#5f26e5", background: "#ffffff", border: "1px solid rgba(95,38,229,0.2)", borderRadius: "50px", padding: "6px 14px" }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="#5f26e5"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" /></svg>
+                  For Brand
+                </span>
+                <h3 style={{ ...KT, fontSize: "clamp(24px,2.6vw,34px)", fontWeight: 800, color: "#111827", margin: 0, lineHeight: 1.2 }}>
+                  {lang === "th" ? <>เปลี่ยนทุกแคมเปญ<br /><span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>ให้วัดผลได้</span></> : <>Turn Every Campaign<br /><span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Into Real Results</span></>}
                 </h3>
-                <p style={{ ...KT, fontSize: "16px", color: "rgba(255,255,255,0.85)", margin: 0, lineHeight: 1.6 }}>
+                <p style={{ ...KT, fontSize: "15px", color: "#4b5563", margin: 0, lineHeight: 1.6 }}>
                   {lang === "th" ? "กลยุทธ์ อินไซต์ และทีมที่พาแบรนด์ไปไกลขึ้น" : "Strategic insights and a team that takes your brand further."}
                 </p>
-                <span className="btn-hero px-4 py-3 rounded-full" style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", whiteSpace: "nowrap", fontSize: "16px", fontWeight: 600 }}>
+                <span style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", color: "#ffffff", borderRadius: "50px", padding: "12px 12px 12px 22px", fontSize: "15px", fontWeight: 600 }}>
                   {lang === "th" ? "สำหรับแบรนด์" : "For Brands"}
+                  <span style={{ width: "24px", height: "24px", borderRadius: "50%", background: "rgba(255,255,255,0.25)", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                  </span>
                 </span>
               </div>
             </Link>
