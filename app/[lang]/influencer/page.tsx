@@ -10,6 +10,7 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const PAGE_GRADIENT = "linear-gradient(180deg, #FFFFFF 0%, #F7F1FC 10%, #F9F6FE 22%, #F5F0FC 36%, #F1EBFA 50%, #E9DFF7 72%, #DDCDF1 100%)";
 
 const INFLUENCER_HEADER_VIDEOS = [
+  { src: "/videos/influencer-header/header-lotus-bangna.mov", name: "Lotus Bangna" },
   { src: "/videos/influencer-header/header-1.mp4", name: "Flukymltp" },
   { src: "/videos/influencer-header/header-2.mp4", name: "Icepapan" },
   { src: "/videos/influencer-header/header-trainerky.mp4", name: "เทรนเนอร์กี้" },
