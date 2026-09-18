@@ -66,11 +66,11 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           position: "relative",
           minHeight: "620px",
           paddingTop: "110px",
+          overflow: "hidden",
           background: "linear-gradient(180deg, #FBF8FE 0%, #F3EBFC 100%)",
           zIndex: 10,
         }}
       >
-        <div style={{ overflow: "hidden", marginLeft: "30px", marginRight: "30px", minHeight: "620px" }}>
         <div className="hero-blob-grid" style={{
           display: "grid",
           gridTemplateColumns: "1fr minmax(280px, 640px) 1fr",
@@ -100,7 +100,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                 <path d="M265,500 L445,500 A90,90 0 0 1 445,680 L265,680 Z" fill="url(#heroIconGradL)" />
                 <image href="/hero-illustrations/brand.svg" x="265" y="450" width="280" height="280" preserveAspectRatio="xMidYMid slice" clipPath="url(#heroIconClipL)" opacity="0.6" />
               </svg>
-              <div className="hero-blob-content" style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "12px", padding: "20% 10px" }}>
+              <div className="hero-blob-content" style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "12px", padding: "20% 100px" }}>
                 <span style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.12em", color: "rgba(255,255,255,0.7)", textTransform: "uppercase" }}>
                   For Brands
                 </span>
@@ -162,7 +162,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                 <path d="M265,500 L445,500 A90,90 0 0 1 445,680 L265,680 Z" fill="url(#heroIconGradR)" />
                 <image href="/hero-illustrations/creator.svg" x="265" y="450" width="280" height="280" preserveAspectRatio="xMidYMid slice" clipPath="url(#heroIconClipR)" opacity="0.6" />
               </svg>
-              <div className="hero-blob-content" style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "12px", padding: "20% 10px" }}>
+              <div className="hero-blob-content" style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "12px", padding: "20% 100px" }}>
                 <span style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.12em", color: "rgba(255,255,255,0.65)", textTransform: "uppercase" }}>
                   For Creators
                 </span>
@@ -180,7 +180,6 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
             </div>
           </Link>
           </motion.div>
-        </div>
         </div>
 
         <style>{`
