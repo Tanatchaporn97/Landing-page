@@ -304,11 +304,11 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               )}
             </p>
 
-            <Link href={`/${lang}/contact`} className="btn-hero-solid-purple" style={{ ...KT, display: "inline-flex", alignItems: "center", justifyContent: "center",
+            <a href="#contact" className="btn-hero-solid-purple" style={{ ...KT, display: "inline-flex", alignItems: "center", justifyContent: "center",
               fontWeight: 600, fontSize: "16px",
               padding: "16px 36px", borderRadius: "50px", textDecoration: "none" }}>
               {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
-            </Link>
+            </a>
 
             {/* Number stats — plain text, no card/box, centered as a group */}
             <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "40px", marginTop: "40px" }}>
@@ -587,28 +587,38 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
             <div className="mx-auto mt-8 rounded-2xl" style={{ background: "rgba(95,38,229,0.05)", padding: "32px 24px" }}>
               {[
-                { value: "New Market Entry", href: `/${lang}/success/siangpure`,      img: "/success-stories-2/Success stories-16.jpg", cat: "HEALTHCARE",     title: "Siangpure",
+                { value: "New Market Entry", href: `/${lang}/success/siangpure`,      img: "/success-stories-2/siangpure-logo.jpg", cat: "HEALTHCARE",     title: "Siangpure",
                   overview: "แคมเปญที่พา Siangpure บุกตลาดใหม่ผ่านครีเอเตอร์ชาวอินเดียบน Instagram เพื่อสร้างการรับรู้ในกลุ่มผู้บริโภคที่ไม่เคยเข้าถึงมาก่อน",
                   overviewEn: "A campaign that brought Siangpure into a new market through Indian Creators on Instagram, building awareness with an audience never reached before.",
+                  approach: "Buddy Review คัดเลือก Indian Influencers ที่มี Audience ตรงกับตลาด พร้อมพัฒนาคอนเทนต์ภายใต้แนวคิด “มาเที่ยวไทย อะไรคือของที่ต้องซื้อกลับ?” เปลี่ยน Siangpure ให้กลายเป็น Thai Travel Essential ที่คนอินเดียจดจำและอยากซื้อกลับ",
+                  approachEn: "Buddy Review selected Indian influencers whose audiences matched the target market, building content around \"Visiting Thailand — what's the must-buy souvenir?\" and repositioning Siangpure as a memorable Thai Travel Essential.",
                   stats: [{ label: "Reach", labelTh: "การเข้าถึง", value: "1.2M" }, { label: "Creators", labelTh: "ครีเอเตอร์", value: "15" }, { label: "Engagement Rate", labelTh: "อัตรามีส่วนร่วม", value: "4.8%" }],
                   imgFit: "contain" as const, imgBg: "#ffffff" },
-                { value: "Niche Community",  href: `/${lang}/success/optimum-hi-pro`, img: "/success-stories-2/Success stories-14.jpg", cat: "PET CARE",       title: "Optimum Hi Pro",
+                { value: "Niche Community",  href: `/${lang}/success/optimum-hi-pro`, img: "/success-stories-2/optimum-hi-pro-logo.jpg", cat: "PET CARE",       title: "Optimum Hi Pro",
                   overview: "เจาะกลุ่มคนเลี้ยงปลาคาร์พที่มีความเฉพาะทางสูง ผ่านครีเอเตอร์ที่เข้าใจ community นี้จริงๆ พร้อมขยายการรับรู้ในวงกว้าง",
                   overviewEn: "Reaching the highly specialized koi-keeper community through Creators who truly understand it, while expanding awareness at scale.",
+                  approach: "ผสานอินฟลูเอนเซอร์เฉพาะทางที่เข้าถึง Community คนเลี้ยงปลาคาร์พโดยตรง กับ Lifestyle Influencer ที่ช่วยขยายการรับรู้ในวงกว้าง ทำให้แคมเปญได้ทั้งความน่าเชื่อถือและ Reach ไปพร้อมกัน",
+                  approachEn: "Blended specialist influencers who reached the koi-keeping community directly with lifestyle influencers who extended awareness at scale — giving the campaign both credibility and reach.",
                   stats: [{ label: "Reach", labelTh: "การเข้าถึง", value: "850K" }, { label: "Community Engagement", labelTh: "การมีส่วนร่วม", value: "+65%" }, { label: "Creators", labelTh: "ครีเอเตอร์", value: "10" }],
                   imgFit: "contain" as const, imgBg: "#0e1a5c" },
-                { value: "Always-on Content", href: `/${lang}/success/auntie-annes`,  img: "/success-stories-2/Success stories-15.jpg", cat: "FOOD & BEVERAGE", title: "Auntie Anne's",
+                { value: "Always-on Content", href: `/${lang}/success/auntie-annes`,  img: "/success-stories-2/auntie-annes-logo.jpg", cat: "FOOD & BEVERAGE", title: "Auntie Anne's",
                   overview: "สร้าง Always-on Content Engine บน TikTok ที่ผลิตคอนเทนต์ต่อเนื่องกว่า 15 เดือน รักษาการมองเห็นแบรนด์ได้ตลอดปี",
                   overviewEn: "Built an always-on TikTok content engine producing content continuously for 15+ months, keeping the brand visible year-round.",
+                  approach: "สร้าง Always-on Content Engine ที่ผสาน Storyboard, Talent และทีม Production เข้าด้วยกัน ผลิตคอนเทนต์ต่อเนื่องราว 15 ชิ้นต่อเดือน พร้อมปรับ Format ให้ทันเทรนด์ TikTok อยู่เสมอ",
+                  approachEn: "Built an Always-on Content Engine combining storyboarding, talent, and production — producing around 15 pieces of content a month while continuously adapting formats to TikTok trends.",
                   stats: [{ label: "Duration", labelTh: "ระยะเวลา", value: "15+ mo." }, { label: "Content Pieces", labelTh: "ชิ้นคอนเทนต์", value: "200+" }, { label: "Avg. Views", labelTh: "ยอดวิวเฉลี่ย", value: "500K" }],
                   imgFit: "contain" as const, imgBg: "#ffffff", imgPosition: "center 40%" },
                 { value: "Event Activation", href: `/${lang}/success/ahc`,           img: "/success-stories-2/Success stories-12.jpg", cat: "SKINCARE",       title: "AHC",
                   overview: "จุดกระแสด้วยอีเวนต์ที่ต่อยอดจากซีรีส์ไวรัล AHC Skin Game สร้างการพูดถึงบนโซเชียลอย่างต่อเนื่อง",
                   overviewEn: "Sparked buzz with an event built on the viral series \"AHC Skin Game,\" driving continuous social conversation.",
+                  approach: "ดึงอินฟลูเอนเซอร์ตัวท็อปมาร่วมงานอีเวนต์ เสริมด้วยข่าวประชาสัมพันธ์จากสื่อชั้นนำ และปรับคอนเทนต์ให้เหมาะกับแต่ละแพลตฟอร์ม พร้อมติดตามผลแบบเรียลไทม์เพื่อดันให้เกิดกระแสไวรัล",
+                  approachEn: "Brought in top-tier influencers for the event, amplified with PR from leading media, tailored content per platform, and tracked results in real time to drive viral reach.",
                   stats: [{ label: "Event Reach", labelTh: "การเข้าถึงอีเวนต์", value: "2M" }, { label: "Media Mentions", labelTh: "การพูดถึง", value: "120+" }, { label: "Engagement Rate", labelTh: "อัตรามีส่วนร่วม", value: "6.2%" }] },
                 { value: "Shoppable Content", href: `/${lang}/success/watsons`,      img: "/success-stories-2/Success stories-10.jpg", cat: "HEALTH & BEAUTY", title: "Watsons",
                   overview: "ดัน House Brand ให้ปังบน TikTok และ Lemon8 ด้วยคอนเทนต์ที่พาไปสู่การตัดสินใจซื้อโดยตรง",
                   overviewEn: "Boosted House Brand products on TikTok and Lemon8 with content designed to drive direct purchase decisions.",
+                  approach: "ใช้กลยุทธ์ \"เพื่อนแนะนำเพื่อน\" ให้ครีเอเตอร์โชว์การช้อปจริงในร้านผ่านโจทย์ \"งบ 500 บาท ซื้อได้กี่ชิ้น\" บน TikTok และ Lemon8 เพื่อกระตุ้นให้อยากช้อปตามทันที",
+                  approachEn: "Used a \"friend-recommending-friend\" strategy, having creators show real in-store shopping under the challenge \"How many items with a 500 THB budget?\" across TikTok and Lemon8 to spark immediate purchase intent.",
                   stats: [{ label: "Sales Uplift", labelTh: "ยอดขายเพิ่มขึ้น", value: "+40%" }, { label: "Reach", labelTh: "การเข้าถึง", value: "1.5M" }, { label: "Creators", labelTh: "ครีเอเตอร์", value: "25" }] },
               ].map((story) => (
                 <TabsContent key={story.value} value={story.value} className="grid place-items-center gap-10 lg:grid-cols-[1.5fr_1fr]">
@@ -629,6 +639,12 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                     <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: "-12px 0 0" }}>
                       {lang === "th" ? story.overview : story.overviewEn}
                     </p>
+                    <p style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#5f26e5", margin: 0 }}>
+                      {lang === "th" ? "กลยุทธ์" : "Strategy"}
+                    </p>
+                    <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: "-12px 0 0" }}>
+                      {lang === "th" ? story.approach : story.approachEn}
+                    </p>
                     <div style={{ display: "flex", gap: "28px", flexWrap: "wrap", marginTop: "4px" }}>
                       {story.stats.map((stat) => (
                         <div key={stat.label}>
@@ -644,7 +660,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                       {lang === "th" ? "อ่านเพิ่มเติม" : "Read More"}
                     </Link>
                   </div>
-                  <div style={{ position: "relative", width: "100%", maxWidth: "280px", aspectRatio: "1 / 1", borderRadius: "16px", overflow: "hidden",
+                  <div style={{ position: "relative", width: "100%", maxWidth: "280px", aspectRatio: "1 / 1", borderRadius: "50%", overflow: "hidden",
                     background: story.imgBg || "#f3f0fb", border: "1px solid rgba(95,38,229,0.08)", boxShadow: "0 8px 20px -10px rgba(95,38,229,0.15)" }}>
                     <Image src={story.img} alt={story.title} fill sizes="280px"
                       style={{ objectFit: story.imgFit || "cover", objectPosition: story.imgPosition || "center", padding: story.imgFit === "contain" ? "24px" : 0 }} />
@@ -706,9 +722,9 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               { href: `/${lang}/success/viu`,            img: "/success-stories-2/Success stories-11.jpg", cat: "ENTERTAINMENT",    title: "Viu",             tagline: "อินฟลูเอนเซอร์พลังท้องถิ่น สร้างสีสันแคมเปญ อีสานชมวิว",          taglineEn: "Local-powered influencers bringing the \"Isan Chom Wiew\" campaign to life." },
               { href: `/${lang}/success/ahc`,            img: "/success-stories-2/Success stories-12.jpg", cat: "SKINCARE",         title: "AHC",             tagline: "ปลุกกระแสแบรนด์ด้วยอีเวนต์จากซีรีส์สุดไวรัล 'AHC Skin Game'",   taglineEn: "Igniting brand buzz with an event inspired by the viral series \"AHC Skin Game.\"" },
               { href: `/${lang}/success/guss-damn-good`, img: "/success-stories-2/Success stories-13.jpg", cat: "FOOD & BEVERAGE",  title: "Guss Damn Good",  tagline: "รสชาติที่มีเรื่องเล่า เมื่อไอศครีมเจอกับผงฟู้คลายกรดลดแน่นเฟ้อ",   taglineEn: "A flavor with a story: when ice cream meets antacid powder." },
-              { href: `/${lang}/success/optimum-hi-pro`, img: "/success-stories-2/Success stories-14.jpg", cat: "PET CARE",  title: "Optimum Hi Pro",  tagline: "เข้าถึงคนเลี้ยงปลาคาร์พอย่างตรงกลุ่ม พร้อมขยายการรับรู้ในวงกว้าง",   taglineEn: "Reaching koi keepers with precision, while expanding awareness at scale.", imgFit: "contain" as const, imgBg: "#0e1a5c" },
-              { href: `/${lang}/success/auntie-annes`,   img: "/success-stories-2/Success stories-15.jpg",   cat: "FOOD & BEVERAGE", title: "Auntie Anne's",   tagline: "สร้าง Always-on TikTok Content Engine ที่ผลิตต่อเนื่องกว่า 15 เดือน", taglineEn: "Building an always-on TikTok content engine, running for 15+ months.", imgFit: "contain" as const, imgBg: "#ffffff", imgPosition: "center 40%" },
-              { href: `/${lang}/success/siangpure`,      img: "/success-stories-2/Success stories-16.jpg",      cat: "HEALTHCARE",      title: "Siangpure",       tagline: "เข้าถึงผู้บริโภคชาวอินเดียผ่าน Indian Influencers บน Instagram",  taglineEn: "Reaching Indian consumers through Indian influencers on Instagram.", imgFit: "contain" as const, imgBg: "#ffffff" },
+              { href: `/${lang}/success/optimum-hi-pro`, img: "/success-stories-2/optimum-hi-pro-logo.jpg", cat: "PET CARE",  title: "Optimum Hi Pro",  tagline: "เข้าถึงคนเลี้ยงปลาคาร์พอย่างตรงกลุ่ม พร้อมขยายการรับรู้ในวงกว้าง",   taglineEn: "Reaching koi keepers with precision, while expanding awareness at scale.", imgFit: "contain" as const, imgBg: "#0e1a5c" },
+              { href: `/${lang}/success/auntie-annes`,   img: "/success-stories-2/auntie-annes-logo.jpg",   cat: "FOOD & BEVERAGE", title: "Auntie Anne's",   tagline: "สร้าง Always-on TikTok Content Engine ที่ผลิตต่อเนื่องกว่า 15 เดือน", taglineEn: "Building an always-on TikTok content engine, running for 15+ months.", imgFit: "contain" as const, imgBg: "#ffffff", imgPosition: "center 40%" },
+              { href: `/${lang}/success/siangpure`,      img: "/success-stories-2/siangpure-logo.jpg",      cat: "HEALTHCARE",      title: "Siangpure",       tagline: "เข้าถึงผู้บริโภคชาวอินเดียผ่าน Indian Influencers บน Instagram",  taglineEn: "Reaching Indian consumers through Indian influencers on Instagram.", imgFit: "contain" as const, imgBg: "#ffffff" },
             ].slice().reverse().map(card => (
               <Link key={card.href} href={card.href} className="cs-card-link" style={{ textDecoration: "none", flexShrink: 0, width: "390px", scrollSnapAlign: "start" }}>
                 <div className="cs-card" style={{

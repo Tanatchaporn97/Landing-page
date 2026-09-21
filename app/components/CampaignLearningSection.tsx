@@ -1,18 +1,20 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import { CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
 
 const STEPS = [
-  { num: "01", title: "See What Worked", titleTh: "ดูว่าอะไรได้ผล",
+  { title: "See What Worked", titleTh: "ดูว่าอะไรได้ผล",
     desc: "ดูว่า Creator, Content และจังหวะแบบไหนทำผลงานได้ดีที่สุด",
-    descEn: "See which Creators, content, and timing performed best.", highlight: true },
-  { num: "02", title: "Understand the Response", titleTh: "เข้าใจการตอบรับ",
+    descEn: "See which Creators, content, and timing performed best." },
+  { title: "Understand the Response", titleTh: "เข้าใจการตอบรับ",
     desc: "ดู Sentiment และ Feedback เพื่อเข้าใจว่าอะไรถึงความสนใจ และอะไรมีผลต่อความรู้สึกต่อแบรนด์",
     descEn: "Review sentiment and feedback to understand what drove interest and how people feel about the brand." },
-  { num: "03", title: "Choose the Next Move", titleTh: "เลือกก้าวต่อไป",
+  { title: "Choose the Next Move", titleTh: "เลือกก้าวต่อไป",
     desc: "สรุปสิ่งที่ควรต่อยอด ปรับ หรือหยุด สำหรับแคมเปญรอบถัดไป",
     descEn: "Summarize what to build on, adjust, or stop for the next campaign." },
 ];
@@ -32,7 +34,39 @@ const ACTIVITY_TILES = [
   { bg: "linear-gradient(135deg, #e5e7eb 0%, #ced2d8 100%)", type: "review", rating: 4 },
 ] as const;
 
+// Floating-panel highlight style shared by every dashboard tile below
+function floatStyle(isActive: boolean) {
+  return {
+    background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
+    borderRadius: "16px", padding: "16px 18px",
+    border: isActive ? "1.5px solid rgba(95,38,229,0.35)" : "1.5px solid transparent",
+    boxShadow: isActive ? "0 24px 40px -12px rgba(95,38,229,0.4)" : "0 16px 32px -10px rgba(95,38,229,0.25)",
+    opacity: isActive ? 1 : 0.55,
+    transform: isActive ? "translateY(-10px) scale(1.1)" : "scale(1.1)",
+    transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, border-color 0.35s ease",
+  };
+}
+
 export default function CampaignLearningSection({ lang }: { lang: "th" | "en" }) {
+  const [activeStep, setActiveStep] = useState(0);
+  const [autoPaused, setAutoPaused] = useState(false);
+
+  // Cycle through the 3 steps (and their matching dashboard panels) every 5s,
+  // pausing while the user is hovering the step list.
+  useEffect(() => {
+    if (autoPaused) return;
+    const id = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % STEPS.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, [autoPaused]);
+
+  const resultActive = activeStep === 0;
+  const reachActive = activeStep === 0;
+  const sentimentActive = activeStep === 1;
+  const whatsaidActive = activeStep === 1;
+  const nextmoveActive = activeStep === 2;
+
   return (
     <div className="cl-grid" style={{ display: "grid", gridTemplateColumns: "0.72fr 1.28fr", gap: "56px", alignItems: "center" }}>
       {/* Left — eyebrow, heading, description, 3-step list */}
@@ -54,27 +88,35 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
             : "We don't just look at the numbers — we summarize what worked, what resonated, and what to do next."}
         </p>
 
-        <div style={{ display: "flex", flexDirection: "column", marginTop: "8px" }}>
-          {STEPS.map((step, i) => (
-            <div key={step.num} className={step.highlight ? "cl-step-hover" : step.num === "02" ? "cl-step-hover-2" : step.num === "03" ? "cl-step-hover-3" : undefined} style={{
-              padding: "20px 22px",
-              borderRadius: 0,
-              background: "transparent",
-              border: "none",
-              borderBottom: i < STEPS.length - 1 ? "1px solid rgba(95,38,229,0.12)" : "none",
-              marginBottom: 0,
-            }}>
-              <div style={{ display: "flex", alignItems: "baseline", gap: "12px", marginBottom: "6px" }}>
-                <span style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#5f26e5" }}>{step.num}</span>
-                <h4 style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: 0, color: "#5f26e5", opacity: 1 }}>
-                  {step.title}
-                </h4>
+        <div
+          style={{ display: "flex", flexDirection: "column", marginTop: "8px" }}
+          onMouseEnter={() => setAutoPaused(true)}
+          onMouseLeave={() => setAutoPaused(false)}
+        >
+          {STEPS.map((step, i) => {
+            const isActive = activeStep === i;
+            return (
+              <div key={step.title} onClick={() => setActiveStep(i)} style={{
+                padding: "20px 22px",
+                borderRadius: isActive ? "18px" : 0,
+                background: isActive ? "#5f26e5" : "transparent",
+                border: "none",
+                borderBottom: i < STEPS.length - 1 ? "1px solid rgba(95,38,229,0.12)" : "none",
+                cursor: "pointer",
+                transition: "background 0.35s ease, border-radius 0.35s ease",
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "6px" }}>
+                  <CheckCircle2 size={20} stroke={isActive ? "#ffffff" : "url(#clStepIconGradient)"} strokeWidth={2} style={{ flexShrink: 0, transition: "stroke 0.35s ease" }} />
+                  <h4 style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: 0, color: isActive ? "#ffffff" : "#5f26e5", transition: "color 0.35s ease" }}>
+                    {step.title}
+                  </h4>
+                </div>
+                <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: isActive ? "#ffffff" : "#111827", margin: 0, transition: "color 0.35s ease" }}>
+                  {lang === "th" ? step.desc : step.descEn}
+                </p>
               </div>
-              <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: 0 }}>
-                {lang === "th" ? step.desc : step.descEn}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -143,13 +185,9 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
         </div>
 
         {/* Floating: Sentiment */}
-        <div className="cl-float cl-float-sentiment cl-target-sentiment" style={{
+        <div className="cl-float" style={{
           position: "absolute", top: "-28px", left: "-24px", width: "180px",
-          background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderRadius: "16px", padding: "16px 18px",
-          boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
-          opacity: 0.55,
-          transform: "scale(1.1)",
-          transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
+          ...floatStyle(sentimentActive),
         }}>
           <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#111827", margin: "0 0 10px" }}>
             {lang === "th" ? "ความรู้สึก" : "Sentiment"}
@@ -163,13 +201,9 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
         </div>
 
         {/* Floating: Campaign result */}
-        <div className="cl-float cl-target-result" style={{
+        <div className="cl-float" style={{
           position: "absolute", top: "36%", left: "-32px", width: "210px",
-          background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderRadius: "16px", padding: "16px 18px",
-          boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
-          opacity: 0.55,
-          transform: "scale(1.1)",
-          transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
+          ...floatStyle(resultActive),
         }}>
           <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#111827", margin: "0 0 10px" }}>
             {lang === "th" ? "ผลลัพธ์แคมเปญ" : "Campaign Result"}
@@ -185,13 +219,9 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
         </div>
 
         {/* Floating: Next move */}
-        <div className="cl-float cl-target-nextmove" style={{
+        <div className="cl-float" style={{
           position: "absolute", top: "-20px", right: "-20px", width: "210px",
-          background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderRadius: "16px", padding: "16px 18px",
-          boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
-          opacity: 0.55,
-          transform: "scale(1.1)",
-          transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
+          ...floatStyle(nextmoveActive),
         }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px" }}>
             <span style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#111827" }}>{lang === "th" ? "ก้าวต่อไป" : "Next Move"}</span>
@@ -207,13 +237,9 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
         </div>
 
         {/* Floating: What people said */}
-        <div className="cl-float cl-target-whatsaid" style={{
+        <div className="cl-float" style={{
           position: "absolute", bottom: "-24px", left: "6%", width: "200px",
-          background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderRadius: "16px", padding: "16px 18px",
-          boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
-          opacity: 0.55,
-          transform: "scale(1.1)",
-          transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
+          ...floatStyle(whatsaidActive),
         }}>
           <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#111827", margin: "0 0 10px" }}>
             {lang === "th" ? "คนพูดว่ายังไง" : "What People Said"}
@@ -233,13 +259,9 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
         </div>
 
         {/* Floating: Reach by day */}
-        <div className="cl-float cl-target-reach" style={{
+        <div className="cl-float" style={{
           position: "absolute", bottom: "-32px", right: "-16px", width: "230px",
-          background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderRadius: "16px", padding: "16px 18px",
-          boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
-          opacity: 0.55,
-          transform: "scale(1.1)",
-          transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
+          ...floatStyle(reachActive),
         }}>
           <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#111827", margin: "0 0 10px" }}>
             {lang === "th" ? "การเข้าถึงรายวัน" : "Reach by Day"}
@@ -260,36 +282,17 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
         </div>
       </div>
 
+      {/* Shared gradient definition used by every step icon above (purple → pink, matches site CI) */}
+      <svg width="0" height="0" style={{ position: "absolute" }}>
+        <defs>
+          <linearGradient id="clStepIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#5f25e5" />
+            <stop offset="100%" stopColor="#ff0089" />
+          </linearGradient>
+        </defs>
+      </svg>
+
       <style>{`
-        .cl-grid:has(.cl-step-hover:hover) .cl-target-result,
-        .cl-grid:has(.cl-step-hover:hover) .cl-target-reach,
-        .cl-grid:has(.cl-step-hover-2:hover) .cl-target-sentiment,
-        .cl-grid:has(.cl-step-hover-2:hover) .cl-target-whatsaid,
-        .cl-grid:has(.cl-step-hover-3:hover) .cl-target-nextmove{
-          transform: translateY(-10px) scale(1.1);
-          box-shadow: 0 24px 40px -12px rgba(95,38,229,0.4);
-          opacity: 1 !important;
-          border: 1.5px solid rgba(95,38,229,0.35);
-          background: rgba(255,255,255,0.55) !important;
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-        }
-        .cl-target-result, .cl-target-reach, .cl-target-sentiment, .cl-target-whatsaid, .cl-target-nextmove{
-          border: 1.5px solid transparent;
-        }
-        .cl-step-hover, .cl-step-hover-2, .cl-step-hover-3{
-          transition: background 0.35s ease, border-color 0.35s ease, border-radius 0.35s ease;
-          cursor: pointer;
-        }
-        .cl-step-hover:hover, .cl-step-hover-2:hover, .cl-step-hover-3:hover{
-          background: #5f26e5 !important;
-          border-color: #5f26e5 !important;
-          border-radius: 18px !important;
-        }
-        .cl-step-hover:hover *, .cl-step-hover-2:hover *, .cl-step-hover-3:hover *{
-          color: #ffffff !important;
-          transition: color 0.35s ease;
-        }
         @media (max-width: 900px){
           .cl-grid{ grid-template-columns: 1fr !important; gap: 40px !important; }
           .cl-left{ max-width: none !important; }
