@@ -58,7 +58,7 @@ export default function SuccessStoriesSlider({ lang = "th" }: { lang?: "th" | "e
           {/* ── Cards ── */}
           {stories.map(card => (
             <Link key={card.href} href={card.href} className="cs-card-link" style={{ textDecoration: "none", flexShrink: 0, width: "390px", scrollSnapAlign: "start" }}>
-              <div className="cs-card" style={{ borderRadius: "28px", background: "#ffffff", height: "520px" }}>
+              <div className="cs-card" style={{ borderRadius: "28px", background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.6)", height: "520px" }}>
                 <div className="cs-card-img-clip" style={{ position: "relative", width: "100%", height: "100%" }}>
                   <Image src={card.img} alt={card.title} className="cs-card-img" fill sizes="(max-width: 768px) 100vw, 400px" style={{ objectFit: "cover" }} />
                 </div>

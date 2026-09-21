@@ -186,10 +186,11 @@ export default function Navbar({
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
         <nav style={{
-          background: forceDarkText ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.08)",
+          background: forceDarkText ? "rgba(255,255,255,0.55)" : "rgba(255,255,255,0.08)",
           backdropFilter: "blur(28px)",
           WebkitBackdropFilter: "blur(28px)",
-          border: forceDarkText ? "1px solid rgba(0,0,0,0.05)" : "1px solid rgba(255,255,255,0.25)",
+          border: forceDarkText ? "1px solid rgba(255,255,255,0.6)" : "1px solid rgba(255,255,255,0.25)",
+          boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
           borderRadius: "100px",
           display: "flex",
           alignItems: "center",

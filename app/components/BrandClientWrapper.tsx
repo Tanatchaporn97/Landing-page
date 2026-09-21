@@ -255,7 +255,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         className="flex items-start px-6 relative"
         style={{
           minHeight: "72vh",
-          paddingTop: "240px",
+          paddingTop: "295px",
           paddingBottom: "100px",
           paddingLeft: "24px",
           paddingRight: "24px",
@@ -270,7 +270,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
           {/* Left: real hero copy, playful stacked layout + underline squiggle + pill CTA */}
           <div style={{ position: "relative" }}>
-            <h2 className="font-bold uppercase" style={{ ...KT, color: "#111827", fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "1lh 0 24px" }}>
+            <h2 className="font-bold uppercase" style={{ ...KT, color: "#111827", fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 24px" }}>
               {lang === "th" ? (
                 <>ไม่ใช่แค่กลยุทธ์<br/></>
               ) : (
@@ -339,7 +339,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       <div className="hero-logos-fade" style={{ height: "120px", marginTop: "-120px", background: "linear-gradient(to bottom, transparent 0%, #ffffff 100%)", position: "relative", zIndex: 11, pointerEvents: "none" }} />
 
       {/* ── Brand Logos Marquee ── */}
-      <LogoMarquee />
+      <LogoMarquee headingStyle={{ ...PIERSON, fontWeight: 800, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />
 
       {/* ── Tagline ── */}
       <section className="pt-20 px-6" style={{ paddingBottom: 0 }}>
@@ -415,9 +415,8 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             {OUR_SERVICES.map((item, i) => {
               const isActive = activeService === i;
               return (
-                <motion.div key={item.title} layout onClick={() => setActiveService(i)}
+                <div key={item.title} onClick={() => setActiveService(i)}
                   ref={(el) => { serviceCardRefs.current[i] = el; }}
-                  transition={{ type: "tween", duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
                   style={{
                     width: isActive ? 380 : SERVICE_CARD_WIDTH,
                     // Fixed regardless of active state — otherwise the varying description
@@ -443,7 +442,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                       background: "linear-gradient(to bottom, transparent 0%, transparent 25%, rgba(255,255,255,0.15) 45%, rgba(255,255,255,0.45) 65%, rgba(255,255,255,0.8) 85%, #ffffff 100%)",
                     }} />
                   </div>
-                  <motion.div layout style={{
+                  <div style={{
                     padding: isActive ? "24px 26px 28px" : "18px 18px 20px",
                     display: "flex", flexDirection: "column",
                     height: isActive ? "196px" : "80px", flexShrink: 0, overflow: "hidden",
@@ -460,8 +459,8 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                         {lang === "th" ? item.desc : item.descEn}
                       </p>
                     )}
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
               );
             })}
             <div style={{ flexShrink: 0, width: "1px" }} />

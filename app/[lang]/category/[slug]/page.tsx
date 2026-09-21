@@ -106,7 +106,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ lang:
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, 390px)", justifyContent: "center", gap: "28px" }}>
           {filtered.map((story) => (
             <Link key={story.slug} href={`/${lang}/success/${story.slug}`} className="cs-card-link" style={{ textDecoration: "none", width: "390px" }}>
-              <div className="cs-card" style={{ borderRadius: "28px", background: "#ffffff", height: "520px" }}>
+              <div className="cs-card" style={{ borderRadius: "28px", background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.6)", height: "520px" }}>
                 <div className="cs-card-img-clip" style={{ position: "relative", width: "100%", height: "100%" }}>
                   <Image src={story.photo} alt={story.brand} className="cs-card-img" fill sizes="(max-width: 768px) 100vw, 400px" style={{ objectFit: "cover" }} />
                 </div>

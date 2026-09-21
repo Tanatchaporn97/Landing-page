@@ -17,9 +17,11 @@ const HeartIcon = () => (
 function Card({ t }: { t: { photo: string; name: string; text: string; time?: string } }) {
   return (
     <div style={{
-      background: "#ffffff",
+      background: "rgba(255,255,255,0.55)",
+      backdropFilter: "blur(20px)",
+      WebkitBackdropFilter: "blur(20px)",
       borderRadius: "16px",
-      border: "1px solid rgba(0,0,0,0.07)",
+      border: "1px solid rgba(255,255,255,0.6)",
       boxShadow: "0 2px 20px rgba(95,38,229,0.07)",
       padding: "20px 22px",
       display: "flex", flexDirection: "column", gap: "10px",
@@ -229,8 +231,8 @@ export default function TestimonialsScrollSection({
 
         {/* ── Browser-window frame wrapping the testimonial columns ── */}
         <div className="tss-window" style={{
-          background: "#ffffff", borderRadius: "20px", overflow: "hidden",
-          border: "1px solid rgba(0,0,0,0.06)",
+          background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderRadius: "20px", overflow: "hidden",
+          border: "1px solid rgba(255,255,255,0.6)",
           boxShadow: "0 30px 60px -20px rgba(95,38,229,0.25)",
         }}>
           <div style={{

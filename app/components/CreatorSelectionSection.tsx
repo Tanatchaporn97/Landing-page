@@ -18,9 +18,11 @@ const SIMILAR_CREATORS = [
 const AGE_BARS = [28, 62, 48, 20, 10];
 
 const panelStyle: CSSProperties = {
-  background: "#ffffff",
+  background: "rgba(255,255,255,0.55)",
+  backdropFilter: "blur(20px)",
+  WebkitBackdropFilter: "blur(20px)",
   borderRadius: "18px",
-  border: "1px solid rgba(95,38,229,0.08)",
+  border: "1px solid rgba(255,255,255,0.6)",
   boxShadow: "0 8px 20px -8px rgba(95,38,229,0.15)",
   padding: "20px",
 };

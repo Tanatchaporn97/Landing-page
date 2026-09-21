@@ -32,7 +32,8 @@ export default function ApplyPartnerships({ lang, onHoverChange }: { lang: "th" 
               onMouseLeave={() => { setActive((prev) => (prev === i ? null : prev)); onHoverChange?.(null); }}
               style={{
                 position: "relative",
-                background: "#ffffff", borderRadius: "24px", padding: "36px 32px",
+                background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
+                border: "1px solid rgba(255,255,255,0.6)", borderRadius: "24px", padding: "36px 32px",
                 boxShadow: isActive ? "0 16px 40px rgba(95,38,229,0.20)" : "0 8px 28px rgba(95,38,229,0.08)",
                 display: "flex", flexDirection: "column", gap: "14px",
                 transition: "box-shadow 0.25s ease, transform 0.25s ease",

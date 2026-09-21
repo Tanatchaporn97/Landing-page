@@ -1,7 +1,6 @@
 "use client";
 import { Rocket, Eye, CheckCircle2, Store, Clapperboard, Repeat } from "lucide-react";
 import { motion } from "motion/react";
-import { TiltCard } from "@/components/ui/standard-card";
 import { Badge } from "@/components/ui/badge";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -30,12 +29,13 @@ const GOALS = [
 
 export default function BusinessGoalsSection({ lang }: { lang: "th" | "en" }) {
   return (
-    <div className="bg-grid" style={{ display: "grid", gridTemplateColumns: "0.62fr 2fr", gap: "48px", alignItems: "start" }}>
-      {/* Left — eyebrow, heading, description */}
-      <div className="bg-left" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-        <div>
-          <Badge variant="outline">Business Objectives</Badge>
-        </div>
+    <div>
+      {/* Centered heading + description */}
+      <div style={{
+        display: "flex", flexDirection: "column", alignItems: "center", gap: "16px",
+        textAlign: "center", maxWidth: "620px", margin: "0 auto 56px",
+      }}>
+        <Badge variant="outline">Business Objectives</Badge>
         <h3 style={{
           ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800,
           margin: 0, lineHeight: 1.15,
@@ -47,70 +47,88 @@ export default function BusinessGoalsSection({ lang }: { lang: "th" | "en" }) {
             Goal
           </span>
         </h3>
-        <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0, maxWidth: "320px" }}>
+        <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0 }}>
           {lang === "th"
             ? "เริ่มจากเป้าหมายของแบรนด์ แล้วดูว่า Influencer Marketing แบบไหนเหมาะกับโจทย์ของคุณ"
             : "Start with your brand's goal, then find the Influencer Marketing approach that fits your objective."}
         </p>
       </div>
 
-      {/* Right — 2×3 grid of goal cards */}
-      <div className="bg-cards-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "20px", perspective: "1500px" }}>
+      {/* 3-column × 2-row grid — hover-animated card: border lights up, icon inverts to a
+          solid gradient fill, and a decorative accent line grows along the left edge */}
+      <div className="bg-cards-grid-v2" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "28px 24px" }}>
         {GOALS.map((item, idx) => (
           <motion.div
             key={item.num}
+            className="goal-card"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.23, 1, 0.32, 1] }}
             viewport={{ once: true }}
+            style={{
+              position: "relative", display: "flex", flexDirection: "column", gap: "16px",
+              borderRadius: "16px", border: "1px solid rgba(95,38,229,0.12)",
+              padding: "28px 24px", cursor: "pointer",
+              transition: "border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+            }}
           >
-            <TiltCard className="bg-card" style={{
-              position: "relative", borderRadius: "20px", padding: "28px",
-              background: "#f7f5fc",
-              border: "1px solid rgba(95,38,229,0.08)",
-              transition: "transform 0.25s ease, box-shadow 0.25s ease",
+            {/* Accent line — purple→pink on hover */}
+            <span className="goal-card-accent" style={{
+              position: "absolute", left: "-1px", top: "24px", bottom: "24px", width: "2px",
+              background: "rgba(95,38,229,0.15)", transition: "background 0.3s ease",
+            }} />
+
+            <div className="goal-card-icon" style={{
+              display: "flex", alignItems: "center", justifyContent: "center",
+              width: "56px", height: "56px", borderRadius: "16px", flexShrink: 0,
+              background: "#ffffff", border: "1px solid rgba(95,38,229,0.12)",
+              boxShadow: "0 8px 24px rgba(95,38,229,0.14)",
+              transition: "background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
             }}>
-              <div style={{ transform: "translateZ(40px)" }}>
-                <span style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.06em", color: "#9ca3af" }}>
-                  {item.num}
-                </span>
-                <div style={{ display: "flex", alignItems: "center", gap: "14px", margin: "10px 0 12px" }}>
-                  <div className="bg-card-icon" style={{
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    width: "44px", height: "44px", borderRadius: "14px", flexShrink: 0,
-                    background: "linear-gradient(135deg, #5f25e5 0%, #7c3aed 100%)",
-                    transition: "transform 0.4s ease",
-                  }}>
-                    <item.Icon size={22} color="#ffffff" strokeWidth={2} />
-                  </div>
-                  <h4 style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: 0, lineHeight: 1.3, color: "#111827" }}>
-                    {item.title}
-                  </h4>
-                </div>
-                <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, margin: 0, color: "#111827" }}>
-                  {lang === "th" ? item.desc : item.descEn}
-                </p>
-              </div>
-            </TiltCard>
+              <item.Icon size={26} stroke="url(#goalIconGradient)" strokeWidth={2} />
+            </div>
+            <h4 style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: 0, lineHeight: 1.3, color: "#5f26e5" }}>
+              {item.title}
+            </h4>
+            <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, margin: 0, color: "#374151" }}>
+              {lang === "th" ? item.desc : item.descEn}
+            </p>
           </motion.div>
         ))}
       </div>
 
+      {/* Shared gradient definition used by every goal icon above (purple → pink, matches site CI) */}
+      <svg width="0" height="0" style={{ position: "absolute" }}>
+        <defs>
+          <linearGradient id="goalIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#5f25e5" />
+            <stop offset="100%" stopColor="#ff0089" />
+          </linearGradient>
+        </defs>
+      </svg>
+
       <style>{`
-        .bg-card{ overflow: hidden; }
-        .bg-card:hover{
-          transform: translateY(-8px);
-          box-shadow: 0 16px 32px -8px rgba(95,38,229,0.25);
+        .goal-card:hover{
+          border-color: rgba(95,38,229,0.5);
+          box-shadow: 0 16px 32px -12px rgba(95,38,229,0.25);
+          transform: translateY(-4px);
         }
-        .bg-card:hover .bg-card-icon{
-          transform: scale(1.1) rotate(-4deg);
+        .goal-card:hover .goal-card-accent{
+          background: linear-gradient(180deg, #5f26e5 0%, #ff0089 100%);
+        }
+        .goal-card:hover .goal-card-icon{
+          background: linear-gradient(135deg, #5f26e5 0%, #ff0089 100%);
+          box-shadow: 0 8px 20px rgba(95,38,229,0.35);
+          transform: scale(1.08) rotate(-4deg);
+        }
+        .goal-card:hover .goal-card-icon svg{
+          stroke: #ffffff !important;
         }
         @media (max-width: 900px){
-          .bg-grid{ grid-template-columns: 1fr !important; }
-          .bg-left{ max-width: none !important; }
+          .bg-cards-grid-v2{ grid-template-columns: repeat(2, 1fr) !important; }
         }
         @media (max-width: 560px){
-          .bg-cards-grid{ grid-template-columns: 1fr !important; }
+          .bg-cards-grid-v2{ grid-template-columns: 1fr !important; }
         }
       `}</style>
     </div>

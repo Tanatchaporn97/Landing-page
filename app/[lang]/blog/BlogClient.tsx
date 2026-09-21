@@ -83,7 +83,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
         {/* Cards grid */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "28px" }}>
           {filtered.map((post: any) => (
-            <Link key={post.slug} href={`/${lang}/blog/${post.slug}`} style={{ display: "flex", flexDirection: "column", background: "#ffffff", border: "1px solid rgba(255,255,255,0.45)", borderRadius: "24px", textDecoration: "none", cursor: "pointer", boxShadow: "0 4px 20px rgba(95,38,229,0.08)" }}>
+            <Link key={post.slug} href={`/${lang}/blog/${post.slug}`} style={{ display: "flex", flexDirection: "column", background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.6)", borderRadius: "24px", textDecoration: "none", cursor: "pointer", boxShadow: "0 4px 20px rgba(95,38,229,0.08)" }}>
 
               <div style={{ position: "relative", padding: "20px 20px 0", flexShrink: 0 }}>
                 <Image src={post.image} alt={post.title} width={400} height={200} style={{ width: "100%", height: "200px", objectFit: "cover", display: "block", borderRadius: "12px" }} />

@@ -17,8 +17,10 @@ function CatCard({ cat }: { cat: typeof INF_CATEGORIES[0] }) {
       width: "300px", flexShrink: 0,
       display: "flex", flexDirection: "row", alignItems: "center", gap: "16px",
       padding: "18px 22px",
-      background: "#ffffff",
-      border: "1px solid rgba(95,38,229,0.12)",
+      background: "rgba(255,255,255,0.55)",
+      backdropFilter: "blur(20px)",
+      WebkitBackdropFilter: "blur(20px)",
+      border: "1px solid rgba(255,255,255,0.6)",
       boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
       borderRadius: "20px", boxSizing: "border-box",
     }}>

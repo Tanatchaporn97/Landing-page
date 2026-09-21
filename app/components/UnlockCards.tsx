@@ -54,7 +54,9 @@ export default function UnlockCards({ items }: { items: Item[] }) {
           gap: 16px;
           border-radius: 24px;
           padding: 24px;
-          background: #ffffff;
+          background: rgba(255,255,255,0.55);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
           box-shadow: 0 4px 24px rgba(17,24,39,0.06);
           cursor: pointer;
           transition: flex-basis 0.4s cubic-bezier(0.4,0,0.2,1);

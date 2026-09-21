@@ -55,7 +55,7 @@ function CategoryPillCard({ icon, label }: { icon: string; label: string }) {
       transition={{ type: "spring", stiffness: 320, damping: 22 }}
       style={{
         display: "flex", alignItems: "center", gap: "10px",
-        background: "#ffffff", borderRadius: "50px",
+        background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.6)", borderRadius: "50px",
         padding: "10px 20px 10px 10px",
         boxShadow: "0 12px 28px rgba(95,38,229,0.14)",
         whiteSpace: "nowrap",
@@ -77,7 +77,7 @@ function StatCard({ s, lang, compact }: { s: StatItem; lang: "th" | "en"; compac
       transition={{ type: "spring", stiffness: 320, damping: 22 }}
       style={{
         position: "relative",
-        background: "#ffffff", borderRadius: "18px", padding: "18px 18px 16px",
+        background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.6)", borderRadius: "18px", padding: "18px 18px 16px",
         boxShadow: "0 8px 32px rgba(0,0,0,0.10)",
         pointerEvents: "auto", cursor: "pointer",
       }}

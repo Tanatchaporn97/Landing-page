@@ -38,7 +38,7 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
 
   const allPosts: Post[] = dict?.blogPosts || [];
   if (allPosts.length === 0) return null;
-  const posts = (activeCat === catAll ? allPosts : allPosts.filter((p) => p.categories.includes(activeCat))).slice(0, 4);
+  const posts = allPosts.filter((p) => p.categories.includes(activeCat)).slice(0, 4);
   const [featured, ...rest] = posts;
 
   return (
@@ -67,7 +67,8 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
         {/* Featured post */}
         <Link href={`/${lang}/${basePath}/${featured.slug}`} style={{
           display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0",
-          background: "#ffffff", borderRadius: "28px", overflow: "hidden",
+          background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
+          border: "1px solid rgba(255,255,255,0.6)", borderRadius: "28px", overflow: "hidden",
           boxShadow: "0 12px 40px rgba(95,38,229,0.10)", textDecoration: "none",
           marginBottom: "28px",
         }} className="newsroom-featured">
@@ -103,7 +104,8 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
         <div className="newsroom-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}>
           {rest.map((post) => (
             <Link key={post.slug} href={`/${lang}/${basePath}/${post.slug}`} style={{
-              background: "#ffffff", borderRadius: "20px", overflow: "hidden",
+              background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
+              border: "1px solid rgba(255,255,255,0.6)", borderRadius: "20px", overflow: "hidden",
               boxShadow: "0 8px 28px rgba(95,38,229,0.08)", textDecoration: "none",
               display: "flex", flexDirection: "column",
             }}>
@@ -130,6 +132,25 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
                 </p>
               </div>
             </Link>
+          ))}
+
+          {Array.from({ length: Math.max(0, 3 - rest.length) }).map((_, i) => (
+            <div key={`coming-soon-${i}`} style={{
+              background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
+              border: "1px solid rgba(255,255,255,0.6)", borderRadius: "20px", overflow: "hidden",
+              boxShadow: "0 8px 28px rgba(95,38,229,0.08)",
+              display: "flex", flexDirection: "column",
+            }}>
+              <div style={{
+                position: "relative", flex: 1, minHeight: "200px",
+                background: "linear-gradient(135deg, #f3f0fd 0%, #e9e4fb 100%)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+              }}>
+                <span style={{ ...KT, color: "#5f26e5", opacity: 1, fontSize: "22px", fontWeight: 800 }}>
+                  Coming Soon
+                </span>
+              </div>
+            </div>
           ))}
         </div>
         </>

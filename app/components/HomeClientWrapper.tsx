@@ -155,22 +155,42 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
             style={{ paddingLeft: "24px" }}
           >
             <Link href={`/${lang}/influencer`} className="hero-side-card" style={{
-              position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-              textAlign: "center", gap: "10px", minHeight: "620px", padding: "32px 24px 32px 42px",
+              position: "relative", display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "flex-start",
+              textAlign: "left", minHeight: "620px", padding: "40px 40px 48px",
               overflow: "hidden", textDecoration: "none",
               clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0 100%)",
+              background: "linear-gradient(160deg, #ffffff 0%, #f5f2fc 100%)",
             }}>
-              <Image src="/hero-illustrations/creator-full.svg" alt="" fill sizes="30vw" style={{ objectFit: "cover", zIndex: 0 }} />
-              <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
-                <span style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#ffffff" }}>For Creators</span>
-                <h3 style={{ ...KT, fontSize: "clamp(24px,2.8vw,38px)", fontWeight: 800, color: "#ffffff", margin: 0, lineHeight: 1.25 }}>
-                  {lang === "th" ? <>สร้างงานที่ใช่<br />จากสิ่งที่คุณรัก</> : <>Land Work You<br />Actually Love</>}
+              {/* Dotted grid pattern */}
+              <div style={{ position: "absolute", inset: 0, zIndex: 0, backgroundImage: "radial-gradient(rgba(95,38,229,0.12) 1px, transparent 1px)", backgroundSize: "22px 22px" }} />
+              {/* Soft purple blob */}
+              <div style={{ position: "absolute", top: "-100px", right: "-100px", width: "300px", height: "300px", borderRadius: "50%", background: "radial-gradient(circle, rgba(155,110,255,0.4) 0%, transparent 70%)", zIndex: 0 }} />
+              {/* Sparkles */}
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff0089" style={{ position: "absolute", top: "14%", left: "10%", zIndex: 1, opacity: 0.6 }}><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" /></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#5f26e5" style={{ position: "absolute", top: "46%", right: "10%", zIndex: 1, opacity: 0.5 }}><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" /></svg>
+
+              {/* Creator mockup, top, centered */}
+              <div style={{ position: "relative", zIndex: 1, width: "72%", alignSelf: "center", marginBottom: "20px" }}>
+                <Image src="/hero-illustrations/creator-mockup.png" alt="" width={1092} height={1190} priority style={{ width: "100%", height: "auto", display: "block" }} />
+              </div>
+
+              {/* Text content */}
+              <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "14px", maxWidth: "220px" }}>
+                <span style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 700, color: "#5f26e5", background: "#ffffff", border: "1px solid rgba(95,38,229,0.2)", borderRadius: "50px", padding: "6px 14px" }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="#5f26e5"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" /></svg>
+                  For Creators
+                </span>
+                <h3 style={{ ...KT, fontSize: "clamp(24px,2.6vw,34px)", fontWeight: 800, color: "#111827", margin: 0, lineHeight: 1.2 }}>
+                  {lang === "th" ? <>สร้างงานที่ใช่<br /><span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>จากสิ่งที่คุณรัก</span></> : <>Land Work You<br /><span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Actually Love</span></>}
                 </h3>
-                <p style={{ ...KT, fontSize: "16px", color: "rgba(255,255,255,0.85)", margin: 0, lineHeight: 1.6 }}>
+                <p style={{ ...KT, fontSize: "15px", color: "#4b5563", margin: 0, lineHeight: 1.6 }}>
                   {lang === "th" ? "เชื่อมต่อแบรนด์ชั้นนำ และเติบโตในแบบของคุณ" : "Connect with top brands and grow in your own way."}
                 </p>
-                <span className="btn-hero px-4 py-3 rounded-full" style={{ ...KT, marginTop: "6px", display: "inline-flex", alignItems: "center", whiteSpace: "nowrap", fontSize: "16px", fontWeight: 600 }}>
+                <span style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", color: "#ffffff", borderRadius: "50px", padding: "12px 12px 12px 22px", fontSize: "15px", fontWeight: 600 }}>
                   {lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Creators"}
+                  <span style={{ width: "24px", height: "24px", borderRadius: "50%", background: "rgba(255,255,255,0.25)", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                  </span>
                 </span>
               </div>
             </Link>
@@ -232,7 +252,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       <div className="hero-logos-fade" style={{ height: "120px", marginTop: "-120px", background: "linear-gradient(to bottom, transparent 0%, #ffffff 100%)", position: "relative", zIndex: 11, pointerEvents: "none" }} />
 
       {/* ── Brand Logos Marquee ── */}
-      <LogoMarquee />
+      <LogoMarquee headingStyle={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />
 
       {/* ── Your Trusted Partner ── */}
       <section style={{ paddingTop: "80px", paddingBottom: "80px" }} className="px-6 trusted-section partner-bg">

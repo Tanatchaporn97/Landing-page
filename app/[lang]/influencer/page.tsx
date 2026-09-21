@@ -192,7 +192,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       </section>
 
       {/* ── Brand Logos Marquee ── */}
-      <LogoMarquee bgClassName="inf-logo-bg" fadeColor="#F7F1FC" />
+      <LogoMarquee bgClassName="inf-logo-bg" fadeColor="#F7F1FC" headingStyle={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />
 
 
       {/* ── Opportunity Banner ── */}

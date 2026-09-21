@@ -16,9 +16,11 @@ export default function TestimonialsGrid({ dict }: { dict?: any }) {
 
   const Card = ({ t }: { t: any }) => (
     <div style={{
-      background: "#ffffff",
+      background: "rgba(255,255,255,0.55)",
+      backdropFilter: "blur(20px)",
+      WebkitBackdropFilter: "blur(20px)",
       borderRadius: "16px",
-      border: "1px solid rgba(0,0,0,0.07)",
+      border: "1px solid rgba(255,255,255,0.6)",
       boxShadow: "0 2px 16px rgba(0,0,0,0.06)",
       padding: "24px 24px 20px",
       display: "flex",

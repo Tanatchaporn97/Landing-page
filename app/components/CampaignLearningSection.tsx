@@ -145,7 +145,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
         {/* Floating: Sentiment */}
         <div className="cl-float cl-float-sentiment cl-target-sentiment" style={{
           position: "absolute", top: "-28px", left: "-24px", width: "180px",
-          background: "#ffffff", borderRadius: "16px", padding: "16px 18px",
+          background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderRadius: "16px", padding: "16px 18px",
           boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
           opacity: 0.55,
           transform: "scale(1.1)",
@@ -165,7 +165,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
         {/* Floating: Campaign result */}
         <div className="cl-float cl-target-result" style={{
           position: "absolute", top: "36%", left: "-32px", width: "210px",
-          background: "#ffffff", borderRadius: "16px", padding: "16px 18px",
+          background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderRadius: "16px", padding: "16px 18px",
           boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
           opacity: 0.55,
           transform: "scale(1.1)",
@@ -187,7 +187,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
         {/* Floating: Next move */}
         <div className="cl-float cl-target-nextmove" style={{
           position: "absolute", top: "-20px", right: "-20px", width: "210px",
-          background: "#ffffff", borderRadius: "16px", padding: "16px 18px",
+          background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderRadius: "16px", padding: "16px 18px",
           boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
           opacity: 0.55,
           transform: "scale(1.1)",
@@ -209,7 +209,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
         {/* Floating: What people said */}
         <div className="cl-float cl-target-whatsaid" style={{
           position: "absolute", bottom: "-24px", left: "6%", width: "200px",
-          background: "#ffffff", borderRadius: "16px", padding: "16px 18px",
+          background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderRadius: "16px", padding: "16px 18px",
           boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
           opacity: 0.55,
           transform: "scale(1.1)",
@@ -235,7 +235,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
         {/* Floating: Reach by day */}
         <div className="cl-float cl-target-reach" style={{
           position: "absolute", bottom: "-32px", right: "-16px", width: "230px",
-          background: "#ffffff", borderRadius: "16px", padding: "16px 18px",
+          background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderRadius: "16px", padding: "16px 18px",
           boxShadow: "0 16px 32px -10px rgba(95,38,229,0.25)",
           opacity: 0.55,
           transform: "scale(1.1)",
@@ -270,7 +270,9 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           box-shadow: 0 24px 40px -12px rgba(95,38,229,0.4);
           opacity: 1 !important;
           border: 1.5px solid rgba(95,38,229,0.35);
-          background: #ffffff !important;
+          background: rgba(255,255,255,0.55) !important;
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
         }
         .cl-target-result, .cl-target-reach, .cl-target-sentiment, .cl-target-whatsaid, .cl-target-nextmove{
           border: 1.5px solid transparent;

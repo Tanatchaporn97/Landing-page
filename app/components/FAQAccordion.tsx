@@ -61,8 +61,10 @@ export default function FAQAccordion({
       };
     }
     return {
-      background: isOpen ? "#5f26e5" : "#ffffff",
-      border: isOpen ? "none" : "1px solid rgba(0,0,0,0.10)",
+      background: isOpen ? "#5f26e5" : "rgba(255,255,255,0.55)",
+      backdropFilter: isOpen ? "none" : "blur(20px)",
+      WebkitBackdropFilter: isOpen ? "none" : "blur(20px)",
+      border: isOpen ? "none" : "1px solid rgba(255,255,255,0.6)",
       borderRadius: "16px",
     };
   };

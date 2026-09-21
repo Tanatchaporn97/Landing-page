@@ -38,7 +38,7 @@ function LogoMarqueeRow({ logos, direction }: { logos: React.ReactNode[], direct
   );
 }
 
-export default function LogoMarquee({ bgClassName, fadeColor = "#ffffff" }: { bgClassName?: string; fadeColor?: string } = {}) {
+export default function LogoMarquee({ bgClassName, fadeColor = "#ffffff", headingStyle }: { bgClassName?: string; fadeColor?: string; headingStyle?: React.CSSProperties } = {}) {
   return (
     <section className={`brand-logos-section ${bgClassName || "client-bg"}`} style={{
       padding: "120px 0 120px",
@@ -47,6 +47,16 @@ export default function LogoMarquee({ bgClassName, fadeColor = "#ffffff" }: { bg
       position: "relative",
       zIndex: 5,
     }}>
+      <h2 style={{
+        textAlign: "center",
+        fontSize: "clamp(28px,3.3vw,48px)",
+        margin: "0 0 48px",
+        position: "relative",
+        zIndex: 3,
+      }}>
+        <span style={{ ...headingStyle, background: "none", WebkitBackgroundClip: "unset", WebkitTextFillColor: "#111827", backgroundClip: "unset", color: "#111827" }}>Our </span>
+        <span style={{ ...headingStyle }}>Clients</span>
+      </h2>
       <LogoMarqueeRow logos={LOGOS_ROW1} direction="left" />
       <div className="logo-marquee-row-gap" style={{ height: "32px" }} />
       <LogoMarqueeRow logos={LOGOS_ROW2} direction="right" />
