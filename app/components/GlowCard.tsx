@@ -4,7 +4,7 @@ import React, { useEffect, useRef, ReactNode } from "react";
 interface GlowCardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   className?: string;
-  glowColor?: "blue" | "purple" | "green" | "red" | "orange";
+  glowColor?: "blue" | "purple" | "pink" | "green" | "red" | "orange";
 }
 
 const glowColorMap = {
@@ -13,6 +13,9 @@ const glowColorMap = {
   // instead of the original wide 300° spread, which wrapped through unrelated
   // green/yellow hues as the pointer crossed the card's horizontal center.
   purple: { base: 258, spread: 70 },
+  // Site's brand pink (#ff0089 ≈ hue 328°) — kept as a tight range around that
+  // hue so it reads as pink, not drifting toward red/orange or back to purple.
+  pink: { base: 328, spread: 50 },
   green: { base: 120, spread: 200 },
   red: { base: 0, spread: 200 },
   orange: { base: 30, spread: 200 },
