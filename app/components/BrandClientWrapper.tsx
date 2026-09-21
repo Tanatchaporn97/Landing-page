@@ -151,6 +151,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
   const STORY_TABS = ["New Market Entry", "Niche Community", "Always-on Content", "Event Activation", "Shoppable Content"] as const;
   const STORY_TAB_ICONS = { "New Market Entry": Rocket, "Niche Community": Users, "Always-on Content": RefreshCw, "Event Activation": PartyPopper, "Shoppable Content": ShoppingBag } as const;
   const [activeStoryTab, setActiveStoryTab] = useState<typeof STORY_TABS[number]>(STORY_TABS[0]);
+  const [storyTabsAutoPaused, setStoryTabsAutoPaused] = useState(false);
 
   // Keep the active card scrolled fully into view whenever it changes — via
   // clicking a card directly, or via the arrow buttons stepping to the next/
@@ -216,6 +217,19 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
     }, 5000);
     return () => clearInterval(id);
   }, [servicesAutoPaused]);
+
+  // Auto-advance the "See the Work in Action" story tabs every 5s, looping
+  // back to the start; paused while the user is hovering the tabs/content.
+  useEffect(() => {
+    if (storyTabsAutoPaused) return;
+    const id = setInterval(() => {
+      setActiveStoryTab((prev) => {
+        const nextIndex = (STORY_TABS.indexOf(prev) + 1) % STORY_TABS.length;
+        return STORY_TABS[nextIndex];
+      });
+    }, 5000);
+    return () => clearInterval(id);
+  }, [storyTabsAutoPaused]);
 
   const router = useRouter();
   const catSlug = (cat: string) => cat.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-$/, "");
@@ -557,7 +571,8 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </p>
           </div>
 
-          <Tabs value={activeStoryTab} onValueChange={(v) => setActiveStoryTab(v as typeof STORY_TABS[number])} className="mt-8">
+          <Tabs value={activeStoryTab} onValueChange={(v) => setActiveStoryTab(v as typeof STORY_TABS[number])} className="mt-8"
+            onMouseEnter={() => setStoryTabsAutoPaused(true)} onMouseLeave={() => setStoryTabsAutoPaused(false)}>
             <TabsList className="cs-tabs-row" style={{ display: "flex", flexWrap: "wrap", gap: "10px", justifyContent: "center" }}>
               {STORY_TABS.map((tabLabel) => {
                 const TabIcon = STORY_TAB_ICONS[tabLabel];
