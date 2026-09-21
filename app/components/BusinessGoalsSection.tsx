@@ -54,9 +54,9 @@ export default function BusinessGoalsSection({ lang }: { lang: "th" | "en" }) {
         </p>
       </div>
 
-      {/* 3-column × 2-row grid — hover-animated card: border lights up, icon inverts to a
-          solid gradient fill, and a decorative accent line grows along the left edge */}
-      <div className="bg-cards-grid-v2" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "28px 24px" }}>
+      {/* 3-column × 2-row grid — no card frame, just a lift + icon flourish on hover.
+          The icon keeps its purple→pink gradient at all times. */}
+      <div className="bg-cards-grid-v2" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "44px 32px" }}>
         {GOALS.map((item, idx) => (
           <motion.div
             key={item.num}
@@ -66,26 +66,18 @@ export default function BusinessGoalsSection({ lang }: { lang: "th" | "en" }) {
             transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.23, 1, 0.32, 1] }}
             viewport={{ once: true }}
             style={{
-              position: "relative", display: "flex", flexDirection: "column", gap: "16px",
-              borderRadius: "16px", border: "1px solid rgba(95,38,229,0.12)",
-              padding: "28px 24px", cursor: "pointer",
-              transition: "border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+              display: "flex", flexDirection: "column", gap: "16px", cursor: "pointer",
+              transition: "transform 0.3s ease",
             }}
           >
-            {/* Accent line — purple→pink on hover */}
-            <span className="goal-card-accent" style={{
-              position: "absolute", left: "-1px", top: "24px", bottom: "24px", width: "2px",
-              background: "rgba(95,38,229,0.15)", transition: "background 0.3s ease",
-            }} />
-
             <div className="goal-card-icon" style={{
               display: "flex", alignItems: "center", justifyContent: "center",
-              width: "56px", height: "56px", borderRadius: "16px", flexShrink: 0,
-              background: "#ffffff", border: "1px solid rgba(95,38,229,0.12)",
-              boxShadow: "0 8px 24px rgba(95,38,229,0.14)",
-              transition: "background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+              width: "64px", height: "64px", borderRadius: "20px", flexShrink: 0,
+              background: "#ffffff",
+              boxShadow: "0 8px 24px rgba(95,38,229,0.16)",
+              transition: "box-shadow 0.3s ease, transform 0.3s ease",
             }}>
-              <item.Icon size={26} stroke="url(#goalIconGradient)" strokeWidth={2} />
+              <item.Icon size={28} stroke="url(#goalIconGradient)" strokeWidth={2} />
             </div>
             <h4 style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: 0, lineHeight: 1.3, color: "#5f26e5" }}>
               {item.title}
@@ -109,20 +101,11 @@ export default function BusinessGoalsSection({ lang }: { lang: "th" | "en" }) {
 
       <style>{`
         .goal-card:hover{
-          border-color: rgba(95,38,229,0.5);
-          box-shadow: 0 16px 32px -12px rgba(95,38,229,0.25);
-          transform: translateY(-4px);
-        }
-        .goal-card:hover .goal-card-accent{
-          background: linear-gradient(180deg, #5f26e5 0%, #ff0089 100%);
+          transform: translateY(-6px);
         }
         .goal-card:hover .goal-card-icon{
-          background: linear-gradient(135deg, #5f26e5 0%, #ff0089 100%);
-          box-shadow: 0 8px 20px rgba(95,38,229,0.35);
+          box-shadow: 0 12px 28px rgba(95,38,229,0.3);
           transform: scale(1.08) rotate(-4deg);
-        }
-        .goal-card:hover .goal-card-icon svg{
-          stroke: #ffffff !important;
         }
         @media (max-width: 900px){
           .bg-cards-grid-v2{ grid-template-columns: repeat(2, 1fr) !important; }
