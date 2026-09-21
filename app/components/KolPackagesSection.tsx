@@ -170,14 +170,13 @@ export default function KolPackagesSection({ lang = "th" }: { lang?: "th" | "en"
 
         {/* CTA */}
         <div style={{ display: "flex", justifyContent: "center", marginTop: "48px" }}>
-          <a href="#contact" className="btn-insight" style={{
+          <a href="#contact" className="btn-glass-purple" style={{
             ...KT,
             borderRadius: "50px",
             fontSize: "16px",
             fontWeight: 600,
             padding: "14px 48px",
             textDecoration: "none",
-            display: "inline-block",
           }}>
             {t.contactUs}
           </a>

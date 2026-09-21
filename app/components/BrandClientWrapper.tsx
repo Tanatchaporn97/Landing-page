@@ -147,7 +147,6 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
   const servicesScrollRef = useRef<HTMLDivElement>(null);
   const serviceCardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeService, setActiveService] = useState(0);
-  const csRef2 = useRef<HTMLDivElement>(null); // scratch copy for redesign experiments
   const STORY_TABS = ["New Market Entry", "Niche Community", "Always-on Content", "Event Activation", "Shoppable Content"] as const;
   const STORY_TAB_ICONS = { "New Market Entry": Rocket, "Niche Community": Users, "Always-on Content": RefreshCw, "Event Activation": PartyPopper, "Shoppable Content": ShoppingBag } as const;
   const [activeStoryTab, setActiveStoryTab] = useState<typeof STORY_TABS[number]>(STORY_TABS[0]);
@@ -304,7 +303,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               )}
             </p>
 
-            <a href="#contact" className="btn-hero-solid-purple" style={{ ...KT, display: "inline-flex", alignItems: "center", justifyContent: "center",
+            <a href="#contact" className="btn-glass-purple" style={{ ...KT,
               fontWeight: 600, fontSize: "16px",
               padding: "16px 36px", borderRadius: "50px", textDecoration: "none" }}>
               {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
@@ -687,106 +686,15 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
           {/* ดูเพิ่มเติม CTA */}
           <div style={{ display: "flex", justifyContent: "center", marginTop: "48px" }}>
-            <Link href={`/${lang}/success`} className="btn-text-arrow" style={{
+            <Link href={`/${lang}/success`} className="btn-glass-purple" style={{
               ...KT,
+              borderRadius: "50px",
               fontSize: "16px",
-              fontWeight: 700,
+              fontWeight: 600,
+              padding: "14px 48px",
               textDecoration: "none",
             }}>
               {t.viewMore}
-              <span className="btn-text-arrow-icon">→</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Success Stories (COPY — scratch section for redesign experiments; keep
-           the original above untouched, iterate freely here) ── */}
-      <section id="success-stories-v2" className="py-20 px-6 success-bg">
-        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-
-          <h2 className="section-title text-center font-bold mb-12 section-h2-fixed"
-            style={{ ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
-              fontFeatureSettings: "'pnum' on,'lnum' on" }}>
-            Success{" "}
-            <span style={{
-              background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}>Stories</span>
-          </h2>
-
-          <div style={{ display: "flex", gap: "10px", justifyContent: "flex-end", marginBottom: "16px" }}>
-            <button className="arrow-cta-btn" onClick={() => csRef2.current?.scrollBy({ left: -400, behavior: "smooth" })} style={{ width: "44px", height: "44px", borderRadius: "50%", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", touchAction: "manipulation" }}>
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M12 3L6 9l6 6" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </button>
-            <button className="arrow-cta-btn" onClick={() => csRef2.current?.scrollBy({ left: 400, behavior: "smooth" })} style={{ width: "44px", height: "44px", borderRadius: "50%", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", touchAction: "manipulation" }}>
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M6 3l6 6-6 6" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </button>
-          </div>
-
-          <div ref={csRef2} style={{ display: "flex", gap: "24px", overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none", msOverflowStyle: "none" as React.CSSProperties["msOverflowStyle"], paddingBottom: "8px" }}>
-
-            {[
-              { href: `/${lang}/success/nissin`,         img: "/success-stories-2/Success stories-08.jpg", cat: "FOOD & BEVERAGE",  title: "Nissin",          tagline: "ปลุกกระแสคนหิวบนโซเชียลด้วยรสชาติใหม่ ต้มยำกุ้งแซ่บซีส",          taglineEn: "Sparking social media food cravings with a bold new flavor: spicy Tom Yum Kung cheese." },
-              { href: `/${lang}/success/ldc-dental`,     img: "/success-stories-2/Success stories-09.jpg", cat: "DENTAL CARE",      title: "LDC Dental",      tagline: "รีวิวจัดฟันใสจากอินฟลูฯ สู่กิจกรรมสุดเอ็กซ์คลูซีฟจาก LDC Dental", taglineEn: "Clear-aligner reviews from influencers, leading into an exclusive event with LDC Dental." },
-              { href: `/${lang}/success/watsons`,        img: "/success-stories-2/Success stories-10.jpg", cat: "HEALTH & BEAUTY",  title: "Watsons",         tagline: "House Brand ปังด้วยพลังอินฟลูฯ บน TikTok & Lemon8",               taglineEn: "House-brand products taking off with influencer power on TikTok & Lemon8." },
-              { href: `/${lang}/success/viu`,            img: "/success-stories-2/Success stories-11.jpg", cat: "ENTERTAINMENT",    title: "Viu",             tagline: "อินฟลูเอนเซอร์พลังท้องถิ่น สร้างสีสันแคมเปญ อีสานชมวิว",          taglineEn: "Local-powered influencers bringing the \"Isan Chom Wiew\" campaign to life." },
-              { href: `/${lang}/success/ahc`,            img: "/success-stories-2/Success stories-12.jpg", cat: "SKINCARE",         title: "AHC",             tagline: "ปลุกกระแสแบรนด์ด้วยอีเวนต์จากซีรีส์สุดไวรัล 'AHC Skin Game'",   taglineEn: "Igniting brand buzz with an event inspired by the viral series \"AHC Skin Game.\"" },
-              { href: `/${lang}/success/guss-damn-good`, img: "/success-stories-2/Success stories-13.jpg", cat: "FOOD & BEVERAGE",  title: "Guss Damn Good",  tagline: "รสชาติที่มีเรื่องเล่า เมื่อไอศครีมเจอกับผงฟู้คลายกรดลดแน่นเฟ้อ",   taglineEn: "A flavor with a story: when ice cream meets antacid powder." },
-              { href: `/${lang}/success/optimum-hi-pro`, img: "/success-stories-2/optimum-hi-pro-logo.jpg", cat: "PET CARE",  title: "Optimum Hi Pro",  tagline: "เข้าถึงคนเลี้ยงปลาคาร์พอย่างตรงกลุ่ม พร้อมขยายการรับรู้ในวงกว้าง",   taglineEn: "Reaching koi keepers with precision, while expanding awareness at scale.", imgFit: "contain" as const, imgBg: "#060e5d" },
-              { href: `/${lang}/success/auntie-annes`,   img: "/success-stories-2/auntie-annes-logo.jpg",   cat: "FOOD & BEVERAGE", title: "Auntie Anne's",   tagline: "สร้าง Always-on TikTok Content Engine ที่ผลิตต่อเนื่องกว่า 15 เดือน", taglineEn: "Building an always-on TikTok content engine, running for 15+ months.", imgFit: "contain" as const, imgBg: "#ffffff", imgPosition: "center 40%" },
-              { href: `/${lang}/success/siangpure`,      img: "/success-stories-2/siangpure-logo.jpg",      cat: "HEALTHCARE",      title: "Siangpure",       tagline: "เข้าถึงผู้บริโภคชาวอินเดียผ่าน Indian Influencers บน Instagram",  taglineEn: "Reaching Indian consumers through Indian influencers on Instagram.", imgFit: "contain" as const, imgBg: "#ffffff" },
-            ].slice().reverse().map(card => (
-              <Link key={card.href} href={card.href} className="cs-card-link" style={{ textDecoration: "none", flexShrink: 0, width: "390px", scrollSnapAlign: "start" }}>
-                <div className="cs-card" style={{
-                  borderRadius: "28px", height: "520px",
-                  background: "rgba(255,255,255,0.22)",
-                  backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
-                  border: "1px solid rgba(255,255,255,0.45)",
-                  boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
-                  boxSizing: "border-box",
-                }}>
-                  <div className="cs-card-img-clip" style={{ position: "relative", width: "100%", height: "100%", background: card.imgBg || undefined }}>
-                    <Image src={card.img} alt={card.title} className="cs-card-img" fill sizes="(max-width: 768px) 100vw, 400px" style={{ objectFit: card.imgFit || "cover", objectPosition: card.imgPosition || "center" }} />
-                  </div>
-                  <div className="cs-card-overlay" />
-                  {/* Arrow button — top right */}
-                  <div style={{ position: "absolute", top: "28px", right: "28px", zIndex: 2 }}>
-                    <div className="cs-arrow-btn" style={{ width: "32px", height: "32px", borderRadius: "50%", background: "#5f26e5", border: "none", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path className="cs-arrow-path" d="M4 12L12 4M12 4H6M12 4V10" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </div>
-                  </div>
-                  {/* Category pill */}
-                  <div style={{ position: "absolute", top: "28px", left: "28px", zIndex: 2 }}>
-                    <button
-                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); router.push(`/${lang}/category/${catSlug(card.cat)}`); }}
-                      className="cs-cat-btn" style={{ ...KT, fontSize: "10px", fontWeight: 600, color: "#ffffff", background: "#5f26e5", borderRadius: "50px", padding: "5px 12px", letterSpacing: "0.08em", border: "none", cursor: "pointer" }}
-                    >
-                      {card.cat.charAt(0) + card.cat.slice(1).toLowerCase()}
-                    </button>
-                  </div>
-                  {/* Bottom info */}
-                  <div className="cs-card-title" style={{ position: "absolute", bottom: "24px", left: "24px", right: "24px", zIndex: 2 }}>
-                    <h3 style={{ ...KT, fontSize: "29px", fontWeight: 600, margin: "0 0 6px", lineHeight: 1.2 }}>{card.title}</h3>
-                    <p className="cs-card-tagline" style={{ ...KT, fontSize: "16px", fontWeight: 400, lineHeight: 1.65, margin: 0, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" as React.CSSProperties["WebkitBoxOrient"], overflow: "hidden" }}>{lang === "th" ? card.tagline : card.taglineEn}</p>
-                  </div>
-                </div>
-              </Link>
-            ))}
-            <div style={{ flexShrink: 0, width: "1px" }} />
-          </div>
-
-          <div style={{ display: "flex", justifyContent: "center", marginTop: "48px" }}>
-            <Link href={`/${lang}/success`} className="btn-text-arrow" style={{
-              ...KT,
-              fontSize: "16px",
-              fontWeight: 700,
-              textDecoration: "none",
-            }}>
-              {t.viewMore}
-              <span className="btn-text-arrow-icon">→</span>
             </Link>
           </div>
         </div>
@@ -853,7 +761,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
       {/* ── Campaign Learning — Measure, Learn, Improve ── */}
       <section style={{
-        background: "url('/new-landing-bg2.jpg') center / cover no-repeat",
+        background: "url('/backgrounds/dark-blue-bg2.jpg') center / cover no-repeat",
         position: "relative", overflow: "hidden",
       }} className="py-20 px-6">
         <div style={{ maxWidth: "1294px", margin: "0 auto", position: "relative", zIndex: 1 }}>

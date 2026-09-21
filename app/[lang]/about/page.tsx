@@ -124,8 +124,8 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
             />
           </div>
 
-          <a href={`/${lang}#contact`} className="btn-hero-solid-purple"
-            style={{ ...KT, display: "inline-flex", alignItems: "center", justifyContent: "center", borderRadius: "50px", padding: "14px 40px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
+          <a href={`/${lang}#contact`} className="btn-glass-purple"
+            style={{ ...KT, borderRadius: "50px", padding: "14px 40px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
             {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
           </a>
         </div>

@@ -211,8 +211,8 @@ export default function FAQAccordion({
             </h3>
             <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
               <Link href={`/${lang}/faq`}
-                className="btn-insight"
-                style={{ ...KT, borderRadius: "50px", fontSize: "16px", fontWeight: 600, padding: "14px 48px", textDecoration: "none", display: "inline-block" }}>
+                className="btn-glass-purple"
+                style={{ ...KT, borderRadius: "50px", fontSize: "16px", fontWeight: 600, padding: "14px 48px", textDecoration: "none" }}>
                 {dict?.home?.faqViewMore || (lang === "en" ? "View All FAQs" : "ดูคำถามที่พบบ่อยทั้งหมด")}
               </Link>
             </div>

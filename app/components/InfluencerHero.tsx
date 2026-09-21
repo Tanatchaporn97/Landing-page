@@ -54,8 +54,8 @@ export default function InfluencerHero({ lang = "th" }: { lang?: "th" | "en" }) 
 
           <div className="hero-cta-row-inf" style={{ display: "flex", gap: "14px", marginBottom: "52px", flexWrap: "wrap" }}>
             <a href="https://www.buddyreview.co/app/new-campaigns" target="_blank" rel="noopener noreferrer"
-              className="btn-hero-solid-purple hero-cta-btn-inf"
-              style={{ ...KT, display: "inline-flex", alignItems: "center", borderRadius: "50px", padding: "14px 32px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
+              className="btn-glass-purple hero-cta-btn-inf"
+              style={{ ...KT, borderRadius: "50px", padding: "14px 32px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
               {t.applyNow}
             </a>
             <a href="https://rank.buddyreview.co/" target="_blank" rel="noopener noreferrer"

@@ -308,8 +308,8 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               <>Uses AI to help analyze your followers, content, and performance<br />know who your audience is, what content works, and what to do next.</>
             )}
           </p>
-          <a href="https://rank.buddyreview.co/" target="_blank" rel="noopener noreferrer" className="btn-insight"
-            style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", borderRadius: "50px", fontSize: "16px", fontWeight: 600, padding: "14px 32px", textDecoration: "none" }}>
+          <a href="https://rank.buddyreview.co/" target="_blank" rel="noopener noreferrer" className="btn-glass-purple"
+            style={{ ...KT, borderRadius: "50px", fontSize: "16px", fontWeight: 600, padding: "14px 32px", textDecoration: "none" }}>
             {lang === "th" ? "วิเคราะห์ TikTok ฟรี" : "Analyze Your TikTok Free"} →
           </a>
         </div>
@@ -405,8 +405,8 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
                 )}
               </div>
               <a href="https://www.buddyreview.co/app/new-campaigns" target="_blank" rel="noopener noreferrer"
-                className="btn-hero-solid-purple"
-                style={{ ...KT, display: "inline-flex", alignItems: "center", borderRadius: "50px", padding: "14px 40px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
+                className="btn-glass-purple"
+                style={{ ...KT, borderRadius: "50px", padding: "14px 40px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
                 {lang === "th" ? "สมัครเลย" : "Apply Now"}
               </a>
             </div>

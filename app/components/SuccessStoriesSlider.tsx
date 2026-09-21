@@ -92,14 +92,15 @@ export default function SuccessStoriesSlider({ lang = "th" }: { lang?: "th" | "e
 
         {/* ดูเพิ่มเติม CTA */}
         <div style={{ display: "flex", justifyContent: "center", marginTop: "48px" }}>
-          <Link href={`/${lang}/success`} className="btn-text-arrow" style={{
+          <Link href={`/${lang}/success`} className="btn-glass-purple" style={{
             ...KT,
+            borderRadius: "50px",
             fontSize: "16px",
-            fontWeight: 700,
+            fontWeight: 600,
+            padding: "14px 48px",
             textDecoration: "none",
           }}>
             {viewMore}
-            <span className="btn-text-arrow-icon">→</span>
           </Link>
         </div>
       </div>
