@@ -637,6 +637,29 @@ body {
   color: #5f26e5;
 }
 
+/* ── "View More" / "Read More" text link — no pill, bold text + arrow ── */
+.btn-text-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: #111827;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: color 0.25s ease;
+}
+.btn-text-arrow:hover {
+  color: #5f26e5;
+}
+.btn-text-arrow-icon {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+.btn-text-arrow:hover .btn-text-arrow-icon {
+  transform: translateX(4px);
+}
+
 /* Hamburger: mobile only — desktop/tablet use the inline nav links + buttons instead */
 .hamburger-btn { display: flex; }
 .desktop-nav-btns { display: flex; }
@@ -838,6 +861,18 @@ body {
 
   /* /brand hero dashboard image — keep it within the section's side padding on mobile */
   .brand-hero-dashboard { height: 260px !important; }
+
+  /* /brand "See the Work in Action" — vertical tab list becomes a horizontal
+     scrollable row on mobile so it doesn't eat half the screen width */
+  .cs-tabs-layout { flex-direction: column !important; }
+  .cs-tabs-col {
+    flex-direction: row !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+  .cs-tabs-col::-webkit-scrollbar { display: none; }
 
   /* /about Vision/Mission/Value cards — stack on mobile */
   .vmv-grid { grid-template-columns: 1fr !important; }

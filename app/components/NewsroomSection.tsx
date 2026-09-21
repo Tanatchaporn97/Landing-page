@@ -158,11 +158,11 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
 
         {/* View more CTA */}
         <div style={{ display: "flex", justifyContent: "center", marginTop: "48px" }}>
-          <Link href={`/${lang}/${basePath}`} className="btn-insight" style={{
-            ...KT, borderRadius: "50px", fontSize: "16px", fontWeight: 600,
-            padding: "14px 48px", textDecoration: "none", display: "inline-block",
+          <Link href={`/${lang}/${basePath}`} className="btn-text-arrow" style={{
+            ...KT, fontSize: "16px", fontWeight: 700, textDecoration: "none",
           }}>
             {t.viewMore}
+            <span className="btn-text-arrow-icon">→</span>
           </Link>
         </div>
       </div>

@@ -87,7 +87,7 @@ const STORIES_TH = [
   {
     slug: "optimum-hi-pro",
     brand: "Optimum Hi Pro",
-    photo: "/success-stories-2/optimum-hi-pro-logo.jpg", imgFit: "contain" as const, imgBg: "#0e1a5c",
+    photo: "/success-stories-2/optimum-hi-pro-logo.jpg", imgFit: "contain" as const, imgBg: "#060e5d",
     tagline: `เข้าถึงคนเลี้ยงปลาคาร์พอย่างตรงกลุ่ม พร้อมขยายการรับรู้ในวงกว้าง`,
     industry: `Pet Care`,
     stats: [
@@ -198,7 +198,7 @@ const STORIES_EN = [
   {
     slug: "optimum-hi-pro",
     brand: "Optimum Hi Pro",
-    photo: "/success-stories-2/optimum-hi-pro-logo.jpg", imgFit: "contain" as const, imgBg: "#0e1a5c",
+    photo: "/success-stories-2/optimum-hi-pro-logo.jpg", imgFit: "contain" as const, imgBg: "#060e5d",
     tagline: `Reaching koi keepers with precision, while expanding awareness at scale.`,
     industry: `Pet Care`,
     stats: [

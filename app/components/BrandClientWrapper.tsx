@@ -571,22 +571,27 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </p>
           </div>
 
-          <Tabs value={activeStoryTab} onValueChange={(v) => setActiveStoryTab(v as typeof STORY_TABS[number])} className="mt-8"
+          <Tabs value={activeStoryTab} onValueChange={(v) => setActiveStoryTab(v as typeof STORY_TABS[number])} className="mt-8" orientation="vertical"
             onMouseEnter={() => setStoryTabsAutoPaused(true)} onMouseLeave={() => setStoryTabsAutoPaused(false)}>
-            <TabsList className="cs-tabs-row" style={{ display: "flex", flexWrap: "wrap", gap: "10px", justifyContent: "center" }}>
-              {STORY_TABS.map((tabLabel) => {
-                const TabIcon = STORY_TAB_ICONS[tabLabel];
-                return (
-                  <TabsTrigger key={tabLabel} value={tabLabel} style={{ ...KT }}>
-                    <TabIcon className="h-5 w-5 shrink-0" />
-                    {tabLabel}
-                  </TabsTrigger>
-                );
-              })}
-            </TabsList>
+            <div className="cs-tabs-layout" style={{ display: "flex", gap: "24px", alignItems: "stretch" }}>
+              <TabsList className="cs-tabs-col" style={{ display: "flex", flexDirection: "column", gap: "8px", flexShrink: 0, width: "260px" }}>
+                {STORY_TABS.map((tabLabel) => {
+                  const TabIcon = STORY_TAB_ICONS[tabLabel];
+                  return (
+                    <TabsTrigger key={tabLabel} value={tabLabel} style={{ ...KT, width: "100%", justifyContent: "flex-start" }}>
+                      <TabIcon className="h-5 w-5 shrink-0" />
+                      {tabLabel}
+                    </TabsTrigger>
+                  );
+                })}
+              </TabsList>
 
-            <div className="mx-auto mt-8 rounded-2xl" style={{ background: "rgba(95,38,229,0.05)", padding: "32px 24px" }}>
-              {[
+              <div className="rounded-2xl" style={{
+                flex: 1, minWidth: 0, padding: "32px 24px",
+                background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
+                border: "1px solid rgba(255,255,255,0.6)", boxShadow: "0 8px 28px rgba(95,38,229,0.08)",
+              }}>
+                {[
                 { value: "New Market Entry", href: `/${lang}/success/siangpure`,      img: "/success-stories-2/siangpure-logo.jpg", cat: "HEALTHCARE",     title: "Siangpure",
                   overview: "แคมเปญที่พา Siangpure บุกตลาดใหม่ผ่านครีเอเตอร์ชาวอินเดียบน Instagram เพื่อสร้างการรับรู้ในกลุ่มผู้บริโภคที่ไม่เคยเข้าถึงมาก่อน",
                   overviewEn: "A campaign that brought Siangpure into a new market through Indian Creators on Instagram, building awareness with an audience never reached before.",
@@ -600,7 +605,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   approach: "ผสานอินฟลูเอนเซอร์เฉพาะทางที่เข้าถึง Community คนเลี้ยงปลาคาร์พโดยตรง กับ Lifestyle Influencer ที่ช่วยขยายการรับรู้ในวงกว้าง ทำให้แคมเปญได้ทั้งความน่าเชื่อถือและ Reach ไปพร้อมกัน",
                   approachEn: "Blended specialist influencers who reached the koi-keeping community directly with lifestyle influencers who extended awareness at scale — giving the campaign both credibility and reach.",
                   stats: [{ label: "Reach", labelTh: "การเข้าถึง", value: "850K" }, { label: "Community Engagement", labelTh: "การมีส่วนร่วม", value: "+65%" }, { label: "Creators", labelTh: "ครีเอเตอร์", value: "10" }],
-                  imgFit: "contain" as const, imgBg: "#0e1a5c" },
+                  imgFit: "contain" as const, imgBg: "#060e5d" },
                 { value: "Always-on Content", href: `/${lang}/success/auntie-annes`,  img: "/success-stories-2/auntie-annes-logo.jpg", cat: "FOOD & BEVERAGE", title: "Auntie Anne's",
                   overview: "สร้าง Always-on Content Engine บน TikTok ที่ผลิตคอนเทนต์ต่อเนื่องกว่า 15 เดือน รักษาการมองเห็นแบรนด์ได้ตลอดปี",
                   overviewEn: "Built an always-on TikTok content engine producing content continuously for 15+ months, keeping the brand visible year-round.",
@@ -630,16 +635,21 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                     >
                       {story.cat.charAt(0) + story.cat.slice(1).toLowerCase()}
                     </button>
-                    <h3 style={{ ...KT, fontSize: "clamp(26px,3vw,40px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
+                    <h3 style={{
+                      ...KT, fontSize: "clamp(26px,3vw,40px)", fontWeight: 700, margin: 0, lineHeight: 1.2,
+                      display: "inline-block",
+                      background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+                      WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+                    }}>
                       {story.title}
                     </h3>
-                    <p style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#5f26e5", margin: 0 }}>
+                    <p style={{ ...KT, fontSize: "16px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#5f26e5", margin: 0 }}>
                       {lang === "th" ? "ภาพรวม" : "Overview"}
                     </p>
                     <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: "-12px 0 0" }}>
                       {lang === "th" ? story.overview : story.overviewEn}
                     </p>
-                    <p style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#5f26e5", margin: 0 }}>
+                    <p style={{ ...KT, fontSize: "16px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#5f26e5", margin: 0 }}>
                       {lang === "th" ? "กลยุทธ์" : "Strategy"}
                     </p>
                     <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: "-12px 0 0" }}>
@@ -648,16 +658,20 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                     <div style={{ display: "flex", gap: "28px", flexWrap: "wrap", marginTop: "4px" }}>
                       {story.stats.map((stat) => (
                         <div key={stat.label}>
-                          <p style={{ ...KT, fontSize: "24px", fontWeight: 800, color: "#111827", margin: "0 0 2px" }}>{stat.value}</p>
-                          <p style={{ ...KT, fontSize: "12px", color: "#9ca3af", margin: 0 }}>{lang === "th" ? stat.labelTh : stat.label}</p>
+                          <p style={{
+                            ...KT, fontSize: "24px", fontWeight: 800, margin: "0 0 2px", display: "inline-block",
+                            background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+                            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+                          }}>{stat.value}</p>
+                          <p style={{ ...KT, fontSize: "16px", color: "#111827", margin: 0 }}>{lang === "th" ? stat.labelTh : stat.label}</p>
                         </div>
                       ))}
                     </div>
-                    <Link href={story.href} className="btn-insight" style={{
-                      ...KT, width: "fit-content", borderRadius: "50px", fontSize: "15px", fontWeight: 600,
-                      padding: "12px 32px", textDecoration: "none", display: "inline-block", marginTop: "8px",
+                    <Link href={story.href} className="btn-text-arrow" style={{
+                      ...KT, fontSize: "16px", fontWeight: 700, textDecoration: "none", marginTop: "8px",
                     }}>
                       {lang === "th" ? "อ่านเพิ่มเติม" : "Read More"}
+                      <span className="btn-text-arrow-icon">→</span>
                     </Link>
                   </div>
                   <div style={{ position: "relative", width: "100%", maxWidth: "280px", aspectRatio: "1 / 1", borderRadius: "50%", overflow: "hidden",
@@ -667,21 +681,20 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   </div>
                 </TabsContent>
               ))}
+              </div>
             </div>
           </Tabs>
 
           {/* ดูเพิ่มเติม CTA */}
           <div style={{ display: "flex", justifyContent: "center", marginTop: "48px" }}>
-            <Link href={`/${lang}/success`} className="btn-insight" style={{
+            <Link href={`/${lang}/success`} className="btn-text-arrow" style={{
               ...KT,
-              borderRadius: "50px",
               fontSize: "16px",
-              fontWeight: 600,
-              padding: "14px 48px",
+              fontWeight: 700,
               textDecoration: "none",
-              display: "inline-block",
             }}>
               {t.viewMore}
+              <span className="btn-text-arrow-icon">→</span>
             </Link>
           </div>
         </div>
@@ -722,7 +735,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               { href: `/${lang}/success/viu`,            img: "/success-stories-2/Success stories-11.jpg", cat: "ENTERTAINMENT",    title: "Viu",             tagline: "อินฟลูเอนเซอร์พลังท้องถิ่น สร้างสีสันแคมเปญ อีสานชมวิว",          taglineEn: "Local-powered influencers bringing the \"Isan Chom Wiew\" campaign to life." },
               { href: `/${lang}/success/ahc`,            img: "/success-stories-2/Success stories-12.jpg", cat: "SKINCARE",         title: "AHC",             tagline: "ปลุกกระแสแบรนด์ด้วยอีเวนต์จากซีรีส์สุดไวรัล 'AHC Skin Game'",   taglineEn: "Igniting brand buzz with an event inspired by the viral series \"AHC Skin Game.\"" },
               { href: `/${lang}/success/guss-damn-good`, img: "/success-stories-2/Success stories-13.jpg", cat: "FOOD & BEVERAGE",  title: "Guss Damn Good",  tagline: "รสชาติที่มีเรื่องเล่า เมื่อไอศครีมเจอกับผงฟู้คลายกรดลดแน่นเฟ้อ",   taglineEn: "A flavor with a story: when ice cream meets antacid powder." },
-              { href: `/${lang}/success/optimum-hi-pro`, img: "/success-stories-2/optimum-hi-pro-logo.jpg", cat: "PET CARE",  title: "Optimum Hi Pro",  tagline: "เข้าถึงคนเลี้ยงปลาคาร์พอย่างตรงกลุ่ม พร้อมขยายการรับรู้ในวงกว้าง",   taglineEn: "Reaching koi keepers with precision, while expanding awareness at scale.", imgFit: "contain" as const, imgBg: "#0e1a5c" },
+              { href: `/${lang}/success/optimum-hi-pro`, img: "/success-stories-2/optimum-hi-pro-logo.jpg", cat: "PET CARE",  title: "Optimum Hi Pro",  tagline: "เข้าถึงคนเลี้ยงปลาคาร์พอย่างตรงกลุ่ม พร้อมขยายการรับรู้ในวงกว้าง",   taglineEn: "Reaching koi keepers with precision, while expanding awareness at scale.", imgFit: "contain" as const, imgBg: "#060e5d" },
               { href: `/${lang}/success/auntie-annes`,   img: "/success-stories-2/auntie-annes-logo.jpg",   cat: "FOOD & BEVERAGE", title: "Auntie Anne's",   tagline: "สร้าง Always-on TikTok Content Engine ที่ผลิตต่อเนื่องกว่า 15 เดือน", taglineEn: "Building an always-on TikTok content engine, running for 15+ months.", imgFit: "contain" as const, imgBg: "#ffffff", imgPosition: "center 40%" },
               { href: `/${lang}/success/siangpure`,      img: "/success-stories-2/siangpure-logo.jpg",      cat: "HEALTHCARE",      title: "Siangpure",       tagline: "เข้าถึงผู้บริโภคชาวอินเดียผ่าน Indian Influencers บน Instagram",  taglineEn: "Reaching Indian consumers through Indian influencers on Instagram.", imgFit: "contain" as const, imgBg: "#ffffff" },
             ].slice().reverse().map(card => (
@@ -766,16 +779,14 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           </div>
 
           <div style={{ display: "flex", justifyContent: "center", marginTop: "48px" }}>
-            <Link href={`/${lang}/success`} className="btn-insight" style={{
+            <Link href={`/${lang}/success`} className="btn-text-arrow" style={{
               ...KT,
-              borderRadius: "50px",
               fontSize: "16px",
-              fontWeight: 600,
-              padding: "14px 48px",
+              fontWeight: 700,
               textDecoration: "none",
-              display: "inline-block",
             }}>
               {t.viewMore}
+              <span className="btn-text-arrow-icon">→</span>
             </Link>
           </div>
         </div>
