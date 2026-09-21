@@ -102,7 +102,7 @@ export default function CreatorCategoriesSection({ lang }: { lang: "th" | "en" }
       </div>
 
       <div style={{ textAlign: "center", marginTop: "32px" }}>
-        <span style={{ ...KT, fontSize: "18px", fontWeight: 700, color: "#5f26e5" }}>
+        <span style={{ ...KT, fontSize: "18px", fontWeight: 700, color: "#111827" }}>
           and more 100+
         </span>
       </div>
