@@ -12,6 +12,7 @@ import { Target, Sparkles, Layers, Wallet, BarChart3, Rocket, Users, RefreshCw, 
 import BusinessGoalsSection from "./BusinessGoalsSection";
 import CreatorSelectionSection from "./CreatorSelectionSection";
 import CampaignLearningSection from "./CampaignLearningSection";
+import CategoriesMarquee from "./CategoriesMarquee";
 import CreatorCategoriesSection from "./CreatorCategoriesSection";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
@@ -54,7 +55,7 @@ const OUR_SERVICES = [
   { img: "/services/ugc-product-seeding2.png", title: "UGC & Product Seeding",
     desc: "สร้างกระแสให้สินค้าผ่าน UGC คอมเมนต์ และรีวิวจากผู้ใช้งานและครีเอเตอร์อย่างเป็นธรรมชาติ ช่วยเพิ่ม Social Proof สร้างความน่าเชื่อถือ และกระตุ้นการตัดสินใจซื้อ",
     descEn: "Spark buzz for your product through natural UGC, comments, and reviews from real users and creators — boosting social proof, credibility, and purchase decisions." },
-  { img: "/services/livestream-affiliate3.jpg", title: "Livestream & Affiliate",
+  { img: "/services/livestream-affiliate4.jpg", title: "Livestream & Affiliate",
     desc: "คอนเทนต์ที่ออกแบบมาเพื่อสร้างผลลัพธ์ด้านยอดขายโดยตรงผ่าน Livestream และ Affiliate จากอินฟลูเอนเซอร์ เปลี่ยนความสนใจให้กลายเป็นการซื้อได้ง่ายขึ้น",
     descEn: "Content designed to drive sales results directly through influencer livestreams and affiliate links, turning interest into purchases more easily." },
   { img: "/services/influencer-event-activation.jpg", title: "Influencer & Event Activation",
@@ -767,6 +768,24 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         <div style={{ maxWidth: "1294px", margin: "0 auto", position: "relative", zIndex: 1 }}>
           <CampaignLearningSection lang={lang as "th" | "en"} />
         </div>
+      </section>
+
+      {/* ── Influencer Categories ── */}
+      <section style={{ overflow: "hidden", background: "transparent" }} className="py-20">
+        <div style={{ maxWidth: "1294px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
+          <h2 className="section-title text-center"
+            style={{ ...KT, fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 48px" }}>
+            Influencer{" "}
+            <span style={{
+              background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}>Categories</span>
+          </h2>
+        </div>
+
+        <CategoriesMarquee />
       </section>
 
       {/* ── KOL Campaign Packages ── */}

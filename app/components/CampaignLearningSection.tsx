@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -26,12 +27,12 @@ const SENTIMENT = [
 ];
 
 const ACTIVITY_TILES = [
-  { bg: "linear-gradient(135deg, #e9ebee 0%, #d1d5db 100%)", type: "video", duration: "0:15" },
-  { bg: "linear-gradient(135deg, #f1f2f4 0%, #dde0e4 100%)", type: "photo", likes: "2.4k" },
-  { bg: "linear-gradient(135deg, #e5e7eb 0%, #ced2d8 100%)", type: "review", rating: 5 },
-  { bg: "linear-gradient(135deg, #eceef0 0%, #d6dade 100%)", type: "video", duration: "0:30" },
-  { bg: "linear-gradient(135deg, #f1f2f4 0%, #dde0e4 100%)", type: "photo", likes: "1.8k" },
-  { bg: "linear-gradient(135deg, #e5e7eb 0%, #ced2d8 100%)", type: "review", rating: 4 },
+  { img: "/campaign-activity/activity-05.jpg" },
+  { img: "/campaign-activity/activity-03.jpg" },
+  { img: "/campaign-activity/activity-01.jpg" },
+  { img: "/campaign-activity/activity-06.jpg" },
+  { img: "/campaign-activity/activity-04.jpg" },
+  { img: "/campaign-activity/activity-02.jpg" },
 ] as const;
 
 // Floating-panel highlight style shared by every dashboard tile below
@@ -42,7 +43,7 @@ function floatStyle(isActive: boolean) {
     border: isActive ? "1.5px solid rgba(95,38,229,0.35)" : "1.5px solid transparent",
     boxShadow: isActive ? "0 24px 40px -12px rgba(95,38,229,0.4)" : "0 16px 32px -10px rgba(95,38,229,0.25)",
     opacity: isActive ? 1 : 0.55,
-    transform: isActive ? "translateY(-10px) scale(1.1)" : "scale(1.1)",
+    transform: isActive ? "translateY(-10px) scale(1.32)" : "scale(1.32)",
     transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, border-color 0.35s ease",
   };
 }
@@ -122,7 +123,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
       </div>
 
       {/* Right — reporting dashboard mockup */}
-      <div className="cl-dashboard" style={{ position: "relative", minHeight: "460px" }}>
+      <div className="cl-dashboard" style={{ position: "relative", minHeight: "322px", transform: "scale(0.7)", transformOrigin: "center" }}>
         {/* Base panel: Campaign activity grid */}
         <div style={{
           position: "relative", borderRadius: "24px", padding: "24px",
@@ -136,50 +137,10 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px" }}>
             {ACTIVITY_TILES.map((tile, i) => (
               <div key={i} style={{
-                position: "relative", aspectRatio: "1 / 1", borderRadius: "14px", background: tile.bg,
+                position: "relative", aspectRatio: "1 / 1", borderRadius: "14px",
                 overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center",
               }}>
-                {tile.type === "video" && (
-                  <>
-                    <div style={{
-                      width: "36%", aspectRatio: "1 / 1", borderRadius: "50%", background: "rgba(255,255,255,0.92)",
-                      display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 10px rgba(0,0,0,0.18)",
-                    }}>
-                      <div style={{ width: 0, height: 0, borderTop: "6px solid transparent", borderBottom: "6px solid transparent", borderLeft: "9px solid #5f26e5", marginLeft: "2px" }} />
-                    </div>
-                    <span style={{
-                      position: "absolute", bottom: "8%", right: "8%", ...KT, fontSize: "9px", fontWeight: 700,
-                      color: "#ffffff", background: "rgba(0,0,0,0.35)", borderRadius: "6px", padding: "2px 5px",
-                    }}>
-                      {tile.duration}
-                    </span>
-                  </>
-                )}
-                {tile.type === "photo" && (
-                  <>
-                    <svg width="36%" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1.8" style={{ opacity: 0.95 }}>
-                      <rect x="3" y="5" width="18" height="14" rx="2" />
-                      <circle cx="8.5" cy="10" r="1.5" fill="#ffffff" stroke="none" />
-                      <path d="M21 15l-5-5-4 4-3-3-6 6" />
-                    </svg>
-                    <span style={{
-                      position: "absolute", bottom: "8%", left: "8%", display: "flex", alignItems: "center", gap: "3px",
-                      ...KT, fontSize: "9px", fontWeight: 700, color: "#ffffff", background: "rgba(0,0,0,0.3)",
-                      borderRadius: "6px", padding: "2px 5px",
-                    }}>
-                      ♥ {tile.likes}
-                    </span>
-                  </>
-                )}
-                {tile.type === "review" && (
-                  <div style={{ display: "flex", gap: "1.5px" }}>
-                    {Array.from({ length: 5 }).map((_, si) => (
-                      <svg key={si} width="10" height="10" viewBox="0 0 20 20" fill={si < tile.rating ? "#ffffff" : "rgba(255,255,255,0.35)"}>
-                        <path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 15l-5.6 3 1.4-6.2L1 7.5l6.4-.6L10 1z" />
-                      </svg>
-                    ))}
-                  </div>
-                )}
+                <Image src={tile.img} alt="" fill sizes="120px" style={{ objectFit: "cover" }} />
               </div>
             ))}
           </div>

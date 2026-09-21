@@ -121,7 +121,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 // Lazy load below-the-fold components
 const TestimonialsScrollSection = dynamic(() => import("../../components/TestimonialsScrollSection"));
 const LogoMarquee = dynamic(() => import("../../components/LogoMarquee"));
-const CategoriesMarquee = dynamic(() => import("../../components/CategoriesMarquee"));
 const FAQAccordion = dynamic(() => import("../../components/FAQAccordion"));
 
 import { getDictionary } from "../../../get-dictionary";
@@ -296,9 +295,16 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
           <h2 style={{ ...KT, fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 24px" }}>
             {lang === "th" ? (
-              <span style={{ color: "#111827" }}>รู้จักช่องตัวเองให้มากขึ้น<br />แล้วโตได้แบบมีทิศทาง</span>
+              <>
+                <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>รู้จักช่องตัวเองให้มากขึ้น</span>
+                <br />
+                <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>แล้วโตได้แบบมีทิศทาง</span>
+              </>
             ) : (
-              <span style={{ color: "#111827" }}>Know your channel better, grow with direction</span>
+              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Know your channel better, grow with direction</span>
             )}
           </h2>
           <p className="desc-text" style={{ ...KT, fontSize: "16px", color: "#374151", lineHeight: 1.7, margin: "0 auto 32px", maxWidth: "620px" }}>
@@ -322,24 +328,6 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       {/* ── Path to Partnership ── */}
       <PathToPartnership lang={lang as Locale} />
 
-
-      {/* ── Influencer Categories ── */}
-      <section style={{ overflow: "hidden", background: "transparent" }} className="py-20">
-        <div style={{ maxWidth: "1294px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
-          <h2 className="section-title text-center"
-            style={{ ...KT, fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 48px" }}>
-            Influencer{" "}
-            <span style={{
-              background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}>Categories</span>
-          </h2>
-        </div>
-
-        <CategoriesMarquee />
-      </section>
 
       {/* ── Testimonials — scroll-jacking section (desktop) / static (mobile) ── */}
       <TestimonialsScrollSection dict={dict} lang={lang} />

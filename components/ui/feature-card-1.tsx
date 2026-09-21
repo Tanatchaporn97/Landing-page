@@ -62,7 +62,7 @@ const AnimatedFeatureCard = React.forwardRef<
       ref={ref}
       style={cardStyle}
       className={cn(
-        "relative flex h-[380px] w-full max-w-sm flex-col overflow-hidden rounded-2xl border border-black/5 bg-white p-6 shadow-sm",
+        "relative flex w-full max-w-sm flex-col overflow-hidden rounded-2xl border border-black/5 bg-white p-6 shadow-sm",
         className
       )}
       whileHover="hover"
@@ -82,12 +82,11 @@ const AnimatedFeatureCard = React.forwardRef<
         }}
       />
 
-      {/* Main Image — takes the space above the content box, so the icon
-          centers within the actual visible area instead of the whole card
-          (which would visually skew it upward once the content box below
-          eats into the bottom of the card). */}
+      {/* Main Image — sized to the icon itself (plus a small margin) instead
+          of a flex-1 region, so it doesn't leave a lot of empty space above
+          and below the icon. */}
       <motion.div
-        className="relative z-10 flex flex-1 items-center justify-center"
+        className="relative z-10 flex items-center justify-center py-2"
         variants={{
           initial: { scale: 1, y: 0 },
           hover: { scale: 1.3, y: -20 },
@@ -99,7 +98,7 @@ const AnimatedFeatureCard = React.forwardRef<
       </motion.div>
 
       {/* Content */}
-      <div className="relative z-20 rounded-lg border border-black/5 bg-white/80 p-4 backdrop-blur-sm">
+      <div className="relative z-20 mt-3 rounded-lg border border-black/5 bg-white/80 p-4 backdrop-blur-sm">
         <p
           className="mb-1.5 text-xl font-bold leading-snug"
           style={{ ...KT, color: "var(--feature-color)" }}

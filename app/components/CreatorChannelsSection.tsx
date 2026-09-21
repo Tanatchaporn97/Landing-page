@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 
@@ -14,15 +14,17 @@ type ChannelBadge = {
   zIndex: number;
   offsetXPct: number; // % of container width — scales with the column instead of overflowing narrow ones
   offsetY: number;
+  gridX: number; // scattered-state position: a neat 3-per-row grid — fixed px so column
+  gridY: number; // spacing never shrinks (and starts overlapping) on a narrower container
 };
 
 const CHANNELS: ChannelBadge[] = [
-  { name: "TikTok", icon: "/social-icons/tiktok.png", size: "lg", rotation: -4, zIndex: 1, offsetXPct: -22, offsetY: -100 },
-  { name: "Facebook", icon: "/social-icons/facebook.png", size: "md", rotation: 3, zIndex: 2, offsetXPct: 13, offsetY: -140 },
-  { name: "Instagram", icon: "/social-icons/instagram.png", size: "lg", rotation: -2, zIndex: 3, offsetXPct: 25, offsetY: -10 },
-  { name: "YouTube", icon: "/social-icons/youtube.png", size: "md", rotation: 2, zIndex: 4, offsetXPct: -27, offsetY: 45 },
-  { name: "Lemon8", icon: "/social-icons/lemon8.png", size: "lg", rotation: -3, zIndex: 5, offsetXPct: 1, offsetY: 100 },
-  { name: "X", icon: "/social-icons/x.png", size: "sm", rotation: 4, zIndex: 6, offsetXPct: 24, offsetY: 140 },
+  { name: "TikTok", icon: "/social-icons/tiktok.png", size: "lg", rotation: -4, zIndex: 1, offsetXPct: -22, offsetY: -100, gridX: -190, gridY: -120 },
+  { name: "Facebook", icon: "/social-icons/facebook.png", size: "md", rotation: 3, zIndex: 2, offsetXPct: 13, offsetY: -140, gridX: 0, gridY: -120 },
+  { name: "Instagram", icon: "/social-icons/instagram.png", size: "lg", rotation: -2, zIndex: 3, offsetXPct: 25, offsetY: -10, gridX: 190, gridY: -120 },
+  { name: "YouTube", icon: "/social-icons/youtube.png", size: "md", rotation: 2, zIndex: 4, offsetXPct: -27, offsetY: 45, gridX: -190, gridY: 120 },
+  { name: "Lemon8", icon: "/social-icons/lemon8.png", size: "lg", rotation: -3, zIndex: 5, offsetXPct: 1, offsetY: 100, gridX: 190, gridY: 120 },
+  { name: "X", icon: "/social-icons/x.png", size: "sm", rotation: 4, zIndex: 6, offsetXPct: 24, offsetY: 140, gridX: 0, gridY: 120 },
 ];
 
 const SIZE_STYLES = {
@@ -34,6 +36,13 @@ const SIZE_STYLES = {
 export default function CreatorChannelsSection({ lang }: { lang: "th" | "en" }) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [clickedId, setClickedId] = useState<string | null>(null);
+
+  // Scatter the badges apart, then regroup — alternating every 5s, looping forever.
+  const [scattered, setScattered] = useState(false);
+  useEffect(() => {
+    const id = setInterval(() => setScattered((prev) => !prev), 5000);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <div className="cc2-grid" style={{ display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: "56px", alignItems: "center" }}>
@@ -57,6 +66,9 @@ export default function CreatorChannelsSection({ lang }: { lang: "th" | "en" }) 
           const isClicked = clickedId === ch.name;
           const isOtherHovered = hoveredId !== null && hoveredId !== ch.name;
           const s = SIZE_STYLES[ch.size];
+          const scatterX = scattered ? `${ch.gridX}px` : `${ch.offsetXPct}%`;
+          const scatterY = scattered ? ch.gridY : ch.offsetY;
+          const scatterRotation = scattered ? 0 : ch.rotation;
           return (
             <div
               key={ch.name}
@@ -68,9 +80,10 @@ export default function CreatorChannelsSection({ lang }: { lang: "th" | "en" }) 
                 position: "absolute", top: "50%", left: "50%",
                 display: "flex", alignItems: "center", gap: "12px",
                 background: "#ffffff", borderRadius: "50px", padding: s.padding,
+                height: "62px", boxSizing: "border-box",
                 cursor: "pointer", userSelect: "none",
-                transition: "transform 0.5s ease-out, box-shadow 0.5s ease-out",
-                transform: `translate(-50%,-50%) translate(${ch.offsetXPct}%, ${ch.offsetY}px) rotate(${isHovered ? 0 : ch.rotation}deg) scale(${isClicked ? 1.12 : isHovered ? 1.08 : isOtherHovered ? 0.95 : 1}) translateY(${isHovered ? -8 : 0}px)`,
+                transition: "transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease-out",
+                transform: `translate(-50%,-50%) translate(${scatterX}, ${scatterY}px) rotate(${isHovered ? 0 : scatterRotation}deg) scale(${isClicked ? 1.12 : isHovered ? 1.08 : isOtherHovered ? 0.95 : 1}) translateY(${isHovered ? -8 : 0}px)`,
                 zIndex: isHovered || isClicked ? 100 : ch.zIndex,
                 boxShadow: isHovered
                   ? "0 20px 40px -10px rgba(95,38,229,0.35)"
