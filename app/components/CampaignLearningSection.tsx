@@ -38,13 +38,14 @@ const ACTIVITY_TILES = [
 // Floating-panel highlight style shared by every dashboard tile below
 function floatStyle(isActive: boolean) {
   return {
-    background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
+    background: isActive ? "#ffffff" : "rgba(255,255,255,0.55)",
+    backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
     borderRadius: "16px", padding: "16px 18px",
     border: isActive ? "1.5px solid rgba(95,38,229,0.35)" : "1.5px solid transparent",
     boxShadow: isActive ? "0 24px 40px -12px rgba(95,38,229,0.4)" : "0 16px 32px -10px rgba(95,38,229,0.25)",
     opacity: isActive ? 1 : 0.55,
     transform: isActive ? "translateY(-10px) scale(1.32)" : "scale(1.32)",
-    transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, border-color 0.35s ease",
+    transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, border-color 0.35s ease, background 0.35s ease",
   };
 }
 
@@ -131,7 +132,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           boxShadow: "0 16px 32px -18px rgba(95,38,229,0.15)", backdropFilter: "blur(10px)",
           transform: "scale(0.8)",
         }}>
-          <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.85)", margin: "0 0 14px" }}>
+          <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 14px" }}>
             {lang === "th" ? "กิจกรรมแคมเปญ" : "Campaign Activity"}
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px" }}>
@@ -151,12 +152,12 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           position: "absolute", top: "-28px", left: "-24px", width: "180px",
           ...floatStyle(sentimentActive),
         }}>
-          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#ffffff", margin: "0 0 10px" }}>
+          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#5f26e5", margin: "0 0 10px" }}>
             {lang === "th" ? "ความรู้สึก" : "Sentiment"}
           </p>
           {SENTIMENT.map((s) => (
             <div key={s.label} style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px", ...KT, fontSize: "13px" }}>
-              <span style={{ color: "#ffffff", fontWeight: 700 }}>{lang === "th" ? s.labelTh : s.label}</span>
+              <span style={{ color: "#111827", fontWeight: 700 }}>{lang === "th" ? s.labelTh : s.label}</span>
               <span style={{ color: "#5f26e5", fontWeight: 700 }}>{s.value}%</span>
             </div>
           ))}
@@ -167,14 +168,14 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           position: "absolute", top: "36%", left: "-32px", width: "210px",
           ...floatStyle(resultActive),
         }}>
-          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#ffffff", margin: "0 0 10px" }}>
+          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#5f26e5", margin: "0 0 10px" }}>
             {lang === "th" ? "ผลลัพธ์แคมเปญ" : "Campaign Result"}
           </p>
           <div style={{ display: "flex", gap: "14px" }}>
             {[{ v: "161%", l: lang === "th" ? "การเข้าถึง" : "Reach" }, { v: "219%", l: lang === "th" ? "ยอดวิว" : "Views" }, { v: "5.33%", l: "ER" }].map((s) => (
               <div key={s.l}>
                 <p style={{ ...KT, fontSize: "16px", fontWeight: 800, color: "#5f26e5", margin: "0 0 2px" }}>{s.v}</p>
-                <p style={{ ...KT, fontSize: "10px", color: "#ffffff", margin: 0 }}>{s.l}</p>
+                <p style={{ ...KT, fontSize: "10px", color: "#111827", margin: 0 }}>{s.l}</p>
               </div>
             ))}
           </div>
@@ -186,12 +187,12 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           ...floatStyle(nextmoveActive),
         }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px" }}>
-            <span style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#ffffff" }}>{lang === "th" ? "ก้าวต่อไป" : "Next Move"}</span>
+            <span style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#5f26e5" }}>{lang === "th" ? "ก้าวต่อไป" : "Next Move"}</span>
             <span style={{ display: "flex", alignItems: "center", gap: "4px", ...KT, fontSize: "10px", fontWeight: 700, color: "#5f26e5" }}>
               <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#5f26e5" }} />Live
             </span>
           </div>
-          <p style={{ ...KT, fontSize: "13px", lineHeight: 1.6, color: "#ffffff", margin: 0, fontWeight: 600 }}>
+          <p style={{ ...KT, fontSize: "13px", lineHeight: 1.6, color: "#111827", margin: 0, fontWeight: 600 }}>
             {lang === "th"
               ? "ลดคลิป How-to และเพิ่ม Creator ที่ทำ Review แบบก่อน-หลัง"
               : "Cut back on how-to clips and add more before-and-after style reviews."}
@@ -203,7 +204,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           position: "absolute", bottom: "-24px", left: "6%", width: "200px",
           ...floatStyle(whatsaidActive),
         }}>
-          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#ffffff", margin: "0 0 10px" }}>
+          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#5f26e5", margin: "0 0 10px" }}>
             {lang === "th" ? "คนพูดว่ายังไง" : "What People Said"}
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
@@ -212,7 +213,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
               lang === "th" ? "คำถามที่ต้องตอบ" : "Questions to answer",
               lang === "th" ? "จุดที่ทำซ้ำได้" : "Repeatable content cues",
             ].map((txt) => (
-              <span key={txt} style={{ ...KT, fontSize: "12px", fontWeight: 600, color: "#5f26e5",
+              <span key={txt} style={{ ...KT, fontSize: "12px", fontWeight: 600, color: "#111827",
                 background: "rgba(95,38,229,0.06)", borderRadius: "8px", padding: "6px 10px" }}>
                 {txt}
               </span>
@@ -225,7 +226,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           position: "absolute", bottom: "-32px", right: "-16px", width: "230px",
           ...floatStyle(reachActive),
         }}>
-          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#ffffff", margin: "0 0 10px" }}>
+          <p style={{ ...KT, fontSize: "11px", fontWeight: 700, color: "#5f26e5", margin: "0 0 10px" }}>
             {lang === "th" ? "การเข้าถึงรายวัน" : "Reach by Day"}
           </p>
           <svg viewBox="0 0 200 50" width="100%" height="44" preserveAspectRatio="none">
@@ -238,7 +239,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
             <path d="M0,35 C15,33 25,10 40,15 C55,20 60,40 75,38 C90,36 95,15 110,18 C125,21 130,33 145,30 C160,27 165,18 180,20 L200,22 L200,50 L0,50 Z" fill="url(#cl-area)" />
             <path d="M0,35 C15,33 25,10 40,15 C55,20 60,40 75,38 C90,36 95,15 110,18 C125,21 130,33 145,30 C160,27 165,18 180,20 L200,22" fill="none" stroke="#5f25e5" strokeWidth="2" />
           </svg>
-          <p style={{ ...KT, fontSize: "11px", color: "#ffffff", margin: "6px 0 0" }}>
+          <p style={{ ...KT, fontSize: "11px", color: "#111827", margin: "6px 0 0" }}>
             {lang === "th" ? "ดูช่วงพีค แล้วทำซ้ำสิ่งที่ได้ผล" : "Watch the spike, then reuse the cue."}
           </p>
         </div>
@@ -255,13 +256,6 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
       </svg>
 
       <style>{`
-        .cl-step-item:hover{
-          background: rgba(255,255,255,0.18) !important;
-          border-color: rgba(255,255,255,0.55) !important;
-          border-radius: 18px !important;
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-        }
         @media (max-width: 900px){
           .cl-grid{ grid-template-columns: 1fr !important; gap: 40px !important; }
           .cl-left{ max-width: none !important; }

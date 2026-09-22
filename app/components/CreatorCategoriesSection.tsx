@@ -119,9 +119,11 @@ export default function CreatorCategoriesSection({ lang }: { lang: "th" | "en" }
 
       <style>{`
         .cc-cell:hover{
-          background: #ffffff !important;
+          background: rgba(255,255,255,0.55) !important;
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
           border-radius: 20px !important;
-          border: 1px solid rgba(95,38,229,0.08) !important;
+          border: 1px solid rgba(255,255,255,0.6) !important;
           box-shadow: 0 20px 40px -16px rgba(95,38,229,0.25) !important;
           transform: translateY(-6px);
           z-index: 2;

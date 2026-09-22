@@ -34,9 +34,10 @@ function CatCard({ cat }: { cat: typeof INF_CATEGORIES[0] }) {
           {cat.label}
         </span>
         <span style={{
-          color: "#ffffff", fontSize: "13px", fontWeight: 500,
+          color: "#5f26e5", fontSize: "13px", fontWeight: 500,
           padding: "4px 12px", borderRadius: "20px",
-          background: "#5f26e5",
+          background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
+          border: "1px solid rgba(255,255,255,0.6)",
           display: "inline-block", width: "fit-content", whiteSpace: "nowrap",
         }}>
           {cat.category} {cat.emoji}

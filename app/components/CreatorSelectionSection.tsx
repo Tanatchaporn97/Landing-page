@@ -33,16 +33,15 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
       {/* Left — eyebrow, heading, description, filter tags */}
       <div className="cs-left" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         <div>
-          <Badge variant="outline">Creator Selection</Badge>
+          <Badge variant="outline" className="border-white/40 text-white">Creator Selection</Badge>
         </div>
         <h3 style={{ ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, margin: 0, lineHeight: 1.15 }}>
-          <span style={{ color: "#111827" }}>Find the Right </span>
-          <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <span style={{ color: "#ffffff" }}>Find the Right </span>
+          <span style={{ color: "#ffffff" }}>
             Creator
           </span>
         </h3>
-        <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0, maxWidth: "340px" }}>
+        <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "rgba(255,255,255,0.92)", margin: 0, maxWidth: "340px" }}>
           {lang === "th"
             ? "เราเลือก Creator จากทั้งข้อมูลและรูปแบบการสื่อสาร เพื่อหาคนที่เหมาะกับแบรนด์ กลุ่มเป้าหมาย และโจทย์ของแคมเปญ"
             : "We select Creators using both data and communication style, to find the right fit for your brand, audience, and campaign goals."}
@@ -61,7 +60,7 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
           ))}
         </div>
 
-        <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: "4px 0 0", maxWidth: "340px" }}>
+        <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#ffffff", margin: "4px 0 0", maxWidth: "340px" }}>
           {lang === "th"
             ? "ลูกค้าเห็น Creator ที่เราแนะนำ พร้อมข้อมูลสำคัญประกอบการตัดสินใจก่อนเริ่มแคมเปญ"
             : "Clients see our recommended Creators along with the key data behind every decision — before the campaign even starts."}
@@ -77,15 +76,12 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
         transition: "transform 0.35s ease, box-shadow 0.35s ease",
       }}>
         {/* Header row */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "22px" }}>
+        <div style={{ display: "flex", alignItems: "center", marginBottom: "22px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "8px", background: "#ffffff", padding: "6px 14px",
             borderRadius: "50px", boxShadow: "0 4px 10px -4px rgba(95,38,229,0.2)" }}>
             <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "linear-gradient(135deg, #5f25e5, #ff0089)", flexShrink: 0 }} />
             <span style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", color: "#5f26e5" }}>KOL DISCOVERY</span>
           </div>
-          <span style={{ ...KT, fontSize: "12px", color: "#9ca3af" }}>
-            {lang === "th" ? "อัปเดตวันนี้" : "Updated today"}
-          </span>
         </div>
 
         {/* Profile row — Buddy Review's own agency profile */}
@@ -96,12 +92,12 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
             <Image src="/bd-mark.svg" alt="Buddy Review" width={30} height={30} style={{ objectFit: "contain" }} />
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
-            <p style={{ ...KT, fontSize: "20px", fontWeight: 800, color: "#111827", margin: "0 0 2px" }}>Buddy Review</p>
-            <p style={{ ...KT, fontSize: "13px", color: "#6b7280", margin: 0 }}>
+            <p style={{ ...KT, fontSize: "20px", fontWeight: 800, color: "#5f26e5", margin: "0 0 2px" }}>Buddy Review</p>
+            <p style={{ ...KT, fontSize: "13px", color: "#4b5563", margin: 0 }}>
               {lang === "th" ? "เอเจนซี่การตลาดอินฟลูเอนเซอร์ · กรุงเทพฯ" : "Influencer Marketing Agency · Bangkok"}
             </p>
           </div>
-          <div className="cs-stats-inline" style={{ display: "flex", gap: "18px", ...KT, fontSize: "13px", color: "#6b7280" }}>
+          <div className="cs-stats-inline" style={{ display: "flex", gap: "18px", ...KT, fontSize: "13px", color: "#4b5563" }}>
             <span><strong style={{ color: "#5f26e5" }}>1M+</strong> {lang === "th" ? "เครือข่ายอินฟลูเอนเซอร์" : "Influencer Network"}</span>
             <span><strong style={{ color: "#5f26e5" }}>1,000+</strong> {lang === "th" ? "ลูกค้าที่ไว้วางใจ" : "Trusted Clients"}</span>
             <span><strong style={{ color: "#5f26e5" }}>4,000+</strong> {lang === "th" ? "แคมเปญ" : "Campaigns"}</span>
@@ -112,10 +108,10 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
         <div className="cs-charts-row" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px", marginBottom: "20px" }}>
 
           <div style={{ ...panelStyle, display: "flex", flexDirection: "column" }}>
-            <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#6b7280", margin: "0 0 4px" }}>
+            <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 4px" }}>
               {lang === "th" ? "กลุ่มผู้ชม" : "Audience Demographic"}
             </p>
-            <p style={{ ...KT, fontSize: "11px", color: "#9ca3af", margin: "0 0 18px" }}>
+            <p style={{ ...KT, fontSize: "11px", color: "#4b5563", margin: "0 0 18px" }}>
               {lang === "th" ? "การกระจายอายุ" : "Age Distribution"}
             </p>
             <div style={{ flex: 1, display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "8px", minHeight: "76px" }}>
@@ -125,16 +121,16 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
                   boxShadow: i === 1 ? "0 3px 8px -2px rgba(255,0,137,0.4)" : "none" }} />
               ))}
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between", ...KT, fontSize: "10px", color: "#9ca3af", marginTop: "8px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", ...KT, fontSize: "10px", color: "#4b5563", marginTop: "8px" }}>
               {["18-24","25-34","35-44","45-54","55+"].map((a) => <span key={a}>{a}</span>)}
             </div>
           </div>
 
           <div style={{ ...panelStyle, display: "flex", flexDirection: "column" }}>
-            <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#6b7280", margin: "0 0 4px" }}>
+            <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 4px" }}>
               {lang === "th" ? "สัดส่วนเพศ" : "Gender Split"}
             </p>
-            <p style={{ ...KT, fontSize: "11px", color: "#9ca3af", margin: "0 0 18px" }}>
+            <p style={{ ...KT, fontSize: "11px", color: "#4b5563", margin: "0 0 18px" }}>
               {lang === "th" ? "ตามเพศของผู้ชม" : "By audience gender"}
             </p>
             <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "16px" }}>
@@ -157,10 +153,10 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
           </div>
 
           <div style={{ ...panelStyle, display: "flex", flexDirection: "column" }}>
-            <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#6b7280", margin: "0 0 4px" }}>
+            <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 4px" }}>
               {lang === "th" ? "Engagement รายสัปดาห์" : "Engagement by Week"}
             </p>
-            <p style={{ ...KT, fontSize: "11px", color: "#9ca3af", margin: "0 0 18px" }}>
+            <p style={{ ...KT, fontSize: "11px", color: "#4b5563", margin: "0 0 18px" }}>
               {lang === "th" ? "แนวโน้มล่าสุด" : "Recent engagement trend"}
             </p>
             <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
@@ -174,7 +170,7 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
                 <path d="M0,50 C20,45 30,20 50,25 C70,30 80,55 100,50 C120,45 130,15 150,18 C170,21 180,40 200,35 C210,32 215,30 220,28 L220,70 L0,70 Z" fill="url(#cs-area)" />
                 <path d="M0,50 C20,45 30,20 50,25 C70,30 80,55 100,50 C120,45 130,15 150,18 C170,21 180,40 200,35 C210,32 215,30 220,28" fill="none" stroke="#ff0089" strokeWidth="2.5" />
               </svg>
-              <div style={{ display: "flex", justifyContent: "space-between", ...KT, fontSize: "10px", color: "#9ca3af", marginTop: "8px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", ...KT, fontSize: "10px", color: "#4b5563", marginTop: "8px" }}>
                 {["W1","W2","W3","W4","W5","W6","W7"].map((w) => <span key={w}>{w}</span>)}
               </div>
             </div>
@@ -184,7 +180,7 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
         {/* Keywords + content type row */}
         <div className="cs-tags-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", marginBottom: "20px" }}>
           <div style={panelStyle}>
-            <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#6b7280", margin: "0 0 10px" }}>
+            <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 10px" }}>
               {lang === "th" ? "คีย์เวิร์ดที่เกี่ยวข้อง" : "Related Keywords"}
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
@@ -197,7 +193,7 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
             </div>
           </div>
           <div style={panelStyle}>
-            <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#6b7280", margin: "0 0 10px" }}>
+            <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 10px" }}>
               {lang === "th" ? "ประเภทคอนเทนต์" : "Content Type"}
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
@@ -213,7 +209,7 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
 
         {/* Similar creators */}
         <div style={panelStyle}>
-          <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#6b7280", margin: "0 0 12px" }}>
+          <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 12px" }}>
             {lang === "th" ? "ครีเอเตอร์ที่คล้ายกัน" : "Similar Creators"}
           </p>
           <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
@@ -221,11 +217,11 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
               <div key={creator.name} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                 <div style={{ position: "relative", width: "28px", height: "28px", borderRadius: "50%", flexShrink: 0,
                   background: "#e5e7eb", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#9ca3af" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#4b5563" aria-hidden="true">
                     <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12Zm0 2.5c-3.3 0-9.8 1.6-9.8 4.9v1.4a1 1 0 0 0 1 1h17.6a1 1 0 0 0 1-1v-1.4c0-3.3-6.5-4.9-9.8-4.9Z" />
                   </svg>
                 </div>
-                <span style={{ ...KT, fontSize: "13px", color: "#9ca3af" }}>{creator.name}</span>
+                <span style={{ ...KT, fontSize: "13px", color: "#4b5563" }}>{creator.name}</span>
               </div>
             ))}
           </div>

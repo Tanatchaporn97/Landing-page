@@ -264,12 +264,25 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       {/* ── Navbar ── */}
       <Navbar variant="brand" lang={lang} />
 
+      {/* ── Hero through "How We Run Campaigns" — ONE single continuous gradient
+          definition (not several separate gradients on separate sections) so there is
+          no seam or slope discontinuity anywhere Hero → Our Clients → Tagline → the
+          rest of the page. Hero, Our Clients (LogoMarquee), and the Tagline section are
+          all transparent so this shows straight through them. "Find the Right Creator"
+          sits inside this range but keeps its own dark background image (matching
+          Measure/Learn/Improve) untouched. The gradient is only ever interrupted by
+          "Measure, Learn, Improve" right after this wrapper closes, which keeps its own
+          dark background as the one deliberate divider. Scoped to this wrapper only —
+          not the shared .hero-bg class — so Home/Influencer pages are unaffected. */}
+      <div style={{
+        background: "linear-gradient(180deg, #e8dcf8 0%, #ecdff5 4%, #f2e6f6 8%, #f8f2fa 12%, #ffffff 16%, #f5eefc 24%, #efe3fa 32%, #e8d8f7 42%, #e5dcf6 55%, #e2d5f3 70%, #dfd0f0 85%, #dccbee 100%)",
+      }}>
       {/* ── Hero ── */}
       <section
         className="flex items-start px-6 relative"
         style={{
           minHeight: "72vh",
-          paddingTop: "295px",
+          paddingTop: "195px",
           paddingBottom: "100px",
           paddingLeft: "24px",
           paddingRight: "24px",
@@ -296,7 +309,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               </span>
             </h2>
 
-            <p style={{ ...KT, color: "#111827", fontSize: "16px", lineHeight: 1.7, margin: "40px 0 32px" }}>
+            <p style={{ ...KT, color: "#111827", fontSize: "clamp(16px, 1.6vw, 20px)", lineHeight: 1.7, margin: "40px 0 32px" }}>
               {lang === "th" ? (
                 "วางกลยุทธ์ คัดเลือก Creator และบริหารแคมเปญให้ตรงเป้าหมายของแบรนด์ ตั้งแต่ Brief จนถึงรายงานผล"
               ) : (
@@ -348,9 +361,6 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           </div>
         </div>
       </section>
-
-      {/* ── Hero → Logos fade overlay ── */}
-      <div className="hero-logos-fade" style={{ height: "120px", marginTop: "-120px", background: "linear-gradient(to bottom, transparent 0%, #ffffff 100%)", position: "relative", zIndex: 11, pointerEvents: "none" }} />
 
       {/* ── Brand Logos Marquee ── */}
       <LogoMarquee headingStyle={{ ...PIERSON, fontWeight: 800, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />
@@ -484,8 +494,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
       {/* ── Find the Right Creator — KOL discovery mockup ── */}
       <section style={{
-        backgroundImage: "url('/creator-mockup/section-bg.jpg')",
-        backgroundSize: "cover", backgroundPosition: "center",
+        background: "url('/backgrounds/dark-blue-bg2.jpg') center / cover no-repeat",
         position: "relative", overflow: "hidden",
       }} className="py-20 px-6">
         <div style={{ maxWidth: "1294px", margin: "0 auto", position: "relative", zIndex: 1 }}>
@@ -586,7 +595,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                 })}
               </TabsList>
 
-              <div className="rounded-2xl" style={{
+              <div className="rounded-3xl" style={{
                 flex: 1, minWidth: 0, padding: "32px 24px",
                 background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
                 border: "1px solid rgba(255,255,255,0.6)", boxShadow: "0 8px 28px rgba(95,38,229,0.08)",
@@ -605,7 +614,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   approach: "ผสานอินฟลูเอนเซอร์เฉพาะทางที่เข้าถึง Community คนเลี้ยงปลาคาร์พโดยตรง กับ Lifestyle Influencer ที่ช่วยขยายการรับรู้ในวงกว้าง ทำให้แคมเปญได้ทั้งความน่าเชื่อถือและ Reach ไปพร้อมกัน",
                   approachEn: "Blended specialist influencers who reached the koi-keeping community directly with lifestyle influencers who extended awareness at scale — giving the campaign both credibility and reach.",
                   stats: [{ label: "Reach", labelTh: "การเข้าถึง", value: "850K" }, { label: "Community Engagement", labelTh: "การมีส่วนร่วม", value: "+65%" }, { label: "Creators", labelTh: "ครีเอเตอร์", value: "10" }],
-                  imgFit: "contain" as const, imgBg: "#060e5d" },
+                  imgFit: "contain" as const, imgBg: "#070e5e" },
                 { value: "Always-on Content", href: `/${lang}/success/auntie-annes`,  img: "/success-stories-2/auntie-annes-logo.jpg", cat: "FOOD & BEVERAGE", title: "Auntie Anne's",
                   overview: "สร้าง Always-on Content Engine บน TikTok ที่ผลิตคอนเทนต์ต่อเนื่องกว่า 15 เดือน รักษาการมองเห็นแบรนด์ได้ตลอดปี",
                   overviewEn: "Built an always-on TikTok content engine producing content continuously for 15+ months, keeping the brand visible year-round.",
@@ -759,6 +768,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           </div>
         </div>
       </section>
+      </div>
 
       {/* ── Campaign Learning — Measure, Learn, Improve ── */}
       <section style={{
@@ -770,11 +780,20 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         </div>
       </section>
 
+      {/* ── Influencer Categories through Contact — one continuous, soft gradient.
+          Starts right where "Keep Every Step Moving" (the last section before the
+          Measure/Learn/Improve divider) left off, so the two feel like one gradient
+          even though the dark Campaign Learning section sits between them, then settles
+          into a light, flat purple tone from KOL Campaign Packages onward instead of
+          fading all the way to white. */}
+      <div style={{
+        background: "linear-gradient(180deg, #dccbee 0%, #ecdef7 20%, #f2e4f9 32%, #e6d2f2 100%)",
+      }}>
       {/* ── Influencer Categories ── */}
       <section style={{ overflow: "hidden", background: "transparent" }} className="py-20">
         <div style={{ maxWidth: "1294px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
           <h2 className="section-title text-center"
-            style={{ ...KT, fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 48px" }}>
+            style={{ ...PIERSON, fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 48px" }}>
             Influencer{" "}
             <span style={{
               background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
@@ -804,6 +823,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             ? "เล่าเป้าหมายของคุณให้เราฟัง ทีม Buddy Review จะช่วยมองโจทย์ วางแนวทาง และแนะนำ campaign approach ที่เหมาะกับแบรนด์"
             : "Tell us your goal — the Buddy Review team will help frame the challenge, shape the direction, and recommend a campaign approach that fits your brand."}
         />
+      </div>
       </div>
 
       {/* ── Footer ── */}

@@ -7,11 +7,6 @@ const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
 
 type Post = { slug: string; title: string; desc: string; image: string; categories: string[] };
 
-function readingTime(desc: string) {
-  const words = desc.trim().split(/\s+/).length;
-  return Math.max(3, Math.round(words / 150));
-}
-
 function CategoryPill({ children }: { children: React.ReactNode }) {
   return (
     <span style={{
@@ -26,8 +21,8 @@ function CategoryPill({ children }: { children: React.ReactNode }) {
 
 export default function NewsroomSection({ lang = "th", dict, variant = "home" }: { lang?: "th" | "en"; dict?: any; variant?: "home" | "brand" | "influencer" }) {
   const t = lang === "th"
-    ? { viewMore: "ดูเพิ่มเติม", minRead: "นาทีในการอ่าน", by: "โดย Buddy Review" }
-    : { viewMore: "View More", minRead: "min read", by: "by Buddy Review" };
+    ? { viewMore: "ดูเพิ่มเติม" }
+    : { viewMore: "View More" };
 
   const catAll = lang === "th" ? "ข่าวสาร" : "News";
   const catBrand = lang === "th" ? "สำหรับแบรนด์" : "For Brands";
@@ -88,15 +83,6 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
             }}>
               {featured.desc}
             </p>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "auto", paddingTop: "16px" }}>
-              <span style={{ ...KT, fontSize: "14px", color: "#6b7280", display: "flex", alignItems: "center", gap: "8px" }}>
-                <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#5f26e5", display: "inline-block" }} />
-                {readingTime(featured.desc)} {t.minRead}
-              </span>
-              <span style={{ fontFamily: "var(--font-playfair), serif", fontStyle: "italic", fontSize: "15px", color: "#111827" }}>
-                {t.by}
-              </span>
-            </div>
           </div>
         </Link>
 

@@ -38,7 +38,13 @@ function LogoMarqueeRow({ logos, direction }: { logos: React.ReactNode[], direct
   );
 }
 
-export default function LogoMarquee({ bgClassName, fadeColor = "#ffffff", headingStyle }: { bgClassName?: string; fadeColor?: string; headingStyle?: React.CSSProperties } = {}) {
+// Fades the logo rows to transparent at the left/right edges via a CSS mask
+// instead of a flat-color overlay — that way it always blends with whatever
+// is actually behind the section (solid color or a gradient) with no risk of
+// the fade color mismatching the real background at that point.
+const EDGE_MASK = "linear-gradient(to right, transparent 0, black 80px, black calc(100% - 80px), transparent 100%)";
+
+export default function LogoMarquee({ bgClassName, background, headingStyle }: { bgClassName?: string; background?: string; headingStyle?: React.CSSProperties } = {}) {
   return (
     <section className={`brand-logos-section ${bgClassName || "client-bg"}`} style={{
       padding: "120px 0 120px",
@@ -46,6 +52,7 @@ export default function LogoMarquee({ bgClassName, fadeColor = "#ffffff", headin
       marginTop: "-90px",
       position: "relative",
       zIndex: 5,
+      ...(background ? { background } : {}),
     }}>
       <h2 style={{
         textAlign: "center",
@@ -57,11 +64,11 @@ export default function LogoMarquee({ bgClassName, fadeColor = "#ffffff", headin
         <span style={{ ...headingStyle, background: "none", WebkitBackgroundClip: "unset", WebkitTextFillColor: "#111827", backgroundClip: "unset", color: "#111827" }}>Our </span>
         <span style={{ ...headingStyle }}>Clients</span>
       </h2>
-      <LogoMarqueeRow logos={LOGOS_ROW1} direction="left" />
-      <div className="logo-marquee-row-gap" style={{ height: "32px" }} />
-      <LogoMarqueeRow logos={LOGOS_ROW2} direction="right" />
-      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "80px", background: `linear-gradient(to right, ${fadeColor} 0%, rgba(255,255,255,0) 100%)`, zIndex: 2, pointerEvents: "none" }} />
-      <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "80px", background: `linear-gradient(to left, ${fadeColor} 0%, rgba(255,255,255,0) 100%)`, zIndex: 2, pointerEvents: "none" }} />
+      <div style={{ WebkitMaskImage: EDGE_MASK, maskImage: EDGE_MASK }}>
+        <LogoMarqueeRow logos={LOGOS_ROW1} direction="left" />
+        <div className="logo-marquee-row-gap" style={{ height: "32px" }} />
+        <LogoMarqueeRow logos={LOGOS_ROW2} direction="right" />
+      </div>
     </section>
   );
 }
