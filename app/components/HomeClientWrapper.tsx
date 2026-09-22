@@ -8,7 +8,6 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import AnimatedCounter from "./AnimatedCounter";
 import TrustedPartnerShowcase from "./TrustedPartnerShowcase";
-import GlowCard from "./GlowCard";
 
 // Lazy load below-the-fold components
 const LogoMarquee = dynamic(() => import("./LogoMarquee"));
@@ -84,7 +83,6 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
             transition={{ duration: 0.8, ease: "easeOut" }}
             style={{ paddingRight: "24px", alignSelf: "start" }}
           >
-            <GlowCard glowColor="purple" style={{ background: "transparent", padding: 0 }}>
             <Link href={`/${lang}/brand`} className="hero-side-card" style={{
               position: "relative", display: "flex", flexDirection: "column", justifyContent: "flex-start", alignItems: "center",
               textAlign: "center", minHeight: "620px", width: "100%", boxSizing: "border-box", padding: "120px 40px 40px",
@@ -124,7 +122,6 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                 <Image src="/hero-illustrations/brand-mockup.png" alt="" width={1341} height={1017} priority style={{ width: "100%", height: "auto", display: "block" }} />
               </div>
             </Link>
-            </GlowCard>
           </motion.div>
 
           {/* Center — eyebrow + headline + subhead */}
@@ -153,7 +150,6 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
             transition={{ duration: 0.8, ease: "easeOut" }}
             style={{ paddingLeft: "24px", alignSelf: "start" }}
           >
-            <GlowCard glowColor="pink" style={{ background: "transparent", padding: 0 }}>
             <Link href={`/${lang}/influencer`} className="hero-side-card" style={{
               position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start",
               textAlign: "center", minHeight: "620px", width: "100%", boxSizing: "border-box", padding: "120px 40px 48px",
@@ -193,7 +189,6 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
                 </span>
               </div>
             </Link>
-            </GlowCard>
           </motion.div>
         </div>
 

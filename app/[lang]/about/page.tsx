@@ -3,6 +3,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import OurJourney from "../../components/OurJourney";
 import { TestimonialSlider } from "@/components/ui/testimonial-slider-1";
+import InteractiveImageBentoGallery from "@/components/ui/bento-gallery";
 import { getDictionary } from "../../../get-dictionary";
 import { type Locale } from "../../../i18n-config";
 
@@ -136,6 +137,22 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
           }
         `}</style>
       </section>
+
+      {/* ── Company Gallery — mocked up with existing campaign-activity photos for now ── */}
+      <InteractiveImageBentoGallery
+        title={lang === "th" ? "แกลเลอรี่บริษัท" : "Company Gallery"}
+        description={lang === "th"
+          ? "โมเมนต์จากทีมงานและแคมเปญของเรา ลากเพื่อดูเพิ่มเติม คลิกเพื่อขยาย"
+          : "Moments from our team and campaigns. Drag to explore, click to expand."}
+        imageItems={[
+          { id: 1, title: lang === "th" ? "ทีมงาน Buddy Review" : "The Buddy Review Team", desc: lang === "th" ? "ร่วมมือกันเพื่อทุกแคมเปญ" : "Working together on every campaign", url: "/campaign-activity/activity-01.jpg", span: "md:col-span-2 md:row-span-2" },
+          { id: 2, title: lang === "th" ? "บรรยากาศออฟฟิศ" : "Office Vibes", desc: lang === "th" ? "พื้นที่ทำงานของเรา" : "Where we get things done", url: "/campaign-activity/activity-02.jpg", span: "md:row-span-1" },
+          { id: 3, title: lang === "th" ? "ประชุมทีม" : "Team Huddle", desc: lang === "th" ? "วางแผนกลยุทธ์ร่วมกัน" : "Planning strategy together", url: "/campaign-activity/activity-03.jpg", span: "md:row-span-1" },
+          { id: 4, title: lang === "th" ? "กิจกรรมบริษัท" : "Company Outing", desc: lang === "th" ? "สนุกไปด้วยกันนอกออฟฟิศ" : "Having fun outside the office", url: "/campaign-activity/activity-04.jpg", span: "md:row-span-2" },
+          { id: 5, title: lang === "th" ? "ลงพื้นที่แคมเปญ" : "On-Site Activation", desc: lang === "th" ? "ดูแลแคมเปญแบบใกล้ชิด" : "Hands-on campaign management", url: "/campaign-activity/activity-05.jpg", span: "md:row-span-1" },
+          { id: 6, title: lang === "th" ? "ฉลองความสำเร็จ" : "Celebrating Wins", desc: lang === "th" ? "ทุกผลลัพธ์คือความภูมิใจของทีม" : "Every result is a team win", url: "/campaign-activity/activity-06.jpg", span: "md:col-span-2 md:row-span-1" },
+        ]}
+      />
 
       <Footer lang={lang as Locale} variant="home" dict={dict} />
     </div>
