@@ -61,7 +61,7 @@ export default function CreatorCategoriesSection({ lang }: { lang: "th" | "en" }
             </span>
           </h3>
         </div>
-        <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0, maxWidth: "420px" }}>
+        <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: 0, maxWidth: "420px" }}>
           {lang === "th"
             ? "Creator หลากหลายสาย สำหรับโจทย์และกลุ่มเป้าหมายที่ต่างกัน"
             : "A wide range of Creators, matched to different goals and audiences."}

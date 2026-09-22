@@ -408,7 +408,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                 </span>{" "}
                 Need
               </h2>
-              <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0 }}>
+              <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: 0 }}>
                 {lang === "th"
                   ? "ตั้งแต่ Strategy, Creator Campaigns, Commerce ไปจนถึง Content & Production"
                   : "From Strategy, Creator Campaigns, and Commerce to Content & Production."}
@@ -522,7 +522,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                 Execute Better
               </span>
             </h2>
-            <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0, maxWidth: "640px" }}>
+            <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: 0, maxWidth: "640px" }}>
               {lang === "th"
                 ? "เราใช้ Strategy, Creator Intelligence และ Campaign Data เชื่อมทุกขั้นตอนเข้าด้วยกัน ตั้งแต่การเลือก Creator ไปจนถึงการวัดผล เพื่อให้ทุกการตัดสินใจมีเหตุผล และทุกแคมเปญนำไปต่อยอดได้"
                 : "We connect Strategy, Creator Intelligence, and Campaign Data across every step — from Creator selection to measurement — so every decision is backed by reason, and every campaign can be built on."}
@@ -573,7 +573,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                 backgroundClip: "text",
               }}>in Action</span>
             </h2>
-            <p style={{ ...KT, fontSize: "16px", color: "#6b7280", maxWidth: "560px", margin: 0 }}>
+            <p style={{ ...KT, fontSize: "16px", color: "#111827", maxWidth: "560px", margin: 0 }}>
               {lang === "th"
                 ? "ดูว่าเราเปลี่ยนโจทย์ของแต่ละแบรนด์ให้เป็นแคมเปญจริงอย่างไร"
                 : "See how we turn each brand's challenge into a real campaign."}
@@ -722,7 +722,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                 Moving
               </span>
             </h2>
-            <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0 }}>
+            <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: 0 }}>
               {lang === "th"
                 ? "ทีม Buddy Review ดูแลแคมเปญตั้งแต่ต้นจนจบ พร้อมให้ลูกค้าเห็นความคืบหน้าและสิ่งที่ต้องตัดสินใจในแต่ละขั้น"
                 : "The Buddy Review team manages your campaign from start to finish, keeping you updated on progress and every decision along the way."}

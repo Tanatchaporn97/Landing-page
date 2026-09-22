@@ -54,27 +54,25 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
         </button>
       </div>
 
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px 100px" }}>
+      <div style={{ maxWidth: "1294px", margin: "0 auto", padding: "0 24px 100px" }}>
 
-        {/* Header row — heading left, category CTAs right */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "24px", marginBottom: "48px" }}>
-          <h1 style={{ ...KT, background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", fontSize: "clamp(32px,4.2vw,56px)", fontWeight: 800, letterSpacing: "0.02em", margin: 0, lineHeight: 1.15 }}>
-            Blog
-          </h1>
+        {/* Header */}
+        <h1 style={{ ...KT, background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", fontSize: "clamp(32px,4.2vw,56px)", fontWeight: 800, letterSpacing: "0.02em", margin: "0 0 24px", lineHeight: 1.15 }}>
+          Blog
+        </h1>
 
-          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-            {CATS.map((cat) => (
-              <button key={cat} onClick={() => setActiveCat(cat)} style={{ ...KT,
-                background: activeCat === cat ? "#5f26e5" : "#ffffff",
-                color: activeCat === cat ? "#ffffff" : "#5f26e5",
-                border: activeCat === cat ? "1px solid #5f26e5" : "1px solid rgba(95,38,229,0.18)",
-                boxShadow: "0 4px 16px rgba(95,38,229,0.08)",
-                borderRadius: "50px", fontSize: "14px", fontWeight: 600,
-                padding: "10px 22px", cursor: "pointer" }}>
-                {cat}
-              </button>
-            ))}
-          </div>
+        {/* Category chips */}
+        <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "48px" }}>
+          {CATS.map((cat) => (
+            <button key={cat} onClick={() => setActiveCat(cat)}
+              className={activeCat === cat ? "" : "btn-glass-purple"}
+              style={{ ...KT,
+              ...(activeCat === cat ? { background: "#5f26e5", color: "#ffffff", border: "1px solid #5f26e5" } : {}),
+              borderRadius: "50px", fontSize: "14px", fontWeight: 600,
+              padding: "7px 20px", cursor: "pointer" }}>
+              {cat}
+            </button>
+          ))}
         </div>
 
         {filtered.length === 0 && (
@@ -82,9 +80,9 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
         )}
 
         {/* Cards grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "28px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, 390px)", justifyContent: "center", gap: "28px" }}>
           {filtered.map((post: any) => (
-            <Link key={post.slug} href={`/${lang}/blog/${post.slug}`} style={{ display: "flex", flexDirection: "column", background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.6)", borderRadius: "24px", textDecoration: "none", cursor: "pointer", boxShadow: "0 4px 20px rgba(95,38,229,0.08)" }}>
+            <Link key={post.slug} href={`/${lang}/blog/${post.slug}`} style={{ display: "flex", flexDirection: "column", width: "390px", background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.6)", borderRadius: "24px", textDecoration: "none", cursor: "pointer", boxShadow: "0 4px 20px rgba(95,38,229,0.08)" }}>
 
               <div style={{ position: "relative", padding: "20px 20px 0", flexShrink: 0 }}>
                 <Image src={post.image} alt={post.title} width={400} height={200} style={{ width: "100%", height: "200px", objectFit: "cover", display: "block", borderRadius: "12px" }} />
@@ -94,7 +92,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
 
                 <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
                   {(post.topics || []).map((cat: any) => (
-                    <span key={cat} style={{ ...KT, background: "#ffffff", color: "#5f26e5", border: "1px solid #5f26e5", borderRadius: "50px", fontSize: "13px", fontWeight: 600, padding: "4px 14px", display: "inline-block", width: "fit-content" }}>
+                    <span key={cat} style={{ ...KT, background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", color: "#5f26e5", border: "1px solid rgba(255,255,255,0.6)", borderRadius: "50px", fontSize: "13px", fontWeight: 600, padding: "4px 14px", display: "inline-block", width: "fit-content" }}>
                       {cat}
                     </span>
                   ))}
@@ -109,8 +107,9 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
                 </p>
 
                 <div style={{ marginTop: "auto", paddingTop: "8px" }}>
-                  <span style={{ ...KT, background: "#5f26e5", color: "#ffffff", borderRadius: "50px", fontSize: "14px", fontWeight: 600, padding: "8px 24px", display: "inline-block" }}>
+                  <span className="btn-text-arrow" style={{ ...KT, fontSize: "16px", fontWeight: 700 }}>
                     {lang === "th" ? "อ่านเพิ่มเติม" : "Read More"}
+                    <span className="btn-text-arrow-icon">→</span>
                   </span>
                 </div>
 

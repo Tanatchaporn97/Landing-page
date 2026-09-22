@@ -260,8 +260,8 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
     <div className="background" style={{ ...KT }}>
 
       {/* Back button */}
-      <div className="success-back-row" style={{ padding: "130px 48px 28px" }}>
-        <Link href={`/${lang}`} style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,255,255,0.12)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.25)", borderRadius: "50px", padding: "10px 22px", color: "#5f26e5", textDecoration: "none", fontSize: "15px", fontWeight: 500 }}>
+      <div className="success-back-row" style={{ padding: "140px 48px 28px" }}>
+        <Link href={`/${lang}`} className="btn-glass-purple" style={{ borderRadius: "50px", padding: "10px 22px", fontSize: "15px", fontWeight: 500, textDecoration: "none" }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M19 12H5M12 5l-7 7 7 7"/>
           </svg>
@@ -279,11 +279,10 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
         {/* Category chips */}
         <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "48px" }}>
           {CATS.map((cat) => (
-            <button key={cat} onClick={() => setActiveCat(cat)} style={{ ...KT,
-              background: activeCat === cat ? "#5f26e5" : "#ffffff",
-              backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
-              color: activeCat === cat ? "#ffffff" : "#5f26e5",
-              border: activeCat === cat ? "1px solid #5f26e5" : "1px solid rgba(95,38,229,0.25)",
+            <button key={cat} onClick={() => setActiveCat(cat)}
+              className={activeCat === cat ? "" : "btn-glass-purple"}
+              style={{ ...KT,
+              ...(activeCat === cat ? { background: "#5f26e5", color: "#ffffff", border: "1px solid #5f26e5" } : {}),
               borderRadius: "50px", fontSize: "14px", fontWeight: 600,
               padding: "7px 20px", cursor: "pointer" }}>
               {cat}

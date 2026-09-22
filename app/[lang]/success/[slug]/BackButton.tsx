@@ -5,7 +5,7 @@ export default function BackButton({ lang = "th" }: { lang?: "th" | "en" }) {
   const router = useRouter();
   return (
     <button
-      onClick={() => router.push(`/${lang}/success`)}
+      onClick={() => router.back()}
       className="btn-glass-purple"
       style={{
         borderRadius: "50px", padding: "10px 22px",

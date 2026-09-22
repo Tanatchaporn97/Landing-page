@@ -47,7 +47,7 @@ export default function BusinessGoalsSection({ lang }: { lang: "th" | "en" }) {
             Goal
           </span>
         </h3>
-        <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0 }}>
+        <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: 0 }}>
           {lang === "th"
             ? "เริ่มจากเป้าหมายของแบรนด์ แล้วดูว่า Influencer Marketing แบบไหนเหมาะกับโจทย์ของคุณ"
             : "Start with your brand's goal, then find the Influencer Marketing approach that fits your objective."}
