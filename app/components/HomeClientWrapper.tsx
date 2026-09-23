@@ -20,10 +20,11 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const DARK_BG = "transparent";
 
-// One continuous gradient spanning Hero → Stats → Logos → Trusted-Partner
-// intro, so the background blends without hard seams between sections
-// (mirrors the influencer page's PAGE_GRADIENT convention).
-const HOME_TOP_GRADIENT = "linear-gradient(180deg, #eef0fd 0%, #f3eefc 6%, #f8f2fa 12%, #ffffff 18%, #f5eefc 24%, #efe3fa 50%, #e8d8f7 75%, #e0cbf2 100%)";
+// Gradient for the Trusted-Partner → FAQ/Contact block. Starts exactly at
+// #f5eefc (the color LogoMarquee fades out to just above), so its 0% stop
+// always lines up with where it visually begins — no drift if sections
+// above change height.
+const HOME_TOP_GRADIENT = "linear-gradient(180deg, #f5eefc 0%, #efe3fa 30%, #e8d8f7 65%, #e0cbf2 100%)";
 
 /* ── Icons ── */
 
@@ -61,19 +62,17 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       {/* ── Navbar ── */}
       <Navbar variant="home" lang={lang} />
 
-      {/* ── Hero → Stats → Logos → Trusted-Partner intro — one continuous
-          gradient wrapper (no per-section background) so color blends
-          seamlessly all the way down, per the split-hero brief. ── */}
-      <div style={{ background: HOME_TOP_GRADIENT }}>
-
-      {/* ── New Split Hero — Brand ↔ Influencer ── */}
+      {/* ── New Split Hero — Brand ↔ Influencer — its own panels carry an
+          opaque background (with a white fade built into their own bottom
+          edge), so no wrapper gradient is needed here. ── */}
       <HomeSplitHero lang={lang as "th" | "en"} />
 
-      {/* ── Impact Stats — no background of its own; shows the same
-          continuous gradient behind it, so Hero → Stats has no seam. ── */}
+      {/* ── Impact Stats — solid white, flows straight into the equally-white
+          LogoMarquee below with no seam. ── */}
       <div className="hero-stats-strip" style={{
         display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "22px",
-        position: "relative", marginTop: "8px", paddingBottom: "150px", zIndex: 6,
+        position: "relative", marginTop: "8px", paddingTop: "60px", paddingBottom: "80px", zIndex: 6,
+        background: "#ffffff",
       }}>
         {[
           { target: 1000000, startValue: 900000, suffix: "+", label: lang === "th" ? "เครือข่ายอินฟลูเอนเซอร์" : "Influencer Network" },
@@ -83,7 +82,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           <motion.div key={s.label} className="hero-stat-item" style={{
             display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", gap: "6px",
             padding: "10px 20px",
-            width: "280px",
+            width: "320px",
             boxSizing: "border-box",
           }}
           whileHover={{
@@ -93,7 +92,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           whileTap={{ scale: 0.96 }}
           transition={{ duration: 0.3, ease: "easeOut" }}>
             <span style={{
-              ...KT, fontSize: "31px", fontWeight: 800, lineHeight: 1, whiteSpace: "nowrap",
+              ...KT, fontSize: "44px", fontWeight: 800, lineHeight: 1, whiteSpace: "nowrap",
               background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
@@ -101,7 +100,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
             }}>
               <AnimatedCounter target={s.target} startValue={s.startValue} suffix={s.suffix} />
             </span>
-            <span style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", lineHeight: 1.35, whiteSpace: "nowrap" }}>
+            <span style={{ ...KT, fontSize: "18px", fontWeight: 700, color: "#111827", lineHeight: 1.35, whiteSpace: "nowrap" }}>
               {s.label}
             </span>
           </motion.div>
@@ -109,9 +108,14 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       </div>
 
       {/* ── Brand Logos Marquee — transparent bg, shares the same wrapper gradient ── */}
-      <LogoMarquee background="transparent" headingStyle={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />
+      <LogoMarquee background="linear-gradient(180deg, #ffffff 0%, #ffffff 70%, #f5eefc 100%)" headingStyle={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />
 
-      {/* ── Your Trusted Partner ── */}
+      {/* ── Your Trusted Partner → FAQ/Contact — fresh gradient wrapper that
+          starts exactly where LogoMarquee's own fade left off (#f5eefc),
+          instead of relying on percentage offsets into one giant gradient
+          spanning the (now very tall) hero above — avoids the color drifting
+          out of sync whenever the hero's height changes. ── */}
+      <div style={{ background: HOME_TOP_GRADIENT }}>
       <section style={{ paddingTop: "80px", paddingBottom: "80px", background: "transparent" }} className="px-6 trusted-section">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           {/* Heading */}
@@ -141,8 +145,14 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
         </div>
       </section>
 
-      {/* ── Benefit ── */}
-      <section style={{ background: "transparent", paddingTop: "80px", paddingBottom: "80px" }} className="px-6">
+      {/* ── Benefit — dedicated background image for this section only ── */}
+      <section style={{
+        backgroundImage: "url('/new-landing-bg2.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        paddingTop: "80px", paddingBottom: "80px",
+      }} className="px-6">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <TrustedPartnerShowcase lang={lang as "th" | "en"} />
         </div>

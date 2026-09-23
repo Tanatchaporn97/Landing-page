@@ -81,33 +81,6 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
           {story.tagline}
         </p>
 
-        {/* Hero stats strip — compact highlight numbers right under the tagline */}
-        {story.heroStats && story.heroStats.length > 0 && story.slug !== "optimum-hi-pro" && (
-          <div className="success-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: "20px", marginBottom: "56px" }}>
-            {story.heroStats.map((s) => (
-              <div key={s.label} style={{
-                display: "flex", flexDirection: "column", alignItems: "center", gap: "8px", textAlign: "center",
-                background: "rgba(255,255,255,0.22)",
-                backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
-                border: "1px solid rgba(255,255,255,0.45)",
-                borderRadius: "18px", padding: "20px 16px",
-              }}>
-                <span style={{
-                  ...KT, background: PINK_GRAD,
-                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  fontSize: "clamp(24px,2.6vw,36px)", fontWeight: 800, lineHeight: 1,
-                }}>
-                  {s.val}
-                </span>
-                <span style={{ ...KT, color: "#111827", fontSize: "clamp(13px,1vw,15px)", fontWeight: 700 }}>
-                  {s.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        )}
-
         {/* Description paragraphs — either titled sections (richer case studies) or plain paragraphs */}
         <div style={{ display: "flex", flexDirection: "column", gap: story.sections ? "40px" : "24px", marginBottom: "72px" }}>
           {story.sections ? (
@@ -133,32 +106,36 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
         </div>
 
         {/* Results */}
-        <h2 style={{ ...KT, color: "#111827", fontSize: "clamp(24px,2.5vw,36px)", fontWeight: 800, margin: "0 0 32px", textAlign: "center" }}>
-          {lang === "th" ? "ผลลัพธ์" : "Results"}
-        </h2>
-        <div className="success-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px", marginBottom: story.takeaway ? "56px" : 0 }}>
-          {story.stats.map((s) => (
-            <div key={s.label} style={{
-              display: "flex", flexDirection: "column", alignItems: "center", gap: "12px",
-              background: "rgba(255,255,255,0.22)",
-              backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
-              border: "1px solid rgba(255,255,255,0.45)",
-              borderRadius: "20px", padding: "28px 24px",
-            }}>
-              <span style={{
-                ...KT, background: PINK_GRAD,
-                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                fontSize: "clamp(28px,3.2vw,48px)", fontWeight: 800, lineHeight: 1,
-              }}>
-                {s.val}
-              </span>
-              <span style={{ ...KT, color: "#111827", fontSize: "clamp(14px,1.1vw,17px)", fontWeight: 700, textAlign: "center" }}>
-                {s.label}
-              </span>
+        {story.stats && story.stats.length > 0 && (
+          <>
+            <h2 style={{ ...KT, color: "#111827", fontSize: "clamp(24px,2.5vw,36px)", fontWeight: 800, margin: "0 0 32px", textAlign: "center" }}>
+              {lang === "th" ? "ผลลัพธ์" : "Results"}
+            </h2>
+            <div className="success-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px", marginBottom: story.takeaway ? "56px" : 0 }}>
+              {story.stats.map((s) => (
+                <div key={s.label} style={{
+                  display: "flex", flexDirection: "column", alignItems: "center", gap: "12px",
+                  background: "rgba(255,255,255,0.22)",
+                  backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
+                  border: "1px solid rgba(255,255,255,0.45)",
+                  borderRadius: "20px", padding: "28px 24px",
+                }}>
+                  <span style={{
+                    ...KT, background: PINK_GRAD,
+                    WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                    fontSize: "clamp(28px,3.2vw,48px)", fontWeight: 800, lineHeight: 1,
+                  }}>
+                    {s.val}
+                  </span>
+                  <span style={{ ...KT, color: "#111827", fontSize: "clamp(14px,1.1vw,17px)", fontWeight: 700, textAlign: "center" }}>
+                    {s.label}
+                  </span>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </>
+        )}
 
         {/* Strategic Takeaway — closing insight for richer case studies */}
         {story.takeaway && (

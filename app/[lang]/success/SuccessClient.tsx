@@ -8,8 +8,8 @@ import { motion, AnimatePresence } from "motion/react";
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const PINK_GRAD = "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)";
 
-const CATS_TH = ["ทั้งหมด", "Food & Beverage", "Beauty", "Healthcare", "Entertainment & Streaming", "Pet Care"];
-const CATS_EN = ["All", "Food & Beverage", "Beauty", "Healthcare", "Entertainment & Streaming", "Pet Care"];
+const CATS_TH = ["ทั้งหมด", "Food & Beverage", "Beauty", "Healthcare", "Entertainment & Streaming", "Pet Care", "เครื่องใช้ไฟฟ้า", "อีเวนต์และไลฟ์สไตล์", "ของใช้ในบ้าน"];
+const CATS_EN = ["All", "Food & Beverage", "Beauty", "Healthcare", "Entertainment & Streaming", "Pet Care", "Home Appliances", "Events & Lifestyle", "Household"];
 
 const STORIES_TH = [
   {
@@ -26,14 +26,14 @@ const STORIES_TH = [
   },
   {
     slug: "watsons",
-    brand: "Watsons",
+    brand: "Watsons — DAP Double Booster",
     photo: "/success-stories-2/Success stories-10.jpg",
-    tagline: `House Brand ปังด้วยพลังอินฟลูฯ บน TikTok & Lemon8`,
+    tagline: `ทำงานเร็ว ทันแคมเปญ ด้วย KOL และ KOC`,
     industry: `Beauty`,
     stats: [
-      { val: "220", label: "Posts" },
-      { val: "1.2M", label: "Reach" },
-      { val: "12K", label: "Engagement" },
+      { val: "141,200", label: "Reach (Main KOL Content)" },
+      { val: "8.5K", label: "Engagement (Main KOL Content)" },
+      { val: "6.03%", label: "Engagement Rate (Main KOL Content)" },
     ],
   },
   {
@@ -87,7 +87,7 @@ const STORIES_TH = [
   {
     slug: "optimum-hi-pro",
     brand: "Optimum Hi Pro",
-    photo: "/success-stories-2/optimum-hi-pro-logo.jpg", imgFit: "contain" as const, imgBg: "#070e5e",
+    photo: "/success-stories-2/optimum-hi-pro-logo.jpg", imgFit: "contain" as const, imgBg: "#05176e", hoverTint: "#05176e",
     tagline: `เข้าถึงคนเลี้ยงปลาคาร์พอย่างตรงกลุ่ม พร้อมขยายการรับรู้ในวงกว้าง`,
     industry: `Pet Care`,
     stats: [
@@ -120,6 +120,145 @@ const STORIES_TH = [
       { val: "5.8%", label: "Engagement Rate" },
     ],
   },
+  {
+    slug: "bobbi-dog",
+    brand: "Bobbi Dog",
+    photo: "/success-stories-2/bobbi-dog-logo.png", imgFit: "contain" as const, imgBg: "#452b1c", hoverTint: "#452b1c",
+    tagline: `วางแผน KOL และ Friend of Brand ต่อเนื่องตลอดปี`,
+    industry: `Pet Care`,
+    stats: [
+      { val: "81", label: "Dog-focused KOLs" },
+      { val: "1", label: "Friend of Brand" },
+      { val: "1", label: "Event Activation" },
+    ],
+  },
+  {
+    slug: "boots",
+    brand: "Boots — S&G Let’s Get Tropical",
+    photo: "/success-stories-2/boots-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `สร้างกระแสให้กลิ่นใหม่ ผ่าน KOL ที่ใช่`,
+    industry: `Beauty`,
+    stats: [
+      { val: "2,109,846", label: "Reach" },
+      { val: "10.7K", label: "Engagement" },
+    ],
+  },
+  {
+    slug: "cp-all",
+    brand: "CP ALL Education Forum 2026",
+    photo: "/success-stories-2/cp-all-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `วางบทบาท KOL ให้เชื่อมกับทุกช่วงของ Event`,
+    industry: `อีเวนต์และไลฟ์สไตล์`,
+    stats: [],
+  },
+  {
+    slug: "d-nee",
+    brand: "D-nee Mild & Care 2026",
+    photo: "/success-stories-2/d-nee-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `เข้าถึงกลุ่มแม่และครอบครัวผ่าน Macro–Celebrity Creator`,
+    industry: `Household`,
+    stats: [
+      { val: "18", label: "Influencers" },
+      { val: "10.4M+", label: "Total Followers" },
+      { val: "3.81M+", label: "Reach" },
+      { val: "35.9K", label: "Engagements" },
+    ],
+  },
+  {
+    slug: "daikin",
+    brand: "Daikin",
+    photo: "/success-stories-2/daikin-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `ทำให้คอนเทนต์เรื่องแอร์เข้าใจง่ายและใกล้ตัวคนดูมากขึ้น`,
+    industry: `เครื่องใช้ไฟฟ้า`,
+    stats: [
+      { val: "8,438,762", label: "Reach" },
+      { val: "275.1K", label: "Engagement" },
+      { val: "26", label: "Contents" },
+    ],
+  },
+  {
+    slug: "fineline",
+    brand: "Fineline Mild & Care",
+    photo: "/success-stories-2/fineline-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `เปลี่ยนคุณสมบัติสินค้าให้เป็นเรื่องราวของความใส่ใจ`,
+    industry: `ของใช้ในบ้าน`,
+    stats: [
+      { val: "7,118,563", label: "Reach" },
+      { val: "120.6K", label: "Engagement" },
+      { val: "14", label: "Contents" },
+    ],
+  },
+  {
+    slug: "mega-bangna",
+    brand: "Mega Halloween 2025",
+    photo: "/success-stories-2/mega-bangna-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `ปั้นกระแสจากทีเซอร์ สู่การพูดถึงบนโซเชียล`,
+    industry: `อีเวนต์และไลฟ์สไตล์`,
+    stats: [
+      { val: "2.8M", label: "Reach (KOL Campaign)" },
+      { val: "0.1", label: "CPR" },
+    ],
+  },
+  {
+    slug: "mom-choice",
+    brand: "Mom Choice",
+    photo: "/success-stories-2/mom-choice-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `วางแผน Creator ต่อเนื่องตลอดปีในหลาย Platform`,
+    industry: `Pet Care`,
+    stats: [
+      { val: "169", label: "Creators" },
+    ],
+  },
+  {
+    slug: "scotch",
+    brand: "SCOTCH Bird’s Nest Mask",
+    photo: "/success-stories-2/scotch-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `เปลี่ยนแบรนด์ที่คุ้นเคย ให้เป็นเรื่องราวความงามใหม่`,
+    industry: `Beauty`,
+    stats: [
+      { val: "6,380,184", label: "Reported Reach (2 Campaign Waves)" },
+      { val: "18.6K", label: "Engagement" },
+      { val: "11", label: "Contents" },
+    ],
+  },
+  {
+    slug: "smart-heart",
+    brand: "SmartHeart x PROXIE",
+    photo: "/success-stories-2/smart-heart-logo.png", imgFit: "contain" as const, imgBg: "#0d3a7e", hoverTint: "#0d3a7e",
+    tagline: `พลังแฟนด้อม สู่การรับรู้ของแคมเปญ`,
+    industry: `Pet Care`,
+    stats: [
+      { val: "408,163", label: "Reach" },
+      { val: "1.3K", label: "Engagement" },
+      { val: "3", label: "Contents" },
+    ],
+  },
+  {
+    slug: "teepol",
+    brand: "Teepol x My Material World",
+    photo: "/success-stories-2/teepol-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `หนึ่ง KOL หลายจุดแข็งในแต่ละ Platform`,
+    industry: `ของใช้ในบ้าน`,
+    stats: [
+      { val: "47,449", label: "Reach" },
+      { val: "3", label: "Contents" },
+      { val: "806K", label: "Followers" },
+      { val: "1.6K", label: "Engagements" },
+    ],
+  },
+  {
+    slug: "truemoney",
+    brand: "TrueMoney",
+    photo: "/success-stories-2/truemoney-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `เลือก Creator ให้ใช่ เพื่อเรื่องสุขภาพที่เข้าถึงคนดู`,
+    industry: `Healthcare`,
+    stats: [
+      { val: "315,768", label: "Reach" },
+      { val: "6", label: "Contents" },
+      { val: "370.2K", label: "Followers" },
+      { val: "3K", label: "Engagements" },
+    ],
+  },
 ];
 
 const STORIES_EN = [
@@ -137,14 +276,14 @@ const STORIES_EN = [
   },
   {
     slug: "watsons",
-    brand: "Watsons",
+    brand: "Watsons — DAP Double Booster",
     photo: "/success-stories-2/Success stories-10.jpg",
-    tagline: `House brand goes viral with influencer power on TikTok & Lemon8`,
+    tagline: `Fast-turnaround KOL & KOC Campaign`,
     industry: `Beauty`,
     stats: [
-      { val: "220", label: "Posts" },
-      { val: "1.2M", label: "Reach" },
-      { val: "12K", label: "Engagement" },
+      { val: "141,200", label: "Reach (Main KOL Content)" },
+      { val: "8.5K", label: "Engagement (Main KOL Content)" },
+      { val: "6.03%", label: "Engagement Rate (Main KOL Content)" },
     ],
   },
   {
@@ -198,7 +337,7 @@ const STORIES_EN = [
   {
     slug: "optimum-hi-pro",
     brand: "Optimum Hi Pro",
-    photo: "/success-stories-2/optimum-hi-pro-logo.jpg", imgFit: "contain" as const, imgBg: "#070e5e",
+    photo: "/success-stories-2/optimum-hi-pro-logo.jpg", imgFit: "contain" as const, imgBg: "#05176e", hoverTint: "#05176e",
     tagline: `Reaching koi keepers with precision, while expanding awareness at scale.`,
     industry: `Pet Care`,
     stats: [
@@ -229,6 +368,145 @@ const STORIES_EN = [
       { val: "3", label: "Influencers" },
       { val: "333,535", label: "Reach" },
       { val: "5.8%", label: "Engagement Rate" },
+    ],
+  },
+  {
+    slug: "bobbi-dog",
+    brand: "Bobbi Dog",
+    photo: "/success-stories-2/bobbi-dog-logo.png", imgFit: "contain" as const, imgBg: "#452b1c", hoverTint: "#452b1c",
+    tagline: `Building a Year-round KOL & Friend of Brand Strategy`,
+    industry: `Pet Care`,
+    stats: [
+      { val: "81", label: "Dog-focused KOLs" },
+      { val: "1", label: "Friend of Brand" },
+      { val: "1", label: "Event Activation" },
+    ],
+  },
+  {
+    slug: "boots",
+    brand: "Boots — S&G Let’s Get Tropical",
+    photo: "/success-stories-2/boots-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Creating Buzz for a New Scent Through the Right KOLs`,
+    industry: `Beauty`,
+    stats: [
+      { val: "2,109,846", label: "Reach" },
+      { val: "10.7K", label: "Engagement" },
+    ],
+  },
+  {
+    slug: "cp-all",
+    brand: "CP ALL Education Forum 2026",
+    photo: "/success-stories-2/cp-all-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `KOL Planning Across the Event Journey`,
+    industry: `Events & Lifestyle`,
+    stats: [],
+  },
+  {
+    slug: "d-nee",
+    brand: "D-nee Mild & Care 2026",
+    photo: "/success-stories-2/d-nee-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Reaching Mom & Family Audiences Through Macro–Celebrity Creators`,
+    industry: `Household`,
+    stats: [
+      { val: "18", label: "Influencers" },
+      { val: "10.4M+", label: "Total Followers" },
+      { val: "3.81M+", label: "Reach" },
+      { val: "35.9K", label: "Engagements" },
+    ],
+  },
+  {
+    slug: "daikin",
+    brand: "Daikin",
+    photo: "/success-stories-2/daikin-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Making Air-con Content Easier to Relate To`,
+    industry: `Home Appliances`,
+    stats: [
+      { val: "8,438,762", label: "Reach" },
+      { val: "275.1K", label: "Engagement" },
+      { val: "26", label: "Contents" },
+    ],
+  },
+  {
+    slug: "fineline",
+    brand: "Fineline Mild & Care",
+    photo: "/success-stories-2/fineline-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Turning Product Benefits into Stories of Care`,
+    industry: `Household`,
+    stats: [
+      { val: "7,118,563", label: "Reach" },
+      { val: "120.6K", label: "Engagement" },
+      { val: "14", label: "Contents" },
+    ],
+  },
+  {
+    slug: "mega-bangna",
+    brand: "Mega Halloween 2025",
+    photo: "/success-stories-2/mega-bangna-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Turning a Teaser into Social Buzz`,
+    industry: `Events & Lifestyle`,
+    stats: [
+      { val: "2.8M", label: "Reach (KOL Campaign)" },
+      { val: "0.1", label: "CPR" },
+    ],
+  },
+  {
+    slug: "mom-choice",
+    brand: "Mom Choice",
+    photo: "/success-stories-2/mom-choice-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Building a Year-round Creator Strategy Across Platforms`,
+    industry: `Pet Care`,
+    stats: [
+      { val: "169", label: "Creators" },
+    ],
+  },
+  {
+    slug: "scotch",
+    brand: "SCOTCH Bird’s Nest Mask",
+    photo: "/success-stories-2/scotch-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Turning a Familiar Brand into a New Beauty Story`,
+    industry: `Beauty`,
+    stats: [
+      { val: "6,380,184", label: "Reported Reach (2 Campaign Waves)" },
+      { val: "18.6K", label: "Engagement" },
+      { val: "11", label: "Contents" },
+    ],
+  },
+  {
+    slug: "smart-heart",
+    brand: "SmartHeart x PROXIE",
+    photo: "/success-stories-2/smart-heart-logo.png", imgFit: "contain" as const, imgBg: "#0d3a7e", hoverTint: "#0d3a7e",
+    tagline: `Turning Fandom into Campaign Awareness`,
+    industry: `Pet Care`,
+    stats: [
+      { val: "408,163", label: "Reach" },
+      { val: "1.3K", label: "Engagement" },
+      { val: "3", label: "Contents" },
+    ],
+  },
+  {
+    slug: "teepol",
+    brand: "Teepol x My Material World",
+    photo: "/success-stories-2/teepol-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `One KOL, Different Platform Strengths`,
+    industry: `Household`,
+    stats: [
+      { val: "47,449", label: "Reach" },
+      { val: "3", label: "Contents" },
+      { val: "806K", label: "Followers" },
+      { val: "1.6K", label: "Engagements" },
+    ],
+  },
+  {
+    slug: "truemoney",
+    brand: "TrueMoney",
+    photo: "/success-stories-2/truemoney-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Making Health Conversations More Relevant Through the Right Creators`,
+    industry: `Healthcare`,
+    stats: [
+      { val: "315,768", label: "Reach" },
+      { val: "6", label: "Contents" },
+      { val: "370.2K", label: "Followers" },
+      { val: "3K", label: "Engagements" },
     ],
   },
 ];
@@ -303,7 +581,7 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
                 transition={{ type: "spring", visualDuration: 0.4, bounce: 0.18 }}
               >
                 <Link href={`/${lang}/success/${story.slug}`} className="cs-card-link" style={{ textDecoration: "none", width: "390px" }}>
-                  <div className="cs-card" style={{ borderRadius: "28px", background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.6)", height: "520px" }}>
+                  <div className="cs-card" style={{ borderRadius: "28px", background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.6)", height: "520px", ...(story.hoverTint ? { "--cs-hover-tint": story.hoverTint } as React.CSSProperties : {}) }}>
                     <div className="cs-card-img-clip" style={{ position: "relative", width: "100%", height: "100%", background: story.imgBg || "transparent" }}>
                       <Image src={story.photo} alt={story.brand} className="cs-card-img" fill sizes="(max-width: 768px) 100vw, 400px"
                         style={{ objectFit: story.imgFit || "cover", padding: story.imgFit === "contain" ? "24px" : 0 }} />
