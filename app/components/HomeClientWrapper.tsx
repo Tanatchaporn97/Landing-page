@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { motion } from "motion/react";
 import dynamic from "next/dynamic";
 import Navbar from "./Navbar";
@@ -165,7 +165,9 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       <FAQAccordion faqs={dict?.homeFaqs} lang={lang} variant="home" dict={dict} />
 
       <div id="contact" className="contact-bg" style={{ padding: "80px 0" }}>
-        <ContactFormSection lang={lang} dict={dict?.contactForm} />
+        <Suspense fallback={null}>
+          <ContactFormSection lang={lang} dict={dict?.contactForm} />
+        </Suspense>
       </div>
       </div>
 

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { motion, AnimatePresence, animate } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -868,12 +868,14 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       <FAQAccordion faqs={dict?.homeFaqs} lang={lang} variant="brand" dict={dict} />
 
       <div id="contact" className="contact-bg" style={{ padding: "80px 0" }}>
-        <ContactFormSection lang={lang} dict={dict?.contactForm}
-          headingOverride={lang === "th" ? "มี Brief แล้ว หรือยังไม่แน่ใจว่าควรเริ่มจากอะไร?" : "Have a brief, or not sure where to start?"}
-          subheadingOverride={lang === "th"
-            ? "เล่าเป้าหมายของคุณให้เราฟัง ทีม Buddy Review จะช่วยมองโจทย์ วางแนวทาง และแนะนำ campaign approach ที่เหมาะกับแบรนด์"
-            : "Tell us your goal — the Buddy Review team will help frame the challenge, shape the direction, and recommend a campaign approach that fits your brand."}
-        />
+        <Suspense fallback={null}>
+          <ContactFormSection lang={lang} dict={dict?.contactForm}
+            headingOverride={lang === "th" ? "มี Brief แล้ว หรือยังไม่แน่ใจว่าควรเริ่มจากอะไร?" : "Have a brief, or not sure where to start?"}
+            subheadingOverride={lang === "th"
+              ? "เล่าเป้าหมายของคุณให้เราฟัง ทีม Buddy Review จะช่วยมองโจทย์ วางแนวทาง และแนะนำ campaign approach ที่เหมาะกับแบรนด์"
+              : "Tell us your goal — the Buddy Review team will help frame the challenge, shape the direction, and recommend a campaign approach that fits your brand."}
+          />
+        </Suspense>
       </div>
       </div>
 

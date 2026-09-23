@@ -5,7 +5,7 @@ const LOGO_FILES_ROW1 = [
   "upper-clients-logo-05.png","upper-clients-logo-06.png","upper-clients-logo-11.png","upper-clients-logo-12.png",
   "upper-clients-logo-15.png","upper-clients-logo-23.png","upper-clients-logo-32.png","upper-clients-logo-33.png",
   "upper-clients-logo-34.png","upper-clients-logo-35.png","upper-clients-logo-36.png","upper-clients-logo-37.png",
-  "upper-clients-logo-50.png","upper-clients-logo-51.png",
+  "upper-clients-logo-50.png","upper-clients-logo-51.png","upper-clients-logo-ptt.png",
 ];
 const LOGO_FILES_ROW2 = [
   "lower-clients-logo-24.png","lower-clients-logo-31.png","lower-clients-logo-38.png","lower-clients-logo-39.png",

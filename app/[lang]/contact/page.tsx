@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import ContactFormSection from "../../components/ContactFormSection";
@@ -47,7 +48,9 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
     <div className="background" style={{ minHeight: "100vh" }}>
       <Navbar lang={lang as Locale} variant="home" />
       <div style={{ paddingTop: "80px" }}>
-        <ContactFormSection lang={lang as Locale} dict={dict?.contactForm} />
+        <Suspense fallback={null}>
+          <ContactFormSection lang={lang as Locale} dict={dict?.contactForm} />
+        </Suspense>
       </div>
       <Footer variant="home" lang={lang as Locale} dict={dict} />
     </div>
