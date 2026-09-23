@@ -9,30 +9,16 @@ export interface ColorfulBentoItem {
   gradient: string;
 }
 
-// Fixed asymmetric bento layout (3 columns × 3 rows):
-//   [ tall      ][ wide             ]
-//   [ tall      ][ small ][ small   ]
-//   [ wide             ][ small     ]
-// Item order maps 1:1 to these 6 slots.
-const SLOTS = [
-  { gridColumn: "1 / 2", gridRow: "1 / 3" },
-  { gridColumn: "2 / 4", gridRow: "1 / 2" },
-  { gridColumn: "2 / 3", gridRow: "2 / 3" },
-  { gridColumn: "3 / 4", gridRow: "2 / 3" },
-  { gridColumn: "1 / 3", gridRow: "3 / 4" },
-  { gridColumn: "3 / 4", gridRow: "3 / 4" },
-];
-
 export function ColorfulBentoGrid({ items }: { items: ColorfulBentoItem[] }) {
   return (
-    <div className="cbg-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridAutoRows: "minmax(170px, auto)", gap: "20px" }}>
-      {items.map((item, i) => (
+    <div className="cbg-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridAutoRows: "minmax(220px, auto)", gap: "20px" }}>
+      {items.map((item) => (
         <div
           key={item.title}
           className="cbg-card group relative overflow-hidden rounded-[28px] flex flex-col text-left"
-          style={{ background: item.gradient, ...SLOTS[i % SLOTS.length] }}
+          style={{ background: item.gradient }}
         >
-          <div className="relative z-10 px-7 pt-7">
+          <div className="relative z-10 px-7 pt-6">
             <h3 className="text-white font-bold" style={{ ...KT, fontSize: "clamp(19px,1.8vw,24px)", lineHeight: 1.3 }}>
               {item.title}
             </h3>
@@ -41,7 +27,7 @@ export function ColorfulBentoGrid({ items }: { items: ColorfulBentoItem[] }) {
             </p>
           </div>
           {item.img && (
-            <div className="cbg-icon absolute" style={{ right: "16px", bottom: "16px", width: "clamp(90px,11vw,150px)", height: "clamp(90px,11vw,150px)" }}>
+            <div className="cbg-icon absolute" style={{ right: "16px", bottom: "16px", width: "clamp(80px,10vw,130px)", height: "clamp(80px,10vw,130px)" }}>
               <Image src={item.img} alt="" fill sizes="150px" style={{ objectFit: "contain" }} />
             </div>
           )}

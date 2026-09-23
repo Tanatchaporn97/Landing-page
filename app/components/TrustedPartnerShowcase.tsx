@@ -1,5 +1,6 @@
 "use client";
 import { GradientCard } from "@/components/ui/gradient-card";
+import { Badge } from "@/components/ui/badge";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -15,17 +16,20 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
     <div className="tps-grid" style={{ display: "grid", gridTemplateColumns: "0.62fr 2fr", gap: "48px", alignItems: "center" }}>
       {/* Left — heading, description */}
       <div className="tps-left" style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+        <div>
+          <Badge variant="outline">How We Work</Badge>
+        </div>
         <h3 style={{
           ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800,
           margin: 0, lineHeight: 1.15,
           background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
           WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
         }}>
-          Our Standard
+          Built Into Every Campaign
         </h3>
         <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0, maxWidth: "320px" }}>
           {lang === "th"
-            ? "หลักการที่อยู่เบื้องหลังวิธีคิด การทำงาน และการส่งมอบผลลัพธ์ของเรา"
+            ? "มาตรฐานที่ทำให้ทุกความร่วมมือชัดเจน รอบคอบ และพาไปถึงผลลัพธ์"
             : "The principles behind how we think, work, and deliver."}
         </p>
       </div>
@@ -41,7 +45,8 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
             imageUrl={item.src}
             style={{
               ...KT, minHeight: "180px", padding: "20px",
-              background: "linear-gradient(135deg, #f2edfd 0%, #ddccfb 100%)",
+              background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
+              border: "1px solid rgba(255,255,255,0.6)", boxShadow: "0 8px 28px rgba(95,38,229,0.08)",
             }}
           />
         ))}

@@ -76,7 +76,7 @@ import dynamic from "next/dynamic";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import PathToPartnership from "../../components/PathToPartnership";
-import OpportunityScatter, { OpportunityScatterMobileTop, OpportunityScatterMobileBottom } from "../../components/OpportunityScatter";
+import CommunityArcSection from "../../components/CommunityArcSection";
 import { type ColorfulBentoItem } from "@/components/ui/colorful-bento-grid";
 import { AnimatedFeatureCard } from "@/components/ui/feature-card-1";
 import BuddyRanksInteractive from "../../components/BuddyRanksInteractive";
@@ -194,70 +194,8 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <LogoMarquee bgClassName="inf-logo-bg" headingStyle={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />
 
 
-      {/* ── Opportunity Banner ── */}
-      <section className="inf-section opportunity-section" style={{
-        background: "transparent",
-        padding: "100px 48px",
-        position: "relative",
-        overflow: "hidden",
-      }}>
-        {/* Desktop/tablet — decorative scatter is absolutely positioned around the (always normal-flow, always legible) heading */}
-        <div className="opportunity-scatter-area" style={{ position: "relative", maxWidth: "1600px", minHeight: "700px", margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-          <OpportunityScatter lang={lang as "th" | "en"} />
-
-          <OpportunityScatterMobileTop lang={lang as "th" | "en"} />
-
-          <div className="opportunity-grid" style={{ width: "100%", maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", position: "relative", zIndex: 1, boxSizing: "border-box" }}>
-          <div style={{ textAlign: "center", width: "100%" }}>
-            <h2 className="opportunity-heading" style={{
-              ...KT,
-              fontSize: "clamp(28px,3.3vw,48px)",
-              fontWeight: 700,
-              lineHeight: 1.2,
-              margin: "0 0 32px",
-              whiteSpace: "nowrap",
-              overflowWrap: "break-word",
-            }}>
-              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                {lang === "th" ? "โอกาสใหม่ " : "New Opportunities, "}
-              </span>
-              <span style={{ color: "#111827" }}>{lang === "th" ? "เริ่มต้นได้ที่นี่" : "Start Here"}</span>
-            </h2>
-            <p className="desc-text" style={{
-              ...KT,
-              color: "#111827",
-              fontSize: "16px",
-              lineHeight: 1.7,
-              margin: "0 auto 48px",
-              fontWeight: 400,
-              maxWidth: "500px",
-              overflowWrap: "break-word",
-            }}>
-              {lang === "th" ? (
-                <>Buddy Review ทำให้การเป็นอินฟลูเอนเซอร์เป็นเรื่องง่ายขึ้น<br />
-                ด้วยระบบที่เชื่อมคุณกับแบรนด์ชั้นนำและทีมงานที่ช่วยเหลือทุกขั้นตอน</>
-              ) : (
-                <>Buddy Review makes being an influencer easier,<br />
-                connecting you to top brands with support every step of the way.</>
-              )}
-            </p>
-          </div>
-          </div>
-
-          <OpportunityScatterMobileBottom lang={lang as "th" | "en"} />
-        </div>
-
-        <style>{`
-          @media (max-width: 760px){
-            .opportunity-scatter-area{ min-height: 0 !important; }
-            .opportunity-scatter-desktop{ display: none !important; }
-            .opportunity-scatter-mobile{ display: flex !important; }
-          }
-          @media (max-width: 560px){
-            .opportunity-heading{ white-space: normal !important; overflow-wrap: break-word !important; word-break: break-word !important; font-size: clamp(22px,6.5vw,30px) !important; }
-          }
-        `}</style>
-      </section>
+      {/* ── We Build The Best Communities For Influencers ── */}
+      <CommunityArcSection lang={lang as "th" | "en"} />
 
       {/* ── One Creator, Many Channels ── */}
       <section className="inf-section" style={{ background: "transparent", padding: "60px 48px" }}>
@@ -296,8 +234,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
           <h2 style={{ ...KT, fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 24px" }}>
             {lang === "th" ? (
               <>
-                <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>รู้จักช่องตัวเองให้มากขึ้น</span>
+                <span style={{ color: "#111827" }}>รู้จักช่องตัวเองให้มากขึ้น</span>
                 <br />
                 <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
                   WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>แล้วโตได้แบบมีทิศทาง</span>

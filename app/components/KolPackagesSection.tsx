@@ -88,8 +88,9 @@ export default function KolPackagesSection({ lang = "th" }: { lang?: "th" | "en"
 
               {/* CTA button */}
               <div style={{ display: "flex", justifyContent: "center", marginBottom: "32px" }}>
-                <button style={{
+                <a href={`?budget=${encodeURIComponent(pkg.price)}#contact`} style={{
                   ...KT,
+                  display: "inline-block",
                   background: featured ? "#ffffff" : "rgba(255,255,255,0.18)",
                   backdropFilter: featured ? "none" : "blur(12px)",
                   WebkitBackdropFilter: featured ? "none" : "blur(12px)",
@@ -98,9 +99,10 @@ export default function KolPackagesSection({ lang = "th" }: { lang?: "th" | "en"
                   color: "#5f26e5",
                   fontSize: "16px", fontWeight: 600,
                   padding: "10px 28px", cursor: "pointer",
+                  textDecoration: "none",
                 }}>
                   {pkg.cta}
-                </button>
+                </a>
               </div>
 
               {/* Feature list — first 4 always visible */}

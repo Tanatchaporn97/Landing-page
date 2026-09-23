@@ -7,8 +7,8 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
 
 const TAGS = ["Location", "Demographic", "Content Category", "Occupation", "Persona", "Storytelling"];
-const KEYWORDS = ["Skincare", "Beauty Routine", "Makeup", "Lifestyle"];
-const CONTENT_TYPES = ["Review", "Tutorial", "Routine", "Unboxing"];
+const KEYWORDS = ["Influencer Marketing", "KOL Matching", "Buddy Review", "Data-Driven"];
+const CONTENT_TYPES = ["Review", "UGC", "Live", "Reels"];
 const SIMILAR_CREATORS = [
   { name: "Creator A", img: "/creator-mockup/cheese.jpg" },
   { name: "Creator B", img: "/creator-mockup/puifai.jpg" },

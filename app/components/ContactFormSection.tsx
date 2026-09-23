@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { type Locale } from "../../i18n-config";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -14,9 +15,10 @@ const IconCheck = ({ color = "#5f26e5" }: { color?: string }) => (
 );
 
 export default function ContactFormSection({ lang = "th", dict, headingOverride, subheadingOverride }: { lang?: "th" | "en", dict: any, headingOverride?: string, subheadingOverride?: string }) {
+  const searchParams = useSearchParams();
   const [consented, setConsented] = useState(false);
   const [showConsentWarning, setShowConsentWarning] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", company: "", budget: "", position: "", brief: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", company: "", budget: searchParams.get("budget") || "", position: "", brief: "" });
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   const t = dict || {};

@@ -150,6 +150,9 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
   const [activeService, setActiveService] = useState(0);
   const STORY_TABS = ["New Market Entry", "Niche Community", "Always-on Content", "Event Activation", "Shoppable Content"] as const;
   const STORY_TAB_ICONS = { "New Market Entry": Rocket, "Niche Community": Users, "Always-on Content": RefreshCw, "Event Activation": PartyPopper, "Shoppable Content": ShoppingBag } as const;
+  // Industry label for each story, in the same order as STORY_TABS — used to
+  // let visitors pick a story by industry via the top horizontal tab row.
+  const STORY_INDUSTRIES = ["Healthcare", "Pet Care", "Food & Beverage", "Skincare", "Health & Beauty"] as const;
   const [activeStoryTab, setActiveStoryTab] = useState<typeof STORY_TABS[number]>(STORY_TABS[0]);
   const [storyTabsAutoPaused, setStoryTabsAutoPaused] = useState(false);
 
@@ -236,6 +239,9 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
   const [activeCampaignStep, setActiveCampaignStep] = useState(0);
   const CAMPAIGN_STEPS = [
+    { img: "/how-we-run-campaigns/plan-campaign.png", title: "บรีฟ เป้าหมาย กลุ่มเป้าหมาย และสิ่งที่แคมเปญต้องทำให้สำเร็จ", titleEn: "Brief the Goal, Audience, and What the Campaign Needs to Achieve",
+      desc: "ทำความเข้าใจโจทย์ของแบรนด์ตั้งแต่ต้นทาง เพื่อวางทิศทางแคมเปญให้ตรงเป้าหมายที่สุด",
+      descEn: "We start by fully understanding your brief, so the campaign direction is aligned with your goals from day one." },
     { img: "/how-we-run-campaigns/plan-campaign.png", title: "วางแผนแคมเปญ", titleEn: "Plan the Campaign",
       desc: "เปลี่ยนเป้าหมายของแบรนด์เป็นกลยุทธ์ที่จับต้องได้ ให้ทุกการสื่อสารไปถึงกลุ่มเป้าหมายได้ตรงจุด",
       descEn: "We turn your brand's goals into a concrete strategy, so every message reaches the right audience." },
@@ -245,15 +251,26 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
     { img: "/how-we-run-campaigns/manage-seamlessly.png", title: "จัดการแคมเปญไร้รอยต่อ", titleEn: "Manage Seamlessly",
       desc: "ให้แคมเปญของคุณดำเนินไปอย่างไม่มีสะดุด ด้วยทีมงานมืออาชีพที่ดูแลทุกขั้นตอน",
       descEn: "Your campaign runs without a hitch, with a professional team overseeing every step." },
-    { img: "/how-we-run-campaigns/review-drafts.png", title: "ตรวจดราฟต์คอนเทนต์", titleEn: "Review Content Drafts",
-      desc: "เช็กทุกชิ้นให้ตรงโทนแบรนด์ และปรับจูนให้พร้อมก่อนโพสต์ เพื่อผลลัพธ์ที่ดีที่สุด",
-      descEn: "We check every piece to match your brand tone and fine-tune it before posting, for the best results." },
+    { img: "/how-we-run-campaigns/launch.png", title: "Launch ลงคอนเทนต์ พร้อมติดตามและดูแลให้ทุกโพสต์เป็นไปอย่างราบรื่น", titleEn: "Launch & Monitor Every Post",
+      desc: "ลงคอนเทนต์ตามแผน พร้อมเฝ้าติดตามเรียลไทม์เพื่อให้ทุกโพสต์ราบรื่นตั้งแต่ต้นจนจบ",
+      descEn: "Content goes live as planned, with real-time monitoring so every post runs smoothly from start to finish." },
     { img: "/how-we-run-campaigns/report-results.png", title: "รายงานผลแบบเรียลไทม์", titleEn: "Real-Time Reporting",
       desc: "ติดตามทุกความเคลื่อนไหวบนแดชบอร์ด พร้อมรับรายงานและอินไซต์ที่นำไปใช้ต่อได้จริง",
       descEn: "Track every move on the dashboard and get reports and insights you can actually put to use." },
   ];
-  const CAMPAIGN_ROW_HEIGHT = 96;
+  const CAMPAIGN_ROW_HEIGHT = 140;
   const CAMPAIGN_ROW_GAP = 24;
+
+  // Auto-advance the campaign steps every 5s, looping back to the start;
+  // paused while the user is hovering the step list.
+  const [campaignAutoPaused, setCampaignAutoPaused] = useState(false);
+  useEffect(() => {
+    if (campaignAutoPaused) return;
+    const id = setInterval(() => {
+      setActiveCampaignStep((prev) => (prev + 1) % CAMPAIGN_STEPS.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, [campaignAutoPaused]);
 
 
 
@@ -459,12 +476,6 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   <div style={{ position: "relative", width: "100%", flex: 1, minHeight: 0 }}>
                     <Image src={item.img} alt={item.title} fill sizes={isActive ? "380px" : "220px"}
                       style={{ objectFit: "cover", objectPosition: item.objectPosition || "center" }} />
-                    {/* Fade the image into the card's white body — long, eased, multi-stop
-                        so the transition is imperceptible (no hard seam line) */}
-                    <div style={{
-                      position: "absolute", inset: 0, pointerEvents: "none",
-                      background: "linear-gradient(to bottom, transparent 0%, transparent 25%, rgba(255,255,255,0.15) 45%, rgba(255,255,255,0.45) 65%, rgba(255,255,255,0.8) 85%, #ffffff 100%)",
-                    }} />
                   </div>
                   <div style={{
                     padding: isActive ? "24px 26px 28px" : "18px 18px 20px",
@@ -541,7 +552,11 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   title={lang === "th" ? item.title : item.titleEn}
                   description={lang === "th" ? item.desc : item.descEn}
                   imageUrl={item.icon}
-                  style={{ ...KT }}
+                  style={{
+                    ...KT,
+                    background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
+                    border: "1px solid rgba(255,255,255,0.6)", boxShadow: "0 8px 28px rgba(95,38,229,0.08)",
+                  }}
                 />
               );
               return isLast ? (
@@ -582,12 +597,36 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
           <Tabs value={activeStoryTab} onValueChange={(v) => setActiveStoryTab(v as typeof STORY_TABS[number])} className="mt-8" orientation="vertical"
             onMouseEnter={() => setStoryTabsAutoPaused(true)} onMouseLeave={() => setStoryTabsAutoPaused(false)}>
+            {/* Industry filter row — an alternate way to pick the same story
+                tabs above, by industry instead of by campaign type. */}
+            <TabsList style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "32px", marginBottom: "32px", borderBottom: "1px solid rgba(95,38,229,0.12)" }}>
+              {STORY_TABS.map((tabLabel, i) => (
+                <TabsTrigger key={tabLabel} value={tabLabel} style={{
+                  ...KT, borderRadius: 0, background: "none", boxShadow: "none",
+                  padding: "0 0 12px", fontSize: "15px", fontWeight: 600,
+                  borderBottom: tabLabel === activeStoryTab ? "2px solid #5f26e5" : "2px solid transparent",
+                  color: tabLabel === activeStoryTab ? "#5f26e5" : "#6b7280",
+                  transition: "color 0.2s ease, border-color 0.2s ease",
+                }}>
+                  {STORY_INDUSTRIES[i]}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
             <div className="cs-tabs-layout" style={{ display: "flex", gap: "24px", alignItems: "stretch" }}>
               <TabsList className="cs-tabs-col" style={{ display: "flex", flexDirection: "column", gap: "8px", flexShrink: 0, width: "260px" }}>
                 {STORY_TABS.map((tabLabel) => {
                   const TabIcon = STORY_TAB_ICONS[tabLabel];
                   return (
-                    <TabsTrigger key={tabLabel} value={tabLabel} style={{ ...KT, width: "100%", justifyContent: "flex-start" }}>
+                    <TabsTrigger key={tabLabel} value={tabLabel} style={{
+                      ...KT, width: "100%", justifyContent: "flex-start",
+                      background: tabLabel === activeStoryTab ? "#5f26e5" : "rgba(255,255,255,0.55)",
+                      backdropFilter: tabLabel === activeStoryTab ? "none" : "blur(20px)",
+                      WebkitBackdropFilter: tabLabel === activeStoryTab ? "none" : "blur(20px)",
+                      border: tabLabel === activeStoryTab ? "none" : "1px solid rgba(255,255,255,0.6)",
+                      color: tabLabel === activeStoryTab ? "#ffffff" : "#111827",
+                      boxShadow: "0 8px 20px -10px rgba(95,38,229,0.2)",
+                    }}>
                       <TabIcon className="h-5 w-5 shrink-0" />
                       {tabLabel}
                     </TabsTrigger>
@@ -596,7 +635,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               </TabsList>
 
               <div className="rounded-3xl" style={{
-                flex: 1, minWidth: 0, padding: "32px 24px",
+                flex: 1, minWidth: 0, padding: "60px",
                 background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
                 border: "1px solid rgba(255,255,255,0.6)", boxShadow: "0 8px 28px rgba(95,38,229,0.08)",
               }}>
@@ -639,8 +678,9 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                     <button
                       onClick={() => router.push(`/${lang}/category/${catSlug(story.cat)}`)}
-                      style={{ ...KT, width: "fit-content", fontSize: "12px", fontWeight: 600, color: "#5f26e5", background: "#ffffff",
-                        border: "1px solid rgba(95,38,229,0.2)", borderRadius: "50px", padding: "6px 14px", letterSpacing: "0.06em", cursor: "pointer" }}
+                      style={{ ...KT, width: "fit-content", fontSize: "12px", fontWeight: 600, color: "#5f26e5",
+                        background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
+                        border: "1px solid rgba(255,255,255,0.6)", borderRadius: "50px", padding: "6px 14px", letterSpacing: "0.06em", cursor: "pointer" }}
                     >
                       {story.cat.charAt(0) + story.cat.slice(1).toLowerCase()}
                     </button>
@@ -744,7 +784,10 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </div>
 
             {/* Right: hoverable step list with a sliding progress bar */}
-            <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: `${CAMPAIGN_ROW_GAP}px`, paddingLeft: "32px" }}>
+            <div
+              onMouseEnter={() => setCampaignAutoPaused(true)}
+              onMouseLeave={() => setCampaignAutoPaused(false)}
+              style={{ position: "relative", display: "flex", flexDirection: "column", gap: `${CAMPAIGN_ROW_GAP}px`, paddingLeft: "32px" }}>
               {/* track */}
               <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "4px", borderRadius: "2px", background: "rgba(95,38,229,0.12)" }} />
               {/* sliding highlight */}
@@ -757,11 +800,19 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               {CAMPAIGN_STEPS.map((step, i) => (
                 <div key={step.title}
                   onMouseEnter={() => setActiveCampaignStep(i)}
-                  style={{ minHeight: `${CAMPAIGN_ROW_HEIGHT}px`, display: "flex", flexDirection: "column", justifyContent: "center",
+                  style={{ minHeight: `${CAMPAIGN_ROW_HEIGHT}px`, display: "flex", flexDirection: "column", justifyContent: "flex-start",
                     cursor: "pointer", opacity: i === activeCampaignStep ? 1 : 0.55, transition: "opacity 0.2s" }}>
-                  <h3 style={{ ...KT, fontSize: "20px", fontWeight: 700, margin: "0 0 6px", transition: "color 0.2s",
-                    color: i === activeCampaignStep ? "#5f26e5" : "#111827" }}>{lang === "th" ? step.title : step.titleEn}</h3>
-                  <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: 0 }}>{lang === "th" ? step.desc : step.descEn}</p>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+                    <span style={{
+                      ...KT, fontSize: "20px", fontWeight: 800, flexShrink: 0,
+                      color: "#5f26e5",
+                    }}>{String(i + 1).padStart(2, "0")}</span>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                      <h3 style={{ ...KT, fontSize: "20px", fontWeight: 700, margin: 0, transition: "color 0.2s",
+                        color: i === activeCampaignStep ? "#5f26e5" : "#111827" }}>{lang === "th" ? step.title : step.titleEn}</h3>
+                      <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: 0 }}>{lang === "th" ? step.desc : step.descEn}</p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
