@@ -138,7 +138,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
 
       {/* ── Video Showcase ── */}
-      <section style={{ position: "relative", background: "transparent", overflow: "hidden", padding: "295px 0 64px" }}>
+      <section className="vs-hero-section" style={{ position: "relative", background: "transparent", overflow: "hidden", padding: "295px 0 64px" }}>
         <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "0 16px" }}>
           <h2 style={{ margin: "0 0 24px", lineHeight: 1.1 }}>
             {lang === "th" ? (
@@ -186,6 +186,11 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
           .vs-cta-line:hover{ background: #06C755 !important; color: #ffffff !important; transform: translateY(-2px); }
           @media (max-width: 760px){
             .vs-line1, .vs-line2{ white-space: normal !important; }
+            /* 295px top padding was tuned for desktop's fixed navbar height
+               plus room for the video-fan composition below; on mobile the
+               navbar is shorter and this left a large blank gap above the
+               headline. */
+            .vs-hero-section{ padding-top: 140px !important; }
           }
         `}</style>
       </section>
