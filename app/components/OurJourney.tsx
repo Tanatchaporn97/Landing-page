@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useEffect, useCallback, Fragment } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { type Locale } from "../../i18n-config";
 
@@ -14,7 +14,7 @@ const JOURNEY_STEPS = [
     subtitle: "เปิดตัว Buddy Review", subtitleEn: "Buddy Review Launches",
     desc: "Soft Launch อย่างเป็นทางการ ด้วยการเป็นแพลตฟอร์มที่พลิกโฉมวงการ ที่ทำให้แบรนด์และอินฟลูเอนเซอร์สามารถร่วมงานกันได้สะดวกมากขึ้น ปัญหาน้อยลง ด้วยเทคโนโลยีบนแพลตฟอร์มที่มีประสิทธิภาพ",
     descEn: "We officially soft-launched a platform that reshaped the industry — making it easier for brands and influencers to collaborate, with fewer problems, thanks to efficient platform technology." },
-  { year: "2019", img: "/about-us/2019.webp", ratio: "1400 / 1237",
+  { year: "2019", img: "/about-us/2019.webp", ratio: "1400 / 1237", imgWidth: "90%",
     subtitle: "ก้าวสำคัญสู่ความมั่นคง", subtitleEn: "A Major Step Toward Stability",
     desc: "เริ่มก่อตั้งบริษัท 'บับเบิลลี จำกัด' อย่างเป็นทางการ เพื่อรองรับการเติบโตและสร้างความเชื่อมั่นให้กับลูกค้า พร้อมกับการพัฒนาระบบการจัดการและบริการที่ดียิ่งขึ้นเพื่อตอบโจทย์ลูกค้าในทุกกลุ่ม",
     descEn: "We officially founded Bubblely Co., Ltd. to support our growth and build client confidence, alongside better management systems and services to serve every customer segment." },
@@ -26,11 +26,11 @@ const JOURNEY_STEPS = [
     subtitle: "ขยายทีมครั้งใหญ่", subtitleEn: "A Major Team Expansion",
     desc: "แม้จะเป็นช่วงที่ท้าทายสำหรับหลายธุรกิจ แต่ Buddy Review ยังคงมุ่งมั่นพัฒนาบริการและแพลตฟอร์มอย่างต่อเนื่อง พร้อมยังทำแคมเปญช่วยเหลือแบรนด์ SME และร่วมมือกับอินฟลูเอนเซอร์ที่มีจิตอาสาในช่วง COVID-19 เพื่อก้าวข้ามและเติบโตผ่านเวลาที่ลำบากไปด้วยกัน",
     descEn: "Even through a challenging time for many businesses, Buddy Review kept developing our services and platform — running campaigns to support SME brands and partnering with volunteer-minded influencers through COVID-19, growing through hard times together." },
-  { year: "2024", img: "/about-us/2024.png", ratio: "1328 / 600", wide: true, maxWidth: "388px",
+  { year: "2024", img: "/about-us/2024.png", ratio: "1328 / 600", wide: true, maxWidth: "310px",
     subtitle: "อีกก้าวความสำเร็จ", subtitleEn: "Another Milestone of Success",
     desc: "เราได้ถูกจัดอันดับเป็นอันดับ 4 บริษัทหมวด Advertising & Marketing ที่เติบโตเร็วที่สุดในเอเชียแปซิฟิกจากการจัดอันดับโดย Financial Times",
     descEn: "We were ranked No. 4 among the fastest-growing Advertising & Marketing companies in Asia-Pacific by the Financial Times." },
-  { year: "2025", img: "/about-us/2025.png", ratio: "1600 / 626", wide: true, maxWidth: "697px",
+  { year: "2025", img: "/about-us/2025.png", ratio: "1600 / 626", wide: true, maxWidth: "530px",
     subtitle: "ตอกย้ำความสำเร็จอีกขั้น", subtitleEn: "Cementing Our Success Further",
     desc: "เราได้คว้าอันดับที่ 1 บริษัทหมวด Advertising & Marketing ที่มีอัตราการเติบโตที่เร็วที่สุดในประเทศไทยโดย Financial Times และยังได้รับรางวัล Top MarTech Providers for Growing Business 2025 โดย Content Shifu อีกด้วย",
     descEn: "We claimed No. 1 among the fastest-growing Advertising & Marketing companies in Thailand by the Financial Times, and also received the Top MarTech Providers for Growing Business 2025 award from Content Shifu." },
@@ -94,7 +94,7 @@ export default function OurJourney({ lang }: { lang: Locale }) {
         </p>
       </div>
 
-      <div ref={trackWrapRef} style={{ position: "relative", display: "flex", flexDirection: "column", gap: "80px" }}>
+      <div ref={trackWrapRef} style={{ position: "relative", display: "flex", flexDirection: "column", gap: "24px" }}>
         {/* center divider — track + scroll-driven progress, same automation as How We Run Campaigns */}
         <div className="journey-center-line" style={{ position: "absolute", left: "50%", top: 0, bottom: 0, width: "4px", borderRadius: "2px", background: "rgba(95,38,229,0.12)", transform: "translateX(-50%)" }} />
         <div ref={progressRef} className="journey-center-line" style={{ position: "absolute", left: "50%", top: 0, width: "4px", borderRadius: "2px", background: "linear-gradient(180deg, #5f25e5 0%, #ff0089 100%)", transform: "translateX(-50%)", transition: "height 0.1s linear" }} />
@@ -115,7 +115,7 @@ export default function OurJourney({ lang }: { lang: Locale }) {
         {JOURNEY_STEPS.map((s, i) => {
           const onRight = i % 2 === 1;
           return (
-            <Fragment key={s.year}>
+            <div key={s.year} className="journey-step" style={{ marginTop: i === 0 ? 0 : "-56px" }}>
               <div
                 ref={(el) => { blockRefs.current[i] = el; }}
                 className="journey-block"
@@ -134,11 +134,14 @@ export default function OurJourney({ lang }: { lang: Locale }) {
                 <p style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: "0 0 10px", lineHeight: 1.4, color: "#111827" }}>
                   {lang === "th" ? s.subtitle : s.subtitleEn}
                 </p>
-                <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: s.wide ? 0 : "0 0 24px" }}>
+                <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: "0 0 24px" }}>
                   {lang === "th" ? s.desc : s.descEn}
                 </p>
                 {!s.wide && (
-                  <div style={{ position: "relative", width: "100%", aspectRatio: s.ratio, marginTop: "24px" }}>
+                  <div style={{
+                    position: "relative", width: s.imgWidth ?? "100%", aspectRatio: s.ratio, marginTop: "24px",
+                    marginLeft: onRight ? "auto" : 0, marginRight: onRight ? 0 : "auto",
+                  }}>
                     <Image src={s.img} alt={s.year} fill sizes="(max-width: 768px) 100vw, 460px" style={{ objectFit: "contain", objectPosition: onRight ? "right" : "left" }} />
                   </div>
                 )}
@@ -149,14 +152,14 @@ export default function OurJourney({ lang }: { lang: Locale }) {
               {s.wide && (
                 <div className="journey-wide-img" style={{
                   position: "relative", width: "100%", maxWidth: s.maxWidth ?? "820px", aspectRatio: s.ratio,
-                  marginTop: "-40px",
+                  marginTop: "24px",
                   marginLeft: onRight ? "auto" : 0,
                   marginRight: onRight ? 0 : "auto",
                 }}>
                   <Image src={s.img} alt={s.year} fill sizes="(max-width: 900px) 100vw, 820px" style={{ objectFit: "contain", objectPosition: onRight ? "right" : "left" }} />
                 </div>
               )}
-            </Fragment>
+            </div>
           );
         })}
       </div>
@@ -167,6 +170,7 @@ export default function OurJourney({ lang }: { lang: Locale }) {
         }
         @media (max-width: 640px){
           .journey-block{ max-width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; text-align: left !important; }
+          .journey-step{ margin-top: 0 !important; }
         }
       `}</style>
     </div>

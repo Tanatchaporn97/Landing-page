@@ -32,15 +32,20 @@ export default function BuddyRanksInteractive({ lang, cards }: { lang: "th" | "e
         }
         /* Mobile: keep the fan inside the section's side padding instead of
            bleeding to the screen edge — scale it down per breakpoint so the
-           outermost cards never spill past the viewport. */
+           outermost cards never spill past the viewport. Uses \`zoom\` rather
+           than \`transform: scale\` because transform never shrinks an
+           element's own layout box (only its painted appearance), which left
+           a huge block of reserved empty space around the now-tiny cards;
+           zoom resizes the box itself so the section's height shrinks along
+           with the visible cards. */
         @media (max-width: 767px){
-          .buddy-ranks-mockup-bleed .fan-layout{ transform: scale(0.85); transform-origin: center center; }
+          .buddy-ranks-mockup-bleed .fan-layout{ zoom: 0.85; }
         }
         @media (max-width: 639px){
-          .buddy-ranks-mockup-bleed .fan-layout{ transform: scale(0.75); }
+          .buddy-ranks-mockup-bleed .fan-layout{ zoom: 0.75; }
         }
         @media (max-width: 479px){
-          .buddy-ranks-mockup-bleed .fan-layout{ transform: scale(0.52); }
+          .buddy-ranks-mockup-bleed .fan-layout{ zoom: 0.52; }
         }
       `}</style>
     </>

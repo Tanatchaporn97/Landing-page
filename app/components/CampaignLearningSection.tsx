@@ -30,9 +30,9 @@ const ACTIVITY_TILES = [
   { img: "/campaign-activity/activity-05.jpg" },
   { img: "/campaign-activity/activity-03.jpg" },
   { img: "/campaign-activity/activity-01.jpg" },
+  { img: "/campaign-activity/activity-02.jpg" },
   { img: "/campaign-activity/activity-06.jpg" },
   { img: "/campaign-activity/activity-04.jpg" },
-  { img: "/campaign-activity/activity-02.jpg" },
 ] as const;
 
 // Floating-panel highlight style shared by every dashboard tile below

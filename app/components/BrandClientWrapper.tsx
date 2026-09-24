@@ -14,6 +14,7 @@ import CreatorSelectionSection from "./CreatorSelectionSection";
 import CampaignLearningSection from "./CampaignLearningSection";
 import CategoriesMarquee from "./CategoriesMarquee";
 import CreatorCategoriesSection from "./CreatorCategoriesSection";
+import BrandHeroVisual from "./BrandHeroVisual";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 
@@ -242,13 +243,13 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
     { img: "/how-we-run-campaigns/plan-campaign.png", title: "บรีฟ เป้าหมาย กลุ่มเป้าหมาย และสิ่งที่แคมเปญต้องทำให้สำเร็จ", titleEn: "Brief the Goal, Audience, and What the Campaign Needs to Achieve",
       desc: "ทำความเข้าใจโจทย์ของแบรนด์ตั้งแต่ต้นทาง เพื่อวางทิศทางแคมเปญให้ตรงเป้าหมายที่สุด",
       descEn: "We start by fully understanding your brief, so the campaign direction is aligned with your goals from day one." },
-    { img: "/how-we-run-campaigns/plan-campaign.png", title: "วางแผนแคมเปญ", titleEn: "Plan the Campaign",
+    { img: "/how-we-run-campaigns/manage-seamlessly.png", title: "วางแผนแคมเปญ", titleEn: "Plan the Campaign",
       desc: "เปลี่ยนเป้าหมายของแบรนด์เป็นกลยุทธ์ที่จับต้องได้ ให้ทุกการสื่อสารไปถึงกลุ่มเป้าหมายได้ตรงจุด",
       descEn: "We turn your brand's goals into a concrete strategy, so every message reaches the right audience." },
     { img: "/how-we-run-campaigns/select-influencers.png", title: "คัดสรรอินฟลูเอนเซอร์ที่ใช่", titleEn: "Select the Right Influencers",
       desc: "ผ่านระบบ KOL Discovery จับคู่อินฟลูเอนเซอร์ที่เหมาะสมที่สุดกับแบรนด์คุณด้วยข้อมูลเชิงลึกที่แม่นยำ",
       descEn: "Our KOL Discovery system matches your brand with the most suitable influencers using precise data insights." },
-    { img: "/how-we-run-campaigns/manage-seamlessly.png", title: "จัดการแคมเปญไร้รอยต่อ", titleEn: "Manage Seamlessly",
+    { img: "/how-we-run-campaigns/review-drafts.png", title: "จัดการแคมเปญไร้รอยต่อ", titleEn: "Manage Seamlessly",
       desc: "ให้แคมเปญของคุณดำเนินไปอย่างไม่มีสะดุด ด้วยทีมงานมืออาชีพที่ดูแลทุกขั้นตอน",
       descEn: "Your campaign runs without a hitch, with a professional team overseeing every step." },
     { img: "/how-we-run-campaigns/launch.png", title: "Launch ลงคอนเทนต์ พร้อมติดตามและดูแลให้ทุกโพสต์เป็นไปอย่างราบรื่น", titleEn: "Launch & Monitor Every Post",
@@ -328,7 +329,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
             <p style={{ ...KT, color: "#111827", fontSize: "clamp(16px, 1.6vw, 20px)", lineHeight: 1.7, margin: "40px 0 32px" }}>
               {lang === "th" ? (
-                "วางกลยุทธ์ คัดเลือก Creator และบริหารแคมเปญให้ตรงเป้าหมายของแบรนด์ ตั้งแต่ Brief จนถึงรายงานผล"
+                <>วางกลยุทธ์ คัดเลือก Creator และบริหารแคมเปญให้ตรง<br />เป้าหมายของแบรนด์ ตั้งแต่ Brief จนถึงรายงานผล</>
               ) : (
                 "From Strategy To Insight, We Turn Influence Into Impact."
               )}
@@ -360,21 +361,9 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </div>
           </div>
 
-          {/* Right: tilted mockup with floating decorative accents */}
+          {/* Right: interactive campaign-dashboard + creator-cards composition */}
           <div style={{ position: "relative" }}>
-            <div style={{
-              position: "absolute", width: "380px", height: "380px", borderRadius: "50%",
-              background: "radial-gradient(circle, rgba(255,0,137,0.10) 0%, transparent 70%)",
-              top: "50%", left: "50%", transform: "translate(-50%,-50%)", zIndex: 0,
-            }} />
-            <motion.div
-              style={{ position: "relative", aspectRatio: "2457 / 2529", zIndex: 1 }}
-              animate={{ rotate: -3 }}
-              whileHover={{ rotate: 0, scale: 1.03 }}
-              transition={{ type: "spring", stiffness: 200, damping: 18 }}
-            >
-              <Image src="/heading-brand.png" alt={lang === "th" ? "แดชบอร์ดแคมเปญ" : "Campaign dashboard"} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "contain" }} />
-            </motion.div>
+            <BrandHeroVisual lang={lang as "th" | "en"} />
           </div>
         </div>
       </section>
@@ -460,11 +449,10 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   ref={(el) => { serviceCardRefs.current[i] = el; }}
                   style={{
                     width: isActive ? 380 : SERVICE_CARD_WIDTH,
-                    // Fixed regardless of active state — otherwise the varying description
-                    // length made the row (and everything below it) resize on every 5s
-                    // auto-advance tick, which felt like the page yanking itself back up
-                    // whenever this section had already scrolled out of view.
-                    height: "486px",
+                    // minHeight (not a hard height) so collapsed cards keep their original
+                    // compact size, while an expanded card can grow taller to fit its full
+                    // description instead of clipping it.
+                    minHeight: "486px",
                     flexShrink: 0, scrollSnapAlign: "start",
                     borderRadius: isActive ? 24 : 20, overflow: "hidden", cursor: "pointer",
                     background: "rgba(255,255,255,0.22)",
@@ -473,23 +461,21 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                     boxShadow: "0 8px 32px rgba(95,38,229,0.10)",
                     display: "flex", flexDirection: "column",
                   }}>
-                  <div style={{ position: "relative", width: "100%", flex: 1, minHeight: 0 }}>
+                  <div style={{ position: "relative", width: "100%", height: isActive ? "290px" : "406px", flexShrink: 0 }}>
                     <Image src={item.img} alt={item.title} fill sizes={isActive ? "380px" : "220px"}
                       style={{ objectFit: "cover", objectPosition: item.objectPosition || "center" }} />
                   </div>
                   <div style={{
                     padding: isActive ? "24px 26px 28px" : "18px 18px 20px",
                     display: "flex", flexDirection: "column",
-                    height: isActive ? "196px" : "80px", flexShrink: 0, overflow: "hidden",
+                    minHeight: isActive ? "196px" : "80px", flexShrink: 0,
                   }}>
-                    <h3 style={{ ...KT, fontSize: isActive ? "22px" : "16px", fontWeight: 700, color: "#5f26e5", margin: isActive ? "0 0 10px" : 0, lineHeight: 1.3,
-                      display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+                    <h3 style={{ ...KT, fontSize: isActive ? "22px" : "16px", fontWeight: 700, color: "#5f26e5", margin: isActive ? "0 0 10px" : 0, lineHeight: 1.3 }}>
                       {item.title}
                     </h3>
                     {isActive && (
                       <p style={{
                         ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: 0,
-                        display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden",
                       }}>
                         {lang === "th" ? item.desc : item.descEn}
                       </p>
@@ -653,7 +639,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   approach: "ผสานอินฟลูเอนเซอร์เฉพาะทางที่เข้าถึง Community คนเลี้ยงปลาคาร์พโดยตรง กับ Lifestyle Influencer ที่ช่วยขยายการรับรู้ในวงกว้าง ทำให้แคมเปญได้ทั้งความน่าเชื่อถือและ Reach ไปพร้อมกัน",
                   approachEn: "Blended specialist influencers who reached the koi-keeping community directly with lifestyle influencers who extended awareness at scale — giving the campaign both credibility and reach.",
                   stats: [{ label: "Reach", labelTh: "การเข้าถึง", value: "850K" }, { label: "Community Engagement", labelTh: "การมีส่วนร่วม", value: "+65%" }, { label: "Creators", labelTh: "ครีเอเตอร์", value: "10" }],
-                  imgFit: "contain" as const, imgBg: "#070e5e" },
+                  imgFit: "contain" as const, imgBg: "#05176e" },
                 { value: "Always-on Content", href: `/${lang}/success/auntie-annes`,  img: "/success-stories-2/auntie-annes-logo.jpg", cat: "FOOD & BEVERAGE", title: "Auntie Anne's",
                   overview: "สร้าง Always-on Content Engine บน TikTok ที่ผลิตคอนเทนต์ต่อเนื่องกว่า 15 เดือน รักษาการมองเห็นแบรนด์ได้ตลอดปี",
                   overviewEn: "Built an always-on TikTok content engine producing content continuously for 15+ months, keeping the brand visible year-round.",

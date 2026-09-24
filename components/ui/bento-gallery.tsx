@@ -5,6 +5,8 @@ import {
   motion,
   useScroll,
   useTransform,
+  useMotionValue,
+  animate,
   AnimatePresence,
 } from "motion/react";
 import { cn } from "@/lib/utils";
@@ -20,8 +22,8 @@ type ImageItem = {
 
 interface InteractiveImageBentoGalleryProps {
   imageItems: ImageItem[];
-  title: string;
-  description: string;
+  title: React.ReactNode;
+  description?: string;
 }
 
 const containerVariants = {
@@ -91,6 +93,8 @@ const InteractiveImageBentoGallery: React.FC<
   const containerRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const targetRef = useRef<HTMLDivElement>(null);
+  const dragConstraintRef = useRef(0);
+  const trackX = useMotionValue(0);
 
   useEffect(() => {
     const calculateConstraints = () => {
@@ -99,6 +103,7 @@ const InteractiveImageBentoGallery: React.FC<
         const gridWidth = gridRef.current.scrollWidth;
         const newConstraint = Math.min(0, containerWidth - gridWidth - 32);
         setDragConstraint(newConstraint);
+        dragConstraintRef.current = newConstraint;
       }
     };
 
@@ -106,6 +111,20 @@ const InteractiveImageBentoGallery: React.FC<
     window.addEventListener("resize", calculateConstraints);
     return () => window.removeEventListener("resize", calculateConstraints);
   }, [imageItems]);
+
+  // Let the gallery be scrolled horizontally with the mouse wheel / trackpad,
+  // not just by dragging — feels more natural since it visually reads as a
+  // horizontal strip. Only takes over scroll while it still has room to move,
+  // so the page can keep scrolling vertically once the strip is exhausted.
+  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    const current = trackX.get();
+    const next = Math.min(0, Math.max(dragConstraintRef.current, current - delta));
+    if (next !== current) {
+      e.preventDefault();
+      animate(trackX, next, { type: "tween", duration: 0.2, ease: "easeOut" });
+    }
+  };
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -123,21 +142,29 @@ const InteractiveImageBentoGallery: React.FC<
         style={{ opacity, y }}
         className="container mx-auto px-4 text-center"
       >
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+        <h2 className="section-title font-bold section-h2-fixed" style={{
+          fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif",
+          fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",
+          fontFeatureSettings: "'pnum' on,'lnum' on",
+        }}>
           {title}
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
-          {description}
-        </p>
+        {description && (
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
+            {description}
+          </p>
+        )}
       </motion.div>
 
       <div
         ref={containerRef}
         className="relative mt-12 w-full cursor-grab active:cursor-grabbing"
+        onWheel={handleWheel}
       >
         <motion.div
           className="w-max"
           drag="x"
+          style={{ x: trackX }}
           dragConstraints={{ left: dragConstraint, right: 0 }}
           dragElastic={0.05}
         >
@@ -147,7 +174,7 @@ const InteractiveImageBentoGallery: React.FC<
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: "some" }}
           >
             {imageItems.map((item) => (
               <motion.div
@@ -157,7 +184,7 @@ const InteractiveImageBentoGallery: React.FC<
                   "group relative flex h-full min-h-[15rem] w-full min-w-[15rem] cursor-pointer items-end overflow-hidden rounded-xl border border-black/5 bg-white p-4 shadow-sm transition-shadow duration-300 ease-in-out hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5f26e5] focus-visible:ring-offset-2",
                   item.span
                 )}
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.05, y: -6 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 onClick={() => setSelectedItem(item)}
                 onKeyDown={(e) => e.key === "Enter" && setSelectedItem(item)}

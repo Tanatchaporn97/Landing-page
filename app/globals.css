@@ -1135,8 +1135,11 @@ body {
   .testimonials-masonry { flex-direction: column !important; }
   .testimonials-col-2 { margin-top: 0 !important; }
 
-  /* Hero H1: reduce minimum size so it doesn't overpower small screens */
-  .hero-h1-inf { font-size: clamp(34px, 9vw, 48px) !important; }
+  /* Hero H1: reduce minimum size so it doesn't overpower small screens.
+     Also drop the 1-line-height top margin — it exists to reserve vertical
+     rhythm against the desktop two-column layout, but on the mobile
+     single-column stack it just reads as a large blank gap under the navbar. */
+  .hero-h1-inf { font-size: clamp(34px, 9vw, 48px) !important; margin-top: 0 !important; }
 
   /* Hero CTA row: allow wrap, buttons shrink like landing's .hero-btn */
   .hero-cta-row-inf { gap: 12px !important; }

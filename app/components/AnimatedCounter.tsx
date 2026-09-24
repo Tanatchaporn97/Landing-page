@@ -5,7 +5,7 @@ export default function AnimatedCounter({
   target,
   startValue = 0,
   suffix = "",
-  duration = 300,
+  duration = 2000,
 }: {
   target: number;
   startValue?: number;
