@@ -691,7 +691,14 @@ body {
 @media (min-width: 768px) {
   .hamburger-btn { display: none !important; }
 }
-@media (max-width: 1480px) {
+@media (max-width: 1180px) {
+  /* Was 1480px, which left a dead zone from 768-1480px where the hamburger
+     is hidden (only shows below 768px) but the desktop nav links were also
+     hidden — a common MacBook logical width (1440px, the default scaled
+     resolution on most 13"/15" MacBook Air/Pro) fell right in that gap and
+     showed an incomplete navbar (logo + buttons, no nav links, no
+     hamburger). Lowered so 1280/1440/1512/1728px MacBook widths all show
+     the full desktop nav like a large external monitor. */
   .desktop-nav-links { display: none !important; }
 }
 

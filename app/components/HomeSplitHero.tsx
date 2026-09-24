@@ -284,7 +284,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
 
           {/* mock art — above background, never clipped */}
           <div className="split-art" style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-start", padding: "190px 6% 0" }}>
-            <div style={{ position: "relative", width: "72%", maxWidth: "500px" }}>
+            <div className="split-art-inner" style={{ position: "relative", width: "72%", maxWidth: "500px" }}>
               <BrandMockArt />
             </div>
           </div>
@@ -299,7 +299,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
             }}>
               {t.brand.label}
             </Link>
-            <p style={{ ...KT, fontSize: "clamp(30px, 3.6vw, 46px)", fontWeight: 800, letterSpacing: "0.02em", color: "#1f1447", lineHeight: 1.2, margin: "0 0 14px" }}>
+            <p className="split-tagline" style={{ ...KT, fontSize: "clamp(30px, 3.6vw, 46px)", fontWeight: 800, letterSpacing: "0.02em", color: "#1f1447", lineHeight: 1.2, margin: "0 0 14px", maxWidth: "420px" }}>
               {t.brand.tagline}
             </p>
             <div className="split-reveal" style={{
@@ -344,7 +344,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           </div>
 
           <div className="split-art" style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", padding: "190px 6% 0" }}>
-            <div style={{ position: "relative", width: "72%", maxWidth: "480px" }}>
+            <div className="split-art-inner" style={{ position: "relative", width: "72%", maxWidth: "480px" }}>
               <InfluencerMockArt />
             </div>
           </div>
@@ -358,7 +358,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
             }}>
               {t.influencer.label}
             </Link>
-            <p style={{ ...KT, fontSize: "clamp(30px, 3.6vw, 46px)", fontWeight: 800, letterSpacing: "0.02em", color: "#4a1338", lineHeight: 1.2, margin: "0 0 14px" }}>
+            <p className="split-tagline" style={{ ...KT, fontSize: "clamp(30px, 3.6vw, 46px)", fontWeight: 800, letterSpacing: "0.02em", color: "#4a1338", lineHeight: 1.2, margin: "0 0 14px", maxWidth: "420px", marginLeft: "auto" }}>
               {t.influencer.tagline}
             </p>
             <div className="split-reveal" style={{
@@ -385,7 +385,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
         </motion.div>
 
         {/* Center main message — fades fully out on hover, never has its own box/panel */}
-        <div style={{
+        <div className="split-hero-center" style={{
           position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", zIndex: 5,
           width: "min(760px, 44vw)", textAlign: "center", paddingTop: "180px",
           opacity: active ? 0 : 1,
@@ -506,6 +506,27 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
         }
         @media (min-width: 900px) {
           .split-hero-mobile { display: none !important; }
+        }
+        /* Narrow desktop (small MacBook widths, or the browser window just
+           resized down before hitting the 900px mobile breakpoint): the
+           absolutely-centered hero heading and each side panel's own
+           label/tagline text used to have no built-in clearance from each
+           other, so as the window narrowed the panel taglines could reach
+           in far enough to visually collide with the centered heading.
+           Give the center block less width and push the panel text further
+           toward its own outer edge so there's always a clear gap between
+           them at these widths. */
+        @media (min-width: 900px) and (max-width: 1280px) {
+          .split-hero-center { width: min(460px, 34vw) !important; padding-top: 150px !important; }
+          .split-hero-center h1 { font-size: clamp(22px, 3.1vw, 34px) !important; }
+          .split-art, .split-panel > div:last-child { padding-left: 8% !important; padding-right: 8% !important; }
+          /* The art illustration (and the small badge icons floating on it)
+             was still reaching in far enough at this width to collide with
+             the shrunk headline — shrinking the headline's font alone
+             wasn't enough since the art's own width didn't change. Pull the
+             art in too so its badges stay clear of the center column. */
+          .split-art-inner { width: 56% !important; }
+          .split-tagline { font-size: clamp(24px, 3.2vw, 38px) !important; }
         }
         /* Interaction (width expand / reveal / fade) is additionally gated to
            fine-pointer hover devices so a touch device that somehow renders
