@@ -15,7 +15,7 @@ export default function FloatingContactCTA({ lang }: { lang: "th" | "en" }) {
         className="floating-contact-btn"
         style={{
           position: "fixed", bottom: "24px", right: "24px", zIndex: 400,
-          width: "64px", height: "64px", borderRadius: "50%",
+          width: "50px", height: "50px", borderRadius: "50%",
           background: "#5f26e5",
           border: "none", boxShadow: "0 8px 24px rgba(95,38,229,0.35)",
           display: "flex", alignItems: "center", justifyContent: "center",
@@ -23,10 +23,10 @@ export default function FloatingContactCTA({ lang }: { lang: "th" | "en" }) {
         }}
       >
         <span style={{
-          width: "34px", height: "34px",
+          width: "26px", height: "26px",
           display: "flex", alignItems: "center", justifyContent: "center", position: "relative",
         }}>
-          <Image src="/bd-mark.svg" alt="Buddy Review" fill sizes="34px" style={{ objectFit: "contain" }} />
+          <Image src="/bd-mark.svg" alt="Buddy Review" fill sizes="26px" style={{ objectFit: "contain" }} />
         </span>
       </button>
 
@@ -36,7 +36,7 @@ export default function FloatingContactCTA({ lang }: { lang: "th" | "en" }) {
         .floating-contact-btn:hover{ transform: scale(1.06); }
         .floating-contact-btn{ transition: transform 0.2s ease; }
         @media (max-width: 600px){
-          .floating-contact-btn{ width: 56px !important; height: 56px !important; bottom: 16px !important; right: 16px !important; }
+          .floating-contact-btn{ width: 44px !important; height: 44px !important; bottom: 16px !important; right: 16px !important; }
         }
       `}</style>
     </>

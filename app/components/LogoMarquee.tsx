@@ -5,13 +5,19 @@ const LOGO_FILES_ROW1 = [
   "upper-clients-logo-05.png","upper-clients-logo-06.png","upper-clients-logo-11.png","upper-clients-logo-12.png",
   "upper-clients-logo-15.png","upper-clients-logo-23.png","upper-clients-logo-32.png","upper-clients-logo-33.png",
   "upper-clients-logo-34.png","upper-clients-logo-35.png","upper-clients-logo-36.png","upper-clients-logo-37.png",
-  "upper-clients-logo-50.png","upper-clients-logo-51.png","upper-clients-logo-ptt.png",
+  "upper-clients-logo-50.png","upper-clients-logo-51.png",
+  "upper-clients-logo-53.png","upper-clients-logo-54.png","upper-clients-logo-55.png","upper-clients-logo-59.png",
+  "upper-clients-logo-60.png","upper-clients-logo-61.png","upper-clients-logo-62.png",
+  "upper-clients-logo-oppo.png",
 ];
 const LOGO_FILES_ROW2 = [
-  "lower-clients-logo-24.png","lower-clients-logo-31.png","lower-clients-logo-38.png","lower-clients-logo-39.png",
+  "lower-clients-logo-38.png","lower-clients-logo-39.png",
   "lower-clients-logo-40.png","lower-clients-logo-41.png","lower-clients-logo-42.png","lower-clients-logo-43.png",
   "lower-clients-logo-44.png","lower-clients-logo-45.png","lower-clients-logo-46.png","lower-clients-logo-47.png",
   "lower-clients-logo-48.png","lower-clients-logo.png",
+  "lower-clients-logo-52.png","lower-clients-logo-56.png","lower-clients-logo-58.png","lower-clients-logo-63.png",
+  "lower-clients-logo-64.png","lower-clients-logo-66.png","lower-clients-logo-67.png","lower-clients-logo-68.png",
+  "lower-clients-logo-scotch.png",
 ];
 const LOGOS_ROW1 = LOGO_FILES_ROW1.map((f) => (
   <Image key={f} src={`/logos-clients/${f}`} alt={f.replace(/\.(png|webp)$/,"")} className="logo-marquee-img" width={200} height={86} priority style={{ height:"86px", width:"auto", objectFit:"contain", display:"block" }} />
