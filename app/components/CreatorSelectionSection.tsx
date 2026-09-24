@@ -239,11 +239,19 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
         }
         @media (max-width: 720px){
           .cs-stats-inline{ display: none !important; }
-          .cs-charts-row{ grid-template-columns: 1fr 1fr !important; }
         }
         @media (max-width: 640px){
           .cs-tags{ grid-template-columns: repeat(2, auto) !important; }
-          .cs-charts-row, .cs-tags-row{ grid-template-columns: 1fr !important; }
+          /* Keep the dashboard mockup as one compact composition (same
+             3-across charts row, same 2-across tags row as desktop) instead
+             of unstacking every row to full-width — just zoom the whole
+             card down so it fits the viewport. zoom shrinks the layout box
+             itself (unlike transform: scale), so the section's height
+             shrinks along with it instead of leaving dead space. */
+          .cs-dashboard{ zoom: 0.62; }
+        }
+        @media (max-width: 420px){
+          .cs-dashboard{ zoom: 0.5; }
         }
       `}</style>
     </div>

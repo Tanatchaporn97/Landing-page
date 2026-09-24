@@ -138,7 +138,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
 
       {/* ── Video Showcase ── */}
-      <section className="vs-hero-section" style={{ position: "relative", background: "transparent", overflow: "hidden", padding: "295px 0 64px" }}>
+      <section className="vs-hero-section" style={{ position: "relative", background: "transparent", overflow: "hidden", padding: "195px 0 64px" }}>
         <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "0 16px" }}>
           <h2 style={{ margin: "0 0 24px", lineHeight: 1.1 }}>
             {lang === "th" ? (
@@ -192,6 +192,16 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
                headline. */
             .vs-hero-section{ padding-top: 140px !important; }
           }
+          /* Desktop-only vertical rhythm pass: bring "Grow as a Creator"
+             closer to the Our Clients logo row above it, and even out the
+             other sections' top/bottom padding to a consistent ~100px so
+             the gaps between sections read as even down the page. */
+          @media (min-width: 761px){
+            .inf-logo-bg{ padding-bottom: 40px !important; }
+            .community-arc-section{ padding-top: 40px !important; }
+            .inf-channels-section{ padding-top: 100px !important; padding-bottom: 100px !important; }
+            .inf-precta-section{ padding-top: 100px !important; padding-bottom: 100px !important; }
+          }
         `}</style>
       </section>
 
@@ -203,7 +213,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <CommunityArcSection lang={lang as "th" | "en"} />
 
       {/* ── One Creator, Many Channels ── */}
-      <section className="inf-section" style={{ background: "transparent", padding: "60px 48px" }}>
+      <section className="inf-section inf-channels-section" style={{ background: "transparent", padding: "60px 48px" }}>
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <CreatorChannelsSection lang={lang as "th" | "en"} />
         </div>
@@ -286,7 +296,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <FAQAccordion faqs={dict?.faqPage?.faqsInfluencer} lang={lang as Locale} variant="influencer" dict={dict} />
 
         {/* ── Pre-footer CTA ── */}
-        <section className="inf-section" style={{ padding: "80px 48px" }}>
+        <section className="inf-section inf-precta-section" style={{ padding: "80px 48px" }}>
           <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
             <div style={{
               width: "100%",

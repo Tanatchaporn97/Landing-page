@@ -283,7 +283,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           </div>
 
           {/* mock art — above background, never clipped */}
-          <div className="split-art" style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-start", padding: "390px 6% 0" }}>
+          <div className="split-art" style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-start", padding: "190px 6% 0" }}>
             <div style={{ position: "relative", width: "72%", maxWidth: "500px" }}>
               <BrandMockArt />
             </div>
@@ -343,7 +343,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
             <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "160px", background: "linear-gradient(180deg, transparent 0%, #ffffff 100%)" }} />
           </div>
 
-          <div className="split-art" style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", padding: "390px 6% 0" }}>
+          <div className="split-art" style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", padding: "190px 6% 0" }}>
             <div style={{ position: "relative", width: "72%", maxWidth: "480px" }}>
               <InfluencerMockArt />
             </div>
@@ -387,7 +387,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
         {/* Center main message — fades fully out on hover, never has its own box/panel */}
         <div style={{
           position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", zIndex: 5,
-          width: "min(760px, 44vw)", textAlign: "center", paddingTop: "373px",
+          width: "min(760px, 44vw)", textAlign: "center", paddingTop: "180px",
           opacity: active ? 0 : 1,
           transition: "opacity 0.35s ease",
           pointerEvents: "none",

@@ -262,8 +262,16 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           .cl-dashboard{ margin-top: 40px; }
         }
         @media (max-width: 640px){
-          .cl-float{ position: static !important; width: 100% !important; margin-bottom: 12px; }
-          .cl-dashboard{ display: flex; flex-direction: column; }
+          /* Keep the dashboard as one compact composition (floating panels
+             stay absolutely positioned, same as desktop) instead of
+             unstacking it into a tall list of full-width cards — just zoom
+             the whole thing down so it fits the viewport. zoom shrinks the
+             layout box itself (unlike transform: scale), so surrounding
+             spacing shrinks along with it instead of leaving dead space. */
+          .cl-dashboard{ zoom: 0.62; margin: 40px auto 0; }
+        }
+        @media (max-width: 420px){
+          .cl-dashboard{ zoom: 0.52; }
         }
       `}</style>
     </div>
