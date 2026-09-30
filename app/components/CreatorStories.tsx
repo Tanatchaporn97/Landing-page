@@ -4,17 +4,17 @@ import { useRef, useState } from "react";
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const VIDEOS = [
-  { src: "/videos/influencer-header/header-1.mp4", name: "Flukymltp" },
-  { src: "/videos/influencer-header/header-4.mp4", name: "Nice.Naphatchw" },
-  { src: "/videos/influencer-header/header-2.mp4", name: "Icepapan" },
-  { src: "/videos/influencer-header/header-3.mp4", name: "Pookkyjdp" },
-  { src: "/videos/influencer-header/header-5.mp4", name: "ducky.jesse" },
-  { src: "/videos/influencer-header/header-6.mp4", name: "ignoreyouuu" },
-  { src: "/videos/influencer-header/header-7.mp4", name: "suppapitchayas" },
-  { src: "/videos/influencer-header/header-8.mp4", name: "deerboraa" },
-  { src: "/videos/influencer-header/header-9.mp4", name: "graphic.review" },
-  { src: "/videos/influencer-header/header-10.mp4", name: "tinnimalist" },
-  { src: "/videos/influencer-header/header-11.mp4", name: "ถุงเงิน ณัฐดาภรณ์" },
+  { src: "/videos/creator-stories/flukymltp.mp4", name: "Flukymltp" },
+  { src: "/videos/creator-stories/nice-naphatchw.mp4", name: "Nice.Naphatchw" },
+  { src: "/videos/creator-stories/icepapan.mp4", name: "Icepapan" },
+  { src: "/videos/creator-stories/pookkyjdp.mp4", name: "Pookkyjdp" },
+  { src: "/videos/creator-stories/ducky-jesse.mp4", name: "ducky.jesse" },
+  { src: "/videos/creator-stories/ignoreyouuu.mp4", name: "ignoreyouuu" },
+  { src: "/videos/creator-stories/suppapitchayas.mp4", name: "suppapitchayas" },
+  { src: "/videos/creator-stories/deerboraa.mp4", name: "deerboraa" },
+  { src: "/videos/creator-stories/graphic-review.mp4", name: "graphic.review" },
+  { src: "/videos/creator-stories/tinnimalist.mp4", name: "tinnimalist" },
+  { src: "/videos/creator-stories/tungngern.mp4", name: "ถุงเงิน ณัฐดาภรณ์" },
 ];
 
 // A believable TikTok action-bar mockup: like/comment/bookmark/share icons
@@ -71,9 +71,10 @@ function StoryCard({ src, name }: { src: string; name: string }) {
       boxShadow: "0 12px 32px rgba(95,38,229,0.16)", cursor: "pointer",
       scrollSnapAlign: "start",
     }} onClick={toggle}>
-      <video ref={videoRef} playsInline loop style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+      <video ref={videoRef} playsInline loop preload="metadata" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
         onEnded={() => setPlaying(false)}>
-        <source src={src} type="video/mp4" />
+        {/* #t=0.1 makes the browser paint the first frame as the cover without downloading the whole file */}
+        <source src={`${src}#t=0.1`} type="video/mp4" />
       </video>
 
       {!playing && (
