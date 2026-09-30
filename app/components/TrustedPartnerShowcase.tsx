@@ -25,7 +25,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
           background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
           WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
         }}>
-          Built Into Every Campaign
+          What Goes Into Every Campaign
         </h3>
         <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0, maxWidth: "320px" }}>
           {lang === "th"
