@@ -2,6 +2,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
+import Image from "next/image";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -95,164 +96,172 @@ function SideLabel({ side, label, href, size = "desktop" }: { side: "brand" | "i
   );
 }
 
-// Brand-side mock art — built from CSS/SVG (no image asset), matching a
-// glassmorphic "data-insight poster" reference: a tilted glass panel holding
-// a performance chart, with a floating alert card and a checkmark badge,
-// framed by a purple/pink gradient blob and a magnifying-glass accent.
-function BrandMockArt() {
+// Shared glass surface — same recipe as BrandHeroVisual on the Brand page
+// (translucent white + 20px blur + soft purple drop shadow), a touch more
+// opaque here so small text stays legible over the lavender/pink panels.
+const GLASS: React.CSSProperties = {
+  background: "rgba(255,255,255,0.72)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
+  border: "1px solid rgba(255,255,255,0.7)", boxShadow: "0 20px 40px -12px rgba(95,38,229,0.28)",
+};
+
+// Both scenes are container-query sized: every length inside is in `cqw`
+// (1cqw = 1% of the art's own width), so the whole composition scales as one
+// piece — through the hover width animation and down to the small mobile cards.
+const SCENE: React.CSSProperties = { position: "relative", width: "100%", aspectRatio: "1341 / 1017", containerType: "inline-size" };
+
+// Brand side — "we deliver measurable campaigns": a real case-study photo
+// card with floating reach + engagement result cards.
+function BrandMockArt({ lang }: { lang: "th" | "en" }) {
   return (
-    <div style={{ position: "relative", width: "100%", aspectRatio: "1341 / 1017" }}>
-      {/* soft ambient ground-shadow — wide, low, heavily blurred ellipse so it
-          reads as natural falloff under the panel rather than a glowing orb */}
-      <div style={{
-        position: "absolute", right: "-10%", bottom: "-14%", width: "92%", height: "52%", borderRadius: "50%",
-        background: "radial-gradient(ellipse, rgba(95,38,229,0.30) 0%, rgba(95,38,229,0.14) 50%, transparent 78%)",
-        filter: "blur(46px)",
-      }} />
-
-      {/* the tilted glass panel */}
-      <div style={{
-        position: "absolute", right: "4%", top: "10%", width: "62%", height: "72%",
-        borderRadius: "28px", transform: "rotate(6deg)",
-        background: "linear-gradient(160deg, rgba(255,255,255,0.92) 0%, rgba(216,203,247,0.85) 100%)",
-        backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)",
-        border: "2px solid rgba(95,38,229,0.30)",
-        boxShadow: "0 30px 60px -12px rgba(56,20,120,0.42)",
-      }}>
-        {/* chart line + dots */}
-        <svg viewBox="0 0 220 160" width="100%" height="100%" style={{ position: "absolute", inset: 0, padding: "22px", boxSizing: "border-box" }}>
-          <polyline points="20,120 60,95 100,130 140,80 180,55 200,35" fill="none" stroke="#5f26e5" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="2 7" opacity="0.65" />
-          <polyline points="20,120 60,95 100,130 140,80 180,55 200,35" fill="none" stroke="#5f26e5" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-          {[[20,120],[60,95],[100,130],[140,80],[180,55],[200,35]].map(([cx,cy], i) => (
-            <circle key={i} cx={cx} cy={cy} r="5.5" fill="#5f26e5" stroke="#fff" strokeWidth="2.5" />
-          ))}
-        </svg>
-      </div>
-
-      {/* floating alert card, top-left of the panel */}
-      <div style={{
-        position: "absolute", left: "2%", top: "6%", width: "38%",
-        display: "flex", alignItems: "center", gap: "10px", padding: "12px 14px",
-        borderRadius: "16px", background: "rgba(255,255,255,0.9)",
-        boxShadow: "0 16px 32px -10px rgba(56,20,120,0.28)",
-      }}>
-        <span style={{ width: "30px", height: "30px", borderRadius: "9px", background: "#5f26e5", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" /></svg>
-        </span>
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "5px" }}>
-          <span style={{ height: "6px", borderRadius: "3px", background: "#9186c4", width: "80%" }} />
-          <span style={{ height: "6px", borderRadius: "3px", background: "#b3a9d6", width: "55%" }} />
+    <div style={SCENE}>
+      {/* case-study photo card */}
+      <div className="hsh-float" style={{
+        position: "absolute", left: "0", top: "9%", width: "72%", height: "78%",
+        borderRadius: "5cqw", overflow: "hidden", border: "1.2cqw solid rgba(255,255,255,0.85)",
+        boxShadow: "0 30px 60px -18px rgba(56,20,120,0.45)", "--rot": "-2deg",
+      } as React.CSSProperties}>
+        <Image src="/blogs/cp-influencer-trend-01.jpg" alt="CPALL Influencer Trend EP.8" fill sizes="(max-width: 899px) 40vw, 380px" style={{ objectFit: "cover", objectPosition: "50% 35%" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 50%, rgba(20,10,50,0.78) 100%)" }} />
+        <div style={{ position: "absolute", left: "4cqw", bottom: "3.6cqw", right: "4cqw" }}>
+          <p style={{ ...KT, margin: 0, fontSize: "2.2cqw", fontWeight: 700, letterSpacing: "0.08em", color: "#ff5fb3" }}>CASE STUDY</p>
+          <p style={{ ...KT, margin: "0.4cqw 0 0", fontSize: "3.4cqw", fontWeight: 800, color: "#ffffff", lineHeight: 1.2 }}>CPALL Influencer Trend EP.8</p>
         </div>
       </div>
 
-      {/* checkmark badge, top-right — glassmorphism */}
-      <div style={{
-        position: "absolute", right: "0%", top: "2%", width: "15%", aspectRatio: "1/1", borderRadius: "50%",
-        background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        boxShadow: "0 12px 24px -6px rgba(56,20,120,0.35)", border: "1.5px solid rgba(255,255,255,0.7)",
-      }}>
-        <svg width="42%" height="42%" viewBox="0 0 24 24" fill="none" stroke="#5f26e5" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+      {/* total reach card */}
+      <div className="hsh-wiggle" style={{
+        ...GLASS, position: "absolute", left: "48%", top: "0", width: "34%",
+        borderRadius: "4cqw", padding: "3cqw 3.4cqw", "--rot": "1deg", animationDelay: "0.4s",
+      } as React.CSSProperties}>
+        <p style={{ ...KT, margin: 0, fontSize: "2.4cqw", fontWeight: 600, color: "#6b7280" }}>Total Reach</p>
+        <p style={{ ...KT, margin: "0.6cqw 0", fontSize: "6.6cqw", fontWeight: 800, color: "#1f1447", lineHeight: 1 }}>2.4M</p>
+        <p style={{ ...KT, margin: 0, fontSize: "2.2cqw", fontWeight: 700, color: "#16a34a" }}>▲ 18% {lang === "th" ? "vs เป้า" : "vs goal"}</p>
       </div>
 
-      {/* magnifying glass, bottom-left — glassmorphism lens */}
-      <div style={{ position: "absolute", left: "0%", bottom: "4%", width: "30%", aspectRatio: "1/1", filter: "drop-shadow(0 14px 20px rgba(56,20,120,0.35))" }}>
-        <div style={{
-          position: "absolute", left: "14%", top: "14%", width: "53%", height: "53%", borderRadius: "50%",
-          background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
-          border: "3px solid rgba(95,38,229,0.85)",
-        }} />
-        <div style={{
-          position: "absolute", left: "59%", top: "55%", width: "40%", height: "9%",
-          background: "#5f26e5", borderRadius: "50px",
-          transform: "rotate(45deg)", transformOrigin: "left center",
-        }} />
+      {/* weekly engagement card */}
+      <div className="hsh-wiggle" style={{
+        ...GLASS, position: "absolute", left: "56%", bottom: "0", width: "44%",
+        borderRadius: "4cqw", padding: "3cqw 3.4cqw", "--rot": "-1deg", animationDelay: "1.1s",
+      } as React.CSSProperties}>
+        <p style={{ ...KT, margin: "0 0 2.4cqw", fontSize: "2.4cqw", fontWeight: 600, color: "#374151" }}>
+          Engagement / {lang === "th" ? "สัปดาห์" : "week"}
+        </p>
+        <div style={{ display: "flex", alignItems: "flex-end", gap: "1.8cqw", height: "12cqw" }}>
+          {[28, 52, 44, 72, 100].map((h, i, arr) => (
+            <div key={i} className="hsh-bar" style={{
+              flex: 1, height: `${h}%`, borderRadius: "1.2cqw", animationDelay: `${0.15 * i}s`,
+              background: i === arr.length - 1 ? "linear-gradient(180deg, #ff0089 0%, #5f26e5 100%)" : `rgba(95,38,229,${0.18 + i * 0.14})`,
+            }} />
+          ))}
+        </div>
       </div>
+
+      {/* sample-data disclaimer */}
+      <span style={{
+        ...KT, position: "absolute", left: "-1cqw", bottom: "4%", fontSize: "1.9cqw", fontWeight: 700, color: "#b0106a",
+        background: "rgba(255,255,255,0.85)", borderRadius: "50px", padding: "0.8cqw 2cqw", boxShadow: "0 4px 10px rgba(255,0,137,0.12)",
+      }}>
+        {lang === "th" ? "ข้อมูลตัวอย่าง" : "Sample data"}
+      </span>
     </div>
   );
 }
 
-// Influencer-side mock art — same glassmorphic poster structure as
-// BrandMockArt (soft pink primary with a touch of purple instead of
-// purple-led), themed around "sign up as a reviewer/influencer easily":
-// a profile/application card with a star rating and an "apply" pill,
-// a floating new-creator card, a heart badge, and a sparkle accent.
-function InfluencerMockArt() {
+const JOBS = [
+  { brand: "A", catTh: "สกินแคร์", catEn: "Skincare", deliverable: "TikTok 1 คลิป", deliverableEn: "TikTok · 1 clip", tag: "new" },
+  { brand: "B", catTh: "อาหาร", catEn: "Food", deliverable: "IG Reels 1 · Story 2", deliverableEn: "IG Reels 1 · Story 2", tag: "detail" },
+  { brand: "C", catTh: "ไลฟ์สไตล์", catEn: "Lifestyle", deliverable: "YouTube 1 คลิป", deliverableEn: "YouTube · 1 video", tag: "" },
+] as const;
+
+// Influencer side — "find jobs that fit you": a phone showing matched brand
+// jobs, a floating creator photo, a new-jobs notification and a like bubble.
+function InfluencerMockArt({ lang }: { lang: "th" | "en" }) {
   return (
-    <div style={{ position: "relative", width: "100%", aspectRatio: "1341 / 1017" }}>
-      {/* soft ambient ground-shadow — wide, low, heavily blurred ellipse so it
-          reads as natural falloff under the panel rather than a glowing orb */}
-      <div style={{
-        position: "absolute", right: "-10%", bottom: "-14%", width: "92%", height: "52%", borderRadius: "50%",
-        background: "radial-gradient(ellipse, rgba(255,0,137,0.26) 0%, rgba(255,0,137,0.12) 50%, transparent 78%)",
-        filter: "blur(46px)",
-      }} />
-
-      {/* the tilted glass panel — a creator profile/application card */}
-      <div style={{
-        position: "absolute", right: "4%", top: "10%", width: "62%", height: "72%",
-        borderRadius: "28px", transform: "rotate(6deg)",
-        background: "linear-gradient(160deg, rgba(255,255,255,0.92) 0%, rgba(247,205,232,0.85) 100%)",
-        backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)",
-        border: "2px solid rgba(255,0,137,0.28)",
-        boxShadow: "0 30px 60px -12px rgba(120,20,90,0.40)",
-        display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "10%",
-        padding: "10%", boxSizing: "border-box",
-      }}>
-        <span style={{
-          width: "34%", aspectRatio: "1/1", borderRadius: "50%",
-          background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
-          display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
-          border: "1.5px solid rgba(255,255,255,0.7)", boxShadow: "0 10px 20px -6px rgba(255,0,137,0.35)",
+    <div style={SCENE}>
+      {/* phone */}
+      <div className="hsh-float" style={{
+        position: "absolute", right: "4%", top: "0", width: "48%", height: "100%",
+        borderRadius: "7cqw", background: "#1f1447", padding: "1.6cqw",
+        boxShadow: "0 30px 60px -16px rgba(120,20,90,0.45)", "--rot": "0deg",
+      } as React.CSSProperties}>
+        <div style={{
+          position: "relative", width: "100%", height: "100%", borderRadius: "5.6cqw", overflow: "hidden",
+          background: "linear-gradient(180deg, #fff5fa 0%, #fde7f3 100%)", padding: "4cqw 3.2cqw", boxSizing: "border-box",
         }}>
-          <svg width="46%" height="46%" viewBox="0 0 24 24" fill="none" stroke="#ff0089" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21a8 8 0 0 0-16 0" /><circle cx="12" cy="7" r="4" /></svg>
-        </span>
-        <div style={{ display: "flex", gap: "4px" }}>
-          {[0,1,2,3,4].map((i) => (
-            <svg key={i} width="11%" viewBox="0 0 24 24" fill="#ff0089"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 16.9 5.8 20.3l1.6-6.8L2.2 8.9l6.9-.6L12 2z" /></svg>
-          ))}
-        </div>
-        <span style={{
-          ...KT, fontSize: "12px", fontWeight: 700, color: "#fff",
-          background: "linear-gradient(45deg, #ff5fb3 0%, #ff0089 100%)", borderRadius: "50px", padding: "6% 14%",
-        }}>
-          {"Apply Now"}
-        </span>
-      </div>
-
-      {/* floating "new creator" card, top-left of the panel — glassmorphism */}
-      <div style={{
-        position: "absolute", left: "2%", top: "6%", width: "38%",
-        display: "flex", alignItems: "center", gap: "10px", padding: "12px 14px",
-        borderRadius: "16px", background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
-        border: "1px solid rgba(255,255,255,0.6)",
-        boxShadow: "0 16px 32px -10px rgba(120,20,90,0.24)",
-      }}>
-        <span style={{ width: "30px", height: "30px", borderRadius: "9px", background: "#ff0089", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM19 8v6M22 11h-6" /></svg>
-        </span>
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "5px" }}>
-          <span style={{ height: "6px", borderRadius: "3px", background: "#d6559f", width: "80%" }} />
-          <span style={{ height: "6px", borderRadius: "3px", background: "#e58ebc", width: "55%" }} />
+          <div style={{ display: "flex", alignItems: "center", gap: "1.8cqw", marginBottom: "2.6cqw" }}>
+            <div style={{ position: "relative", width: "6.4cqw", height: "6.4cqw", borderRadius: "50%", overflow: "hidden", flexShrink: 0, border: "0.4cqw solid #ffffff" }}>
+              <Image src="/trust-influencers/ryoko.jpg" alt="" fill sizes="40px" style={{ objectFit: "cover" }} />
+            </div>
+            <div>
+              <p style={{ ...KT, margin: 0, fontSize: "1.9cqw", fontWeight: 600, color: "#9ca3af", lineHeight: 1.2 }}>{lang === "th" ? "สวัสดี" : "Hello"}</p>
+              <p style={{ ...KT, margin: 0, fontSize: "2.4cqw", fontWeight: 800, color: "#111827", lineHeight: 1.2 }}>@creator.name</p>
+            </div>
+          </div>
+          <p style={{ ...KT, margin: "0 0 2cqw", fontSize: "2.8cqw", fontWeight: 800, color: "#111827" }}>
+            {lang === "th" ? "งานที่ตรงกับคุณ" : "Jobs matched for you"}
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.8cqw" }}>
+            {JOBS.map((j) => (
+              <div key={j.brand} style={{ background: "#ffffff", borderRadius: "2.8cqw", padding: "2.2cqw 2.4cqw", boxShadow: "0 4px 12px rgba(255,0,137,0.08)" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1cqw" }}>
+                  <p style={{ ...KT, margin: 0, fontSize: "2.2cqw", fontWeight: 800, color: "#111827", whiteSpace: "nowrap" }}>
+                    [{lang === "th" ? "แบรนด์" : "Brand"} {j.brand}] · {lang === "th" ? j.catTh : j.catEn}
+                  </p>
+                  {j.tag === "new" && (
+                    <span style={{ ...KT, fontSize: "1.7cqw", fontWeight: 700, color: "#ff0089", background: "rgba(255,0,137,0.1)", borderRadius: "50px", padding: "0.3cqw 1.4cqw", flexShrink: 0 }}>
+                      {lang === "th" ? "ใหม่" : "New"}
+                    </span>
+                  )}
+                </div>
+                <p style={{ ...KT, margin: "0.6cqw 0 0", fontSize: "1.8cqw", fontWeight: 600, color: "#6b7280" }}>
+                  {lang === "th" ? j.deliverable : j.deliverableEn}
+                </p>
+                {j.tag === "new" && (
+                  <div style={{ ...KT, marginTop: "1.6cqw", textAlign: "center", fontSize: "2cqw", fontWeight: 700, color: "#ffffff", background: "linear-gradient(45deg, #ff5fb3 0%, #ff0089 100%)", borderRadius: "50px", padding: "1cqw 0" }}>
+                    {lang === "th" ? "สมัครงาน" : "Apply"}
+                  </div>
+                )}
+                {j.tag === "detail" && (
+                  <div style={{ ...KT, marginTop: "1.6cqw", textAlign: "center", fontSize: "2cqw", fontWeight: 700, color: "#ff0089", border: "0.3cqw solid #ff0089", borderRadius: "50px", padding: "0.8cqw 0" }}>
+                    {lang === "th" ? "ดูรายละเอียด" : "View details"}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* heart badge, top-right — glassmorphism */}
-      <div style={{
-        position: "absolute", right: "0%", top: "2%", width: "15%", aspectRatio: "1/1", borderRadius: "50%",
-        background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        boxShadow: "0 12px 24px -6px rgba(255,0,137,0.35)", border: "1.5px solid rgba(255,255,255,0.7)",
+      {/* floating creator photo, overlapping the phone's left edge */}
+      <div className="hsh-wiggle" style={{
+        position: "absolute", left: "22%", top: "12%", width: "25%", aspectRatio: "3 / 4",
+        borderRadius: "4cqw", overflow: "hidden", border: "1cqw solid rgba(255,255,255,0.9)",
+        boxShadow: "0 20px 40px -12px rgba(120,20,90,0.4)", "--rot": "-6deg", zIndex: 2,
+      } as React.CSSProperties}>
+        <Image src="/trust-influencers/ryoko.jpg" alt={lang === "th" ? "ครีเอเตอร์" : "Creator"} fill sizes="(max-width: 899px) 20vw, 130px" style={{ objectFit: "cover" }} />
+      </div>
+
+      {/* new jobs notification */}
+      <div className="hsh-wiggle" style={{
+        ...GLASS, position: "absolute", left: "0", top: "62%", zIndex: 3,
+        display: "flex", alignItems: "center", gap: "2cqw", borderRadius: "3.6cqw", padding: "2.2cqw 3cqw 2.2cqw 2.2cqw",
+        boxShadow: "0 20px 40px -12px rgba(120,20,90,0.3)", "--rot": "1deg", animationDelay: "0.8s",
+      } as React.CSSProperties}>
+        <span style={{ width: "6cqw", height: "6cqw", borderRadius: "50%", background: "#ff0089", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+          <svg width="55%" height="55%" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0" /></svg>
+        </span>
+        <div style={{ ...KT, fontSize: "2.2cqw", fontWeight: 700, color: "#111827", lineHeight: 1.35, whiteSpace: "nowrap" }}>
+          {lang === "th" ? <>มีงานใหม่ 3 งาน<br />ที่ตรงกับสไตล์คุณ</> : <>3 new jobs<br />that match your style</>}
+        </div>
+      </div>
+
+      {/* like bubble */}
+      <div className="hsh-pulse" style={{
+        position: "absolute", right: "-3%", top: "58%", width: "10cqw", height: "10cqw", borderRadius: "50%", zIndex: 3,
+        background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center",
+        boxShadow: "0 12px 24px -6px rgba(255,0,137,0.4)",
       }}>
         <svg width="46%" height="46%" viewBox="0 0 24 24" fill="#ff0089"><path d="M12 21s-7.5-4.7-10-9.3C.4 8 2 4 6 4c2 0 3.5 1 6 3.5C14.5 5 16 4 18 4c4 0 5.6 4 4 7.7C19.5 16.3 12 21 12 21z" /></svg>
-      </div>
-
-      {/* sparkle accent, bottom-left — glassmorphism */}
-      <div style={{ position: "absolute", left: "0%", bottom: "4%", width: "30%" }}>
-        <svg viewBox="0 0 64 64" width="100%" height="100%" style={{ filter: "drop-shadow(0 14px 20px rgba(120,20,90,0.3))" }}>
-          <circle cx="32" cy="32" r="22" fill="rgba(255,255,255,0.55)" stroke="rgba(255,0,137,0.85)" strokeWidth="4" style={{ backdropFilter: "blur(20px)" }} />
-          <path d="M32 20l3.2 8.8L44 32l-8.8 3.2L32 44l-3.2-8.8L20 32l8.8-3.2L32 20z" fill="#ff0089" />
-        </svg>
       </div>
     </div>
   );
@@ -318,7 +327,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           {/* mock art — above background, never clipped */}
           <div className="split-art" style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-start", padding: "190px 6% 0" }}>
             <div className="split-art-inner" style={{ position: "relative", width: "72%", maxWidth: "500px" }}>
-              <BrandMockArt />
+              <BrandMockArt lang={lang} />
             </div>
           </div>
 
@@ -371,7 +380,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
 
           <div className="split-art" style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", padding: "190px 6% 0" }}>
             <div className="split-art-inner" style={{ position: "relative", width: "72%", maxWidth: "480px" }}>
-              <InfluencerMockArt />
+              <InfluencerMockArt lang={lang} />
             </div>
           </div>
 
@@ -456,7 +465,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           }}>
             <div style={{ position: "absolute", top: "-80px", right: "-60px", width: "220px", height: "220px", borderRadius: "50%", background: "radial-gradient(circle, rgba(95,38,229,0.18) 0%, transparent 72%)" }} />
             <div style={{ width: "78%", position: "relative" }}>
-              <BrandMockArt />
+              <BrandMockArt lang={lang} />
             </div>
             <div style={{ marginTop: "12px", position: "relative" }}>
               <SideLabel side="brand" label={t.brand.label} href={`/${lang}/brand`} size="mobile" />
@@ -485,7 +494,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
             display: "flex", flexDirection: "column", alignItems: "center", padding: "18px 12px 22px",
           }}>
             <div style={{ width: "70%" }}>
-              <InfluencerMockArt />
+              <InfluencerMockArt lang={lang} />
             </div>
             <div style={{ marginTop: "12px" }}>
               <SideLabel side="influencer" label={t.influencer.label} href={`/${lang}/influencer`} size="mobile" />
@@ -510,6 +519,17 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
       </div>
 
       <style>{`
+        @keyframes hsh-float { 0%,100% { transform: translateY(0) rotate(var(--rot, 0deg)); } 50% { transform: translateY(-1.2cqw) rotate(var(--rot, 0deg)); } }
+        @keyframes hsh-wiggle { 0%,100% { transform: translateY(0) rotate(var(--rot, 0deg)); } 50% { transform: translateY(-1.8cqw) rotate(calc(var(--rot, 0deg) * -1)); } }
+        @keyframes hsh-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        @keyframes hsh-bar { from { transform: scaleY(0.7); } to { transform: scaleY(1); } }
+        .hsh-float { transform: rotate(var(--rot, 0deg)); animation: hsh-float 5s ease-in-out infinite; }
+        .hsh-wiggle { transform: rotate(var(--rot, 0deg)); animation: hsh-wiggle 3.6s ease-in-out infinite; }
+        .hsh-pulse { animation: hsh-pulse 2.2s ease-in-out infinite; }
+        .hsh-bar { transform-origin: bottom; animation: hsh-bar 1.6s ease-in-out infinite alternate; }
+        @media (prefers-reduced-motion: reduce) {
+          .hsh-float, .hsh-wiggle, .hsh-pulse, .hsh-bar { animation: none; }
+        }
         /* Layout switch is purely a width breakpoint — never gated on hover
            capability — so the mobile static structure is guaranteed on small
            screens regardless of pointer/hover support. */
