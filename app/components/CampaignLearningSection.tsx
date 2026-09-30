@@ -102,7 +102,6 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
                 borderRadius: isActive ? "18px" : 0,
                 background: isActive ? "rgba(255,255,255,0.18)" : "transparent",
                 border: isActive ? "1.5px solid rgba(255,255,255,0.55)" : "1.5px solid transparent",
-                borderBottom: i < STEPS.length - 1 && !isActive ? "1px solid rgba(255,255,255,0.18)" : undefined,
                 backdropFilter: isActive ? "blur(16px)" : undefined,
                 WebkitBackdropFilter: isActive ? "blur(16px)" : undefined,
                 cursor: "pointer",
