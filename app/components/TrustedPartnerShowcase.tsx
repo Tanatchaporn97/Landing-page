@@ -29,7 +29,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
         </h3>
         <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0, maxWidth: "320px" }}>
           {lang === "th"
-            ? "มาตรฐานที่ทำให้ทุกความร่วมมือชัดเจน รอบคอบ และพาไปถึงผลลัพธ์"
+            ? "วิธีทำงานที่ช่วยให้ทุกแคมเปญชัดเจน เป็นระบบ และเดินไปสู่เป้าหมายเดียวกัน"
             : "The principles behind how we think, work, and deliver."}
         </p>
       </div>

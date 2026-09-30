@@ -55,8 +55,8 @@ const UNLOCK_BENTO_META: { gradient: string }[] = [
 ];
 
 const UNLOCK_BENTO_ITEMS_TH: ColorfulBentoItem[] = [
-  { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", title: "แบรนด์เชื่อถือได้", desc: "ไม่มีแบรนด์เงียบ ไม่มีงานปลอม มีแต่ความโปร", ...UNLOCK_BENTO_META[0] },
-  { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", title: "จ่ายตรง ไม่มีเบี้ยว", desc: "งานจบ เงินไม่หาย กดเบิกเองได้ทุกเมื่อ รับตามรอบแบบตรงเวลา", ...UNLOCK_BENTO_META[1] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", title: "แบรนด์ที่ผ่านการคัดเลือก", desc: "ทุกโอกาสมาจากแบรนด์และแคมเปญที่ผ่านการตรวจสอบ เพื่อให้คุณรับงานได้อย่างมั่นใจ", ...UNLOCK_BENTO_META[0] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", title: "จ่ายเป็นระบบ ตรงตามรอบ", desc: "ติดตามสถานะและกดเบิกได้ด้วยตัวเอง พร้อมระบบจ่ายเงินตามรอบที่ชัดเจน", ...UNLOCK_BENTO_META[1] },
   { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", title: "รีวิวได้ครบ", desc: "จบทุกแพลตฟอร์ม ให้คุณสามารถมีโอกาส รับงานรีวิวได้หลากหลายช่องทาง", ...UNLOCK_BENTO_META[2] },
   { img: "/unlocked-exclusive/Unlocked Exclusive-04.png", title: "สิทธิพิเศษเฉพาะคุณ", desc: "ร่วมกิจกรรมและรับรางวัลสุดเอ็กซ์คลูซีฟ", ...UNLOCK_BENTO_META[3] },
   { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", title: "มืออาชีพที่อยู่เคียงข้างคุณ", desc: "ทำงานได้อย่างมั่นใจ ด้วยทีมงานมืออาชีพ และระบบที่ช่วยให้ทุกอย่างง่ายขึ้น", ...UNLOCK_BENTO_META[4] },
@@ -219,13 +219,13 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         </div>
       </section>
 
-      {/* ── Unlock Exclusive Opportunities — Bento grid ── */}
+      {/* ── More Opportunities, Built Around You — Bento grid ── */}
       <section className="inf-section" style={{ background: "transparent", padding: "100px 48px" }}>
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "56px" }}>
             <h2 style={{ fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
-              <span style={{ ...KT, fontWeight: 700 }}>Unlock Exclusive </span>
-              <span style={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Opportunities</span>
+              <span style={{ ...KT, fontWeight: 700 }}>More Opportunities, </span>
+              <span style={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Built Around You</span>
             </h2>
           </div>
 
