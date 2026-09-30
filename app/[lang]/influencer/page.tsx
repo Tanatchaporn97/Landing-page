@@ -229,7 +229,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {(lang === "th" ? UNLOCK_BENTO_ITEMS_TH : UNLOCK_BENTO_ITEMS_EN).map((item) => (
               <AnimatedFeatureCard
                 key={item.title}

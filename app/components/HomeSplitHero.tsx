@@ -62,6 +62,39 @@ function ArrowIcon() {
   );
 }
 
+// Side heading — icon tile + large colored label, so each half reads at a
+// glance as "Brand" vs "Influencer". Plain text (no filled pill) so it isn't
+// mistaken for the CTA button below it.
+function SideLabel({ side, label, href, size = "desktop" }: { side: "brand" | "influencer"; label: string; href: string; size?: "desktop" | "mobile" }) {
+  const isBrand = side === "brand";
+  const color = isBrand ? "#5f26e5" : "#ff0089";
+  const tile = size === "desktop" ? 48 : 32;
+  return (
+    <Link href={href} className="split-label" style={{
+      ...KT, textDecoration: "none", display: "inline-flex", alignItems: "center",
+      gap: size === "desktop" ? "14px" : "8px",
+      flexDirection: size === "mobile" ? "column" : isBrand ? "row" : "row-reverse",
+      color, fontWeight: 800, letterSpacing: size === "desktop" ? "0.06em" : "0.02em", lineHeight: 1,
+      fontSize: size === "desktop" ? "clamp(24px, 2.4vw, 34px)" : "20px",
+      marginBottom: size === "desktop" ? "18px" : 0,
+    }}>
+      <span style={{
+        width: `${tile}px`, height: `${tile}px`, borderRadius: size === "desktop" ? "14px" : "10px", flexShrink: 0,
+        background: isBrand ? "linear-gradient(135deg, #7b4bf0 0%, #5f26e5 100%)" : "linear-gradient(135deg, #ff5fb3 0%, #ff0089 100%)",
+        display: "inline-flex", alignItems: "center", justifyContent: "center",
+        boxShadow: `0 8px 18px -6px ${isBrand ? "rgba(95,38,229,0.5)" : "rgba(255,0,137,0.45)"}`,
+      }}>
+        {isBrand ? (
+          <svg width="52%" height="52%" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18" /></svg>
+        ) : (
+          <svg width="52%" height="52%" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21a7 7 0 0 0-14 0" /><circle cx="12" cy="8" r="4" /><path d="M19 3l.8 1.7 1.7.8-1.7.8L19 8l-.8-1.7-1.7-.8 1.7-.8L19 3z" fill="#fff" /></svg>
+        )}
+      </span>
+      {label}
+    </Link>
+  );
+}
+
 // Brand-side mock art — built from CSS/SVG (no image asset), matching a
 // glassmorphic "data-insight poster" reference: a tilted glass panel holding
 // a performance chart, with a floating alert card and a checkmark badge,
@@ -291,14 +324,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
 
           {/* typography — above art */}
           <div style={{ position: "relative", zIndex: 2, textAlign: "left", padding: "0 6% 52px" }}>
-            <Link href={`/${lang}/brand`} className="split-label" style={{
-              ...KT, textDecoration: "none", display: "inline-block", fontWeight: 700,
-              fontSize: "13px", letterSpacing: "0.08em", color: "#5f26e5",
-              border: "1.5px solid rgba(95,38,229,0.4)", borderRadius: "50px", padding: "6px 16px",
-              marginBottom: "16px",
-            }}>
-              {t.brand.label}
-            </Link>
+            <div><SideLabel side="brand" label={t.brand.label} href={`/${lang}/brand`} /></div>
             <p className="split-tagline" style={{ ...KT, fontSize: "clamp(30px, 3.6vw, 46px)", fontWeight: 800, letterSpacing: "0.02em", color: "#1f1447", lineHeight: 1.2, margin: "0 0 14px", maxWidth: "420px" }}>
               {t.brand.tagline}
             </p>
@@ -350,14 +376,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           </div>
 
           <div style={{ position: "relative", zIndex: 2, textAlign: "right", padding: "0 6% 52px" }}>
-            <Link href={`/${lang}/influencer`} className="split-label" style={{
-              ...KT, textDecoration: "none", display: "inline-block", fontWeight: 700,
-              fontSize: "13px", letterSpacing: "0.08em", color: "#ff0089",
-              border: "1.5px solid rgba(255,0,137,0.4)", borderRadius: "50px", padding: "6px 16px",
-              marginBottom: "16px",
-            }}>
-              {t.influencer.label}
-            </Link>
+            <div><SideLabel side="influencer" label={t.influencer.label} href={`/${lang}/influencer`} /></div>
             <p className="split-tagline" style={{ ...KT, fontSize: "clamp(30px, 3.6vw, 46px)", fontWeight: 800, letterSpacing: "0.02em", color: "#4a1338", lineHeight: 1.2, margin: "0 0 14px", maxWidth: "420px", marginLeft: "auto" }}>
               {t.influencer.tagline}
             </p>
@@ -439,12 +458,9 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
             <div style={{ width: "78%", position: "relative" }}>
               <BrandMockArt />
             </div>
-            <Link href={`/${lang}/brand`} style={{
-              ...KT, textDecoration: "none", fontWeight: 800, color: "#1f1447",
-              fontSize: "20px", marginTop: "12px", position: "relative",
-            }}>
-              {t.brand.label}
-            </Link>
+            <div style={{ marginTop: "12px", position: "relative" }}>
+              <SideLabel side="brand" label={t.brand.label} href={`/${lang}/brand`} size="mobile" />
+            </div>
             <p style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#5f26e5", textAlign: "center", margin: "6px 0 0", position: "relative" }}>
               {t.brand.tagline}
             </p>
@@ -471,12 +487,9 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
             <div style={{ width: "70%" }}>
               <InfluencerMockArt />
             </div>
-            <Link href={`/${lang}/influencer`} style={{
-              ...KT, textDecoration: "none", fontWeight: 800, color: "#4a1338",
-              fontSize: "20px", marginTop: "12px",
-            }}>
-              {t.influencer.label}
-            </Link>
+            <div style={{ marginTop: "12px" }}>
+              <SideLabel side="influencer" label={t.influencer.label} href={`/${lang}/influencer`} size="mobile" />
+            </div>
             <p style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#ff0089", textAlign: "center", margin: "6px 0 0" }}>
               {t.influencer.tagline}
             </p>

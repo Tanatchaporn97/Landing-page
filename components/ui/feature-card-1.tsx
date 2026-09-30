@@ -62,50 +62,51 @@ const AnimatedFeatureCard = React.forwardRef<
       ref={ref}
       style={cardStyle}
       className={cn(
-        "relative flex w-full max-w-sm flex-col overflow-hidden rounded-2xl border border-black/5 bg-white p-6 shadow-sm",
+        "relative flex w-full items-center gap-4 overflow-hidden rounded-2xl border border-black/5 bg-white p-4 shadow-sm sm:gap-5 sm:p-5",
         className
       )}
       whileHover="hover"
       initial="initial"
       variants={{
         initial: { y: 0 },
-        hover: { y: -10, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" },
+        hover: { y: -6, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" },
       }}
       transition={{ type: "spring", stiffness: 200, damping: 15 }}
       {...props}
     >
-      {/* Background Gradient */}
+      {/* Background Gradient — anchored behind the icon on the left */}
       <div
         className="absolute inset-0 z-0 opacity-40"
         style={{
-          background: `radial-gradient(circle at 50% 30%, var(--feature-color-light) 0%, transparent 70%)`,
+          background: `radial-gradient(circle at 12% 50%, var(--feature-color-light) 0%, transparent 55%)`,
         }}
       />
 
-      {/* Main Image — sized to the icon itself (plus a small margin) instead
-          of a flex-1 region, so it doesn't leave a lot of empty space above
-          and below the icon. */}
+      {/* Icon — compact square tile beside the text instead of a tall block
+          above it. The source PNGs are wide with lots of transparent side
+          padding, so object-cover crops to the centered icon and fills the tile. */}
       <motion.div
-        className="relative z-10 flex items-center justify-center py-2"
+        className="relative z-10 flex h-20 w-20 shrink-0 sm:h-24 sm:w-24 items-center justify-center rounded-2xl"
+        style={{ background: "var(--feature-color-dark)" }}
         variants={{
-          initial: { scale: 1, y: 0 },
-          hover: { scale: 1.3, y: -20 },
+          initial: { scale: 1, rotate: 0 },
+          hover: { scale: 1.15, rotate: -6 },
         }}
         transition={{ type: "spring", stiffness: 200, damping: 15 }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={imageSrc} alt={tag} className="w-40 h-40 object-contain" />
+        <img src={imageSrc} alt={tag} className="h-full w-full object-cover" />
       </motion.div>
 
       {/* Content */}
-      <div className="relative z-20 mt-3 rounded-lg border border-black/5 bg-white/80 p-4 backdrop-blur-sm">
+      <div className="relative z-20 min-w-0 flex-1">
         <p
-          className="mb-1.5 text-xl font-bold leading-snug"
+          className="mb-1 text-lg font-bold leading-snug"
           style={{ ...KT, color: "var(--feature-color)" }}
         >
           {tag}
         </p>
-        <p className="text-sm text-gray-600">{title}</p>
+        <p className="text-sm leading-relaxed text-gray-600">{title}</p>
       </div>
     </motion.div>
   );
