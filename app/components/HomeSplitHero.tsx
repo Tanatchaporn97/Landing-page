@@ -415,7 +415,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
         {/* Center main message — fades fully out on hover, never has its own box/panel */}
         <div className="split-hero-center" style={{
           position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", zIndex: 5,
-          width: "min(760px, 44vw)", textAlign: "center", paddingTop: "180px",
+          width: "min(760px, 44vw)", textAlign: "center", paddingTop: "195px",
           opacity: active ? 0 : 1,
           transition: "opacity 0.35s ease",
           pointerEvents: "none",
@@ -550,7 +550,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
            toward its own outer edge so there's always a clear gap between
            them at these widths. */
         @media (min-width: 900px) and (max-width: 1280px) {
-          .split-hero-center { width: min(460px, 34vw) !important; padding-top: 150px !important; }
+          .split-hero-center { width: min(460px, 34vw) !important; padding-top: 165px !important; }
           .split-hero-center h1 { font-size: clamp(22px, 3.1vw, 34px) !important; }
           .split-art, .split-panel > div:last-child { padding-left: 8% !important; padding-right: 8% !important; }
           /* The art illustration (and the small badge icons floating on it)
