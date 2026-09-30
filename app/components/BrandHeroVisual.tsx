@@ -150,19 +150,32 @@ export default function BrandHeroVisual({ lang }: { lang: "th" | "en" }) {
         }} />
       </div>
 
-      {/* Top node: Brand → Match with Creators */}
-      <div style={{ position: "absolute", top: "16%", left: "50%", transform: "translateX(-50%)", zIndex: 3, textAlign: "center" }}>
+      {/* Top node: Brand → Match with Creators. Styled as an in-app status card
+          (square corners, icon tile, two-line label, live dot) rather than a
+          rounded pill, so it can't be mistaken for the navbar "Contact Us" CTA. */}
+      <div aria-hidden="true" style={{
+        position: "absolute", top: "16%", left: "50%", transform: "translateX(-50%)", zIndex: 3,
+        display: "flex", alignItems: "center", gap: "10px", pointerEvents: "none", userSelect: "none",
+        background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
+        border: "1px solid rgba(255,255,255,0.6)", borderRadius: "12px",
+        padding: "8px 14px 8px 8px", boxShadow: "0 8px 20px rgba(95,38,229,0.12)", whiteSpace: "nowrap",
+      }}>
         <div style={{
-          display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(255,255,255,0.55)",
-          backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.6)", borderRadius: "50px",
-          padding: "7px 16px", boxShadow: "0 8px 20px rgba(95,38,229,0.15)",
+          width: "30px", height: "30px", borderRadius: "8px", flexShrink: 0,
+          background: "rgba(95,38,229,0.10)", display: "flex", alignItems: "center", justifyContent: "center",
         }}>
-          <Building2 size={14} color="#5f26e5" />
-          <span style={{ ...KT, fontSize: "13px", fontWeight: 700, color: "#111827" }}>{lang === "th" ? "แบรนด์" : "Brand"}</span>
+          <Building2 size={16} color="#5f26e5" />
         </div>
-        <p style={{ ...KT, fontSize: "11px", fontWeight: 600, color: "#5f26e5", margin: "6px 0 0", display: "flex", alignItems: "center", gap: "4px", justifyContent: "center" }}>
-          <ArrowRight size={12} /> {lang === "th" ? "จับคู่กับครีเอเตอร์" : "Match with Creators"}
-        </p>
+        <div style={{ textAlign: "left" }}>
+          <p style={{ ...KT, fontSize: "9px", fontWeight: 600, color: "#9ca3af", margin: 0, lineHeight: 1.3, letterSpacing: "0.04em", textTransform: "uppercase" }}>
+            {lang === "th" ? "แบรนด์ของคุณ" : "Your Brand"}
+          </p>
+          <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#111827", margin: 0, lineHeight: 1.3, display: "flex", alignItems: "center", gap: "6px" }}>
+            <span className="bhv-live-dot" style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#16a34a", display: "inline-block", flexShrink: 0 }} />
+            {lang === "th" ? "กำลังจับคู่ครีเอเตอร์" : "Matching creators"}
+            <ArrowRight size={12} color="#9ca3af" />
+          </p>
+        </div>
       </div>
 
       {/* Bottom node: Right Creator / Right Audience / Real Impact — mirrors
@@ -361,6 +374,11 @@ export default function BrandHeroVisual({ lang }: { lang: "th" | "en" }) {
         100% { transform: scale(1); opacity: 0; }
       }
       .bhv-pulse-ring-big { animation: bhv-pulse-ring-big 2.2s ease-out infinite; }
+      @keyframes bhv-live-dot {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(22,163,74,0.5); }
+        50% { box-shadow: 0 0 0 4px rgba(22,163,74,0); }
+      }
+      .bhv-live-dot { animation: bhv-live-dot 1.6s ease-in-out infinite; }
       @media (max-width: 900px){
         .bhv-desktop{ display: none !important; }
         .bhv-mobile{ display: block !important; }
