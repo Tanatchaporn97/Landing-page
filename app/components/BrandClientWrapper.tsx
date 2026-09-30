@@ -15,6 +15,7 @@ import CampaignLearningSection from "./CampaignLearningSection";
 import CategoriesMarquee from "./CategoriesMarquee";
 import CreatorCategoriesSection from "./CreatorCategoriesSection";
 import BrandHeroVisual from "./BrandHeroVisual";
+import ImpactStats from "./ImpactStats";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 
@@ -341,24 +342,6 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
             </a>
 
-            {/* Number stats — plain text, no card/box, centered as a group */}
-            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "40px", marginTop: "40px" }}>
-              {[
-                { value: "1,000,000+", labelTh: "เครือข่ายอินฟลูเอนเซอร์", labelEn: "Influencer Network" },
-                { value: "1,000+",     labelTh: "ลูกค้าที่ไว้วางใจ",       labelEn: "Trusted Clients" },
-                { value: "4,000+",     labelTh: "แคมเปญที่ส่งมอบ",         labelEn: "Campaigns Delivered" },
-              ].map((s) => (
-                <div key={s.value} style={{ textAlign: "center" }}>
-                  <p style={{ ...KT, fontSize: "31px", fontWeight: 800, margin: "0 0 5px", lineHeight: 1,
-                    background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                    {s.value}
-                  </p>
-                  <p style={{ ...KT, fontSize: "16px", fontWeight: 700, color: "#111827", margin: 0 }}>
-                    {lang === "th" ? s.labelTh : s.labelEn}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Right: interactive campaign-dashboard + creator-cards composition */}
@@ -367,6 +350,9 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           </div>
         </div>
       </section>
+
+      {/* ── Impact Stats — same strip as Home; transparent so the page gradient shows through ── */}
+      <ImpactStats lang={lang as "th" | "en"} background="transparent" style={{ marginTop: 0, paddingTop: 0 }} />
 
       {/* ── Brand Logos Marquee ── */}
       <LogoMarquee headingStyle={{ ...PIERSON, fontWeight: 800, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />

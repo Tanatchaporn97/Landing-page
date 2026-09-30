@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { GradientCard } from "@/components/ui/gradient-card";
 import { Badge } from "@/components/ui/badge";
 
@@ -32,6 +33,16 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
             ? "วิธีทำงานที่ช่วยให้ทุกแคมเปญชัดเจน เป็นระบบ และเดินไปสู่เป้าหมายเดียวกัน"
             : "The principles behind how we think, work, and deliver."}
         </p>
+        <div style={{ marginTop: "12px" }}>
+          <Link href={`/${lang}/brand`}
+            className="btn-hero btn-hero-solid-purple rounded-full whitespace-nowrap"
+            style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "10px", padding: "12px 12px 12px 24px", fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
+            {lang === "th" ? "สำหรับแบรนด์" : "For Brands"}
+            <span style={{ width: "24px", height: "24px", borderRadius: "50%", background: "rgba(255,255,255,0.3)", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </span>
+          </Link>
+        </div>
       </div>
 
       {/* Right — 2x2 grid, same GradientCard used by Brand's "Think Smarter, Execute Better" */}
