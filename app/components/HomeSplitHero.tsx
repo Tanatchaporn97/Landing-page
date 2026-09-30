@@ -316,7 +316,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
               layered with richer purple + blue radial fades for more depth
               and a "premium" feel, instead of going fully dark */}
           <div style={{
-            position: "absolute", inset: 0, zIndex: 0, overflow: "hidden", borderRadius: "0 28px 28px 0",
+            position: "absolute", inset: 0, zIndex: 0, overflow: "hidden", borderRadius: 0,
             background: "linear-gradient(160deg, #eef0fd 0%, #e2e2fa 45%, #d3d4f4 100%)",
           }}>
             <div style={{ position: "absolute", top: "-120px", left: "-80px", width: "360px", height: "360px", borderRadius: "50%", background: "radial-gradient(circle, rgba(95,38,229,0.30) 0%, transparent 72%)" }} />
@@ -370,7 +370,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           style={{ position: "relative", minWidth: 0, display: "flex", flexDirection: "column" }}
         >
           <div style={{
-            position: "absolute", inset: 0, zIndex: 0, overflow: "hidden", borderRadius: "28px 0 0 28px",
+            position: "absolute", inset: 0, zIndex: 0, overflow: "hidden", borderRadius: 0,
             background: "linear-gradient(200deg, #fdeef6 0%, #f9dced 45%, #f2c9e2 100%)",
           }}>
             <div style={{ position: "absolute", top: "-120px", right: "-80px", width: "320px", height: "320px", borderRadius: "50%", background: "radial-gradient(circle, rgba(255,0,137,0.18) 0%, transparent 70%)" }} />
