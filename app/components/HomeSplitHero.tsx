@@ -228,6 +228,14 @@ const JOBS = [
   { brand: "C", catTh: "ไลฟ์สไตล์", catEn: "Lifestyle", deliverable: "YouTube 1 คลิป", deliverableEn: "YouTube · 1 video", tag: "" },
 ] as const;
 
+// Positions avoid the phone (right), creator photo and notification card.
+const SOCIAL_BUBBLES = [
+  { name: "tiktok",    label: "TikTok",    left: "7%",  top: "6%",  size: "9cqw", rot: -6, delay: "0.2s" },
+  { name: "instagram", label: "Instagram", left: "91%", top: "20%", size: "8cqw", rot: 5,  delay: "1.0s" },
+  { name: "facebook",  label: "Facebook",  left: "36%", top: "84%", size: "8cqw", rot: -4, delay: "0.6s" },
+  { name: "youtube",   label: "YouTube",   left: "12%", top: "86%", size: "7cqw", rot: 6,  delay: "1.4s" },
+] as const;
+
 // Influencer side — "find jobs that fit you": a phone showing matched brand
 // jobs, a floating creator photo, a new-jobs notification and a like bubble.
 function InfluencerMockArt({ lang }: { lang: "th" | "en" }) {
@@ -309,6 +317,21 @@ function InfluencerMockArt({ lang }: { lang: "th" | "en" }) {
           {lang === "th" ? <>มีงานใหม่ 3 งาน<br />ที่ตรงกับสไตล์คุณ</> : <>3 new jobs<br />that match your style</>}
         </div>
       </div>
+
+      {/* floating social-platform bubbles — the channels creators earn on */}
+      {SOCIAL_BUBBLES.map((b) => (
+        <div key={b.name} className="hsh-wiggle" style={{
+          position: "absolute", left: b.left, top: b.top, width: b.size, height: b.size, zIndex: 3,
+          borderRadius: "50%", background: "rgba(255,255,255,0.85)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
+          border: "1px solid rgba(255,255,255,0.9)", boxShadow: "0 12px 24px -8px rgba(120,20,90,0.32)",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          "--rot": `${b.rot}deg`, animationDelay: b.delay,
+        } as React.CSSProperties}>
+          <div style={{ position: "relative", width: "58%", height: "58%" }}>
+            <Image src={`/social-icons/${b.name}.png`} alt={b.label} fill sizes="40px" style={{ objectFit: "contain" }} />
+          </div>
+        </div>
+      ))}
 
       {/* like bubble */}
       <div className="hsh-pulse" style={{
