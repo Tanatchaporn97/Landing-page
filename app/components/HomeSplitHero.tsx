@@ -93,59 +93,139 @@ const GLASS: React.CSSProperties = {
 // piece — through the hover width animation and down to the small mobile cards.
 const SCENE: React.CSSProperties = { position: "relative", width: "100%", aspectRatio: "1341 / 1017", containerType: "inline-size" };
 
-// Brand side — "we deliver measurable campaigns": a real case-study photo
-// card with floating reach + engagement result cards.
+// Brand side — "find the right creators, backed by audience data": a creator
+// search bar, a cut-out person on a purple disc, audience insight cards (age,
+// gender, engagement) and a recommended-creators card with a fit score.
+const AVATARS = ["/trust-influencers/cheese.jpg", "/trust-influencers/ryoko.jpg", "/trust-influencers/puifai.jpg", "/trust-influencers/yam.jpg", "/influencers/inf-may.jpg"];
+
 function BrandMockArt({ lang }: { lang: "th" | "en" }) {
+  const th = lang === "th";
   return (
     <div style={SCENE}>
-      {/* case-study photo card */}
+      {/* purple disc + dotted orbit behind the person */}
+      <div aria-hidden="true" style={{
+        position: "absolute", left: "4%", top: "13%", width: "64cqw", aspectRatio: "1", borderRadius: "50%",
+        border: "0.3cqw dashed rgba(95,38,229,0.32)",
+      }} />
+      <div aria-hidden="true" style={{
+        position: "absolute", left: "10%", top: "21%", width: "52cqw", aspectRatio: "1", borderRadius: "50%",
+        background: "radial-gradient(circle at 40% 35%, #cdbdf7 0%, #b39cf2 55%, #9d82ec 100%)",
+        boxShadow: "inset 0 -4cqw 8cqw rgba(95,38,229,0.18)",
+      }} />
+
+      {/* cut-out person, fading out at the waist under the recommendation card */}
+      <div style={{
+        position: "absolute", left: "15%", top: "9%", width: "40cqw", aspectRatio: "600 / 913",
+        // fade the waist (bottom) and both cropped side edges
+        WebkitMaskImage: "linear-gradient(180deg, #000 72%, transparent 96%), linear-gradient(90deg, transparent 0%, #000 9%, #000 84%, transparent 100%)",
+        maskImage: "linear-gradient(180deg, #000 72%, transparent 96%), linear-gradient(90deg, transparent 0%, #000 9%, #000 84%, transparent 100%)",
+        WebkitMaskComposite: "source-in", maskComposite: "intersect",
+      }}>
+        <Image src="/hero-illustrations/brand-hero-person.webp" alt={th ? "ทีม Buddy Review" : "Buddy Review team"} fill sizes="(max-width: 899px) 30vw, 220px" style={{ objectFit: "contain", objectPosition: "bottom" }} />
+      </div>
+
+      {/* creator search bar */}
       <div className="hsh-float" style={{
-        position: "absolute", left: "0", top: "9%", width: "72%", height: "78%",
-        borderRadius: "5cqw", overflow: "hidden", border: "1.2cqw solid rgba(255,255,255,0.85)",
-        boxShadow: "0 30px 60px -18px rgba(56,20,120,0.45)", "--rot": "-2deg",
+        ...GLASS, position: "absolute", left: "0", top: "0", width: "50%", zIndex: 3,
+        display: "flex", alignItems: "center", justifyContent: "space-between", gap: "2cqw",
+        borderRadius: "3.4cqw", padding: "1.4cqw 1.4cqw 1.4cqw 3.4cqw", "--rot": "0deg",
       } as React.CSSProperties}>
-        <Image src="/blogs/cp-influencer-trend-01.jpg" alt="CPALL Influencer Trend EP.8" fill sizes="(max-width: 899px) 40vw, 380px" style={{ objectFit: "cover", objectPosition: "50% 35%" }} />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 50%, rgba(20,10,50,0.78) 100%)" }} />
-        <div style={{ position: "absolute", left: "4cqw", bottom: "3.6cqw", right: "4cqw" }}>
-          <p style={{ ...KT, margin: 0, fontSize: "2.2cqw", fontWeight: 700, letterSpacing: "0.08em", color: "#ff5fb3" }}>CASE STUDY</p>
-          <p style={{ ...KT, margin: "0.4cqw 0 0", fontSize: "3.4cqw", fontWeight: 800, color: "#ffffff", lineHeight: 1.2 }}>CPALL Influencer Trend EP.8</p>
+        <span style={{ ...KT, fontSize: "2.6cqw", fontWeight: 500, color: "#6b7280", whiteSpace: "nowrap" }}>
+          {th ? "ค้นหาครีเอเตอร์ที่ใช่..." : "Find the right creator..."}
+        </span>
+        <span style={{ width: "7cqw", height: "7cqw", borderRadius: "2.2cqw", background: "#5f26e5", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+          <svg width="48%" height="48%" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+        </span>
+      </div>
+
+      {/* audience age distribution */}
+      <div className="hsh-wiggle" style={{
+        ...GLASS, position: "absolute", left: "56%", top: "6%", width: "27%", zIndex: 3,
+        borderRadius: "3.4cqw", padding: "2.6cqw 2.8cqw 2cqw", "--rot": "1deg", animationDelay: "0.3s",
+      } as React.CSSProperties}>
+        <p style={{ ...KT, margin: 0, fontSize: "2.3cqw", fontWeight: 800, color: "#5f26e5" }}>{th ? "กลุ่มผู้ชม" : "Audience"}</p>
+        <p style={{ ...KT, margin: "0.2cqw 0 1.8cqw", fontSize: "1.8cqw", fontWeight: 600, color: "#9ca3af" }}>{th ? "การกระจายอายุ" : "Age distribution"}</p>
+        <div style={{ display: "flex", alignItems: "flex-end", gap: "1.4cqw", height: "9cqw" }}>
+          {[32, 100, 50, 30, 14].map((h, i) => (
+            <div key={i} className="hsh-bar" style={{
+              flex: 1, height: `${h}%`, borderRadius: "1cqw", animationDelay: `${0.15 * i}s`,
+              background: i === 1 ? "linear-gradient(180deg, #ff0089 0%, #5f26e5 100%)" : "rgba(95,38,229,0.16)",
+            }} />
+          ))}
+        </div>
+        <div style={{ display: "flex", gap: "1.4cqw", marginTop: "1cqw" }}>
+          {["18", "25", "35", "45", "55+"].map((l) => (
+            <span key={l} style={{ ...KT, flex: 1, textAlign: "center", fontSize: "1.5cqw", fontWeight: 600, color: "#6b7280" }}>{l}</span>
+          ))}
         </div>
       </div>
 
-      {/* total reach card */}
+      {/* gender split donut */}
       <div className="hsh-wiggle" style={{
-        ...GLASS, position: "absolute", left: "48%", top: "0", width: "34%",
-        borderRadius: "4cqw", padding: "3cqw 3.4cqw", "--rot": "1deg", animationDelay: "0.4s",
+        ...GLASS, position: "absolute", left: "-2%", top: "37%", width: "25%", zIndex: 3,
+        borderRadius: "3.4cqw", padding: "2.4cqw 2.4cqw 2cqw", "--rot": "-1deg", animationDelay: "0.9s",
       } as React.CSSProperties}>
-        <p style={{ ...KT, margin: 0, fontSize: "2.4cqw", fontWeight: 600, color: "#6b7280" }}>Total Reach</p>
-        <p style={{ ...KT, margin: "0.6cqw 0", fontSize: "6.6cqw", fontWeight: 800, color: "#1f1447", lineHeight: 1 }}>2.4M</p>
-        <p style={{ ...KT, margin: 0, fontSize: "2.2cqw", fontWeight: 700, color: "#16a34a" }}>▲ 18% {lang === "th" ? "vs เป้า" : "vs goal"}</p>
+        <p style={{ ...KT, margin: "0 0 1.4cqw", fontSize: "2.2cqw", fontWeight: 800, color: "#5f26e5" }}>{th ? "สัดส่วนเพศ" : "Gender split"}</p>
+        <div style={{ position: "relative", width: "13cqw", height: "13cqw", margin: "0 auto" }}>
+          <svg viewBox="0 0 36 36" width="100%" height="100%" style={{ transform: "rotate(-90deg)" }}>
+            <defs><linearGradient id="hsh-donut" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#ff0089" /><stop offset="100%" stopColor="#b01ad1" /></linearGradient></defs>
+            <circle cx="18" cy="18" r="14" fill="none" stroke="#5f26e5" strokeWidth="5" />
+            <circle cx="18" cy="18" r="14" fill="none" stroke="url(#hsh-donut)" strokeWidth="5" strokeDasharray={`${0.72 * 87.96} 87.96`} strokeLinecap="round" />
+          </svg>
+          <span style={{ ...KT, position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "2.6cqw", fontWeight: 800, color: "#1f1447" }}>72%</span>
+        </div>
+        <div style={{ ...KT, display: "flex", justifyContent: "center", gap: "1.6cqw", marginTop: "1.4cqw", fontSize: "1.5cqw", fontWeight: 600, color: "#374151", whiteSpace: "nowrap" }}>
+          <span><span style={{ color: "#ff0089" }}>●</span> {th ? "หญิง" : "F"} 72%</span>
+          <span><span style={{ color: "#5f26e5" }}>●</span> {th ? "ชาย" : "M"} 28%</span>
+        </div>
       </div>
 
-      {/* weekly engagement card */}
+      {/* engagement trend */}
       <div className="hsh-wiggle" style={{
-        ...GLASS, position: "absolute", left: "56%", bottom: "0", width: "44%",
-        borderRadius: "4cqw", padding: "3cqw 3.4cqw", "--rot": "-1deg", animationDelay: "1.1s",
+        ...GLASS, position: "absolute", left: "58%", top: "43%", width: "24%", zIndex: 3,
+        borderRadius: "3.4cqw", padding: "2.4cqw 2.6cqw", "--rot": "-1deg", animationDelay: "1.4s",
       } as React.CSSProperties}>
-        <p style={{ ...KT, margin: "0 0 2.4cqw", fontSize: "2.4cqw", fontWeight: 600, color: "#374151" }}>
-          Engagement / {lang === "th" ? "สัปดาห์" : "week"}
-        </p>
-        <div style={{ display: "flex", alignItems: "flex-end", gap: "1.8cqw", height: "12cqw" }}>
-          {[28, 52, 44, 72, 100].map((h, i, arr) => (
-            <div key={i} className="hsh-bar" style={{
-              flex: 1, height: `${h}%`, borderRadius: "1.2cqw", animationDelay: `${0.15 * i}s`,
-              background: i === arr.length - 1 ? "linear-gradient(180deg, #ff0089 0%, #5f26e5 100%)" : `rgba(95,38,229,${0.18 + i * 0.14})`,
-            }} />
-          ))}
+        <p style={{ ...KT, margin: 0, fontSize: "2.2cqw", fontWeight: 800, color: "#5f26e5" }}>Engagement</p>
+        <p style={{ ...KT, margin: "0.2cqw 0 1cqw", fontSize: "1.7cqw", fontWeight: 600, color: "#9ca3af" }}>{th ? "แนวโน้มล่าสุด" : "Latest trend"}</p>
+        <svg viewBox="0 0 100 34" width="100%" style={{ display: "block" }}>
+          <path d="M2,26 C12,8 22,8 32,20 C42,32 52,30 60,18 C68,6 80,4 98,14" fill="none" stroke="#ff0089" strokeWidth="3.2" strokeLinecap="round" />
+        </svg>
+        <p style={{ ...KT, margin: "0.8cqw 0 0", fontSize: "2cqw", fontWeight: 800, color: "#16a34a" }}>▲ 18%</p>
+      </div>
+
+      {/* recommended creators */}
+      <div className="hsh-float" style={{
+        ...GLASS, position: "absolute", left: "20%", bottom: "0", width: "62%", zIndex: 4,
+        borderRadius: "3.6cqw", padding: "2.8cqw 3cqw", "--rot": "0deg", animationDelay: "0.6s",
+        boxShadow: "0 24px 48px -16px rgba(95,38,229,0.35)",
+      } as React.CSSProperties}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "2cqw", marginBottom: "2cqw" }}>
+          <p style={{ ...KT, margin: 0, fontSize: "2.4cqw", fontWeight: 800, color: "#111827", whiteSpace: "nowrap" }}>
+            {th ? "ครีเอเตอร์ที่แนะนำสำหรับแบรนด์" : "Recommended creators for your brand"}
+          </p>
+          <span style={{ ...KT, fontSize: "2.1cqw", fontWeight: 800, color: "#ff0089", whiteSpace: "nowrap" }}>Fit 96%</span>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "2cqw" }}>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            {AVATARS.map((src, i) => (
+              <span key={src} style={{ position: "relative", width: "6.4cqw", height: "6.4cqw", borderRadius: "50%", overflow: "hidden", border: "0.5cqw solid #ffffff", marginLeft: i ? "-1.8cqw" : 0, flexShrink: 0, boxShadow: "0 2px 6px rgba(0,0,0,0.12)" }}>
+                <Image src={src} alt="" fill sizes="40px" style={{ objectFit: "cover" }} />
+              </span>
+            ))}
+            <span style={{ ...KT, width: "6.4cqw", height: "6.4cqw", borderRadius: "50%", marginLeft: "-1.8cqw", border: "0.5cqw solid #ffffff", background: "#ede7fd", color: "#5f26e5", fontSize: "1.8cqw", fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>+12</span>
+          </div>
+          <span style={{ ...KT, fontSize: "2.1cqw", fontWeight: 700, color: "#ffffff", background: "#5f26e5", borderRadius: "2cqw", padding: "1.4cqw 3cqw", whiteSpace: "nowrap", boxShadow: "0 6px 14px -4px rgba(95,38,229,0.5)" }}>
+            {th ? "ดูรายชื่อ" : "View list"}
+          </span>
         </div>
       </div>
 
       {/* sample-data disclaimer */}
       <span style={{
-        ...KT, position: "absolute", left: "-1cqw", bottom: "4%", fontSize: "1.9cqw", fontWeight: 700, color: "#b0106a",
-        background: "rgba(255,255,255,0.85)", borderRadius: "50px", padding: "0.8cqw 2cqw", boxShadow: "0 4px 10px rgba(255,0,137,0.12)",
+        ...KT, position: "absolute", left: "0", bottom: "3%", zIndex: 4, fontSize: "1.8cqw", fontWeight: 700, color: "#b0106a",
+        background: "rgba(255,255,255,0.85)", borderRadius: "50px", padding: "0.7cqw 1.8cqw", boxShadow: "0 4px 10px rgba(255,0,137,0.12)",
       }}>
-        {lang === "th" ? "ข้อมูลตัวอย่าง" : "Sample data"}
+        {th ? "ข้อมูลตัวอย่าง" : "Sample data"}
       </span>
     </div>
   );
