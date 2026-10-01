@@ -241,7 +241,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
   const [activeCampaignStep, setActiveCampaignStep] = useState(0);
   const CAMPAIGN_STEPS = [
-    { img: "/how-we-run-campaigns/plan-campaign.png", title: "บรีฟ เป้าหมาย กลุ่มเป้าหมาย และสิ่งที่แคมเปญต้องทำให้สำเร็จ", titleEn: "Brief the Goal, Audience, and What the Campaign Needs to Achieve",
+    { img: "/how-we-run-campaigns/plan-campaign.png", title: "กำหนดรายละเอียดบรีฟ", titleEn: "Define the Brief",
       desc: "ทำความเข้าใจโจทย์ของแบรนด์ตั้งแต่ต้นทาง เพื่อวางทิศทางแคมเปญให้ตรงเป้าหมายที่สุด",
       descEn: "We start by fully understanding your brief, so the campaign direction is aligned with your goals from day one." },
     { img: "/how-we-run-campaigns/manage-seamlessly.png", title: "วางแผนแคมเปญ", titleEn: "Plan the Campaign",
@@ -253,7 +253,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
     { img: "/how-we-run-campaigns/review-drafts.png", title: "จัดการแคมเปญไร้รอยต่อ", titleEn: "Manage Seamlessly",
       desc: "ให้แคมเปญของคุณดำเนินไปอย่างไม่มีสะดุด ด้วยทีมงานมืออาชีพที่ดูแลทุกขั้นตอน",
       descEn: "Your campaign runs without a hitch, with a professional team overseeing every step." },
-    { img: "/how-we-run-campaigns/launch.png", title: "Launch ลงคอนเทนต์ พร้อมติดตามและดูแลให้ทุกโพสต์เป็นไปอย่างราบรื่น", titleEn: "Launch & Monitor Every Post",
+    { img: "/how-we-run-campaigns/launch.png", title: "Launch คอนเทนต์ พร้อมติดตามผล", titleEn: "Launch & Track Results",
       desc: "ลงคอนเทนต์ตามแผน พร้อมเฝ้าติดตามเรียลไทม์เพื่อให้ทุกโพสต์ราบรื่นตั้งแต่ต้นจนจบ",
       descEn: "Content goes live as planned, with real-time monitoring so every post runs smoothly from start to finish." },
     { img: "/how-we-run-campaigns/report-results.png", title: "รายงานผลแบบเรียลไทม์", titleEn: "Real-Time Reporting",
