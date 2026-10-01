@@ -60,26 +60,21 @@ function ArcNodeCard({ node }: { node: ArcChip }) {
 export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
   return (
     <section className="community-arc-section" style={{ position: "relative", padding: "100px 48px", overflow: "hidden" }}>
-      {/* One rounded panel wraps arc + headline + cards + CTA so the arc reads
-          as this section's illustration rather than a separate floating block. */}
-      <div className="community-arc-panel" style={{
-        position: "relative", maxWidth: "1180px", margin: "0 auto", overflow: "hidden",
-        padding: "0 48px 56px", borderRadius: "40px",
-        background: "linear-gradient(180deg, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.38) 100%)",
-        border: "1px solid rgba(255,255,255,0.85)",
-        boxShadow: "0 30px 80px -30px rgba(95,38,229,0.28)",
-      }}>
-        {/* soft glow behind the arc apex / headline — visually ties the two together */}
-        <div aria-hidden="true" style={{
-          position: "absolute", left: "50%", top: "180px", width: "760px", height: "420px", transform: "translateX(-50%)",
-          borderRadius: "50%", pointerEvents: "none",
-          background: "radial-gradient(ellipse, rgba(95,38,229,0.12) 0%, rgba(255,0,137,0.06) 45%, transparent 72%)",
-        }} />
+      {/* No panel/frame — the section reads as one unit because the headline
+          sits inside the arc's curve (see the arc area's negative bottom
+          margin) and a single large glow spans both. */}
+      <div aria-hidden="true" className="community-arc-glow" style={{
+        position: "absolute", left: "50%", top: "120px", width: "min(1100px, 100%)", height: "620px", transform: "translateX(-50%)",
+        borderRadius: "50%", pointerEvents: "none",
+        background: "radial-gradient(closest-side, rgba(95,38,229,0.16) 0%, rgba(255,0,137,0.08) 50%, transparent 100%)",
+      }} />
       <div style={{ position: "relative", maxWidth: "980px", margin: "0 auto" }}>
 
         {/* Arc + floating nodes — top ~30% of this area is empty sky above the
-            outer arc, so pull it up under the panel's clipped top edge. */}
-        <div className="community-arc-area" style={{ position: "relative", height: "510px", marginTop: "-110px", marginBottom: "-40px" }} aria-hidden="true">
+            outer arc, so pull it up (clipped by the section). The large negative
+            bottom margin lifts the headline into the empty space under the inner
+            arc's apex, between the Education and Health & Wellness chips. */}
+        <div className="community-arc-area" style={{ position: "relative", height: "510px", marginTop: "-110px", marginBottom: "-128px" }} aria-hidden="true">
           <svg viewBox="0 0 100 100" width="100%" height="100%" style={{ position: "absolute", inset: 0 }} preserveAspectRatio="none">
             <defs>
               <linearGradient id="arcFadeOuter" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -175,13 +170,12 @@ export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
           </a>
         </div>
       </div>
-      </div>
 
       <style>{`
         @media (max-width: 760px){
           .community-arc-area{ display: none; }
           .community-arc-section{ padding-left: 16px !important; padding-right: 16px !important; }
-          .community-arc-panel{ padding: 40px 20px 40px !important; border-radius: 28px !important; }
+          .community-arc-glow{ top: 0 !important; height: 100% !important; }
         }
       `}</style>
     </section>
