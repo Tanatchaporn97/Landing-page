@@ -66,7 +66,7 @@ export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
       <div aria-hidden="true" className="community-arc-glow" style={{
         position: "absolute", left: "50%", top: "120px", width: "min(1100px, 100%)", height: "620px", transform: "translateX(-50%)",
         borderRadius: "50%", pointerEvents: "none",
-        background: "radial-gradient(closest-side, rgba(95,38,229,0.16) 0%, rgba(255,0,137,0.08) 50%, transparent 100%)",
+        background: "radial-gradient(closest-side, rgba(95,38,229,0.09) 0%, rgba(255,0,137,0.045) 50%, transparent 100%)",
       }} />
       <div style={{ position: "relative", maxWidth: "980px", margin: "0 auto" }}>
 
