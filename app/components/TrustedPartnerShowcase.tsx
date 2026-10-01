@@ -49,64 +49,114 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
         </Link>
       </div>
 
-      {/* B·U·D·D·Y cards — one row; on narrower screens the row scrolls
-          sideways (snap) instead of wrapping, so the word stays intact. */}
+      {/* B·U·D·D·Y cards — one row with a gentle wave offset on desktop; on
+          narrower screens the row scrolls sideways (snap) so the word stays
+          intact. Each big letter starts as an outline and fills with the
+          brand gradient from the bottom when the row scrolls into view,
+          staggered B → U → D → D → Y so the word "spells itself". */}
       <div className="tps-row">
         {ITEMS.map((item, i) => (
           <motion.div
             key={i}
             className="tps-card-wrap"
-            variants={{ rest: { scale: 1, y: 0 }, hover: { scale: 1.03, y: -4 } }}
-            initial="rest"
-            animate="rest"
-            whileHover="hover"
+            // The card drives the reveal (children inherit "hidden"/"show"),
+            // so the letter fill starts as soon as the card itself is in view.
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.15 }}
+            variants={{
+              hidden: { opacity: 0, y: 24 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] } },
+            }}
           >
-            <div className="tps-card" style={{
-              ...KT, position: "relative", overflow: "hidden", height: "100%", boxSizing: "border-box",
-              display: "flex", flexDirection: "column", padding: "24px 22px", borderRadius: "16px",
-              background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
-              border: "1px solid rgba(255,255,255,0.6)", boxShadow: "0 8px 28px rgba(95,38,229,0.08)",
-              transition: "box-shadow 0.3s",
-            }}>
-              {/* decorative letter — same slot and spring motion as GradientCard's image */}
-              <motion.span
-                aria-hidden="true"
-                variants={{ rest: { scale: 1, rotate: 0 }, hover: { scale: 1.1, rotate: 3 } }}
-                transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                style={{
-                  ...KT, position: "absolute", right: "-4%", bottom: "-22%", fontSize: "190px", fontWeight: 800, lineHeight: 1,
-                  background: GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-                  opacity: 0.85, pointerEvents: "none", userSelect: "none", transformOrigin: "70% 70%",
-                }}
-              >
-                {item.letter}
-              </motion.span>
+            <div className="tps-card" style={KT}>
+              <div aria-hidden="true" className="tps-glow" />
 
-              <div style={{ position: "relative", zIndex: 1, maxWidth: "88%" }}>
-                <h4 style={{ ...KT, fontSize: "20px", fontWeight: 700, color: "#111827", margin: "0 0 8px", lineHeight: 1.3 }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", position: "relative", zIndex: 1 }}>
+                <span style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", color: "#5f26e5", background: "rgba(95,38,229,0.08)", borderRadius: "50px", padding: "4px 10px" }}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span aria-hidden="true" className="tps-dot" />
+              </div>
+
+              {/* outline letter + gradient fill overlay revealed bottom-up */}
+              <div aria-hidden="true" className="tps-letter-box">
+                <span className="tps-letter tps-letter-outline">{item.letter}</span>
+                <motion.span
+                  className="tps-letter tps-letter-fill"
+                  variants={{
+                    hidden: { clipPath: "inset(100% 0% 0% 0%)" },
+                    show: { clipPath: "inset(0% 0% 0% 0%)", transition: { duration: 0.9, delay: 0.35 + i * 0.18, ease: [0.65, 0, 0.35, 1] } },
+                  }}
+                >
+                  {item.letter}
+                </motion.span>
+              </div>
+
+              <div style={{ position: "relative", zIndex: 1, marginTop: "auto" }}>
+                <h4 style={{ ...KT, fontSize: "19px", fontWeight: 700, color: "#111827", margin: "0 0 8px", lineHeight: 1.3 }}>
                   {item.title}
                 </h4>
                 <p style={{ ...KT, fontSize: "14px", lineHeight: 1.6, color: "rgba(55,65,81,0.85)", margin: 0 }}>
                   {lang === "th" ? item.desc : item.descEn}
                 </p>
               </div>
+
+              <span aria-hidden="true" className="tps-bar" />
             </div>
           </motion.div>
         ))}
       </div>
 
       <style>{`
-        .tps-row{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
-        .tps-card-wrap{ min-height: 250px; }
-        .tps-card-wrap:hover .tps-card{ box-shadow: 0 16px 36px rgba(95,38,229,0.16) !important; }
+        .tps-row{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; align-items: start; padding-bottom: 32px; }
+        /* wave: 2nd and 4th cards sit lower */
+        @media (min-width: 1101px){ .tps-card-wrap:nth-child(even){ margin-top: 32px; } }
+        .tps-card{
+          position: relative; overflow: hidden; box-sizing: border-box; min-height: 330px;
+          display: flex; flex-direction: column; gap: 6px; padding: 20px 22px 24px; border-radius: 20px;
+          background: rgba(255,255,255,0.55); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+          border: 1px solid rgba(255,255,255,0.7); box-shadow: 0 8px 28px rgba(95,38,229,0.08);
+          transition: transform 0.45s cubic-bezier(.22,1,.36,1), box-shadow 0.45s ease, background 0.45s ease;
+        }
+        .tps-card:hover{ transform: translateY(-8px); background: rgba(255,255,255,0.75); box-shadow: 0 22px 44px -16px rgba(95,38,229,0.32); }
+        .tps-glow{
+          position: absolute; left: 50%; top: 34%; width: 220px; height: 220px; transform: translate(-50%,-50%) scale(0.6);
+          border-radius: 50%; pointer-events: none; opacity: 0;
+          background: radial-gradient(circle, rgba(255,0,137,0.22) 0%, rgba(95,38,229,0.16) 45%, transparent 70%);
+          transition: opacity 0.45s ease, transform 0.6s cubic-bezier(.22,1,.36,1);
+        }
+        .tps-card:hover .tps-glow{ opacity: 1; transform: translate(-50%,-50%) scale(1); }
+        .tps-dot{ width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(45deg, #5f25e5, #ff0089); opacity: 0.35; transition: opacity 0.3s, transform 0.3s; }
+        .tps-card:hover .tps-dot{ opacity: 1; transform: scale(1.4); }
+        .tps-letter-box{ position: relative; z-index: 1; height: 150px; margin: 4px 0 8px; transition: transform 0.5s cubic-bezier(.22,1,.36,1); transform-origin: left bottom; }
+        .tps-card:hover .tps-letter-box{ transform: scale(1.06) rotate(-2deg); }
+        .tps-letter{
+          position: absolute; left: -4px; top: 0; font-family: var(--font-kanit),'Noto Sans Thai',sans-serif;
+          font-size: 150px; font-weight: 800; line-height: 1; letter-spacing: -0.02em; user-select: none;
+        }
+        .tps-letter-outline{ color: transparent; -webkit-text-stroke: 2px rgba(95,38,229,0.28); }
+        .tps-letter-fill{
+          background: linear-gradient(160deg, #5f25e5 0%, #b21fb8 55%, #ff0089 100%);
+          -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .tps-bar{
+          position: absolute; left: 0; bottom: 0; height: 4px; width: 100%;
+          background: linear-gradient(90deg, #5f25e5, #ff0089);
+          transform: scaleX(0); transform-origin: left; transition: transform 0.5s cubic-bezier(.22,1,.36,1);
+        }
+        .tps-card:hover .tps-bar{ transform: scaleX(1); }
         @media (max-width: 1100px){
           .tps-row{ display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
-            margin: 0 -24px; padding: 8px 24px 20px; scroll-padding-inline: 24px; }
+            margin: 0 -24px; padding: 8px 24px 24px; scroll-padding-inline: 24px; }
           .tps-row::-webkit-scrollbar{ display: none; }
           .tps-card-wrap{ flex: 0 0 240px; scroll-snap-align: start; }
         }
         @media (max-width: 560px){
           .tps-card-wrap{ flex-basis: 72vw; }
+        }
+        @media (prefers-reduced-motion: reduce){
+          .tps-card, .tps-glow, .tps-letter-box, .tps-bar, .tps-dot{ transition: none; }
         }
       `}</style>
     </div>
