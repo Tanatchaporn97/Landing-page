@@ -51,7 +51,7 @@ const OUR_SERVICES = [
   { img: "/services/on-demand-fast-track.jpg", title: "On-Demand & Fast-Track Campaigns",
     desc: "ตอบโจทย์แคมเปญที่ต้องการความรวดเร็ว ด้วยการค้นหาและประสานงานอินฟลูเอนเซอร์ในเวลาจำกัด ช่วยให้แบรนด์เริ่มแคมเปญได้ทันทุกโอกาสและทุกกระแส",
     descEn: "Built for campaigns that need speed — sourcing and coordinating influencers on tight timelines so your brand can jump on every opportunity and trend the moment it happens." },
-  { img: "/services/social-challenges-v2.jpg", title: "Social Challenges",
+  { img: "/services/social-challenges-v3.jpg", title: "Social Challenges",
     desc: "โดดเด่นเหนือใครด้วยชาเลนจ์สนุก ๆ กระตุ้นการมีส่วนร่วมแบบออร์แกนิค ช่วยให้แบรนด์เป็นที่น่าจดจำ และกลายเป็นเรื่องที่ใคร ๆ ก็อยากพูดถึง",
     descEn: "Stand out with fun challenges that spark organic engagement, making your brand memorable and giving people something to talk about." },
   { img: "/services/ugc-product-seeding2.png", title: "UGC & Product Seeding",
