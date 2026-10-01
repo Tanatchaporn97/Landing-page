@@ -412,7 +412,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           {/* typography — above art */}
           <div style={{ position: "relative", zIndex: 2, textAlign: "left", padding: "0 6% 52px" }}>
             <div><SideLabel side="brand" label={t.brand.label} href={`/${lang}/brand`} /></div>
-            <p className="split-tagline" style={{ ...KT, fontSize: "clamp(30px, 3.6vw, 46px)", fontWeight: 800, letterSpacing: "0.02em", color: "#1f1447", lineHeight: 1.2, margin: "0 0 14px", maxWidth: "420px" }}>
+            <p className="split-tagline" style={{ ...KT, fontSize: "clamp(30px, 3.6vw, 46px)", fontWeight: 800, letterSpacing: "0.02em", color: "#111827", lineHeight: 1.2, margin: "0 0 14px", maxWidth: "420px" }}>
               {t.brand.tagline}
             </p>
             <div className="split-reveal" style={{
@@ -422,7 +422,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
               transition: "opacity 0.4s ease 0.05s, transform 0.4s ease 0.05s",
               pointerEvents: active === "brand" ? "auto" : "none",
             }}>
-              <p style={{ ...KT, fontSize: "15px", lineHeight: 1.65, color: "#3a2f61", margin: "0 0 18px" }}>
+              <p style={{ ...KT, fontSize: "15px", lineHeight: 1.65, color: "#111827", margin: "0 0 18px" }}>
                 {t.brand.reveal}
               </p>
               <Link href={`/${lang}/brand`} className="split-cta" style={{
@@ -464,7 +464,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
 
           <div style={{ position: "relative", zIndex: 2, textAlign: "right", padding: "0 6% 52px" }}>
             <div><SideLabel side="influencer" label={t.influencer.label} href={`/${lang}/influencer`} /></div>
-            <p className="split-tagline" style={{ ...KT, fontSize: "clamp(30px, 3.6vw, 46px)", fontWeight: 800, letterSpacing: "0.02em", color: "#4a1338", lineHeight: 1.2, margin: "0 0 14px", maxWidth: "420px", marginLeft: "auto" }}>
+            <p className="split-tagline" style={{ ...KT, fontSize: "clamp(30px, 3.6vw, 46px)", fontWeight: 800, letterSpacing: "0.02em", color: "#111827", lineHeight: 1.2, margin: "0 0 14px", maxWidth: "420px", marginLeft: "auto" }}>
               {t.influencer.tagline}
             </p>
             <div className="split-reveal" style={{
@@ -474,7 +474,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
               transition: "opacity 0.4s ease 0.05s, transform 0.4s ease 0.05s",
               pointerEvents: active === "influencer" ? "auto" : "none",
             }}>
-              <p style={{ ...KT, fontSize: "15px", lineHeight: 1.65, color: "#5c2a4d", margin: "0 0 18px" }}>
+              <p style={{ ...KT, fontSize: "15px", lineHeight: 1.65, color: "#111827", margin: "0 0 18px" }}>
                 {t.influencer.reveal}
               </p>
               <Link href={`/${lang}/influencer`} className="split-cta" style={{
@@ -548,10 +548,10 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
             <div style={{ marginTop: "12px", position: "relative" }}>
               <SideLabel side="brand" label={t.brand.label} href={`/${lang}/brand`} size="mobile" />
             </div>
-            <p style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#5f26e5", textAlign: "center", margin: "6px 0 0", position: "relative" }}>
+            <p style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#111827", textAlign: "center", margin: "6px 0 0", position: "relative" }}>
               {t.brand.tagline}
             </p>
-            <p style={{ ...KT, fontSize: "12.5px", lineHeight: 1.5, color: "#3a2f61", textAlign: "center", margin: "10px 0 0", position: "relative" }}>
+            <p style={{ ...KT, fontSize: "12.5px", lineHeight: 1.5, color: "#111827", textAlign: "center", margin: "10px 0 0", position: "relative" }}>
               {t.brand.mobileDesc}
             </p>
             <Link href={`/${lang}/brand`} style={{
@@ -577,10 +577,10 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
             <div style={{ marginTop: "12px" }}>
               <SideLabel side="influencer" label={t.influencer.label} href={`/${lang}/influencer`} size="mobile" />
             </div>
-            <p style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#ff0089", textAlign: "center", margin: "6px 0 0" }}>
+            <p style={{ ...KT, fontSize: "14px", fontWeight: 700, color: "#111827", textAlign: "center", margin: "6px 0 0" }}>
               {t.influencer.tagline}
             </p>
-            <p style={{ ...KT, fontSize: "12.5px", lineHeight: 1.5, color: "#5c2a4d", textAlign: "center", margin: "10px 0 0" }}>
+            <p style={{ ...KT, fontSize: "12.5px", lineHeight: 1.5, color: "#111827", textAlign: "center", margin: "10px 0 0" }}>
               {t.influencer.mobileDesc}
             </p>
             <Link href={`/${lang}/influencer`} style={{
