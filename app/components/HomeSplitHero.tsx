@@ -306,7 +306,7 @@ function InfluencerMockArt({ lang }: { lang: "th" | "en" }) {
 
       {/* new jobs notification */}
       <div className="hsh-wiggle" style={{
-        ...GLASS, position: "absolute", left: "0", top: "62%", zIndex: 3,
+        ...GLASS, position: "absolute", left: "20%", top: "62%", zIndex: 4,
         display: "flex", alignItems: "center", gap: "2cqw", borderRadius: "3.6cqw", padding: "2.2cqw 3cqw 2.2cqw 2.2cqw",
         boxShadow: "0 20px 40px -12px rgba(120,20,90,0.3)", "--rot": "1deg", animationDelay: "0.8s",
       } as React.CSSProperties}>
