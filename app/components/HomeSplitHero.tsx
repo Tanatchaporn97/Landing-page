@@ -115,7 +115,8 @@ function BrandMockArt({ lang }: { lang: "th" | "en" }) {
 
       {/* cut-out person working on a laptop, fading out at the waist under the recommendation card */}
       <div style={{
-        position: "absolute", left: "8%", top: "10%", width: "50cqw", aspectRatio: "640 / 647",
+        // larger, with her torso centred on the purple disc (disc centre ≈ 36cqw, 42cqw)
+        position: "absolute", left: "18%", top: "20%", width: "58cqw", aspectRatio: "640 / 647",
         WebkitMaskImage: "linear-gradient(180deg, #000 74%, transparent 96%)", maskImage: "linear-gradient(180deg, #000 74%, transparent 96%)",
       }}>
         <Image src="/hero-illustrations/brand-hero.webp" alt={th ? "ทีมแบรนด์วางแผนแคมเปญ" : "Brand team planning a campaign"} fill sizes="(max-width: 899px) 34vw, 260px" style={{ objectFit: "contain", objectPosition: "bottom" }} />
@@ -217,13 +218,6 @@ function BrandMockArt({ lang }: { lang: "th" | "en" }) {
         </div>
       </div>
 
-      {/* sample-data disclaimer */}
-      <span style={{
-        ...KT, position: "absolute", left: "0", bottom: "3%", zIndex: 4, fontSize: "1.8cqw", fontWeight: 700, color: "#b0106a",
-        background: "rgba(255,255,255,0.85)", borderRadius: "50px", padding: "0.7cqw 1.8cqw", boxShadow: "0 4px 10px rgba(255,0,137,0.12)",
-      }}>
-        {th ? "ข้อมูลตัวอย่าง" : "Sample data"}
-      </span>
     </div>
   );
 }
