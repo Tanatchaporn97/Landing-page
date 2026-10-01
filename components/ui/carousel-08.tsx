@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
   Carousel,
   CarouselContent,
@@ -62,12 +63,19 @@ interface AppleCardCarouselProps {
   cards?: CardItem[];
   /** Horizontal padding for header, strip and controls (Tailwind classes). */
   gutterClassName?: string;
+  /** Extra classes merged onto each slide / card / title (e.g. to fit all cards on wide screens). */
+  itemClassName?: string;
+  cardClassName?: string;
+  titleClassName?: string;
 }
 
 const AppleCardCarousel = ({
   header,
   cards = defaultCards,
   gutterClassName = "px-4 sm:px-8",
+  itemClassName,
+  cardClassName,
+  titleClassName,
 }: AppleCardCarouselProps) => {
   const [api, setApi] = React.useState<CarouselApi>();
   const [canScrollPrev, setCanScrollPrev] = React.useState(false);
@@ -110,7 +118,7 @@ const AppleCardCarousel = ({
         <CarouselContent className={`-ml-6 ${gutterClassName} py-4`}>
           {cards.map((card) => {
             const inner = (
-              <div className="group relative w-70 h-115 sm:w-80 sm:h-130 lg:w-92.5 lg:h-150 border border-black/5 overflow-hidden flex flex-col justify-between p-6 sm:p-8 rounded-2xl hover:scale-102 transition-transform duration-300 cursor-pointer">
+              <div className={cn("group relative w-70 h-115 sm:w-80 sm:h-130 lg:w-92.5 lg:h-150 border border-black/5 overflow-hidden flex flex-col justify-between p-6 sm:p-8 rounded-2xl hover:scale-102 transition-transform duration-300 cursor-pointer", cardClassName)}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={card.src}
@@ -130,7 +138,7 @@ const AppleCardCarousel = ({
                   <p className="text-sm sm:text-base font-medium">
                     {card.category}
                   </p>
-                  <p className="text-2xl sm:text-3xl font-medium tracking-tight leading-tight">
+                  <p className={cn("text-2xl sm:text-3xl font-medium tracking-tight leading-tight", titleClassName)}>
                     {card.title}
                   </p>
                 </div>
@@ -144,7 +152,7 @@ const AppleCardCarousel = ({
               </div>
             );
             return (
-              <CarouselItem key={card.id} className="pl-6 basis-auto">
+              <CarouselItem key={card.id} className={cn("pl-6 basis-auto", itemClassName)}>
                 {card.href ? (
                   <Link href={card.href} className="block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5f26e5]">
                     {inner}
@@ -158,8 +166,8 @@ const AppleCardCarousel = ({
         </CarouselContent>
       </Carousel>
 
-      {/* Bottom-right controls */}
-      <div className={`flex justify-end gap-2 ${gutterClassName} mt-6`}>
+      {/* Bottom-right controls — hidden when every card already fits */}
+      <div className={cn("flex justify-end gap-2 mt-6", gutterClassName, !canScrollPrev && !canScrollNext && "hidden")}>
         <Button
           variant="outline"
           size="icon"

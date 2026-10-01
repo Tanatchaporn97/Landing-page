@@ -24,8 +24,8 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
     alt: item.title,
     href: `/${lang}/brand`,
     category: (
-      <span style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", fontWeight: 600 }}>
-        <span style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", background: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.35)", borderRadius: "50px", padding: "2px 9px", backdropFilter: "blur(6px)" }}>
+      <span style={{ ...KT, display: "inline-flex", alignItems: "flex-start", gap: "8px", fontWeight: 600, lineHeight: 1.4 }}>
+        <span style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", background: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.35)", borderRadius: "50px", padding: "2px 9px", backdropFilter: "blur(6px)", flexShrink: 0, marginTop: "1px" }}>
           {String(i + 1).padStart(2, "0")}
         </span>
         {item.title}
@@ -74,5 +74,16 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
   );
 
   // Section wrapper already provides the page gutter, so no extra padding here.
-  return <AppleCardCarousel header={header} cards={cards} gutterClassName="px-0" />;
+  // ≥1280px: all five cards fit side by side (each 1/5 of the row, shorter
+  // and with smaller type); below that the strip stays a swipeable carousel.
+  return (
+    <AppleCardCarousel
+      header={header}
+      cards={cards}
+      gutterClassName="px-0"
+      itemClassName="xl:basis-1/5"
+      cardClassName="xl:w-full xl:h-[440px] xl:p-6"
+      titleClassName="xl:text-xl"
+    />
+  );
 }
