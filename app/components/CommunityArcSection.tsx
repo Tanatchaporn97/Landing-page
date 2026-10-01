@@ -10,34 +10,35 @@ const FEATURES = [
   { emoji: "🌟", labelTh: "โปรไฟล์ชัดขึ้น", labelEn: "A Sharper Profile", descTh: "ให้แบรนด์รู้จักคุณมากขึ้น", descEn: "Help brands get to know you" },
 ];
 
-// Category chips on the 3 parallel arcs (see SVG paths below). Each chip's
-// CENTER sits exactly on its arc (x/y are the chip center, positioned with
-// translate(-50%,-50%)), computed from the arcs' quadratic curves. Layout is
-// mirror-symmetric: 6 columns spaced by equal edge-to-edge gaps, longer
-// labels at the row ends and short ones toward the middle, and the inner arc
-// keeps only its outer 4 slots so the headline can sit under its apex.
-// Tilt follows the arc tangent (scaled down) so chips read as riding the curve.
+// Category chips loosely scattered along the 3 parallel arcs (SVG paths
+// below). x/y are chip CENTERS (placed with translate(-50%,-50%)), each
+// within ~10px of its arc. Positions came from a randomized search scored for
+// balance rather than symmetry: 8 chips per side, similar visual weight and
+// long-label count left vs right, even coverage along each arc, no chip
+// stacked in a column above another, no overlaps, and a clear zone for the
+// headline under the inner arc's apex. Tilts are mixed so nothing reads as
+// a grid.
 type ArcChip = { label: string; icon: string; x: string; y: string; rotate: number };
 const ARC_NODES: ArcChip[] = [
   // Outer arc
-  { label: "TikTok Creator",    icon: "🎵", x: "7.32%",  y: "54.66%", rotate: -4.4 },
-  { label: "Family",            icon: "🧸", x: "25.17%", y: "43.60%", rotate: -2.7 },
-  { label: "Tech",              icon: "📱", x: "41.72%", y: "38.57%", rotate: -0.9 },
-  { label: "Beauty",            icon: "💄", x: "58.28%", y: "38.57%", rotate: 0.9 },
-  { label: "Lifestyle",         icon: "✨", x: "74.83%", y: "43.60%", rotate: 2.7 },
-  { label: "Home & Living",     icon: "🪴", x: "92.68%", y: "54.66%", rotate: 4.4 },
+  { label: "Education",         icon: "📚", x: "20.96%", y: "44.51%", rotate: -2.6 },
+  { label: "Home & Living",     icon: "🪴", x: "37.01%", y: "39.00%", rotate: 1.8 },
+  { label: "Skincare",          icon: "🧴", x: "53.40%", y: "36.49%", rotate: -1.2 },
+  { label: "TikTok Creator",    icon: "🎵", x: "69.43%", y: "40.99%", rotate: 2.4 },
+  { label: "Tech",              icon: "📱", x: "88.98%", y: "50.84%", rotate: -3.2 },
   // Middle arc
-  { label: "Food & Travel",     icon: "🍜", x: "7.32%",  y: "68.39%", rotate: -4.4 },
-  { label: "Fitness",           icon: "🏋️", x: "25.17%", y: "57.32%", rotate: -2.7 },
-  { label: "Skincare",          icon: "🧴", x: "41.72%", y: "52.30%", rotate: -0.9 },
-  { label: "Fashion",           icon: "👗", x: "58.28%", y: "52.30%", rotate: 0.9 },
-  { label: "Finance",           icon: "💰", x: "74.83%", y: "57.32%", rotate: 2.7 },
-  { label: "Entertainment",     icon: "🎬", x: "92.68%", y: "68.39%", rotate: 4.4 },
-  // Inner arc — outer slots only, center left open for the headline
-  { label: "Education",         icon: "📚", x: "7.32%",  y: "82.11%", rotate: -4.4 },
-  { label: "Gaming",            icon: "🎮", x: "25.17%", y: "71.05%", rotate: -2.7 },
-  { label: "Sports",            icon: "⚽", x: "74.83%", y: "71.05%", rotate: 2.7 },
-  { label: "Health & Wellness", icon: "🧘", x: "92.68%", y: "82.11%", rotate: 4.4 },
+  { label: "Sports",            icon: "⚽", x: "11.82%", y: "63.13%", rotate: 2.8 },
+  { label: "Entertainment",     icon: "🎬", x: "26.54%", y: "57.33%", rotate: -1.6 },
+  { label: "Fashion",           icon: "👗", x: "42.39%", y: "51.00%", rotate: 3.0 },
+  { label: "Fitness",           icon: "🏋️", x: "58.76%", y: "53.23%", rotate: -2.2 },
+  { label: "Gaming",            icon: "🎮", x: "75.59%", y: "56.23%", rotate: 1.2 },
+  { label: "Family",            icon: "🧸", x: "90.46%", y: "65.07%", rotate: -3.4 },
+  // Inner arc — center chip rides the apex; headline sits just below it
+  { label: "Lifestyle",         icon: "✨", x: "6.65%", y: "81.81%", rotate: 2.0 },
+  { label: "Health & Wellness", icon: "🧘", x: "31.72%", y: "69.25%", rotate: -1.8 },
+  { label: "Beauty",            icon: "💄", x: "47.81%", y: "66.81%", rotate: 3.2 },
+  { label: "Food & Travel",     icon: "🍜", x: "64.11%", y: "69.14%", rotate: -2.6 },
+  { label: "Finance",           icon: "💰", x: "83.65%", y: "77.08%", rotate: 1.4 },
 ];
 
 function ArcNodeCard({ node }: { node: ArcChip }) {
