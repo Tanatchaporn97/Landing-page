@@ -75,7 +75,12 @@ export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
             outer arc, so pull it up (clipped by the section). The large negative
             bottom margin lifts the headline into the empty space under the inner
             arc's apex, between the Education and Health & Wellness chips. */}
-        <div className="community-arc-area" style={{ position: "relative", height: "510px", marginTop: "-110px", marginBottom: "-108px" }} aria-hidden="true">
+        {/* Wider than the 980px text column (up to 1180px, centered) so the chips
+            have room to spread out instead of crowding the middle. */}
+        <div className="community-arc-area" style={{
+          position: "relative", height: "510px", marginTop: "-110px", marginBottom: "-108px",
+          width: "min(1180px, calc(100vw - 96px))", left: "50%", transform: "translateX(-50%)",
+        }} aria-hidden="true">
           <svg viewBox="0 0 100 100" width="100%" height="100%" style={{ position: "absolute", inset: 0 }} preserveAspectRatio="none">
             <defs>
               <linearGradient id="arcFadeOuter" x1="0%" y1="0%" x2="100%" y2="0%">
