@@ -10,40 +10,40 @@ const FEATURES = [
   { emoji: "🌟", labelTh: "โปรไฟล์ชัดขึ้น", labelEn: "A Sharper Profile", descTh: "ให้แบรนด์รู้จักคุณมากขึ้น", descEn: "Help brands get to know you" },
 ];
 
-// Category chips distributed across 3 genuinely parallel arcs (70px apart,
-// see the SVG paths below). Each chip's top/left is computed so its center
-// sits on its assigned line; positions were solved to guarantee zero
-// overlap between any two chips (verified against real rendered chip sizes).
-// Two chips per line sit near the horizontal center (x≈40-60%) so the middle
-// of the composition reads as filled rather than a sparse gap between the
-// left/right clusters.
-type ArcChip = { label: string; icon: string; top: string; left: string; rotate: number };
+// Category chips on the 3 parallel arcs (see SVG paths below). Each chip's
+// CENTER sits exactly on its arc (x/y are the chip center, positioned with
+// translate(-50%,-50%)), computed from the arcs' quadratic curves. Layout is
+// mirror-symmetric: 6 columns spaced by equal edge-to-edge gaps, longer
+// labels at the row ends and short ones toward the middle, and the inner arc
+// keeps only its outer 4 slots so the headline can sit under its apex.
+// Tilt follows the arc tangent (scaled down) so chips read as riding the curve.
+type ArcChip = { label: string; icon: string; x: string; y: string; rotate: number };
 const ARC_NODES: ArcChip[] = [
-  // Outer line (topmost arc) — 6 chips
-  { label: "TikTok Creator",icon: "🎵", top: "48.668%", left: "1.57%",  rotate: 2 },
-  { label: "Family",        icon: "🧸", top: "38.973%", left: "19.79%", rotate: -1 },
-  { label: "Tech",          icon: "📱", top: "33.979%", left: "36.42%", rotate: 1 },
-  { label: "Beauty",        icon: "💄", top: "33.979%", left: "53.68%", rotate: -1 },
-  { label: "Food & Travel", icon: "🍜", top: "39.441%", left: "68.89%", rotate: 2 },
-  { label: "Lifestyle",     icon: "✨", top: "49.430%", left: "86.26%", rotate: -2 },
-  // Middle line — 6 chips
-  { label: "Gaming",        icon: "🎮", top: "63.155%", left: "2.54%",  rotate: -1 },
-  { label: "Fitness",       icon: "🏋️", top: "53.653%", left: "17.70%", rotate: -2 },
-  { label: "Skincare",      icon: "🧴", top: "47.879%", left: "34.26%", rotate: -2 },
-  { label: "Home & Living", icon: "🪴", top: "47.879%", left: "52.65%", rotate: 2 },
-  { label: "Fashion",       icon: "👗", top: "52.248%", left: "68.46%", rotate: 1 },
-  { label: "Finance",       icon: "💰", top: "61.649%", left: "84.49%", rotate: 2 },
-  // Inner line (bottommost arc) — 4 chips
-  { label: "Education",     icon: "📚", top: "73.254%", left: "6.83%",  rotate: 1 },
-  { label: "Sports",        icon: "⚽", top: "63.340%", left: "27.87%", rotate: -2 },
-  { label: "Entertainment", icon: "🎬", top: "61.136%", left: "49.60%", rotate: -1 },
-  { label: "Health & Wellness",icon: "🧘", top: "74.650%", left: "80.68%", rotate: 1 },
+  // Outer arc
+  { label: "TikTok Creator",    icon: "🎵", x: "7.32%",  y: "54.66%", rotate: -4.4 },
+  { label: "Family",            icon: "🧸", x: "25.17%", y: "43.60%", rotate: -2.7 },
+  { label: "Tech",              icon: "📱", x: "41.72%", y: "38.57%", rotate: -0.9 },
+  { label: "Beauty",            icon: "💄", x: "58.28%", y: "38.57%", rotate: 0.9 },
+  { label: "Lifestyle",         icon: "✨", x: "74.83%", y: "43.60%", rotate: 2.7 },
+  { label: "Home & Living",     icon: "🪴", x: "92.68%", y: "54.66%", rotate: 4.4 },
+  // Middle arc
+  { label: "Food & Travel",     icon: "🍜", x: "7.32%",  y: "68.39%", rotate: -4.4 },
+  { label: "Fitness",           icon: "🏋️", x: "25.17%", y: "57.32%", rotate: -2.7 },
+  { label: "Skincare",          icon: "🧴", x: "41.72%", y: "52.30%", rotate: -0.9 },
+  { label: "Fashion",           icon: "👗", x: "58.28%", y: "52.30%", rotate: 0.9 },
+  { label: "Finance",           icon: "💰", x: "74.83%", y: "57.32%", rotate: 2.7 },
+  { label: "Entertainment",     icon: "🎬", x: "92.68%", y: "68.39%", rotate: 4.4 },
+  // Inner arc — outer slots only, center left open for the headline
+  { label: "Education",         icon: "📚", x: "7.32%",  y: "82.11%", rotate: -4.4 },
+  { label: "Gaming",            icon: "🎮", x: "25.17%", y: "71.05%", rotate: -2.7 },
+  { label: "Sports",            icon: "⚽", x: "74.83%", y: "71.05%", rotate: 2.7 },
+  { label: "Health & Wellness", icon: "🧘", x: "92.68%", y: "82.11%", rotate: 4.4 },
 ];
 
 function ArcNodeCard({ node }: { node: ArcChip }) {
   return (
-    <div style={{
-      display: "flex", alignItems: "center", gap: "8px",
+    <div className="arc-chip" style={{
+      display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", minWidth: "118px", boxSizing: "border-box",
       background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.6)", borderRadius: "50px",
       padding: "8px 16px 8px 8px",
       boxShadow: "0 12px 28px rgba(95,38,229,0.14)",
@@ -74,7 +74,7 @@ export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
             outer arc, so pull it up (clipped by the section). The large negative
             bottom margin lifts the headline into the empty space under the inner
             arc's apex, between the Education and Health & Wellness chips. */}
-        <div className="community-arc-area" style={{ position: "relative", height: "510px", marginTop: "-110px", marginBottom: "-128px" }} aria-hidden="true">
+        <div className="community-arc-area" style={{ position: "relative", height: "510px", marginTop: "-110px", marginBottom: "-108px" }} aria-hidden="true">
           <svg viewBox="0 0 100 100" width="100%" height="100%" style={{ position: "absolute", inset: 0 }} preserveAspectRatio="none">
             <defs>
               <linearGradient id="arcFadeOuter" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -105,16 +105,19 @@ export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
           </svg>
 
           {ARC_NODES.map((node, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 16, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.06, ease: "easeOut" }}
-              style={{ position: "absolute", top: node.top, left: node.left, transform: `rotate(${node.rotate}deg)` }}
-            >
-              <ArcNodeCard node={node} />
-            </motion.div>
+            // Outer div owns placement (center on the arc + tilt); inner
+            // motion.div owns the entrance animation, so motion's transform
+            // never overrides the positioning transform.
+            <div key={node.label} style={{ position: "absolute", left: node.x, top: node.y, transform: `translate(-50%, -50%) rotate(${node.rotate}deg)` }}>
+              <motion.div
+                initial={{ opacity: 0, y: 16, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.06, ease: "easeOut" }}
+              >
+                <ArcNodeCard node={node} />
+              </motion.div>
+            </div>
           ))}
         </div>
 
@@ -172,6 +175,11 @@ export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
       </div>
 
       <style>{`
+        /* Narrow desktop/tablet: the arc area is only ~700-900px wide, so
+           shrink the chips a little to keep clear gaps between columns. */
+        @media (min-width: 761px) and (max-width: 1000px){
+          .arc-chip{ zoom: 0.86; }
+        }
         @media (max-width: 760px){
           .community-arc-area{ display: none; }
           .community-arc-section{ padding-left: 16px !important; padding-right: 16px !important; }
