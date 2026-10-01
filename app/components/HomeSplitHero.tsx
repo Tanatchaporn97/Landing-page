@@ -94,9 +94,9 @@ const GLASS: React.CSSProperties = {
 const SCENE: React.CSSProperties = { position: "relative", width: "100%", aspectRatio: "1341 / 1017", containerType: "inline-size" };
 
 // Brand side — "find the right creators, backed by audience data": a creator
-// search bar, a cut-out person on a purple disc, audience insight cards (age,
+// search bar, a cut-out creator on a purple disc, audience insight cards (age,
 // gender, engagement) and a recommended-creators card with a fit score.
-const AVATARS = ["/trust-influencers/cheese.jpg", "/trust-influencers/ryoko.jpg", "/trust-influencers/puifai.jpg", "/trust-influencers/yam.jpg", "/influencers/inf-may.jpg"];
+const AVATARS = ["/trust-influencers/cheese.jpg", "/trust-influencers/ryoko.jpg", "/trust-influencers/puifai.jpg", "/influencers/inf-maihom.jpg", "/influencers/inf-may.jpg"];
 
 function BrandMockArt({ lang }: { lang: "th" | "en" }) {
   const th = lang === "th";
@@ -113,15 +113,12 @@ function BrandMockArt({ lang }: { lang: "th" | "en" }) {
         boxShadow: "inset 0 -4cqw 8cqw rgba(95,38,229,0.18)",
       }} />
 
-      {/* cut-out person, fading out at the waist under the recommendation card */}
+      {/* cut-out creator (headphones + mic), fading out at the waist under the recommendation card */}
       <div style={{
-        position: "absolute", left: "15%", top: "9%", width: "40cqw", aspectRatio: "600 / 913",
-        // fade the waist (bottom) and both cropped side edges
-        WebkitMaskImage: "linear-gradient(180deg, #000 72%, transparent 96%), linear-gradient(90deg, transparent 0%, #000 9%, #000 84%, transparent 100%)",
-        maskImage: "linear-gradient(180deg, #000 72%, transparent 96%), linear-gradient(90deg, transparent 0%, #000 9%, #000 84%, transparent 100%)",
-        WebkitMaskComposite: "source-in", maskComposite: "intersect",
+        position: "absolute", left: "12%", top: "8%", width: "44cqw", aspectRatio: "620 / 834",
+        WebkitMaskImage: "linear-gradient(180deg, #000 70%, transparent 95%)", maskImage: "linear-gradient(180deg, #000 70%, transparent 95%)",
       }}>
-        <Image src="/hero-illustrations/brand-hero-person.webp" alt={th ? "ทีม Buddy Review" : "Buddy Review team"} fill sizes="(max-width: 899px) 30vw, 220px" style={{ objectFit: "contain", objectPosition: "bottom" }} />
+        <Image src="/hero-illustrations/brand-hero-creator.webp" alt={th ? "ครีเอเตอร์" : "Creator"} fill sizes="(max-width: 899px) 30vw, 240px" style={{ objectFit: "contain", objectPosition: "bottom" }} />
       </div>
 
       {/* creator search bar */}
