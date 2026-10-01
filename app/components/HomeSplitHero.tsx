@@ -63,34 +63,18 @@ function ArrowIcon() {
   );
 }
 
-// Side heading — icon tile + large colored label, so each half reads at a
-// glance as "Brand" vs "Influencer". Plain text (no filled pill) so it isn't
-// mistaken for the CTA button below it.
+// Side heading — large colored label, so each half reads at a glance as
+// "Brand" vs "Influencer". Plain text (no filled pill) so it isn't mistaken
+// for the CTA button below it.
 function SideLabel({ side, label, href, size = "desktop" }: { side: "brand" | "influencer"; label: string; href: string; size?: "desktop" | "mobile" }) {
-  const isBrand = side === "brand";
-  const color = isBrand ? "#5f26e5" : "#ff0089";
-  const tile = size === "desktop" ? 48 : 32;
   return (
     <Link href={href} className="split-label" style={{
-      ...KT, textDecoration: "none", display: "inline-flex", alignItems: "center",
-      gap: size === "desktop" ? "14px" : "8px",
-      flexDirection: size === "mobile" ? "column" : isBrand ? "row" : "row-reverse",
-      color, fontWeight: 800, letterSpacing: size === "desktop" ? "0.06em" : "0.02em", lineHeight: 1,
+      ...KT, textDecoration: "none", display: "inline-block",
+      color: side === "brand" ? "#5f26e5" : "#ff0089",
+      fontWeight: 800, letterSpacing: size === "desktop" ? "0.06em" : "0.02em", lineHeight: 1,
       fontSize: size === "desktop" ? "clamp(24px, 2.4vw, 34px)" : "20px",
       marginBottom: size === "desktop" ? "18px" : 0,
     }}>
-      <span style={{
-        width: `${tile}px`, height: `${tile}px`, borderRadius: size === "desktop" ? "14px" : "10px", flexShrink: 0,
-        background: isBrand ? "linear-gradient(135deg, #7b4bf0 0%, #5f26e5 100%)" : "linear-gradient(135deg, #ff5fb3 0%, #ff0089 100%)",
-        display: "inline-flex", alignItems: "center", justifyContent: "center",
-        boxShadow: `0 8px 18px -6px ${isBrand ? "rgba(95,38,229,0.5)" : "rgba(255,0,137,0.45)"}`,
-      }}>
-        {isBrand ? (
-          <svg width="52%" height="52%" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18" /></svg>
-        ) : (
-          <svg width="52%" height="52%" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21a7 7 0 0 0-14 0" /><circle cx="12" cy="8" r="4" /><path d="M19 3l.8 1.7 1.7.8-1.7.8L19 8l-.8-1.7-1.7-.8 1.7-.8L19 3z" fill="#fff" /></svg>
-        )}
-      </span>
       {label}
     </Link>
   );
