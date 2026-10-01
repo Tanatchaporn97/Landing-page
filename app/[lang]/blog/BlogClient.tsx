@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -31,9 +31,41 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
     if (cat && CATS.includes(cat)) setActiveCat(cat);
   }, [searchParams]);
 
-  const filtered = activeCat === catAll
-    ? BLOG_POSTS
-    : BLOG_POSTS.filter((p: any) => (p.topics || []).includes(activeCat));
+  // Audience filter — separate from the topic chips, combined with them.
+  const AUDIENCES = [
+    { key: "all", label: lang === "th" ? "ทุกกลุ่ม" : "All audiences" },
+    { key: "brand", label: catBrand },
+    { key: "influencer", label: catInf },
+  ] as const;
+  type AudKey = typeof AUDIENCES[number]["key"];
+  const parseAud = (v: string | null): AudKey => (v === "brand" || v === "influencer" ? v : "all");
+  const [activeAud, setActiveAud] = useState<AudKey>(() => parseAud(searchParams.get("aud")));
+  useEffect(() => { setActiveAud(parseAud(searchParams.get("aud"))); }, [searchParams]);
+
+  const [audOpen, setAudOpen] = useState(false);
+  const audRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!audOpen) return;
+    const onDown = (e: MouseEvent) => { if (!audRef.current?.contains(e.target as Node)) setAudOpen(false); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setAudOpen(false); };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => { document.removeEventListener("mousedown", onDown); document.removeEventListener("keydown", onKey); };
+  }, [audOpen]);
+
+  const chooseAud = (key: AudKey) => {
+    setActiveAud(key);
+    setAudOpen(false);
+    // Keep the choice in the URL so a filtered list can be shared/bookmarked.
+    const params = new URLSearchParams(searchParams.toString());
+    if (key === "all") params.delete("aud"); else params.set("aud", key);
+    const qs = params.toString();
+    router.replace(qs ? `?${qs}` : "?", { scroll: false });
+  };
+
+  const filtered = BLOG_POSTS
+    .filter((p: any) => activeCat === catAll || (p.topics || []).includes(activeCat))
+    .filter((p: any) => activeAud === "all" || p.categories.includes(activeAud === "brand" ? catBrand : catInf));
 
   return (
     <div className="background" style={{ ...KT }}>
@@ -61,18 +93,65 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
           Blog
         </h1>
 
-        {/* Category chips */}
-        <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "48px" }}>
-          {CATS.map((cat) => (
-            <button key={cat} onClick={() => setActiveCat(cat)}
-              className={activeCat === cat ? "" : "btn-glass-purple"}
-              style={{ ...KT,
-              ...(activeCat === cat ? { background: "#5f26e5", color: "#ffffff", border: "1px solid #5f26e5" } : {}),
-              borderRadius: "50px", fontSize: "14px", fontWeight: 600,
-              padding: "7px 20px", cursor: "pointer" }}>
-              {cat}
+        {/* Topic chips (left) + audience dropdown (right) */}
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "16px", flexWrap: "wrap", marginBottom: "48px" }}>
+          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+            {CATS.map((cat) => (
+              <button key={cat} onClick={() => setActiveCat(cat)}
+                className={activeCat === cat ? "" : "btn-glass-purple"}
+                style={{ ...KT,
+                ...(activeCat === cat ? { background: "#5f26e5", color: "#ffffff", border: "1px solid #5f26e5" } : {}),
+                borderRadius: "50px", fontSize: "14px", fontWeight: 600,
+                padding: "7px 20px", cursor: "pointer" }}>
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          <div ref={audRef} style={{ position: "relative", marginLeft: "auto", zIndex: 20 }}>
+            <button
+              type="button"
+              onClick={() => setAudOpen((o) => !o)}
+              aria-haspopup="listbox"
+              aria-expanded={audOpen}
+              aria-label={lang === "th" ? "เลือกบทความตามกลุ่มผู้อ่าน" : "Filter articles by audience"}
+              className="btn-glass-purple"
+              style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "10px", borderRadius: "50px",
+                fontSize: "14px", fontWeight: 600, padding: "7px 16px 7px 20px", cursor: "pointer", whiteSpace: "nowrap",
+                ...(activeAud !== "all" ? { border: "1px solid #5f26e5" } : {}) }}>
+              <span style={{ color: "#6b7280", fontWeight: 500 }}>{lang === "th" ? "สำหรับ:" : "For:"}</span>
+              {AUDIENCES.find((a) => a.key === activeAud)?.label}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                style={{ transition: "transform 0.2s", transform: audOpen ? "rotate(180deg)" : "none" }}>
+                <path d="M6 9l6 6 6-6" />
+              </svg>
             </button>
-          ))}
+
+            {audOpen && (
+              <ul role="listbox" aria-label={lang === "th" ? "กลุ่มผู้อ่าน" : "Audience"}
+                style={{ position: "absolute", right: 0, top: "calc(100% + 8px)", minWidth: "100%", margin: 0, padding: "6px",
+                  listStyle: "none", background: "rgba(255,255,255,0.92)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
+                  border: "1px solid rgba(255,255,255,0.8)", borderRadius: "16px", boxShadow: "0 16px 40px -12px rgba(95,38,229,0.3)" }}>
+                {AUDIENCES.map((a) => {
+                  const selected = a.key === activeAud;
+                  return (
+                    <li key={a.key} role="option" aria-selected={selected}>
+                      <button type="button" onClick={() => chooseAud(a.key)} className={selected ? undefined : "blog-aud-opt"}
+                        style={{ ...KT, display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px", width: "100%",
+                          padding: "9px 14px", border: "none", borderRadius: "10px", cursor: "pointer", whiteSpace: "nowrap", textAlign: "left",
+                          fontSize: "14px", fontWeight: 600, color: selected ? "#5f26e5" : "#111827",
+                          background: selected ? "rgba(95,38,229,0.08)" : "transparent" }}>
+                        {a.label}
+                        {selected && (
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5f26e5" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                        )}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </div>
         </div>
 
         {filtered.length === 0 && (
@@ -119,6 +198,8 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
         </div>
 
       </div>
+
+      <style>{`.blog-aud-opt:hover{ background: rgba(95,38,229,0.06) !important; }`}</style>
 
       <Footer variant="home" lang={lang} dict={dict} />
     </div>
