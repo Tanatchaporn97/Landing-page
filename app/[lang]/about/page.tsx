@@ -159,11 +159,11 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
         `}</style>
       </section>
 
-      {/* ── Company Gallery ── */}
+      {/* ── Life at Buddy ── */}
       <InteractiveImageBentoGallery
-        title={<>Company{" "}
+        title={<>Life at{" "}
           <span style={{ background: "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            Gallery
+            Buddy
           </span>
         </>}
         imageItems={[

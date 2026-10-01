@@ -49,15 +49,23 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
             style={{ width: "100%", height: "420px", objectFit: "cover", display: "block" }} />
         </div>
 
+        {/* Content card — white background, matching the blog article page */}
+        <div style={{
+          background: "#ffffff",
+          border: "1px solid rgba(0,0,0,0.06)",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.06)",
+          borderRadius: "24px", padding: "48px",
+          wordBreak: "break-word", overflowWrap: "break-word",
+          boxSizing: "border-box", width: "100%",
+        }}>
         {/* Industry tag */}
         <div style={{ marginBottom: "16px" }}>
           <Link href={`/${lang}/success?cat=${encodeURIComponent(story.industry)}`} style={{
             ...KT,
-            background: "rgba(255,255,255,0.22)",
-            backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
-            border: "1px solid rgba(255,255,255,0.45)",
+            background: "rgba(95,38,229,0.08)",
+            border: "1px solid rgba(95,38,229,0.2)",
             borderRadius: "50px", fontSize: "13px", fontWeight: 600,
-            padding: "5px 16px", display: "inline-block", color: "#111827",
+            padding: "5px 16px", display: "inline-block", color: "#5f26e5",
             textDecoration: "none",
           }}>
             {story.industry}
@@ -115,9 +123,8 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
               {story.stats.map((s) => (
                 <div key={s.label} style={{
                   display: "flex", flexDirection: "column", alignItems: "center", gap: "12px",
-                  background: "rgba(255,255,255,0.22)",
-                  backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
-                  border: "1px solid rgba(255,255,255,0.45)",
+                  background: "rgba(95,38,229,0.04)",
+                  border: "1px solid rgba(95,38,229,0.12)",
                   borderRadius: "20px", padding: "28px 24px",
                 }}>
                   <span style={{
@@ -150,6 +157,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
             ))}
           </div>
         )}
+        </div>
       </div>
 
       {/* Bottom nav — back + next */}
