@@ -4,7 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import AppleCardCarousel, { type CardItem } from "@/components/ui/carousel-08";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
-const GRAD = "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)";
+// light gradient so the headline reads on the dark-blue section background
+const GRAD = "linear-gradient(45deg, #d9ccff 0%, #ff8fd0 100%)";
 
 // The five principles (B·U·D·D·Y), shown as Apple-style cards
 // (components/ui/carousel-08), each with a soft 3D illustration of its idea
@@ -38,7 +39,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
     <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "24px", flexWrap: "wrap" }}>
       <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
         <div>
-          <Badge variant="outline">How We Work</Badge>
+          <Badge variant="outline" className="border-white/40 bg-white/10 text-white backdrop-blur-md">How We Work</Badge>
         </div>
         <h3 style={{
           ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, margin: 0, lineHeight: 1.15,
@@ -46,7 +47,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
         }}>
           What Goes Into Every Campaign
         </h3>
-        <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0 }}>
+        <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "rgba(255,255,255,0.85)", margin: 0 }}>
           {lang === "th"
             ? "วิธีทำงานที่ช่วยให้ทุกแคมเปญชัดเจน เป็นระบบ และเดินไปสู่เป้าหมายเดียวกัน"
             : "The principles behind how we think, work, and deliver."}
@@ -72,10 +73,11 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
       cards={cards}
       gutterClassName="px-0"
       itemClassName="xl:basis-1/5"
-      cardClassName="xl:w-full xl:h-[440px] xl:p-6"
+      // white glassmorphism over the dark-blue background; illustrations are transparent PNGs
+      cardClassName="xl:w-full xl:h-[440px] xl:p-6 bg-white/10 backdrop-blur-xl border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]"
       titleClassName="xl:text-xl"
       showArrow={false}
-      scrimClassName="bg-gradient-to-b from-black/35 via-transparent to-transparent"
+      scrimClassName="bg-gradient-to-b from-white/10 via-transparent to-transparent"
     />
   );
 }

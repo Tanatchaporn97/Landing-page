@@ -110,7 +110,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
 
       {/* ── Benefit — dedicated background image for this section only ── */}
       <section style={{
-        backgroundImage: "url('/new-landing-bg2.jpg')",
+        backgroundImage: "url('/backgrounds/dark-blue-bg2.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
