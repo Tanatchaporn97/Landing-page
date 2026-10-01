@@ -67,6 +67,8 @@ interface AppleCardCarouselProps {
   itemClassName?: string;
   cardClassName?: string;
   titleClassName?: string;
+  /** Show the ↗ button in each card's bottom-right corner (default true). */
+  showArrow?: boolean;
 }
 
 const AppleCardCarousel = ({
@@ -76,6 +78,7 @@ const AppleCardCarousel = ({
   itemClassName,
   cardClassName,
   titleClassName,
+  showArrow = true,
 }: AppleCardCarouselProps) => {
   const [api, setApi] = React.useState<CarouselApi>();
   const [canScrollPrev, setCanScrollPrev] = React.useState(false);
@@ -143,12 +146,16 @@ const AppleCardCarousel = ({
                   </p>
                 </div>
 
-                <div className="relative z-10 flex items-end justify-between gap-4">
-                  <div>{card.mark}</div>
-                  <span className="h-10 w-10 shrink-0 rounded-full shadow-xs bg-white group-hover:bg-white/80 flex items-center justify-center">
-                    <ArrowUpRight className="h-4 w-4 text-black transition-transform duration-300 group-hover:rotate-45 will-change-transform" />
-                  </span>
-                </div>
+                {(card.mark || showArrow) && (
+                  <div className="relative z-10 flex items-end justify-between gap-4">
+                    <div>{card.mark}</div>
+                    {showArrow && (
+                      <span className="h-10 w-10 shrink-0 rounded-full shadow-xs bg-white group-hover:bg-white/80 flex items-center justify-center">
+                        <ArrowUpRight className="h-4 w-4 text-black transition-transform duration-300 group-hover:rotate-45 will-change-transform" />
+                      </span>
+                    )}
+                  </div>
+                )}
               </div>
             );
             return (

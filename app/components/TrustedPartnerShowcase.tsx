@@ -6,9 +6,8 @@ import AppleCardCarousel, { type CardItem } from "@/components/ui/carousel-08";
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const GRAD = "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)";
 
-// The five principles spell B·U·D·D·Y. Shown as Apple-style photo cards
-// (components/ui/carousel-08) using Buddy Review's own event photos; each
-// card's big letter sits bottom-left so the word reads across the strip.
+// The five principles (B·U·D·D·Y), shown as Apple-style photo cards
+// (components/ui/carousel-08) using Buddy Review's own event photos.
 const ITEMS = [
   { letter: "B", title: "Built on Clarity",         desc: "ทำงานเป็นระบบ ชัดเจน และมีมาตรฐาน",                 descEn: "Clear, systematic work held to a consistent standard.",              src: "/blogs/cp-influencer-trend-08.jpg" },
   { letter: "U", title: "Unified by Insight",       desc: "เข้าใจเป้าหมายร่วมกัน และต่อยอดด้วย Insight",          descEn: "Shared goals, sharpened by insight.",                                src: "/blogs/cp-influencer-trend-07.jpg" },
@@ -32,16 +31,6 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
       </span>
     ),
     title: <span style={{ ...KT, fontWeight: 600 }}>{lang === "th" ? item.desc : item.descEn}</span>,
-    mark: (
-      <span aria-hidden="true" style={{
-        ...KT, display: "block", fontSize: "clamp(88px, 9vw, 120px)", fontWeight: 800, lineHeight: 0.8,
-        background: "linear-gradient(160deg, #ffffff 0%, #f3d9ff 55%, #ff8fd0 100%)",
-        WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-        filter: "drop-shadow(0 6px 18px rgba(95,38,229,0.55))",
-      }}>
-        {item.letter}
-      </span>
-    ),
   }));
 
   const header = (
@@ -84,6 +73,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
       itemClassName="xl:basis-1/5"
       cardClassName="xl:w-full xl:h-[440px] xl:p-6"
       titleClassName="xl:text-xl"
+      showArrow={false}
     />
   );
 }
