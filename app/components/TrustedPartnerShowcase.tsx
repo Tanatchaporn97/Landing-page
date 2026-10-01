@@ -6,14 +6,15 @@ import AppleCardCarousel, { type CardItem } from "@/components/ui/carousel-08";
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const GRAD = "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)";
 
-// The five principles (B·U·D·D·Y), shown as Apple-style photo cards
-// (components/ui/carousel-08) using Buddy Review's own event photos.
+// The five principles (B·U·D·D·Y), shown as Apple-style cards
+// (components/ui/carousel-08), each with a soft 3D illustration of its idea
+// (public/how-we-work): lens + check, lightbulb, rising bars, paper plane, target.
 const ITEMS = [
-  { letter: "B", title: "Built on Clarity",         desc: "ทำงานเป็นระบบ ชัดเจน และมีมาตรฐาน",                 descEn: "Clear, systematic work held to a consistent standard.",              src: "/blogs/cp-influencer-trend-08.jpg" },
-  { letter: "U", title: "Unified by Insight",       desc: "เข้าใจเป้าหมายร่วมกัน และต่อยอดด้วย Insight",          descEn: "Shared goals, sharpened by insight.",                                src: "/blogs/cp-influencer-trend-07.jpg" },
-  { letter: "D", title: "Data-Driven Decisions",    desc: "ใช้ข้อมูลช่วยตัดสินใจ ตั้งแต่เลือก Creator จนถึงวัดผล",   descEn: "Data guides every call — from choosing creators to measuring results.", src: "/blogs/cp-influencer-trend-04.jpg" },
-  { letter: "D", title: "Delivery with Discipline", desc: "บริหารและส่งมอบงานอย่างเป็นระบบ ตั้งแต่ต้นจนจบ",         descEn: "Systematic management and delivery, from start to finish.",           src: "/blogs/cp-influencer-trend-03.jpg" },
-  { letter: "Y", title: "Your Goals Drive Results", desc: "มุ่งผลลัพธ์ที่เชื่อมกับเป้าหมายของแบรนด์จริง",            descEn: "Results tied to your brand's real goals.",                            src: "/blogs/cp-influencer-trend-01.jpg" },
+  { letter: "B", title: "Built on Clarity",         desc: "ทำงานเป็นระบบ ชัดเจน และมีมาตรฐาน",                 descEn: "Clear, systematic work held to a consistent standard.",              src: "/how-we-work/clarity.webp" },
+  { letter: "U", title: "Unified by Insight",       desc: "เข้าใจเป้าหมายร่วมกัน และต่อยอดด้วย Insight",          descEn: "Shared goals, sharpened by insight.",                                src: "/how-we-work/insight.webp" },
+  { letter: "D", title: "Data-Driven Decisions",    desc: "ใช้ข้อมูลช่วยตัดสินใจ ตั้งแต่เลือก Creator จนถึงวัดผล",   descEn: "Data guides every call — from choosing creators to measuring results.", src: "/how-we-work/data.webp" },
+  { letter: "D", title: "Delivery with Discipline", desc: "บริหารและส่งมอบงานอย่างเป็นระบบ ตั้งแต่ต้นจนจบ",         descEn: "Systematic management and delivery, from start to finish.",           src: "/how-we-work/delivery.webp" },
+  { letter: "Y", title: "Your Goals Drive Results", desc: "มุ่งผลลัพธ์ที่เชื่อมกับเป้าหมายของแบรนด์จริง",            descEn: "Results tied to your brand's real goals.",                            src: "/how-we-work/goals.webp" },
 ];
 
 export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) {
@@ -74,6 +75,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
       cardClassName="xl:w-full xl:h-[440px] xl:p-6"
       titleClassName="xl:text-xl"
       showArrow={false}
+      scrimClassName="bg-gradient-to-b from-black/35 via-transparent to-transparent"
     />
   );
 }

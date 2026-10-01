@@ -69,6 +69,8 @@ interface AppleCardCarouselProps {
   titleClassName?: string;
   /** Show the ↗ button in each card's bottom-right corner (default true). */
   showArrow?: boolean;
+  /** Overrides the dark legibility gradient laid over each photo. */
+  scrimClassName?: string;
 }
 
 const AppleCardCarousel = ({
@@ -79,6 +81,7 @@ const AppleCardCarousel = ({
   cardClassName,
   titleClassName,
   showArrow = true,
+  scrimClassName = "bg-gradient-to-b from-black/75 via-black/20 to-black/60",
 }: AppleCardCarouselProps) => {
   const [api, setApi] = React.useState<CarouselApi>();
   const [canScrollPrev, setCanScrollPrev] = React.useState(false);
@@ -136,7 +139,7 @@ const AppleCardCarousel = ({
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 {/* legibility scrim: darker at top (text) and bottom (mark + button) */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/20 to-black/60" />
+                <div className={cn("absolute inset-0", scrimClassName)} />
                 <div className="relative z-10 flex flex-col gap-3 sm:gap-4 text-white">
                   <p className="text-sm sm:text-base font-medium">
                     {card.category}
