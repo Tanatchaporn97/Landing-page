@@ -96,9 +96,9 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
               style={{ fontSize: "16px", lineHeight: "1.7", textAlign: "center",
                 color: "#111827" }}>
               {lang === "th" ? (
-                <>Buddy Review ช่วยแบรนด์วางแผนและบริหาร Influencer Marketing ตั้งแต่การวางกลยุทธ์<br/>
-                คัดเลือกอินฟลูเอนเซอร์ ดูแลแคมเปญ ไปจนถึงการวัดผล ด้วยทีมที่มีประสบการณ์ พร้อม Data<br/>
-                และ Technology ที่ช่วยให้วางแผน ตัดสินใจ และวัดผลแคมเปญได้อย่างมีประสิทธิภาพ</>
+                <>ประสบการณ์จากแบรนด์และแคมเปญหลากหลายรูปแบบ ทำให้เราเข้าใจว่า Influencer Marketing{" "}<br/>
+                ไม่ได้จบแค่การเลือกคนให้เหมาะ แต่ต้องมองตั้งแต่โจทย์ของแบรนด์ กลุ่มเป้าหมาย คอนเทนต์ แพลตฟอร์ม{" "}<br/>
+                ไปจนถึงการต่อยอดและวัดผล เพื่อออกแบบวิธีที่เหมาะกับแต่ละแคมเปญมากที่สุด</>
               ) : (
                 <>An Influencer Marketing agency blending data, technology, and expert teams<br/>
                 to craft precise, measurable campaigns that drive sustainable business growth.</>
