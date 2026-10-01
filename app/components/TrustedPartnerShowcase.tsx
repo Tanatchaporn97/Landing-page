@@ -54,7 +54,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
         </p>
       </div>
       <Link href={`/${lang}/brand`}
-        className="btn-hero btn-hero-solid-purple rounded-full whitespace-nowrap"
+        className="btn-hero rounded-full whitespace-nowrap"
         style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "10px", padding: "12px 12px 12px 24px", fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
         {lang === "th" ? "สำหรับแบรนด์" : "For Brands"}
         <span style={{ width: "24px", height: "24px", borderRadius: "50%", background: "rgba(255,255,255,0.3)", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
