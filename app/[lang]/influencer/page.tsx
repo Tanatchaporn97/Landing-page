@@ -207,7 +207,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       </section>
 
       {/* ── Brand Logos Marquee ── */}
-      <LogoMarquee bgClassName="inf-logo-bg" headingStyle={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />
+      <LogoMarquee bgClassName="inf-logo-bg" title={["Brands We", "Work With"]} headingStyle={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />
 
 
       {/* ── We Build The Best Communities For Influencers ── */}

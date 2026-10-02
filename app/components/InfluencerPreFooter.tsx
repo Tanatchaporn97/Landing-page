@@ -77,45 +77,75 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
           <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "34px", overflow: "hidden", background: "#e9e1f7" }}>
             <Image src="/hero-illustrations/influencer-prefooter.jpg" alt={th ? "ครีเอเตอร์ถ่ายเซลฟี่" : "Creator taking a selfie"} fill sizes="240px" style={{ objectFit: "cover", objectPosition: "50% 30%" }} />
             <span aria-hidden="true" style={{ position: "absolute", top: "10px", left: "50%", transform: "translateX(-50%)", width: "74px", height: "20px", borderRadius: "12px", background: "#0b0b0f" }} />
-            <span aria-hidden="true" style={{ position: "absolute", left: "50%", bottom: "18px", transform: "translateX(-50%)", display: "inline-flex", alignItems: "center", gap: "6px",
-              padding: "6px 14px", borderRadius: "999px", background: "rgba(255,255,255,0.28)", backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)",
-              color: "#ffffff", fontSize: "12px", fontWeight: 600 }}>
-              <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#ff2d55", boxShadow: "0 0 0 3px rgba(255,45,85,0.25)" }} />
-              Live
+            {/* camera UI — she's filming a review, so the screen reads as a recording */}
+            <span aria-hidden="true" style={{ position: "absolute", top: "40px", left: "50%", transform: "translateX(-50%)", display: "inline-flex", alignItems: "center", gap: "6px",
+              padding: "4px 10px", borderRadius: "999px", background: "rgba(17,24,39,0.45)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)",
+              color: "#ffffff", fontSize: "11px", fontWeight: 700, letterSpacing: "0.04em" }}>
+              <span className="ipf-rec" style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#ff2d55" }} />
+              REC 00:15
+            </span>
+            <span aria-hidden="true" style={{ position: "absolute", left: "50%", bottom: "18px", transform: "translateX(-50%)", width: "54px", height: "54px", borderRadius: "50%",
+              border: "4px solid rgba(255,255,255,0.9)", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <span style={{ width: "34px", height: "34px", borderRadius: "10px", background: "#ff2d55" }} />
             </span>
           </div>
         </div>
 
-        {/* chips */}
-        <span className="ipf-float" style={{ position: "absolute", left: "14%", top: "16%", display: "inline-flex", alignItems: "center", gap: "6px", padding: "9px 16px", borderRadius: "999px",
-          background: "linear-gradient(135deg, #8b5cf6, #5f25e5)", color: "#ffffff", fontSize: "14px", fontWeight: 700, transform: "rotate(-8deg)",
-          boxShadow: "0 14px 28px -10px rgba(95,38,229,0.7)", animationDelay: "0.2s" }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#ffffff"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" /></svg>
-          {th ? "งานใหม่เข้า" : "New Jobs"}
-        </span>
-        <span className="ipf-float" style={{ position: "absolute", right: "10%", top: "4%", display: "inline-flex", alignItems: "center", gap: "6px", padding: "8px 14px", borderRadius: "14px",
-          background: "#c8f56a", color: "#1a2e05", fontSize: "15px", fontWeight: 800, transform: "rotate(6deg)",
-          boxShadow: "0 0 28px rgba(200,245,106,0.75), 0 10px 20px -8px rgba(26,46,5,0.35)", animationDelay: "0.9s" }}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e11d48"><path d="M12 21s-7.5-4.6-10-9.2C.4 8 2 4 6 4c2 0 3.5 1 6 3.5C14.5 5 16 4 18 4c4 0 5.6 4 4 7.8C19.5 16.4 12 21 12 21z" /></svg>
-          {th ? "แมทช์แล้ว" : "Matched"}
-        </span>
-        <div className="ipf-float ipf-stat" style={{ position: "absolute", left: "4%", top: "46%", width: "118px", padding: "16px 12px", borderRadius: "20px", textAlign: "center",
-          background: "rgba(255,255,255,0.88)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", border: "1px solid rgba(255,255,255,0.9)",
-          boxShadow: "0 18px 36px -16px rgba(95,38,229,0.45)", animationDelay: "0.5s" }}>
-          <div style={{ fontSize: "26px", fontWeight: 700, color: "#111827", lineHeight: 1 }}>1M+</div>
-          <div style={{ fontSize: "12px", color: "#4b5563", marginTop: "6px" }}>{th ? "เครือข่ายครีเอเตอร์" : "Creator Network"}</div>
-        </div>
-        <div className="ipf-float ipf-stat" style={{ position: "absolute", right: "2%", top: "58%", width: "128px", padding: "18px 12px", borderRadius: "20px", textAlign: "center",
-          background: "rgba(255,255,255,0.88)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", border: "1px solid rgba(255,255,255,0.9)",
-          boxShadow: "0 18px 36px -16px rgba(95,38,229,0.45)", animationDelay: "1.3s" }}>
-          <div style={{ fontSize: "28px", fontWeight: 700, color: "#111827", lineHeight: 1 }}>4,000+</div>
-          <div style={{ fontSize: "12px", color: "#4b5563", marginTop: "6px" }}>{th ? "แคมเปญที่ส่งมอบ" : "Campaigns Delivered"}</div>
+        {/* chips — the creator journey around the photo: get a brief → film → post → get paid */}
+        {/* brief card (café review fits the photo) */}
+        <div className="ipf-float ipf-chip" style={{ position: "absolute", left: "2%", top: "10%", display: "flex", alignItems: "center", gap: "10px", padding: "10px 14px 10px 10px",
+          borderRadius: "18px", background: "rgba(255,255,255,0.92)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", border: "1px solid rgba(255,255,255,0.9)",
+          boxShadow: "0 18px 36px -16px rgba(95,38,229,0.45)", transform: "rotate(-4deg)", animationDelay: "0.2s" }}>
+          <span style={{ width: "36px", height: "36px", borderRadius: "11px", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center",
+            background: "linear-gradient(135deg, #8b5cf6, #5f25e5)" }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1" /><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z" /><path d="M7 2v2M11 2v2M15 2v2" /></svg>
+          </span>
+          <span style={{ display: "flex", flexDirection: "column", lineHeight: 1.25 }}>
+            <span style={{ fontSize: "10px", fontWeight: 700, color: "#ff0089", letterSpacing: "0.04em" }}>{th ? "งานใหม่เข้า" : "NEW JOB"}</span>
+            <span style={{ fontSize: "13px", fontWeight: 700, color: "#111827", whiteSpace: "nowrap" }}>{th ? "รีวิวคาเฟ่ · บรีฟชัดเจน" : "Café review · clear brief"}</span>
+          </span>
         </div>
 
-        <Heart size={30} style={{ left: "10%", top: "38%", opacity: 0.85 }} />
-        <Heart size={18} style={{ left: "22%", bottom: "16%", opacity: 0.55 }} />
-        <Heart size={34} style={{ right: "4%", bottom: "6%", opacity: 0.9 }} />
-        <Heart size={16} style={{ right: "24%", top: "30%", opacity: 0.5 }} />
+        {/* platform pill — where the clip goes */}
+        <span className="ipf-float" style={{ position: "absolute", right: "6%", top: "3%", display: "inline-flex", alignItems: "center", gap: "6px", padding: "7px 12px", borderRadius: "999px",
+          background: "#ffffff", boxShadow: "0 12px 26px -12px rgba(17,24,39,0.45)", transform: "rotate(5deg)", animationDelay: "0.9s" }}>
+          <span style={{ position: "relative", width: "18px", height: "18px" }}><Image src="/social-icons/tiktok.png" alt="" fill sizes="18px" style={{ objectFit: "contain" }} /></span>
+          <span style={{ position: "relative", width: "18px", height: "18px" }}><Image src="/social-icons/instagram.png" alt="" fill sizes="18px" style={{ objectFit: "contain" }} /></span>
+          <span style={{ fontSize: "12px", fontWeight: 700, color: "#111827" }}>{th ? "พร้อมโพสต์" : "Ready to post"}</span>
+        </span>
+
+        {/* engagement bubble next to her phone */}
+        <span className="ipf-float" style={{ position: "absolute", left: "12%", top: "44%", display: "inline-flex", alignItems: "center", gap: "6px", padding: "8px 14px", borderRadius: "999px",
+          background: "#c8f56a", color: "#1a2e05", fontSize: "14px", fontWeight: 800, transform: "rotate(-6deg)",
+          boxShadow: "0 0 26px rgba(200,245,106,0.7), 0 10px 20px -8px rgba(26,46,5,0.35)", animationDelay: "0.5s" }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e11d48"><path d="M12 21s-7.5-4.6-10-9.2C.4 8 2 4 6 4c2 0 3.5 1 6 3.5C14.5 5 16 4 18 4c4 0 5.6 4 4 7.8C19.5 16.4 12 21 12 21z" /></svg>
+          {th ? "คนดูชอบ!" : "Viewers love it!"}
+        </span>
+
+        {/* payout card — the outcome */}
+        <div className="ipf-float ipf-chip" style={{ position: "absolute", right: "0%", top: "60%", display: "flex", alignItems: "center", gap: "10px", padding: "12px 16px 12px 12px",
+          borderRadius: "18px", background: "rgba(255,255,255,0.92)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", border: "1px solid rgba(255,255,255,0.9)",
+          boxShadow: "0 18px 36px -16px rgba(95,38,229,0.45)", transform: "rotate(3deg)", animationDelay: "1.3s" }}>
+          <span style={{ width: "36px", height: "36px", borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "#dcfce7" }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+          </span>
+          <span style={{ display: "flex", flexDirection: "column", lineHeight: 1.25 }}>
+            <span style={{ fontSize: "13px", fontWeight: 700, color: "#111827", whiteSpace: "nowrap" }}>{th ? "รับเงินแล้ว" : "Payment received"}</span>
+            <span style={{ fontSize: "11px", color: "#6b7280", whiteSpace: "nowrap" }}>{th ? "จ่ายตรงตามรอบ" : "Paid on schedule"}</span>
+          </span>
+        </div>
+
+        {/* creator-network stat */}
+        <div className="ipf-float ipf-stat" style={{ position: "absolute", left: "6%", bottom: "8%", width: "132px", padding: "12px 10px", borderRadius: "18px", textAlign: "center",
+          background: "rgba(255,255,255,0.88)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", border: "1px solid rgba(255,255,255,0.9)",
+          boxShadow: "0 18px 36px -16px rgba(95,38,229,0.45)", animationDelay: "1.7s" }}>
+          <div style={{ fontSize: "22px", fontWeight: 700, color: "#111827", lineHeight: 1 }}>1M+</div>
+          <div style={{ fontSize: "11px", color: "#4b5563", marginTop: "4px", whiteSpace: "nowrap" }}>{th ? "ครีเอเตอร์ในเครือข่าย" : "Creators in network"}</div>
+        </div>
+
+        <Heart size={22} style={{ left: "26%", top: "30%", opacity: 0.7 }} />
+        <Heart size={30} style={{ right: "3%", bottom: "8%", opacity: 0.85 }} />
+        <Heart size={14} style={{ right: "22%", top: "26%", opacity: 0.5 }} />
       </div>
 
       </div>
@@ -126,6 +156,8 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
         .ipf-float{ animation: ipf-float 4.2s ease-in-out infinite; }
         @keyframes ipf-heart{ 0%,100%{ transform: translateY(0) scale(1); } 50%{ transform: translateY(-10px) scale(1.08); } }
         .ipf-heart{ animation: ipf-heart 3.6s ease-in-out infinite; }
+        @keyframes ipf-rec{ 50%{ opacity: 0.25; } }
+        .ipf-rec{ animation: ipf-rec 1.2s steps(1) infinite; }
         @media (max-width: 900px){
           .ipf-grid{ grid-template-columns: 1fr !important; padding: 48px 24px !important; gap: 12px !important; }
           .ipf-visual{ height: 460px !important; }
@@ -133,9 +165,9 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
         @media (max-width: 480px){
           .ipf-visual{ height: 420px !important; }
           .ipf-phone{ width: 200px !important; height: 410px !important; }
-          .ipf-stat{ transform: scale(0.85); }
+          .ipf-stat, .ipf-chip{ scale: 0.86; }
         }
-        @media (prefers-reduced-motion: reduce){ .ipf-float, .ipf-heart{ animation: none; } }
+        @media (prefers-reduced-motion: reduce){ .ipf-float, .ipf-heart, .ipf-rec{ animation: none; } }
       `}</style>
     </div>
   );

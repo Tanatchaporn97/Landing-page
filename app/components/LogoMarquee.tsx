@@ -50,7 +50,8 @@ function LogoMarqueeRow({ logos, direction }: { logos: React.ReactNode[], direct
 // the fade color mismatching the real background at that point.
 const EDGE_MASK = "linear-gradient(to right, transparent 0, black 80px, black calc(100% - 80px), transparent 100%)";
 
-export default function LogoMarquee({ bgClassName, background, headingStyle }: { bgClassName?: string; background?: string; headingStyle?: React.CSSProperties } = {}) {
+// title: [plain part, gradient part] — defaults to "Our Clients"
+export default function LogoMarquee({ bgClassName, background, headingStyle, title = ["Our", "Clients"] }: { bgClassName?: string; background?: string; headingStyle?: React.CSSProperties; title?: [string, string] } = {}) {
   return (
     <section className={`brand-logos-section ${bgClassName || "client-bg"}`} style={{
       padding: "120px 0 120px",
@@ -67,8 +68,8 @@ export default function LogoMarquee({ bgClassName, background, headingStyle }: {
         position: "relative",
         zIndex: 3,
       }}>
-        <span style={{ ...headingStyle, background: "none", WebkitBackgroundClip: "unset", WebkitTextFillColor: "#111827", backgroundClip: "unset", color: "#111827" }}>Our </span>
-        <span style={{ ...headingStyle }}>Clients</span>
+        <span style={{ ...headingStyle, background: "none", WebkitBackgroundClip: "unset", WebkitTextFillColor: "#111827", backgroundClip: "unset", color: "#111827" }}>{title[0]} </span>
+        <span style={{ ...headingStyle }}>{title[1]}</span>
       </h2>
       <div style={{ WebkitMaskImage: EDGE_MASK, maskImage: EDGE_MASK }}>
         <LogoMarqueeRow logos={LOGOS_ROW1} direction="left" />
