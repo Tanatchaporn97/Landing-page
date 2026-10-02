@@ -136,7 +136,6 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
         overflowX: "auto", scrollbarWidth: "none", borderBottom: "1px solid rgba(91,48,224,0.14)", padding: "0 8px", boxSizing: "border-box" }}>
         {["all", ...values].map((v) => {
           const on = v === filter;
-          const count = v === "all" ? CASES.length : CASES.filter((c) => c[key] === v).length;
           return (
             <button key={v} type="button" role="tab" onClick={() => setFilter(v)} aria-selected={on} className="cx-filter"
               style={{ ...KT, display: "flex", alignItems: "center", gap: "6px", padding: "10px 2px 12px", marginBottom: "-1px", cursor: "pointer",
@@ -144,7 +143,6 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
                 color: on ? PURPLE : "#5E5878", fontSize: "15px", fontWeight: on ? 600 : 500, whiteSpace: "nowrap",
                 transition: "color 0.2s, border-color 0.2s" }}>
               {v === "all" ? (th ? "ทั้งหมด" : "All") : v}
-              <span style={{ fontSize: "12px", fontWeight: 600, color: on ? PURPLE : "#9A93B0" }}>{count}</span>
             </button>
           );
         })}
