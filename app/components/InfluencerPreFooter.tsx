@@ -3,25 +3,10 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
-const PLAYFAIR = { fontFamily: "var(--font-playfair),Georgia,serif" };
 const GRAD = "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)";
 const APPLY_URL = "https://www.buddyreview.co/app/new-campaigns";
 
 const AVATARS = ["/testimonials/king.jpg", "/testimonials/pond-peoria.jpg", "/testimonials/philipverze.jpg"];
-
-// Small trend-line tile used inline in the headline
-const TrendTile = () => (
-  <span aria-hidden="true" style={{
-    display: "inline-flex", alignItems: "center", justifyContent: "center", verticalAlign: "middle",
-    width: "1.05em", height: "1.05em", borderRadius: "0.26em", margin: "0 0.16em 0.12em",
-    background: "linear-gradient(145deg, #a78bfa 0%, #6d3df2 60%, #5f25e5 100%)",
-    boxShadow: "0 10px 24px -8px rgba(95,38,229,0.6), inset 0 1px 0 rgba(255,255,255,0.4)",
-  }}>
-    <svg width="58%" height="58%" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 16l5-5 4 4 8-8" /><path d="M15 7h5v5" />
-    </svg>
-  </span>
-);
 
 const Heart = ({ size, style }: { size: number; style: React.CSSProperties }) => (
   <svg aria-hidden="true" className="ipf-heart" width={size} height={size} viewBox="0 0 24 24" style={{ position: "absolute", ...style }}>
@@ -74,9 +59,9 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
 
         <h3 style={{ margin: 0, fontSize: "clamp(34px,4vw,58px)", fontWeight: 700, lineHeight: 1.12, color: "#111827", letterSpacing: "-0.01em" }}>
           {th ? (
-            <>อยากเป็น Influencer<br />แต่ไม่รู้จะเริ่ม<span style={{ whiteSpace: "nowrap" }}><TrendTile /><span style={{ ...PLAYFAIR, fontStyle: "italic", fontWeight: 700, background: GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", paddingRight: "0.08em" }}>ตรงไหน?</span></span></>
+            <>อยากเป็น <span style={{ background: GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Influencer</span><br />แต่ไม่รู้จะเริ่มตรงไหน?</>
           ) : (
-            <>Want to be an influencer<br />but not sure<span style={{ whiteSpace: "nowrap" }}><TrendTile /><span style={{ ...PLAYFAIR, fontStyle: "italic", fontWeight: 700, background: GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", paddingRight: "0.08em" }}>where to start?</span></span></>
+            <>Want to be an <span style={{ background: GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>influencer</span><br />but not sure where to start?</>
           )}
         </h3>
 
