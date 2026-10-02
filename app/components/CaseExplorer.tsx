@@ -193,7 +193,7 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
                 <span style={{ padding: "6px 14px", borderRadius: "999px", background: "#FFFFFF", color: PURPLE, fontSize: "13px", fontWeight: 600 }}>{sel.industry}</span>
                 <span style={{ padding: "6px 14px", borderRadius: "999px", background: PURPLE, color: "#FFFFFF", fontSize: "13px", fontWeight: 600 }}>{sel.value}</span>
               </div>
-              <h3 style={{ margin: 0, fontSize: "24px", fontWeight: 700, lineHeight: 1.3, color: PURPLE }}>{sel.title}</h3>
+              <h3 className="text-2xl font-bold" style={{ margin: 0, color: PURPLE }}>{sel.title}</h3>
               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                 <div style={{ fontSize: "17px", fontWeight: 700, color: "#6A2BD0" }}>{th ? "ภาพรวม" : "Overview"}</div>
                 <p className="cx-clamp" title={sel.overview} style={{ margin: 0, fontSize: "16px", lineHeight: 1.65, color: "#2A2540" }}>{sel.overview}</p>
