@@ -77,7 +77,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
         .hww-row{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
         .hww-card{
           position: relative; overflow: hidden; isolation: isolate; text-decoration: none;
-          display: flex; flex-direction: column; min-height: 400px; padding: 28px 24px; border-radius: 24px;
+          display: flex; flex-direction: column; min-height: 310px; padding: 26px 22px; border-radius: 24px;
           /* glassmorphism over the dark-blue section background */
           background: linear-gradient(160deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.07) 100%);
           backdrop-filter: blur(22px) saturate(140%); -webkit-backdrop-filter: blur(22px) saturate(140%);
@@ -86,7 +86,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
           transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         /* 3D letter anchored to the bottom-right corner, partly cropped by the card edge */
-        .hww-art{ position: absolute; right: -12%; bottom: -8%; width: 86%; aspect-ratio: 1; z-index: 1; pointer-events: none;
+        .hww-art{ position: absolute; right: -12%; bottom: -12%; width: 74%; aspect-ratio: 1; z-index: 1; pointer-events: none;
           transition: transform 0.6s cubic-bezier(.22,1,.36,1); transform-origin: right bottom; }
         .hww-card:hover{ transform: translateY(-6px); background: linear-gradient(160deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.10) 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 26px 48px -22px rgba(10,0,60,0.75); }
         .hww-card:hover .hww-art{ transform: scale(1.06) rotate(-3deg); }
@@ -97,7 +97,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
           .hww-row::-webkit-scrollbar{ display: none; }
           .hww-card{ flex: 0 0 260px; scroll-snap-align: start; }
         }
-        @media (max-width: 560px){ .hww-card{ flex-basis: 72vw; min-height: 380px; } }
+        @media (max-width: 560px){ .hww-card{ flex-basis: 72vw; min-height: 300px; } }
         @media (prefers-reduced-motion: reduce){ .hww-card, .hww-art{ transition: none; } }
       `}</style>
     </div>
