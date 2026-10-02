@@ -9,7 +9,7 @@ const AVATARS = ["/testimonials/king.jpg", "/testimonials/pond-peoria.jpg", "/te
 
 const Heart = ({ size, style }: { size: number; style: React.CSSProperties }) => (
   <svg aria-hidden="true" className="ipf-heart" width={size} height={size} viewBox="0 0 24 24" style={{ position: "absolute", ...style }}>
-    <path d="M12 21s-7.5-4.6-10-9.2C.4 8 2 4 6 4c2 0 3.5 1 6 3.5C14.5 5 16 4 18 4c4 0 5.6 4 4 7.8C19.5 16.4 12 21 12 21z" fill="#ff7aa8" />
+    <path d="M12 21s-7.5-4.6-10-9.2C.4 8 2 4 6 4c2 0 3.5 1 6 3.5C14.5 5 16 4 18 4c4 0 5.6 4 4 7.8C19.5 16.4 12 21 12 21z" fill="#e9a6ae" />
   </svg>
 );
 
@@ -67,7 +67,7 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
       {/* ── Right: phone + floating chips ── */}
       <div className="ipf-visual" style={{ position: "relative", height: "520px" }}>
         <div aria-hidden="true" style={{ position: "absolute", left: "50%", top: "50%", width: "420px", height: "420px", transform: "translate(-50%,-50%)", borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(167,139,250,0.35) 0%, rgba(255,0,137,0.12) 45%, transparent 70%)" }} />
+          background: "radial-gradient(circle, rgba(214,180,140,0.32) 0%, rgba(196,170,214,0.16) 45%, transparent 70%)" }} />
 
         {/* phone */}
         <div className="ipf-phone" style={{ position: "absolute", left: "50%", top: "50%", width: "240px", height: "490px", transform: "translate(-50%,-50%) rotate(4deg)",
@@ -81,12 +81,12 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
             <span aria-hidden="true" style={{ position: "absolute", top: "40px", left: "50%", transform: "translateX(-50%)", display: "inline-flex", alignItems: "center", gap: "6px",
               padding: "4px 10px", borderRadius: "999px", background: "rgba(17,24,39,0.45)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)",
               color: "#ffffff", fontSize: "11px", fontWeight: 700, letterSpacing: "0.04em" }}>
-              <span className="ipf-rec" style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#ff2d55" }} />
+              <span className="ipf-rec" style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#e5484d" }} />
               REC 00:15
             </span>
             <span aria-hidden="true" style={{ position: "absolute", left: "50%", bottom: "18px", transform: "translateX(-50%)", width: "54px", height: "54px", borderRadius: "50%",
               border: "4px solid rgba(255,255,255,0.9)", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <span style={{ width: "34px", height: "34px", borderRadius: "10px", background: "#ff2d55" }} />
+              <span style={{ width: "34px", height: "34px", borderRadius: "10px", background: "#e5484d" }} />
             </span>
           </div>
         </div>
@@ -95,14 +95,14 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
         {/* brief card (café review fits the photo) */}
         <div className="ipf-float ipf-chip" style={{ position: "absolute", left: "2%", top: "10%", display: "flex", alignItems: "center", gap: "10px", padding: "10px 14px 10px 10px",
           borderRadius: "18px", background: "rgba(255,255,255,0.92)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", border: "1px solid rgba(255,255,255,0.9)",
-          boxShadow: "0 18px 36px -16px rgba(95,38,229,0.45)", transform: "rotate(-4deg)", animationDelay: "0.2s" }}>
+          boxShadow: "0 18px 36px -16px rgba(60,40,25,0.35)", transform: "rotate(-4deg)", animationDelay: "0.2s" }}>
           <span style={{ width: "36px", height: "36px", borderRadius: "11px", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center",
-            background: "linear-gradient(135deg, #8b5cf6, #5f25e5)" }}>
+            background: "linear-gradient(135deg, #b0835a, #7a4f30)" }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1" /><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z" /><path d="M7 2v2M11 2v2M15 2v2" /></svg>
           </span>
           <span style={{ display: "flex", flexDirection: "column", lineHeight: 1.25 }}>
-            <span style={{ fontSize: "10px", fontWeight: 700, color: "#ff0089", letterSpacing: "0.04em" }}>{th ? "งานใหม่เข้า" : "NEW JOB"}</span>
-            <span style={{ fontSize: "13px", fontWeight: 700, color: "#111827", whiteSpace: "nowrap" }}>{th ? "รีวิวคาเฟ่ · บรีฟชัดเจน" : "Café review · clear brief"}</span>
+            <span style={{ fontSize: "10px", fontWeight: 700, color: "#8b5e3c", letterSpacing: "0.04em" }}>{th ? "งานใหม่เข้า" : "NEW JOB"}</span>
+            <span style={{ fontSize: "13px", fontWeight: 700, color: "#2d2118", whiteSpace: "nowrap" }}>{th ? "รีวิวคาเฟ่ · บรีฟชัดเจน" : "Café review · clear brief"}</span>
           </span>
         </div>
 
@@ -114,23 +114,26 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
           <span style={{ fontSize: "12px", fontWeight: 700, color: "#111827" }}>{th ? "พร้อมโพสต์" : "Ready to post"}</span>
         </span>
 
-        {/* engagement bubble next to her phone */}
-        <span className="ipf-float" style={{ position: "absolute", left: "12%", top: "44%", display: "inline-flex", alignItems: "center", gap: "6px", padding: "8px 14px", borderRadius: "999px",
-          background: "#c8f56a", color: "#1a2e05", fontSize: "14px", fontWeight: 800, transform: "rotate(-6deg)",
-          boxShadow: "0 0 26px rgba(200,245,106,0.7), 0 10px 20px -8px rgba(26,46,5,0.35)", animationDelay: "0.5s" }}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e11d48"><path d="M12 21s-7.5-4.6-10-9.2C.4 8 2 4 6 4c2 0 3.5 1 6 3.5C14.5 5 16 4 18 4c4 0 5.6 4 4 7.8C19.5 16.4 12 21 12 21z" /></svg>
-          {th ? "คนดูชอบ!" : "Viewers love it!"}
-        </span>
+        {/* viewer comment on her café post */}
+        <div className="ipf-float ipf-chip" style={{ position: "absolute", left: "8%", top: "44%", display: "flex", alignItems: "center", gap: "8px", padding: "8px 14px 8px 8px",
+          borderRadius: "999px", background: "rgba(255,255,255,0.94)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", border: "1px solid rgba(255,255,255,0.9)",
+          boxShadow: "0 14px 30px -14px rgba(60,40,25,0.4)", transform: "rotate(-4deg)", animationDelay: "0.5s" }}>
+          <span style={{ position: "relative", width: "26px", height: "26px", borderRadius: "50%", overflow: "hidden", flexShrink: 0 }}>
+            <Image src="/testimonials/nutty.jpg" alt="" fill sizes="26px" style={{ objectFit: "cover" }} />
+          </span>
+          <span style={{ fontSize: "13px", fontWeight: 600, color: "#3b2a1e", whiteSpace: "nowrap" }}>{th ? "ร้านน่านั่งมาก ☕" : "Love this café ☕"}</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#d9707f"><path d="M12 21s-7.5-4.6-10-9.2C.4 8 2 4 6 4c2 0 3.5 1 6 3.5C14.5 5 16 4 18 4c4 0 5.6 4 4 7.8C19.5 16.4 12 21 12 21z" /></svg>
+        </div>
 
         {/* payout card — the outcome */}
         <div className="ipf-float ipf-chip" style={{ position: "absolute", right: "0%", top: "60%", display: "flex", alignItems: "center", gap: "10px", padding: "12px 16px 12px 12px",
           borderRadius: "18px", background: "rgba(255,255,255,0.92)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", border: "1px solid rgba(255,255,255,0.9)",
-          boxShadow: "0 18px 36px -16px rgba(95,38,229,0.45)", transform: "rotate(3deg)", animationDelay: "1.3s" }}>
-          <span style={{ width: "36px", height: "36px", borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "#dcfce7" }}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+          boxShadow: "0 18px 36px -16px rgba(60,40,25,0.35)", transform: "rotate(3deg)", animationDelay: "1.3s" }}>
+          <span style={{ width: "36px", height: "36px", borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "#e8efe2" }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5b8a4f" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
           </span>
           <span style={{ display: "flex", flexDirection: "column", lineHeight: 1.25 }}>
-            <span style={{ fontSize: "13px", fontWeight: 700, color: "#111827", whiteSpace: "nowrap" }}>{th ? "รับเงินแล้ว" : "Payment received"}</span>
+            <span style={{ fontSize: "13px", fontWeight: 700, color: "#2d2118", whiteSpace: "nowrap" }}>{th ? "รับเงินแล้ว" : "Payment received"}</span>
             <span style={{ fontSize: "11px", color: "#6b7280", whiteSpace: "nowrap" }}>{th ? "จ่ายตรงตามรอบ" : "Paid on schedule"}</span>
           </span>
         </div>
@@ -138,7 +141,7 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
         {/* creator-network stat */}
         <div className="ipf-float ipf-stat" style={{ position: "absolute", left: "6%", bottom: "8%", width: "132px", padding: "12px 10px", borderRadius: "18px", textAlign: "center",
           background: "rgba(255,255,255,0.88)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", border: "1px solid rgba(255,255,255,0.9)",
-          boxShadow: "0 18px 36px -16px rgba(95,38,229,0.45)", animationDelay: "1.7s" }}>
+          boxShadow: "0 18px 36px -16px rgba(60,40,25,0.35)", animationDelay: "1.7s" }}>
           <div style={{ fontSize: "22px", fontWeight: 700, color: "#111827", lineHeight: 1 }}>1M+</div>
           <div style={{ fontSize: "11px", color: "#4b5563", marginTop: "4px", whiteSpace: "nowrap" }}>{th ? "ครีเอเตอร์ในเครือข่าย" : "Creators in network"}</div>
         </div>
