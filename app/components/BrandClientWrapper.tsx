@@ -74,10 +74,10 @@ const OUR_SERVICES = [
   { img: "/services/photo-video-production2.png", title: "Photo & Video Production",
     desc: "สร้างสรรค์ภาพและวิดีโอตั้งแต่การวาง Concept, Storyboard ไปจนถึงการถ่ายทำและ Post-production เพื่อให้แบรนด์มีคอนเทนต์คุณภาพพร้อมใช้บนทุกช่องทาง",
     descEn: "Creative photo and video production from concept and storyboard through filming and post-production, giving your brand quality, ready-to-use content across every channel." },
-  { img: "/services/product-seeding.jpg", title: "Publishing & Advertorial",
+  { img: "/services/publishing-advertorial.jpg", objectPosition: "center 12%", title: "Publishing & Advertorial",
     desc: "เพิ่มพื้นที่การมองเห็นให้แบรนด์ผ่านบทความและคอนเทนต์บนช่องทางที่เหมาะสม ถ่ายทอดเรื่องราวและข้อมูลของแบรนด์ในรูปแบบที่เข้าถึงและสร้างความน่าเชื่อถือได้มากขึ้น",
     descEn: "Expand your brand's visibility through articles and content placed on the right channels, telling your brand's story in a way that's accessible and builds credibility.",
-    objectPosition: "30% center" },
+    },
 ];
 
 const WHAT_WE_OFFER = [
