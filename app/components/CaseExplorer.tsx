@@ -155,34 +155,32 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0 4px" }}>
             <div style={{ fontSize: "14px", color: "#5E5878" }}>{th ? `แสดง ${filtered.length} เคส` : `Showing ${filtered.length} ${filtered.length === 1 ? "case" : "cases"}`}</div>
-            {filtered.length > 12 && <div className="cx-hint" style={{ fontSize: "13px", color: PURPLE, fontWeight: 500 }}>{th ? "เลื่อนดูเพิ่ม ↓" : "Scroll for more ↓"}</div>}
+            {filtered.length > 9 && <div className="cx-hint" style={{ fontSize: "13px", color: PURPLE, fontWeight: 500 }}>{th ? "เลื่อนดูเพิ่ม ↓" : "Scroll for more ↓"}</div>}
           </div>
-          {/* each case is shown by its brand logo (same artwork as /success) */}
-          <div className="cx-list" style={{ maxHeight: "588px", overflowY: "auto", display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "10px",
-            padding: "4px 8px 4px 4px", boxSizing: "border-box", alignContent: "start" }}>
+          {/* case rows: brand logo in a circle + brand name + secondary category */}
+          <div className="cx-list" style={{ maxHeight: "588px", overflowY: "auto", display: "flex", flexDirection: "column", gap: "8px", paddingRight: "8px", boxSizing: "border-box" }}>
             {filtered.map((c) => {
               const on = c.slug === sel?.slug;
               return (
-                <button key={c.slug} type="button" onClick={() => setSelSlug(c.slug)} aria-pressed={on} aria-label={c.title} title={c.title}
-                  className="cx-tile"
-                  style={{ position: "relative", height: "92px", padding: 0, borderRadius: "16px", overflow: "hidden", cursor: "pointer",
-                    background: c.bg || "#FFFFFF", border: 0,
-                    boxShadow: on ? `0 0 0 3px ${PURPLE}, 0 12px 24px -10px rgba(91,48,224,0.5)` : "0 0 0 1px #DCD0F2",
-                    opacity: on ? 1 : 0.82, transform: on ? "translateY(-2px)" : "none",
-                    transition: "box-shadow 0.2s, opacity 0.2s, transform 0.2s" }}>
-                  <Image src={c.img} alt={c.title} fill sizes="180px"
-                    style={{ objectFit: c.fit || "cover", objectPosition: "center", padding: c.fit === "contain" ? "12px 16px" : 0 }} />
-                  {on && (
-                    <span aria-hidden="true" style={{ position: "absolute", top: "6px", right: "6px", width: "20px", height: "20px", borderRadius: "50%", background: PURPLE,
-                      display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 0 0 2px #ffffff" }}>
-                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
-                    </span>
-                  )}
+                <button key={c.slug} type="button" onClick={() => setSelSlug(c.slug)} aria-pressed={on}
+                  style={{ ...KT, flexShrink: 0, display: "flex", alignItems: "center", gap: "14px", textAlign: "left", padding: "12px 16px", borderRadius: "16px", cursor: "pointer",
+                    border: `1px solid ${on ? PURPLE : "#DCD0F2"}`, background: on ? PURPLE : "#F3EEFB", transition: "background 0.2s, border-color 0.2s" }}>
+                  <span style={{ position: "relative", width: "44px", height: "44px", flexShrink: 0, borderRadius: "999px", overflow: "hidden",
+                    background: c.bg || "#FFFFFF", boxShadow: on ? "0 0 0 2px #ffffff" : "0 0 0 1px #DCD0F2" }}>
+                    <Image src={c.img} alt="" fill sizes="44px"
+                      // tall brand posters keep the logo in a narrow centre band — zoom in so it fills the circle
+                      style={{ objectFit: c.fit || "cover", objectPosition: "center", padding: c.fit === "contain" ? "3px" : 0, transform: c.fit === "contain" ? "scale(1.4)" : "scale(1.4)" }} />
+                  </span>
+                  <span style={{ flexGrow: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: "2px" }}>
+                    <span style={{ fontSize: "17px", fontWeight: 600, color: on ? "#FFFFFF" : "#1B1733", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{c.title}</span>
+                    <span style={{ fontSize: "13px", color: on ? "#E4DAFF" : "#5E5878" }}>{c[other]}</span>
+                  </span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={on ? "#E4DAFF" : "#5E5878"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
                 </button>
               );
             })}
             {filtered.length === 0 && (
-              <div style={{ gridColumn: "1 / -1", padding: "24px", borderRadius: "20px", border: "1px dashed #B9A6E8", color: "#5E5878", fontSize: "15px" }}>{th ? "ยังไม่มีเคสในหมวดนี้" : "No cases in this category yet"}</div>
+              <div style={{ padding: "24px", borderRadius: "20px", border: "1px dashed #B9A6E8", color: "#5E5878", fontSize: "15px" }}>{th ? "ยังไม่มีเคสในหมวดนี้" : "No cases in this category yet"}</div>
             )}
           </div>
         </div>
@@ -198,11 +196,11 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
               <div style={{ fontSize: "clamp(34px,3.6vw,52px)", fontWeight: 700, lineHeight: 1.1, color: PURPLE }}>{sel.title}</div>
               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                 <div style={{ fontSize: "17px", fontWeight: 700, color: "#6A2BD0" }}>{th ? "ภาพรวม" : "Overview"}</div>
-                <p style={{ margin: 0, fontSize: "16px", lineHeight: 1.65, color: "#2A2540" }}>{sel.overview}</p>
+                <p className="cx-clamp" title={sel.overview} style={{ margin: 0, fontSize: "16px", lineHeight: 1.65, color: "#2A2540" }}>{sel.overview}</p>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                 <div style={{ fontSize: "17px", fontWeight: 700, color: "#6A2BD0" }}>{th ? "กลยุทธ์" : "Strategy"}</div>
-                <p style={{ margin: 0, fontSize: "16px", lineHeight: 1.65, color: "#2A2540" }}>{sel.strategy}</p>
+                <p className="cx-clamp" title={sel.strategy} style={{ margin: 0, fontSize: "16px", lineHeight: 1.65, color: "#2A2540" }}>{sel.strategy}</p>
               </div>
               {sel.stats.length > 0 && <div className="cx-stats" style={{ display: "flex", gap: "44px", flexWrap: "wrap", marginTop: "6px" }}>
                 {sel.stats.map((st) => (
@@ -223,7 +221,8 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
       <style>{`
         .cx-more:hover{ color: ${PURPLE} !important; }
         .cx-filter:hover{ color: ${PURPLE} !important; }
-        .cx-tile:hover{ opacity: 1 !important; }
+        /* overview / strategy: at most 3 lines, full text on the case page via อ่านเพิ่มเติม */
+        .cx-clamp{ display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
         .cx-filters::-webkit-scrollbar{ display: none; }
         .cx-filter{ flex-shrink: 0; }
         .cx-detail{ animation: cx-in 0.35s ease; }
@@ -231,10 +230,10 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
         @media (max-width: 1100px){
           .cx-grid{ grid-template-columns: minmax(0, 1fr) !important; }
           .cx-grid > *{ min-width: 0; }
-          .cx-list{ display: flex !important; overflow-x: auto !important; overflow-y: hidden !important; max-height: none !important; padding: 4px 4px 8px !important; scrollbar-width: none; }
+          .cx-list{ flex-direction: row !important; overflow-x: auto !important; overflow-y: hidden !important; max-height: none !important; padding: 0 0 6px !important; scrollbar-width: none; }
           .cx-list::-webkit-scrollbar{ display: none; }
           .cx-hint{ display: none; }
-          .cx-list > button{ flex: 0 0 150px; height: 80px !important; }
+          .cx-list > button{ width: 260px; }
         }
         @media (max-width: 760px){
           .cx-detail{ flex-direction: column !important; align-items: flex-start !important; padding: 28px 22px !important; gap: 24px !important; }
