@@ -72,7 +72,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
               </p>
             </div>
             <div className="hww-art" aria-hidden="true">
-              <Image src={item.src} alt="" fill sizes="(max-width: 1279px) 220px, 16vw" style={{ objectFit: "contain", objectPosition: "right bottom" }} />
+              <Image src={item.src} alt="" fill unoptimized sizes="(max-width: 1279px) 280px, 18vw" style={{ objectFit: "contain", objectPosition: "right bottom" }} />
             </div>
           </Link>
         ))}
@@ -88,7 +88,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
           transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         /* 3D letter anchored to the bottom-right corner, partly cropped by the card edge */
-        .hww-art{ position: absolute; right: -16%; bottom: -8%; width: 100%; aspect-ratio: 1; z-index: 1; pointer-events: none;
+        .hww-art{ position: absolute; right: -12%; bottom: -8%; width: 86%; aspect-ratio: 1; z-index: 1; pointer-events: none;
           transition: transform 0.6s cubic-bezier(.22,1,.36,1); transform-origin: right bottom; }
         .hww-card:hover{ transform: translateY(-6px); box-shadow: 0 26px 48px -22px rgba(20,4,92,0.7); }
         .hww-card:hover .hww-art{ transform: scale(1.06) rotate(-3deg); }
