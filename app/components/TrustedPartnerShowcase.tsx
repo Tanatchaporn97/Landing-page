@@ -7,14 +7,14 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 // light gradient so the headline reads on the dark-blue section background
 const GRAD = "linear-gradient(45deg, #d9ccff 0%, #ff8fd0 100%)";
 
-// The five principles as cards spelling B·U·D·D·Y: tag pill, title and copy
+// The five principles as cards spelling B·U·D·D·Y: title and copy
 // on top, with a 3D letter (public/how-we-work/letter-*.webp) in the corner.
 const ITEMS = [
-  { tag: "Clarity", dot: "#c4b5fd", title: "Built on Clarity",         desc: "ทำงานเป็นระบบ ชัดเจน และมีมาตรฐาน",                 descEn: "Clear, systematic work held to a consistent standard.",              src: "/how-we-work/letter-b.webp" },
-  { tag: "Insight", dot: "#ec4899", title: "Unified by Insight",       desc: "เข้าใจเป้าหมายร่วมกัน และต่อยอดด้วย Insight",          descEn: "Shared goals, sharpened by insight.",                                src: "/how-we-work/letter-u.webp" },
-  { tag: "Data-Driven", dot: "#a5b4fc", title: "Data-Driven Decisions",    desc: "ใช้ข้อมูลช่วยตัดสินใจ ตั้งแต่เลือก Creator จนถึงวัดผล",   descEn: "Data guides every call — from choosing creators to measuring results.", src: "/how-we-work/letter-d.webp" },
-  { tag: "Delivery", dot: "#f472b6", title: "Delivery with Discipline", desc: "บริหารและส่งมอบงานอย่างเป็นระบบ ตั้งแต่ต้นจนจบ",         descEn: "Systematic management and delivery, from start to finish.",           src: "/how-we-work/letter-d.webp" },
-  { tag: "Goal-Focused", dot: "#d8b4fe", title: "Your Goals Drive Results", desc: "มุ่งผลลัพธ์ที่เชื่อมกับเป้าหมายของแบรนด์จริง",            descEn: "Results tied to your brand's real goals.",                            src: "/how-we-work/letter-y.webp" },
+  { title: "Built on Clarity",         desc: "ทำงานเป็นระบบ ชัดเจน และมีมาตรฐาน",                 descEn: "Clear, systematic work held to a consistent standard.",              src: "/how-we-work/letter-b.webp" },
+  { title: "Unified by Insight",       desc: "เข้าใจเป้าหมายร่วมกัน และต่อยอดด้วย Insight",          descEn: "Shared goals, sharpened by insight.",                                src: "/how-we-work/letter-u.webp" },
+  { title: "Data-Driven Decisions",    desc: "ใช้ข้อมูลช่วยตัดสินใจ ตั้งแต่เลือก Creator จนถึงวัดผล",   descEn: "Data guides every call — from choosing creators to measuring results.", src: "/how-we-work/letter-d.webp" },
+  { title: "Delivery with Discipline", desc: "บริหารและส่งมอบงานอย่างเป็นระบบ ตั้งแต่ต้นจนจบ",         descEn: "Systematic management and delivery, from start to finish.",           src: "/how-we-work/letter-d.webp" },
+  { title: "Your Goals Drive Results", desc: "มุ่งผลลัพธ์ที่เชื่อมกับเป้าหมายของแบรนด์จริง",            descEn: "Results tied to your brand's real goals.",                            src: "/how-we-work/letter-y.webp" },
 ];
 
 export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) {
@@ -54,17 +54,11 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
 
       {/* five cards in one row (≥1280px); narrower screens scroll sideways with snap.
           Style follows the brand page's "Think Smarter, Execute Better" cards: light card,
-          dot tag pill, bold title, muted copy, 3D art bleeding off the bottom-right corner. */}
+          bold title, muted copy, 3D art bleeding off the bottom-right corner. */}
       <div className="hww-row">
         {ITEMS.map((item) => (
           <Link key={item.title} href={`/${lang}/brand`} className="hww-card group">
             <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", gap: "14px" }}>
-              <span style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", width: "fit-content", padding: "6px 14px", borderRadius: "999px",
-                background: "rgba(255,255,255,0.16)", border: "1px solid rgba(255,255,255,0.35)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)",
-                fontSize: "13px", fontWeight: 600, color: "#ffffff" }}>
-                <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: item.dot }} />
-                {item.tag}
-              </span>
               <h4 style={{ ...KT, margin: 0, fontSize: "clamp(20px,1.6vw,24px)", fontWeight: 700, lineHeight: 1.25, color: "#ffffff" }}>
                 {item.title}
               </h4>

@@ -21,8 +21,8 @@ function CategoryPill({ children }: { children: React.ReactNode }) {
 
 export default function NewsroomSection({ lang = "th", dict, variant = "home" }: { lang?: "th" | "en"; dict?: any; variant?: "home" | "brand" | "influencer" }) {
   const t = lang === "th"
-    ? { viewMore: "อ่านเพิ่มเติม" }
-    : { viewMore: "Read More" };
+    ? { viewMore: "ดูเพิ่มเติม", readMore: "อ่านเพิ่มเติม" }
+    : { viewMore: "View More", readMore: "Read More" };
 
   const catAll = lang === "th" ? "ข่าวสาร" : "News";
   const catBrand = lang === "th" ? "สำหรับแบรนด์" : "For Brands";
@@ -83,6 +83,10 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
             }}>
               {featured.desc}
             </p>
+            <span className="btn-text-arrow" style={{ ...KT, fontSize: "18px", fontWeight: 700, marginTop: "auto", paddingTop: "4px" }}>
+              {t.readMore}
+              <span className="btn-text-arrow-icon">→</span>
+            </span>
           </div>
         </Link>
 
@@ -106,7 +110,7 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
                   </span>
                 </div>
               </div>
-              <div style={{ padding: "24px", display: "flex", flexDirection: "column", gap: "10px" }}>
+              <div style={{ padding: "24px", display: "flex", flexDirection: "column", gap: "10px", flex: 1 }}>
                 <h3 style={{ ...KT, fontSize: "18px", fontWeight: 700, lineHeight: 1.4, color: "#111827", margin: 0 }}>
                   {post.title}
                 </h3>
@@ -116,6 +120,10 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
                 }}>
                   {post.desc}
                 </p>
+                <span className="btn-text-arrow" style={{ ...KT, fontSize: "16px", fontWeight: 700, marginTop: "auto", paddingTop: "6px" }}>
+                  {t.readMore}
+                  <span className="btn-text-arrow-icon">→</span>
+                </span>
               </div>
             </Link>
           ))}
