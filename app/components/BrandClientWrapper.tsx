@@ -3,20 +3,19 @@ import { useState, useEffect, useRef, Suspense } from "react";
 import { motion, AnimatePresence, animate } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { GradientCard } from "@/components/ui/gradient-card";
-import { Target, Sparkles, Layers, Wallet, BarChart3, Rocket, Users, RefreshCw, PartyPopper, ShoppingBag } from "lucide-react";
+import { Target, Sparkles, Layers, Wallet, BarChart3 } from "lucide-react";
 import BusinessGoalsSection from "./BusinessGoalsSection";
 import CreatorSelectionSection from "./CreatorSelectionSection";
 import CampaignLearningSection from "./CampaignLearningSection";
 import CategoriesMarquee from "./CategoriesMarquee";
 import CreatorCategoriesSection from "./CreatorCategoriesSection";
 import BrandHeroVisual from "./BrandHeroVisual";
+import CaseExplorer from "./CaseExplorer";
 import ImpactStats from "./ImpactStats";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 
 // Lazy load below-the-fold components
@@ -150,13 +149,6 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
   const servicesScrollRef = useRef<HTMLDivElement>(null);
   const serviceCardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeService, setActiveService] = useState(0);
-  const STORY_TABS = ["New Market Entry", "Niche Community", "Always-on Content", "Event Activation", "Shoppable Content"] as const;
-  const STORY_TAB_ICONS = { "New Market Entry": Rocket, "Niche Community": Users, "Always-on Content": RefreshCw, "Event Activation": PartyPopper, "Shoppable Content": ShoppingBag } as const;
-  // Industry label for each story, in the same order as STORY_TABS — used to
-  // let visitors pick a story by industry via the top horizontal tab row.
-  const STORY_INDUSTRIES = ["Healthcare", "Pet Care", "Food & Beverage", "Skincare", "Health & Beauty"] as const;
-  const [activeStoryTab, setActiveStoryTab] = useState<typeof STORY_TABS[number]>(STORY_TABS[0]);
-  const [storyTabsAutoPaused, setStoryTabsAutoPaused] = useState(false);
 
   // Keep the active card scrolled fully into view whenever it changes — via
   // clicking a card directly, or via the arrow buttons stepping to the next/
@@ -223,21 +215,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
     return () => clearInterval(id);
   }, [servicesAutoPaused]);
 
-  // Auto-advance the "See the Work in Action" story tabs every 5s, looping
-  // back to the start; paused while the user is hovering the tabs/content.
-  useEffect(() => {
-    if (storyTabsAutoPaused) return;
-    const id = setInterval(() => {
-      setActiveStoryTab((prev) => {
-        const nextIndex = (STORY_TABS.indexOf(prev) + 1) % STORY_TABS.length;
-        return STORY_TABS[nextIndex];
-      });
-    }, 5000);
-    return () => clearInterval(id);
-  }, [storyTabsAutoPaused]);
 
-  const router = useRouter();
-  const catSlug = (cat: string) => cat.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-$/, "");
 
   const [activeCampaignStep, setActiveCampaignStep] = useState(0);
   // desc / descEn: "|" marks the line break — every step reads as exactly two lines on desktop.
@@ -568,144 +546,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </p>
           </div>
 
-          <Tabs value={activeStoryTab} onValueChange={(v) => setActiveStoryTab(v as typeof STORY_TABS[number])} className="mt-8" orientation="vertical"
-            onMouseEnter={() => setStoryTabsAutoPaused(true)} onMouseLeave={() => setStoryTabsAutoPaused(false)}>
-            {/* Industry filter row — an alternate way to pick the same story
-                tabs above, by industry instead of by campaign type. */}
-            <TabsList style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "32px", marginBottom: "32px", borderBottom: "1px solid rgba(95,38,229,0.12)" }}>
-              {STORY_TABS.map((tabLabel, i) => (
-                <TabsTrigger key={tabLabel} value={tabLabel} style={{
-                  ...KT, borderRadius: 0, background: "none", boxShadow: "none",
-                  padding: "0 0 12px", fontSize: "15px", fontWeight: 600,
-                  borderBottom: tabLabel === activeStoryTab ? "2px solid #5f26e5" : "2px solid transparent",
-                  color: tabLabel === activeStoryTab ? "#5f26e5" : "#6b7280",
-                  transition: "color 0.2s ease, border-color 0.2s ease",
-                }}>
-                  {STORY_INDUSTRIES[i]}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-
-            <div className="cs-tabs-layout" style={{ display: "flex", gap: "24px", alignItems: "stretch" }}>
-              <TabsList className="cs-tabs-col" style={{ display: "flex", flexDirection: "column", gap: "8px", flexShrink: 0, width: "260px" }}>
-                {STORY_TABS.map((tabLabel) => {
-                  const TabIcon = STORY_TAB_ICONS[tabLabel];
-                  return (
-                    <TabsTrigger key={tabLabel} value={tabLabel} style={{
-                      ...KT, width: "100%", justifyContent: "flex-start",
-                      background: tabLabel === activeStoryTab ? "#5f26e5" : "rgba(255,255,255,0.55)",
-                      backdropFilter: tabLabel === activeStoryTab ? "none" : "blur(20px)",
-                      WebkitBackdropFilter: tabLabel === activeStoryTab ? "none" : "blur(20px)",
-                      border: tabLabel === activeStoryTab ? "none" : "1px solid rgba(255,255,255,0.6)",
-                      color: tabLabel === activeStoryTab ? "#ffffff" : "#111827",
-                      boxShadow: "0 8px 20px -10px rgba(95,38,229,0.2)",
-                    }}>
-                      <TabIcon className="h-5 w-5 shrink-0" />
-                      {tabLabel}
-                    </TabsTrigger>
-                  );
-                })}
-              </TabsList>
-
-              <div className="rounded-3xl" style={{
-                flex: 1, minWidth: 0, padding: "60px",
-                background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
-                border: "1px solid rgba(255,255,255,0.6)", boxShadow: "0 8px 28px rgba(95,38,229,0.08)",
-              }}>
-                {[
-                { value: "New Market Entry", href: `/${lang}/success/siangpure`,      img: "/success-stories-2/siangpure-logo.jpg", cat: "HEALTHCARE",     title: "Siangpure",
-                  overview: "แคมเปญที่พา Siangpure บุกตลาดใหม่ผ่านครีเอเตอร์ชาวอินเดียบน Instagram เพื่อสร้างการรับรู้ในกลุ่มผู้บริโภคที่ไม่เคยเข้าถึงมาก่อน",
-                  overviewEn: "A campaign that brought Siangpure into a new market through Indian Creators on Instagram, building awareness with an audience never reached before.",
-                  approach: "Buddy Review คัดเลือก Indian Influencers ที่มี Audience ตรงกับตลาด พร้อมพัฒนาคอนเทนต์ภายใต้แนวคิด “มาเที่ยวไทย อะไรคือของที่ต้องซื้อกลับ?” เปลี่ยน Siangpure ให้กลายเป็น Thai Travel Essential ที่คนอินเดียจดจำและอยากซื้อกลับ",
-                  approachEn: "Buddy Review selected Indian influencers whose audiences matched the target market, building content around \"Visiting Thailand — what's the must-buy souvenir?\" and repositioning Siangpure as a memorable Thai Travel Essential.",
-                  stats: [{ label: "Reach", labelTh: "การเข้าถึง", value: "1.2M" }, { label: "Creators", labelTh: "ครีเอเตอร์", value: "15" }, { label: "Engagement Rate", labelTh: "อัตรามีส่วนร่วม", value: "4.8%" }],
-                  imgFit: "contain" as const, imgBg: "#ffffff" },
-                { value: "Niche Community",  href: `/${lang}/success/optimum-hi-pro`, img: "/success-stories-2/optimum-hi-pro-logo.jpg", cat: "PET CARE",       title: "Optimum Hi Pro",
-                  overview: "เจาะกลุ่มคนเลี้ยงปลาคาร์พที่มีความเฉพาะทางสูง ผ่านครีเอเตอร์ที่เข้าใจ community นี้จริงๆ พร้อมขยายการรับรู้ในวงกว้าง",
-                  overviewEn: "Reaching the highly specialized koi-keeper community through Creators who truly understand it, while expanding awareness at scale.",
-                  approach: "ผสานอินฟลูเอนเซอร์เฉพาะทางที่เข้าถึง Community คนเลี้ยงปลาคาร์พโดยตรง กับ Lifestyle Influencer ที่ช่วยขยายการรับรู้ในวงกว้าง ทำให้แคมเปญได้ทั้งความน่าเชื่อถือและ Reach ไปพร้อมกัน",
-                  approachEn: "Blended specialist influencers who reached the koi-keeping community directly with lifestyle influencers who extended awareness at scale — giving the campaign both credibility and reach.",
-                  stats: [{ label: "Reach", labelTh: "การเข้าถึง", value: "850K" }, { label: "Community Engagement", labelTh: "การมีส่วนร่วม", value: "+65%" }, { label: "Creators", labelTh: "ครีเอเตอร์", value: "10" }],
-                  imgFit: "contain" as const, imgBg: "#05176e" },
-                { value: "Always-on Content", href: `/${lang}/success/auntie-annes`,  img: "/success-stories-2/auntie-annes-logo.jpg", cat: "FOOD & BEVERAGE", title: "Auntie Anne's",
-                  overview: "สร้าง Always-on Content Engine บน TikTok ที่ผลิตคอนเทนต์ต่อเนื่องกว่า 15 เดือน รักษาการมองเห็นแบรนด์ได้ตลอดปี",
-                  overviewEn: "Built an always-on TikTok content engine producing content continuously for 15+ months, keeping the brand visible year-round.",
-                  approach: "สร้าง Always-on Content Engine ที่ผสาน Storyboard, Talent และทีม Production เข้าด้วยกัน ผลิตคอนเทนต์ต่อเนื่องราว 15 ชิ้นต่อเดือน พร้อมปรับ Format ให้ทันเทรนด์ TikTok อยู่เสมอ",
-                  approachEn: "Built an Always-on Content Engine combining storyboarding, talent, and production — producing around 15 pieces of content a month while continuously adapting formats to TikTok trends.",
-                  stats: [{ label: "Duration", labelTh: "ระยะเวลา", value: "15+ mo." }, { label: "Content Pieces", labelTh: "ชิ้นคอนเทนต์", value: "200+" }, { label: "Avg. Views", labelTh: "ยอดวิวเฉลี่ย", value: "500K" }],
-                  imgFit: "contain" as const, imgBg: "#ffffff", imgPosition: "center 40%" },
-                { value: "Event Activation", href: `/${lang}/success/ahc`,           img: "/success-stories-2/Success stories-12.jpg", cat: "SKINCARE",       title: "AHC",
-                  overview: "จุดกระแสด้วยอีเวนต์ที่ต่อยอดจากซีรีส์ไวรัล AHC Skin Game สร้างการพูดถึงบนโซเชียลอย่างต่อเนื่อง",
-                  overviewEn: "Sparked buzz with an event built on the viral series \"AHC Skin Game,\" driving continuous social conversation.",
-                  approach: "ดึงอินฟลูเอนเซอร์ตัวท็อปมาร่วมงานอีเวนต์ เสริมด้วยข่าวประชาสัมพันธ์จากสื่อชั้นนำ และปรับคอนเทนต์ให้เหมาะกับแต่ละแพลตฟอร์ม พร้อมติดตามผลแบบเรียลไทม์เพื่อดันให้เกิดกระแสไวรัล",
-                  approachEn: "Brought in top-tier influencers for the event, amplified with PR from leading media, tailored content per platform, and tracked results in real time to drive viral reach.",
-                  stats: [{ label: "Event Reach", labelTh: "การเข้าถึงอีเวนต์", value: "2M" }, { label: "Media Mentions", labelTh: "การพูดถึง", value: "120+" }, { label: "Engagement Rate", labelTh: "อัตรามีส่วนร่วม", value: "6.2%" }] },
-                { value: "Shoppable Content", href: `/${lang}/success/watsons`,      img: "/success-stories-2/Success stories-10.jpg", cat: "HEALTH & BEAUTY", title: "Watsons",
-                  overview: "ดัน House Brand ให้ปังบน TikTok และ Lemon8 ด้วยคอนเทนต์ที่พาไปสู่การตัดสินใจซื้อโดยตรง",
-                  overviewEn: "Boosted House Brand products on TikTok and Lemon8 with content designed to drive direct purchase decisions.",
-                  approach: "ใช้กลยุทธ์ \"เพื่อนแนะนำเพื่อน\" ให้ครีเอเตอร์โชว์การช้อปจริงในร้านผ่านโจทย์ \"งบ 500 บาท ซื้อได้กี่ชิ้น\" บน TikTok และ Lemon8 เพื่อกระตุ้นให้อยากช้อปตามทันที",
-                  approachEn: "Used a \"friend-recommending-friend\" strategy, having creators show real in-store shopping under the challenge \"How many items with a 500 THB budget?\" across TikTok and Lemon8 to spark immediate purchase intent.",
-                  stats: [{ label: "Sales Uplift", labelTh: "ยอดขายเพิ่มขึ้น", value: "+40%" }, { label: "Reach", labelTh: "การเข้าถึง", value: "1.5M" }, { label: "Creators", labelTh: "ครีเอเตอร์", value: "25" }] },
-              ].map((story) => (
-                <TabsContent key={story.value} value={story.value} className="grid place-items-center gap-10 lg:grid-cols-[1.5fr_1fr]">
-                  <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-                    <button
-                      onClick={() => router.push(`/${lang}/category/${catSlug(story.cat)}`)}
-                      style={{ ...KT, width: "fit-content", fontSize: "12px", fontWeight: 600, color: "#5f26e5",
-                        background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
-                        border: "1px solid rgba(255,255,255,0.6)", borderRadius: "50px", padding: "6px 14px", letterSpacing: "0.06em", cursor: "pointer" }}
-                    >
-                      {story.cat.charAt(0) + story.cat.slice(1).toLowerCase()}
-                    </button>
-                    <h3 style={{
-                      ...KT, fontSize: "clamp(26px,3vw,40px)", fontWeight: 700, margin: 0, lineHeight: 1.2,
-                      display: "inline-block",
-                      background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-                      WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-                    }}>
-                      {story.title}
-                    </h3>
-                    <p style={{ ...KT, fontSize: "16px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#5f26e5", margin: 0 }}>
-                      {lang === "th" ? "ภาพรวม" : "Overview"}
-                    </p>
-                    <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: "-12px 0 0" }}>
-                      {lang === "th" ? story.overview : story.overviewEn}
-                    </p>
-                    <p style={{ ...KT, fontSize: "16px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#5f26e5", margin: 0 }}>
-                      {lang === "th" ? "กลยุทธ์" : "Strategy"}
-                    </p>
-                    <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: "-12px 0 0" }}>
-                      {lang === "th" ? story.approach : story.approachEn}
-                    </p>
-                    <div style={{ display: "flex", gap: "28px", flexWrap: "wrap", marginTop: "4px" }}>
-                      {story.stats.map((stat) => (
-                        <div key={stat.label}>
-                          <p style={{
-                            ...KT, fontSize: "24px", fontWeight: 800, margin: "0 0 2px", display: "inline-block",
-                            background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-                            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-                          }}>{stat.value}</p>
-                          <p style={{ ...KT, fontSize: "16px", color: "#111827", margin: 0 }}>{lang === "th" ? stat.labelTh : stat.label}</p>
-                        </div>
-                      ))}
-                    </div>
-                    <Link href={story.href} className="btn-text-arrow" style={{
-                      ...KT, fontSize: "16px", fontWeight: 700, textDecoration: "none", marginTop: "8px",
-                    }}>
-                      {lang === "th" ? "อ่านเพิ่มเติม" : "Read More"}
-                      <span className="btn-text-arrow-icon">→</span>
-                    </Link>
-                  </div>
-                  <div style={{ position: "relative", width: "100%", maxWidth: "280px", aspectRatio: "1 / 1", borderRadius: "50%", overflow: "hidden",
-                    background: story.imgBg || "#f3f0fb", border: "1px solid rgba(95,38,229,0.08)", boxShadow: "0 8px 20px -10px rgba(95,38,229,0.15)" }}>
-                    <Image src={story.img} alt={story.title} fill sizes="280px"
-                      style={{ objectFit: story.imgFit || "cover", objectPosition: story.imgPosition || "center", padding: story.imgFit === "contain" ? "24px" : 0 }} />
-                  </div>
-                </TabsContent>
-              ))}
-              </div>
-            </div>
-          </Tabs>
+          <CaseExplorer lang={lang as "th" | "en"} />
 
           {/* ดูเพิ่มเติม CTA */}
           <div style={{ display: "flex", justifyContent: "center", marginTop: "48px" }}>
@@ -717,7 +558,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               padding: "14px 48px",
               textDecoration: "none",
             }}>
-              {t.viewMore}
+              {lang === "th" ? "ดูเคสทั้งหมด" : "View All Cases"}
             </Link>
           </div>
         </div>
