@@ -71,6 +71,7 @@ function StoryCard({ src, name }: { src: string; name: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
+  const [buffering, setBuffering] = useState(false);
 
   // `playing` follows the element's own play/pause events (below), so the UI
   // never shows "playing" for a video that failed to start. If the browser
@@ -97,7 +98,8 @@ function StoryCard({ src, name }: { src: string; name: string }) {
       scrollSnapAlign: "start",
     }} onClick={toggle}>
       <video ref={videoRef} playsInline loop preload="metadata" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
-        onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onEnded={() => setPlaying(false)}>
+        onPlay={() => setPlaying(true)} onPause={() => { setPlaying(false); setBuffering(false); }} onEnded={() => setPlaying(false)}
+        onWaiting={() => setBuffering(true)} onPlaying={() => setBuffering(false)} onCanPlay={() => setBuffering(false)}>
         {/* #t=0.1 makes the browser paint the first frame as the cover without downloading the whole file */}
         <source src={`${src}#t=0.1`} type="video/mp4" />
       </video>
@@ -107,6 +109,13 @@ function StoryCard({ src, name }: { src: string; name: string }) {
           <div style={{ width: "56px", height: "56px", borderRadius: "50%", background: "rgba(255,255,255,0.9)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="#111827" style={{ marginLeft: "3px" }}><path d="M8 5v14l11-7z" /></svg>
           </div>
+        </div>
+      )}
+
+      {/* loading ring while the clip buffers after a tap */}
+      {buffering && (
+        <div aria-label="Loading" style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", zIndex: 2, pointerEvents: "none" }}>
+          <span className="cs-spin" style={{ width: "44px", height: "44px", borderRadius: "50%", border: "4px solid rgba(255,255,255,0.35)", borderTopColor: "#ffffff" }} />
         </div>
       )}
 
@@ -149,6 +158,8 @@ export default function CreatorStories() {
       {VIDEOS.map((v) => <StoryCard key={v.src} src={v.src} name={v.name} />)}
       <style>{`
         .creator-stories-row::-webkit-scrollbar{ display: none; }
+        @keyframes cs-spin{ to{ transform: rotate(360deg); } }
+        .cs-spin{ animation: cs-spin 0.8s linear infinite; }
         @media (max-width: 768px){
           .creator-stories-row{ padding-left: 24px !important; padding-right: 24px !important; scroll-padding-inline: 24px !important; }
         }

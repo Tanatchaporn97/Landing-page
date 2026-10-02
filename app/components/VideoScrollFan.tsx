@@ -129,6 +129,33 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
     };
   }, [videos]);
 
+  // Play only the clips that are (nearly) on screen; pause the rest. A clip's
+  // file is fetched the first time it comes into view.
+  useEffect(() => {
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+    const vids = Array.from(scroller.querySelectorAll<HTMLVideoElement>("video.vsf-video"));
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        const v = e.target as HTMLVideoElement;
+        if (e.isIntersecting) {
+          if (!v.getAttribute("src") && v.dataset.src) { v.src = v.dataset.src; v.preload = "auto"; }
+          v.play().catch(() => {});
+        } else if (!v.paused) {
+          v.pause();
+        }
+      }
+    }, { root: scroller, rootMargin: "0px 150px", threshold: 0.01 });
+    vids.forEach((v) => io.observe(v));
+    // also stop everything while the whole strip is scrolled off the page
+    const pageIo = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) vids.forEach((v) => { if (!v.paused) v.pause(); });
+      else vids.forEach((v) => { io.unobserve(v); io.observe(v); });
+    }, { threshold: 0 });
+    pageIo.observe(scroller);
+    return () => { io.disconnect(); pageIo.disconnect(); };
+  }, [videos]);
+
   return (
     <div className="vsf-wrap" style={{ position: "relative", width: "100%", margin: "0 auto" }}>
       <div
@@ -162,13 +189,18 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
               willChange: "transform",
             }}
           >
+            {/* src is attached only when the card nears the viewport (see the
+                IntersectionObserver effect) — the strip renders 3× copies of
+                every clip, and loading all of them at once starved other
+                videos on the page of bandwidth. */}
             <video
-              src={v.src}
-              autoPlay
+              data-src={v.src}
+              className="vsf-video"
               muted
               loop
               playsInline
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", pointerEvents: "none" }}
+              preload="none"
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", pointerEvents: "none", background: "#e9e1f7" }}
             />
           </div>
         ))}
