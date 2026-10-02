@@ -70,17 +70,22 @@ function TikTokCreateButton() {
 function StoryCard({ src, name }: { src: string; name: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
+  const [muted, setMuted] = useState(false);
 
+  // `playing` follows the element's own play/pause events (below), so the UI
+  // never shows "playing" for a video that failed to start. If the browser
+  // refuses to start with sound (e.g. Safari/iOS policies), retry muted so the
+  // clip still plays; the viewer can unmute with the speaker button.
   const toggle = () => {
     const el = videoRef.current;
     if (!el) return;
-    if (playing) {
-      el.pause();
-      setPlaying(false);
-    } else {
-      el.play();
-      setPlaying(true);
-    }
+    if (!el.paused) { el.pause(); return; }
+    if (el.readyState === 0) el.load();
+    el.play().catch(() => {
+      el.muted = true;
+      setMuted(true);
+      el.play().catch(() => {});
+    });
   };
 
   return (
@@ -92,7 +97,7 @@ function StoryCard({ src, name }: { src: string; name: string }) {
       scrollSnapAlign: "start",
     }} onClick={toggle}>
       <video ref={videoRef} playsInline loop preload="metadata" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
-        onEnded={() => setPlaying(false)}>
+        onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onEnded={() => setPlaying(false)}>
         {/* #t=0.1 makes the browser paint the first frame as the cover without downloading the whole file */}
         <source src={`${src}#t=0.1`} type="video/mp4" />
       </video>
@@ -103,6 +108,16 @@ function StoryCard({ src, name }: { src: string; name: string }) {
             <svg width="20" height="20" viewBox="0 0 24 24" fill="#111827" style={{ marginLeft: "3px" }}><path d="M8 5v14l11-7z" /></svg>
           </div>
         </div>
+      )}
+
+      {playing && muted && (
+        <button
+          onClick={(e) => { e.stopPropagation(); const el = videoRef.current; if (el) { el.muted = false; setMuted(false); } }}
+          aria-label="Unmute"
+          style={{ position: "absolute", top: "16px", left: "16px", height: "36px", padding: "0 12px", borderRadius: "18px", background: "rgba(0,0,0,0.45)", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: "6px", zIndex: 2, color: "#ffffff", ...KT, fontSize: "12px", fontWeight: 600 }}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#ffffff"><path d="M4 9v6h4l5 4V5L8 9H4z" /><path d="M16 8l5 8M21 8l-5 8" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" /></svg>
+          Tap to unmute
+        </button>
       )}
 
       {playing && (
