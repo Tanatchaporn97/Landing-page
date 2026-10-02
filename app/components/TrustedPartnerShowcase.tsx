@@ -10,11 +10,11 @@ const GRAD = "linear-gradient(45deg, #d9ccff 0%, #ff8fd0 100%)";
 // The five principles as cards spelling B·U·D·D·Y: tag pill, title and copy
 // on top, with a 3D letter (public/how-we-work/letter-*.webp) in the corner.
 const ITEMS = [
-  { tag: "Clarity", dot: "#5f26e5", title: "Built on Clarity",         desc: "ทำงานเป็นระบบ ชัดเจน และมีมาตรฐาน",                 descEn: "Clear, systematic work held to a consistent standard.",              src: "/how-we-work/letter-b.webp" },
+  { tag: "Clarity", dot: "#c4b5fd", title: "Built on Clarity",         desc: "ทำงานเป็นระบบ ชัดเจน และมีมาตรฐาน",                 descEn: "Clear, systematic work held to a consistent standard.",              src: "/how-we-work/letter-b.webp" },
   { tag: "Insight", dot: "#ec4899", title: "Unified by Insight",       desc: "เข้าใจเป้าหมายร่วมกัน และต่อยอดด้วย Insight",          descEn: "Shared goals, sharpened by insight.",                                src: "/how-we-work/letter-u.webp" },
-  { tag: "Data-Driven", dot: "#2e1a7a", title: "Data-Driven Decisions",    desc: "ใช้ข้อมูลช่วยตัดสินใจ ตั้งแต่เลือก Creator จนถึงวัดผล",   descEn: "Data guides every call — from choosing creators to measuring results.", src: "/how-we-work/letter-d.webp" },
-  { tag: "Delivery", dot: "#b0206a", title: "Delivery with Discipline", desc: "บริหารและส่งมอบงานอย่างเป็นระบบ ตั้งแต่ต้นจนจบ",         descEn: "Systematic management and delivery, from start to finish.",           src: "/how-we-work/letter-d.webp" },
-  { tag: "Goal-Focused", dot: "#7c3aed", title: "Your Goals Drive Results", desc: "มุ่งผลลัพธ์ที่เชื่อมกับเป้าหมายของแบรนด์จริง",            descEn: "Results tied to your brand's real goals.",                            src: "/how-we-work/letter-y.webp" },
+  { tag: "Data-Driven", dot: "#a5b4fc", title: "Data-Driven Decisions",    desc: "ใช้ข้อมูลช่วยตัดสินใจ ตั้งแต่เลือก Creator จนถึงวัดผล",   descEn: "Data guides every call — from choosing creators to measuring results.", src: "/how-we-work/letter-d.webp" },
+  { tag: "Delivery", dot: "#f472b6", title: "Delivery with Discipline", desc: "บริหารและส่งมอบงานอย่างเป็นระบบ ตั้งแต่ต้นจนจบ",         descEn: "Systematic management and delivery, from start to finish.",           src: "/how-we-work/letter-d.webp" },
+  { tag: "Goal-Focused", dot: "#d8b4fe", title: "Your Goals Drive Results", desc: "มุ่งผลลัพธ์ที่เชื่อมกับเป้าหมายของแบรนด์จริง",            descEn: "Results tied to your brand's real goals.",                            src: "/how-we-work/letter-y.webp" },
 ];
 
 export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) {
@@ -60,14 +60,15 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
           <Link key={item.title} href={`/${lang}/brand`} className="hww-card group">
             <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", gap: "14px" }}>
               <span style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", width: "fit-content", padding: "6px 14px", borderRadius: "999px",
-                background: "#ffffff", fontSize: "13px", fontWeight: 600, color: "#374151", boxShadow: "0 2px 8px -4px rgba(95,38,229,0.25)" }}>
+                background: "rgba(255,255,255,0.16)", border: "1px solid rgba(255,255,255,0.35)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)",
+                fontSize: "13px", fontWeight: 600, color: "#ffffff" }}>
                 <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: item.dot }} />
                 {item.tag}
               </span>
-              <h4 style={{ ...KT, margin: 0, fontSize: "clamp(20px,1.6vw,24px)", fontWeight: 700, lineHeight: 1.25, color: "#111827" }}>
+              <h4 style={{ ...KT, margin: 0, fontSize: "clamp(20px,1.6vw,24px)", fontWeight: 700, lineHeight: 1.25, color: "#ffffff" }}>
                 {item.title}
               </h4>
-              <p style={{ ...KT, margin: 0, fontSize: "15px", fontWeight: 400, lineHeight: 1.6, color: "#4b5563" }}>
+              <p style={{ ...KT, margin: 0, fontSize: "15px", fontWeight: 400, lineHeight: 1.6, color: "rgba(255,255,255,0.82)" }}>
                 {lang === "th" ? item.desc : item.descEn}
               </p>
             </div>
@@ -83,14 +84,17 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
         .hww-card{
           position: relative; overflow: hidden; isolation: isolate; text-decoration: none;
           display: flex; flex-direction: column; min-height: 400px; padding: 28px 24px; border-radius: 24px;
-          background: linear-gradient(160deg, #f7f3fd 0%, #efe8fb 100%);
-          border: 1px solid rgba(255,255,255,0.9); box-shadow: 0 18px 40px -22px rgba(20,4,92,0.55);
+          /* glassmorphism over the dark-blue section background */
+          background: linear-gradient(160deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.07) 100%);
+          backdrop-filter: blur(22px) saturate(140%); -webkit-backdrop-filter: blur(22px) saturate(140%);
+          border: 1px solid rgba(255,255,255,0.32);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.45), 0 18px 40px -22px rgba(10,0,60,0.6);
           transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         /* 3D letter anchored to the bottom-right corner, partly cropped by the card edge */
         .hww-art{ position: absolute; right: -12%; bottom: -8%; width: 86%; aspect-ratio: 1; z-index: 1; pointer-events: none;
           transition: transform 0.6s cubic-bezier(.22,1,.36,1); transform-origin: right bottom; }
-        .hww-card:hover{ transform: translateY(-6px); box-shadow: 0 26px 48px -22px rgba(20,4,92,0.7); }
+        .hww-card:hover{ transform: translateY(-6px); background: linear-gradient(160deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.10) 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 26px 48px -22px rgba(10,0,60,0.75); }
         .hww-card:hover .hww-art{ transform: scale(1.06) rotate(-3deg); }
         .hww-card:focus-visible{ outline: 2px solid #ffffff; outline-offset: 3px; }
         @media (max-width: 1279px){
