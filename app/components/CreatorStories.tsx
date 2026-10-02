@@ -17,33 +17,52 @@ const VIDEOS = [
   { src: "/videos/creator-stories/tungngern.mp4", name: "ถุงเงิน ณัฐดาภรณ์" },
 ];
 
-// A believable TikTok action-bar mockup: like/comment/bookmark/share icons
-// (outline style, matching TikTok's real icon weight) — no counts under any icon.
-function EngagementBar() {
+// TikTok player chrome over each video: right-hand rail (creator avatar with
+// the red follow "+", like, comment, share) and the bottom-centre create
+// button with TikTok's cyan / red edges. Purely decorative.
+function TikTokRail() {
   return (
-    <div style={{
-      position: "absolute", right: "12px", bottom: "76px", zIndex: 1,
-      display: "flex", flexDirection: "column", alignItems: "center", gap: "16px",
-      filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.4))",
+    <div aria-hidden="true" style={{
+      position: "absolute", right: "12px", bottom: "96px", zIndex: 1,
+      display: "flex", flexDirection: "column", alignItems: "center", gap: "22px",
+      filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.35))", pointerEvents: "none",
     }}>
-      {/* Like */}
-      <svg width="32" height="32" viewBox="0 0 48 48" fill="none">
-        <path d="M24 40.5C24 40.5 6 30 6 17.5C6 10.6 11.2 6 17 6C20.3 6 22.8 7.7 24 10C25.2 7.7 27.7 6 31 6C36.8 6 42 10.6 42 17.5C42 30 24 40.5 24 40.5Z"
-          fill="#ffffff" />
+      {/* creator avatar + follow badge */}
+      <div style={{ position: "relative", width: "46px", height: "46px", marginBottom: "4px" }}>
+        <div style={{ width: "100%", height: "100%", borderRadius: "50%", background: "#000000", border: "2px solid #ffffff",
+          display: "flex", alignItems: "center", justifyContent: "center", boxSizing: "border-box" }}>
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 1 1-2.59-2.59c.27 0 .53.04.78.12V9.77a5.69 5.69 0 1 0 4.9 5.63V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.3 4.3 0 0 1-3.24-1.48z" fill="#25F4EE" transform="translate(-1 -1)" />
+            <path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 1 1-2.59-2.59c.27 0 .53.04.78.12V9.77a5.69 5.69 0 1 0 4.9 5.63V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.3 4.3 0 0 1-3.24-1.48z" fill="#FE2C55" transform="translate(1 1)" />
+            <path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 1 1-2.59-2.59c.27 0 .53.04.78.12V9.77a5.69 5.69 0 1 0 4.9 5.63V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.3 4.3 0 0 1-3.24-1.48z" fill="#ffffff" />
+          </svg>
+        </div>
+        <span style={{ position: "absolute", left: "50%", bottom: "-9px", transform: "translateX(-50%)", width: "20px", height: "20px", borderRadius: "50%",
+          background: "#FE2C55", border: "2px solid #ffffff", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1.5v7M1.5 5h7" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" /></svg>
+        </span>
+      </div>
+      {/* like */}
+      <svg width="34" height="34" viewBox="0 0 48 48"><path d="M24 41C24 41 5 30.2 5 17.4 5 10.6 10.2 6 16.3 6c3.4 0 6 1.7 7.7 4.1C25.7 7.7 28.3 6 31.7 6 37.8 6 43 10.6 43 17.4 43 30.2 24 41 24 41z" fill="#ffffff" /></svg>
+      {/* comment */}
+      <svg width="34" height="34" viewBox="0 0 48 48">
+        <path d="M24 6C13.5 6 5 13.2 5 22.1c0 5 2.7 9.5 7 12.4L10.6 42l8.2-4.7c1.7.4 3.4.6 5.2.6 10.5 0 19-7.2 19-16.1S34.5 6 24 6z" fill="#ffffff" />
+        <circle cx="15" cy="22" r="2.8" fill="#c9c3d6" /><circle cx="24" cy="22" r="2.8" fill="#c9c3d6" /><circle cx="33" cy="22" r="2.8" fill="#c9c3d6" />
       </svg>
-      {/* Comment */}
-      <svg width="30" height="30" viewBox="0 0 48 48" fill="#ffffff">
-        <path d="M6 10a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4H19l-9 8v-8a4 4 0 0 1-4-4z" />
-      </svg>
-      {/* Bookmark */}
-      <svg width="28" height="28" viewBox="0 0 48 48" fill="#ffffff">
-        <path d="M12 4h24a2 2 0 0 1 2 2v38l-14-10-14 10V6a2 2 0 0 1 2-2z" />
-      </svg>
-      {/* Share */}
-      <svg width="30" height="30" viewBox="0 0 48 48" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ transform: "scaleX(-1)" }}>
-        <path d="M20 8L6 22l14 14" />
-        <path d="M6 22h20a14 14 0 0 1 14 14v2" />
-      </svg>
+      {/* share */}
+      <svg width="34" height="34" viewBox="0 0 48 48"><path d="M27 8l16 15-16 15v-9C15 29 9 33 5 41c1.5-12 7.5-22 22-24V8z" fill="#ffffff" /></svg>
+    </div>
+  );
+}
+
+function TikTokCreateButton() {
+  return (
+    <div aria-hidden="true" style={{ position: "absolute", left: "50%", bottom: "26px", transform: "translateX(-50%)", zIndex: 1, width: "48px", height: "32px", pointerEvents: "none" }}>
+      <span style={{ position: "absolute", inset: "0 6px 0 -3px", borderRadius: "9px", background: "#25F4EE" }} />
+      <span style={{ position: "absolute", inset: "0 -3px 0 6px", borderRadius: "9px", background: "#FE2C55" }} />
+      <span style={{ position: "absolute", inset: 0, borderRadius: "8px", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12" stroke="#161823" strokeWidth="2.2" strokeLinecap="round" /></svg>
+      </span>
     </div>
   );
 }
@@ -67,8 +86,9 @@ function StoryCard({ src, name }: { src: string; name: string }) {
   return (
     <div className="creator-story-card" style={{
       position: "relative", flex: "0 0 300px", width: "300px", aspectRatio: "9 / 16",
-      borderRadius: "28px", overflow: "hidden", background: "#000000",
-      boxShadow: "0 12px 32px rgba(95,38,229,0.16)", cursor: "pointer",
+      borderRadius: "40px", overflow: "hidden", background: "#000000",
+      border: "3px solid #ffffff", boxSizing: "border-box",
+      boxShadow: "0 0 0 1px rgba(255,255,255,0.5), 0 0 44px 8px rgba(255,255,255,0.9), 0 22px 44px -14px rgba(95,38,229,0.4)", cursor: "pointer",
       scrollSnapAlign: "start",
     }} onClick={toggle}>
       <video ref={videoRef} playsInline loop preload="metadata" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
@@ -94,23 +114,28 @@ function StoryCard({ src, name }: { src: string; name: string }) {
         </button>
       )}
 
-      <div style={{ position: "absolute", left: "16px", bottom: "16px" }}>
+      {/* soft white fades top and bottom, like the player chrome */}
+      <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none",
+        background: "linear-gradient(180deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 18%, rgba(255,255,255,0) 78%, rgba(255,255,255,0.38) 100%)" }} />
+
+      <div style={{ position: "absolute", left: "18px", bottom: "74px", zIndex: 1 }}>
         <span style={{ ...KT, fontSize: "14px", fontWeight: 600, color: "#ffffff", textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>{name}</span>
       </div>
 
-      <EngagementBar />
+      <TikTokRail />
+      <TikTokCreateButton />
     </div>
   );
 }
 
 export default function CreatorStories() {
   return (
-    <div className="creator-stories-row" style={{ display: "flex", gap: "24px", overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none", paddingBottom: "8px", paddingLeft: "48px", paddingRight: "48px", width: "100%", boxSizing: "border-box" }}>
+    <div className="creator-stories-row" style={{ display: "flex", gap: "24px", overflowX: "auto", scrollSnapType: "x mandatory", scrollPaddingInline: "56px", scrollbarWidth: "none", paddingTop: "48px", paddingBottom: "56px", paddingLeft: "56px", paddingRight: "56px", width: "100%", boxSizing: "border-box" }}>
       {VIDEOS.map((v) => <StoryCard key={v.src} src={v.src} name={v.name} />)}
       <style>{`
         .creator-stories-row::-webkit-scrollbar{ display: none; }
         @media (max-width: 768px){
-          .creator-stories-row{ padding-left: 20px !important; padding-right: 20px !important; }
+          .creator-stories-row{ padding-left: 24px !important; padding-right: 24px !important; scroll-padding-inline: 24px !important; }
         }
       `}</style>
     </div>
