@@ -82,6 +82,7 @@ import { AnimatedFeatureCard } from "@/components/ui/feature-card-1";
 import BuddyRanksInteractive from "../../components/BuddyRanksInteractive";
 import CreatorChannelsSection from "../../components/CreatorChannelsSection";
 import CreatorStories from "../../components/CreatorStories";
+import InfluencerPreFooter from "../../components/InfluencerPreFooter";
 import { type Locale } from "../../../i18n-config";
 
 const META = {
@@ -298,58 +299,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         {/* ── Pre-footer CTA ── */}
         <section className="inf-section inf-precta-section" style={{ padding: "80px 48px" }}>
           <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
-            <div style={{
-              width: "100%",
-              minHeight: "200px",
-              boxSizing: "border-box",
-              backgroundImage: "url(/gradient-landing-bg.jpg)",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              borderRadius: "32px",
-              boxShadow: "0 8px 32px rgba(95,38,229,0.12)",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              gap: "24px",
-              padding: "56px 48px",
-            }}>
-              <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-                {lang === "th" ? (
-                  <>
-                    <h3 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, margin: 0, lineHeight: 1.3,
-                      background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-                      WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                      อยากเป็น Influencer แต่ไม่รู้จะเริ่มตรงไหน?
-                    </h3>
-                    <p style={{ ...KT, fontSize: "16px", fontWeight: 400, color: "rgba(1,8,47,0.78)", margin: 0, lineHeight: 1.7 }}>
-                      เริ่มต้นง่าย ๆ กับ <span style={{ color: "#5f26e5", fontWeight: 700 }}>Buddy Review</span> เปิดรับโอกาสใหม่ ๆ และเติบโตไปพร้อมกับเรา
-                    </p>
-                    <p style={{ ...KT, fontSize: "clamp(18px,2.1vw,24px)", fontWeight: 700, color: "#2d137d", margin: 0, lineHeight: 1.5 }}>
-                      สมัครฟรี ไม่มีค่าใช้จ่าย
-                    </p>
-                  </>
-                ) : (
-                  <>
-                    <h3 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, color: "#01082F", margin: 0, lineHeight: 1.3 }}>
-                      Want to be an influencer but don&apos;t know where to start?
-                    </h3>
-                    <p style={{ ...KT, fontSize: "16px", fontWeight: 400, color: "rgba(1,8,47,0.78)", margin: 0, lineHeight: 1.7 }}>
-                      It&apos;s easy with <span style={{ color: "#5f26e5", fontWeight: 700 }}>Buddy Review</span> — unlock new opportunities and grow together with us.
-                    </p>
-                    <p style={{ ...KT, fontSize: "clamp(18px,2.1vw,24px)", fontWeight: 700, color: "#2d137d", margin: 0, lineHeight: 1.5 }}>
-                      Sign up free — no cost at all!
-                    </p>
-                  </>
-                )}
-              </div>
-              <a href="https://www.buddyreview.co/app/new-campaigns" target="_blank" rel="noopener noreferrer"
-                className="btn-glass-purple"
-                style={{ ...KT, borderRadius: "50px", padding: "14px 40px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
-                {lang === "th" ? "สมัครเลย" : "Apply Now"}
-              </a>
-            </div>
+            <InfluencerPreFooter lang={lang as "th" | "en"} />
           </div>
         </section>
       </div>
