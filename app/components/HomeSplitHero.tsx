@@ -3,10 +3,15 @@ import { useState, useEffect, useCallback } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import Image from "next/image";
+import { AnimatedText } from "@/components/ui/animated-shiny-text";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 type Side = "brand" | "influencer" | null;
+
+// Headline shine: the original navy → purple gradient with a magenta/lavender
+// highlight that sweeps back and forth across the text (AnimatedText).
+const HEADLINE_SHINE = "linear-gradient(90deg, #14226b 0%, #5f26e5 30%, #c04ad8 50%, #5f26e5 70%, #14226b 100%)";
 
 const COPY = {
   th: {
@@ -410,7 +415,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           </div>
 
           {/* typography — above art */}
-          <div style={{ position: "relative", zIndex: 2, textAlign: "left", padding: "0 6% 52px" }}>
+          <div style={{ position: "relative", zIndex: 2, textAlign: "left", padding: "0 6% 52px", marginTop: "20px" }}>
             <div><SideLabel side="brand" label={t.brand.label} href={`/${lang}/brand`} /></div>
             <p className="split-tagline" style={{ ...KT, fontSize: "clamp(30px, 3.6vw, 46px)", fontWeight: 800, letterSpacing: "0.02em", color: "#111827", lineHeight: 1.2, margin: "0 0 14px", maxWidth: "420px" }}>
               {t.brand.tagline}
@@ -462,7 +467,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
             </div>
           </div>
 
-          <div style={{ position: "relative", zIndex: 2, textAlign: "right", padding: "0 6% 52px" }}>
+          <div style={{ position: "relative", zIndex: 2, textAlign: "right", padding: "0 6% 52px", marginTop: "20px" }}>
             <div><SideLabel side="influencer" label={t.influencer.label} href={`/${lang}/influencer`} /></div>
             <p className="split-tagline" style={{ ...KT, fontSize: "clamp(30px, 3.6vw, 46px)", fontWeight: 800, letterSpacing: "0.02em", color: "#111827", lineHeight: 1.2, margin: "0 0 14px", maxWidth: "420px", marginLeft: "auto" }}>
               {t.influencer.tagline}
@@ -493,7 +498,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
         {/* Center main message — fades fully out on hover, never has its own box/panel */}
         <div className="split-hero-center" style={{
           position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", zIndex: 5,
-          width: "min(760px, 44vw)", textAlign: "center", paddingTop: "195px",
+          width: "min(760px, 44vw)", textAlign: "center", paddingTop: "210px",
           opacity: active ? 0 : 1,
           transition: "opacity 0.35s ease",
           pointerEvents: "none",
@@ -501,14 +506,14 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           <span style={{ ...KT, fontSize: "16px", fontWeight: 800, letterSpacing: "0.01em", color: "#111827" }}>
             {t.eyebrow}
           </span>
-          <h1 className="uppercase" style={{
-            ...KT, fontWeight: 800,
-            background: "linear-gradient(45deg, #14226b 0%, #5f26e5 100%)",
-            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-            fontSize: "clamp(24px, 3.6vw, 44px)", lineHeight: 1.25, margin: "14px 0",
-          }}>
-            {t.headline1}<br />{t.headline2}<br />{t.headline3}
-          </h1>
+          <AnimatedText
+            className="p-0"
+            textClassName="uppercase"
+            text={<>{t.headline1}<br />{t.headline2}<br />{t.headline3}</>}
+            gradientColors={HEADLINE_SHINE}
+            gradientAnimationDuration={3}
+            textStyle={{ ...KT, fontWeight: 800, fontSize: "clamp(24px, 3.6vw, 44px)", lineHeight: 1.25, margin: "14px 0" }}
+          />
           <p style={{ ...KT, color: "#3a3350", fontSize: "clamp(15px,1.5vw,18px)", lineHeight: 1.6, margin: 0 }}>
             {t.sublineTop}<br />{t.sublineBottom}
           </p>
@@ -521,14 +526,14 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           <span style={{ ...KT, fontSize: "13px", fontWeight: 800, letterSpacing: "0.01em", color: "#111827" }}>
             {t.eyebrow}
           </span>
-          <h1 className="uppercase" style={{
-            ...KT, fontWeight: 800,
-            background: "linear-gradient(45deg, #14226b 0%, #5f26e5 100%)",
-            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-            fontSize: "clamp(18px, 5.2vw, 24px)", lineHeight: 1.3, margin: "8px 0",
-          }}>
-            {t.headline1}<br />{t.headline2}<br />{t.headline3}
-          </h1>
+          <AnimatedText
+            className="p-0"
+            textClassName="uppercase"
+            text={<>{t.headline1}<br />{t.headline2}<br />{t.headline3}</>}
+            gradientColors={HEADLINE_SHINE}
+            gradientAnimationDuration={3}
+            textStyle={{ ...KT, fontWeight: 800, fontSize: "clamp(18px, 5.2vw, 24px)", lineHeight: 1.3, margin: "8px 0" }}
+          />
           <p style={{ ...KT, color: "#3a3350", fontSize: "13.5px", lineHeight: 1.55, margin: "0 auto", maxWidth: "460px" }}>
             {t.sublineTop}<br />{t.sublineBottom}
           </p>
@@ -628,7 +633,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
            toward its own outer edge so there's always a clear gap between
            them at these widths. */
         @media (min-width: 900px) and (max-width: 1280px) {
-          .split-hero-center { width: min(460px, 34vw) !important; padding-top: 165px !important; }
+          .split-hero-center { width: min(460px, 34vw) !important; padding-top: 180px !important; }
           .split-hero-center h1 { font-size: clamp(22px, 3.1vw, 34px) !important; }
           .split-art, .split-panel > div:last-child { padding-left: 8% !important; padding-right: 8% !important; }
           /* The art illustration (and the small badge icons floating on it)
