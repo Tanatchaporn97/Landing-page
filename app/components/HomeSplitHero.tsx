@@ -15,21 +15,21 @@ const HEADLINE_SHINE = "linear-gradient(90deg, #14226b 0%, #5f26e5 30%, #c04ad8 
 
 const COPY = {
   th: {
-    eyebrow: "Buddy Review Connects",
-    headline1: "DATA-POWERED",
-    headline2: "INFLUENCER MARKETING",
-    headline3: "FOR MEASURABLE GROWTH",
+    eyebrow: "Buddy Review",
+    headline1: "Data-Powered",
+    headline2: "Influencer Marketing",
+    headline3: "For Measurable Growth",
     sublineTop: "From Strategy To Insight,",
     sublineBottom: "We Turn Influence Into Impact.",
     brand: {
-      label: "BRAND",
+      label: "Brand",
       tagline: "เปลี่ยนทุกแคมเปญให้วัดผลได้",
       reveal: "วางแผนแคมเปญ เลือกอินฟลูเอนเซอร์ และดูแลทุกขั้นตอนให้ตรงกับเป้าหมายของแบรนด์",
       mobileDesc: "วางแผนแคมเปญและเลือกอินฟลูเอนเซอร์ให้ตรงเป้าหมายแบรนด์",
       cta: "สำหรับแบรนด์",
     },
     influencer: {
-      label: "INFLUENCER",
+      label: "Influencer",
       tagline: "สร้างงานที่ใช่ จากสิ่งที่คุณรัก",
       reveal: "ค้นหาโอกาสร่วมงานกับแบรนด์ พร้อมข้อมูลและเครื่องมือที่ช่วยให้เข้าใจและพัฒนาโปรไฟล์ของตัวเอง",
       mobileDesc: "ค้นหาโอกาสร่วมงานกับแบรนด์ พร้อมเครื่องมือพัฒนาโปรไฟล์",
@@ -37,21 +37,21 @@ const COPY = {
     },
   },
   en: {
-    eyebrow: "Buddy Review Connects",
-    headline1: "DATA-POWERED",
-    headline2: "INFLUENCER MARKETING",
-    headline3: "FOR MEASURABLE GROWTH",
+    eyebrow: "Buddy Review",
+    headline1: "Data-Powered",
+    headline2: "Influencer Marketing",
+    headline3: "For Measurable Growth",
     sublineTop: "From Strategy To Insight,",
     sublineBottom: "We Turn Influence Into Impact.",
     brand: {
-      label: "BRAND",
+      label: "Brand",
       tagline: "Turn Every Campaign Into Measurable Results",
       reveal: "Plan campaigns, select influencers, and manage every step to match your brand's goals.",
       mobileDesc: "Plan campaigns and match influencers to your brand's goals.",
       cta: "For Brands",
     },
     influencer: {
-      label: "INFLUENCER",
+      label: "Influencer",
       tagline: "Build Work You Love, From What You're Passionate About",
       reveal: "Discover brand collaboration opportunities, with data and tools to understand and grow your profile.",
       mobileDesc: "Find brand collaborations with tools to grow your profile.",
@@ -508,7 +508,6 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           </span>
           <AnimatedText
             className="p-0"
-            textClassName="uppercase"
             text={<>{t.headline1}<br />{t.headline2}<br />{t.headline3}</>}
             gradientColors={HEADLINE_SHINE}
             gradientAnimationDuration={3}
@@ -528,7 +527,6 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           </span>
           <AnimatedText
             className="p-0"
-            textClassName="uppercase"
             text={<>{t.headline1}<br />{t.headline2}<br />{t.headline3}</>}
             gradientColors={HEADLINE_SHINE}
             gradientAnimationDuration={3}
