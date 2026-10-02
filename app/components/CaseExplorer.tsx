@@ -193,7 +193,9 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
                 <span style={{ padding: "6px 14px", borderRadius: "999px", background: "#FFFFFF", color: PURPLE, fontSize: "13px", fontWeight: 600 }}>{sel.industry}</span>
                 <span style={{ padding: "6px 14px", borderRadius: "999px", background: PURPLE, color: "#FFFFFF", fontSize: "13px", fontWeight: 600 }}>{sel.value}</span>
               </div>
-              <h3 className="text-2xl font-bold" style={{ margin: 0, color: PURPLE }}>{sel.title}</h3>
+              {/* same size as the result numbers below, in the brand gradient */}
+              <h3 style={{ margin: 0, fontSize: "32px", fontWeight: 700, lineHeight: 1.25, width: "fit-content",
+                background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{sel.title}</h3>
               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                 <div style={{ fontSize: "17px", fontWeight: 700, color: "#6A2BD0" }}>{th ? "ภาพรวม" : "Overview"}</div>
                 <p className="cx-clamp" title={sel.overview} style={{ margin: 0, fontSize: "16px", lineHeight: 1.65, color: "#2A2540" }}>{sel.overview}</p>
