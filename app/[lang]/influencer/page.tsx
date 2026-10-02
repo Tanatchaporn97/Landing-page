@@ -201,7 +201,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             .inf-logo-bg{ padding-bottom: 40px !important; }
             .community-arc-section{ padding-top: 40px !important; }
             .inf-channels-section{ padding-top: 100px !important; padding-bottom: 100px !important; }
-            .inf-precta-section{ padding-top: 100px !important; padding-bottom: 100px !important; }
+            .inf-precta-section:not(.inf-precta-full){ padding-top: 100px !important; padding-bottom: 100px !important; }
           }
         `}</style>
       </section>
@@ -297,10 +297,8 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <FAQAccordion faqs={dict?.faqPage?.faqsInfluencer} lang={lang as Locale} variant="influencer" dict={dict} />
 
         {/* ── Pre-footer CTA ── */}
-        <section className="inf-section inf-precta-section" style={{ padding: "80px 48px" }}>
-          <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
-            <InfluencerPreFooter lang={lang as "th" | "en"} />
-          </div>
+        <section className="inf-precta-section inf-precta-full" style={{ padding: 0 }}>
+          <InfluencerPreFooter lang={lang as "th" | "en"} />
         </section>
       </div>
 

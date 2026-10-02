@@ -1,5 +1,4 @@
 "use client";
-import { useEffect, useRef } from "react";
 import Image from "next/image";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -14,32 +13,18 @@ const Heart = ({ size, style }: { size: number; style: React.CSSProperties }) =>
   </svg>
 );
 
-// Influencer page pre-footer: copy + CTA on the left, a creator clip playing
-// in a phone mockup on the right with floating stat chips (real network stats).
+// Influencer page pre-footer: copy + CTA on the left, a creator
+// photo in a phone mockup on the right with floating stat chips (real network stats).
 export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
   const th = lang === "th";
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  // only download/play the clip while the section is on screen
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) {
-        if (!v.getAttribute("src") && v.dataset.src) v.src = v.dataset.src;
-        v.play().catch(() => {});
-      } else v.pause();
-    }, { threshold: 0.2 });
-    io.observe(v);
-    return () => io.disconnect();
-  }, []);
 
   return (
+    // full-bleed background band; content stays in the 1294px column
+    <div className="ipf-band" style={{ ...KT, position: "relative", width: "100%", overflow: "hidden",
+      background: "linear-gradient(135deg, #ffffff 0%, #f6f1fd 55%, #efe5fb 100%)" }}>
     <div className="ipf-grid" style={{
-      ...KT, position: "relative", display: "grid", gridTemplateColumns: "1.05fr 0.95fr", alignItems: "center", gap: "40px",
-      padding: "56px 64px", borderRadius: "36px", overflow: "hidden",
-      background: "linear-gradient(135deg, #ffffff 0%, #f6f1fd 55%, #efe5fb 100%)",
-      border: "1px solid rgba(255,255,255,0.9)", boxShadow: "0 20px 60px -24px rgba(95,38,229,0.28)",
+      position: "relative", display: "grid", gridTemplateColumns: "1.05fr 0.95fr", alignItems: "center", gap: "40px",
+      maxWidth: "1294px", margin: "0 auto", padding: "72px 48px", boxSizing: "border-box",
     }}>
       {/* ── Left: copy ── */}
       <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "22px", position: "relative", zIndex: 1 }}>
@@ -74,7 +59,7 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
         <a href={APPLY_URL} target="_blank" rel="noopener noreferrer" className="ipf-cta"
           style={{ display: "inline-flex", alignItems: "center", gap: "10px", padding: "15px 30px", borderRadius: "999px", background: "#111827", color: "#ffffff",
             fontSize: "16px", fontWeight: 600, textDecoration: "none", boxShadow: "0 16px 30px -12px rgba(17,24,39,0.55)" }}>
-          {th ? "สมัครฟรีเลย" : "Sign Up Free"}
+          {th ? "สมัครเลย!" : "Sign Up Now!"}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
         </a>
       </div>
@@ -90,8 +75,7 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
           background: "linear-gradient(145deg, #4b5563 0%, #111827 40%, #374151 100%)",
           boxShadow: "0 40px 70px -24px rgba(17,24,39,0.55), inset 0 0 0 2px rgba(255,255,255,0.12)" }}>
           <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "34px", overflow: "hidden", background: "#e9e1f7" }}>
-            <video ref={videoRef} data-src="/videos/influencer-header/header-4.mp4" muted loop playsInline preload="none" aria-hidden="true"
-              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+            <Image src="/hero-illustrations/influencer-prefooter.jpg" alt={th ? "ครีเอเตอร์ถ่ายเซลฟี่" : "Creator taking a selfie"} fill sizes="240px" style={{ objectFit: "cover", objectPosition: "50% 30%" }} />
             <span aria-hidden="true" style={{ position: "absolute", top: "10px", left: "50%", transform: "translateX(-50%)", width: "74px", height: "20px", borderRadius: "12px", background: "#0b0b0f" }} />
             <span aria-hidden="true" style={{ position: "absolute", left: "50%", bottom: "18px", transform: "translateX(-50%)", display: "inline-flex", alignItems: "center", gap: "6px",
               padding: "6px 14px", borderRadius: "999px", background: "rgba(255,255,255,0.28)", backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)",
@@ -134,6 +118,7 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
         <Heart size={16} style={{ right: "24%", top: "30%", opacity: 0.5 }} />
       </div>
 
+      </div>
       <style>{`
         .ipf-cta{ transition: transform 0.2s ease, background 0.2s ease; }
         .ipf-cta:hover{ background: #5f26e5 !important; transform: translateY(-2px); }
@@ -142,7 +127,7 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
         @keyframes ipf-heart{ 0%,100%{ transform: translateY(0) scale(1); } 50%{ transform: translateY(-10px) scale(1.08); } }
         .ipf-heart{ animation: ipf-heart 3.6s ease-in-out infinite; }
         @media (max-width: 900px){
-          .ipf-grid{ grid-template-columns: 1fr !important; padding: 40px 24px !important; gap: 12px !important; }
+          .ipf-grid{ grid-template-columns: 1fr !important; padding: 48px 24px !important; gap: 12px !important; }
           .ipf-visual{ height: 460px !important; }
         }
         @media (max-width: 480px){
