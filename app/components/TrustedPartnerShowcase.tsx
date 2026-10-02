@@ -7,15 +7,14 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 // light gradient so the headline reads on the dark-blue section background
 const GRAD = "linear-gradient(45deg, #d9ccff 0%, #ff8fd0 100%)";
 
-// The five principles (B·U·D·D·Y) as award-style cards: title on top, a soft
-// clay-3D icon (glossy purple + matte white, public/how-we-work) in the middle,
-// description at the bottom over a faint white fade.
+// The five principles as cards spelling B·U·D·D·Y: tag pill, title and copy
+// on top, with a 3D letter (public/how-we-work/letter-*.webp) in the corner.
 const ITEMS = [
-  { title: "Built on Clarity",         desc: "ทำงานเป็นระบบ ชัดเจน และมีมาตรฐาน",                 descEn: "Clear, systematic work held to a consistent standard.",              src: "/how-we-work/clarity.webp" },
-  { title: "Unified by Insight",       desc: "เข้าใจเป้าหมายร่วมกัน และต่อยอดด้วย Insight",          descEn: "Shared goals, sharpened by insight.",                                src: "/how-we-work/insight.webp" },
-  { title: "Data-Driven Decisions",    desc: "ใช้ข้อมูลช่วยตัดสินใจ ตั้งแต่เลือก Creator จนถึงวัดผล",   descEn: "Data guides every call — from choosing creators to measuring results.", src: "/how-we-work/data.webp" },
-  { title: "Delivery with Discipline", desc: "บริหารและส่งมอบงานอย่างเป็นระบบ ตั้งแต่ต้นจนจบ",         descEn: "Systematic management and delivery, from start to finish.",           src: "/how-we-work/delivery.webp" },
-  { title: "Your Goals Drive Results", desc: "มุ่งผลลัพธ์ที่เชื่อมกับเป้าหมายของแบรนด์จริง",            descEn: "Results tied to your brand's real goals.",                            src: "/how-we-work/goals.webp" },
+  { tag: "Clarity", dot: "#5f26e5", title: "Built on Clarity",         desc: "ทำงานเป็นระบบ ชัดเจน และมีมาตรฐาน",                 descEn: "Clear, systematic work held to a consistent standard.",              src: "/how-we-work/letter-b.webp" },
+  { tag: "Insight", dot: "#ec4899", title: "Unified by Insight",       desc: "เข้าใจเป้าหมายร่วมกัน และต่อยอดด้วย Insight",          descEn: "Shared goals, sharpened by insight.",                                src: "/how-we-work/letter-u.webp" },
+  { tag: "Data-Driven", dot: "#2e1a7a", title: "Data-Driven Decisions",    desc: "ใช้ข้อมูลช่วยตัดสินใจ ตั้งแต่เลือก Creator จนถึงวัดผล",   descEn: "Data guides every call — from choosing creators to measuring results.", src: "/how-we-work/letter-d.webp" },
+  { tag: "Delivery", dot: "#b0206a", title: "Delivery with Discipline", desc: "บริหารและส่งมอบงานอย่างเป็นระบบ ตั้งแต่ต้นจนจบ",         descEn: "Systematic management and delivery, from start to finish.",           src: "/how-we-work/letter-d.webp" },
+  { tag: "Goal-Focused", dot: "#7c3aed", title: "Your Goals Drive Results", desc: "มุ่งผลลัพธ์ที่เชื่อมกับเป้าหมายของแบรนด์จริง",            descEn: "Results tied to your brand's real goals.",                            src: "/how-we-work/letter-y.webp" },
 ];
 
 export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) {
@@ -53,19 +52,28 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
     <div className="py-5 sm:py-10">
       <div className="mb-8 sm:mb-12">{header}</div>
 
-      {/* five cards in one row (≥1280px); narrower screens scroll sideways with snap */}
+      {/* five cards in one row (≥1280px); narrower screens scroll sideways with snap.
+          Style follows the brand page's "Think Smarter, Execute Better" cards: light card,
+          dot tag pill, bold title, muted copy, 3D art bleeding off the bottom-right corner. */}
       <div className="hww-row">
         {ITEMS.map((item) => (
           <Link key={item.title} href={`/${lang}/brand`} className="hww-card group">
-            <h4 style={{ ...KT, margin: 0, fontSize: "clamp(18px,1.5vw,21px)", fontWeight: 700, lineHeight: 1.3, color: "#ffffff", textAlign: "center", position: "relative", zIndex: 2 }}>
-              {item.title}
-            </h4>
-            <div className="hww-art">
-              <Image src={item.src} alt="" fill sizes="(max-width: 1279px) 260px, 20vw" style={{ objectFit: "contain", objectPosition: "center 70%" }} />
+            <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", gap: "14px" }}>
+              <span style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "8px", width: "fit-content", padding: "6px 14px", borderRadius: "999px",
+                background: "#ffffff", fontSize: "13px", fontWeight: 600, color: "#374151", boxShadow: "0 2px 8px -4px rgba(95,38,229,0.25)" }}>
+                <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: item.dot }} />
+                {item.tag}
+              </span>
+              <h4 style={{ ...KT, margin: 0, fontSize: "clamp(20px,1.6vw,24px)", fontWeight: 700, lineHeight: 1.25, color: "#111827" }}>
+                {item.title}
+              </h4>
+              <p style={{ ...KT, margin: 0, fontSize: "15px", fontWeight: 400, lineHeight: 1.6, color: "#4b5563" }}>
+                {lang === "th" ? item.desc : item.descEn}
+              </p>
             </div>
-            <p style={{ ...KT, margin: 0, fontSize: "14px", fontWeight: 500, lineHeight: 1.55, color: "rgba(255,255,255,0.88)", textAlign: "center", position: "relative", zIndex: 2 }}>
-              {lang === "th" ? item.desc : item.descEn}
-            </p>
+            <div className="hww-art" aria-hidden="true">
+              <Image src={item.src} alt="" fill sizes="(max-width: 1279px) 220px, 16vw" style={{ objectFit: "contain", objectPosition: "right bottom" }} />
+            </div>
           </Link>
         ))}
       </div>
@@ -74,21 +82,16 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
         .hww-row{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
         .hww-card{
           position: relative; overflow: hidden; isolation: isolate; text-decoration: none;
-          display: flex; flex-direction: column; justify-content: space-between; gap: 12px;
-          min-height: 400px; padding: 32px 22px 28px; border-radius: 28px;
-          background: rgba(255,255,255,0.1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255,255,255,0.28); box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
-          transition: transform 0.3s ease;
+          display: flex; flex-direction: column; min-height: 400px; padding: 28px 24px; border-radius: 24px;
+          background: linear-gradient(160deg, #f7f3fd 0%, #efe8fb 100%);
+          border: 1px solid rgba(255,255,255,0.9); box-shadow: 0 18px 40px -22px rgba(20,4,92,0.55);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        /* faint white fade rising from the bottom; the icon dissolves into it */
-        .hww-card::after{
-          content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 55%; z-index: 1; pointer-events: none;
-          background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.12) 40%, rgba(255,255,255,0.3) 100%);
-        }
-        .hww-art{ position: relative; flex: 1; min-height: 200px; margin: 0 -14px -6px; transition: transform 0.7s ease; }
-        /* same hover motion as before: card grows slightly, artwork zooms */
-        .hww-card:hover{ transform: scale(1.02); }
-        .hww-card:hover .hww-art{ transform: scale(1.06); }
+        /* 3D letter anchored to the bottom-right corner, partly cropped by the card edge */
+        .hww-art{ position: absolute; right: -16%; bottom: -8%; width: 100%; aspect-ratio: 1; z-index: 1; pointer-events: none;
+          transition: transform 0.6s cubic-bezier(.22,1,.36,1); transform-origin: right bottom; }
+        .hww-card:hover{ transform: translateY(-6px); box-shadow: 0 26px 48px -22px rgba(20,4,92,0.7); }
+        .hww-card:hover .hww-art{ transform: scale(1.06) rotate(-3deg); }
         .hww-card:focus-visible{ outline: 2px solid #ffffff; outline-offset: 3px; }
         @media (max-width: 1279px){
           .hww-row{ display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
