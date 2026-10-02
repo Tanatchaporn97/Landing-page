@@ -6,47 +6,81 @@ import Link from "next/link";
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const PURPLE = "#5B30E0";
 
-// Case data — the Selected Campaigns shown on /brand. `industry` and `value`
-// (content type) drive the two filter modes; `slug` links to /success/<slug>.
-const CASES = [
-  { industry: "Healthcare", value: "New Market Entry", slug: "siangpure",      img: "/success-stories-2/siangpure-logo.jpg", cat: "HEALTHCARE",     title: "Siangpure",
-    overview: "แคมเปญที่พา Siangpure บุกตลาดใหม่ผ่านครีเอเตอร์ชาวอินเดียบน Instagram เพื่อสร้างการรับรู้ในกลุ่มผู้บริโภคที่ไม่เคยเข้าถึงมาก่อน",
-    overviewEn: "A campaign that brought Siangpure into a new market through Indian Creators on Instagram, building awareness with an audience never reached before.",
-    approach: "Buddy Review คัดเลือก Indian Influencers ที่มี Audience ตรงกับตลาด พร้อมพัฒนาคอนเทนต์ภายใต้แนวคิด “มาเที่ยวไทย อะไรคือของที่ต้องซื้อกลับ?” เปลี่ยน Siangpure ให้กลายเป็น Thai Travel Essential ที่คนอินเดียจดจำและอยากซื้อกลับ",
-    approachEn: "Buddy Review selected Indian influencers whose audiences matched the target market, building content around \"Visiting Thailand — what's the must-buy souvenir?\" and repositioning Siangpure as a memorable Thai Travel Essential.",
-    stats: [{ label: "Reach", labelTh: "การเข้าถึง", value: "1.2M" }, { label: "Creators", labelTh: "ครีเอเตอร์", value: "15" }, { label: "Engagement Rate", labelTh: "อัตรามีส่วนร่วม", value: "4.8%" }],
-    imgFit: "contain" as const, imgBg: "#ffffff" },
-  { industry: "Pet Care", value: "Niche Community",  slug: "optimum-hi-pro", img: "/success-stories-2/optimum-hi-pro-logo.jpg", cat: "PET CARE",       title: "Optimum Hi Pro",
-    overview: "เจาะกลุ่มคนเลี้ยงปลาคาร์พที่มีความเฉพาะทางสูง ผ่านครีเอเตอร์ที่เข้าใจ community นี้จริงๆ พร้อมขยายการรับรู้ในวงกว้าง",
-    overviewEn: "Reaching the highly specialized koi-keeper community through Creators who truly understand it, while expanding awareness at scale.",
-    approach: "ผสานอินฟลูเอนเซอร์เฉพาะทางที่เข้าถึง Community คนเลี้ยงปลาคาร์พโดยตรง กับ Lifestyle Influencer ที่ช่วยขยายการรับรู้ในวงกว้าง ทำให้แคมเปญได้ทั้งความน่าเชื่อถือและ Reach ไปพร้อมกัน",
-    approachEn: "Blended specialist influencers who reached the koi-keeping community directly with lifestyle influencers who extended awareness at scale — giving the campaign both credibility and reach.",
-    stats: [{ label: "Reach", labelTh: "การเข้าถึง", value: "850K" }, { label: "Community Engagement", labelTh: "การมีส่วนร่วม", value: "+65%" }, { label: "Creators", labelTh: "ครีเอเตอร์", value: "10" }],
-    imgFit: "contain" as const, imgBg: "#05176e" },
-  { industry: "Food & Beverage", value: "Always-on Content", slug: "auntie-annes",  img: "/success-stories-2/auntie-annes-logo.jpg", cat: "FOOD & BEVERAGE", title: "Auntie Anne's",
-    overview: "สร้าง Always-on Content Engine บน TikTok ที่ผลิตคอนเทนต์ต่อเนื่องกว่า 15 เดือน รักษาการมองเห็นแบรนด์ได้ตลอดปี",
-    overviewEn: "Built an always-on TikTok content engine producing content continuously for 15+ months, keeping the brand visible year-round.",
-    approach: "สร้าง Always-on Content Engine ที่ผสาน Storyboard, Talent และทีม Production เข้าด้วยกัน ผลิตคอนเทนต์ต่อเนื่องราว 15 ชิ้นต่อเดือน พร้อมปรับ Format ให้ทันเทรนด์ TikTok อยู่เสมอ",
-    approachEn: "Built an Always-on Content Engine combining storyboarding, talent, and production — producing around 15 pieces of content a month while continuously adapting formats to TikTok trends.",
-    stats: [{ label: "Duration", labelTh: "ระยะเวลา", value: "15+ mo." }, { label: "Content Pieces", labelTh: "ชิ้นคอนเทนต์", value: "200+" }, { label: "Avg. Views", labelTh: "ยอดวิวเฉลี่ย", value: "500K" }],
-    imgFit: "contain" as const, imgBg: "#ffffff", imgPosition: "center 40%" },
-  { industry: "Skincare", value: "Event Activation", slug: "ahc",           img: "/success-stories-2/Success stories-12.jpg", cat: "SKINCARE",       title: "AHC",
-    overview: "จุดกระแสด้วยอีเวนต์ที่ต่อยอดจากซีรีส์ไวรัล AHC Skin Game สร้างการพูดถึงบนโซเชียลอย่างต่อเนื่อง",
-    overviewEn: "Sparked buzz with an event built on the viral series \"AHC Skin Game,\" driving continuous social conversation.",
-    approach: "ดึงอินฟลูเอนเซอร์ตัวท็อปมาร่วมงานอีเวนต์ เสริมด้วยข่าวประชาสัมพันธ์จากสื่อชั้นนำ และปรับคอนเทนต์ให้เหมาะกับแต่ละแพลตฟอร์ม พร้อมติดตามผลแบบเรียลไทม์เพื่อดันให้เกิดกระแสไวรัล",
-    approachEn: "Brought in top-tier influencers for the event, amplified with PR from leading media, tailored content per platform, and tracked results in real time to drive viral reach.",
-    stats: [{ label: "Event Reach", labelTh: "การเข้าถึงอีเวนต์", value: "2M" }, { label: "Media Mentions", labelTh: "การพูดถึง", value: "120+" }, { label: "Engagement Rate", labelTh: "อัตรามีส่วนร่วม", value: "6.2%" }] },
-  { industry: "Health & Beauty", value: "Shoppable Content", slug: "watsons",      img: "/success-stories-2/Success stories-10.jpg", cat: "HEALTH & BEAUTY", title: "Watsons",
-    overview: "ดัน House Brand ให้ปังบน TikTok และ Lemon8 ด้วยคอนเทนต์ที่พาไปสู่การตัดสินใจซื้อโดยตรง",
-    overviewEn: "Boosted House Brand products on TikTok and Lemon8 with content designed to drive direct purchase decisions.",
-    approach: "ใช้กลยุทธ์ \"เพื่อนแนะนำเพื่อน\" ให้ครีเอเตอร์โชว์การช้อปจริงในร้านผ่านโจทย์ \"งบ 500 บาท ซื้อได้กี่ชิ้น\" บน TikTok และ Lemon8 เพื่อกระตุ้นให้อยากช้อปตามทันที",
-    approachEn: "Used a \"friend-recommending-friend\" strategy, having creators show real in-store shopping under the challenge \"How many items with a 500 THB budget?\" across TikTok and Lemon8 to spark immediate purchase intent.",
-    stats: [{ label: "Sales Uplift", labelTh: "ยอดขายเพิ่มขึ้น", value: "+40%" }, { label: "Reach", labelTh: "การเข้าถึง", value: "1.5M" }, { label: "Creators", labelTh: "ครีเอเตอร์", value: "25" }] }
-];
+// Every case comes from dict.successStories (the same data behind /success/<slug>),
+// so the brand name, copy and numbers always match the full case page.
+// CLASSIFY assigns each case one industry and one content type (read from the
+// case write-ups); VISUAL is the logo/photo shown in the circle (same as /success).
+type Story = {
+  slug: string; brand: string; industry?: string; tagline?: string;
+  paras?: string[]; sections?: { heading: string; body: string }[];
+  stats?: { val: string; label: string }[]; heroStats?: { val: string; label: string }[];
+};
+
+const INDUSTRIES = ["Food & Beverage", "Beauty & Skincare", "Healthcare", "Pet Care", "Household", "Home Appliances", "Entertainment & Streaming", "Events & Lifestyle"];
+const CONTENTS = ["Product Launch", "Product Review", "Niche Community", "Always-on Content", "Event Activation", "New Market Entry"];
+
+const CLASSIFY: Record<string, { industry: string; value: string }> = {
+  "nissin":          { industry: "Food & Beverage",          value: "Product Launch" },     // new flavour launch
+  "guss-damn-good":  { industry: "Food & Beverage",          value: "Product Launch" },     // new co-created flavour
+  "auntie-annes":    { industry: "Food & Beverage",          value: "Always-on Content" },  // 15+ months of TikTok content
+  "watsons":         { industry: "Beauty & Skincare",        value: "Product Review" },     // fast-turnaround KOL/KOC reviews
+  "ahc":             { industry: "Beauty & Skincare",        value: "Event Activation" },   // Skin Game event
+  "boots":           { industry: "Beauty & Skincare",        value: "Product Launch" },     // new scent
+  "scotch":          { industry: "Beauty & Skincare",        value: "Product Launch" },     // new bird's-nest mask
+  "ldc-dental":      { industry: "Healthcare",               value: "Product Review" },     // clear-aligner service reviews
+  "siangpure":       { industry: "Healthcare",               value: "New Market Entry" },   // Indian market
+  "truemoney":       { industry: "Healthcare",               value: "Niche Community" },    // highly specific health topic
+  "optimum-hi-pro":  { industry: "Pet Care",                 value: "Niche Community" },    // koi keepers
+  "smart-heart":     { industry: "Pet Care",                 value: "Niche Community" },    // fandom
+  "bobbi-dog":       { industry: "Pet Care",                 value: "Always-on Content" },  // year plan
+  "mom-choice":      { industry: "Pet Care",                 value: "Always-on Content" },  // year plan
+  "d-nee":           { industry: "Household",                value: "Product Review" },     // mom & family creator reviews
+  "fineline":        { industry: "Household",                value: "Product Review" },     // care storytelling → add to cart
+  "teepol":          { industry: "Household",                value: "Product Review" },     // single-KOL product integration
+  "daikin":          { industry: "Home Appliances",          value: "Product Review" },     // explaining air-con tech
+  "viu":             { industry: "Entertainment & Streaming", value: "Niche Community" },   // Isan local audience
+  "cp-all":          { industry: "Events & Lifestyle",       value: "Event Activation" },   // education forum
+  "mega-bangna":     { industry: "Events & Lifestyle",       value: "Event Activation" },   // Halloween event
+};
+
+const VISUAL: Record<string, { img: string; fit?: "contain"; bg?: string }> = {
+  "nissin": { img: "/success-stories-2/Success stories-08.jpg" },
+  "watsons": { img: "/success-stories-2/Success stories-10.jpg" },
+  "ldc-dental": { img: "/success-stories-2/Success stories-09.jpg" },
+  "viu": { img: "/success-stories-2/Success stories-11.jpg" },
+  "guss-damn-good": { img: "/success-stories-2/Success stories-13.jpg" },
+  "ahc": { img: "/success-stories-2/Success stories-12.jpg" },
+  "optimum-hi-pro": { img: "/success-stories-2/optimum-hi-pro-logo.jpg", fit: "contain", bg: "#05176e" },
+  "auntie-annes": { img: "/success-stories-2/auntie-annes-logo.jpg", fit: "contain", bg: "#ffffff" },
+  "siangpure": { img: "/success-stories-2/siangpure-logo.jpg", fit: "contain", bg: "#ffffff" },
+  "bobbi-dog": { img: "/success-stories-2/bobbi-dog-logo.png", fit: "contain", bg: "#452b1c" },
+  "boots": { img: "/success-stories-2/boots-logo.png", fit: "contain", bg: "#ffffff" },
+  "cp-all": { img: "/success-stories-2/cp-all-logo.png", fit: "contain", bg: "#ffffff" },
+  "d-nee": { img: "/success-stories-2/d-nee-logo.png", fit: "contain", bg: "#ffffff" },
+  "daikin": { img: "/success-stories-2/daikin-logo.png", fit: "contain", bg: "#ffffff" },
+  "fineline": { img: "/success-stories-2/fineline-logo.png", fit: "contain", bg: "#ffffff" },
+  "mega-bangna": { img: "/success-stories-2/mega-bangna-logo.png", fit: "contain", bg: "#ffffff" },
+  "mom-choice": { img: "/success-stories-2/mom-choice-logo.png", fit: "contain", bg: "#ffffff" },
+  "scotch": { img: "/success-stories-2/scotch-logo.png", fit: "contain", bg: "#ffffff" },
+  "smart-heart": { img: "/success-stories-2/smart-heart-logo.png", fit: "contain", bg: "#0d3a7e" },
+  "teepol": { img: "/success-stories-2/teepol-logo.png", fit: "contain", bg: "#ffffff" },
+  "truemoney": { img: "/success-stories-2/truemoney-logo.png", fit: "contain", bg: "#ffffff" },
+};
+
+// The section that explains *how* Buddy Review approached the case
+const NOT_STRATEGY = /^(overview|campaign overview|challenge|the challenge|result|results|campaign results|key results)/i;
+const firstPara = (t?: string) => (t ?? "").split("\n")[0].trim();
+
+function toCase(s: Story) {
+  const sec = s.sections ?? [];
+  const overview = firstPara(sec[0]?.body) || firstPara(s.paras?.[0]) || s.tagline || "";
+  const strat = sec.find((x, i) => i > 0 && !NOT_STRATEGY.test(x.heading.trim()));
+  const strategy = firstPara(strat?.body) || firstPara(s.paras?.[1]) || "";
+  const stats = (s.heroStats?.length ? s.heroStats : s.stats ?? []).slice(0, 3);
+  return { slug: s.slug, title: s.brand, ...CLASSIFY[s.slug], overview, strategy, stats, ...VISUAL[s.slug] };
+}
 
 type Mode = "industry" | "content";
-const INDUSTRIES = ["Healthcare", "Pet Care", "Food & Beverage", "Skincare", "Health & Beauty"];
-const CONTENTS = ["New Market Entry", "Niche Community", "Always-on Content", "Event Activation", "Shoppable Content"];
 
 const IconIndustry = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 21h18" /><path d="M5 21V7l7-4 7 4v14" /><path d="M9 21v-6h6v6" /></svg>
@@ -58,11 +92,12 @@ const IconContent = () => (
 // "See the Work in Action" case explorer: switch between browsing by industry
 // or by content type, filter with count chips, pick a case from the list on
 // the left, read its overview / strategy / results on the right.
-export default function CaseExplorer({ lang }: { lang: "th" | "en" }) {
+export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; stories: Story[] }) {
   const th = lang === "th";
+  const CASES = useMemo(() => (stories ?? []).filter((s) => CLASSIFY[s.slug] && VISUAL[s.slug]).map(toCase), [stories]);
   const [mode, setMode] = useState<Mode>("industry");
   const [filter, setFilter] = useState<string>("all");
-  const [selSlug, setSelSlug] = useState<string>(CASES[0].slug);
+  const [selSlug, setSelSlug] = useState<string>("siangpure");
 
   const key = mode === "industry" ? "industry" : "value";
   const other = mode === "industry" ? "value" : "industry";
@@ -70,7 +105,7 @@ export default function CaseExplorer({ lang }: { lang: "th" | "en" }) {
 
   const filtered = useMemo(
     () => (filter === "all" ? CASES : CASES.filter((c) => c[key] === filter)),
-    [filter, key],
+    [filter, key, CASES],
   );
   const sel = filtered.find((c) => c.slug === selSlug) ?? filtered[0];
 
@@ -156,28 +191,28 @@ export default function CaseExplorer({ lang }: { lang: "th" | "en" }) {
               <div style={{ fontSize: "clamp(34px,3.6vw,52px)", fontWeight: 700, lineHeight: 1.1, color: PURPLE }}>{sel.title}</div>
               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                 <div style={{ fontSize: "17px", fontWeight: 700, color: "#6A2BD0" }}>{th ? "ภาพรวม" : "Overview"}</div>
-                <p style={{ margin: 0, fontSize: "16px", lineHeight: 1.65, color: "#2A2540" }}>{th ? sel.overview : sel.overviewEn}</p>
+                <p style={{ margin: 0, fontSize: "16px", lineHeight: 1.65, color: "#2A2540" }}>{sel.overview}</p>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                 <div style={{ fontSize: "17px", fontWeight: 700, color: "#6A2BD0" }}>{th ? "กลยุทธ์" : "Strategy"}</div>
-                <p style={{ margin: 0, fontSize: "16px", lineHeight: 1.65, color: "#2A2540" }}>{th ? sel.approach : sel.approachEn}</p>
+                <p style={{ margin: 0, fontSize: "16px", lineHeight: 1.65, color: "#2A2540" }}>{sel.strategy}</p>
               </div>
-              <div className="cx-stats" style={{ display: "flex", gap: "44px", flexWrap: "wrap", marginTop: "6px" }}>
+              {sel.stats.length > 0 && <div className="cx-stats" style={{ display: "flex", gap: "44px", flexWrap: "wrap", marginTop: "6px" }}>
                 {sel.stats.map((st) => (
-                  <div key={st.label} style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-                    <div style={{ fontSize: "32px", fontWeight: 700, color: "#7A2BD8" }}>{st.value}</div>
-                    <div style={{ fontSize: "15px", color: "#2A2540" }}>{th ? st.labelTh : st.label}</div>
+                  <div key={st.label} style={{ display: "flex", flexDirection: "column", gap: "2px", maxWidth: "180px" }}>
+                    <div style={{ fontSize: "32px", fontWeight: 700, color: "#7A2BD8" }}>{st.val}</div>
+                    <div style={{ fontSize: "15px", color: "#2A2540", lineHeight: 1.35 }}>{st.label}</div>
                   </div>
                 ))}
-              </div>
+              </div>}
               <Link href={`/${lang}/success/${sel.slug}`} style={{ marginTop: "6px", fontSize: "17px", fontWeight: 700, textDecoration: "none", color: "#1B1733", width: "fit-content" }} className="cx-more">
                 {th ? "อ่านเพิ่มเติม" : "Read More"} →
               </Link>
             </div>
             <div className="cx-logo" style={{ position: "relative", flexShrink: 0, width: "220px", height: "220px", borderRadius: "999px", overflow: "hidden",
-              background: sel.imgBg || "#FFFFFF", boxShadow: "0 20px 50px rgba(91, 48, 224, 0.12)" }}>
+              background: sel.bg || "#FFFFFF", boxShadow: "0 20px 50px rgba(91, 48, 224, 0.12)" }}>
               <Image src={sel.img} alt={sel.title} fill sizes="220px"
-                style={{ objectFit: sel.imgFit || "cover", objectPosition: sel.imgPosition || "center", padding: sel.imgFit === "contain" ? "24px" : 0 }} />
+                style={{ objectFit: sel.fit || "cover", objectPosition: "center", padding: sel.fit === "contain" ? "24px" : 0 }} />
             </div>
           </div>
         )}

@@ -546,7 +546,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </p>
           </div>
 
-          <CaseExplorer lang={lang as "th" | "en"} />
+          <CaseExplorer lang={lang as "th" | "en"} stories={dict?.successStories ?? []} />
 
           {/* ดูเพิ่มเติม CTA */}
           <div style={{ display: "flex", justifyContent: "center", marginTop: "48px" }}>
