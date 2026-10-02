@@ -1,40 +1,24 @@
 "use client";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import AppleCardCarousel, { type CardItem } from "@/components/ui/carousel-08";
+import Image from "next/image";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 // light gradient so the headline reads on the dark-blue section background
 const GRAD = "linear-gradient(45deg, #d9ccff 0%, #ff8fd0 100%)";
 
-// The five principles (B·U·D·D·Y), shown as Apple-style cards
-// (components/ui/carousel-08), each with a soft 3D illustration of its idea
-// (public/how-we-work): lens + check, lightbulb, rising bars, paper plane, target.
+// The five principles (B·U·D·D·Y) as award-style cards: title on top, a soft
+// clay-3D icon (glossy purple + matte white, public/how-we-work) in the middle,
+// description at the bottom over a faint white fade.
 const ITEMS = [
-  { letter: "B", title: "Built on Clarity",         desc: "ทำงานเป็นระบบ ชัดเจน และมีมาตรฐาน",                 descEn: "Clear, systematic work held to a consistent standard.",              src: "/how-we-work/clarity.webp" },
-  { letter: "U", title: "Unified by Insight",       desc: "เข้าใจเป้าหมายร่วมกัน และต่อยอดด้วย Insight",          descEn: "Shared goals, sharpened by insight.",                                src: "/how-we-work/insight.webp" },
-  { letter: "D", title: "Data-Driven Decisions",    desc: "ใช้ข้อมูลช่วยตัดสินใจ ตั้งแต่เลือก Creator จนถึงวัดผล",   descEn: "Data guides every call — from choosing creators to measuring results.", src: "/how-we-work/data.webp" },
-  { letter: "D", title: "Delivery with Discipline", desc: "บริหารและส่งมอบงานอย่างเป็นระบบ ตั้งแต่ต้นจนจบ",         descEn: "Systematic management and delivery, from start to finish.",           src: "/how-we-work/delivery.webp" },
-  { letter: "Y", title: "Your Goals Drive Results", desc: "มุ่งผลลัพธ์ที่เชื่อมกับเป้าหมายของแบรนด์จริง",            descEn: "Results tied to your brand's real goals.",                            src: "/how-we-work/goals.webp" },
+  { title: "Built on Clarity",         desc: "ทำงานเป็นระบบ ชัดเจน และมีมาตรฐาน",                 descEn: "Clear, systematic work held to a consistent standard.",              src: "/how-we-work/clarity.webp" },
+  { title: "Unified by Insight",       desc: "เข้าใจเป้าหมายร่วมกัน และต่อยอดด้วย Insight",          descEn: "Shared goals, sharpened by insight.",                                src: "/how-we-work/insight.webp" },
+  { title: "Data-Driven Decisions",    desc: "ใช้ข้อมูลช่วยตัดสินใจ ตั้งแต่เลือก Creator จนถึงวัดผล",   descEn: "Data guides every call — from choosing creators to measuring results.", src: "/how-we-work/data.webp" },
+  { title: "Delivery with Discipline", desc: "บริหารและส่งมอบงานอย่างเป็นระบบ ตั้งแต่ต้นจนจบ",         descEn: "Systematic management and delivery, from start to finish.",           src: "/how-we-work/delivery.webp" },
+  { title: "Your Goals Drive Results", desc: "มุ่งผลลัพธ์ที่เชื่อมกับเป้าหมายของแบรนด์จริง",            descEn: "Results tied to your brand's real goals.",                            src: "/how-we-work/goals.webp" },
 ];
 
 export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) {
-  const cards: CardItem[] = ITEMS.map((item, i) => ({
-    id: String(i),
-    src: item.src,
-    alt: item.title,
-    href: `/${lang}/brand`,
-    category: (
-      <span style={{ ...KT, display: "inline-flex", alignItems: "flex-start", gap: "8px", fontWeight: 600, lineHeight: 1.4 }}>
-        <span style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", background: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.35)", borderRadius: "50px", padding: "2px 9px", backdropFilter: "blur(6px)", flexShrink: 0, marginTop: "1px" }}>
-          {String(i + 1).padStart(2, "0")}
-        </span>
-        {item.title}
-      </span>
-    ),
-    title: <span style={{ ...KT, fontWeight: 600 }}>{lang === "th" ? item.desc : item.descEn}</span>,
-  }));
-
   const header = (
     <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "24px", flexWrap: "wrap" }}>
       <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -65,19 +49,56 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
   );
 
   // Section wrapper already provides the page gutter, so no extra padding here.
-  // ≥1280px: all five cards fit side by side (each 1/5 of the row, shorter
-  // and with smaller type); below that the strip stays a swipeable carousel.
   return (
-    <AppleCardCarousel
-      header={header}
-      cards={cards}
-      gutterClassName="px-0"
-      itemClassName="xl:basis-1/5"
-      // white glassmorphism over the dark-blue background; illustrations are transparent PNGs
-      cardClassName="xl:w-full xl:h-[440px] xl:p-6 bg-white/10 backdrop-blur-xl border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]"
-      titleClassName="xl:text-xl"
-      showArrow={false}
-      scrimClassName="bg-gradient-to-b from-white/10 via-transparent to-transparent"
-    />
+    <div className="py-5 sm:py-10">
+      <div className="mb-8 sm:mb-12">{header}</div>
+
+      {/* five cards in one row (≥1280px); narrower screens scroll sideways with snap */}
+      <div className="hww-row">
+        {ITEMS.map((item) => (
+          <Link key={item.title} href={`/${lang}/brand`} className="hww-card group">
+            <h4 style={{ ...KT, margin: 0, fontSize: "clamp(18px,1.5vw,21px)", fontWeight: 700, lineHeight: 1.3, color: "#ffffff", textAlign: "center", position: "relative", zIndex: 2 }}>
+              {item.title}
+            </h4>
+            <div className="hww-art">
+              <Image src={item.src} alt="" fill sizes="(max-width: 1279px) 260px, 20vw" style={{ objectFit: "contain", objectPosition: "center 70%" }} />
+            </div>
+            <p style={{ ...KT, margin: 0, fontSize: "14px", fontWeight: 500, lineHeight: 1.55, color: "rgba(255,255,255,0.88)", textAlign: "center", position: "relative", zIndex: 2 }}>
+              {lang === "th" ? item.desc : item.descEn}
+            </p>
+          </Link>
+        ))}
+      </div>
+
+      <style>{`
+        .hww-row{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+        .hww-card{
+          position: relative; overflow: hidden; isolation: isolate; text-decoration: none;
+          display: flex; flex-direction: column; justify-content: space-between; gap: 12px;
+          min-height: 400px; padding: 32px 22px 28px; border-radius: 28px;
+          background: rgba(255,255,255,0.1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+          border: 1px solid rgba(255,255,255,0.28); box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+          transition: transform 0.3s ease;
+        }
+        /* faint white fade rising from the bottom; the icon dissolves into it */
+        .hww-card::after{
+          content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 55%; z-index: 1; pointer-events: none;
+          background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.12) 40%, rgba(255,255,255,0.3) 100%);
+        }
+        .hww-art{ position: relative; flex: 1; min-height: 200px; margin: 0 -14px -6px; transition: transform 0.7s ease; }
+        /* same hover motion as before: card grows slightly, artwork zooms */
+        .hww-card:hover{ transform: scale(1.02); }
+        .hww-card:hover .hww-art{ transform: scale(1.06); }
+        .hww-card:focus-visible{ outline: 2px solid #ffffff; outline-offset: 3px; }
+        @media (max-width: 1279px){
+          .hww-row{ display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+            margin: 0 -24px; padding: 6px 24px 16px; scroll-padding-inline: 24px; }
+          .hww-row::-webkit-scrollbar{ display: none; }
+          .hww-card{ flex: 0 0 260px; scroll-snap-align: start; }
+        }
+        @media (max-width: 560px){ .hww-card{ flex-basis: 72vw; min-height: 380px; } }
+        @media (prefers-reduced-motion: reduce){ .hww-card, .hww-art{ transition: none; } }
+      `}</style>
+    </div>
   );
 }
