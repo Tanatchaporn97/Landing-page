@@ -144,9 +144,9 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
                 <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "6px" }}>
                   <span style={{
                     ...KT, flexShrink: 0, fontSize: "12px", fontWeight: 800, borderRadius: "50px", padding: "3px 10px",
-                    color: "#ffffff", background: isActive ? GRAD : "rgba(255,255,255,0.16)",
-                    border: isActive ? "1px solid transparent" : "1px solid rgba(255,255,255,0.4)",
-                    transition: "background 0.35s ease, border-color 0.35s ease",
+                    color: isActive ? "#5f26e5" : "#ffffff", background: isActive ? "#ffffff" : "rgba(255,255,255,0.16)",
+                    border: isActive ? "1px solid #ffffff" : "1px solid rgba(255,255,255,0.4)",
+                    transition: "background 0.35s ease, border-color 0.35s ease, color 0.35s ease",
                   }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>

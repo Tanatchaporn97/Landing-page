@@ -240,25 +240,26 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
   const catSlug = (cat: string) => cat.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-$/, "");
 
   const [activeCampaignStep, setActiveCampaignStep] = useState(0);
+  // desc / descEn: "|" marks the line break — every step reads as exactly two lines on desktop.
   const CAMPAIGN_STEPS = [
     { img: "/how-we-run-campaigns/plan-campaign.png", title: "กำหนดรายละเอียดบรีฟ", titleEn: "Define the Brief",
-      desc: "ทำความเข้าใจโจทย์ของแบรนด์ตั้งแต่ต้นทาง เพื่อวางทิศทางแคมเปญให้ตรงเป้าหมายที่สุด",
-      descEn: "We start by fully understanding your brief, so the campaign direction is aligned with your goals from day one." },
+      desc: "ทำความเข้าใจโจทย์ของแบรนด์ตั้งแต่ต้นทาง|เพื่อวางทิศทางแคมเปญให้ตรงเป้าหมายที่สุด",
+      descEn: "We start by fully understanding your brief,|so the campaign direction is aligned with your goals from day one." },
     { img: "/how-we-run-campaigns/manage-seamlessly.png", title: "วางแผนแคมเปญ", titleEn: "Plan the Campaign",
-      desc: "เปลี่ยนเป้าหมายของแบรนด์เป็นกลยุทธ์ที่จับต้องได้ ให้ทุกการสื่อสารไปถึงกลุ่มเป้าหมายได้ตรงจุด",
-      descEn: "We turn your brand's goals into a concrete strategy, so every message reaches the right audience." },
+      desc: "เปลี่ยนเป้าหมายของแบรนด์เป็นกลยุทธ์ที่จับต้องได้|ให้ทุกการสื่อสารไปถึงกลุ่มเป้าหมายได้ตรงจุด",
+      descEn: "We turn your brand's goals into a concrete strategy,|so every message reaches the right audience." },
     { img: "/how-we-run-campaigns/select-influencers.png", title: "คัดสรรอินฟลูเอนเซอร์ที่ใช่", titleEn: "Select the Right Influencers",
-      desc: "ผ่านระบบ KOL Discovery จับคู่อินฟลูเอนเซอร์ที่เหมาะสมที่สุดกับแบรนด์คุณด้วยข้อมูลเชิงลึกที่แม่นยำ",
-      descEn: "Our KOL Discovery system matches your brand with the most suitable influencers using precise data insights." },
+      desc: "ผ่านระบบ KOL Discovery จับคู่อินฟลูเอนเซอร์ที่เหมาะสมที่สุด|กับแบรนด์คุณด้วยข้อมูลเชิงลึกที่แม่นยำ",
+      descEn: "Our KOL Discovery system matches your brand|with the most suitable influencers using precise data insights." },
     { img: "/how-we-run-campaigns/review-drafts.png", title: "จัดการแคมเปญไร้รอยต่อ", titleEn: "Manage Seamlessly",
-      desc: "ให้แคมเปญของคุณดำเนินไปอย่างไม่มีสะดุด ด้วยทีมงานมืออาชีพที่ดูแลทุกขั้นตอน",
-      descEn: "Your campaign runs without a hitch, with a professional team overseeing every step." },
+      desc: "ให้แคมเปญของคุณดำเนินไปอย่างไม่มีสะดุด|ด้วยทีมงานมืออาชีพที่ดูแลทุกขั้นตอน",
+      descEn: "Your campaign runs without a hitch,|with a professional team overseeing every step." },
     { img: "/how-we-run-campaigns/launch.png", title: "Launch คอนเทนต์ พร้อมติดตามผล", titleEn: "Launch & Track Results",
-      desc: "ลงคอนเทนต์ตามแผน พร้อมเฝ้าติดตามเรียลไทม์เพื่อให้ทุกโพสต์ราบรื่นตั้งแต่ต้นจนจบ",
-      descEn: "Content goes live as planned, with real-time monitoring so every post runs smoothly from start to finish." },
+      desc: "ลงคอนเทนต์ตามแผน พร้อมเฝ้าติดตามเรียลไทม์|เพื่อให้ทุกโพสต์ราบรื่นตั้งแต่ต้นจนจบ",
+      descEn: "Content goes live as planned, with real-time monitoring|so every post runs smoothly from start to finish." },
     { img: "/how-we-run-campaigns/report-results.png", title: "รายงานผลแบบเรียลไทม์", titleEn: "Real-Time Reporting",
-      desc: "ติดตามทุกความเคลื่อนไหวบนแดชบอร์ด พร้อมรับรายงานและอินไซต์ที่นำไปใช้ต่อได้จริง",
-      descEn: "Track every move on the dashboard and get reports and insights you can actually put to use." },
+      desc: "ติดตามทุกความเคลื่อนไหวบนแดชบอร์ด|พร้อมรับรายงานและอินไซต์ที่นำไปใช้ต่อได้จริง",
+      descEn: "Track every move on the dashboard|and get reports and insights you can actually put to use." },
   ];
   const CAMPAIGN_ROW_HEIGHT = 140;
   const CAMPAIGN_ROW_GAP = 24;
@@ -782,11 +783,17 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                     <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                       <h3 style={{ ...KT, fontSize: "20px", fontWeight: 700, margin: 0, transition: "color 0.2s",
                         color: i === activeCampaignStep ? "#5f26e5" : "#111827" }}>{lang === "th" ? step.title : step.titleEn}</h3>
-                      <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: 0 }}>{lang === "th" ? step.desc : step.descEn}</p>
+                      <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: 0 }}>
+                        {(lang === "th" ? step.desc : step.descEn).split("|").map((line, li) => (
+                          <span key={li}>{li > 0 && <>{" "}<br className="kesm-br" /></>}{line}</span>
+                        ))}
+                      </p>
                     </div>
                   </div>
                 </div>
               ))}
+              {/* forced 2-line breaks only where the column is wide enough; narrow screens wrap naturally */}
+              <style>{`@media (max-width: 1100px){ .kesm-br{ display: none; } }`}</style>
             </div>
           </div>
         </div>
