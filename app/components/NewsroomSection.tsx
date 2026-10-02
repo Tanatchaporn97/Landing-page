@@ -21,8 +21,8 @@ function CategoryPill({ children }: { children: React.ReactNode }) {
 
 export default function NewsroomSection({ lang = "th", dict, variant = "home" }: { lang?: "th" | "en"; dict?: any; variant?: "home" | "brand" | "influencer" }) {
   const t = lang === "th"
-    ? { viewMore: "ดูเพิ่มเติม" }
-    : { viewMore: "View More" };
+    ? { viewMore: "อ่านเพิ่มเติม" }
+    : { viewMore: "Read More" };
 
   const catAll = lang === "th" ? "ข่าวสาร" : "News";
   const catBrand = lang === "th" ? "สำหรับแบรนด์" : "For Brands";
