@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -68,27 +68,14 @@ function TikTokCreateButton() {
 }
 
 function StoryCard({ src, name }: { src: string; name: string }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
-  const [muted, setMuted] = useState(false);
   const [buffering, setBuffering] = useState(false);
 
-  // `playing` follows the element's own play/pause events (below), so the UI
-  // never shows "playing" for a video that failed to start. If the browser
-  // refuses to start with sound (e.g. Safari/iOS policies), retry muted so the
-  // clip still plays; the viewer can unmute with the speaker button.
-  const toggle = () => {
-    const el = videoRef.current;
-    if (!el) return;
-    if (!el.paused) { el.pause(); return; }
-    if (el.readyState === 0) el.load();
-    el.play().catch(() => {
-      el.muted = true;
-      setMuted(true);
-      el.play().catch(() => {});
-    });
-  };
-
+  // Playback is handled by the browser's own <video controls>, not by our
+  // click handlers: clicking anywhere on the card reaches the video (every
+  // overlay below is pointer-events: none), so it plays even if the page's
+  // JavaScript never attaches (extensions, page translation, hydration
+  // errors). Our React state only drives the decorative ▶ / loading ring.
   return (
     <div className="creator-story-card" style={{
       position: "relative", flex: "0 0 300px", width: "300px", aspectRatio: "9 / 16",
@@ -96,58 +83,52 @@ function StoryCard({ src, name }: { src: string; name: string }) {
       border: "3px solid #ffffff", boxSizing: "border-box",
       boxShadow: "0 0 0 1px rgba(255,255,255,0.5), 0 0 44px 8px rgba(255,255,255,0.9), 0 22px 44px -14px rgba(95,38,229,0.4)", cursor: "pointer",
       scrollSnapAlign: "start",
-    }} onClick={toggle}>
-      <video ref={videoRef} playsInline loop preload="metadata" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
-        onPlay={() => setPlaying(true)} onPause={() => { setPlaying(false); setBuffering(false); }} onEnded={() => setPlaying(false)}
-        onWaiting={() => setBuffering(true)} onPlaying={() => setBuffering(false)} onCanPlay={() => setBuffering(false)}>
-        {/* #t=0.1 makes the browser paint the first frame as the cover without downloading the whole file */}
-        <source src={`${src}#t=0.1`} type="video/mp4" />
-      </video>
+    }}>
+      <video
+        className="cs-video"
+        src={`${src}#t=0.1`}
+        controls
+        controlsList="nodownload noplaybackrate"
+        disablePictureInPicture
+        playsInline
+        loop
+        preload="metadata"
+        aria-label={name}
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+        onPlay={() => setPlaying(true)}
+        onPause={() => { setPlaying(false); setBuffering(false); }}
+        onEnded={() => setPlaying(false)}
+        onWaiting={() => setBuffering(true)}
+        onPlaying={() => setBuffering(false)}
+        onCanPlay={() => setBuffering(false)}
+      />
 
+      {/* decorative play badge (clicks pass through to the video) */}
       {!playing && (
-        <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(0,0,0,0.25)" }}>
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(0,0,0,0.25)", pointerEvents: "none" }}>
           <div style={{ width: "56px", height: "56px", borderRadius: "50%", background: "rgba(255,255,255,0.9)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="#111827" style={{ marginLeft: "3px" }}><path d="M8 5v14l11-7z" /></svg>
           </div>
         </div>
       )}
 
-      {/* loading ring while the clip buffers after a tap */}
       {buffering && (
         <div aria-label="Loading" style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", zIndex: 2, pointerEvents: "none" }}>
           <span className="cs-spin" style={{ width: "44px", height: "44px", borderRadius: "50%", border: "4px solid rgba(255,255,255,0.35)", borderTopColor: "#ffffff" }} />
         </div>
       )}
 
-      {playing && muted && (
-        <button
-          onClick={(e) => { e.stopPropagation(); const el = videoRef.current; if (el) { el.muted = false; setMuted(false); } }}
-          aria-label="Unmute"
-          style={{ position: "absolute", top: "16px", left: "16px", height: "36px", padding: "0 12px", borderRadius: "18px", background: "rgba(0,0,0,0.45)", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: "6px", zIndex: 2, color: "#ffffff", ...KT, fontSize: "12px", fontWeight: 600 }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#ffffff"><path d="M4 9v6h4l5 4V5L8 9H4z" /><path d="M16 8l5 8M21 8l-5 8" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" /></svg>
-          Tap to unmute
-        </button>
-      )}
-
-      {playing && (
-        <button
-          onClick={(e) => { e.stopPropagation(); toggle(); }}
-          aria-label="Pause"
-          style={{ position: "absolute", top: "16px", right: "16px", width: "36px", height: "36px", borderRadius: "50%", background: "rgba(0,0,0,0.45)", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 2 }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#ffffff"><path d="M6 5h4v14H6zM14 5h4v14h-4z" /></svg>
-        </button>
-      )}
-
       {/* soft white fades top and bottom, like the player chrome */}
       <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none",
         background: "linear-gradient(180deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 18%, rgba(255,255,255,0) 78%, rgba(255,255,255,0.38) 100%)" }} />
 
-      <div style={{ position: "absolute", left: "18px", bottom: "74px", zIndex: 1 }}>
+      <div aria-hidden="true" style={{ position: "absolute", left: "18px", bottom: "74px", zIndex: 1, pointerEvents: "none" }}>
         <span style={{ ...KT, fontSize: "14px", fontWeight: 600, color: "#ffffff", textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>{name}</span>
       </div>
 
       <TikTokRail />
-      <TikTokCreateButton />
+      {/* hidden while playing so it doesn't sit over the native control bar */}
+      {!playing && <TikTokCreateButton />}
     </div>
   );
 }
