@@ -21,7 +21,7 @@ const cardVariants = cva(
         purple: "bg-[#5f26e5]/90 text-white",
         pink: "bg-[#ff0089]/85 text-white",
         violet: "bg-[#7c3aed]/90 text-white",
-        glass: "bg-white/10 text-white border border-white/30 backdrop-blur-xl",
+        glass: "bg-white/15 text-white border border-white/35 backdrop-blur-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_18px_40px_-22px_rgba(10,0,60,0.6)]",
         // same light-lavender tone as the brand page "Think Smarter, Execute Better" cards
         lavender: "bg-gradient-to-br from-[#f6f2ff] to-[#e4dafb] text-gray-900 border border-white/80",
       },
@@ -49,6 +49,8 @@ export interface ServiceCardProps
   ctaLabel?: string;
   /** Extra classes for the decorative image (size / position). */
   imgClassName?: string;
+  /** Show the "LEARN MORE →" link (default true). */
+  showCta?: boolean;
 }
 
 // Animation variants
@@ -65,7 +67,7 @@ const arrowAnimation: Variants = {
 };
 
 const ServiceCard = React.forwardRef<HTMLDivElement, ServiceCardProps>(
-  ({ className, variant, title, description, href, imgSrc, imgAlt, ctaLabel = "LEARN MORE", imgClassName, ...props }, ref) => {
+  ({ className, variant, title, description, href, imgSrc, imgAlt, ctaLabel = "LEARN MORE", imgClassName, showCta = true, ...props }, ref) => {
     return (
       <motion.div
         className={cn(cardVariants({ variant, className }))}
@@ -77,16 +79,18 @@ const ServiceCard = React.forwardRef<HTMLDivElement, ServiceCardProps>(
         <div className="relative z-10 flex flex-col h-full">
           <h3 className="text-2xl font-bold tracking-tight">{title}</h3>
           {description && <p className="mt-2 text-sm leading-relaxed opacity-85">{description}</p>}
-          <Link
-            href={href}
-            aria-label={`Learn more about ${title}`}
-            className="mt-auto pt-4 flex items-center text-sm font-semibold group-hover:underline w-fit"
-          >
-            {ctaLabel}
-            <motion.span variants={arrowAnimation} className="inline-flex">
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </motion.span>
-          </Link>
+          {showCta && (
+            <Link
+              href={href}
+              aria-label={`Learn more about ${title}`}
+              className="mt-auto pt-4 flex items-center text-sm font-semibold group-hover:underline w-fit"
+            >
+              {ctaLabel}
+              <motion.span variants={arrowAnimation} className="inline-flex">
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </motion.span>
+            </Link>
+          )}
         </div>
 
         {/* eslint-disable-next-line @next/next/no-img-element */}

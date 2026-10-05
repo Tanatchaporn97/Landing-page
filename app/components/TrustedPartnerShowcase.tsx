@@ -18,8 +18,8 @@ const ITEMS = [
   { title: "Your Goals Drive Results", desc: "มุ่งผลลัพธ์ที่เชื่อมกับเป้าหมายของแบรนด์จริง",            descEn: "Results tied to your brand's real goals.",                            src: "/how-we-work/icon-goals.webp" },
 ];
 
-// all cards in the light-lavender tone of the brand page "Think Smarter" cards
-const VARIANTS = ["lavender", "lavender", "lavender", "lavender", "lavender"] as const;
+// white glassmorphism cards over the dark-blue section background
+const VARIANTS = ["glass", "glass", "glass", "glass", "glass"] as const;
 
 export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) {
   const header = (
@@ -69,7 +69,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
             href={`/${lang}/brand`}
             imgSrc={item.src}
             imgAlt=""
-            ctaLabel={lang === "th" ? "ดูเพิ่มเติม" : "LEARN MORE"}
+            showCta={false}
             variant={VARIANTS[i]}
             className="hww-card min-h-[320px] rounded-3xl"
             imgClassName="w-36 h-36 -right-4 -bottom-3"
