@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useLayoutEffect, useEffect, useCallback, useState } from "react";
+import { useRef, useLayoutEffect, useCallback } from "react";
 import { motion, useMotionValue, animate } from "motion/react";
 import Image from "next/image";
 
@@ -50,9 +50,8 @@ function Card({ t }: { t: { photo: string; name: string; text: string; time?: st
 
 // ── MarqueeColumn ────────────────────────────────────────────────────────────
 // - Auto-scrolls in `direction` at `duration` seconds per loop.
-// - Mouse wheel over the column scrolls it manually (page scroll is not stolen
-//   unless the pointer is actually inside the column).
-// - Drag (touch / mouse drag) also works; releases resume auto-scroll.
+// - Hovering the column pauses it; leaving resumes. No manual wheel/drag
+//   scrolling, so the mouse wheel always scrolls the page.
 function MarqueeColumn({
   items,
   direction,
@@ -69,7 +68,6 @@ function MarqueeColumn({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const origRef    = useRef<HTMLDivElement>(null);
   const stepRef    = useRef(0);          // always-current step, safe for closures
-  const [step, setStep] = useState(0);  // for dragConstraints render
   const y          = useMotionValue(0);
   const loopRef    = useRef<ReturnType<typeof animate> | null>(null);
 
@@ -109,40 +107,12 @@ function MarqueeColumn({
     if (!h) return;
     const s = h + CARD_GAP;
     stepRef.current = s;
-    setStep(s);
     const initial = direction === "up" ? 0 : -s;
     y.set(initial);
     runLoop(initial, s);
     return () => loopRef.current?.stop();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // Non-passive wheel listener so we can preventDefault (prevent page scroll)
-  // while the pointer is inside this column.
-  useEffect(() => {
-    const el = wrapperRef.current;
-    if (!el) return;
-
-    let wheelTimer: ReturnType<typeof setTimeout>;
-
-    const handleWheel = (e: WheelEvent) => {
-      const s = stepRef.current;
-      if (!s) return;
-      e.preventDefault();            // stop page from scrolling
-      loopRef.current?.stop();
-      y.set(y.get() - e.deltaY * 0.8);
-
-      // Resume auto-scroll ~900 ms after the user stops wheeling.
-      clearTimeout(wheelTimer);
-      wheelTimer = setTimeout(() => runLoop(y.get(), s), 900);
-    };
-
-    el.addEventListener("wheel", handleWheel, { passive: false });
-    return () => {
-      el.removeEventListener("wheel", handleWheel);
-      clearTimeout(wheelTimer);
-    };
-  }, [runLoop, y]);
 
   const pause  = useCallback(() => { loopRef.current?.stop(); }, []);
   const resume = useCallback(() => {
@@ -155,15 +125,7 @@ function MarqueeColumn({
   return (
     <div ref={wrapperRef} className={className} style={{ flex: 1, overflow: "hidden", ...style }}
       onMouseEnter={pause} onMouseLeave={resume}>
-      <motion.div
-        style={{ y, cursor: "grab", userSelect: "none" }}
-        drag="y"
-        dragConstraints={{ top: -(step * 3), bottom: step * 2 }}
-        dragElastic={0.08}
-        onDragStart={pause}
-        onDragEnd={resume}
-        whileDrag={{ cursor: "grabbing" }}
-      >
+      <motion.div style={{ y, userSelect: "none" }}>
         {direction === "down" && (
           <div style={colStyle}>
             {items.map((t, i) => <Card key={`dup-${i}`} t={t} />)}
