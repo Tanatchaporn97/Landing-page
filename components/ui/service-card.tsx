@@ -22,6 +22,8 @@ const cardVariants = cva(
         pink: "bg-[#ff0089]/85 text-white",
         violet: "bg-[#7c3aed]/90 text-white",
         glass: "bg-white/10 text-white border border-white/30 backdrop-blur-xl",
+        // same light-lavender tone as the brand page "Think Smarter, Execute Better" cards
+        lavender: "bg-gradient-to-br from-[#f6f2ff] to-[#e4dafb] text-gray-900 border border-white/80",
       },
     },
     defaultVariants: {

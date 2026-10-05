@@ -7,18 +7,19 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 // light gradient so the headline reads on the dark-blue section background
 const GRAD = "linear-gradient(45deg, #d9ccff 0%, #ff8fd0 100%)";
 
-// The five principles as cards spelling B·U·D·D·Y: title and copy
-// on top, with a 3D letter (public/how-we-work/letter-*.webp) in the corner.
+// The five principles, each with a 3D icon for its idea (public/how-we-work/icon-*.webp,
+// cropped from the brand page's What We Offer set): system dashboard, people/insight,
+// analytics, growth, target.
 const ITEMS = [
-  { title: "Built on Clarity",         desc: "ทำงานเป็นระบบ ชัดเจน และมีมาตรฐาน",                 descEn: "Clear, systematic work held to a consistent standard.",              src: "/how-we-work/letter-b.webp" },
-  { title: "Unified by Insight",       desc: "เข้าใจเป้าหมายร่วมกัน และต่อยอดด้วย Insight",          descEn: "Shared goals, sharpened by insight.",                                src: "/how-we-work/letter-u.webp" },
-  { title: "Data-Driven Decisions",    desc: "ใช้ข้อมูลช่วยตัดสินใจ ตั้งแต่เลือก Creator จนถึงวัดผล",   descEn: "Data guides every call — from choosing creators to measuring results.", src: "/how-we-work/letter-d.webp" },
-  { title: "Delivery with Discipline", desc: "บริหารและส่งมอบงานอย่างเป็นระบบ ตั้งแต่ต้นจนจบ",         descEn: "Systematic management and delivery, from start to finish.",           src: "/how-we-work/letter-d.webp" },
-  { title: "Your Goals Drive Results", desc: "มุ่งผลลัพธ์ที่เชื่อมกับเป้าหมายของแบรนด์จริง",            descEn: "Results tied to your brand's real goals.",                            src: "/how-we-work/letter-y.webp" },
+  { title: "Built on Clarity",         desc: "ทำงานเป็นระบบ ชัดเจน และมีมาตรฐาน",                 descEn: "Clear, systematic work held to a consistent standard.",              src: "/how-we-work/icon-clarity.webp" },
+  { title: "Unified by Insight",       desc: "เข้าใจเป้าหมายร่วมกัน และต่อยอดด้วย Insight",          descEn: "Shared goals, sharpened by insight.",                                src: "/how-we-work/icon-insight.webp" },
+  { title: "Data-Driven Decisions",    desc: "ใช้ข้อมูลช่วยตัดสินใจ ตั้งแต่เลือก Creator จนถึงวัดผล",   descEn: "Data guides every call — from choosing creators to measuring results.", src: "/how-we-work/icon-data.webp" },
+  { title: "Delivery with Discipline", desc: "บริหารและส่งมอบงานอย่างเป็นระบบ ตั้งแต่ต้นจนจบ",         descEn: "Systematic management and delivery, from start to finish.",           src: "/how-we-work/icon-delivery.webp" },
+  { title: "Your Goals Drive Results", desc: "มุ่งผลลัพธ์ที่เชื่อมกับเป้าหมายของแบรนด์จริง",            descEn: "Results tied to your brand's real goals.",                            src: "/how-we-work/icon-goals.webp" },
 ];
 
-// alternate glass and brand-colour cards across the row
-const VARIANTS = ["glass", "purple", "glass", "pink", "glass"] as const;
+// all cards in the light-lavender tone of the brand page "Think Smarter" cards
+const VARIANTS = ["lavender", "lavender", "lavender", "lavender", "lavender"] as const;
 
 export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) {
   const header = (
@@ -70,8 +71,8 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
             imgAlt=""
             ctaLabel={lang === "th" ? "ดูเพิ่มเติม" : "LEARN MORE"}
             variant={VARIANTS[i]}
-            className="hww-card min-h-[300px] rounded-3xl"
-            imgClassName="w-44 h-44 -right-6 -bottom-6"
+            className="hww-card min-h-[320px] rounded-3xl"
+            imgClassName="w-36 h-36 -right-4 -bottom-3"
             style={KT}
           />
         ))}
