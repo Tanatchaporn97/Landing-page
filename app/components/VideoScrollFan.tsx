@@ -65,11 +65,14 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
 
     rafRef.current = requestAnimationFrame(applyLayout);
 
+    // Only horizontal gestures (trackpad side-swipe / shift+wheel) move the
+    // strip; a normal vertical wheel is left alone so the page keeps scrolling.
     const onWheel = (e: WheelEvent) => {
-      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-      if (delta === 0) return;
+      const dx = e.shiftKey && e.deltaX === 0 ? e.deltaY : e.deltaX;
+      if (Math.abs(dx) <= Math.abs(e.deltaY) && !e.shiftKey) return;
+      if (dx === 0) return;
       e.preventDefault();
-      scroller.scrollLeft += delta;
+      scroller.scrollLeft += dx;
     };
 
     const onPointerDown = (e: PointerEvent) => {
