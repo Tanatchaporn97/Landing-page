@@ -9,10 +9,10 @@ const AVATARS = ["/testimonials/king.jpg", "/testimonials/pond-peoria.jpg", "/te
 
 // social bubbles around the phone (positions avoid the other chips)
 const SOCIALS = [
-  { name: "tiktok",    label: "TikTok",    left: "34%", top: "2%",  size: "48px", delay: "0.4s" },
-  { name: "instagram", label: "Instagram", left: "82%", top: "18%", size: "52px", delay: "0.9s" },
-  { name: "youtube",   label: "YouTube",   left: "86%", top: "84%", size: "44px", delay: "1.3s" },
-  { name: "facebook",  label: "Facebook",  left: "22%", top: "70%", size: "40px", delay: "1.8s" },
+  { name: "tiktok",    label: "TikTok",    left: "10%", top: "2%",  size: "46px", delay: "0.4s", hideSm: false },
+  { name: "instagram", label: "Instagram", left: "82%", top: "18%", size: "52px", delay: "0.9s", hideSm: false },
+  { name: "youtube",   label: "YouTube",   left: "86%", top: "84%", size: "44px", delay: "1.3s", hideSm: false },
+  { name: "facebook",  label: "Facebook",  left: "22%", top: "70%", size: "40px", delay: "1.8s", hideSm: true },
 ];
 
 const Heart = ({ size, style }: { size: number; style: React.CSSProperties }) => (
@@ -85,24 +85,53 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
           <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "34px", overflow: "hidden", background: "#e9e1f7" }}>
             <Image src="/hero-illustrations/influencer-prefooter.jpg" alt={th ? "ครีเอเตอร์ถ่ายเซลฟี่" : "Creator taking a selfie"} fill sizes="240px" style={{ objectFit: "cover", objectPosition: "50% 30%" }} />
             <span aria-hidden="true" style={{ position: "absolute", top: "10px", left: "50%", transform: "translateX(-50%)", width: "74px", height: "20px", borderRadius: "12px", background: "#0b0b0f" }} />
-            {/* camera UI — she's filming a review, so the screen reads as a recording */}
-            <span aria-hidden="true" style={{ position: "absolute", top: "40px", left: "50%", transform: "translateX(-50%)", display: "inline-flex", alignItems: "center", gap: "6px",
-              padding: "4px 10px", borderRadius: "999px", background: "rgba(17,24,39,0.45)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)",
-              color: "#ffffff", fontSize: "11px", fontWeight: 700, letterSpacing: "0.04em" }}>
-              <span className="ipf-rec" style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#e5484d" }} />
-              REC 00:15
-            </span>
-            <span aria-hidden="true" style={{ position: "absolute", left: "50%", bottom: "18px", transform: "translateX(-50%)", width: "54px", height: "54px", borderRadius: "50%",
-              border: "4px solid rgba(255,255,255,0.9)", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <span style={{ width: "34px", height: "34px", borderRadius: "10px", background: "#e5484d" }} />
-            </span>
+            {/* Instagram Reels UI over the clip */}
+            <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none",
+              background: "linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.6) 100%)" }} />
+            {/* top bar: "Reels" + camera */}
+            <div aria-hidden="true" style={{ position: "absolute", top: "38px", left: "14px", right: "14px", display: "flex", alignItems: "center", justifyContent: "space-between", color: "#ffffff" }}>
+              <span style={{ fontSize: "17px", fontWeight: 700, letterSpacing: "-0.01em" }}>Reels</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><circle cx="12" cy="13" r="3.5" /></svg>
+            </div>
+            {/* right action rail */}
+            <div aria-hidden="true" style={{ position: "absolute", right: "10px", bottom: "92px", display: "flex", flexDirection: "column", alignItems: "center", gap: "14px",
+              color: "#ffffff", fontSize: "10px", fontWeight: 600, filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.4))" }}>
+              <span style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "3px" }}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#ff3040"><path d="M12 21s-7.5-4.6-10-9.2C.4 8 2 4 6 4c2 0 3.5 1 6 3.5C14.5 5 16 4 18 4c4 0 5.6 4 4 7.8C19.5 16.4 12 21 12 21z" /></svg>12.4K
+              </span>
+              <span style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "3px" }}>
+                <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinejoin="round"><path d="M20.7 16.4A9 9 0 1 0 17 20l4 1.2z" /></svg>842
+              </span>
+              <span style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "3px" }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round"><path d="M22 3 9.2 10.1M22 3l-7 18-4.8-10.9L2 7z" /></svg>3.1K
+              </span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff"><circle cx="5" cy="12" r="1.8" /><circle cx="12" cy="12" r="1.8" /><circle cx="19" cy="12" r="1.8" /></svg>
+            </div>
+            {/* bottom: creator, caption, audio */}
+            <div aria-hidden="true" style={{ position: "absolute", left: "12px", right: "48px", bottom: "16px", color: "#ffffff", display: "flex", flexDirection: "column", gap: "6px",
+              textShadow: "0 1px 3px rgba(0,0,0,0.45)" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "7px" }}>
+                <span style={{ position: "relative", width: "24px", height: "24px", borderRadius: "50%", overflow: "hidden", flexShrink: 0, boxShadow: "0 0 0 1.5px #ffffff" }}>
+                  <Image src="/hero-illustrations/influencer-prefooter.jpg" alt="" fill sizes="24px" style={{ objectFit: "cover", objectPosition: "60% 25%" }} />
+                </span>
+                <span style={{ fontSize: "12px", fontWeight: 700 }}>cafe.with.mint</span>
+                <span style={{ fontSize: "10px", fontWeight: 700, padding: "2px 8px", borderRadius: "7px", border: "1px solid rgba(255,255,255,0.85)" }}>Follow</span>
+              </div>
+              <div style={{ fontSize: "11px", lineHeight: 1.35, overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>
+                {th ? "รีวิวคาเฟ่ลับย่านอารีย์ ☕ #BuddyReview" : "Hidden café review ☕ #BuddyReview"}
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: "5px", fontSize: "10px", opacity: 0.92 }}>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="#ffffff"><path d="M9 18V5l12-2v13" stroke="#ffffff" strokeWidth="2" fill="none" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" /></svg>
+                Original audio · cafe.with.mint
+              </div>
+            </div>
           </div>
         </div>
 
         {/* chips — creator engagement around the phone, in Buddy Review CI purple → pink */}
         {/* social platform bubbles */}
         {SOCIALS.map((sc) => (
-          <span key={sc.name} className="ipf-float" style={{ position: "absolute", left: sc.left, top: sc.top, width: sc.size, height: sc.size, borderRadius: "50%",
+          <span key={sc.name} className={`ipf-float${sc.hideSm ? " ipf-hide-sm" : ""}`} style={{ position: "absolute", left: sc.left, top: sc.top, width: sc.size, height: sc.size, borderRadius: "50%",
             background: "#ffffff", boxShadow: "0 12px 26px -10px rgba(95,38,229,0.45)", display: "flex", alignItems: "center", justifyContent: "center",
             animationDelay: sc.delay, zIndex: 3 }}>
             <span style={{ position: "relative", width: "56%", height: "56%" }}><Image src={`/social-icons/${sc.name}.png`} alt={sc.label} fill sizes="32px" style={{ objectFit: "contain" }} /></span>
@@ -129,7 +158,7 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
         </div>
 
         {/* engagement stats card */}
-        <div className="ipf-float ipf-chip" style={{ position: "absolute", right: "0%", top: "52%", padding: "14px 16px", borderRadius: "18px",
+        <div className="ipf-float ipf-chip ipf-hide-sm" style={{ position: "absolute", right: "0%", top: "52%", padding: "14px 16px", borderRadius: "18px",
           background: "rgba(255,255,255,0.92)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", border: "1px solid rgba(255,255,255,0.9)",
           boxShadow: "0 18px 36px -16px rgba(95,38,229,0.5)", transform: "rotate(3deg)", animationDelay: "1.1s", zIndex: 3 }}>
           <div style={{ fontSize: "11px", fontWeight: 700, color: "#5f26e5", marginBottom: "8px" }}>{th ? "Engagement วันนี้" : "Today's engagement"}</div>
@@ -149,7 +178,7 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
         </div>
 
         {/* follower growth */}
-        <div className="ipf-float ipf-chip" style={{ position: "absolute", left: "8%", bottom: "7%", display: "flex", alignItems: "center", gap: "10px", padding: "10px 16px 10px 10px",
+        <div className="ipf-float ipf-chip ipf-hide-sm" style={{ position: "absolute", left: "0%", bottom: "4%", display: "flex", alignItems: "center", gap: "10px", padding: "10px 16px 10px 10px",
           borderRadius: "16px", background: "#ffffff", boxShadow: "0 16px 32px -14px rgba(95,38,229,0.45)", transform: "rotate(2deg)", animationDelay: "1.6s", zIndex: 3 }}>
           <span style={{ width: "32px", height: "32px", borderRadius: "10px", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center",
             background: "linear-gradient(135deg, #8b5cf6, #5f25e5)" }}>
@@ -174,8 +203,6 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
         .ipf-float{ animation: ipf-float 4.2s ease-in-out infinite; }
         @keyframes ipf-heart{ 0%,100%{ transform: translateY(0) scale(1); } 50%{ transform: translateY(-10px) scale(1.08); } }
         .ipf-heart{ animation: ipf-heart 3.6s ease-in-out infinite; }
-        @keyframes ipf-rec{ 50%{ opacity: 0.25; } }
-        .ipf-rec{ animation: ipf-rec 1.2s steps(1) infinite; }
         @media (max-width: 900px){
           .ipf-grid{ grid-template-columns: 1fr !important; padding: 48px 24px !important; gap: 12px !important; }
           .ipf-visual{ height: 460px !important; }
@@ -184,8 +211,9 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
           .ipf-visual{ height: 420px !important; }
           .ipf-phone{ width: 200px !important; height: 410px !important; }
           .ipf-stat, .ipf-chip{ scale: 0.86; }
+          .ipf-hide-sm{ display: none !important; }
         }
-        @media (prefers-reduced-motion: reduce){ .ipf-float, .ipf-heart, .ipf-rec{ animation: none; } }
+        @media (prefers-reduced-motion: reduce){ .ipf-float, .ipf-heart{ animation: none; } }
       `}</style>
     </div>
   );
