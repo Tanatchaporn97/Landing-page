@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import Image from "next/image";
+import { ServiceCard } from "@/components/ui/service-card";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 // light gradient so the headline reads on the dark-blue section background
@@ -16,6 +16,9 @@ const ITEMS = [
   { title: "Delivery with Discipline", desc: "บริหารและส่งมอบงานอย่างเป็นระบบ ตั้งแต่ต้นจนจบ",         descEn: "Systematic management and delivery, from start to finish.",           src: "/how-we-work/letter-d.webp" },
   { title: "Your Goals Drive Results", desc: "มุ่งผลลัพธ์ที่เชื่อมกับเป้าหมายของแบรนด์จริง",            descEn: "Results tied to your brand's real goals.",                            src: "/how-we-work/letter-y.webp" },
 ];
+
+// alternate glass and brand-colour cards across the row
+const VARIANTS = ["glass", "purple", "glass", "pink", "glass"] as const;
 
 export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) {
   const header = (
@@ -55,50 +58,36 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
       {/* five cards in one row (≥1280px); narrower screens scroll sideways with snap.
           Style follows the brand page's "Think Smarter, Execute Better" cards: light card,
           bold title, muted copy, 3D art bleeding off the bottom-right corner. */}
+      {/* five ServiceCards in one row (≥1280px); narrower screens scroll sideways with snap */}
       <div className="hww-row">
-        {ITEMS.map((item) => (
-          <Link key={item.title} href={`/${lang}/brand`} className="hww-card group">
-            <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", gap: "14px" }}>
-              <h4 style={{ ...KT, margin: 0, fontSize: "clamp(20px,1.6vw,24px)", fontWeight: 700, lineHeight: 1.25, color: "#ffffff" }}>
-                {item.title}
-              </h4>
-              <p style={{ ...KT, margin: 0, fontSize: "15px", fontWeight: 400, lineHeight: 1.6, color: "rgba(255,255,255,0.82)" }}>
-                {lang === "th" ? item.desc : item.descEn}
-              </p>
-            </div>
-            <div className="hww-art" aria-hidden="true">
-              <Image src={item.src} alt="" fill unoptimized sizes="(max-width: 1279px) 280px, 18vw" style={{ objectFit: "contain", objectPosition: "right bottom" }} />
-            </div>
-          </Link>
+        {ITEMS.map((item, i) => (
+          <ServiceCard
+            key={item.title}
+            title={item.title}
+            description={lang === "th" ? item.desc : item.descEn}
+            href={`/${lang}/brand`}
+            imgSrc={item.src}
+            imgAlt=""
+            ctaLabel={lang === "th" ? "ดูเพิ่มเติม" : "LEARN MORE"}
+            variant={VARIANTS[i]}
+            className="hww-card min-h-[300px] rounded-3xl"
+            imgClassName="w-44 h-44 -right-6 -bottom-6"
+            style={KT}
+          />
         ))}
       </div>
 
       <style>{`
         .hww-row{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
-        .hww-card{
-          position: relative; overflow: hidden; isolation: isolate; text-decoration: none;
-          display: flex; flex-direction: column; min-height: 310px; padding: 26px 22px; border-radius: 24px;
-          /* glassmorphism over the dark-blue section background */
-          background: linear-gradient(160deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.07) 100%);
-          backdrop-filter: blur(22px) saturate(140%); -webkit-backdrop-filter: blur(22px) saturate(140%);
-          border: 1px solid rgba(255,255,255,0.32);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,0.45), 0 18px 40px -22px rgba(10,0,60,0.6);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        /* 3D letter anchored to the bottom-right corner, partly cropped by the card edge */
-        .hww-art{ position: absolute; right: -12%; bottom: -12%; width: 74%; aspect-ratio: 1; z-index: 1; pointer-events: none;
-          transition: transform 0.6s cubic-bezier(.22,1,.36,1); transform-origin: right bottom; }
-        .hww-card:hover{ transform: translateY(-6px); background: linear-gradient(160deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.10) 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 26px 48px -22px rgba(10,0,60,0.75); }
-        .hww-card:hover .hww-art{ transform: scale(1.06) rotate(-3deg); }
-        .hww-card:focus-visible{ outline: 2px solid #ffffff; outline-offset: 3px; }
+        .hww-row h3{ font-size: clamp(19px,1.5vw,22px); line-height: 1.25; }
+        .hww-row .hww-card a{ position: relative; z-index: 2; }
         @media (max-width: 1279px){
           .hww-row{ display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
             margin: 0 -24px; padding: 6px 24px 16px; scroll-padding-inline: 24px; }
           .hww-row::-webkit-scrollbar{ display: none; }
           .hww-card{ flex: 0 0 260px; scroll-snap-align: start; }
         }
-        @media (max-width: 560px){ .hww-card{ flex-basis: 72vw; min-height: 300px; } }
-        @media (prefers-reduced-motion: reduce){ .hww-card, .hww-art{ transition: none; } }
+        @media (max-width: 560px){ .hww-card{ flex-basis: 72vw; } }
       `}</style>
     </div>
   );
