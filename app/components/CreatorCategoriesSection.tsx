@@ -137,9 +137,19 @@ export default function CreatorCategoriesSection({ lang }: { lang: "th" | "en" }
           .cc-cell{ border-left: none !important; }
           .cc-cell:nth-child(odd){ border-left: none !important; }
         }
+        /* phones: compact 2-column tiles (icon beside title, 2-line description)
+           instead of one tall full-width row per category — ~⅓ of the height */
         @media (max-width: 640px){
-          .cc-header-row{ align-items: flex-start !important; }
-          .cc-grid{ grid-template-columns: 1fr !important; }
+          .cc-header-row{ align-items: flex-start !important; margin-bottom: 24px !important; gap: 12px !important; }
+          .cc-grid{ grid-template-columns: repeat(2, 1fr) !important; gap: 10px; }
+          .cc-cell{ padding: 14px 12px !important; border: 1px solid rgba(95,38,229,0.12) !important; border-radius: 16px;
+            background: rgba(255,255,255,0.45); display: grid; grid-template-columns: 34px 1fr; column-gap: 10px; align-items: center; }
+          .cc-cell-icon{ width: 34px !important; height: 34px !important; border-radius: 11px !important; margin-bottom: 0 !important; }
+          .cc-cell-icon svg{ width: 17px; height: 17px; }
+          .cc-cell h4{ font-size: 13.5px !important; line-height: 1.25 !important; margin: 0 !important; }
+          .cc-cell p{ grid-column: 1 / -1; margin-top: 8px !important; font-size: 12.5px !important; line-height: 1.5 !important; color: #4b5563 !important;
+            display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+          .cc-cell:hover{ transform: none; }
         }
       `}</style>
     </div>
