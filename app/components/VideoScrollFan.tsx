@@ -175,7 +175,10 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
           justifyContent: "center",
           gap: "40px",
           overflowX: "auto",
-          overflowY: "visible",
+          // must be hidden, not visible: with overflow-x auto the browser turns
+          // "visible" into "auto", and the tilted/raised cards made the strip
+          // scroll up and down by itself under the mouse wheel
+          overflowY: "hidden",
           cursor: "grab",
           padding: "64px 56px 44px",
           scrollbarWidth: "none",
@@ -213,18 +216,12 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
           </div>
         ))}
       </div>
-      <div className="vsf-fade vsf-fade-left" />
-      <div className="vsf-fade vsf-fade-right" />
       <style>{`
         .vsf-scroller::-webkit-scrollbar{ display: none; }
-        .vsf-fade{ position: absolute; top: 0; bottom: 0; width: 9vw; min-width: 60px; max-width: 140px; pointer-events: none; z-index: 5; }
-        .vsf-fade-left{ left: 0; background: linear-gradient(90deg, #F7F1FC 0%, rgba(247,241,252,0) 100%); }
-        .vsf-fade-right{ right: 0; background: linear-gradient(270deg, #F7F1FC 0%, rgba(247,241,252,0) 100%); }
         /* phones: smaller clips so ~3 full videos fit across the screen */
         @media (max-width: 640px){
           .vsf-scroller{ gap: 12px !important; padding: 36px 16px 30px !important; }
           .vsf-card{ width: 26vw !important; border-radius: 18px !important; box-shadow: 0 10px 22px rgba(0,0,0,0.14) !important; }
-          .vsf-fade{ width: 18px !important; min-width: 0 !important; }
         }
       `}</style>
     </div>
