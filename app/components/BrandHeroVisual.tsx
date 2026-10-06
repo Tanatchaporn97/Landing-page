@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Building2, Users2, ArrowRight, Check } from "lucide-react";
 
@@ -124,9 +125,37 @@ function CreatorPhotoCard({ c, lang, delay }: { c: CreatorCard; lang: "th" | "en
 export default function BrandHeroVisual({ lang }: { lang: "th" | "en" }) {
   const segments = donutSegments();
 
+  // ≤900px: render the exact desktop composition at its native 640px size and
+  // scale it down uniformly to the available width (instead of a different
+  // mobile layout). DESIGN_W includes the platform icon stack that sits past
+  // the right edge (right: -12%).
+  const DESIGN = 640, DESIGN_W = 724, DESIGN_H = 660;
+  const fitRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState<number | null>(null);
+  useEffect(() => {
+    const el = fitRef.current;
+    if (!el) return;
+    const update = () => {
+      const w = el.clientWidth;
+      setScale(window.innerWidth <= 900 ? Math.min(1, w / DESIGN_W) : null);
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    window.addEventListener("resize", update);
+    return () => { ro.disconnect(); window.removeEventListener("resize", update); };
+  }, []);
+
   return (
-    <>
-    <div className="bhv-desktop bhv-float" style={{ position: "relative", width: "100%", aspectRatio: "1 / 1", maxWidth: "640px", margin: "0 auto" }}>
+    <div ref={fitRef} className="bhv-fit" style={scale ? { position: "relative", width: "100%", height: `${DESIGN_H * scale}px` } : undefined}>
+    {/* scaler is separate from .bhv-float so the float animation's transform doesn't override the scale */}
+    <div style={scale
+      ? { position: "absolute", top: 0, left: "50%", width: `${DESIGN}px`,
+          marginLeft: `${-(DESIGN_W * scale) / 2}px`, transform: `scale(${scale})`, transformOrigin: "top left" }
+      : undefined}>
+    <div className="bhv-desktop bhv-float" style={scale
+      ? { position: "relative", width: `${DESIGN}px`, aspectRatio: "1 / 1" }
+      : { position: "relative", width: "100%", aspectRatio: "1 / 1", maxWidth: "640px", margin: "0 auto" }}>
       {/* Ambient background blobs */}
       <div style={{ position: "absolute", top: "10%", right: "5%", width: "260px", height: "260px", borderRadius: "50%",
         background: "radial-gradient(circle, rgba(95,38,229,0.12) 0%, transparent 70%)", filter: "blur(10px)", zIndex: 0 }} />
@@ -290,66 +319,6 @@ export default function BrandHeroVisual({ lang }: { lang: "th" | "en" }) {
       {CREATORS.map((c, i) => <CreatorPhotoCard key={c.categoryEn} c={c} lang={lang} delay={i * 0.4} />)}
     </div>
 
-    {/* ── Mobile: simplified static stack — the desktop composition relies on
-        absolute positioning tuned for a ~1:1 square, which collides badly if
-        just shrunk, so mobile gets its own non-overlapping layout instead. ── */}
-    <div className="bhv-mobile" style={{ display: "none" }}>
-      <div style={{
-        background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
-        border: "1px solid rgba(255,255,255,0.6)",
-        borderRadius: "18px", boxShadow: "0 16px 32px -14px rgba(95,38,229,0.28)",
-        padding: "16px 18px", marginBottom: "14px",
-      }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <div style={{ width: "24px", height: "24px", position: "relative", flexShrink: 0 }}>
-              <Image src="/bd-mark.svg" alt="Buddy Review" fill sizes="24px" style={{ objectFit: "contain" }} />
-            </div>
-            <span style={{ ...KT, fontSize: "13px", fontWeight: 800, color: "#111827" }}>
-              {lang === "th" ? "ผลลัพธ์แคมเปญ" : "Campaign Performance"}
-            </span>
-          </div>
-          <span style={{ ...KT, fontSize: "10px", fontWeight: 600, color: "#9ca3af" }}>1–31 Aug</span>
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "6px" }}>
-          {STATS.map((s) => (
-            <div key={s.labelEn}>
-              <p style={{ ...KT, fontSize: "13px", fontWeight: 800, color: "#111827", margin: "0 0 2px", lineHeight: 1 }}>{s.valueEn}</p>
-              <p style={{ ...KT, fontSize: "8px", fontWeight: 600, color: "#9ca3af", margin: "0 0 2px" }}>{lang === "th" ? s.labelTh : s.labelEn}</p>
-              <p style={{ ...KT, fontSize: "8px", fontWeight: 700, color: "#16a34a", margin: 0 }}>↑ {s.delta}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
-        {CREATORS.map((c) => (
-          <div key={c.categoryEn} style={{
-            borderRadius: "16px", overflow: "hidden",
-            background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
-            boxShadow: "0 12px 24px -10px rgba(95,38,229,0.22)", border: "1px solid rgba(255,255,255,0.6)",
-          }}>
-            <div style={{ position: "relative", width: "100%", height: "120px" }}>
-              <Image src={c.img} alt={lang === "th" ? c.categoryTh : c.categoryEn} fill sizes="160px" style={{ objectFit: "cover" }} />
-              <div style={{
-                position: "absolute", top: "8px", left: "8px", width: "22px", height: "22px", borderRadius: "50%",
-                background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center",
-                boxShadow: "0 2px 6px rgba(0,0,0,0.15)", overflow: "hidden",
-              }}>
-                <Image src={PLATFORM_ICON[c.platform]} alt={c.platform} width={12} height={12} style={{ objectFit: "contain" }} />
-              </div>
-            </div>
-            <div style={{ padding: "8px 10px 10px" }}>
-              <p style={{ ...KT, fontSize: "10px", fontWeight: 700, color: "#5f26e5", margin: "0 0 4px" }}>
-                {lang === "th" ? c.categoryTh : c.categoryEn}
-              </p>
-              <p style={{ ...KT, fontSize: "13px", fontWeight: 800, color: "#111827", margin: 0, lineHeight: 1 }}>
-                {c.followers} <span style={{ fontSize: "9px", fontWeight: 600, color: "#6b7280" }}>{lang === "th" ? "ผู้ติดตาม" : "Followers"}</span>
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
 
     <style>{`
@@ -379,11 +348,7 @@ export default function BrandHeroVisual({ lang }: { lang: "th" | "en" }) {
         50% { box-shadow: 0 0 0 4px rgba(22,163,74,0); }
       }
       .bhv-live-dot { animation: bhv-live-dot 1.6s ease-in-out infinite; }
-      @media (max-width: 900px){
-        .bhv-desktop{ display: none !important; }
-        .bhv-mobile{ display: block !important; }
-      }
     `}</style>
-    </>
+    </div>
   );
 }
