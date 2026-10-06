@@ -186,9 +186,11 @@ export default function TestimonialsScrollSection({
           </h2>
           <p style={{ ...KT, fontSize: "16px", color: "#374151", lineHeight: 1.65, margin: 0 }}>
             {lang === "th"
-              ? "ประสบการณ์จริงจากการทำงานกับแบรนด์ ผ่าน Buddy Review"
-              : "Real experiences working with brands, through Buddy Review"}
+              ? <>ประสบการณ์จริงจากการทำงานกับแบรนด์ <span className="tss-desc2">ผ่าน Buddy Review</span></>
+              : <>Real experiences working with brands, <span className="tss-desc2">through Buddy Review</span></>}
           </p>
+          {/* phones: "ผ่าน Buddy Review" drops to its own second line */}
+          <style>{`@media (max-width: 640px){ .tss-desc2{ display: block; } }`}</style>
         </div>
 
         {/* ── Browser-window frame wrapping the testimonial columns ── */}

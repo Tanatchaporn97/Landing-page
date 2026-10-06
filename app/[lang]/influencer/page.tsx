@@ -226,8 +226,10 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
           <div style={{ textAlign: "center", marginBottom: "56px" }}>
             <h2 style={{ fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
               <span style={{ ...KT, fontWeight: 700 }}>More Opportunities, </span>
-              <span style={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Built Around You</span>
+              <span className="mo-line2" style={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Built Around You</span>
             </h2>
+            {/* phones: "Built Around You" always on its own second line */}
+            <style>{`@media (max-width: 640px){ .mo-line2{ display: block; } }`}</style>
           </div>
 
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">

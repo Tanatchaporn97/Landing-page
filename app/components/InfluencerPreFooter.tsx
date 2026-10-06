@@ -35,8 +35,8 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
       maxWidth: "1294px", margin: "0 auto", padding: "72px 48px", boxSizing: "border-box",
     }}>
       {/* ── Left: copy ── */}
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "22px", position: "relative", zIndex: 1 }}>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", padding: "6px 16px 6px 6px", borderRadius: "999px",
+      <div className="ipf-copy" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "22px", position: "relative", zIndex: 1 }}>
+        <div className="ipf-pill" style={{ display: "inline-flex", alignItems: "center", gap: "10px", padding: "6px 16px 6px 6px", borderRadius: "999px",
           background: "#ffffff", border: "1px solid rgba(95,38,229,0.12)", boxShadow: "0 6px 18px -10px rgba(95,38,229,0.35)" }}>
           <span style={{ display: "flex" }}>
             {AVATARS.map((src, i) => (
@@ -50,7 +50,7 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
           </span>
         </div>
 
-        <h3 style={{ margin: 0, fontSize: "clamp(34px,4vw,58px)", fontWeight: 700, lineHeight: 1.12, color: "#111827", letterSpacing: "-0.01em" }}>
+        <h3 className="ipf-title" style={{ margin: 0, fontSize: "clamp(34px,4vw,58px)", fontWeight: 700, lineHeight: 1.12, color: "#111827", letterSpacing: "-0.01em" }}>
           {th ? (
             <>อยากเป็น <span style={{ background: GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Influencer</span><br />แต่ไม่รู้จะเริ่มตรงไหน?</>
           ) : (
@@ -58,9 +58,9 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
           )}
         </h3>
 
-        <p style={{ margin: 0, fontSize: "17px", lineHeight: 1.7, color: "rgba(17,24,39,0.72)", maxWidth: "470px" }}>
+        <p className="ipf-desc" style={{ margin: 0, fontSize: "17px", lineHeight: 1.7, color: "rgba(17,24,39,0.72)", maxWidth: "470px" }}>
           {th
-            ? <>เริ่มต้นง่าย ๆ กับ <strong style={{ color: "#5f26e5" }}>Buddy Review</strong> เปิดรับโอกาสใหม่ ๆ และเติบโตไปพร้อมกับเรา สมัครฟรี ไม่มีค่าใช้จ่าย</>
+            ? <>เริ่มต้นง่าย ๆ กับ <strong style={{ color: "#5f26e5" }}>Buddy Review</strong> เปิดรับโอกาสใหม่ ๆ และเติบโตไปพร้อมกับเรา <span style={{ whiteSpace: "nowrap" }}>สมัครฟรี ไม่มีค่าใช้จ่าย</span></>
             : <>It&apos;s easy with <strong style={{ color: "#5f26e5" }}>Buddy Review</strong> — unlock new opportunities and grow with us. Sign up free, no cost at all.</>}
         </p>
 
@@ -207,10 +207,21 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
           .ipf-grid{ grid-template-columns: 1fr !important; padding: 48px 24px !important; gap: 12px !important; }
           .ipf-visual{ height: 460px !important; }
         }
+        /* phones: centred copy, one-line pill, and a smaller phone visual */
+        @media (max-width: 640px){
+          .ipf-grid{ padding: 44px 20px 28px !important; gap: 4px !important; }
+          .ipf-copy{ align-items: center !important; text-align: center; gap: 16px !important; }
+          .ipf-pill{ padding: 5px 14px 5px 5px !important; gap: 8px !important; }
+          .ipf-pill > span:last-child{ font-size: min(12.5px, 3.15vw) !important; white-space: nowrap; }
+          .ipf-title{ font-size: min(32px, 8.4vw) !important; line-height: 1.25 !important; }
+          .ipf-desc{ font-size: 15px !important; line-height: 1.65 !important; max-width: 340px !important; }
+          .ipf-cta{ padding: 13px 28px !important; font-size: 15px !important; margin-top: 4px; }
+        }
         @media (max-width: 480px){
-          .ipf-visual{ height: 420px !important; }
-          .ipf-phone{ width: 200px !important; height: 410px !important; }
-          .ipf-stat, .ipf-chip{ scale: 0.86; }
+          .ipf-visual{ height: 380px !important; max-width: 340px; width: 100%; margin: 0 auto; }
+          .ipf-phone{ transform: translate(-50%,-50%) rotate(4deg) scale(0.72) !important; }
+          .ipf-visual > div[aria-hidden]{ width: 300px !important; height: 300px !important; }
+          .ipf-float, .ipf-chip{ scale: 0.8; }
           .ipf-hide-sm{ display: none !important; }
         }
         @media (prefers-reduced-motion: reduce){ .ipf-float, .ipf-heart{ animation: none; } }
