@@ -41,8 +41,8 @@ export default function CreatorChannelsSection({ lang }: { lang: "th" | "en" }) 
 
       <div className="cc2-right" style={{ display: "flex", flexWrap: "nowrap", justifyContent: "center", gap: "16px 44px" }}>
         {CHANNELS.map((ch) => (
-          <div key={ch.name} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
-            <div style={{
+          <div key={ch.name} className="cc2-item" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
+            <div className="cc2-circle" style={{
               width: CIRCLE_SIZE, height: CIRCLE_SIZE, borderRadius: "50%", flexShrink: 0,
               background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
               border: "1px solid rgba(255,255,255,0.6)",
@@ -51,10 +51,22 @@ export default function CreatorChannelsSection({ lang }: { lang: "th" | "en" }) 
             }}>
               <Image src={ch.icon} alt={ch.name} width={ICON_SIZE} height={ICON_SIZE} style={{ objectFit: "contain" }} />
             </div>
-            <span style={{ ...KT, fontSize: FONT_SIZE, fontWeight: 500, color: "#111827", whiteSpace: "nowrap" }}>{ch.name}</span>
+            <span className="cc2-name" style={{ ...KT, fontSize: FONT_SIZE, fontWeight: 500, color: "#111827", whiteSpace: "nowrap" }}>{ch.name}</span>
           </div>
         ))}
       </div>
+
+      {/* phones: 3 × 2 grid with smaller circles instead of one overflowing row */}
+      <style>{`
+        @media (max-width: 640px){
+          .cc2-grid{ gap: 28px !important; }
+          .cc2-right{ display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 20px 12px !important; width: 100%; max-width: 340px; }
+          .cc2-item{ gap: 8px !important; }
+          .cc2-circle{ width: 72px !important; height: 72px !important; }
+          .cc2-circle img{ width: 34px !important; height: 34px !important; }
+          .cc2-name{ font-size: 14px !important; }
+        }
+      `}</style>
     </div>
   );
 }
