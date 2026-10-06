@@ -8,7 +8,7 @@ export interface FanVideo {
 
 const EDGE_ZONE = 0.22;
 const HOVER_SPEED_MAX = 9;
-const AUTO_SPEED = 0.7;
+const AUTO_SPEED = 1;
 
 export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -25,19 +25,24 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
 
     const cards = Array.from(scroller.querySelectorAll<HTMLElement>(".vsf-card"));
 
+    // The strip position is kept as a float and written to scrollLeft each frame.
+    // Phones round scrollLeft to whole (device) pixels, so the old
+    // `scrollLeft += 0.7` was rounded straight back and the strip never moved.
+    let pos = 0;
+    let lastSet = -1;
+
     const applyLayout = () => {
-      if (!draggingRef.current) {
-        scroller.scrollLeft += AUTO_SPEED + hoverSpeedRef.current;
-      }
+      // pick up any change made outside this loop (drag, wheel, wrap)
+      if (lastSet < 0 || Math.abs(scroller.scrollLeft - lastSet) > 1.5) pos = scroller.scrollLeft;
+      if (!draggingRef.current) pos += AUTO_SPEED + hoverSpeedRef.current;
 
       const setWidth = scroller.scrollWidth / 3;
       if (setWidth > 0) {
-        if (scroller.scrollLeft >= setWidth * 2) {
-          scroller.scrollLeft -= setWidth;
-        } else if (scroller.scrollLeft <= 0) {
-          scroller.scrollLeft += setWidth;
-        }
+        if (pos >= setWidth * 2) pos -= setWidth;
+        else if (pos <= 0) pos += setWidth;
       }
+      if (!draggingRef.current) scroller.scrollLeft = pos;
+      lastSet = scroller.scrollLeft;
 
       const containerRect = scroller.getBoundingClientRect();
       const centerX = containerRect.left + containerRect.width / 2;
