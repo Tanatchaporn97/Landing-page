@@ -88,7 +88,14 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
           .hww-row::-webkit-scrollbar{ display: none; }
           .hww-card{ flex: 0 0 260px; scroll-snap-align: start; }
         }
-        @media (max-width: 560px){ .hww-card{ flex-basis: 72vw; } }
+        /* phones: stacked full-width list cards — text left, icon right — instead of a swipe row of tall cards */
+        @media (max-width: 640px){
+          .hww-row{ display: grid !important; grid-template-columns: 1fr; gap: 12px; overflow: visible; margin: 0; padding: 0; }
+          .hww-card{ flex: none; min-height: 0 !important; padding: 18px 112px 18px 20px !important; border-radius: 20px !important; }
+          .hww-card h3{ font-size: 18px !important; }
+          .hww-card p{ font-size: 13.5px !important; margin-top: 4px !important; }
+          .hww-card img{ width: 88px !important; height: 88px !important; right: 14px !important; top: 50% !important; bottom: auto !important; margin-top: -44px; }
+        }
       `}</style>
     </div>
   );

@@ -32,7 +32,7 @@ export default function ImpactStats({ lang, background = "#ffffff", style }: { l
         }}
         whileTap={{ scale: 0.96 }}
         transition={{ duration: 0.3, ease: "easeOut" }}>
-          <span style={{
+          <span className="hero-stat-num" style={{
             ...KT, fontSize: "44px", fontWeight: 800, lineHeight: 1, whiteSpace: "nowrap",
             background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
             WebkitBackgroundClip: "text",
@@ -41,11 +41,19 @@ export default function ImpactStats({ lang, background = "#ffffff", style }: { l
           }}>
             <AnimatedCounter target={s.target} startValue={s.startValue} suffix={s.suffix} />
           </span>
-          <span style={{ ...KT, fontSize: "18px", fontWeight: 700, color: "#111827", lineHeight: 1.35, whiteSpace: "nowrap" }}>
+          <span className="hero-stat-label" style={{ ...KT, fontSize: "18px", fontWeight: 700, color: "#111827", lineHeight: 1.35, whiteSpace: "nowrap" }}>
             {s.label}
           </span>
         </motion.div>
       ))}
+      {/* phones: smaller numbers/labels and tighter rows (desktop 44px / 18px) */}
+      <style>{`
+        @media (max-width: 767px){
+          .hero-stat-item{ padding: 4px 0 !important; gap: 2px !important; }
+          .hero-stat-num{ font-size: 34px !important; }
+          .hero-stat-label{ font-size: 15px !important; font-weight: 600 !important; color: #374151 !important; }
+        }
+      `}</style>
     </div>
   );
 }
