@@ -15,12 +15,6 @@ const SOCIALS = [
   { name: "facebook",  label: "Facebook",  left: "22%", top: "70%", size: "40px", delay: "1.8s", hideSm: true },
 ];
 
-const Heart = ({ size, style }: { size: number; style: React.CSSProperties }) => (
-  <svg aria-hidden="true" className="ipf-heart" width={size} height={size} viewBox="0 0 24 24" style={{ position: "absolute", ...style }}>
-    <path d="M12 21s-7.5-4.6-10-9.2C.4 8 2 4 6 4c2 0 3.5 1 6 3.5C14.5 5 16 4 18 4c4 0 5.6 4 4 7.8C19.5 16.4 12 21 12 21z" fill="#ff5fa8" />
-  </svg>
-);
-
 // Influencer page pre-footer: copy + CTA on the left, a creator
 // photo in a phone mockup on the right with floating stat chips (real network stats).
 export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
@@ -190,9 +184,6 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
           </span>
         </div>
 
-        <Heart size={22} style={{ left: "26%", top: "30%", opacity: 0.7 }} />
-        <Heart size={30} style={{ right: "3%", bottom: "8%", opacity: 0.85 }} />
-        <Heart size={14} style={{ right: "22%", top: "26%", opacity: 0.5 }} />
       </div>
 
       </div>
@@ -201,8 +192,6 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
         .ipf-cta:hover{ background: #5f26e5 !important; transform: translateY(-2px); }
         @keyframes ipf-float{ 0%,100%{ translate: 0 0; } 50%{ translate: 0 -8px; } }
         .ipf-float{ animation: ipf-float 4.2s ease-in-out infinite; }
-        @keyframes ipf-heart{ 0%,100%{ transform: translateY(0) scale(1); } 50%{ transform: translateY(-10px) scale(1.08); } }
-        .ipf-heart{ animation: ipf-heart 3.6s ease-in-out infinite; }
         @media (max-width: 900px){
           .ipf-grid{ grid-template-columns: 1fr !important; padding: 48px 24px !important; gap: 12px !important; }
           .ipf-visual{ height: 460px !important; }
@@ -224,7 +213,7 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
           .ipf-float, .ipf-chip{ scale: 0.8; }
           .ipf-hide-sm{ display: none !important; }
         }
-        @media (prefers-reduced-motion: reduce){ .ipf-float, .ipf-heart{ animation: none; } }
+        @media (prefers-reduced-motion: reduce){ .ipf-float{ animation: none; } }
       `}</style>
     </div>
   );
