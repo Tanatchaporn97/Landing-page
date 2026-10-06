@@ -4,8 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { ServiceCard } from "@/components/ui/service-card";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
-// light gradient so the headline reads on the dark-blue section background
-const GRAD = "linear-gradient(45deg, #d9ccff 0%, #ff8fd0 100%)";
+// bright white → lavender → hot-pink gradient so the headline pops off the dark-blue background
+const GRAD = "linear-gradient(90deg, #ffffff 0%, #e9e0ff 28%, #ff8ad6 62%, #ff3fa8 100%)";
 
 // The five principles, each with a 3D icon for its idea (public/how-we-work/icon-*.webp,
 // cropped from the brand page's What We Offer set): system dashboard, people/insight,
@@ -30,9 +30,16 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
         </div>
         <h3 style={{
           ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, margin: 0, lineHeight: 1.15,
-          background: GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+          // soft pink glow lifts the gradient text off the background
+          filter: "drop-shadow(0 2px 16px rgba(255,63,168,0.35))",
         }}>
-          What Goes Into Every Campaign
+          {/* inline + box-decoration clone: when the title wraps on phones, every line gets the full gradient */}
+          <span style={{
+            background: GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+            WebkitBoxDecorationBreak: "clone", boxDecorationBreak: "clone",
+          }}>
+            What Goes Into Every Campaign
+          </span>
         </h3>
         <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "rgba(255,255,255,0.85)", margin: 0 }}>
           {lang === "th"
