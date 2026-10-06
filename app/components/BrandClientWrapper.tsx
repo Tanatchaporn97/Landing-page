@@ -512,6 +512,11 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             onMouseEnter={() => setServicesAutoPaused(true)}
             onMouseLeave={() => setServicesAutoPaused(false)}
             style={{
+              // Fixed row height = the tallest expanded card (cards are a fixed 380px wide, so
+              // this is stable per language). Without it the row grew/shrank by up to ~30px
+              // each time the 5s auto-advance expanded a card with a longer description,
+              // shoving every section below it up and down — the "page jumps by itself".
+              minHeight: lang === "th" ? "555px" : "582px",
               display: "flex", gap: `${SERVICE_CARD_GAP}px`, overflowX: "auto", scrollSnapType: "x mandatory",
               scrollbarWidth: "none", msOverflowStyle: "none" as React.CSSProperties["msOverflowStyle"],
               alignItems: "center", paddingBottom: "8px",
