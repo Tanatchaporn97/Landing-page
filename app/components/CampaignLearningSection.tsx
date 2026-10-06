@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 
@@ -85,6 +85,22 @@ function StepTag({ n, label, active }: { n: number; label: string; active: boole
 
 export default function CampaignLearningSection({ lang }: { lang: "th" | "en" }) {
   const [activeStep, setActiveStep] = useState(0);
+
+  // ≤640px: keep the exact desktop dashboard composition and shrink it to the
+  // screen with CSS zoom (zoom also shrinks the layout box, so no dead space).
+  // FIT_W includes the floating panels that hang past the dashboard edges.
+  const DASH_W = 640, FIT_W = 560;
+  const fitRef = useRef<HTMLDivElement>(null);
+  const [zoom, setZoom] = useState<number | null>(null);
+  useEffect(() => {
+    const el = fitRef.current;
+    if (!el) return;
+    const update = () => setZoom(window.innerWidth <= 640 ? Math.min(1, el.clientWidth / FIT_W) : null);
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
   const [autoPaused, setAutoPaused] = useState(false);
 
   // Cycle through the 3 steps (and their matching dashboard panels) every 5s,
@@ -164,7 +180,9 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
       </div>
 
       {/* Right — reporting dashboard mockup */}
-      <div className="cl-dashboard" style={{ position: "relative", minHeight: "322px", transform: "scale(0.7)", transformOrigin: "center" }}>
+      <div ref={fitRef} className="cl-fit" style={{ width: "100%", minWidth: 0 }}>
+      <div className="cl-dashboard" style={{ position: "relative", minHeight: "322px", transform: "scale(0.7)", transformOrigin: "center",
+        ...(zoom ? { width: `${DASH_W}px`, zoom, margin: "0 auto", left: "-36px" } : {}) }}>
         {/* Base panel: Campaign activity grid */}
         <div style={{
           position: "relative", borderRadius: "24px", padding: "24px",
@@ -280,6 +298,8 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
         </div>
       </div>
 
+      </div>
+
       {/* Shared gradient definition used by every step icon above (purple → pink, matches site CI) */}
       <svg width="0" height="0" style={{ position: "absolute" }}>
         <defs>
@@ -295,23 +315,6 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           .cl-grid{ grid-template-columns: 1fr !important; gap: 40px !important; }
           .cl-left{ max-width: none !important; }
           .cl-dashboard{ margin-top: 40px; }
-        }
-        /* phones: the overlapping floating composition is unreadable when shrunk,
-           so lay the panels out in a tidy 2-column grid instead (no overlap):
-           photo grid on top, then 01 → 01 → 02 → 02 → 03 */
-        @media (max-width: 640px){
-          .cl-dashboard{ transform: none !important; min-height: 0 !important; margin: 8px 0 0 !important;
-            display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; align-items: stretch; }
-          .cl-dashboard > div:first-child{ grid-column: 1 / -1; transform: none !important; padding: 14px !important; order: 0; }
-          .cl-dashboard > .cl-float{ position: static !important; width: auto !important; transform: none !important;
-            opacity: 1 !important; padding: 12px 12px !important; min-width: 0; box-sizing: border-box; }
-          .cl-dashboard > .cl-float:nth-child(3){ order: 1; }   /* 01 result */
-          .cl-dashboard > .cl-float:nth-child(6){ order: 2; }   /* 01 reach by day */
-          .cl-dashboard > .cl-float:nth-child(2){ order: 3; }   /* 02 sentiment */
-          .cl-dashboard > .cl-float:nth-child(5){ order: 4; }   /* 02 what people said */
-          .cl-dashboard > .cl-float:nth-child(4){ order: 5; grid-column: 1 / -1; }   /* 03 next plan */
-          .cl-dashboard > .cl-float:nth-child(3) > div:nth-child(2){ gap: 8px !important; }
-          .cl-dashboard > .cl-float:nth-child(3) p:first-child{ font-size: 14px !important; }
         }
       `}</style>
     </div>
