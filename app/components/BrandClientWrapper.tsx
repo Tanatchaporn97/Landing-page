@@ -491,6 +491,15 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             </p>
           </div>
 
+          {/* phones: icon sits in the top-right corner, text keeps clear of it */}
+          <style>{`
+            @media (max-width: 767px){
+              .wwo-card{ padding: 22px 20px 24px !important; min-height: 0 !important; }
+              .wwo-card > img{ width: 150px !important; right: -6px !important; top: -4px !important; bottom: auto !important; }
+              .wwo-card h3{ font-size: 20px !important; padding-right: 96px; }
+              .wwo-card p{ font-size: 14.5px !important; }
+            }
+          `}</style>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-10">
             {WHAT_WE_OFFER.map((item, i) => {
               const isLast = i === WHAT_WE_OFFER.length - 1;
@@ -503,6 +512,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   title={lang === "th" ? item.title : item.titleEn}
                   description={lang === "th" ? item.desc : item.descEn}
                   imageUrl={item.icon}
+                  className="wwo-card"
                   style={{
                     ...KT,
                     background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
@@ -584,8 +594,8 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           </div>
 
           <div className="grid-2-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
-            {/* Left: image, crossfades to match the hovered step */}
-            <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", aspectRatio: "3 / 2" }}>
+            {/* Left: image, crossfades to match the hovered step (hidden on phones — shown inline under the active step instead) */}
+            <div className="kes-side-img" style={{ position: "relative", borderRadius: "28px", overflow: "hidden", aspectRatio: "3 / 2" }}>
               <AnimatePresence mode="wait">
                 <motion.div key={CAMPAIGN_STEPS[activeCampaignStep].img}
                   initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
@@ -603,9 +613,9 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               onMouseLeave={() => setCampaignAutoPaused(false)}
               style={{ position: "relative", display: "flex", flexDirection: "column", gap: `${CAMPAIGN_ROW_GAP}px`, paddingLeft: "32px" }}>
               {/* track */}
-              <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "4px", borderRadius: "2px", background: "rgba(95,38,229,0.12)" }} />
+              <div className="kes-track" style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "4px", borderRadius: "2px", background: "rgba(95,38,229,0.12)" }} />
               {/* sliding highlight */}
-              <motion.div
+              <motion.div className="kes-track"
                 animate={{ top: activeCampaignStep * (CAMPAIGN_ROW_HEIGHT + CAMPAIGN_ROW_GAP) }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 style={{ position: "absolute", left: 0, width: "4px", height: `${CAMPAIGN_ROW_HEIGHT}px`, borderRadius: "2px",
@@ -613,7 +623,9 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
               {CAMPAIGN_STEPS.map((step, i) => (
                 <div key={step.title}
+                  className={`kes-step${i === activeCampaignStep ? " is-active" : ""}`}
                   onMouseEnter={() => setActiveCampaignStep(i)}
+                  onClick={() => { setActiveCampaignStep(i); setCampaignAutoPaused(true); }}
                   style={{ minHeight: `${CAMPAIGN_ROW_HEIGHT}px`, display: "flex", flexDirection: "column", justifyContent: "flex-start",
                     cursor: "pointer", opacity: i === activeCampaignStep ? 1 : 0.55, transition: "opacity 0.2s" }}>
                   <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
@@ -629,12 +641,28 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                           <span key={li}>{li > 0 && <>{" "}<br className="kesm-br" /></>}{line}</span>
                         ))}
                       </p>
+                      {/* phones: the active step's image appears right under its description */}
+                      {i === activeCampaignStep && (
+                        <motion.div className="kes-inline-img" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}
+                          style={{ position: "relative", borderRadius: "18px", overflow: "hidden", aspectRatio: "3 / 2", marginTop: "10px" }}>
+                          <Image src={step.img} alt={lang === "th" ? step.title : step.titleEn} fill sizes="100vw" style={{ objectFit: "cover" }} />
+                        </motion.div>
+                      )}
                     </div>
                   </div>
                 </div>
               ))}
               {/* forced 2-line breaks only where the column is wide enough; narrow screens wrap naturally */}
-              <style>{`@media (max-width: 1100px){ .kesm-br{ display: none; } }`}</style>
+              <style>{`
+                @media (max-width: 1100px){ .kesm-br{ display: none; } }
+                .kes-inline-img{ display: none !important; }
+                @media (max-width: 767px){
+                  .kes-side-img, .kes-track{ display: none !important; }
+                  .kes-inline-img{ display: block !important; }
+                  .kes-step{ min-height: 0 !important; padding: 14px 0 14px 16px; border-left: 3px solid rgba(95,38,229,0.12); margin-left: -32px; }
+                  .kes-step.is-active{ border-left-color: #c026d3; border-image: linear-gradient(180deg, #5f25e5, #ff0089) 1; }
+                }
+              `}</style>
             </div>
           </div>
         </div>
