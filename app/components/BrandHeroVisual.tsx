@@ -127,9 +127,10 @@ export default function BrandHeroVisual({ lang }: { lang: "th" | "en" }) {
 
   // ≤900px: render the exact desktop composition at its native 640px size and
   // scale it down uniformly to the available width (instead of a different
-  // mobile layout). DESIGN_W includes the platform icon stack that sits past
-  // the right edge (right: -12%).
-  const DESIGN = 640, DESIGN_W = 724, DESIGN_H = 660;
+  // mobile layout). The visible artwork spans about x = -40…718 in design
+  // units (rotated cards poke out on the left, platform icons on the right),
+  // so scale to that span plus side padding and centre it.
+  const DESIGN = 640, ART_L = -40, ART_R = 718, SIDE_PAD = 12, DESIGN_H = 660;
   const fitRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState<number | null>(null);
   useEffect(() => {
@@ -137,7 +138,7 @@ export default function BrandHeroVisual({ lang }: { lang: "th" | "en" }) {
     if (!el) return;
     const update = () => {
       const w = el.clientWidth;
-      setScale(window.innerWidth <= 900 ? Math.min(1, w / DESIGN_W) : null);
+      setScale(window.innerWidth <= 900 ? Math.min(1, (w - SIDE_PAD * 2) / (ART_R - ART_L)) : null);
     };
     update();
     const ro = new ResizeObserver(update);
@@ -151,7 +152,7 @@ export default function BrandHeroVisual({ lang }: { lang: "th" | "en" }) {
     {/* scaler is separate from .bhv-float so the float animation's transform doesn't override the scale */}
     <div style={scale
       ? { position: "absolute", top: 0, left: "50%", width: `${DESIGN}px`,
-          marginLeft: `${-(DESIGN_W * scale) / 2}px`, transform: `scale(${scale})`, transformOrigin: "top left" }
+          marginLeft: `${-((ART_L + ART_R) / 2) * scale}px`, transform: `scale(${scale})`, transformOrigin: "top left" }
       : undefined}>
     <div className="bhv-desktop bhv-float" style={scale
       ? { position: "relative", width: `${DESIGN}px`, aspectRatio: "1 / 1" }
