@@ -511,7 +511,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
             text={<>{t.headline1}<br />{t.headline2}<br />{t.headline3}</>}
             gradientColors={HEADLINE_SHINE}
             gradientAnimationDuration={3}
-            textStyle={{ ...KT, fontWeight: 800, fontSize: "clamp(24px, 3.6vw, 44px)", lineHeight: 1.25, margin: "14px 0" }}
+            textStyle={{ ...KT, fontWeight: 800, fontSize: "clamp(28px, 3.3vw, 48px)", lineHeight: 1.2, margin: "14px 0" }}
           />
           <p style={{ ...KT, color: "#3a3350", fontSize: "clamp(15px,1.5vw,18px)", lineHeight: 1.6, margin: 0 }}>
             {t.sublineTop}<br />{t.sublineBottom}
@@ -530,7 +530,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
             text={<>{t.headline1}<br />{t.headline2}<br />{t.headline3}</>}
             gradientColors={HEADLINE_SHINE}
             gradientAnimationDuration={3}
-            textStyle={{ ...KT, fontWeight: 800, fontSize: "clamp(18px, 5.2vw, 24px)", lineHeight: 1.3, margin: "8px 0" }}
+            textStyle={{ ...KT, fontWeight: 800, fontSize: "28px", lineHeight: 1.2, margin: "8px 0" }}
           />
           <p style={{ ...KT, color: "#3a3350", fontSize: "13.5px", lineHeight: 1.55, margin: "0 auto", maxWidth: "460px" }}>
             {t.sublineTop}<br />{t.sublineBottom}
@@ -632,7 +632,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
            them at these widths. */
         @media (min-width: 900px) and (max-width: 1280px) {
           .split-hero-center { width: min(460px, 34vw) !important; padding-top: 180px !important; }
-          .split-hero-center h1 { font-size: clamp(22px, 3.1vw, 34px) !important; }
+          .split-hero-center h1 { font-size: clamp(28px, 3.3vw, 48px) !important; }
           .split-art, .split-panel > div:last-child { padding-left: 8% !important; padding-right: 8% !important; }
           /* The art illustration (and the small badge icons floating on it)
              was still reaching in far enough at this width to collide with
