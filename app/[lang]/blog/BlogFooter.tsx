@@ -9,7 +9,7 @@ const SOCIAL = [
   { icon: "/social/Line.png",   name: "Line Official", href: "https://line.me/R/ti/p/@buddysupport" },
   { icon: "/social/YT.png",     name: "YouTube",       href: "https://www.youtube.com/@buddyreview7134" },
   { icon: "/social/Linkin.png", name: "LinkedIn",      href: "https://th.linkedin.com/company/buddy-review" },
-  { icon: "/social/Lemon8.png", name: "Lemon8",        href: "https://s.lemon8-app.com/s/GgNUhrhUMR" },
+  { icon: "/social/Lemon8.png", name: "Lemon8",        href: "https://www.lemon8-app.com/@buddyreview.th" },
 ];
 
 export default function BlogFooter({ lang = "th" }: { lang?: "th" | "en" }) {
