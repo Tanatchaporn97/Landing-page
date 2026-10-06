@@ -166,7 +166,8 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
         `}</style>
       </section>
 
-      {/* ── Life at Buddy ── */}
+      {/* ── Life at Buddy ── photos from "About Us/Selected Gallery". The grid flows by column in
+           2 rows, so items go in stacked pairs (2 wide or 2 small landscapes) then 2 portraits — no holes. */}
       <InteractiveImageBentoGallery
         title={<>Life at{" "}
           <span style={{ background: "linear-gradient(45deg,#5f25e5 0%,#ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
@@ -174,37 +175,30 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
           </span>
         </>}
         imageItems={[
-          { id: 3, title: lang === "th" ? "ค่ำคืนคาราโอเกะ" : "Karaoke Night", desc: lang === "th" ? "ร้องเพลงคลายเครียดไปด้วยกัน" : "Singing our hearts out together", url: "/gallery/gallery-03.jpg", span: "md:row-span-1" },
-          { id: 5, title: lang === "th" ? "ตกปลากลางทะเล" : "Fishing Trip", desc: lang === "th" ? "กิจกรรมผ่อนคลายกลางทะเล" : "A relaxing day out on the water", url: "/gallery/gallery-05.jpg", span: "md:row-span-2" },
-          { id: 4, title: lang === "th" ? "แลกของขวัญปีใหม่" : "Gift Exchange", desc: lang === "th" ? "ลุ้นของขวัญกันสนุกสนาน" : "Surprises all around", url: "/gallery/gallery-04.jpg", span: "md:col-span-2 md:row-span-1" },
-          { id: 1, title: lang === "th" ? "ทริปประจำปีบริษัท" : "Annual Company Trip", desc: lang === "th" ? "ทุกคนพร้อมหน้าที่เกาะเสม็ด" : "The whole team at Koh Samet", url: "/gallery/gallery-01.jpg", span: "md:col-span-2 md:row-span-1" },
-          { id: 2, title: lang === "th" ? "ปาร์ตี้ฮาโลวีน" : "Halloween Party", desc: lang === "th" ? "แต่งตัวสุดครีเอทีฟที่ออฟฟิศ" : "Getting creative at the office", url: "/gallery/gallery-02.jpg", span: "md:row-span-1" },
-          { id: 9, title: lang === "th" ? "นั่งเรือเที่ยวเกาะ" : "Island Boat Ride", desc: lang === "th" ? "ล่องเรือชมเกาะสมุยไปด้วยกัน" : "Cruising between the islands together", url: "/gallery/gallery-09.jpg", span: "md:row-span-1" },
-          { id: 6, title: lang === "th" ? "โชว์พิเศษจากทีมงาน" : "Team Talent Show", desc: lang === "th" ? "ทุกคนมีของดีซ่อนอยู่" : "Everyone's got hidden talent", url: "/gallery/gallery-06.jpg", span: "md:row-span-2" },
-          { id: 28, title: lang === "th" ? "พนักงานดีเด่นประจำปี" : "Employee of the Year", desc: lang === "th" ? "ยกย่องความทุ่มเทของทีมงาน" : "Recognizing our team's dedication", url: "/gallery/gallery-28.jpg", span: "md:row-span-2" },
-          { id: 7, title: lang === "th" ? "งานเลี้ยงกลางแจ้ง" : "Outdoor Gala Dinner", desc: lang === "th" ? "ค่ำคืนสังสรรค์ริมทะเล" : "An evening celebration by the sea", url: "/gallery/gallery-07.jpg", span: "md:row-span-1" },
-          { id: 8, title: lang === "th" ? "สนุกกับกิจกรรมกลางทะเล" : "Sea Adventure", desc: lang === "th" ? "ผจญภัยกลางทะเลไปด้วยกัน" : "Making memories out on the sea", url: "/gallery/gallery-08.jpg", span: "md:row-span-2" },
-          { id: 30, title: lang === "th" ? "ออกบูธงานอีเวนต์" : "Exhibitor Booth", desc: lang === "th" ? "พาแบรนด์ไปพบลูกค้าที่งานอีเวนต์" : "Bringing the brand to a trade show", url: "/gallery/gallery-30.jpg", span: "md:row-span-2" },
-          { id: 10, title: lang === "th" ? "ของขวัญและรอยยิ้ม" : "Gifts & Smiles", desc: lang === "th" ? "ทุกช่วงเวลามีรอยยิ้มเสมอ" : "Every moment full of smiles", url: "/gallery/gallery-10.jpg", span: "md:row-span-1" },
-          { id: 11, title: lang === "th" ? "ทริปเกาะเสม็ด" : "Koh Samet Trip", desc: lang === "th" ? "เที่ยวเกาะพร้อมทีมทั้งบริษัท" : "Exploring the island as one team", url: "/gallery/gallery-11.jpg", span: "md:col-span-2 md:row-span-1" },
-          { id: 12, title: lang === "th" ? "คอสตูมสุดครีเอทีฟ" : "Creative Costume Contest", desc: lang === "th" ? "ประกวดคอสตูมสุดสร้างสรรค์" : "Our most imaginative costumes yet", url: "/gallery/gallery-12.jpg", span: "md:row-span-2" },
-          { id: 21, title: lang === "th" ? "มุ่งหน้าสู่ท่าเรือ" : "Heading to the Pier", desc: lang === "th" ? "พร้อมออกเดินทางไปด้วยกัน" : "Setting off on the next adventure", url: "/gallery/gallery-21.jpg", span: "md:row-span-2" },
-          { id: 15, title: lang === "th" ? "โชว์ดนตรีสด" : "Live Music Night", desc: lang === "th" ? "ขึ้นเวทีร้องเพลงสุดมันส์" : "Taking the mic for a live performance", url: "/gallery/gallery-15.jpg", span: "md:row-span-2" },
-          { id: 29, title: lang === "th" ? "บุคคลต้นแบบของทีม" : "Team Role Model", desc: lang === "th" ? "แรงบันดาลใจให้ทีมทุกคน" : "Inspiring the whole team", url: "/gallery/gallery-29.jpg", span: "md:row-span-2" },
-          { id: 31, title: lang === "th" ? "พูดคุยกับผู้เข้าร่วมงาน" : "Meeting Attendees", desc: lang === "th" ? "พูดคุยแลกเปลี่ยนที่บูธของเรา" : "Connecting with visitors at our booth", url: "/gallery/gallery-31.jpg", span: "md:row-span-2" },
-          { id: 14, title: lang === "th" ? "งานเลี้ยงยามค่ำคืน" : "Team Night Out", desc: lang === "th" ? "สังสรรค์กันหลังเลิกงาน" : "Unwinding together after hours", url: "/gallery/gallery-14.jpg", span: "md:col-span-2 md:row-span-1" },
-          { id: 16, title: lang === "th" ? "วันพักผ่อนกลางทะเล" : "A Day at Sea", desc: lang === "th" ? "ผ่อนคลายไปกับสายลมและทะเล" : "Relaxing out on the open water", url: "/gallery/gallery-16.jpg", span: "md:row-span-2" },
-          { id: 24, title: lang === "th" ? "แลกของขวัญปีใหม่" : "New Year Gift Exchange", desc: lang === "th" ? "ส่งความสุขรับปีใหม่ด้วยกัน" : "Ringing in the new year together", url: "/gallery/gallery-24.jpg", span: "md:row-span-2" },
-          { id: 13, title: lang === "th" ? "นั่งรถตุ๊กตุ๊กเที่ยวเกาะ" : "Tuk-Tuk Ride", desc: lang === "th" ? "เดินทางรอบเกาะแบบท้องถิ่น" : "Getting around the island like a local", url: "/gallery/gallery-13.jpg", span: "md:col-span-2 md:row-span-1" },
-          { id: 17, title: lang === "th" ? "มื้ออาหารพร้อมหน้าทีม" : "Team Meal Together", desc: lang === "th" ? "กินข้าวพร้อมหน้ากันทั้งทีม" : "Sharing a meal as one team", url: "/gallery/gallery-17.jpg", span: "md:col-span-2 md:row-span-1" },
-          { id: 19, title: lang === "th" ? "สนุกกับการตกปลา" : "Fishing Fun", desc: lang === "th" ? "ยิ้มรับความสนุกกลางทะเล" : "All smiles out on the boat", url: "/gallery/gallery-19.jpg", span: "md:row-span-2" },
-          { id: 26, title: lang === "th" ? "มอบของขวัญส่งท้ายปี" : "Year-End Gift Giving", desc: lang === "th" ? "ความสุขเล็กๆ ส่งท้ายปี" : "Small gifts to close out the year", url: "/gallery/gallery-26.jpg", span: "md:col-span-2 md:row-span-1" },
-          { id: 18, title: lang === "th" ? "ดินเนอร์ริมชายหาด" : "Beachside Dinner", desc: lang === "th" ? "มื้อค่ำสุดพิเศษริมทะเล" : "A special evening by the sea", url: "/gallery/gallery-18.jpg", span: "md:col-span-2 md:row-span-1" },
-          { id: 20, title: lang === "th" ? "ตกปลาได้ตัวโต" : "Reeling It In", desc: lang === "th" ? "โมเมนต์ตกปลาที่น่าจดจำ" : "A catch worth remembering", url: "/gallery/gallery-20.jpg", span: "md:row-span-2" },
-          { id: 22, title: lang === "th" ? "เข้าคิวรับอาหาร" : "Buffet Time", desc: lang === "th" ? "ต่อแถวรับของอร่อยด้วยกัน" : "Lining up for the good stuff", url: "/gallery/gallery-22.jpg", span: "md:row-span-2" },
-          { id: 25, title: lang === "th" ? "งานฉลองครบรอบบริษัท" : "Company Anniversary Party", desc: lang === "th" ? "ร่วมฉลองครบรอบ 15 ปี" : "Celebrating our 15th anniversary", url: "/gallery/gallery-25.jpg", span: "md:col-span-2 md:row-span-1" },
-          { id: 32, title: lang === "th" ? "ร่วมงาน Creative Convention" : "Creative Convention", desc: lang === "th" ? "ออกบูธในงาน CTC 2024" : "Exhibiting at CTC 2024", url: "/gallery/gallery-32.jpg", span: "md:col-span-2 md:row-span-1" },
-          { id: 27, title: lang === "th" ? "ค่ำคืนแห่งความสุข" : "A Night to Remember", desc: lang === "th" ? "รอยยิ้มและความทรงจำดีๆ" : "Smiles and memories to keep", url: "/gallery/gallery-27.jpg", span: "md:col-span-2 md:row-span-1" },
+          { id: 11, title: lang === "th" ? "ทริปประจำปีบริษัท" : "Annual Company Trip", desc: lang === "th" ? "ทุกคนพร้อมหน้าริมทะเล" : "The whole team together by the sea", url: "/life-at-buddy/life-11.jpg", span: "md:col-span-2 md:row-span-1" },
+          { id: 2, title: lang === "th" ? "แลกของขวัญปีใหม่" : "Gift Exchange", desc: lang === "th" ? "ลุ้นของขวัญกันสนุกสนาน" : "Surprises all around", url: "/life-at-buddy/life-02.jpg", span: "md:col-span-2 md:row-span-1" },
+          { id: 1, title: lang === "th" ? "ออกบูธงานอีเวนต์" : "Event Booth", desc: lang === "th" ? "พาแบรนด์ไปพบผู้คนในงาน" : "Bringing the brand to the show", url: "/life-at-buddy/life-01.jpg", span: "md:row-span-2" },
+          { id: 5, title: lang === "th" ? "ตกปลากลางทะเล" : "Fishing Trip", desc: lang === "th" ? "กิจกรรมผ่อนคลายกลางทะเล" : "A relaxing day out on the water", url: "/life-at-buddy/life-05.jpg", span: "md:row-span-2" },
+          { id: 9, title: lang === "th" ? "นั่งเรือเที่ยวเกาะ" : "Island Boat Ride", desc: lang === "th" ? "ล่องเรือไปด้วยกันทั้งทีม" : "Cruising between the islands together", url: "/life-at-buddy/life-09.jpg", span: "md:row-span-1" },
+          { id: 12, title: lang === "th" ? "ดินเนอร์ริมชายหาด" : "Beachside Dinner", desc: lang === "th" ? "มื้อค่ำสุดพิเศษริมทะเล" : "A special evening by the sea", url: "/life-at-buddy/life-12.jpg", span: "md:row-span-1" },
+          { id: 16, title: lang === "th" ? "โชว์ดนตรีสด" : "Live Music Night", desc: lang === "th" ? "ขึ้นเวทีร้องเพลงสุดมันส์" : "Taking the mic for a live performance", url: "/life-at-buddy/life-16.jpg", span: "md:row-span-2" },
+          { id: 7, title: lang === "th" ? "ของขวัญปีใหม่" : "New Year Gifts", desc: lang === "th" ? "ส่งความสุขรับปีใหม่ด้วยกัน" : "Ringing in the new year together", url: "/life-at-buddy/life-07.jpg", span: "md:row-span-2" },
+          { id: 3, title: lang === "th" ? "นั่งรถเที่ยวเกาะ" : "Island Ride", desc: lang === "th" ? "เดินทางรอบเกาะแบบท้องถิ่น" : "Getting around the island like a local", url: "/life-at-buddy/life-03.jpg", span: "md:col-span-2 md:row-span-1" },
+          { id: 19, title: lang === "th" ? "ปาร์ตี้ฮาโลวีน" : "Halloween Party", desc: lang === "th" ? "แต่งตัวสุดครีเอทีฟที่ออฟฟิศ" : "Getting creative at the office", url: "/life-at-buddy/life-19.jpg", span: "md:col-span-2 md:row-span-1" },
+          { id: 13, title: lang === "th" ? "ออกเรือตกปลา" : "Out at Sea", desc: lang === "th" ? "สนุกไปกับลมทะเล" : "Fun in the sea breeze", url: "/life-at-buddy/life-13.jpg", span: "md:row-span-2" },
+          { id: 23, title: lang === "th" ? "บุคคลต้นแบบของทีม" : "Team Role Model", desc: lang === "th" ? "แรงบันดาลใจให้ทีมทุกคน" : "Inspiring the whole team", url: "/life-at-buddy/life-23.jpg", span: "md:row-span-2" },
+          { id: 17, title: lang === "th" ? "งานเลี้ยงกลางแจ้ง" : "Outdoor Gala Dinner", desc: lang === "th" ? "ค่ำคืนสังสรรค์ใต้แสงไฟ" : "An evening celebration under the lights", url: "/life-at-buddy/life-17.jpg", span: "md:row-span-1" },
+          { id: 8, title: lang === "th" ? "มื้ออาหารพร้อมหน้าทีม" : "Team Meal Together", desc: lang === "th" ? "กินข้าวพร้อมหน้ากันทั้งทีม" : "Sharing a meal as one team", url: "/life-at-buddy/life-08.jpg", span: "md:row-span-1" },
+          { id: 14, title: lang === "th" ? "วันพักผ่อนกลางทะเล" : "A Day at Sea", desc: lang === "th" ? "ผ่อนคลายไปกับสายลมและทะเล" : "Relaxing out on the open water", url: "/life-at-buddy/life-14.jpg", span: "md:row-span-2" },
+          { id: 22, title: lang === "th" ? "เข้าคิวรับอาหาร" : "Buffet Time", desc: lang === "th" ? "ต่อแถวรับของอร่อยด้วยกัน" : "Lining up for the good stuff", url: "/life-at-buddy/life-22.jpg", span: "md:row-span-2" },
+          { id: 4, title: lang === "th" ? "ปาร์ตี้สังสรรค์" : "Team Night Out", desc: lang === "th" ? "ปลดปล่อยหลังเลิกงาน" : "Unwinding together after hours", url: "/life-at-buddy/life-04.jpg", span: "md:col-span-2 md:row-span-1" },
+          { id: 10, title: lang === "th" ? "ระหว่างทางไปเที่ยว" : "On the Way", desc: lang === "th" ? "รอยยิ้มตลอดการเดินทาง" : "Smiles all the way there", url: "/life-at-buddy/life-10.jpg", span: "md:col-span-2 md:row-span-1" },
+          { id: 18, title: lang === "th" ? "มุ่งหน้าสู่ท่าเรือ" : "Heading to the Pier", desc: lang === "th" ? "พร้อมออกเดินทางไปด้วยกัน" : "Setting off on the next adventure", url: "/life-at-buddy/life-18.jpg", span: "md:row-span-2" },
+          { id: 20, title: lang === "th" ? "ต้อนรับผู้ร่วมงาน" : "Welcoming Guests", desc: lang === "th" ? "พูดคุยแลกเปลี่ยนในงานอีเวนต์" : "Connecting with visitors at the event", url: "/life-at-buddy/life-20.jpg", span: "md:row-span-2" },
+          { id: 24, title: lang === "th" ? "ทีมงานที่บูธ" : "Team at the Booth", desc: lang === "th" ? "พร้อมต้อนรับทุกคนที่บูธ" : "Ready to welcome every visitor", url: "/life-at-buddy/life-24.jpg", span: "md:row-span-1" },
+          { id: 21, title: lang === "th" ? "มอบของขวัญส่งท้ายปี" : "Year-End Gift Giving", desc: lang === "th" ? "ความสุขเล็กๆ ส่งท้ายปี" : "Small gifts to close out the year", url: "/life-at-buddy/life-21.jpg", span: "md:row-span-1" },
+          { id: 15, title: lang === "th" ? "ลุ้นปลากินเบ็ด" : "Waiting for a Bite", desc: lang === "th" ? "รอจังหวะกันทั้งเรือ" : "The whole boat waiting for a catch", url: "/life-at-buddy/life-15.jpg", span: "md:row-span-2" },
+          { id: 6, title: lang === "th" ? "สนุกกับการตกปลา" : "Fishing Fun", desc: lang === "th" ? "ยิ้มรับความสนุกกลางทะเล" : "All smiles out on the boat", url: "/life-at-buddy/life-06.jpg", span: "md:row-span-2" },
         ]}
       />
 

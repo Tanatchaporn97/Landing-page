@@ -93,9 +93,9 @@ export const TestimonialSlider = ({
         className
       )}
     >
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 h-full">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 h-full">
         {/* === Left Column: Meta and Thumbnails === */}
-        <div className="md:col-span-3 flex flex-col justify-between order-2 md:order-1">
+        <div className="md:col-span-3 flex flex-col justify-between order-3 md:order-1">
           <div className="flex flex-row md:flex-col justify-between md:justify-start space-x-4 md:space-x-0 md:space-y-4">
             {/* Pagination */}
             <span className="text-sm text-gray-500 font-mono">
@@ -109,7 +109,7 @@ export const TestimonialSlider = ({
           </div>
 
           {/* Thumbnail Navigation */}
-          <div className="flex space-x-2 mt-8 md:mt-0">
+          <div className="flex space-x-2 mt-4 md:mt-0">
             {thumbnailReviews.map((review) => {
               // Find the original index to navigate to
               const originalIndex = reviews.findIndex(
@@ -152,9 +152,9 @@ export const TestimonialSlider = ({
         </div>
 
         {/* === Right Column: Text and Navigation === */}
-        <div className="md:col-span-5 flex flex-col justify-between md:pl-8 order-3 md:order-3">
+        <div className="md:col-span-5 flex flex-col justify-between md:pl-8 order-2 md:order-3">
           {/* Text Content */}
-          <div className="relative overflow-hidden pt-4 md:pt-24 min-h-[200px]">
+          <div className="relative overflow-hidden pt-0 md:pt-24 min-h-[180px] md:min-h-[200px]">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={currentIndex}
