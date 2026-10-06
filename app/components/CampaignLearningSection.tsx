@@ -62,6 +62,8 @@ function floatStyle(isActive: boolean) {
     border: isActive ? "2px solid transparent" : "2px solid rgba(255,255,255,0.6)",
     boxShadow: isActive ? "0 24px 44px -12px rgba(255,0,137,0.35)" : "0 14px 28px -12px rgba(20,4,92,0.45)",
     opacity: isActive ? 1 : 0.72,
+    // the active step's panels always sit on top of the others so nothing covers them
+    zIndex: isActive ? 20 : 1,
     transform: isActive ? "translateY(-10px) scale(1.32)" : "scale(1.32)",
     transition: "transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, background 0.35s ease",
   };
