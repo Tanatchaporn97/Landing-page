@@ -28,11 +28,11 @@ export default function CreatorChannelsSection({ lang }: { lang: "th" | "en" }) 
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Badge variant="outline" style={{ ...KT }}>One Creator, Many Channels</Badge>
         </div>
-        <h2 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, margin: "16px 0 0", lineHeight: 1.25 }}>
+        <h2 className="cc2-title" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, margin: "16px 0 0", lineHeight: 1.25 }}>
           <span style={{ color: "#111827" }}>
             {lang === "th" ? "ไม่ว่าคุณจะอยู่แพลตฟอร์มไหน " : "No matter which platform you're on, "}
           </span>
-          <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+          <span className="cc2-line2" style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             {lang === "th" ? "ก็มีพื้นที่ที่นี่" : "there's a place for you here."}
           </span>
@@ -59,6 +59,10 @@ export default function CreatorChannelsSection({ lang }: { lang: "th" | "en" }) 
       {/* phones: 3 × 2 grid with smaller circles instead of one overflowing row */}
       <style>{`
         @media (max-width: 640px){
+          /* heading: exactly 2 lines — "ไม่ว่าคุณจะอยู่แพลตฟอร์มไหน" / "ก็มีพื้นที่ที่นี่" */
+          .cc2-title{ font-size: min(28px, 7.4vw) !important; }
+          .cc2-title > span:first-child{ white-space: nowrap; }
+          .cc2-line2{ display: block; }
           .cc2-grid{ gap: 28px !important; }
           .cc2-right{ display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 20px 12px !important; width: 100%; max-width: 340px; }
           .cc2-item{ gap: 8px !important; }
