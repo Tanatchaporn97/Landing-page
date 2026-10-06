@@ -248,7 +248,7 @@ export default function Navbar({
                   {t.imInfluencer}
                 </Link>
               )}
-              <a href={variant === "influencer" ? "https://rank.buddyreview.co/" : `/${lang}/contact`}
+              <a href={variant === "influencer" ? "https://rank.buddyreview.co/" : variant === "brand" ? "#contact" : `/${lang}/contact`}
                 target={variant === "influencer" ? "_blank" : undefined}
                 rel={variant === "influencer" ? "noopener noreferrer" : undefined}
                 className="btn-glass-purple px-5 py-3 rounded-full whitespace-nowrap"
