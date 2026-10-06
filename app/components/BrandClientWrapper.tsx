@@ -289,10 +289,11 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       }}>
       {/* ── Hero ── */}
       <section
-        className="flex items-start px-6 relative"
+        className="bh-section flex items-start px-6 relative"
         style={{
           minHeight: "72vh",
-          paddingTop: "195px",
+          // heading starts at the same distance under the navbar as the influencer hero
+          paddingTop: "166px",
           paddingBottom: "100px",
           paddingLeft: "24px",
           paddingRight: "24px",
@@ -342,7 +343,9 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               .bh-nw{ white-space: nowrap; }
               @media (min-width: 768px){ .bh-copy{ padding-top: clamp(12px, 2vw, 29px); } }
               @media (max-width: 767px){
-                .bh-title{ font-size: min(34px, 8.6vw) !important; line-height: 1.3 !important; margin-bottom: 18px !important; }
+                .bh-section{ padding-top: 140px !important; }
+                /* same 28px hero heading as the Home and Influencer pages */
+                .bh-title{ font-size: 28px !important; line-height: 1.3 !important; margin-bottom: 18px !important; }
                 .bh-sub{ line-height: 1.7 !important; margin: 18px 0 26px !important; }
               }
             `}</style>

@@ -37,7 +37,6 @@ export default function Navbar({
   lang?: "th" | "en";
 }) {
   const [scrolled, setScrolled] = useState(false);
-  const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -46,12 +45,10 @@ export default function Navbar({
 
   useMotionValueEvent(scrollY, "change", (current) => {
     setScrolled(current > 40);
-    const previous = scrollY.getPrevious() ?? current;
-    const diff = current - previous;
-    if (Math.abs(diff) > 2) setScrollDirection(diff > 0 ? "down" : "up");
   });
 
-  const hideNav = scrollDirection === "down" && scrolled && !menuOpen;
+  // the bar stays pinned in place while scrolling (no hide-on-scroll-down)
+  const hideNav = false;
 
   const toggleLang = () => {
     const nextLang = lang === "th" ? "en" : "th";
