@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -98,6 +98,8 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
   const [mode, setMode] = useState<Mode>("industry");
   const [filter, setFilter] = useState<string>("all");
   const [selSlug, setSelSlug] = useState<string>("siangpure");
+  const listRef = useRef<HTMLDivElement>(null);
+  const [listAtEnd, setListAtEnd] = useState(false);
 
   const key = mode === "industry" ? "industry" : "value";
   const other = mode === "industry" ? "value" : "industry";
@@ -108,6 +110,15 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
     [filter, key, CASES],
   );
   const sel = filtered.find((c) => c.slug === selSlug) ?? filtered[0];
+
+  // whenever the visible list changes, start from the top and only show the
+  // bottom fade if there is actually more to scroll to
+  useEffect(() => {
+    const el = listRef.current;
+    if (!el) return;
+    el.scrollTop = 0;
+    setListAtEnd(el.scrollHeight <= el.clientHeight + 4);
+  }, [filtered]);
 
   const switchMode = (m: Mode) => { setMode(m); setFilter("all"); };
 
@@ -151,12 +162,17 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
       <div className="cx-grid" style={{ marginTop: "44px", width: "100%", display: "grid", gridTemplateColumns: "380px minmax(0, 1fr)", gap: "32px", alignItems: "start" }}>
         {/* case list */}
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0 4px" }}>
-            <div style={{ fontSize: "14px", color: "#5E5878" }}>{th ? `แสดง ${filtered.length} เคส` : `Showing ${filtered.length} ${filtered.length === 1 ? "case" : "cases"}`}</div>
-            {filtered.length > 9 && <div className="cx-hint" style={{ fontSize: "13px", color: PURPLE, fontWeight: 500 }}>{th ? "เลื่อนดูเพิ่ม ↓" : "Scroll for more ↓"}</div>}
-          </div>
+          {filtered.length > 9 && (
+            <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", padding: "0 4px" }}>
+              <div className="cx-hint" style={{ fontSize: "13px", color: PURPLE, fontWeight: 500 }}>{th ? "เลื่อนดูเพิ่ม ↓" : "Scroll for more ↓"}</div>
+            </div>
+          )}
           {/* case rows: brand logo in a circle + brand name + secondary category */}
-          <div className="cx-list" style={{ maxHeight: "588px", overflowY: "auto", display: "flex", flexDirection: "column", gap: "8px", paddingRight: "8px", boxSizing: "border-box" }}>
+          {/* bottom edge fades into the background while more cases sit below; the
+              fade drops away once the list is scrolled to its end */}
+          <div ref={listRef} className={`cx-list${listAtEnd ? "" : " cx-fade"}`}
+            onScroll={(e) => { const el = e.currentTarget; setListAtEnd(el.scrollTop + el.clientHeight >= el.scrollHeight - 4); }}
+            style={{ maxHeight: "588px", overflowY: "auto", display: "flex", flexDirection: "column", gap: "8px", paddingRight: "8px", boxSizing: "border-box" }}>
             {filtered.map((c) => {
               const on = c.slug === sel?.slug;
               return (
@@ -224,6 +240,9 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
         /* overview / strategy: at most 3 lines, full text on the case page via อ่านเพิ่มเติม */
         .cx-clamp{ display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
         .cx-filters::-webkit-scrollbar{ display: none; }
+        .cx-list{ scrollbar-width: none; }
+        .cx-list::-webkit-scrollbar{ display: none; }
+        .cx-fade{ -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 calc(100% - 96px), transparent 100%); mask-image: linear-gradient(180deg, #000 0%, #000 calc(100% - 96px), transparent 100%); }
         .cx-filter{ flex-shrink: 0; }
         .cx-detail{ animation: cx-in 0.35s ease; }
         @keyframes cx-in{ from{ opacity: 0; transform: translateY(8px); } to{ opacity: 1; transform: none; } }
@@ -234,6 +253,7 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
           .cx-list::-webkit-scrollbar{ display: none; }
           .cx-hint{ display: none; }
           .cx-list > button{ width: 260px; }
+          .cx-fade{ -webkit-mask-image: none; mask-image: none; }
         }
         @media (max-width: 760px){
           .cx-detail{ flex-direction: column !important; align-items: flex-start !important; padding: 28px 22px !important; gap: 24px !important; }
