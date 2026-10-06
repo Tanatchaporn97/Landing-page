@@ -303,10 +303,11 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         }}
       >
         <div className="hero-grid-inf relative" style={{ maxWidth: "1200px", margin: "0 auto", width: "100%", zIndex: 2,
-          display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: "72px", alignItems: "center" }}>
+          display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: "72px", alignItems: "start" }}>
 
-          {/* Left: real hero copy, playful stacked layout + underline squiggle + pill CTA */}
-          <div style={{ position: "relative" }}>
+          {/* Left: real hero copy, playful stacked layout + underline squiggle + pill CTA.
+              Top-aligned with the visual: .bh-copy padding matches the gap above its first card. */}
+          <div className="bh-copy" style={{ position: "relative" }}>
             <h2 className={`bh-title font-bold${lang === "th" ? "" : " uppercase"}`} style={{ ...KT, color: "#111827", fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.25, margin: "0 0 24px" }}>
               {lang === "th" ? (
                 <>
@@ -339,6 +340,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             <style>{`
               .bh-line{ display: block; white-space: nowrap; }
               .bh-nw{ white-space: nowrap; }
+              @media (min-width: 768px){ .bh-copy{ padding-top: clamp(12px, 2vw, 29px); } }
               @media (max-width: 767px){
                 .bh-title{ font-size: min(34px, 8.6vw) !important; line-height: 1.3 !important; margin-bottom: 18px !important; }
                 .bh-sub{ line-height: 1.7 !important; margin: 18px 0 26px !important; }
