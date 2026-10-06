@@ -296,17 +296,22 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
           .cl-left{ max-width: none !important; }
           .cl-dashboard{ margin-top: 40px; }
         }
+        /* phones: the overlapping floating composition is unreadable when shrunk,
+           so lay the panels out in a tidy 2-column grid instead (no overlap):
+           photo grid on top, then 01 → 01 → 02 → 02 → 03 */
         @media (max-width: 640px){
-          /* Keep the dashboard as one compact composition (floating panels
-             stay absolutely positioned, same as desktop) instead of
-             unstacking it into a tall list of full-width cards — just zoom
-             the whole thing down so it fits the viewport. zoom shrinks the
-             layout box itself (unlike transform: scale), so surrounding
-             spacing shrinks along with it instead of leaving dead space. */
-          .cl-dashboard{ zoom: 0.62; margin: 40px auto 0; }
-        }
-        @media (max-width: 420px){
-          .cl-dashboard{ zoom: 0.52; }
+          .cl-dashboard{ transform: none !important; min-height: 0 !important; margin: 8px 0 0 !important;
+            display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; align-items: stretch; }
+          .cl-dashboard > div:first-child{ grid-column: 1 / -1; transform: none !important; padding: 14px !important; order: 0; }
+          .cl-dashboard > .cl-float{ position: static !important; width: auto !important; transform: none !important;
+            opacity: 1 !important; padding: 12px 12px !important; min-width: 0; box-sizing: border-box; }
+          .cl-dashboard > .cl-float:nth-child(3){ order: 1; }   /* 01 result */
+          .cl-dashboard > .cl-float:nth-child(6){ order: 2; }   /* 01 reach by day */
+          .cl-dashboard > .cl-float:nth-child(2){ order: 3; }   /* 02 sentiment */
+          .cl-dashboard > .cl-float:nth-child(5){ order: 4; }   /* 02 what people said */
+          .cl-dashboard > .cl-float:nth-child(4){ order: 5; grid-column: 1 / -1; }   /* 03 next plan */
+          .cl-dashboard > .cl-float:nth-child(3) > div:nth-child(2){ gap: 8px !important; }
+          .cl-dashboard > .cl-float:nth-child(3) p:first-child{ font-size: 14px !important; }
         }
       `}</style>
     </div>
