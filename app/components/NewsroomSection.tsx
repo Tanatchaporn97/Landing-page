@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRef, useState } from "react";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
@@ -31,6 +32,19 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
   const activeCat = variant === "brand" ? catBrand : variant === "influencer" ? catInf : catAll;
   const basePath = variant === "brand" || variant === "influencer" ? "blog" : "newsroom";
 
+  // phones: posts become a swipeable carousel; track which slide is in view for the dots
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [slide, setSlide] = useState(0);
+  const onTrackScroll = () => {
+    const el = trackRef.current; if (!el) return;
+    const first = el.firstElementChild as HTMLElement | null; if (!first) return;
+    setSlide(Math.round(el.scrollLeft / (first.offsetWidth + 14)));
+  };
+  const goTo = (i: number) => {
+    const el = trackRef.current; const card = el?.children[i] as HTMLElement | undefined;
+    if (el && card) el.scrollTo({ left: card.offsetLeft - el.offsetLeft - 20, behavior: "smooth" });
+  };
+
   const allPosts: Post[] = dict?.blogPosts || [];
   if (allPosts.length === 0) return null;
   const posts = allPosts.filter((p) => p.categories.includes(activeCat)).slice(0, 4);
@@ -59,6 +73,46 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
 
         {featured && (
         <>
+        {/* Phones: swipeable carousel of every post */}
+        <div className="newsroom-mobile">
+          <div ref={trackRef} onScroll={onTrackScroll} className="nm-track">
+            {posts.map((post) => (
+              <Link key={post.slug} href={`/${lang}/${basePath}/${post.slug}`} className="nm-card">
+                <div style={{ position: "relative", aspectRatio: "16 / 10" }}>
+                  <Image src={post.image} alt={post.title} fill sizes="85vw" style={{ objectFit: "cover" }} />
+                </div>
+                <div style={{ padding: "18px 18px 20px", display: "flex", flexDirection: "column", gap: "10px", flex: 1 }}>
+                  <div><CategoryPill>{post.categories[0]}</CategoryPill></div>
+                  <h3 style={{
+                    ...KT, fontSize: "18px", fontWeight: 700, lineHeight: 1.4, color: "#111827", margin: 0,
+                    display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden",
+                  }}>
+                    {post.title}
+                  </h3>
+                  <p style={{
+                    ...KT, fontSize: "15px", lineHeight: 1.65, color: "#374151", margin: 0,
+                    display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden",
+                  }}>
+                    {post.desc}
+                  </p>
+                  <span className="btn-text-arrow" style={{ ...KT, fontSize: "16px", fontWeight: 700, marginTop: "auto", paddingTop: "4px" }}>
+                    {t.readMore}
+                    <span className="btn-text-arrow-icon">→</span>
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+          {posts.length > 1 && (
+            <div className="nm-dots">
+              {posts.map((p, i) => (
+                <button key={p.slug} type="button" aria-label={`${i + 1}`} onClick={() => goTo(i)}
+                  className={`nm-dot${slide === i ? " is-on" : ""}`} />
+              ))}
+            </div>
+          )}
+        </div>
+
         {/* Featured post */}
         <Link href={`/${lang}/${basePath}/${featured.slug}`} style={{
           display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0",
@@ -162,6 +216,19 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
       </div>
 
       <style>{`
+        .newsroom-mobile{ display: none; }
+        @media (max-width: 767px){
+          .newsroom-featured, .newsroom-grid{ display: none !important; }
+          .newsroom-header-row{ margin-bottom: 28px !important; }
+          .newsroom-mobile{ display: block; margin: 0 -24px; }
+          .nm-track{ display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 20px 24px; scroll-padding: 0 20px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+          .nm-track::-webkit-scrollbar{ display: none; }
+          .nm-card{ flex: 0 0 84%; scroll-snap-align: start; display: flex; flex-direction: column; text-decoration: none; overflow: hidden; border-radius: 20px;
+            background: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.7); box-shadow: 0 8px 24px rgba(95,38,229,0.10); }
+          .nm-dots{ display: flex; justify-content: center; gap: 8px; }
+          .nm-dot{ width: 8px; height: 8px; border-radius: 99px; border: 0; padding: 0; background: rgba(95,38,229,0.22); transition: width .25s, background .25s; cursor: pointer; }
+          .nm-dot.is-on{ width: 24px; background: linear-gradient(45deg,#5f25e5 0%,#ff0089 100%); }
+        }
         @media (max-width: 900px){
           .newsroom-featured{ grid-template-columns: 1fr !important; }
           .newsroom-grid{ grid-template-columns: 1fr !important; }
