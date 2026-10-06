@@ -53,6 +53,17 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
     }
   };
 
+  // Email box: phones open their mail app via mailto:, but most desktops have no
+  // default mail app so mailto: silently does nothing — open Gmail's compose
+  // window (To: prefilled) in a new tab instead.
+  const openEmail = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const desktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (!desktop) return;
+    e.preventDefault();
+    const to = e.currentTarget.getAttribute("href")!.replace("mailto:", "");
+    window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}`, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <section id="contact" style={{ background: DARK_BG }} className="py-20 px-6">
       <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
@@ -242,6 +253,7 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
               // each box is a link: address → Google Maps, phone → call, email → compose
               <a key={col.title} href={col.href} className="contact-info-link"
                 {...(col.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                onClick={col.href.startsWith("mailto:") ? openEmail : undefined}
                 style={{ flex: 1, display: "flex", flexDirection: "row", alignItems: "center", gap: "16px", textDecoration: "none", cursor: "pointer",
                 background: "rgba(255,255,255,0.15)", backdropFilter: "blur(18px)",
                 WebkitBackdropFilter: "blur(18px)", border: "1px solid rgba(255,255,255,0.32)",
