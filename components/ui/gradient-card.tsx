@@ -74,11 +74,7 @@ const GradientCard = React.forwardRef<HTMLDivElement, GradientCardProps>(
           <div className="z-10 flex flex-col h-full">
             {/* Badge */}
             {badgeText && (
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/50 px-3 py-1 text-sm font-medium text-gray-800/80 backdrop-blur-sm w-fit">
-                <span
-                  className="h-2 w-2 rounded-full"
-                  style={{ backgroundColor: badgeColor }}
-                />
+              <div className="mb-4 inline-flex items-center rounded-full bg-white/50 px-3 py-1 text-sm font-semibold text-[#5f26e5] backdrop-blur-sm w-fit">
                 {badgeText}
               </div>
             )}
