@@ -62,7 +62,7 @@ const OUR_SERVICES = [
   { img: "/services/influencer-event-activation.jpg", title: "Influencer & Event Activation",
     desc: "ตั้งแต่อินฟลูเอนเซอร์ร่วมงาน Presenter และ Speaker ไปจนถึงทีมประสานงานหน้างาน เราช่วยให้อีเวนต์สร้างคอนเทนต์ กระแส และการพูดถึงได้อย่างต่อเนื่องทั้ง Online และ On-site",
     descEn: "From influencer guests, presenters, and speakers to on-ground coordination — we help your event generate content, buzz, and conversation continuously, both online and on-site." },
-  { img: "/services/paid-media-amplification-v2.jpg", title: "Paid Media & Amplification",
+  { img: "/services/paid-media-amplification-v3.jpg", objectPosition: "center 30%", title: "Paid Media & Amplification",
     desc: "เพิ่มพลังให้แคมเปญด้วยการยิงโฆษณา บูสต์ และ Amplify คอนเทนต์จากอินฟลูเอนเซอร์ เข้าถึงกลุ่มเป้าหมายได้กว้างและแม่นยำขึ้น พร้อมผลักดันผลลัพธ์จากทุกคอนเทนต์ให้ไปได้ไกลกว่าเดิม",
     descEn: "Supercharge your campaign with paid ads, boosting, and amplification of influencer content — reaching a wider, more precise audience and pushing every piece of content further." },
   { img: "/services/always-on-v2.jpg", title: "Always-On Influencer & Media Strategy",
