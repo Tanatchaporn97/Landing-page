@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -16,9 +16,12 @@ const STEPS = {
   ],
 };
 
-export default function ApplyPartnerships({ lang, onHoverChange }: { lang: "th" | "en"; onHoverChange?: (index: number | null) => void }) {
+export default function ApplyPartnerships({ lang, onHoverChange, renderBelow }: { lang: "th" | "en"; onHoverChange?: (index: number | null) => void; renderBelow?: (index: number) => ReactNode }) {
   const steps = STEPS[lang];
   const [active, setActive] = useState<number | null>(null);
+  // phones: one card is always open (first by default) so its mockups show under it
+  const [mobileOpen, setMobileOpen] = useState(0);
+  const canHover = () => typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches;
 
   return (
     <div className="ap-wrap" style={{ maxWidth: "1200px", margin: "64px auto 0" }}>
@@ -28,12 +31,12 @@ export default function ApplyPartnerships({ lang, onHoverChange }: { lang: "th" 
           return (
             <div
               key={s.title}
-              className={`ap-card${isActive ? " is-active" : ""}`}
+              className={`ap-card${isActive ? " is-active" : ""}${mobileOpen === i ? " is-open" : ""}`}
               role="button"
               tabIndex={0}
-              onClick={() => { setActive(i); onHoverChange?.(i); }}
-              onMouseEnter={() => { setActive(i); onHoverChange?.(i); }}
-              onMouseLeave={() => { setActive((prev) => (prev === i ? null : prev)); onHoverChange?.(null); }}
+              onClick={() => { setActive(i); setMobileOpen(i); onHoverChange?.(i); }}
+              onMouseEnter={() => { if (!canHover()) return; setActive(i); onHoverChange?.(i); }}
+              onMouseLeave={() => { if (!canHover()) return; setActive((prev) => (prev === i ? null : prev)); onHoverChange?.(null); }}
               style={{
                 position: "relative",
                 background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
@@ -58,6 +61,7 @@ export default function ApplyPartnerships({ lang, onHoverChange }: { lang: "th" 
               <p style={{ ...KT, fontSize: "16px", color: "#111827", lineHeight: 1.7, margin: 0 }}>
                 {s.desc}
               </p>
+              {renderBelow && mobileOpen === i && <div className="ap-below">{renderBelow(i)}</div>}
             </div>
           );
         })}
@@ -65,6 +69,7 @@ export default function ApplyPartnerships({ lang, onHoverChange }: { lang: "th" 
 
       <style>{`
         .ap-card{ cursor: pointer; }
+        .ap-below{ display: none; }
         @media (max-width: 860px){
           .ap-wrap{ margin-top: 32px !important; }
           .apply-partnerships-grid{ grid-template-columns: 1fr !important; gap: 10px !important; }
@@ -72,7 +77,9 @@ export default function ApplyPartnerships({ lang, onHoverChange }: { lang: "th" 
           .ap-card{ display: grid !important; grid-template-columns: 34px 1fr; column-gap: 12px; row-gap: 4px !important;
             align-items: center; padding: 14px 16px !important; border-radius: 18px !important; transform: none !important;
             border: 1.5px solid rgba(255,255,255,0.6) !important; }
-          .ap-card.is-active{ border-color: #8b5cf6 !important; background: rgba(255,255,255,0.85) !important; }
+          .ap-card.is-open{ border-color: #8b5cf6 !important; background: rgba(255,255,255,0.85) !important; }
+          .ap-below{ display: flex; grid-column: 1 / -1; justify-content: center; gap: 12px; margin-top: 14px; animation: ap-in 0.35s ease; }
+          @keyframes ap-in{ from{ opacity: 0; transform: translateY(8px); } to{ opacity: 1; transform: none; } }
           .ap-num{ width: 34px !important; height: 34px !important; font-size: 12px !important; }
           .ap-card h3{ font-size: 17px !important; }
           .ap-card p{ grid-column: 2; font-size: 13.5px !important; line-height: 1.55 !important; }

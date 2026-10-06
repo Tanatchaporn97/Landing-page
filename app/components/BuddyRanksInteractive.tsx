@@ -19,7 +19,13 @@ export default function BuddyRanksInteractive({ lang, cards }: { lang: "th" | "e
   return (
     <>
       {/* Apply For Partnerships — 3 numbered cards */}
-      <ApplyPartnerships lang={lang} onHoverChange={setHoverBox} />
+      <ApplyPartnerships lang={lang} onHoverChange={setHoverBox}
+        renderBelow={(box) => BOUNCE_MAP[box].map((ci) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img key={ci} src={cards[ci].imgUrl} alt={cards[ci].alt || ""} loading="lazy"
+            style={{ width: BOUNCE_MAP[box].length > 1 ? "44%" : "56%", maxWidth: "230px", height: "auto", display: "block",
+              filter: "drop-shadow(0 16px 24px rgba(95,38,229,0.22))" }} />
+        ))} />
 
       {/* Hoverable fan carousel — numeric order left → right, center = 3 */}
       <div className="buddy-ranks-mockup-bleed" style={{ marginTop: "6.5rem" }}>
@@ -38,9 +44,9 @@ export default function BuddyRanksInteractive({ lang, cards }: { lang: "th" | "e
            a huge block of reserved empty space around the now-tiny cards;
            zoom resizes the box itself so the section's height shrinks along
            with the visible cards. */
+        /* phones: mockups now open inside each card, so the fan below is not needed */
         @media (max-width: 860px){
-          /* sit the phones right under the cards so tapping a card visibly pops its phone */
-          .buddy-ranks-mockup-bleed{ margin-top: 1.5rem !important; }
+          .buddy-ranks-mockup-bleed{ display: none !important; }
         }
         @media (max-width: 767px){
           .buddy-ranks-mockup-bleed .fan-layout{ zoom: 0.85; }
