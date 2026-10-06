@@ -38,6 +38,10 @@ export default function BuddyRanksInteractive({ lang, cards }: { lang: "th" | "e
            a huge block of reserved empty space around the now-tiny cards;
            zoom resizes the box itself so the section's height shrinks along
            with the visible cards. */
+        @media (max-width: 860px){
+          /* sit the phones right under the cards so tapping a card visibly pops its phone */
+          .buddy-ranks-mockup-bleed{ margin-top: 1.5rem !important; }
+        }
         @media (max-width: 767px){
           .buddy-ranks-mockup-bleed .fan-layout{ zoom: 0.85; }
         }

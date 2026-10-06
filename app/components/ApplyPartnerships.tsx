@@ -21,13 +21,17 @@ export default function ApplyPartnerships({ lang, onHoverChange }: { lang: "th" 
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <div style={{ maxWidth: "1200px", margin: "64px auto 0" }}>
+    <div className="ap-wrap" style={{ maxWidth: "1200px", margin: "64px auto 0" }}>
       <div className="apply-partnerships-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "28px" }}>
         {steps.map((s, i) => {
           const isActive = active === i;
           return (
             <div
               key={s.title}
+              className={`ap-card${isActive ? " is-active" : ""}`}
+              role="button"
+              tabIndex={0}
+              onClick={() => { setActive(i); onHoverChange?.(i); }}
               onMouseEnter={() => { setActive(i); onHoverChange?.(i); }}
               onMouseLeave={() => { setActive((prev) => (prev === i ? null : prev)); onHoverChange?.(null); }}
               style={{
@@ -40,7 +44,7 @@ export default function ApplyPartnerships({ lang, onHoverChange }: { lang: "th" 
                 transform: isActive ? "translateY(-4px)" : "translateY(0)",
               }}
             >
-              <span style={{
+              <span className="ap-num" style={{
                 ...KT, fontSize: "14px", fontWeight: 700, color: "#5f26e5",
                 width: "40px", height: "40px", borderRadius: "50%",
                 border: "1.5px solid rgba(95,38,229,0.25)",
@@ -60,8 +64,18 @@ export default function ApplyPartnerships({ lang, onHoverChange }: { lang: "th" 
       </div>
 
       <style>{`
+        .ap-card{ cursor: pointer; }
         @media (max-width: 860px){
-          .apply-partnerships-grid{ grid-template-columns: 1fr !important; }
+          .ap-wrap{ margin-top: 32px !important; }
+          .apply-partnerships-grid{ grid-template-columns: 1fr !important; gap: 10px !important; }
+          /* compact tap-to-select rows: number + title on one line, short description below */
+          .ap-card{ display: grid !important; grid-template-columns: 34px 1fr; column-gap: 12px; row-gap: 4px !important;
+            align-items: center; padding: 14px 16px !important; border-radius: 18px !important; transform: none !important;
+            border: 1.5px solid rgba(255,255,255,0.6) !important; }
+          .ap-card.is-active{ border-color: #8b5cf6 !important; background: rgba(255,255,255,0.85) !important; }
+          .ap-num{ width: 34px !important; height: 34px !important; font-size: 12px !important; }
+          .ap-card h3{ font-size: 17px !important; }
+          .ap-card p{ grid-column: 2; font-size: 13.5px !important; line-height: 1.55 !important; }
         }
       `}</style>
     </div>
