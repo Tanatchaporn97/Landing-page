@@ -110,8 +110,14 @@ export default function BusinessGoalsSection({ lang }: { lang: "th" | "en" }) {
         @media (max-width: 900px){
           .bg-cards-grid-v2{ grid-template-columns: repeat(2, 1fr) !important; }
         }
+        /* phones: keep 2 columns × 3 rows, with smaller icon and type so pairs fit side by side */
         @media (max-width: 560px){
-          .bg-cards-grid-v2{ grid-template-columns: 1fr !important; }
+          .bg-cards-grid-v2{ grid-template-columns: repeat(2, 1fr) !important; gap: 28px 16px !important; }
+          .goal-card{ gap: 10px !important; }
+          .goal-card-icon{ width: 52px !important; height: 52px !important; border-radius: 16px !important; }
+          .goal-card-icon svg{ width: 24px; height: 24px; }
+          .goal-card h4{ font-size: 16px !important; }
+          .goal-card p{ font-size: 13.5px !important; line-height: 1.6 !important; }
         }
       `}</style>
     </div>
