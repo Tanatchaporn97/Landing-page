@@ -495,12 +495,14 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           </div>
         </motion.div>
 
-        {/* Center main message — fades fully out on hover, never has its own box/panel */}
+        {/* Center main message — stays visible while a side is hovered, and
+            slides a little toward the narrowed side so the widened side's art
+            never runs into it */}
         <div className="split-hero-center" style={{
-          position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", zIndex: 5,
+          position: "absolute", top: 0, left: "50%", zIndex: 5,
+          transform: `translateX(calc(-50% + ${active === "brand" ? "5vw" : active === "influencer" ? "-5vw" : "0px"}))`,
+          transition: "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)",
           width: "min(760px, 44vw)", textAlign: "center", paddingTop: "210px",
-          opacity: active ? 0 : 1,
-          transition: "opacity 0.35s ease",
           pointerEvents: "none",
         }}>
           <span style={{ ...KT, fontSize: "16px", fontWeight: 800, letterSpacing: "0.01em", color: "#111827" }}>
