@@ -150,6 +150,18 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
   const serviceCardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeService, setActiveService] = useState(0);
 
+  // Phones: services become a plain swipe carousel (full cards, snap, counter + arrows)
+  const svcTrackRef = useRef<HTMLDivElement>(null);
+  const [svcSlide, setSvcSlide] = useState(0);
+  const onSvcScroll = () => {
+    const el = svcTrackRef.current; const first = el?.firstElementChild as HTMLElement | null;
+    if (el && first) setSvcSlide(Math.min(OUR_SERVICES.length - 1, Math.round(el.scrollLeft / (first.offsetWidth + 14))));
+  };
+  const svcGoTo = (i: number) => {
+    const el = svcTrackRef.current; const card = el?.children[Math.max(0, Math.min(OUR_SERVICES.length - 1, i))] as HTMLElement | undefined;
+    if (el && card) el.scrollTo({ left: card.offsetLeft - el.offsetLeft - 20, behavior: "smooth" });
+  };
+
   // Keep the active card scrolled fully into view whenever it changes — via
   // clicking a card directly, or via the arrow buttons stepping to the next/
   // previous one. This keeps the expand animation and the scroll position
@@ -403,7 +415,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   : "From Strategy, Creator Campaigns, and Commerce to Content & Production."}
               </p>
             </div>
-            <div style={{ display: "flex", gap: "10px" }}>
+            <div className="svc-desk-arrows" style={{ display: "flex", gap: "10px" }}>
               <button className="arrow-cta-btn" onClick={() => setActiveService((prev) => Math.max(0, prev - 1))}
                 style={{ width: "44px", height: "44px", borderRadius: "50%", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", touchAction: "manipulation" }}>
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M12 3L6 9l6 6" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -417,7 +429,54 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
           {/* Single scrollable row — click any card to expand it (image + description),
               all other cards collapse to just image + title */}
-          <div ref={servicesScrollRef}
+          {/* Phones: swipeable carousel — every card shows image, title and description */}
+          <div className="svc-mobile">
+            <div ref={svcTrackRef} onScroll={onSvcScroll} className="svc-track">
+              {OUR_SERVICES.map((item) => (
+                <div key={item.title} className="svc-card">
+                  <div style={{ position: "relative", aspectRatio: "4 / 3" }}>
+                    <Image src={item.img} alt={item.title} fill sizes="85vw"
+                      style={{ objectFit: "cover", objectPosition: item.objectPosition || "center" }} />
+                  </div>
+                  <div style={{ padding: "18px 18px 22px" }}>
+                    <h3 style={{ ...KT, fontSize: "19px", fontWeight: 700, color: "#5f26e5", margin: "0 0 8px", lineHeight: 1.3 }}>{item.title}</h3>
+                    <p style={{ ...KT, fontSize: "15px", lineHeight: 1.65, color: "#111827", margin: 0 }}>
+                      {lang === "th" ? item.desc : item.descEn}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="svc-nav">
+              <button type="button" className="arrow-cta-btn" aria-label="Previous" onClick={() => svcGoTo(svcSlide - 1)} disabled={svcSlide === 0}>
+                <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M12 3L6 9l6 6" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
+              <div className="svc-progress"><span style={{ width: `${((svcSlide + 1) / OUR_SERVICES.length) * 100}%` }} /></div>
+              <span className="svc-count" style={KT}>{String(svcSlide + 1).padStart(2, "0")} / {OUR_SERVICES.length}</span>
+              <button type="button" className="arrow-cta-btn" aria-label="Next" onClick={() => svcGoTo(svcSlide + 1)} disabled={svcSlide === OUR_SERVICES.length - 1}>
+                <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M6 3l6 6-6 6" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+          <style>{`
+            .svc-mobile{ display: none; }
+            @media (max-width: 767px){
+              .svc-desk-arrows, .svc-desk-row{ display: none !important; }
+              .svc-mobile{ display: block; margin: 0 -24px; }
+              .svc-track{ display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 20px; padding: 4px 20px 20px; scrollbar-width: none; align-items: stretch; }
+              .svc-track::-webkit-scrollbar{ display: none; }
+              .svc-card{ flex: 0 0 84%; scroll-snap-align: start; border-radius: 20px; overflow: hidden;
+                background: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 8px 24px rgba(95,38,229,0.10); }
+              .svc-nav{ display: flex; align-items: center; gap: 12px; padding: 0 20px; }
+              .svc-nav button{ width: 40px; height: 40px; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; flex-shrink: 0; touch-action: manipulation; }
+              .svc-nav button:disabled{ opacity: 0.35; }
+              .svc-progress{ flex: 1; height: 4px; border-radius: 99px; background: rgba(95,38,229,0.15); overflow: hidden; }
+              .svc-progress span{ display: block; height: 100%; border-radius: 99px; background: linear-gradient(45deg,#5f25e5 0%,#ff0089 100%); transition: width .3s ease; }
+              .svc-count{ font-size: 14px; font-weight: 600; color: #5f26e5; min-width: 52px; text-align: right; }
+            }
+          `}</style>
+
+          <div ref={servicesScrollRef} className="svc-desk-row"
             onMouseEnter={() => setServicesAutoPaused(true)}
             onMouseLeave={() => setServicesAutoPaused(false)}
             style={{
