@@ -89,7 +89,7 @@ export const TestimonialSlider = ({
   return (
     <div
       className={cn(
-        "relative w-full min-h-[650px] md:min-h-[600px] overflow-hidden bg-white text-gray-900 p-8 md:p-12 rounded-3xl",
+        "relative w-full md:min-h-[600px] overflow-hidden bg-white text-gray-900 p-5 sm:p-8 md:p-12 rounded-3xl",
         className
       )}
     >
@@ -119,7 +119,7 @@ export const TestimonialSlider = ({
                 <button
                   key={review.id}
                   onClick={() => handleThumbnailClick(originalIndex)}
-                  className="overflow-hidden rounded-md w-16 h-20 md:w-20 md:h-24 opacity-70 hover:opacity-100 transition-opacity duration-300 focus:outline-none focus:ring-2 focus:ring-[#5f26e5] focus:ring-offset-2"
+                  className="overflow-hidden rounded-md w-14 h-[4.5rem] md:w-20 md:h-24 opacity-70 hover:opacity-100 transition-opacity duration-300 focus:outline-none focus:ring-2 focus:ring-[#5f26e5] focus:ring-offset-2"
                   aria-label={`View review from ${review.name}`}
                 >
                   <img
@@ -134,7 +134,7 @@ export const TestimonialSlider = ({
         </div>
 
         {/* === Center Column: Main Image === */}
-        <div className="md:col-span-4 relative h-80 min-h-[400px] md:min-h-[500px] order-1 md:order-2">
+        <div className="md:col-span-4 relative h-80 min-h-[340px] sm:min-h-[400px] md:min-h-[500px] order-1 md:order-2">
           <AnimatePresence initial={false} custom={direction}>
             <motion.img
               key={currentIndex}
@@ -154,7 +154,7 @@ export const TestimonialSlider = ({
         {/* === Right Column: Text and Navigation === */}
         <div className="md:col-span-5 flex flex-col justify-between md:pl-8 order-2 md:order-3">
           {/* Text Content */}
-          <div className="relative overflow-hidden pt-0 md:pt-24 min-h-[180px] md:min-h-[200px]">
+          <div className="relative overflow-hidden pt-0 md:pt-24 min-h-[150px] md:min-h-[200px]">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={currentIndex}
@@ -165,13 +165,13 @@ export const TestimonialSlider = ({
                 exit="exit"
                 transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
               >
-                <p className="text-sm font-medium text-gray-500">
+                <p className="text-xs md:text-sm font-medium text-gray-500">
                   {activeReview.affiliation}
                 </p>
-                <h3 className="text-xl font-semibold mt-1 text-[#5f26e5]">
+                <h3 className="text-base md:text-xl font-semibold mt-1 text-[#5f26e5]">
                   {activeReview.name}
                 </h3>
-                <blockquote className="mt-6 text-2xl md:text-3xl font-medium leading-snug text-gray-900">
+                <blockquote className="mt-3 md:mt-6 text-lg md:text-3xl font-medium leading-snug text-gray-900">
                   &ldquo;{activeReview.quote}&rdquo;
                 </blockquote>
               </motion.div>
@@ -179,11 +179,11 @@ export const TestimonialSlider = ({
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex items-center space-x-2 mt-8 md:mt-0">
+          <div className="flex items-center space-x-2 mt-5 md:mt-0">
             <Button
               variant="outline"
               size="icon"
-              className="rounded-full w-12 h-12 border-gray-300"
+              className="rounded-full w-10 h-10 md:w-12 md:h-12 border-gray-300"
               onClick={handlePrev}
               aria-label="Previous review"
             >
@@ -192,7 +192,7 @@ export const TestimonialSlider = ({
             <Button
               variant="default"
               size="icon"
-              className="rounded-full w-12 h-12"
+              className="rounded-full w-10 h-10 md:w-12 md:h-12"
               onClick={handleNext}
               aria-label="Next review"
             >

@@ -6,7 +6,6 @@ import {
   useScroll,
   useTransform,
   useMotionValue,
-  animate,
   AnimatePresence,
 } from "motion/react";
 import { cn } from "@/lib/utils";
@@ -89,41 +88,48 @@ const InteractiveImageBentoGallery: React.FC<
   InteractiveImageBentoGalleryProps
 > = ({ imageItems, title, description }) => {
   const [selectedItem, setSelectedItem] = useState<ImageItem | null>(null);
-  const [dragConstraint, setDragConstraint] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const targetRef = useRef<HTMLDivElement>(null);
-  const dragConstraintRef = useRef(0);
   const trackX = useMotionValue(0);
+  // Endless auto-slide: the grid is rendered twice side by side and the track
+  // drifts left, wrapping by one grid width so the loop has no visible seam.
+  // Pauses while a mouse hovers it or while it is being dragged.
+  const pausedRef = useRef(false);
+  const draggingRef = useRef(false);
+  const AUTO_SPEED = 40; // px per second
+
+  const wrap = (x: number) => {
+    const period = gridRef.current?.offsetWidth ?? 0;
+    if (period <= 0) return x;
+    while (x <= -period) x += period;
+    while (x > 0) x -= period;
+    return x;
+  };
 
   useEffect(() => {
-    const calculateConstraints = () => {
-      if (gridRef.current && containerRef.current) {
-        const containerWidth = containerRef.current.offsetWidth;
-        const gridWidth = gridRef.current.scrollWidth;
-        const newConstraint = Math.min(0, containerWidth - gridWidth - 32);
-        setDragConstraint(newConstraint);
-        dragConstraintRef.current = newConstraint;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let raf = 0;
+    let last = performance.now();
+    const tick = (now: number) => {
+      const dt = Math.min(0.05, (now - last) / 1000);
+      last = now;
+      if (!reduce && !pausedRef.current && !draggingRef.current) {
+        trackX.set(wrap(trackX.get() - AUTO_SPEED * dt));
       }
+      raf = requestAnimationFrame(tick);
     };
-
-    calculateConstraints();
-    window.addEventListener("resize", calculateConstraints);
-    return () => window.removeEventListener("resize", calculateConstraints);
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imageItems]);
 
-  // Let the gallery be scrolled horizontally with the mouse wheel / trackpad,
-  // not just by dragging — feels more natural since it visually reads as a
-  // horizontal strip. Only takes over scroll while it still has room to move,
-  // so the page can keep scrolling vertically once the strip is exhausted.
+  // Horizontal trackpad swipes / shift+wheel nudge the strip; a plain vertical
+  // wheel is left alone so the page keeps scrolling.
   const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-    const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-    const current = trackX.get();
-    const next = Math.min(0, Math.max(dragConstraintRef.current, current - delta));
-    if (next !== current) {
-      e.preventDefault();
-      animate(trackX, next, { type: "tween", duration: 0.2, ease: "easeOut" });
-    }
+    const dx = e.shiftKey && e.deltaX === 0 ? e.deltaY : e.deltaX;
+    if (Math.abs(dx) <= Math.abs(e.deltaY) && !e.shiftKey) return;
+    trackX.set(wrap(trackX.get() - dx));
   };
 
   const { scrollYProgress } = useScroll({
@@ -160,51 +166,55 @@ const InteractiveImageBentoGallery: React.FC<
         ref={containerRef}
         className="relative mt-12 w-full cursor-grab active:cursor-grabbing"
         onWheel={handleWheel}
+        onPointerEnter={(e) => { if (e.pointerType === "mouse") pausedRef.current = true; }}
+        onPointerLeave={(e) => { if (e.pointerType === "mouse") pausedRef.current = false; }}
       >
         <motion.div
-          className="w-max"
+          className="flex w-max"
           drag="x"
+          dragMomentum={false}
           style={{ x: trackX }}
-          dragConstraints={{ left: dragConstraint, right: 0 }}
-          dragElastic={0.05}
+          onDragStart={() => { draggingRef.current = true; }}
+          onDragEnd={() => { draggingRef.current = false; trackX.set(wrap(trackX.get())); }}
         >
-          <motion.div
-            ref={gridRef}
-            className="grid auto-cols-[minmax(15rem,1fr)] grid-flow-col gap-4 px-4 md:px-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: "some" }}
-          >
-            {imageItems.map((item) => (
-              <motion.div
-                key={item.id}
-                variants={itemVariants}
-                className={cn(
-                  "group relative flex h-full min-h-[15rem] w-full min-w-[15rem] cursor-pointer items-end overflow-hidden rounded-xl border border-black/5 bg-white p-4 shadow-sm transition-shadow duration-300 ease-in-out hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5f26e5] focus-visible:ring-offset-2",
-                  item.span
-                )}
-                whileHover={{ scale: 1.05, y: -6 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                onClick={() => setSelectedItem(item)}
-                onKeyDown={(e) => e.key === "Enter" && setSelectedItem(item)}
-                tabIndex={0}
-                aria-label={`View ${item.title}`}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={item.url}
-                  alt={item.title}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                <div className="relative z-10 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                  <h3 className="text-lg font-bold text-white">{item.title}</h3>
-                  <p className="mt-1 text-sm text-white/80">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+          {[0, 1].map((copy) => (
+            <motion.div
+              key={copy}
+              ref={copy === 0 ? gridRef : undefined}
+              aria-hidden={copy === 1 || undefined}
+              className="grid auto-cols-[minmax(15rem,1fr)] grid-flow-col gap-4 pl-4 md:pl-4"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: "some" }}
+            >
+              {imageItems.map((item) => (
+                <motion.div
+                  key={item.id}
+                  variants={itemVariants}
+                  className={cn(
+                    "group relative flex h-full min-h-[15rem] w-full min-w-[15rem] cursor-pointer overflow-hidden rounded-xl border border-black/5 bg-white shadow-sm transition-shadow duration-300 ease-in-out hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5f26e5] focus-visible:ring-offset-2",
+                    item.span
+                  )}
+                  whileHover={{ scale: 1.03, y: -4 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  onClick={() => { if (!draggingRef.current) setSelectedItem(item); }}
+                  onKeyDown={(e) => e.key === "Enter" && setSelectedItem(item)}
+                  tabIndex={copy === 0 ? 0 : -1}
+                  aria-label={`View ${item.title}`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={item.url}
+                    alt={copy === 0 ? item.title : ""}
+                    loading="lazy"
+                    draggable={false}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          ))}
         </motion.div>
       </div>
 
