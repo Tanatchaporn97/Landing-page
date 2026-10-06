@@ -196,7 +196,6 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
               aspectRatio: "9 / 16",
               borderRadius: "28px",
               overflow: "hidden",
-              boxShadow: "0 18px 40px rgba(0,0,0,0.16)",
               willChange: "transform",
             }}
           >
@@ -221,7 +220,7 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
         /* phones: smaller clips so ~3 full videos fit across the screen */
         @media (max-width: 640px){
           .vsf-scroller{ gap: 12px !important; padding: 36px 16px 30px !important; }
-          .vsf-card{ width: 26vw !important; border-radius: 18px !important; box-shadow: 0 10px 22px rgba(0,0,0,0.14) !important; }
+          .vsf-card{ width: 26vw !important; border-radius: 18px !important; }
         }
       `}</style>
     </div>
