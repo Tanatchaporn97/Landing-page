@@ -295,25 +295,43 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
           {/* Left: real hero copy, playful stacked layout + underline squiggle + pill CTA */}
           <div style={{ position: "relative" }}>
-            <h2 className="font-bold uppercase" style={{ ...KT, color: "#111827", fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 24px" }}>
+            <h2 className={`bh-title font-bold${lang === "th" ? "" : " uppercase"}`} style={{ ...KT, color: "#111827", fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.25, margin: "0 0 24px" }}>
               {lang === "th" ? (
-                <>ไม่ใช่แค่กลยุทธ์<br/></>
+                <>
+                  <span className="bh-line">วางแผนและดูแล</span>
+                  <span className="bh-line" style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+                    WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                    Influencer Marketing
+                  </span>
+                  <span className="bh-line">ครบตั้งแต่ต้นจนจบ</span>
+                </>
               ) : (
-                <>Not Just Strategies.<br/></>
+                <>
+                  Not Just Strategies.<br/>
+                  <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+                    WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                    Execution That Delivers.
+                  </span>
+                </>
               )}
-              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                {lang === "th" ? "แต่คือการลงมือทำที่สร้างผลลัพธ์ได้จริง" : "Execution That Delivers."}
-              </span>
             </h2>
 
-            <p style={{ ...KT, color: "#111827", fontSize: "clamp(16px, 1.6vw, 20px)", lineHeight: 1.7, margin: "40px 0 32px" }}>
+            <p className="bh-sub" style={{ ...KT, color: "#111827", fontSize: "clamp(16px, 1.4vw, 18px)", lineHeight: 1.75, margin: "32px 0 32px", textWrap: "pretty" }}>
               {lang === "th" ? (
-                <>วางกลยุทธ์ คัดเลือก Creator และบริหารแคมเปญให้ตรง<br />เป้าหมายของแบรนด์ ตั้งแต่ Brief จนถึงรายงานผล</>
+                <>ทีม Buddy Review ดูแลตั้งแต่กลยุทธ์ คัด Influencer <span className="bh-nw">ไปจนถึงบริหารและวัดผล</span> พร้อมใช้ Data และ Technology <span className="bh-nw">ช่วยให้ตัดสินใจได้แม่นขึ้น</span></>
               ) : (
                 "From Strategy To Insight, We Turn Influence Into Impact."
               )}
             </p>
+
+            <style>{`
+              .bh-line{ display: block; white-space: nowrap; }
+              .bh-nw{ white-space: nowrap; }
+              @media (max-width: 767px){
+                .bh-title{ font-size: min(34px, 8.6vw) !important; line-height: 1.3 !important; margin-bottom: 18px !important; }
+                .bh-sub{ line-height: 1.7 !important; margin: 18px 0 26px !important; }
+              }
+            `}</style>
 
             <a href="#contact" className="btn-glass-purple" style={{ ...KT,
               fontWeight: 600, fontSize: "16px",
