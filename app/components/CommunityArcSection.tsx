@@ -127,6 +127,15 @@ export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
           ))}
         </div>
 
+        {/* phones: the arc can't fit, so show the same chips as a compact, gently tilted cloud */}
+        <div className="community-arc-mobile" aria-hidden="true">
+          {ARC_NODES.map((node) => (
+            <span key={node.label} className="cam-chip" style={{ transform: `rotate(${node.rotate * 0.6}deg)` }}>
+              <span className="cam-icon">{node.icon}</span>{node.label}
+            </span>
+          ))}
+        </div>
+
         {/* Headline */}
         <h2 style={{
           ...KT, textAlign: "center", fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700,
@@ -152,9 +161,9 @@ export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
         </p>
 
         {/* 4-box row */}
-        <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "14px" }}>
+        <div className="cas-features" style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "14px" }}>
           {FEATURES.map((f) => (
-            <div key={f.labelEn} style={{
+            <div key={f.labelEn} className="cas-feature" style={{
               position: "relative", width: "220px",
               background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
               border: "1px solid rgba(255,255,255,0.6)", borderRadius: "18px",
@@ -186,8 +195,20 @@ export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
         @media (min-width: 761px) and (max-width: 1000px){
           .arc-chip{ zoom: 0.86; }
         }
+        .community-arc-mobile{ display: none; }
         @media (max-width: 760px){
           .community-arc-area{ display: none; }
+          .community-arc-mobile{ display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 6px; margin: 0 0 28px; }
+          .cam-chip{ display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px 4px 4px; border-radius: 999px; white-space: nowrap;
+            background: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.7); box-shadow: 0 6px 14px rgba(95,38,229,0.12);
+            font-family: var(--font-kanit),'Noto Sans Thai',sans-serif; font-size: 11px; font-weight: 700; color: #111827; }
+          .cam-icon{ width: 20px; height: 20px; border-radius: 50%; background: #f3f4f6; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; }
+          /* 4 feature boxes → 2 columns × 2 rows */
+          .cas-features{ display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px !important; }
+          .cas-feature{ width: auto !important; padding: 14px 12px 12px !important; border-radius: 16px !important; }
+          .cas-feature p:first-of-type{ font-size: 16px !important; max-width: 82% !important; }
+          .cas-feature p:last-of-type{ font-size: 12px !important; }
+          .cas-feature > span{ font-size: 15px !important; top: 10px !important; right: 10px !important; }
           .community-arc-section{ padding-left: 16px !important; padding-right: 16px !important; }
           .community-arc-glow{ top: 0 !important; height: 100% !important; }
         }
