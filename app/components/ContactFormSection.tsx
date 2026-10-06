@@ -221,6 +221,7 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
               {
                 icon: <span style={{ display: "inline-block", width: "32px", height: "32px", backgroundColor: "#ffffff", WebkitMaskImage: "url(/icon-location.png)", WebkitMaskSize: "contain", WebkitMaskRepeat: "no-repeat", WebkitMaskPosition: "center", maskImage: "url(/icon-location.png)", maskSize: "contain", maskRepeat: "no-repeat", maskPosition: "center" }} />,
                 title: lang === "th" ? "ที่อยู่" : "Address",
+                href: "https://www.google.com/maps/search/?api=1&query=Shinawatra+Tower+3+Vibhavadi+Rangsit+Rd+Chatuchak+Bangkok+10900",
                 lines: lang === "th"
                   ? ["1010, อาคารชินวัตรทาวเวอร์ 3,", "ห้อง 603, ชั้น 6,", "ถนนวิภาวดีรังสิต, แขวงจตุจักร กรุงเทพฯ 10900"]
                   : ["1010, Shinawatra Tower 3,", "Room 603, 6th Floor,", "Vibhavadi Rangsit Rd, Chatuchak, Bangkok 10900"],
@@ -228,15 +229,20 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
               {
                 icon: <span style={{ display: "inline-block", width: "32px", height: "32px", backgroundColor: "#ffffff", WebkitMaskImage: "url(/icon-call.png)", WebkitMaskSize: "contain", WebkitMaskRepeat: "no-repeat", WebkitMaskPosition: "center", maskImage: "url(/icon-call.png)", maskSize: "contain", maskRepeat: "no-repeat", maskPosition: "center" }} />,
                 title: lang === "th" ? "เบอร์โทร" : "Phone",
+                href: "tel:+66886861676",
                 lines: ["088-686-1676"],
               },
               {
                 icon: <span style={{ display: "inline-block", width: "32px", height: "32px", backgroundColor: "#ffffff", WebkitMaskImage: "url(/icon-email.png)", WebkitMaskSize: "contain", WebkitMaskRepeat: "no-repeat", WebkitMaskPosition: "center", maskImage: "url(/icon-email.png)", maskSize: "contain", maskRepeat: "no-repeat", maskPosition: "center" }} />,
                 title: lang === "th" ? "อีเมล" : "Email",
+                href: "mailto:info@buddyreview.co",
                 lines: ["info@buddyreview.co"],
               },
             ].map((col) => (
-              <div key={col.title} style={{ flex: 1, display: "flex", flexDirection: "row", alignItems: "center", gap: "16px",
+              // each box is a link: address → Google Maps, phone → call, email → compose
+              <a key={col.title} href={col.href} className="contact-info-link"
+                {...(col.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                style={{ flex: 1, display: "flex", flexDirection: "row", alignItems: "center", gap: "16px", textDecoration: "none", cursor: "pointer",
                 background: "rgba(255,255,255,0.15)", backdropFilter: "blur(18px)",
                 WebkitBackdropFilter: "blur(18px)", border: "1px solid rgba(255,255,255,0.32)",
                 borderRadius: "16px", padding: "20px 24px" }}>
@@ -250,8 +256,12 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
                     <p key={line} style={{ ...KT, color: "#111827", fontSize: "15px", fontWeight: 700, margin: 0 }}>{line}</p>
                   ))}
                 </div>
-              </div>
+              </a>
             ))}
+            <style>{`
+              .contact-info-link{ transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease; }
+              .contact-info-link:hover{ transform: translateY(-2px); background: rgba(255,255,255,0.32) !important; box-shadow: 0 10px 24px -12px rgba(95,38,229,0.45); }
+            `}</style>
 
             {/* Divider + Social */}
             <div style={{ borderTop: "1px solid #5f26e5", paddingTop: "20px" }}>
