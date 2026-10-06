@@ -27,13 +27,13 @@ type CreatorCard = {
 };
 
 const CREATORS: CreatorCard[] = [
-  { img: "/trust-influencers/cheese.jpg", platform: "instagram", categoryTh: "ครีเอเตอร์แฟชั่น", categoryEn: "Fashion Creator",
+  { img: "/brand-hero/isnotfone.jpg", platform: "tiktok", categoryTh: "ครีเอเตอร์บันเทิง", categoryEn: "Entertainment Creator",
     followers: "1.2M", likes: "4.8%", comments: "1.2%", top: "6%", left: "-5%", rotate: -4 },
-  { img: "/trust-influencers/ryoko.jpg", platform: "tiktok", categoryTh: "ครีเอเตอร์บิวตี้", categoryEn: "Beauty Creator",
+  { img: "/brand-hero/ninew.jpg", platform: "instagram", categoryTh: "ครีเอเตอร์ไลฟ์สไตล์", categoryEn: "Lifestyle Creator",
     followers: "832K", likes: "5.2%", comments: "1.4%", top: "6%", right: "-5%", rotate: 4 },
-  { img: "/trust-influencers/puifai.jpg", platform: "instagram", categoryTh: "ครีเอเตอร์ไลฟ์สไตล์", categoryEn: "Lifestyle Creator",
+  { img: "/brand-hero/kiekiekieee.jpg", platform: "instagram", categoryTh: "ครีเอเตอร์สุขภาพ", categoryEn: "Health Creator",
     followers: "654K", likes: "4.1%", comments: "1.0%", top: "58%", left: "-3%", rotate: -3 },
-  { img: "/trust-influencers/yam.jpg", platform: "youtube", categoryTh: "ครีเอเตอร์บันเทิง", categoryEn: "Entertainment Creator",
+  { img: "/brand-hero/king.jpg", platform: "youtube", categoryTh: "ครีเอเตอร์สายดนตรี", categoryEn: "Music Creator",
     followers: "908K", likes: "6.3%", comments: "2.3%", top: "58%", right: "-3%", rotate: 3 },
 ];
 
