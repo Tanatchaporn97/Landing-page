@@ -146,6 +146,23 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
     };
   }, []);
 
+  // Hero "ติดต่อเรา": glide down to the contact form instead of jumping there.
+  // A slow ease-in-out tween on window scroll, stopping just under the fixed navbar.
+  const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const target = document.getElementById("contact");
+    if (!target) return;
+    e.preventDefault();
+    const to = target.getBoundingClientRect().top + window.scrollY - 24;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { window.scrollTo(0, to); return; }
+    const distance = Math.abs(to - window.scrollY);
+    animate(window.scrollY, to, {
+      duration: Math.min(2.2, Math.max(1, distance / 2500)),
+      ease: [0.65, 0, 0.35, 1],
+      onUpdate: (v) => window.scrollTo(0, v),
+    });
+    history.replaceState(null, "", "#contact");
+  };
+
   const servicesScrollRef = useRef<HTMLDivElement>(null);
   const serviceCardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeService, setActiveService] = useState(0);
@@ -350,7 +367,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               }
             `}</style>
 
-            <a href="#contact" className="btn-glass-purple" style={{ ...KT,
+            <a href="#contact" onClick={scrollToContact} className="btn-glass-purple" style={{ ...KT,
               fontWeight: 600, fontSize: "16px",
               padding: "16px 36px", borderRadius: "50px", textDecoration: "none" }}>
               {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
