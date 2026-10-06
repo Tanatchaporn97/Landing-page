@@ -538,7 +538,7 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
     <div className="background" style={{ ...KT }}>
 
       {/* Back button */}
-      <div className="success-back-row" style={{ padding: "140px 48px 28px" }}>
+      <div className="success-back-row sg-back" style={{ padding: "140px 48px 28px" }}>
         <Link href={`/${lang}`} className="btn-glass-purple" style={{ borderRadius: "50px", padding: "10px 22px", fontSize: "15px", fontWeight: 500, textDecoration: "none" }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M19 12H5M12 5l-7 7 7 7"/>
@@ -550,12 +550,12 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
       <div style={{ maxWidth: "1294px", margin: "0 auto", padding: "0 24px 100px" }}>
 
         {/* Header */}
-        <h1 style={{ ...KT, background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", fontSize: "clamp(32px,4vw,56px)", fontWeight: 800, margin: "0 0 24px", lineHeight: 1.2 }}>
+        <h1 className="sg-title" style={{ ...KT, background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", fontSize: "clamp(32px,4vw,56px)", fontWeight: 800, margin: "0 0 24px", lineHeight: 1.2 }}>
           Success Stories
         </h1>
 
         {/* Category chips */}
-        <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "48px" }}>
+        <div className="sg-chips" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "48px" }}>
           {CATS.map((cat) => (
             <button key={cat} onClick={() => setActiveCat(cat)}
               className={activeCat === cat ? "" : "btn-glass-purple"}
@@ -569,7 +569,7 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
         </div>
 
         {/* Cards grid — identical card markup/styling to the landing page's Success Stories carousel */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, 390px)", justifyContent: "center", gap: "28px" }}>
+        <div className="sg-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, 390px)", justifyContent: "center", gap: "28px" }}>
           <AnimatePresence>
             {filtered.map((story) => (
               <motion.div
@@ -583,20 +583,20 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
                 <Link href={`/${lang}/success/${story.slug}`} className="cs-card-link" style={{ textDecoration: "none", width: "390px" }}>
                   <div className="cs-card" style={{ borderRadius: "28px", background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.6)", height: "520px", ...(story.hoverTint ? { "--cs-hover-tint": story.hoverTint } as React.CSSProperties : {}) }}>
                     <div className="cs-card-img-clip" style={{ position: "relative", width: "100%", height: "100%", background: story.imgBg || "transparent" }}>
-                      <Image src={story.photo} alt={story.brand} className="cs-card-img" fill sizes="(max-width: 768px) 100vw, 400px"
+                      <Image src={story.photo} alt={story.brand} className="cs-card-img sg-img" fill sizes="(max-width: 640px) 50vw, 400px"
                         style={{ objectFit: story.imgFit || "cover", padding: story.imgFit === "contain" ? "24px" : 0 }} />
                     </div>
                     <div className="cs-card-overlay" />
 
                     {/* Arrow button — top right */}
-                    <div style={{ position: "absolute", top: "28px", right: "28px", zIndex: 2 }}>
+                    <div className="sg-arrow" style={{ position: "absolute", top: "28px", right: "28px", zIndex: 2 }}>
                       <div className="cs-arrow-btn" style={{ width: "32px", height: "32px", borderRadius: "50%", background: "#5f26e5", border: "none", display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path className="cs-arrow-path" d="M4 12L12 4M12 4H6M12 4V10" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       </div>
                     </div>
 
                     {/* Category pill */}
-                    <div style={{ position: "absolute", top: "28px", left: "28px", zIndex: 2 }}>
+                    <div className="sg-pill" style={{ position: "absolute", top: "28px", left: "28px", zIndex: 2 }}>
                       <span className="cs-cat-btn" style={{ fontFamily: "sans-serif", fontSize: "9px", fontWeight: 700, color: "#ffffff", background: "#5f26e5", borderRadius: "50px", padding: "5px 12px", letterSpacing: "0.08em", display: "inline-block" }}>
                         {story.industry.toUpperCase()}
                       </span>
@@ -615,6 +615,31 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
         </div>
 
       </div>
+
+      {/* phones: one-row swipeable category chips and a compact 2-column card grid */}
+      <style>{`
+        @media (max-width: 640px){
+          .sg-back{ padding: 108px 16px 16px !important; }
+          .sg-title{ font-size: 28px !important; margin-bottom: 16px !important; }
+          .sg-chips{ flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: none; margin: 0 -24px 24px !important; padding: 2px 24px 6px; gap: 8px !important; }
+          .sg-chips::-webkit-scrollbar{ display: none; }
+          .sg-chips button{ flex-shrink: 0; white-space: nowrap; font-size: 13px !important; padding: 7px 16px !important; }
+          .sg-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 12px !important; }
+          .sg-grid .cs-card-link{ width: 100% !important; display: block; }
+          .sg-grid .cs-card{ height: auto !important; aspect-ratio: 3 / 4; border-radius: 18px !important; }
+          .sg-grid .cs-card .cs-card-img-clip{ clip-path: inset(0px 0px 0px 0px round 17px) !important; }
+          .sg-grid .sg-img{ padding: 0 !important; }
+          .sg-grid .sg-img[style*="contain"]{ padding: 14px 14px 46px !important; }
+          .sg-grid .sg-arrow{ top: 10px !important; right: 10px !important; }
+          .sg-grid .sg-arrow .cs-arrow-btn{ width: 24px !important; height: 24px !important; }
+          .sg-grid .sg-arrow svg{ width: 10px; height: 10px; }
+          .sg-grid .sg-pill{ top: 10px !important; left: 10px !important; right: 40px; }
+          .sg-grid .cs-cat-btn{ font-size: 7.5px !important; padding: 4px 8px !important; letter-spacing: 0.04em !important; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+          .sg-grid .cs-card-title{ left: 12px !important; right: 12px !important; bottom: 12px !important; }
+          .sg-grid .cs-card-title h3{ font-size: 15px !important; margin-bottom: 3px !important; line-height: 1.25 !important; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+          .sg-grid .cs-card-tagline{ font-size: 11.5px !important; line-height: 1.5 !important; }
+        }
+      `}</style>
     </div>
   );
 }
