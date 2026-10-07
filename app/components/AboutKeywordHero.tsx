@@ -24,14 +24,14 @@ const WORDS = [
 // Background: oversized outlined keyword bands drifting in opposite directions, plus a soft
 // spotlight that follows the pointer.
 function OutlineBands({ still }: { still: boolean }) {
-  const row = "DATA · PEOPLE · RESULTS · ";
+  const row = "Buddy Review · ";
   return (
     <div aria-hidden style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "space-around", overflow: "hidden", pointerEvents: "none" }}>
       {[0, 1, 2].map((r) => (
         <div key={r} className={still ? "" : `akh-band akh-band-${r % 2 ? "r" : "l"}`}
           style={{ ...DISPLAY, display: "flex", whiteSpace: "nowrap", fontSize: "clamp(90px, 14vw, 240px)", fontWeight: 800, lineHeight: 1,
             color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.09)", animationDuration: `${70 + r * 18}s` }}>
-          <span>{row.repeat(3)}</span><span>{row.repeat(3)}</span>
+          <span>{row.repeat(6)}</span><span>{row.repeat(6)}</span>
         </div>
       ))}
     </div>
