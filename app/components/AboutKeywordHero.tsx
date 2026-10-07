@@ -13,13 +13,23 @@ const DISPLAY = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const SANS = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-// Hero background as pure CSS so it can end exactly in the intro section's colours (lavender left →
-// pink right): deep brand purple with soft violet/pink glows, easing smoothly into that tint below RESULTS.
+// Hero background as pure CSS: deep brand purple with soft violet/pink glows. Below RESULTS it
+// eases out to fully transparent, so the page's own background (the same one behind the intro
+// section) shows through — one continuous surface, no seam. The fade uses many eased stops so
+// it doesn't band into visible steps.
+const FADE_FROM = 0.66; // fraction of the hero height where the fade begins (just under RESULTS)
+const fadeStops = Array.from({ length: 18 }, (_, i) => {
+  const t = i / 17;                                   // 0 → 1 through the fade
+  const e = t * t * (3 - 2 * t);                      // smoothstep easing
+  const a = 1 - e;                                    // opacity of the purple
+  // colour drifts from brand purple toward a soft violet as it thins out
+  const r = Math.round(74 + (150 - 74) * e), g = Math.round(38 + (118 - 38) * e), b = Math.round(184 + (232 - 184) * e);
+  return `rgba(${r},${g},${b},${a.toFixed(3)}) ${((FADE_FROM + (1 - FADE_FROM) * t) * 100).toFixed(1)}%`;
+});
 const HERO_BG = [
-  "radial-gradient(60% 45% at 82% 12%, rgba(255,0,137,0.28) 0%, transparent 70%)",
-  "radial-gradient(55% 50% at 12% 28%, rgba(139,92,246,0.38) 0%, transparent 72%)",
-  "linear-gradient(180deg, #22106f 0%, #2c1490 38%, #3a1aa8 60%, #4a26b8 70%, rgba(110,72,214,0.85) 80%, rgba(170,140,240,0.55) 88%, rgba(226,206,252,0) 100%)",
-  "linear-gradient(90deg, #e0ccfc 0%, #e6cdf8 50%, #f2d0f0 100%)",
+  "radial-gradient(60% 40% at 82% 10%, rgba(255,0,137,0.28) 0%, transparent 70%)",
+  "radial-gradient(55% 40% at 12% 24%, rgba(139,92,246,0.38) 0%, transparent 72%)",
+  `linear-gradient(180deg, #22106f 0%, #2c1490 30%, #3a1aa8 50%, rgb(74,38,184) ${(FADE_FROM * 100).toFixed(1)}%, ${fadeStops.join(", ")})`,
 ].join(", ");
 
 
