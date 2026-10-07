@@ -31,9 +31,12 @@ function MenuToggle({ isOpen, toggle, color }: { isOpen: boolean; toggle: () => 
 
 export default function Navbar({
   variant = "influencer",
+  onDark = false,
   lang = "th",
 }: {
   variant?: "home" | "influencer" | "brand";
+  /** page starts on a dark hero: keep the light (white) bar until the user scrolls */
+  onDark?: boolean;
   lang?: "th" | "en";
 }) {
   const [scrolled, setScrolled] = useState(false);
@@ -44,6 +47,12 @@ export default function Navbar({
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (current) => {
+    if (onDark) {
+      // stay light while any part of the dark hero ([data-dark-hero]) is still behind the bar
+      const hero = document.querySelector("[data-dark-hero]");
+      setScrolled(hero ? hero.getBoundingClientRect().bottom < 90 : current > 40);
+      return;
+    }
     setScrolled(current > 40);
   });
 
@@ -67,7 +76,7 @@ export default function Navbar({
   const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", imBrand: "I'm a Brand", forBrand: "For Brands", applyNow: "Apply Now", applyLine: "Apply via LINE", applyInf: "Register as Influencer", successStories: "Success Stories", ourWork: "Our Work", blog: "Blog", aboutUs: "About Us", applyAsInfluencer: "Apply as an Influencer", applyViaWebsite: "Apply via Website" };
   const t = lang === "th" ? th : en;
   const isFaqPage = pathname?.includes("/faq");
-  const forceDarkText = scrolled || variant === "home" || variant === "influencer" || variant === "brand" || isFaqPage;
+  const forceDarkText = scrolled || (!onDark && variant === "home") || variant === "influencer" || variant === "brand" || isFaqPage;
 
   const navLinks = variant === "influencer"
     ? [

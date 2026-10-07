@@ -4,6 +4,7 @@ import { Eye, Rocket, Gem } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import OurJourney from "../../components/OurJourney";
+import AboutKeywordHero from "../../components/AboutKeywordHero";
 import { TestimonialSlider } from "@/components/ui/testimonial-slider-1";
 import InteractiveImageBentoGallery from "@/components/ui/bento-gallery";
 import { getDictionary } from "../../../get-dictionary";
@@ -41,8 +42,9 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
   const dict = await getDictionary(lang as Locale);
 
   return (
-    <div className="background overflow-x-hidden" style={{ ...KT, minHeight: "100vh" }}>
-      <Navbar lang={lang as Locale} variant="home" />
+    <div className="background overflow-x-clip" style={{ ...KT, minHeight: "100vh" }}>
+      <Navbar lang={lang as Locale} variant="home" onDark />
+      <AboutKeywordHero />
 
       <section style={{ padding: "0 0 120px", textAlign: "center" }}>
         {/* Hero = exactly one screen tall on every viewport: the photo takes whatever
