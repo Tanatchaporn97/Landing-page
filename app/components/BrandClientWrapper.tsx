@@ -271,7 +271,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
     { img: "/how-we-run-campaigns/review-drafts-v4.png", title: "จัดการแคมเปญไร้รอยต่อ", titleEn: "Manage Seamlessly",
       desc: "ให้แคมเปญของคุณดำเนินไปอย่างไม่มีสะดุด|ด้วยทีมงานมืออาชีพที่ดูแลทุกขั้นตอน",
       descEn: "Your campaign runs without a hitch,|with a professional team overseeing every step." },
-    { img: "/how-we-run-campaigns/launch-v4.png", title: "Launch คอนเทนต์ พร้อมติดตามผล", titleEn: "Launch & Track Results",
+    { img: "/how-we-run-campaigns/launch-v5.png", title: "Launch คอนเทนต์ พร้อมติดตามผล", titleEn: "Launch & Track Results",
       desc: "ลงคอนเทนต์ตามแผน พร้อมเฝ้าติดตามเรียลไทม์|เพื่อให้ทุกโพสต์ราบรื่นตั้งแต่ต้นจนจบ",
       descEn: "Content goes live as planned, with real-time monitoring|so every post runs smoothly from start to finish." },
     { img: "/how-we-run-campaigns/report-results-v4.png", title: "รายงานผลแบบเรียลไทม์", titleEn: "Real-Time Reporting",
