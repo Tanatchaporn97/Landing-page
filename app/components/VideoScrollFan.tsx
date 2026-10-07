@@ -9,6 +9,7 @@ export interface FanVideo {
 const EDGE_ZONE = 0.22;
 const HOVER_SPEED_MAX = 9;
 const AUTO_SPEED = 1;
+const MAX_EDGE_SCALE = 0.24; // edge cards grow up to 24% larger
 
 export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -44,27 +45,41 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
       if (!draggingRef.current) scroller.scrollLeft = pos;
       lastSet = scroller.scrollLeft;
 
-      const containerRect = scroller.getBoundingClientRect();
-      const centerX = containerRect.left + containerRect.width / 2;
-      const half = containerRect.width / 2;
-
-      cards.forEach((card) => {
-        const rect = card.getBoundingClientRect();
-        const cardCenter = rect.left + rect.width / 2;
-        let p = (cardCenter - centerX) / half;
-        p = Math.max(-1, Math.min(1, p));
+      // Positions come from layout (offsetLeft), not getBoundingClientRect, so the
+      // transforms applied below never feed back into the next frame.
+      const mid = scroller.clientWidth / 2;
+      const half = scroller.clientWidth / 2;
+      const placed = cards.map((card) => {
+        const w = card.offsetWidth;
+        const c = card.offsetLeft - scroller.scrollLeft + w / 2;
+        const p = Math.max(-1, Math.min(1, (c - mid) / half));
         const abs = Math.abs(p);
-
-        // Gentle arc only: no edge scale-up and a small tilt, so a card never
-        // grows into its neighbour (every gap stays the same) and the tilted
-        // corners stay inside the strip's padding instead of being clipped.
-        const translateY = abs * abs * 18;
-        const rotate = p * abs * 4;
-
-        card.style.transform = `translateY(${translateY}px) rotate(${rotate}deg)`;
-        card.style.zIndex = String(Math.round(100 - abs * 50));
-        card.style.opacity = String(1 - Math.max(0, abs - 0.92) * 6);
+        // cards grow toward the screen edges…
+        const edgeT = Math.max(0, (abs - 0.35) / 0.65);
+        const scale = 1 + edgeT * edgeT * MAX_EDGE_SCALE;
+        return { card, w, c, p, abs, scale, shift: 0 };
       });
+      // …and every card further out is pushed aside by exactly the width its
+      // inner neighbours gained, so a grown card never covers the next one and
+      // the gap between all cards stays the same.
+      const right = placed.filter((o) => o.c >= mid).sort((x, y) => x.c - y.c);
+      const left = placed.filter((o) => o.c < mid).sort((x, y) => y.c - x.c);
+      for (const [side, dir] of [[right, 1], [left, -1]] as const) {
+        let pushed = 0;
+        for (const o of side) {
+          const grow = (o.scale - 1) * o.w;
+          o.shift = dir * (pushed + grow / 2);
+          pushed += grow;
+        }
+      }
+
+      for (const o of placed) {
+        const translateY = o.abs * o.abs * 18;
+        const rotate = o.p * o.abs * 4;
+        o.card.style.transform = `translateX(${o.shift}px) translateY(${translateY}px) rotate(${rotate}deg) scale(${o.scale})`;
+        o.card.style.zIndex = String(Math.round(100 - o.abs * 50));
+        o.card.style.opacity = String(1 - Math.max(0, o.abs - 0.92) * 6);
+      }
 
       rafRef.current = requestAnimationFrame(applyLayout);
     };
@@ -181,7 +196,8 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
           // scroll up and down by itself under the mouse wheel
           overflowY: "hidden",
           cursor: "grab",
-          padding: "64px 56px 44px",
+          position: "relative",
+          padding: "84px 56px 104px",
           scrollbarWidth: "none",
           touchAction: "pan-y",
         }}
@@ -220,7 +236,7 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
         .vsf-scroller::-webkit-scrollbar{ display: none; }
         /* phones: smaller clips so ~3 full videos fit across the screen */
         @media (max-width: 640px){
-          .vsf-scroller{ gap: 12px !important; padding: 36px 16px 30px !important; }
+          .vsf-scroller{ gap: 12px !important; padding: 44px 16px 58px !important; }
           .vsf-card{ width: 26vw !important; border-radius: 18px !important; }
         }
       `}</style>
