@@ -79,7 +79,7 @@ function Keyword({ w: base, i, p, still, mobile }: { w: (typeof WORDS)[number]; 
   const leadOpacity = useTransform(p, [0.04, 0.22], [1, 0]);
 
   return (
-    <motion.div className="akh-word" style={{ position: "absolute", left: "50%", top: "calc(50% + 34px)", x: still ? `${w.x}vw` : x, y: still ? `${w.y}vh` : y,
+    <motion.div className="akh-word" style={{ position: "absolute", left: "50%", top: "calc(var(--akh-h) / 2 + 34px)", x: still ? `${w.x}vw` : x, y: still ? `${w.y}vh` : y,
       scale: still ? 1 : scale, opacity: still ? 1 : opacity, translateX: "-50%", translateY: "-50%",
       textAlign: w.align, willChange: "transform" }}>
       <motion.div className="akh-lead" style={{ ...SANS, opacity: still ? 1 : leadOpacity, fontSize: "clamp(15px, 1.3vw, 20px)", fontWeight: 500,
@@ -123,7 +123,7 @@ export default function AboutKeywordHero() {
   const lineOpacity = useTransform(p, [0.58, 0.7], [0, 1]);
 
   return (
-    <section ref={ref} data-dark-hero className="akh" style={{ position: "relative", height: "min(80svh, 820px)", minHeight: "540px", background: "#120a3a url('/backgrounds/dark-blue-bg2.jpg') center / cover no-repeat" }}>
+    <section ref={ref} data-dark-hero className="akh" style={{ position: "relative", ["--akh-h" as string]: "max(540px, min(80svh, 820px))", height: "calc(var(--akh-h) + 150px)", background: "#120a3a url('/backgrounds/dark-blue-bg2.jpg') center / cover no-repeat" }}>
       <div style={{ position: "relative", height: "100%", overflow: "hidden", background: "#120a3a url('/backgrounds/dark-blue-bg2.jpg') center / cover no-repeat" }}>
         {/* atmosphere: pink–purple glow */}
         <div aria-hidden style={{ position: "absolute", inset: "-20%",
@@ -140,17 +140,17 @@ export default function AboutKeywordHero() {
         <div aria-hidden style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, transparent 60%, rgba(10,4,40,0.45) 100%)" }} />
 
         {/* bottom fade: blends into the lavender intro section below (left→right tint matches it) */}
-        <div aria-hidden style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "38%", pointerEvents: "none", zIndex: 1,
-          background: "linear-gradient(180deg, rgba(226,206,252,0) 0%, rgba(226,206,252,0.35) 45%, rgba(226,206,252,0.85) 82%, #e2cefc 100%)",
+        <div aria-hidden className="akh-fade" style={{ position: "absolute", left: 0, right: 0, bottom: 0, pointerEvents: "none", zIndex: 1,
+          background: "linear-gradient(180deg, rgba(226,206,252,0) 0%, rgba(226,206,252,0.55) 50%, #e2cefc 100%)",
           WebkitMaskImage: "linear-gradient(90deg,#000,#000)" }} />
-        <div aria-hidden style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "38%", pointerEvents: "none", zIndex: 1,
-          background: "linear-gradient(180deg, rgba(242,208,240,0) 0%, rgba(242,208,240,0.35) 45%, rgba(242,208,240,0.85) 82%, #f2d0f0 100%)",
+        <div aria-hidden className="akh-fade" style={{ position: "absolute", left: 0, right: 0, bottom: 0, pointerEvents: "none", zIndex: 1,
+          background: "linear-gradient(180deg, rgba(242,208,240,0) 0%, rgba(242,208,240,0.55) 50%, #f2d0f0 100%)",
           WebkitMaskImage: "linear-gradient(90deg, transparent 35%, #000 100%)", maskImage: "linear-gradient(90deg, transparent 35%, #000 100%)" }} />
         {WORDS.map((w, i) => <Keyword key={w.word} w={w} i={i} p={p} still={reduce} mobile={mobile} />)}
 
         {/* resolved state: centred logo + final line */}
         {!reduce && (
-          <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", pointerEvents: "none" }}>
+          <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: "var(--akh-h)", paddingTop: "68px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", pointerEvents: "none" }}>
             <motion.div style={{ opacity: logoOpacity, scale: logoScale, position: "relative", width: "min(460px, 62vw)", aspectRatio: "3608 / 1258" }}>
               <Image src="/buddy-review-logo.png" alt="Buddy Review" fill sizes="460px" style={{ objectFit: "contain" }} />
             </motion.div>
@@ -163,6 +163,9 @@ export default function AboutKeywordHero() {
       </div>
 
       <style>{`
+        /* fade starts right under RESULTS (the section has 150px of extra room below the copy for it) */
+        .akh-fade{ height: 190px; }
+        @media (max-width: 767px){ .akh-fade{ height: 230px; } }
         .akh-band > span{ padding-right: 0.3em; }
         .akh-band-l{ animation: akh-band-l linear infinite; }
         .akh-band-r{ animation: akh-band-r linear infinite; }
