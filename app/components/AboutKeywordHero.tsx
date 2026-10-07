@@ -39,18 +39,17 @@ const WORDS_MOBILE = [{ x: -16, y: -24 }, { x: 3, y: 0 }, { x: 0, y: 24 }];
 function Keyword({ w: base, i, p, still, mobile }: { w: (typeof WORDS)[number]; i: number; p: MotionValue<number>; still: boolean; mobile: boolean }) {
   const w = mobile ? { ...base, ...WORDS_MOBILE[i], stack: base.stack * 0.8 } : base;
   // 0.10 → 0.48: drift to the centre (stacked), shrinking a little
-  const x = useTransform(p, [0, 0.1, 0.48], [`${w.x}vw`, `${w.x}vw`, "0vw"]);
-  const y = useTransform(p, [0, 0.1, 0.48], [`${w.y}vh`, `${w.y}vh`, `${w.stack}vh`]);
-  const scale = useTransform(p, [0.1, 0.48], [1, 0.62]);
+  const x = useTransform(p, [0, 0.04, 0.42], [`${w.x}vw`, `${w.x}vw`, "0vw"]);
+  const y = useTransform(p, [0, 0.04, 0.42], [`${w.y}vh`, `${w.y}vh`, `${w.stack}vh`]);
+  const scale = useTransform(p, [0.04, 0.42], [1, 0.62]);
   // keywords give way to the logo
-  const opacity = useTransform(p, [0.5, 0.6], [1, 0]);
-  const blur = useTransform(p, [0.5, 0.6], ["blur(0px)", "blur(10px)"]);
+  const opacity = useTransform(p, [0.42, 0.54], [1, 0]);
   // supporting copy fades away first, as the keywords start to converge
-  const leadOpacity = useTransform(p, [0.1, 0.28], [1, 0]);
+  const leadOpacity = useTransform(p, [0.04, 0.22], [1, 0]);
 
   return (
     <motion.div className="akh-word" style={{ position: "absolute", left: "50%", top: "50%", x: still ? `${w.x}vw` : x, y: still ? `${w.y}vh` : y,
-      scale: still ? 1 : scale, opacity: still ? 1 : opacity, filter: still ? "none" : blur, translateX: "-50%", translateY: "-50%",
+      scale: still ? 1 : scale, opacity: still ? 1 : opacity, translateX: "-50%", translateY: "-50%",
       textAlign: w.align, willChange: "transform" }}>
       <motion.div className="akh-lead" style={{ ...SANS, opacity: still ? 1 : leadOpacity, fontSize: "clamp(14px, 1.25vw, 19px)", fontWeight: 400,
         letterSpacing: "0.01em", color: "rgba(244,239,255,0.62)", marginBottom: "0.6em", whiteSpace: "nowrap" }}>
@@ -84,17 +83,16 @@ export default function AboutKeywordHero() {
   const p = useMotionValue(0);
   useEffect(() => { p.set(scrollYProgress.get()); return scrollYProgress.on("change", (v) => p.set(v)); }, [scrollYProgress, p]);
 
-  const logoOpacity = useTransform(p, [0.56, 0.68], [0, 1]);
-  const logoScale = useTransform(p, [0.56, 0.72], [0.94, 1]);
-  const lineOpacity = useTransform(p, [0.64, 0.76], [0, 1]);
-  const glow = useTransform(p, [0, 0.6, 1], [1, 1.25, 1.1]);
+  const logoOpacity = useTransform(p, [0.5, 0.62], [0, 1]);
+  const logoScale = useTransform(p, [0.5, 0.66], [0.94, 1]);
+  const lineOpacity = useTransform(p, [0.58, 0.7], [0, 1]);
 
   return (
-    // Tall section = scroll runway: ~1 screen to converge, ~1 to resolve, ~1.4 held on the logo
-    <section ref={ref} data-dark-hero className="akh" style={{ position: "relative", height: reduce ? "100svh" : "420vh", background: "#07060b" }}>
+    // Scroll runway (1.6 screens): converge → logo → a short hold
+    <section ref={ref} data-dark-hero className="akh" style={{ position: "relative", height: reduce ? "100svh" : "260vh", background: "#07060b" }}>
       <div style={{ position: "sticky", top: 0, height: "100svh", overflow: "hidden" }}>
         {/* atmosphere: pink–purple glow */}
-        <motion.div aria-hidden style={{ position: "absolute", inset: "-20%", scale: reduce ? 1 : glow,
+        <div aria-hidden style={{ position: "absolute", inset: "-20%",
           background: "radial-gradient(42% 38% at 30% 32%, rgba(124,58,237,0.30) 0%, transparent 70%), radial-gradient(36% 34% at 72% 70%, rgba(255,0,137,0.20) 0%, transparent 72%), radial-gradient(60% 60% at 50% 50%, rgba(95,37,229,0.10) 0%, transparent 80%)" }} />
         {/* faint structural grid */}
         <div aria-hidden style={{ position: "absolute", inset: 0, opacity: 0.5,
