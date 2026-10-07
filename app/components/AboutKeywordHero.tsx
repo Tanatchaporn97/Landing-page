@@ -13,6 +13,16 @@ const DISPLAY = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const SANS = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const EASE = [0.22, 1, 0.36, 1] as const;
 
+// Hero background as pure CSS so it can end exactly in the intro section's colours (lavender left →
+// pink right): deep brand purple with soft violet/pink glows, easing smoothly into that tint below RESULTS.
+const HERO_BG = [
+  "radial-gradient(60% 45% at 82% 12%, rgba(255,0,137,0.28) 0%, transparent 70%)",
+  "radial-gradient(55% 50% at 12% 28%, rgba(139,92,246,0.38) 0%, transparent 72%)",
+  "linear-gradient(180deg, #22106f 0%, #2c1490 38%, #3a1aa8 60%, #4a26b8 70%, rgba(110,72,214,0.85) 80%, rgba(170,140,240,0.55) 88%, rgba(226,206,252,0) 100%)",
+  "linear-gradient(90deg, #e0ccfc 0%, #e6cdf8 50%, #f2d0f0 100%)",
+].join(", ");
+
+
 // Each keyword sits at an asymmetric spot, expressed as an offset from the screen centre
 // (vw / vh) so it can glide back to the centre on scroll. `lead` is the supporting phrase.
 const WORDS = [
@@ -26,7 +36,8 @@ const WORDS = [
 function OutlineBands({ still }: { still: boolean }) {
   const row = "Buddy Review · ";
   return (
-    <div aria-hidden style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "space-around", overflow: "hidden", pointerEvents: "none" }}>
+    <div aria-hidden style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "space-around", overflow: "hidden", pointerEvents: "none",
+      WebkitMaskImage: "linear-gradient(180deg,#000 62%,transparent 86%)", maskImage: "linear-gradient(180deg,#000 62%,transparent 86%)" }}>
       {[0, 1, 2].map((r) => (
         <div key={r} className={still ? "" : `akh-band akh-band-${r % 2 ? "r" : "l"}`}
           style={{ ...DISPLAY, display: "flex", whiteSpace: "nowrap", fontSize: "clamp(90px, 14vw, 240px)", fontWeight: 800, lineHeight: 1,
@@ -123,11 +134,12 @@ export default function AboutKeywordHero() {
   const lineOpacity = useTransform(p, [0.58, 0.7], [0, 1]);
 
   return (
-    <section ref={ref} data-dark-hero className="akh" style={{ position: "relative", ["--akh-h" as string]: "max(540px, min(80svh, 820px))", height: "calc(var(--akh-h) + 150px)", background: "#120a3a url('/backgrounds/dark-blue-bg2.jpg') center / cover no-repeat" }}>
-      <div style={{ position: "relative", height: "100%", overflow: "hidden", background: "#120a3a url('/backgrounds/dark-blue-bg2.jpg') center / cover no-repeat" }}>
+    <section ref={ref} data-dark-hero className="akh" style={{ position: "relative", ["--akh-h" as string]: "max(540px, min(80svh, 820px))", height: "calc(var(--akh-h) + 150px)", background: HERO_BG }}>
+      <div style={{ position: "relative", height: "100%", overflow: "hidden" }}>
         {/* atmosphere: pink–purple glow */}
         <div aria-hidden style={{ position: "absolute", inset: "-20%",
-          background: "radial-gradient(42% 38% at 30% 32%, rgba(124,58,237,0.30) 0%, transparent 70%), radial-gradient(36% 34% at 72% 70%, rgba(255,0,137,0.20) 0%, transparent 72%), radial-gradient(60% 60% at 50% 50%, rgba(95,37,229,0.10) 0%, transparent 80%)" }} />
+          background: "radial-gradient(42% 38% at 30% 32%, rgba(124,58,237,0.30) 0%, transparent 70%), radial-gradient(36% 34% at 72% 70%, rgba(255,0,137,0.20) 0%, transparent 72%), radial-gradient(60% 60% at 50% 50%, rgba(95,37,229,0.10) 0%, transparent 80%)",
+          WebkitMaskImage: "linear-gradient(180deg,#000 55%,transparent 75%)", maskImage: "linear-gradient(180deg,#000 55%,transparent 75%)" }} />
         {/* faint structural grid */}
         <div aria-hidden style={{ position: "absolute", inset: 0, opacity: 0.5,
           backgroundImage: "linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px)",
@@ -137,15 +149,8 @@ export default function AboutKeywordHero() {
         <OutlineBands still={reduce} />
         <Spotlight still={reduce} />
         {/* subtle grain-free vignette */}
-        <div aria-hidden style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, transparent 60%, rgba(10,4,40,0.45) 100%)" }} />
+        <div aria-hidden style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 90% 70% at 50% 40%, transparent 60%, rgba(10,4,40,0.35) 100%)", WebkitMaskImage: "linear-gradient(180deg,#000 60%,transparent 80%)", maskImage: "linear-gradient(180deg,#000 60%,transparent 80%)" }} />
 
-        {/* bottom fade: blends into the lavender intro section below (left→right tint matches it) */}
-        <div aria-hidden className="akh-fade" style={{ position: "absolute", left: 0, right: 0, bottom: 0, pointerEvents: "none", zIndex: 1,
-          background: "linear-gradient(180deg, rgba(226,206,252,0) 0%, rgba(226,206,252,0.55) 50%, #e2cefc 100%)",
-          WebkitMaskImage: "linear-gradient(90deg,#000,#000)" }} />
-        <div aria-hidden className="akh-fade" style={{ position: "absolute", left: 0, right: 0, bottom: 0, pointerEvents: "none", zIndex: 1,
-          background: "linear-gradient(180deg, rgba(242,208,240,0) 0%, rgba(242,208,240,0.55) 50%, #f2d0f0 100%)",
-          WebkitMaskImage: "linear-gradient(90deg, transparent 35%, #000 100%)", maskImage: "linear-gradient(90deg, transparent 35%, #000 100%)" }} />
         {WORDS.map((w, i) => <Keyword key={w.word} w={w} i={i} p={p} still={reduce} mobile={mobile} />)}
 
         {/* resolved state: centred logo + final line */}
@@ -163,9 +168,6 @@ export default function AboutKeywordHero() {
       </div>
 
       <style>{`
-        /* fade starts right under RESULTS (the section has 150px of extra room below the copy for it) */
-        .akh-fade{ height: 190px; }
-        @media (max-width: 767px){ .akh-fade{ height: 230px; } }
         .akh-band > span{ padding-right: 0.3em; }
         .akh-band-l{ animation: akh-band-l linear infinite; }
         .akh-band-r{ animation: akh-band-r linear infinite; }
