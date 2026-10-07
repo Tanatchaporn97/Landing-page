@@ -48,9 +48,10 @@ export default function Navbar({
 
   useMotionValueEvent(scrollY, "change", (current) => {
     if (onDark) {
-      // stay light while any part of the dark hero ([data-dark-hero]) is still behind the bar
-      const hero = document.querySelector("[data-dark-hero]");
-      setScrolled(hero ? hero.getBoundingClientRect().bottom < 90 : current > 40);
+      // stay light while a dark hero ([data-dark-hero]) is behind the bar
+      const heroes = Array.from(document.querySelectorAll("[data-dark-hero]"));
+      const overDark = heroes.some((h) => { const r = h.getBoundingClientRect(); return r.top < 90 && r.bottom > 90; });
+      setScrolled(heroes.length ? !overDark : current > 40);
       return;
     }
     setScrolled(current > 40);
