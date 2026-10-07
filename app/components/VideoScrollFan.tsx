@@ -54,9 +54,10 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
         const c = card.offsetLeft - scroller.scrollLeft + w / 2;
         const p = Math.max(-1, Math.min(1, (c - mid) / half));
         const abs = Math.abs(p);
-        // cards grow toward the screen edges…
-        const edgeT = Math.max(0, (abs - 0.35) / 0.65);
-        const scale = 1 + edgeT * edgeT * MAX_EDGE_SCALE;
+        // cards grow toward the screen edges — starting just off-centre so the
+        // second-to-last card is already growing and the size ramps up smoothly…
+        const edgeT = Math.max(0, (abs - 0.1) / 0.9);
+        const scale = 1 + Math.pow(edgeT, 1.3) * MAX_EDGE_SCALE;
         return { card, w, c, p, abs, scale, shift: 0 };
       });
       // …and every card further out is pushed aside by exactly the width its
