@@ -139,6 +139,13 @@ export default function AboutKeywordHero() {
         {/* subtle grain-free vignette */}
         <div aria-hidden style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, transparent 60%, rgba(10,4,40,0.45) 100%)" }} />
 
+        {/* bottom fade: blends into the lavender intro section below (left→right tint matches it) */}
+        <div aria-hidden style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "38%", pointerEvents: "none", zIndex: 1,
+          background: "linear-gradient(180deg, rgba(226,206,252,0) 0%, rgba(226,206,252,0.35) 45%, rgba(226,206,252,0.85) 82%, #e2cefc 100%)",
+          WebkitMaskImage: "linear-gradient(90deg,#000,#000)" }} />
+        <div aria-hidden style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "38%", pointerEvents: "none", zIndex: 1,
+          background: "linear-gradient(180deg, rgba(242,208,240,0) 0%, rgba(242,208,240,0.35) 45%, rgba(242,208,240,0.85) 82%, #f2d0f0 100%)",
+          WebkitMaskImage: "linear-gradient(90deg, transparent 35%, #000 100%)", maskImage: "linear-gradient(90deg, transparent 35%, #000 100%)" }} />
         {WORDS.map((w, i) => <Keyword key={w.word} w={w} i={i} p={p} still={reduce} mobile={mobile} />)}
 
         {/* resolved state: centred logo + final line */}
