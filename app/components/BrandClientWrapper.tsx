@@ -259,7 +259,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
   const [activeCampaignStep, setActiveCampaignStep] = useState(0);
   // desc / descEn: "|" marks the line break — every step reads as exactly two lines on desktop.
   const CAMPAIGN_STEPS = [
-    { img: "/how-we-run-campaigns/plan-campaign-v5.png", title: "กำหนดรายละเอียดบรีฟ", titleEn: "Define the Brief",
+    { img: "/how-we-run-campaigns/plan-campaign-v6.png", title: "กำหนดรายละเอียดบรีฟ", titleEn: "Define the Brief",
       desc: "ทำความเข้าใจโจทย์ของแบรนด์ตั้งแต่ต้นทาง|เพื่อวางทิศทางแคมเปญให้ตรงเป้าหมายที่สุด",
       descEn: "We start by fully understanding your brief,|so the campaign direction is aligned with your goals from day one." },
     { img: "/how-we-run-campaigns/manage-seamlessly-v4.png", title: "วางแผนแคมเปญ", titleEn: "Plan the Campaign",
