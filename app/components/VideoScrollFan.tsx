@@ -55,12 +55,13 @@ export default function VideoScrollFan({ videos }: { videos: FanVideo[] }) {
         p = Math.max(-1, Math.min(1, p));
         const abs = Math.abs(p);
 
-        const edgeT = Math.max(0, (abs - 0.45) / 0.55);
-        const scale = 1 + edgeT * edgeT * 0.28;
-        const translateY = abs * abs * 26;
-        const rotate = p * abs * 10;
+        // Gentle arc only: no edge scale-up and a small tilt, so a card never
+        // grows into its neighbour (every gap stays the same) and the tilted
+        // corners stay inside the strip's padding instead of being clipped.
+        const translateY = abs * abs * 18;
+        const rotate = p * abs * 4;
 
-        card.style.transform = `translateY(${translateY}px) scale(${scale}) rotate(${rotate}deg)`;
+        card.style.transform = `translateY(${translateY}px) rotate(${rotate}deg)`;
         card.style.zIndex = String(Math.round(100 - abs * 50));
         card.style.opacity = String(1 - Math.max(0, abs - 0.92) * 6);
       });
