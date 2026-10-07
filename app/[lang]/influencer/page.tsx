@@ -139,7 +139,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
 
       {/* ── Video Showcase ── */}
-      <section className="vs-hero-section" style={{ position: "relative", background: "transparent", overflow: "hidden", padding: "195px 0 64px" }}>
+      <section className="vs-hero-section" style={{ position: "relative", background: "linear-gradient(180deg, rgba(247,241,252,0) 70%, #F7F1FC 100%), url('/backgrounds/influencer-hero-bg.jpg') center top / cover no-repeat", overflow: "hidden", padding: "195px 0 64px" }}>
         <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "0 16px" }}>
           <h2 style={{ margin: "0 0 24px", lineHeight: 1.1 }}>
             {lang === "th" ? (
