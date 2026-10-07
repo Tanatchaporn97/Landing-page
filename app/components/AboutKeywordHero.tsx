@@ -21,69 +21,34 @@ const WORDS = [
   { lead: "Better work is proven by", word: "RESULTS", x: -9, y: 21, align: "left" as const,  stack: 11 },
 ];
 
-// Live "data network": drifting nodes that link up when close, gently drawn toward the pointer.
-function Constellation({ still }: { still: boolean }) {
-  const cv = useRef<HTMLCanvasElement>(null);
+// Background: oversized outlined keyword bands drifting in opposite directions, plus a soft
+// spotlight that follows the pointer.
+function OutlineBands({ still }: { still: boolean }) {
+  const row = "DATA · PEOPLE · RESULTS · ";
+  return (
+    <div aria-hidden style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "space-around", overflow: "hidden", pointerEvents: "none" }}>
+      {[0, 1, 2].map((r) => (
+        <div key={r} className={still ? "" : `akh-band akh-band-${r % 2 ? "r" : "l"}`}
+          style={{ ...DISPLAY, display: "flex", whiteSpace: "nowrap", fontSize: "clamp(90px, 14vw, 240px)", fontWeight: 800, lineHeight: 1,
+            color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.09)", animationDuration: `${70 + r * 18}s` }}>
+          <span>{row.repeat(3)}</span><span>{row.repeat(3)}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Spotlight({ still }: { still: boolean }) {
+  const el = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const c = cv.current; if (!c) return;
-    const ctx = c.getContext("2d"); if (!ctx) return;
-    let w = 0, h = 0, raf = 0, dpr = 1;
-    const mouse = { x: -9999, y: -9999 };
-    type N = { x: number; y: number; vx: number; vy: number; r: number; hue: number };
-    let nodes: N[] = [];
-    const size = () => {
-      dpr = Math.min(2, window.devicePixelRatio || 1);
-      w = c.clientWidth; h = c.clientHeight;
-      c.width = w * dpr; c.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.round(Math.min(90, (w * h) / 14000));
-      nodes = Array.from({ length: count }, () => ({
-        x: Math.random() * w, y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
-        r: Math.random() * 1.6 + 0.6, hue: Math.random(),
-      }));
-    };
-    const LINK = 140;
-    const draw = () => {
-      ctx.clearRect(0, 0, w, h);
-      for (const n of nodes) {
-        if (!still) {
-          const dx = mouse.x - n.x, dy = mouse.y - n.y, d = Math.hypot(dx, dy);
-          if (d < 220) { n.vx += (dx / d) * 0.012; n.vy += (dy / d) * 0.012; }
-          n.vx *= 0.985; n.vy *= 0.985;
-          n.vx += (Math.random() - 0.5) * 0.02; n.vy += (Math.random() - 0.5) * 0.02;
-          n.x += n.vx; n.y += n.vy;
-          if (n.x < -20) n.x = w + 20; if (n.x > w + 20) n.x = -20;
-          if (n.y < -20) n.y = h + 20; if (n.y > h + 20) n.y = -20;
-        }
-      }
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const a = nodes[i], b = nodes[j], d = Math.hypot(a.x - b.x, a.y - b.y);
-          if (d < LINK) {
-            ctx.strokeStyle = `rgba(226,205,255,${(1 - d / LINK) * 0.22})`;
-            ctx.lineWidth = 0.7; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-          }
-        }
-      }
-      for (const n of nodes) {
-        ctx.fillStyle = n.hue > 0.7 ? "rgba(255,140,210,0.9)" : "rgba(235,222,255,0.85)";
-        ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
-      }
-      if (!still) raf = requestAnimationFrame(draw);
-    };
-    const onMove = (e: PointerEvent) => { const r = c.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; };
-    const onLeave = () => { mouse.x = mouse.y = -9999; };
-    size(); draw();
-    // pause when the hero is off screen
-    const io = new IntersectionObserver(([e]) => { cancelAnimationFrame(raf); if (e.isIntersecting && !still) raf = requestAnimationFrame(draw); });
-    io.observe(c);
-    window.addEventListener("resize", size);
-    c.parentElement?.addEventListener("pointermove", onMove);
-    c.parentElement?.addEventListener("pointerleave", onLeave);
-    return () => { cancelAnimationFrame(raf); io.disconnect(); window.removeEventListener("resize", size);
-      c.parentElement?.removeEventListener("pointermove", onMove); c.parentElement?.removeEventListener("pointerleave", onLeave); };
+    const d = el.current; const host = d?.parentElement; if (!d || !host || still) return;
+    const move = (e: PointerEvent) => { const r = host.getBoundingClientRect(); d.style.setProperty("--sx", `${e.clientX - r.left}px`); d.style.setProperty("--sy", `${e.clientY - r.top}px`); d.style.opacity = "1"; };
+    const leave = () => { d.style.opacity = "0"; };
+    host.addEventListener("pointermove", move); host.addEventListener("pointerleave", leave);
+    return () => { host.removeEventListener("pointermove", move); host.removeEventListener("pointerleave", leave); };
   }, [still]);
-  return <canvas ref={cv} aria-hidden style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} />;
+  return <div ref={el} aria-hidden style={{ position: "absolute", inset: 0, opacity: 0, transition: "opacity .6s ease", pointerEvents: "none",
+    background: "radial-gradient(420px circle at var(--sx, 50%) var(--sy, 50%), rgba(255,170,230,0.18), rgba(140,90,255,0.10) 40%, transparent 70%)" }} />;
 }
 
 function Reveal({ children, delay, still }: { children: React.ReactNode; delay: number; still: boolean }) {
@@ -124,7 +89,7 @@ function Keyword({ w: base, i, p, still, mobile }: { w: (typeof WORDS)[number]; 
       <div className="akh-kw" style={{ ...DISPLAY, fontSize: "clamp(52px, 8.2vw, 146px)", lineHeight: 0.95, letterSpacing: "-0.01em", fontWeight: 800,
         whiteSpace: "nowrap", background: "linear-gradient(90deg,#ffffff 0%,#f1e8ff 45%,#ffb3dd 100%)",
         WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-        <Reveal delay={0.5 + i * 0.32} still={still}><span className={still ? "" : "akh-shine"} style={{ animationDelay: `${2.2 + i * 0.35}s` }}>{w.word}</span></Reveal>
+        <Reveal delay={0.5 + i * 0.32} still={still}>{w.word}</Reveal>
       </div>
     </motion.div>
   );
@@ -168,12 +133,9 @@ export default function AboutKeywordHero() {
           backgroundImage: "linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px)",
           backgroundSize: "calc(100vw / 12) calc(100vw / 12)", backgroundPosition: "center center",
           WebkitMaskImage: "radial-gradient(ellipse at center, #000 30%, transparent 78%)", maskImage: "radial-gradient(ellipse at center, #000 30%, transparent 78%)" }} />
-        {/* drifting aurora light */}
-        <div aria-hidden className="akh-aurora akh-aurora-1" />
-        <div aria-hidden className="akh-aurora akh-aurora-2" />
-        <div aria-hidden className="akh-aurora akh-aurora-3" />
-        {/* live data network */}
-        <Constellation still={reduce} />
+        {/* drifting outlined keyword bands + pointer spotlight */}
+        <OutlineBands still={reduce} />
+        <Spotlight still={reduce} />
         {/* subtle grain-free vignette */}
         <div aria-hidden style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, transparent 60%, rgba(10,4,40,0.45) 100%)" }} />
 
@@ -194,19 +156,12 @@ export default function AboutKeywordHero() {
       </div>
 
       <style>{`
-        .akh-aurora{ position: absolute; width: 60vmax; height: 60vmax; border-radius: 50%; filter: blur(60px); opacity: .55; mix-blend-mode: screen; pointer-events: none; will-change: transform; }
-        .akh-aurora-1{ left: -15vmax; top: -25vmax; background: radial-gradient(circle, rgba(124,58,237,.75), transparent 65%); animation: akh-drift1 22s ease-in-out infinite alternate; }
-        .akh-aurora-2{ right: -20vmax; bottom: -30vmax; background: radial-gradient(circle, rgba(255,0,137,.55), transparent 65%); animation: akh-drift2 26s ease-in-out infinite alternate; }
-        .akh-aurora-3{ left: 30%; top: 20%; width: 40vmax; height: 40vmax; background: radial-gradient(circle, rgba(56,97,255,.45), transparent 65%); animation: akh-drift3 30s ease-in-out infinite alternate; }
-        @keyframes akh-drift1{ to{ transform: translate(18vw, 14vh) scale(1.15); } }
-        @keyframes akh-drift2{ to{ transform: translate(-16vw, -12vh) scale(1.1); } }
-        @keyframes akh-drift3{ to{ transform: translate(-14vw, 10vh) scale(.9); } }
-        /* one soft light sweep across each keyword after it lands */
-        .akh-shine{ display: inline-block; background: linear-gradient(100deg, transparent 35%, rgba(255,255,255,.95) 50%, transparent 65%) -150% 0 / 250% 100% no-repeat,
-          linear-gradient(90deg,#ffffff 0%,#f1e8ff 45%,#ffb3dd 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-          animation: akh-sweep 1.8s ease-in-out 1 both; }
-        @keyframes akh-sweep{ from{ background-position: -150% 0, 0 0; } to{ background-position: 150% 0, 0 0; } }
-        @media (prefers-reduced-motion: reduce){ .akh-aurora{ animation: none; } .akh-shine{ animation: none; } }
+        .akh-band > span{ padding-right: 0.3em; }
+        .akh-band-l{ animation: akh-band-l linear infinite; }
+        .akh-band-r{ animation: akh-band-r linear infinite; }
+        @keyframes akh-band-l{ from{ transform: translateX(0); } to{ transform: translateX(-50%); } }
+        @keyframes akh-band-r{ from{ transform: translateX(-50%); } to{ transform: translateX(0); } }
+        @media (prefers-reduced-motion: reduce){ .akh-band-l, .akh-band-r{ animation: none; } }
         /* phones: keywords stack down the screen instead of spreading sideways */
         @media (max-width: 767px){
           .akh-kw{ font-size: min(15vw, 96px) !important; }
