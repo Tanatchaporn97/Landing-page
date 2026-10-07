@@ -50,7 +50,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
         {/* intro copy (the company photo was removed; the keyword hero above opens the page) */}
         <div className="about-hero">
         <div style={{ flex: "0 0 auto", maxWidth: "960px", width: "100%", margin: "0 auto", padding: "0 48px 40px", boxSizing: "border-box" }}>
-          <p className="desc-text" style={{ ...KT, fontSize: "16px", color: "#111827", lineHeight: 1.85, margin: "96px 0 0" }}>
+          <p className="desc-text" style={{ ...KT, fontSize: "16px", color: "#111827", lineHeight: 1.85, margin: "44px 0 0" }}>
             {lang === "th"
               ? "Buddy Review คือ Influencer Marketing Agency ที่ให้บริการครบวงจร ตั้งแต่การวางกลยุทธ์ คัดเลือกอินฟลูเอนเซอร์ บริหารแคมเปญ ไปจนถึงการวัดผล โดยผสานความเชี่ยวชาญของทีมเข้ากับ Data และ Technology เพื่อช่วยให้แบรนด์ทำ Influencer Marketing ได้แม่นยำและวัดผลได้ชัดเจน"
               : "Buddy Review is a full-service influencer marketing agency — from strategy and influencer selection to campaign management and measurement. We combine our team's expertise with data and technology to help brands run influencer marketing that's precise and clearly measurable."}
