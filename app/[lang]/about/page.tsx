@@ -5,6 +5,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import OurJourney from "../../components/OurJourney";
 import AboutKeywordHero from "../../components/AboutKeywordHero";
+import AboutBrandHero from "../../components/AboutBrandHero";
 import { TestimonialSlider } from "@/components/ui/testimonial-slider-1";
 import InteractiveImageBentoGallery from "@/components/ui/bento-gallery";
 import { getDictionary } from "../../../get-dictionary";
@@ -43,7 +44,8 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
 
   return (
     <div className="background overflow-x-clip" style={{ ...KT, minHeight: "100vh" }}>
-      <Navbar lang={lang as Locale} variant="home" onDark />
+      <Navbar lang={lang as Locale} variant="home" />
+      <AboutBrandHero />
       <AboutKeywordHero />
 
       <section style={{ padding: "0 0 120px", textAlign: "center" }}>
