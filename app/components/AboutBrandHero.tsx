@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 
 // About Us opener on the brand purple background (same as the keyword hero below): faint column
-// grid and an oversized two-line "Buddy / Review" sliding in from opposite sides behind the headline.
+// grid and an oversized one-line "Buddy Review" whose two words slide in from opposite sides.
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -23,10 +23,12 @@ export default function AboutBrandHero() {
       <div aria-hidden style={{ position: "absolute", inset: 0,
         backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px)", backgroundSize: "calc(100% / 12) 100%" }} />
 
-      {/* oversized wordmark: "Buddy" in from the left, "Review" in from the right */}
-      <div aria-hidden style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "center", paddingTop: "40px" }}>
-        <motion.div {...slide("-60%", 0.15)} className="abh-big" style={{ ...KT, alignSelf: "flex-start", marginLeft: "-1vw" }}>Buddy</motion.div>
-        <motion.div {...slide("60%", 0.3)} className="abh-big" style={{ ...KT, alignSelf: "flex-end", marginRight: "-1vw" }}>Review</motion.div>
+      {/* oversized one-line wordmark: "Buddy" slides in from the left, "Review" from the right */}
+      <div aria-hidden style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", paddingTop: "40px", overflow: "hidden" }}>
+        <div className="abh-big" style={{ ...KT, display: "flex", gap: "0.18em" }}>
+          <motion.span {...slide("-70%", 0.15)} style={{ display: "block" }}>Buddy</motion.span>
+          <motion.span {...slide("70%", 0.3)} style={{ display: "block" }}>Review</motion.span>
+        </div>
       </div>
 
       {/* headline on top */}
@@ -42,11 +44,11 @@ export default function AboutBrandHero() {
       </div>
 
       <style>{`
-        .abh-big{ font-weight: 800; font-size: clamp(120px, 23vw, 440px); line-height: 0.82; letter-spacing: -0.04em; white-space: nowrap;
+        .abh-big{ font-weight: 800; font-size: clamp(90px, 15vw, 290px); line-height: 1; letter-spacing: -0.04em; white-space: nowrap;
           background: linear-gradient(90deg, rgba(255,255,255,.30) 0%, rgba(232,214,255,.22) 50%, rgba(255,150,215,.30) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
         .abh-title{ font-size: clamp(32px, 4.2vw, 68px); }
         @media (max-width: 767px){
-          .abh-big{ font-size: 31vw; }
+          .abh-big{ font-size: 15.5vw; }
           .abh-title{ font-size: 8.4vw; }
         }
       `}</style>
