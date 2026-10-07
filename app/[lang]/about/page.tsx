@@ -47,16 +47,10 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
       <AboutKeywordHero />
 
       <section style={{ padding: "0 0 120px", textAlign: "center" }}>
-        {/* Hero = exactly one screen tall on every viewport: the photo takes whatever
-            height is left after the intro text, so both are visible on load. */}
-        <div className="about-hero" style={{ display: "flex", flexDirection: "column", height: "100svh", minHeight: "560px" }}>
-        <div style={{ position: "relative", width: "100vw", marginLeft: "calc(50% - 50vw)", flex: "1 1 auto", minHeight: "260px" }}>
-          <Image src="/about-us/hero-3.jpg" alt="Buddy Review" fill sizes="100vw"
-            style={{ objectFit: "cover", objectPosition: "38% 55%" }} priority />
-        </div>
-
+        {/* intro copy (the company photo was removed; the keyword hero above opens the page) */}
+        <div className="about-hero">
         <div style={{ flex: "0 0 auto", maxWidth: "960px", width: "100%", margin: "0 auto", padding: "0 48px 40px", boxSizing: "border-box" }}>
-          <p className="desc-text" style={{ ...KT, fontSize: "16px", color: "#111827", lineHeight: 1.85, margin: "32px 0 0" }}>
+          <p className="desc-text" style={{ ...KT, fontSize: "16px", color: "#111827", lineHeight: 1.85, margin: "96px 0 0" }}>
             {lang === "th"
               ? "Buddy Review คือ Influencer Marketing Agency ที่ให้บริการครบวงจร ตั้งแต่การวางกลยุทธ์ คัดเลือกอินฟลูเอนเซอร์ บริหารแคมเปญ ไปจนถึงการวัดผล โดยผสานความเชี่ยวชาญของทีมเข้ากับ Data และ Technology เพื่อช่วยให้แบรนด์ทำ Influencer Marketing ได้แม่นยำและวัดผลได้ชัดเจน"
               : "Buddy Review is a full-service influencer marketing agency — from strategy and influencer selection to campaign management and measurement. We combine our team's expertise with data and technology to help brands run influencer marketing that's precise and clearly measurable."}
@@ -161,8 +155,6 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
         <style>{`
           @media (max-width: 760px){
             .cofounder-grid{ grid-template-columns: 1fr !important; max-width: 320px !important; }
-            /* narrow screens crop the sides — keep the bd logo + wordmark in frame */
-            .about-hero img{ object-position: 24% 52% !important; }
             .about-hero > div:last-child{ padding: 0 24px 28px !important; }
           }
         `}</style>
