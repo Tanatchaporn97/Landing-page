@@ -8,8 +8,9 @@ import { motion, useScroll, useTransform, useReducedMotion, useMotionValue, type
 // the centre, fades their supporting copy, then resolves into the Buddy Review logo with
 // "data, people, results." beneath it, held for a beat before the page moves on.
 
-const DISPLAY = { fontFamily: "'Pierson','Playfair Display',Georgia,serif" };
-const SANS = { fontFamily: "var(--font-inter),'Inter',system-ui,sans-serif" };
+// same type as the rest of the site: Kanit throughout
+const DISPLAY = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
+const SANS = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 // Each keyword sits at an asymmetric spot, expressed as an offset from the screen centre
@@ -51,12 +52,12 @@ function Keyword({ w: base, i, p, still, mobile }: { w: (typeof WORDS)[number]; 
     <motion.div className="akh-word" style={{ position: "absolute", left: "50%", top: "50%", x: still ? `${w.x}vw` : x, y: still ? `${w.y}vh` : y,
       scale: still ? 1 : scale, opacity: still ? 1 : opacity, translateX: "-50%", translateY: "-50%",
       textAlign: w.align, willChange: "transform" }}>
-      <motion.div className="akh-lead" style={{ ...SANS, opacity: still ? 1 : leadOpacity, fontSize: "clamp(14px, 1.25vw, 19px)", fontWeight: 400,
-        letterSpacing: "0.01em", color: "rgba(244,239,255,0.62)", marginBottom: "0.6em", whiteSpace: "nowrap" }}>
+      <motion.div className="akh-lead" style={{ ...SANS, opacity: still ? 1 : leadOpacity, fontSize: "clamp(15px, 1.3vw, 20px)", fontWeight: 500,
+        letterSpacing: "0.01em", color: "rgba(255,255,255,0.78)", marginBottom: "0.6em", whiteSpace: "nowrap" }}>
         <Reveal delay={0.35 + i * 0.32} still={still}>{w.lead}</Reveal>
       </motion.div>
-      <div className="akh-kw" style={{ ...DISPLAY, fontSize: "clamp(72px, 12.5vw, 220px)", lineHeight: 0.86, letterSpacing: "-0.02em", fontWeight: 400,
-        whiteSpace: "nowrap", background: "linear-gradient(180deg,#ffffff 0%,#efe6ff 55%,#d9c6ff 100%)",
+      <div className="akh-kw" style={{ ...DISPLAY, fontSize: "clamp(64px, 11vw, 196px)", lineHeight: 0.95, letterSpacing: "-0.01em", fontWeight: 800,
+        whiteSpace: "nowrap", background: "linear-gradient(90deg,#ffffff 0%,#f1e8ff 45%,#ffb3dd 100%)",
         WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
         <Reveal delay={0.5 + i * 0.32} still={still}>{w.word}</Reveal>
       </div>
@@ -89,8 +90,8 @@ export default function AboutKeywordHero() {
 
   return (
     // Scroll runway (1.6 screens): converge → logo → a short hold
-    <section ref={ref} data-dark-hero className="akh" style={{ position: "relative", height: reduce ? "100svh" : "260vh", background: "#07060b" }}>
-      <div style={{ position: "sticky", top: 0, height: "100svh", overflow: "hidden" }}>
+    <section ref={ref} data-dark-hero className="akh" style={{ position: "relative", height: reduce ? "100svh" : "260vh", background: "#120a3a url('/backgrounds/dark-blue-bg2.jpg') center / cover no-repeat" }}>
+      <div style={{ position: "sticky", top: 0, height: "100svh", overflow: "hidden", background: "#120a3a url('/backgrounds/dark-blue-bg2.jpg') center / cover no-repeat" }}>
         {/* atmosphere: pink–purple glow */}
         <div aria-hidden style={{ position: "absolute", inset: "-20%",
           background: "radial-gradient(42% 38% at 30% 32%, rgba(124,58,237,0.30) 0%, transparent 70%), radial-gradient(36% 34% at 72% 70%, rgba(255,0,137,0.20) 0%, transparent 72%), radial-gradient(60% 60% at 50% 50%, rgba(95,37,229,0.10) 0%, transparent 80%)" }} />
@@ -108,7 +109,7 @@ export default function AboutKeywordHero() {
           ))}
         </svg>
         {/* subtle grain-free vignette */}
-        <div aria-hidden style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%)" }} />
+        <div aria-hidden style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, transparent 60%, rgba(10,4,40,0.45) 100%)" }} />
 
         {WORDS.map((w, i) => <Keyword key={w.word} w={w} i={i} p={p} still={reduce} mobile={mobile} />)}
 
@@ -118,8 +119,8 @@ export default function AboutKeywordHero() {
             <motion.div style={{ opacity: logoOpacity, scale: logoScale, position: "relative", width: "min(460px, 62vw)", aspectRatio: "3608 / 1258" }}>
               <Image src="/buddy-review-logo.png" alt="Buddy Review" fill sizes="460px" style={{ objectFit: "contain" }} />
             </motion.div>
-            <motion.p style={{ ...DISPLAY, opacity: lineOpacity, margin: "28px 0 0", fontSize: "clamp(20px, 2vw, 30px)", fontStyle: "italic",
-              letterSpacing: "0.02em", color: "rgba(244,239,255,0.82)" }}>
+            <motion.p style={{ ...DISPLAY, opacity: lineOpacity, margin: "28px 0 0", fontSize: "clamp(20px, 2vw, 30px)", fontWeight: 500,
+              letterSpacing: "0.04em", color: "rgba(255,255,255,0.88)" }}>
               data, people, results.
             </motion.p>
           </div>
@@ -130,7 +131,7 @@ export default function AboutKeywordHero() {
         @keyframes akh-ripple { 0% { transform: scale(0.6); opacity: 0; } 15% { opacity: 1; } 100% { transform: scale(4.2); opacity: 0; } }
         /* phones: keywords stack down the screen instead of spreading sideways */
         @media (max-width: 767px){
-          .akh-kw{ font-size: min(18.5vw, 120px) !important; }
+          .akh-kw{ font-size: min(17vw, 110px) !important; }
           .akh-lead{ white-space: normal !important; max-width: 70vw; }
         }
       `}</style>
