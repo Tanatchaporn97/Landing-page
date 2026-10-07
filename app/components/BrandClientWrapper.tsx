@@ -259,22 +259,22 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
   const [activeCampaignStep, setActiveCampaignStep] = useState(0);
   // desc / descEn: "|" marks the line break — every step reads as exactly two lines on desktop.
   const CAMPAIGN_STEPS = [
-    { img: "/how-we-run-campaigns/plan-campaign-milin3.png", title: "กำหนดรายละเอียดบรีฟ", titleEn: "Define the Brief",
+    { img: "/how-we-run-campaigns/plan-campaign-v4.png", title: "กำหนดรายละเอียดบรีฟ", titleEn: "Define the Brief",
       desc: "ทำความเข้าใจโจทย์ของแบรนด์ตั้งแต่ต้นทาง|เพื่อวางทิศทางแคมเปญให้ตรงเป้าหมายที่สุด",
       descEn: "We start by fully understanding your brief,|so the campaign direction is aligned with your goals from day one." },
-    { img: "/how-we-run-campaigns/manage-seamlessly-milin.png", title: "วางแผนแคมเปญ", titleEn: "Plan the Campaign",
+    { img: "/how-we-run-campaigns/manage-seamlessly-v4.png", title: "วางแผนแคมเปญ", titleEn: "Plan the Campaign",
       desc: "เปลี่ยนเป้าหมายของแบรนด์เป็นกลยุทธ์ที่จับต้องได้|ให้ทุกการสื่อสารไปถึงกลุ่มเป้าหมายได้ตรงจุด",
       descEn: "We turn your brand's goals into a concrete strategy,|so every message reaches the right audience." },
-    { img: "/how-we-run-campaigns/select-influencers-milin.png", title: "คัดสรรอินฟลูเอนเซอร์ที่ใช่", titleEn: "Select the Right Influencers",
+    { img: "/how-we-run-campaigns/select-influencers-v4.png", title: "คัดสรรอินฟลูเอนเซอร์ที่ใช่", titleEn: "Select the Right Influencers",
       desc: "ผ่านระบบ KOL Discovery จับคู่อินฟลูเอนเซอร์ที่เหมาะสมที่สุด|กับแบรนด์คุณด้วยข้อมูลเชิงลึกที่แม่นยำ",
       descEn: "Our KOL Discovery system matches your brand|with the most suitable influencers using precise data insights." },
-    { img: "/how-we-run-campaigns/review-drafts-milin.png", title: "จัดการแคมเปญไร้รอยต่อ", titleEn: "Manage Seamlessly",
+    { img: "/how-we-run-campaigns/review-drafts-v4.png", title: "จัดการแคมเปญไร้รอยต่อ", titleEn: "Manage Seamlessly",
       desc: "ให้แคมเปญของคุณดำเนินไปอย่างไม่มีสะดุด|ด้วยทีมงานมืออาชีพที่ดูแลทุกขั้นตอน",
       descEn: "Your campaign runs without a hitch,|with a professional team overseeing every step." },
-    { img: "/how-we-run-campaigns/launch-milin2.png", title: "Launch คอนเทนต์ พร้อมติดตามผล", titleEn: "Launch & Track Results",
+    { img: "/how-we-run-campaigns/launch-v4.png", title: "Launch คอนเทนต์ พร้อมติดตามผล", titleEn: "Launch & Track Results",
       desc: "ลงคอนเทนต์ตามแผน พร้อมเฝ้าติดตามเรียลไทม์|เพื่อให้ทุกโพสต์ราบรื่นตั้งแต่ต้นจนจบ",
       descEn: "Content goes live as planned, with real-time monitoring|so every post runs smoothly from start to finish." },
-    { img: "/how-we-run-campaigns/report-results-milin.png", title: "รายงานผลแบบเรียลไทม์", titleEn: "Real-Time Reporting",
+    { img: "/how-we-run-campaigns/report-results-v4.png", title: "รายงานผลแบบเรียลไทม์", titleEn: "Real-Time Reporting",
       desc: "ติดตามทุกความเคลื่อนไหวบนแดชบอร์ด|พร้อมรับรายงานและอินไซต์ที่นำไปใช้ต่อได้จริง",
       descEn: "Track every move on the dashboard|and get reports and insights you can actually put to use." },
   ];
