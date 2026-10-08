@@ -125,7 +125,7 @@ export const TestimonialSlider = ({
                   <img
                     src={review.thumbnailSrc}
                     alt={review.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                 </button>
               );
@@ -134,7 +134,8 @@ export const TestimonialSlider = ({
         </div>
 
         {/* === Center Column: Main Image === */}
-        <div className="md:col-span-4 relative h-80 min-h-[340px] sm:min-h-[400px] md:min-h-[500px] order-1 md:order-2">
+        {/* below md the box keeps the photos' own 2:3 portrait ratio (capped so it isn't huge), so faces are never cropped */}
+        <div className="md:col-span-4 relative w-full max-w-[420px] mx-auto md:max-w-none aspect-[2/3] md:aspect-auto md:h-auto md:min-h-[500px] order-1 md:order-2 overflow-hidden rounded-lg">
           <AnimatePresence initial={false} custom={direction}>
             <motion.img
               key={currentIndex}
@@ -146,7 +147,7 @@ export const TestimonialSlider = ({
               animate="center"
               exit="exit"
               transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }} // Cubic bezier for smooth ease
-              className="absolute inset-0 w-full h-full object-cover rounded-lg"
+              className="absolute inset-0 w-full h-full object-cover object-top rounded-lg"
             />
           </AnimatePresence>
         </div>
