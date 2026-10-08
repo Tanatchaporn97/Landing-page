@@ -24,12 +24,6 @@ const PILLARS = [
   { t: "Occupation", tags: ["คอนเทนต์ครีเอเตอร์", "Beauty Blogger", "นักศึกษา"] },
   { t: "Storytelling", tags: ["รีวิวสินค้า", "Before–After", "get ready with me"] },
 ];
-const AGES = [
-  { r: "13–17", v: 5 }, { r: "18–24", v: 31 }, { r: "25–34", v: 52 }, { r: "35–44", v: 10 }, { r: "45+", v: 2 },
-];
-const CITIES = [
-  { c: "Bangkok", v: 46 }, { c: "Chiang Mai", v: 7 }, { c: "Chon Buri", v: 4 },
-];
 // Audience tab (48,600 followers)
 const AUD_GENDER = [{ k: "Female", v: "40.8K", p: 84.0, c: "#f472b6" }, { k: "Male", v: "7.8K", p: 16.0, c: "#1e1b6b" }];
 const AUD_AGES = [
@@ -59,6 +53,56 @@ const Bar = ({ label, num, pct, scale, color }: { label: string; num: string; pc
     </span>
   </div>
 );
+
+// Likes per month (avg ~1.85K) and the latest 9 posts' likes, for milin.daily
+const LIKES_BY_MONTH = [{ m: "Jul", v: 1520 }, { m: "Aug", v: 1610 }, { m: "Sep", v: 1580 }, { m: "Oct", v: 1740 }, { m: "Nov", v: 2260 }, { m: "Dec", v: 2410 }, { m: "Jan", v: 2050 }];
+const POSTS = [
+  { d: "Sep 24", v: 1820, c: "1.9%" }, { d: "Sep 27", v: 1240, c: "2.1%" }, { d: "Sep 28", v: 3150, c: "1.4%" },
+  { d: "Sep 30", v: 1380, c: "2.4%" }, { d: "Oct 1", v: 1460, c: "2.2%" }, { d: "Oct 2", v: 1690, c: "1.8%" },
+  { d: "Oct 4", v: 4620, c: "1.1%" }, { d: "Oct 5", v: 1530, c: "2.0%" }, { d: "Oct 7", v: 1710, c: "1.7%" },
+];
+function LikesChart() {
+  const W = 300, H = 120, L = 30, B = 18, max = 3000;
+  const x = (i: number) => L + (i * (W - L - 8)) / (LIKES_BY_MONTH.length - 1);
+  const y = (v: number) => (H - B) - (v / max) * (H - B - 8);
+  const pts = LIKES_BY_MONTH.map((d, i) => `${x(i)},${y(d.v)}`).join(" ");
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block" }}>
+      {[0, 1000, 2000, 3000].map((t) => (
+        <g key={t}><line x1={L} x2={W - 4} y1={y(t)} y2={y(t)} stroke="rgba(95,38,229,0.08)" />
+          <text x={L - 6} y={y(t) + 3} fontSize="8" fill="#6b7280" textAnchor="end">{t ? `${t / 1000}K` : "0"}</text></g>
+      ))}
+      <polyline points={pts} fill="none" stroke="#2b7a8c" strokeWidth="2" />
+      {LIKES_BY_MONTH.map((d, i) => (
+        <g key={d.m}><circle cx={x(i)} cy={y(d.v)} r="3.2" fill="#fff" stroke="#2b7a8c" strokeWidth="1.6" />
+          <text x={x(i)} y={H - 4} fontSize="8" fill="#6b7280" textAnchor="middle">{d.m}</text></g>
+      ))}
+    </svg>
+  );
+}
+function EngagementChart() {
+  const W = 380, H = 120, L = 26, B = 18, max = 5000, bw = 13;
+  const step = (W - L - 6) / POSTS.length;
+  const y = (v: number) => (H - B) - (v / max) * (H - B - 14);
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block" }}>
+      {[0, 2500, 5000].map((t) => (
+        <g key={t}><line x1={L} x2={W - 4} y1={y(t)} y2={y(t)} stroke="rgba(95,38,229,0.08)" />
+          <text x={L - 5} y={y(t) + 3} fontSize="8" fill="#6b7280" textAnchor="end">{t ? `${t / 1000}K` : "0"}</text></g>
+      ))}
+      {POSTS.map((p, i) => {
+        const cx = L + step * i + step / 2;
+        return (
+          <g key={p.d}>
+            <rect x={cx - bw / 2} y={y(p.v)} width={bw} height={(H - B) - y(p.v)} rx="2" fill="#2b7a8c" />
+            <text x={cx} y={y(p.v) - 4} fontSize="6.5" fill="#1e1b8b" textAnchor="middle">• {p.c}</text>
+            <text x={cx} y={H - 5} fontSize="7" fill="#6b7280" textAnchor="middle">{p.d}</text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
 
 const TINY: CSSProperties = { ...KT, fontSize: "10px", fontWeight: 600, color: "#6b7280", letterSpacing: ".02em" };
 
@@ -212,41 +256,21 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
           ))}
         </div>
 
-        {/* audience */}
-        <div className="cs-row3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px" }}>
+        {/* likes by month + post engagement */}
+        <div className="cs-row3" style={{ display: "grid", gridTemplateColumns: "1fr 1.25fr", gap: "12px" }}>
           <div style={panelStyle}>
-            <p style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 10px" }}>Gender</p>
-            <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-              <div style={{ width: "92px", height: "92px", borderRadius: "50%", flexShrink: 0, background: "conic-gradient(#f472b6 0 84%, #1e1b6b 84% 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <div style={{ width: "58px", height: "58px", borderRadius: "50%", background: "#fff" }} />
-              </div>
-              <div style={{ fontSize: "11px", color: "#374151", lineHeight: 1.7 }}>
-                <div><span style={{ display: "inline-block", width: "7px", height: "7px", borderRadius: "50%", background: "#f472b6", marginRight: "6px" }} />Female <b>84%</b></div>
-                <div><span style={{ display: "inline-block", width: "7px", height: "7px", borderRadius: "50%", background: "#1e1b6b", marginRight: "6px" }} />Male <b>16%</b></div>
-              </div>
-            </div>
+            <p style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 8px" }}>Likes <span style={{ fontWeight: 500, color: "#6b7280" }}>(by month)</span></p>
+            <LikesChart />
           </div>
           <div style={panelStyle}>
-            <p style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 8px" }}>Age</p>
-            {AGES.map((a) => (
-              <div key={a.r} style={{ display: "grid", gridTemplateColumns: "38px 1fr 30px", alignItems: "center", gap: "8px", marginBottom: "5px" }}>
-                <span style={{ fontSize: "10px", color: "#6b7280" }}>{a.r}</span>
-                <span style={{ height: "5px", borderRadius: "5px", background: "rgba(95,38,229,0.1)" }}><span style={{ display: "block", height: "100%", width: `${a.v * 1.25}%`, borderRadius: "5px", background: "linear-gradient(90deg,#5f25e5,#ff0089)" }} /></span>
-                <span style={{ fontSize: "10px", color: "#374151", textAlign: "right" }}>{a.v}%</span>
-              </div>
-            ))}
-          </div>
-          <div style={panelStyle}>
-            <p style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 8px" }}>Location by City</p>
-            {CITIES.map((c) => (
-              <div key={c.c} style={{ marginBottom: "6px" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "10.5px", color: "#374151" }}><span>{c.c}</span><span>{c.v}%</span></div>
-                <span style={{ display: "block", height: "5px", borderRadius: "5px", background: "rgba(95,38,229,0.1)", marginTop: "3px" }}><span style={{ display: "block", height: "100%", width: `${c.v * 2}%`, borderRadius: "5px", background: "#2b7a8c" }} /></span>
-              </div>
-            ))}
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginTop: "8px" }}>
-              <span style={TINY}>Audience Credibility</span><span style={{ fontSize: "14px", fontWeight: 700, color: "#111827" }}>78.4%</span>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", margin: "0 0 8px" }}>
+              <p style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: 0 }}>Post Engagement</p>
+              <span style={{ display: "flex", gap: "10px", fontSize: "10px", color: "#374151" }}>
+                <span><span style={{ display: "inline-block", width: "7px", height: "7px", borderRadius: "50%", background: "#2b7a8c", marginRight: "4px" }} />Likes 22.6K</span>
+                <span><span style={{ display: "inline-block", width: "7px", height: "7px", borderRadius: "50%", background: "#1e1b8b", marginRight: "4px" }} />Comments 418</span>
+              </span>
             </div>
+            <EngagementChart />
           </div>
         </div>
           </div>
