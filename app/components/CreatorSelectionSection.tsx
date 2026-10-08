@@ -104,6 +104,45 @@ function EngagementChart() {
   );
 }
 
+// Lookalikes for milin.daily (photos to be added later — initials for now)
+const LOOK_AUDIENCE = [
+  { n: "rosie.beauty", l: "3,120", f: "52,840", c: "#f472b6" }, { n: "nudenotes.th", l: "2,410", f: "39,120", c: "#a78bfa" },
+  { n: "glowwithpim", l: "4,870", f: "71,300", c: "#fb923c" }, { n: "minnie.makeup", l: "1,960", f: "33,450", c: "#60a5fa" },
+  { n: "skinbyfern", l: "2,730", f: "45,210", c: "#34d399" }, { n: "pearyy.daily", l: "1,540", f: "28,960", c: "#f87171" },
+];
+const LOOK_TOPIC = [
+  { n: "lipsbybew", l: "5,210", f: "88,640", c: "#e879f9" }, { n: "cosme.review.th", l: "3,880", f: "64,300", c: "#818cf8" },
+  { n: "beautydiary.mook", l: "2,150", f: "41,780", c: "#fbbf24" }, { n: "tintlover.th", l: "1,430", f: "26,510", c: "#2dd4bf" },
+  { n: "makeupwithnan", l: "6,940", f: "102,450", c: "#fb7185" }, { n: "softglow.kate", l: "2,620", f: "47,930", c: "#a3e635" },
+];
+function LookTable({ title, rows }: { title: string; rows: typeof LOOK_AUDIENCE }) {
+  return (
+    <div style={{ ...panelStyle, padding: "12px 18px 6px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 90px 90px", gap: "8px", marginBottom: "4px" }}>
+        <span style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5" }}>{title} <span style={{ fontWeight: 500, color: "#6b7280" }}>(30)</span></span>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 90px 90px", gap: "8px", padding: "4px 0", borderBottom: "1px solid rgba(95,38,229,0.12)" }}>
+        <span style={TINY}>INFLUENCER</span><span style={TINY}>LIKES</span><span style={TINY}>FOLLOWERS</span>
+      </div>
+      {rows.slice(0, 5).map((r) => (
+        <div key={r.n} style={{ display: "grid", gridTemplateColumns: "1fr 90px 90px", gap: "8px", alignItems: "center", padding: "3px 0", borderTop: "1px solid rgba(95,38,229,0.06)" }}>
+          <span style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "12px", fontWeight: 600, color: "#1e1b4b", minWidth: 0 }}>
+            <span style={{ position: "relative", width: "24px", height: "24px", flexShrink: 0, borderRadius: "50%", background: r.c, color: "#fff", fontSize: "11px", fontWeight: 700, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
+              {r.n[0].toUpperCase()}
+              <span style={{ position: "absolute", right: "-3px", bottom: "-3px", width: "11px", height: "11px", borderRadius: "50%", background: "#fff", padding: "1.5px" }}>
+                <span style={{ position: "relative", display: "block", width: "100%", height: "100%" }}><Image src="/social-icons/instagram.png" alt="" fill sizes="11px" style={{ objectFit: "contain" }} /></span>
+              </span>
+            </span>
+            <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.n}</span>
+          </span>
+          <span style={{ fontSize: "11.5px", color: "#374151" }}>{r.l}</span>
+          <span style={{ fontSize: "11.5px", color: "#374151" }}>{r.f}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 const TINY: CSSProperties = { ...KT, fontSize: "10px", fontWeight: 600, color: "#6b7280", letterSpacing: ".02em" };
 
 const panelStyle: CSSProperties = {
@@ -120,7 +159,7 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
   // hovering / tapping a signal chip highlights it and pops the matching pillar box in the dashboard
   const [hot, setHot] = useState<string | null>(null);
   // Influencer tab = the 6 pillars + headline audience (9 boxes); Audience tab = the full audience breakdown
-  const [tab, setTab] = useState<"Influencer" | "Audience">("Influencer");
+  const [tab, setTab] = useState<"Influencer" | "Audience" | "Lookalikes">("Influencer");
   return (
     <div className="cs-grid" style={{ display: "grid", gridTemplateColumns: "0.62fr 2fr", gap: "48px", alignItems: "center" }}>
       {/* Left — eyebrow, heading, description, filter tags */}
@@ -227,7 +266,7 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
           </div>
           <div style={{ display: "flex", gap: "16px" }}>
             {(["Influencer", "Audience", "Lookalikes"] as const).map((t) => {
-              const live = t !== "Lookalikes";
+              const live = true;
               const on = t === tab;
               return (
                 <span key={t} role={live ? "tab" : undefined} aria-selected={live ? on : undefined} tabIndex={live ? 0 : -1}
@@ -273,6 +312,11 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
             <EngagementChart />
           </div>
         </div>
+          </div>
+          {/* Lookalikes view */}
+          <div className="cs-view" style={{ visibility: tab === "Lookalikes" ? "visible" : "hidden", opacity: tab === "Lookalikes" ? 1 : 0, display: "flex", flexDirection: "column", gap: "12px" }}>
+            <LookTable title="Lookalikes (by Audience)" rows={LOOK_AUDIENCE} />
+            <LookTable title="Lookalikes (by Topic)" rows={LOOK_TOPIC} />
           </div>
           {/* Audience view */}
           <div className="cs-view" style={{ visibility: tab === "Audience" ? "visible" : "hidden", opacity: tab === "Audience" ? 1 : 0 }}>
