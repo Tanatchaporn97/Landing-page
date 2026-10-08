@@ -14,7 +14,7 @@ export default function AboutBrandHero() {
   useEffect(() => setMounted(true), []);
   const reduce = mounted && !!prefersReduced;
   const slide = (from: string, delay: number) =>
-    reduce ? {} : { initial: { x: from, opacity: 0 }, animate: { x: "0%", opacity: 1 }, transition: { duration: 1.6, delay, ease: EASE } };
+    reduce ? {} : { initial: { x: from }, animate: { x: "0vw" }, transition: { duration: 1.9, delay, ease: EASE } };
 
   return (
     <section data-dark-hero className="abh" style={{ position: "relative", height: "min(100svh, 980px)", minHeight: "600px", overflow: "hidden",
@@ -26,8 +26,8 @@ export default function AboutBrandHero() {
       {/* oversized one-line wordmark: "Buddy" slides in from the left, "Review" from the right */}
       <div aria-hidden style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", paddingTop: "40px", overflow: "hidden" }}>
         <div className="abh-big" style={{ ...KT, display: "flex", gap: "0.18em" }}>
-          <motion.span {...slide("-70%", 0.15)} style={{ display: "block" }}>Buddy</motion.span>
-          <motion.span {...slide("70%", 0.3)} style={{ display: "block" }}>Review</motion.span>
+          <motion.span {...slide("-110vw", 0.2)} style={{ display: "block" }}>Buddy</motion.span>
+          <motion.span {...slide("110vw", 0.2)} style={{ display: "block" }}>Review</motion.span>
         </div>
       </div>
 
