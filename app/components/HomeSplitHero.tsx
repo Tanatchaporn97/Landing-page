@@ -63,7 +63,7 @@ const COPY = {
 function ArrowIcon() {
   return (
     <span style={{ width: "22px", height: "22px", borderRadius: "50%", background: "rgba(255,255,255,0.3)", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
     </span>
   );
 }
@@ -430,7 +430,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
               <p style={{ ...KT, fontSize: "15px", lineHeight: 1.65, color: "#111827", margin: "0 0 18px" }}>
                 {t.brand.reveal}
               </p>
-              <Link href={`/${lang}/brand`} className="split-cta" style={{
+              <Link href={`/${lang}/brand`} className="split-cta hsh-cta hsh-cta-brand" style={{
                 ...KT, position: "relative", zIndex: 3, display: "inline-flex", alignItems: "center", gap: "10px",
                 background: "#5f26e5", color: "#ffffff", borderRadius: "50px", padding: "13px 12px 13px 26px",
                 fontSize: "15px", fontWeight: 600, textDecoration: "none",
@@ -482,7 +482,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
               <p style={{ ...KT, fontSize: "15px", lineHeight: 1.65, color: "#111827", margin: "0 0 18px" }}>
                 {t.influencer.reveal}
               </p>
-              <Link href={`/${lang}/influencer`} className="split-cta" style={{
+              <Link href={`/${lang}/influencer`} className="split-cta hsh-cta hsh-cta-inf" style={{
                 ...KT, position: "relative", zIndex: 3, display: "inline-flex", alignItems: "center", gap: "10px",
                 background: "#ff0089", color: "#ffffff", borderRadius: "50px", padding: "13px 12px 13px 26px",
                 fontSize: "15px", fontWeight: 600, textDecoration: "none",
@@ -560,7 +560,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
             <p style={{ ...KT, fontSize: "12.5px", lineHeight: 1.5, color: "#111827", textAlign: "center", margin: "10px 0 0", position: "relative" }}>
               {t.brand.mobileDesc}
             </p>
-            <Link href={`/${lang}/brand`} style={{
+            <Link href={`/${lang}/brand`} className="hsh-cta hsh-cta-brand" style={{
               ...KT, display: "inline-flex", alignItems: "center", gap: "6px",
               background: "#5f26e5", color: "#ffffff", borderRadius: "50px", padding: "10px 10px 10px 18px",
               fontSize: "13px", fontWeight: 600, textDecoration: "none", marginTop: "16px",
@@ -589,7 +589,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
             <p style={{ ...KT, fontSize: "12.5px", lineHeight: 1.5, color: "#111827", textAlign: "center", margin: "10px 0 0" }}>
               {t.influencer.mobileDesc}
             </p>
-            <Link href={`/${lang}/influencer`} style={{
+            <Link href={`/${lang}/influencer`} className="hsh-cta hsh-cta-inf" style={{
               ...KT, display: "inline-flex", alignItems: "center", gap: "6px",
               background: "#ff0089", color: "#ffffff", borderRadius: "50px", padding: "10px 10px 10px 18px",
               fontSize: "13px", fontWeight: 600, textDecoration: "none", marginTop: "16px",
@@ -603,6 +603,17 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
       </div>
 
       <style>{`
+        /* CTAs: on hover / press the pill flips to white and the label takes the button's colour */
+        .hsh-cta{ transition: background-color .3s ease, color .3s ease, box-shadow .3s ease, transform .3s cubic-bezier(.22,1,.36,1); }
+        .hsh-cta svg, .hsh-cta span{ transition: color .3s ease, background-color .3s ease, transform .3s ease; }
+        .hsh-cta:hover, .hsh-cta:active, .hsh-cta:focus-visible{ background: #ffffff !important; transform: translateY(-2px); }
+        .hsh-cta:active{ transform: translateY(0) scale(.97); }
+        .hsh-cta-brand:hover, .hsh-cta-brand:active, .hsh-cta-brand:focus-visible{ color: #5f26e5 !important; box-shadow: 0 12px 26px rgba(95,38,229,0.28), inset 0 0 0 1.5px #5f26e5 !important; }
+        .hsh-cta-inf:hover, .hsh-cta-inf:active, .hsh-cta-inf:focus-visible{ color: #ff0089 !important; box-shadow: 0 12px 26px rgba(255,0,137,0.26), inset 0 0 0 1.5px #ff0089 !important; }
+        .hsh-cta:hover svg{ transform: translateX(3px); }
+        .hsh-cta-brand:hover > span, .hsh-cta-brand:active > span{ background: rgba(95,38,229,0.12) !important; }
+        .hsh-cta-inf:hover > span, .hsh-cta-inf:active > span{ background: rgba(255,0,137,0.12) !important; }
+        @media (prefers-reduced-motion: reduce){ .hsh-cta, .hsh-cta svg{ transition: none; } .hsh-cta:hover{ transform: none; } }
         .hsm-grid{ display: grid; grid-template-columns: 1fr 1fr; column-gap: 10px; }
         .hsm-card{ display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; justify-items: center; align-items: start; }
         .hsm-art{ width: 100%; display: flex; align-items: center; justify-content: center; align-self: center; }
