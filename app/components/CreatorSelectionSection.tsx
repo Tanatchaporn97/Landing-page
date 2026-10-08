@@ -7,15 +7,32 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
 
 const TAGS = ["Location", "Demographic", "Content Category", "Occupation", "Persona", "Storytelling"];
-const KEYWORDS = ["Influencer Marketing", "KOL Matching", "Buddy Review", "Data-Driven"];
-const CONTENT_TYPES = ["Review", "UGC", "Live", "Reels"];
-const SIMILAR_CREATORS = [
-  { name: "Creator A", img: "/creator-mockup/cheese.jpg" },
-  { name: "Creator B", img: "/creator-mockup/puifai.jpg" },
-  { name: "Creator C", img: "/creator-mockup/yam.jpg" },
-  { name: "Creator D", img: "/creator-mockup/may.jpg" },
+// Mock KOL Discovery profile (mirrors the real report: profile, stats strip, Insight tabs,
+// 6 Pillars, Audience and Lookalikes) for one fictional creator.
+const STATS = [
+  { k: "Followers", v: "48,600" },
+  { k: "Avg. Likes", v: "2,980" },
+  { k: "ER", v: "6.13%" },
+  { k: "Avg. Views", v: "21,400" },
+  { k: "Total Post", v: "612" },
 ];
-const AGE_BARS = [28, 62, 48, 20, 10];
+const PILLARS = [
+  { t: "Demographic", tags: ["ผู้หญิง", "อายุ 20–30 ปี", "คนไทย"] },
+  { t: "Content Category", tags: ["ความงาม", "สกินแคร์", "Lifestyle"] },
+  { t: "Persona", tags: ["สายบิวตี้", "Good looking", "คนเมือง"] },
+];
+const AGES = [
+  { r: "13–17", v: 5 }, { r: "18–24", v: 31 }, { r: "25–34", v: 52 }, { r: "35–44", v: 10 }, { r: "45+", v: 2 },
+];
+const CITIES = [
+  { c: "Bangkok", v: 46 }, { c: "Chiang Mai", v: 7 }, { c: "Chon Buri", v: 4 },
+];
+const LOOKALIKES = [
+  { n: "rosie.beauty", l: "3,120", f: "52,840", c: "#f472b6" },
+  { n: "nudenotes.th", l: "2,410", f: "39,120", c: "#a78bfa" },
+  { n: "glowwithpim", l: "4,870", f: "71,300", c: "#fb923c" },
+];
+const TINY: CSSProperties = { ...KT, fontSize: "10px", fontWeight: 600, color: "#6b7280", letterSpacing: ".02em" };
 
 const panelStyle: CSSProperties = {
   background: "rgba(255,255,255,0.55)",
@@ -67,164 +84,138 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
         </p>
       </div>
 
-      {/* Right — KOL discovery dashboard mockup */}
+      {/* Right — KOL Discovery creator profile mockup */}
       <div className="cs-dashboard" style={{
-        position: "relative", borderRadius: "28px", padding: "22px 26px",
+        position: "relative", borderRadius: "28px", padding: "22px 24px",
         background: "rgba(255,255,255,0.55)", border: "1px solid rgba(255,255,255,0.8)",
         boxShadow: "0 30px 60px -20px rgba(95,38,229,0.28), 0 10px 24px -12px rgba(255,0,137,0.12)",
         backdropFilter: "blur(14px)", overflow: "hidden",
-        transition: "transform 0.35s ease, box-shadow 0.35s ease",
+        transition: "transform 0.35s ease, box-shadow 0.35s ease", ...KT,
       }}>
-        {/* Header row */}
-        <div style={{ display: "flex", alignItems: "center", marginBottom: "14px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "8px", background: "#ffffff", padding: "6px 14px",
-            borderRadius: "50px", boxShadow: "0 4px 10px -4px rgba(95,38,229,0.2)" }}>
-            <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "linear-gradient(135deg, #5f25e5, #ff0089)", flexShrink: 0 }} />
-            <span style={{ ...KT, fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", color: "#5f26e5" }}>KOL DISCOVERY</span>
+        {/* top bar */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", background: "#ffffff", padding: "6px 14px", borderRadius: "50px", boxShadow: "0 4px 12px -6px rgba(95,38,229,0.3)" }}>
+            <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "linear-gradient(135deg,#5f25e5,#ff0089)" }} />
+            <span style={{ fontSize: "12px", fontWeight: 800, color: "#5f26e5", letterSpacing: ".06em" }}>KOL DISCOVERY</span>
+          </div>
+          <div style={{ display: "flex", gap: "8px" }}>
+            <span style={{ fontSize: "11px", fontWeight: 600, color: "#111827", padding: "6px 12px", borderRadius: "8px", background: "#fff", border: "1px solid rgba(255,0,137,0.35)" }}>⤓ Download Report (.pdf)</span>
+            <span style={{ fontSize: "11px", fontWeight: 600, color: "#111827", padding: "6px 12px", borderRadius: "8px", background: "#fff", border: "1px solid rgba(95,38,229,0.35)" }}>☆ Save</span>
           </div>
         </div>
 
-        {/* Profile row — Buddy Review's own agency profile */}
-        <div style={{ ...panelStyle, display: "flex", alignItems: "center", gap: "16px", marginBottom: "14px" }}>
-          <div style={{ position: "relative", width: "46px", height: "46px", borderRadius: "50%", flexShrink: 0, overflow: "hidden",
-            boxShadow: "0 4px 12px -2px rgba(95,38,229,0.35)", border: "2px solid #ffffff", background: "#5f26e5",
-            display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <Image src="/bd-mark.svg" alt="Buddy Review" width={30} height={30} style={{ objectFit: "contain" }} />
-          </div>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <p style={{ ...KT, fontSize: "18px", fontWeight: 800, color: "#5f26e5", margin: "0 0 2px" }}>Buddy Review</p>
-            <p style={{ ...KT, fontSize: "13px", color: "#4b5563", margin: 0 }}>
-              {lang === "th" ? "เอเจนซี่การตลาดอินฟลูเอนเซอร์ · กรุงเทพฯ" : "Influencer Marketing Agency · Bangkok"}
-            </p>
-          </div>
-          <div className="cs-stats-inline" style={{ display: "flex", gap: "18px", ...KT, fontSize: "13px", color: "#4b5563" }}>
-            <span><strong style={{ color: "#5f26e5" }}>1M+</strong> {lang === "th" ? "เครือข่ายอินฟลูเอนเซอร์" : "Influencer Network"}</span>
-            <span><strong style={{ color: "#5f26e5" }}>1,000+</strong> {lang === "th" ? "ลูกค้าที่ไว้วางใจ" : "Trusted Clients"}</span>
-            <span><strong style={{ color: "#5f26e5" }}>4,000+</strong> {lang === "th" ? "แคมเปญ" : "Campaigns"}</span>
-          </div>
-        </div>
-
-        {/* Charts row — 3 balanced panels so no single box carries empty space */}
-        <div className="cs-charts-row" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "14px", marginBottom: "14px" }}>
-
-          <div style={{ ...panelStyle, display: "flex", flexDirection: "column" }}>
-            <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 4px" }}>
-              {lang === "th" ? "กลุ่มผู้ชม" : "Audience Demographic"}
-            </p>
-            <p style={{ ...KT, fontSize: "11px", color: "#4b5563", margin: "0 0 10px" }}>
-              {lang === "th" ? "การกระจายอายุ" : "Age Distribution"}
-            </p>
-            <div style={{ flex: 1, display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "8px", minHeight: "58px" }}>
-              {AGE_BARS.map((h, i) => (
-                <div key={i} style={{ flex: 1, height: `${h}%`, borderRadius: "4px",
-                  background: i === 1 ? "linear-gradient(180deg, #ff0089 0%, #5f25e5 100%)" : "rgba(95,38,229,0.15)",
-                  boxShadow: i === 1 ? "0 3px 8px -2px rgba(255,0,137,0.4)" : "none" }} />
-              ))}
+        {/* profile + stats strip */}
+        <div style={{ ...panelStyle, display: "grid", gridTemplateColumns: "auto 1fr", gap: "16px", alignItems: "center", marginBottom: "12px" }}>
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
+              <span style={{ position: "relative", width: "36px", height: "36px", borderRadius: "50%", overflow: "hidden", flexShrink: 0, boxShadow: "0 0 0 2px #fff" }}>
+                <Image src="/creator-mockup/milin-avatar.jpg" alt="" fill sizes="36px" style={{ objectFit: "cover" }} />
+              </span>
+              <span style={{ fontSize: "15px", fontWeight: 700, color: "#111827" }}>milin.daily</span>
+              <span style={{ position: "relative", width: "14px", height: "14px" }}><Image src="/social-icons/instagram.png" alt="Instagram" fill sizes="14px" style={{ objectFit: "contain" }} /></span>
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between", ...KT, fontSize: "10px", color: "#4b5563", marginTop: "8px" }}>
-              {["18-24","25-34","35-44","45-54","55+"].map((a) => <span key={a}>{a}</span>)}
-            </div>
-          </div>
-
-          <div style={{ ...panelStyle, display: "flex", flexDirection: "column" }}>
-            <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 4px" }}>
-              {lang === "th" ? "สัดส่วนเพศ" : "Gender Split"}
-            </p>
-            <p style={{ ...KT, fontSize: "11px", color: "#4b5563", margin: "0 0 10px" }}>
-              {lang === "th" ? "ตามเพศของผู้ชม" : "By audience gender"}
-            </p>
-            <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "10px" }}>
-              <div style={{
-                width: "72px", height: "72px", borderRadius: "50%", flexShrink: 0,
-                background: "conic-gradient(#ff0089 0% 72%, #5f25e5 72% 100%)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                boxShadow: "0 6px 16px -4px rgba(95,38,229,0.35)",
-              }}>
-                <div style={{ width: "48px", height: "48px", borderRadius: "50%", background: "#ffffff",
-                  display: "flex", alignItems: "center", justifyContent: "center", ...KT, fontSize: "14px", fontWeight: 800, color: "#5f26e5" }}>
-                  72%
-                </div>
-              </div>
-              <div style={{ display: "flex", gap: "16px", ...KT, fontSize: "12px", color: "#4b5563" }}>
-                <span><span style={{ display: "inline-block", width: "8px", height: "8px", borderRadius: "50%", background: "#ff0089", marginRight: "6px" }} />{lang === "th" ? "หญิง 72%" : "Female 72%"}</span>
-                <span><span style={{ display: "inline-block", width: "8px", height: "8px", borderRadius: "50%", background: "#5f25e5", marginRight: "6px" }} />{lang === "th" ? "ชาย 28%" : "Male 28%"}</span>
-              </div>
-            </div>
-          </div>
-
-          <div style={{ ...panelStyle, display: "flex", flexDirection: "column" }}>
-            <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 4px" }}>
-              {lang === "th" ? "Engagement รายสัปดาห์" : "Engagement by Week"}
-            </p>
-            <p style={{ ...KT, fontSize: "11px", color: "#4b5563", margin: "0 0 10px" }}>
-              {lang === "th" ? "แนวโน้มล่าสุด" : "Recent engagement trend"}
-            </p>
-            <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
-              <svg viewBox="0 0 220 70" width="100%" height="100%" preserveAspectRatio="none" style={{ minHeight: "58px" }}>
-                <defs>
-                  <linearGradient id="cs-area" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#5f25e5" stopOpacity="0.35" />
-                    <stop offset="100%" stopColor="#5f25e5" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-                <path d="M0,50 C20,45 30,20 50,25 C70,30 80,55 100,50 C120,45 130,15 150,18 C170,21 180,40 200,35 C210,32 215,30 220,28 L220,70 L0,70 Z" fill="url(#cs-area)" />
-                <path d="M0,50 C20,45 30,20 50,25 C70,30 80,55 100,50 C120,45 130,15 150,18 C170,21 180,40 200,35 C210,32 215,30 220,28" fill="none" stroke="#ff0089" strokeWidth="2.5" />
-              </svg>
-              <div style={{ display: "flex", justifyContent: "space-between", ...KT, fontSize: "10px", color: "#4b5563", marginTop: "8px" }}>
-                {["W1","W2","W3","W4","W5","W6","W7"].map((w) => <span key={w}>{w}</span>)}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Keywords + content type row */}
-        <div className="cs-tags-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", marginBottom: "14px" }}>
-          <div style={panelStyle}>
-            <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 8px" }}>
-              {lang === "th" ? "คีย์เวิร์ดที่เกี่ยวข้อง" : "Related Keywords"}
-            </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-              {KEYWORDS.map((k) => (
-                <span key={k} style={{ ...KT, fontSize: "12px", color: "#5f26e5", padding: "6px 12px",
-                  borderRadius: "50px", background: "rgba(95,38,229,0.06)", border: "1px solid rgba(95,38,229,0.15)" }}>
-                  {k}
+            <div style={{ display: "flex", gap: "6px" }}>
+              {[1, 2, 3].map((n) => (
+                <span key={n} style={{ position: "relative", width: "58px", height: "58px", borderRadius: "8px", overflow: "hidden" }}>
+                  <Image src={`/creator-mockup/milin-post-${n}.jpg`} alt="" fill sizes="58px" style={{ objectFit: "cover" }} />
                 </span>
               ))}
             </div>
           </div>
-          <div style={panelStyle}>
-            <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 10px" }}>
-              {lang === "th" ? "ประเภทคอนเทนต์" : "Content Type"}
-            </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-              {CONTENT_TYPES.map((c) => (
-                <span key={c} style={{ ...KT, fontSize: "12px", color: "#5f26e5", padding: "6px 12px",
-                  borderRadius: "50px", background: "rgba(95,38,229,0.06)", border: "1px solid rgba(95,38,229,0.15)" }}>
-                  {c}
-                </span>
-              ))}
+          <div style={{ borderRadius: "12px", border: "1.5px solid rgba(17,24,39,0.7)", background: "#fff", padding: "12px 14px", display: "grid", gridTemplateColumns: "1.4fr repeat(5, 1fr)", gap: "8px" }}>
+            <div>
+              <div style={TINY}>Raw Cost (THB)</div>
+              <div style={{ fontSize: "15px", fontWeight: 700, color: "#111827", marginTop: "4px" }}>45,000</div>
+              <div style={{ fontSize: "9.5px", color: "#6b7280", marginTop: "2px" }}>(12,000 – 60,000)</div>
             </div>
-          </div>
-        </div>
-
-        {/* Similar creators */}
-        <div style={panelStyle}>
-          <p style={{ ...KT, fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 8px" }}>
-            {lang === "th" ? "ครีเอเตอร์ที่คล้ายกัน" : "Similar Creators"}
-          </p>
-          <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
-            {SIMILAR_CREATORS.map((creator) => (
-              <div key={creator.name} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <div style={{ position: "relative", width: "28px", height: "28px", borderRadius: "50%", flexShrink: 0,
-                  background: "#e5e7eb", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#4b5563" aria-hidden="true">
-                    <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12Zm0 2.5c-3.3 0-9.8 1.6-9.8 4.9v1.4a1 1 0 0 0 1 1h17.6a1 1 0 0 0 1-1v-1.4c0-3.3-6.5-4.9-9.8-4.9Z" />
-                  </svg>
-                </div>
-                <span style={{ ...KT, fontSize: "13px", color: "#4b5563" }}>{creator.name}</span>
+            {STATS.map((x) => (
+              <div key={x.k}>
+                <div style={TINY}>{x.k}</div>
+                <div style={{ fontSize: "15px", fontWeight: 700, color: "#111827", marginTop: "4px" }}>{x.v}</div>
               </div>
             ))}
           </div>
+        </div>
+
+        {/* tabs */}
+        <div style={{ display: "flex", alignItems: "center", gap: "20px", marginBottom: "12px" }}>
+          <div style={{ display: "inline-flex", padding: "3px", borderRadius: "50px", background: "rgba(255,255,255,0.7)", border: "1px solid rgba(95,38,229,0.12)" }}>
+            {["Insight", "Rate Card", "Budget", "Contact"].map((t, i) => (
+              <span key={t} style={{ fontSize: "11.5px", fontWeight: 600, padding: "6px 14px", borderRadius: "50px", color: i ? "#4b5563" : "#5f26e5", background: i ? "transparent" : "#fff", boxShadow: i ? "none" : "0 2px 8px -3px rgba(95,38,229,0.35)" }}>{t}</span>
+            ))}
+          </div>
+          <div style={{ display: "flex", gap: "16px" }}>
+            {["Influencer", "Audience", "Lookalikes"].map((t, i) => (
+              <span key={t} style={{ fontSize: "11.5px", fontWeight: 600, paddingBottom: "4px", color: i === 1 ? "#5f26e5" : "#4b5563", borderBottom: i === 1 ? "2px solid #5f26e5" : "2px solid transparent" }}>{t}</span>
+            ))}
+          </div>
+        </div>
+
+        {/* 6 pillars (3 shown) */}
+        <div className="cs-row3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", marginBottom: "12px" }}>
+          {PILLARS.map((pl) => (
+            <div key={pl.t} style={panelStyle}>
+              <p style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 8px" }}>{pl.t}</p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                {pl.tags.map((t) => <span key={t} style={{ fontSize: "11px", color: "#5f26e5", padding: "4px 10px", borderRadius: "50px", border: "1px solid rgba(95,38,229,0.25)", background: "rgba(255,255,255,0.7)" }}>{t}</span>)}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* audience */}
+        <div className="cs-row3" style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr 1fr", gap: "12px", marginBottom: "12px" }}>
+          <div style={panelStyle}>
+            <p style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 10px" }}>Gender</p>
+            <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+              <div style={{ width: "62px", height: "62px", borderRadius: "50%", flexShrink: 0, background: "conic-gradient(#f472b6 0 84%, #1e1b6b 84% 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "#fff" }} />
+              </div>
+              <div style={{ fontSize: "11px", color: "#374151", lineHeight: 1.7 }}>
+                <div><span style={{ display: "inline-block", width: "7px", height: "7px", borderRadius: "50%", background: "#f472b6", marginRight: "6px" }} />Female <b>84%</b></div>
+                <div><span style={{ display: "inline-block", width: "7px", height: "7px", borderRadius: "50%", background: "#1e1b6b", marginRight: "6px" }} />Male <b>16%</b></div>
+              </div>
+            </div>
+          </div>
+          <div style={panelStyle}>
+            <p style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 8px" }}>Age</p>
+            {AGES.map((a) => (
+              <div key={a.r} style={{ display: "grid", gridTemplateColumns: "38px 1fr 30px", alignItems: "center", gap: "6px", marginBottom: "3px" }}>
+                <span style={{ fontSize: "10px", color: "#6b7280" }}>{a.r}</span>
+                <span style={{ height: "5px", borderRadius: "5px", background: "rgba(95,38,229,0.1)" }}><span style={{ display: "block", height: "100%", width: `${a.v * 1.8}%`, borderRadius: "5px", background: "linear-gradient(90deg,#5f25e5,#ff0089)" }} /></span>
+                <span style={{ fontSize: "10px", color: "#374151", textAlign: "right" }}>{a.v}%</span>
+              </div>
+            ))}
+          </div>
+          <div style={panelStyle}>
+            <p style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 8px" }}>Location by City</p>
+            {CITIES.map((c) => (
+              <div key={c.c} style={{ marginBottom: "6px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "10.5px", color: "#374151" }}><span>{c.c}</span><span>{c.v}%</span></div>
+                <span style={{ display: "block", height: "5px", borderRadius: "5px", background: "rgba(95,38,229,0.1)", marginTop: "3px" }}><span style={{ display: "block", height: "100%", width: `${c.v * 2}%`, borderRadius: "5px", background: "#2b7a8c" }} /></span>
+              </div>
+            ))}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginTop: "8px" }}>
+              <span style={TINY}>Audience Credibility</span><span style={{ fontSize: "14px", fontWeight: 700, color: "#111827" }}>78.4%</span>
+            </div>
+          </div>
+        </div>
+
+        {/* lookalikes */}
+        <div style={panelStyle}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 80px 80px", gap: "8px", marginBottom: "6px" }}>
+            <span style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5" }}>Lookalikes (by Audience)</span>
+            <span style={TINY}>LIKES</span><span style={TINY}>FOLLOWERS</span>
+          </div>
+          {LOOKALIKES.map((l) => (
+            <div key={l.n} style={{ display: "grid", gridTemplateColumns: "1fr 80px 80px", gap: "8px", alignItems: "center", padding: "5px 0", borderTop: "1px solid rgba(95,38,229,0.08)" }}>
+              <span style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "12px", fontWeight: 600, color: "#1e1b4b" }}>
+                <span style={{ width: "22px", height: "22px", borderRadius: "50%", background: l.c, color: "#fff", fontSize: "10px", fontWeight: 700, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{l.n[0].toUpperCase()}</span>{l.n}
+              </span>
+              <span style={{ fontSize: "11.5px", color: "#374151" }}>{l.l}</span>
+              <span style={{ fontSize: "11.5px", color: "#374151" }}>{l.f}</span>
+            </div>
+          ))}
         </div>
       </div>
 
