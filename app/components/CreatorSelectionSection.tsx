@@ -7,14 +7,14 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
 
 const TAGS = ["Location", "Demographic", "Content Category", "Occupation", "Persona", "Storytelling"];
-// Mock KOL Discovery profile (mirrors the real report: profile, stats strip, Insight tabs,
+// Mock KOL Discovery profile of a micro creator (10K–100K followers) (mirrors the real report: profile, stats strip, Insight tabs,
 // 6 Pillars, Audience and Lookalikes) for one fictional creator.
 const STATS = [
   { k: "Followers", v: "48,600" },
-  { k: "Avg. Likes", v: "2,980" },
-  { k: "ER", v: "6.13%" },
+  { k: "Avg. Likes", v: "1,850" },
+  { k: "ER", v: "3.81%" },
   { k: "Avg. Views", v: "-" },
-  { k: "Total Post", v: "612" },
+  { k: "Total Post", v: "614" },
 ];
 const PILLARS = [
   { t: "Demographic", tags: ["ผู้หญิง", "อายุ 20–30 ปี", "คนไทย"] },
@@ -125,8 +125,8 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
           <div style={{ borderRadius: "12px", border: "1.5px solid rgba(17,24,39,0.7)", background: "#fff", padding: "12px 14px", display: "grid", gridTemplateColumns: "1.4fr repeat(5, 1fr)", gap: "8px" }}>
             <div>
               <div style={TINY}>Raw Cost (THB)</div>
-              <div style={{ fontSize: "15px", fontWeight: 700, color: "#111827", marginTop: "4px" }}>45,000</div>
-              <div style={{ fontSize: "9.5px", color: "#6b7280", marginTop: "2px" }}>(12,000 – 60,000)</div>
+              <div style={{ fontSize: "15px", fontWeight: 700, color: "#111827", marginTop: "4px" }}>15,000</div>
+              <div style={{ fontSize: "9.5px", color: "#6b7280", marginTop: "2px" }}>(8,000 – 25,000)</div>
             </div>
             {STATS.map((x) => (
               <div key={x.k}>
