@@ -67,11 +67,13 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
 
       <style>{`
         .hww-row{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
-        /* light dashboard-tile style (like the KOL Discovery panel): near-white card, brand purple
+        /* white glassmorphism tiles: frosted translucent white, brand purple
            heading, dark copy, pink→purple initial */
         .hww-card{ position: relative; overflow: hidden; min-height: 340px; padding: 26px 24px 24px; border-radius: 28px; color: #2a2346;
-          background: rgba(244,241,252,0.94); border: 1px solid rgba(255,255,255,0.9);
-          box-shadow: 0 18px 40px -22px rgba(20,6,80,0.55);
+          background: linear-gradient(160deg, rgba(255,255,255,0.62) 0%, rgba(255,255,255,0.32) 100%);
+          border: 1px solid rgba(255,255,255,0.85);
+          backdrop-filter: blur(22px) saturate(160%); -webkit-backdrop-filter: blur(22px) saturate(160%);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.95), 0 18px 40px -22px rgba(60,20,140,0.35);
           transition: transform .35s ease, box-shadow .35s ease; }
         .hww-card:hover{ transform: translateY(-6px); box-shadow: 0 26px 50px -22px rgba(20,6,80,0.65); }
         .hww-title{ margin: 0 0 14px; font-weight: 700; line-height: 1.15; color: #5f26e5; }
