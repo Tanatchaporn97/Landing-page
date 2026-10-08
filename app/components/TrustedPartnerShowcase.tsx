@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { ServiceCard } from "@/components/ui/service-card";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -16,8 +15,6 @@ const ITEMS = [
   { title: "Your Goals Drive Results", desc: "มุ่งผลลัพธ์ที่เชื่อมกับเป้าหมายของแบรนด์จริง",            descEn: "Results tied to your brand's real goals.",                            src: "/how-we-work/icon-goals.webp" },
 ];
 
-// white glassmorphism cards over the dark-blue section background
-const VARIANTS = ["glass", "glass", "glass", "glass", "glass"] as const;
 
 export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) {
   const header = (
@@ -51,46 +48,65 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
     <div className="py-5 sm:py-10">
       <div className="mb-8 sm:mb-12">{header}</div>
 
-      {/* five cards in one row (≥1280px); narrower screens scroll sideways with snap.
-          Style follows the brand page's "Think Smarter, Execute Better" cards: light card,
-          bold title, muted copy, 3D art bleeding off the bottom-right corner. */}
-      {/* five ServiceCards in one row (≥1280px); narrower screens scroll sideways with snap */}
+      {/* B · U · D · D · Y — each principle's first letter spells BUDDY. The letter is the hero of
+          the card; the title repeats it in gradient so the word and its meaning read together. */}
       <div className="hww-row">
         {ITEMS.map((item, i) => (
-          <ServiceCard
-            key={item.title}
-            title={item.title}
-            description={lang === "th" ? item.desc : item.descEn}
-            href={`/${lang}/brand`}
-            imgSrc={item.src}
-            imgAlt=""
-            showCta={false}
-            variant={VARIANTS[i]}
-            className="hww-card min-h-[320px] rounded-3xl"
-            imgClassName="w-36 h-36 -right-4 -bottom-3"
-            style={KT}
-          />
+          <div key={item.title} className="hww-card" style={{ ...KT, animationDelay: `${i * 0.08}s` }}>
+            <div className="hww-top">
+              <span className="hww-letter" aria-hidden="true">{item.title[0]}</span>
+              <span className="hww-num" aria-hidden="true">0{i + 1}</span>
+            </div>
+            <h3 className="hww-title">
+              <span className="hww-first">{item.title[0]}</span>{item.title.slice(1)}
+            </h3>
+            <p className="hww-desc">{lang === "th" ? item.desc : item.descEn}</p>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={item.src} alt="" className="hww-icon" />
+          </div>
         ))}
       </div>
 
       <style>{`
         .hww-row{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
-        .hww-row h3{ font-size: clamp(19px,1.5vw,22px); line-height: 1.25; }
-        .hww-row .hww-card a{ position: relative; z-index: 2; }
+        .hww-card{ position: relative; overflow: hidden; min-height: 340px; padding: 26px 24px 24px; border-radius: 26px; color: #fff;
+          background: linear-gradient(160deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.08) 100%);
+          border: 1px solid rgba(255,255,255,0.32); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 18px 40px -22px rgba(10,0,60,0.6);
+          transition: transform .35s ease, border-color .35s ease, background .35s ease; }
+        .hww-card:hover{ transform: translateY(-6px); border-color: rgba(255,255,255,0.6);
+          background: linear-gradient(160deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%); }
+        .hww-top{ display: flex; align-items: flex-start; justify-content: space-between; }
+        .hww-letter{ font-size: 112px; font-weight: 800; line-height: 0.82; letter-spacing: -0.04em;
+          background: linear-gradient(160deg, #ffffff 10%, #f3e8ff 45%, #ff8fd2 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+          filter: drop-shadow(0 8px 18px rgba(255,0,137,0.25)); transition: transform .45s cubic-bezier(.22,1,.36,1); transform-origin: left bottom; }
+        .hww-card:hover .hww-letter{ transform: scale(1.08) rotate(-3deg); }
+        .hww-num{ font-size: 13px; font-weight: 600; letter-spacing: .12em; color: rgba(255,255,255,0.55); padding-top: 6px; }
+        .hww-title{ margin: 22px 0 8px; font-size: clamp(18px,1.4vw,21px); font-weight: 700; line-height: 1.25; }
+        .hww-first{ background: linear-gradient(45deg,#ffd1ec,#ff5fb8); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .hww-desc{ margin: 0; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.82); max-width: 92%; }
+        .hww-icon{ position: absolute; right: -14px; bottom: -14px; width: 120px; height: 120px; object-fit: contain; opacity: .9; pointer-events: none;
+          transition: transform .45s ease, opacity .45s ease; }
+        .hww-card:hover .hww-icon{ transform: translate(-4px,-4px) scale(1.06); opacity: 1; }
         @media (max-width: 1279px){
           .hww-row{ display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
             margin: 0 -24px; padding: 6px 24px 16px; scroll-padding-inline: 24px; }
           .hww-row::-webkit-scrollbar{ display: none; }
           .hww-card{ flex: 0 0 260px; scroll-snap-align: start; }
         }
-        /* phones: stacked full-width list cards — text left, icon right — instead of a swipe row of tall cards */
+        /* phones: stacked list — big letter on the left, copy beside it, icon tucked bottom-right */
         @media (max-width: 640px){
           .hww-row{ display: grid !important; grid-template-columns: 1fr; gap: 12px; overflow: visible; margin: 0; padding: 0; }
-          .hww-card{ flex: none; min-height: 0 !important; padding: 18px 112px 18px 20px !important; border-radius: 20px !important; }
-          .hww-card h3{ font-size: 18px !important; }
-          .hww-card p{ font-size: 13.5px !important; margin-top: 4px !important; }
-          .hww-card img{ width: 88px !important; height: 88px !important; right: 14px !important; top: 50% !important; bottom: auto !important; margin-top: -44px; }
+          .hww-card{ flex: none; min-height: 0; display: grid; grid-template-columns: 64px 1fr; column-gap: 14px; align-items: start;
+            padding: 18px 76px 18px 16px; border-radius: 20px; }
+          .hww-top{ grid-row: 1 / span 2; }
+          .hww-letter{ font-size: 64px; }
+          .hww-num{ display: none; }
+          .hww-title{ margin: 2px 0 4px; font-size: 17px; }
+          .hww-desc{ font-size: 13.5px; max-width: none; }
+          .hww-icon{ width: 72px; height: 72px; right: 6px; bottom: 6px; }
         }
+        @media (prefers-reduced-motion: reduce){ .hww-card, .hww-letter, .hww-icon{ transition: none; } }
       `}</style>
     </div>
   );
