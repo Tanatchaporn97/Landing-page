@@ -134,8 +134,8 @@ export const TestimonialSlider = ({
         </div>
 
         {/* === Center Column: Main Image === */}
-        {/* below md the box keeps the photos' own 2:3 portrait ratio (capped so it isn't huge), so faces are never cropped */}
-        <div className="md:col-span-4 relative w-full max-w-[420px] mx-auto md:max-w-none aspect-[2/3] md:aspect-auto md:h-auto md:min-h-[500px] order-1 md:order-2 overflow-hidden rounded-lg">
+        {/* below md the box is 4:5 (half-body crop), anchored to the top of the photo so heads are never cut */}
+        <div className="md:col-span-4 relative w-full max-w-[420px] mx-auto md:max-w-none aspect-[4/5] md:aspect-auto md:h-auto md:min-h-[500px] order-1 md:order-2 overflow-hidden rounded-lg">
           <AnimatePresence initial={false} custom={direction}>
             <motion.img
               key={currentIndex}
