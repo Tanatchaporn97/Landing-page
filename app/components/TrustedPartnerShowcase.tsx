@@ -21,22 +21,22 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
     <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "24px", flexWrap: "wrap" }}>
       <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
         <div>
-          <Badge variant="outline" className="border-white/40 bg-white/10 text-white backdrop-blur-md">How We Work</Badge>
+          <Badge variant="outline">How We Work</Badge>
         </div>
-        <h3 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, margin: 0, lineHeight: 1.15, color: "#ffffff" }}>
+        <h3 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, margin: 0, lineHeight: 1.15, color: "#111827" }}>
           What Goes Into Every Campaign
         </h3>
-        <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "rgba(255,255,255,0.85)", margin: 0 }}>
+        <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0 }}>
           {lang === "th"
             ? "วิธีทำงานที่ช่วยให้ทุกแคมเปญชัดเจน เป็นระบบ และเดินไปสู่เป้าหมายเดียวกัน"
             : "The principles behind how we think, work, and deliver."}
         </p>
       </div>
       <Link href={`/${lang}/brand`}
-        className="btn-hero rounded-full whitespace-nowrap"
+        className="btn-glass-purple rounded-full whitespace-nowrap"
         style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "10px", padding: "12px 12px 12px 24px", fontSize: "16px", fontWeight: 600, textDecoration: "none" }}>
         {lang === "th" ? "สำหรับแบรนด์" : "For Brands"}
-        <span style={{ width: "24px", height: "24px", borderRadius: "50%", background: "rgba(255,255,255,0.3)", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
+        <span style={{ width: "24px", height: "24px", borderRadius: "50%", background: "rgba(95,38,229,0.12)", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
         </span>
       </Link>
