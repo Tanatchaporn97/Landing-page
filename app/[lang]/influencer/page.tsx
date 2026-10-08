@@ -139,7 +139,13 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
 
       {/* ── Video Showcase ── */}
-      <section className="vs-hero-section" style={{ position: "relative", background: "linear-gradient(180deg, rgba(247,241,252,0) 70%, #F7F1FC 100%), url('/backgrounds/influencer-hero-bg.jpg') center top / cover no-repeat", overflow: "hidden", padding: "195px 0 64px" }}>
+      <section className="vs-hero-section" style={{ position: "relative", overflow: "hidden", padding: "195px 0 64px" }}>
+        {/* hero image fades out to transparent at the bottom, so the page gradient carries straight on
+            into "Brands We Work With" with no seam (on phones the page is taller, so a fixed end colour didn't match) */}
+        <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none",
+          background: "url('/backgrounds/influencer-hero-bg.jpg') center top / cover no-repeat",
+          WebkitMaskImage: "linear-gradient(180deg, #000 0%, #000 55%, rgba(0,0,0,0.989) 57.8%, rgba(0,0,0,0.957) 60.6%, rgba(0,0,0,0.908) 63.4%, rgba(0,0,0,0.844) 66.2%, rgba(0,0,0,0.768) 69.1%, rgba(0,0,0,0.684) 71.9%, rgba(0,0,0,0.593) 74.7%, rgba(0,0,0,0.500) 77.5%, rgba(0,0,0,0.407) 80.3%, rgba(0,0,0,0.316) 83.1%, rgba(0,0,0,0.232) 85.9%, rgba(0,0,0,0.156) 88.8%, rgba(0,0,0,0.092) 91.6%, rgba(0,0,0,0.043) 94.4%, rgba(0,0,0,0.011) 97.2%, rgba(0,0,0,0.000) 100.0%)",
+          maskImage: "linear-gradient(180deg, #000 0%, #000 55%, rgba(0,0,0,0.989) 57.8%, rgba(0,0,0,0.957) 60.6%, rgba(0,0,0,0.908) 63.4%, rgba(0,0,0,0.844) 66.2%, rgba(0,0,0,0.768) 69.1%, rgba(0,0,0,0.684) 71.9%, rgba(0,0,0,0.593) 74.7%, rgba(0,0,0,0.500) 77.5%, rgba(0,0,0,0.407) 80.3%, rgba(0,0,0,0.316) 83.1%, rgba(0,0,0,0.232) 85.9%, rgba(0,0,0,0.156) 88.8%, rgba(0,0,0,0.092) 91.6%, rgba(0,0,0,0.043) 94.4%, rgba(0,0,0,0.011) 97.2%, rgba(0,0,0,0.000) 100.0%)" }} />
         <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "0 16px" }}>
           <h2 style={{ margin: "0 0 24px", lineHeight: 1.1 }}>
             {lang === "th" ? (
