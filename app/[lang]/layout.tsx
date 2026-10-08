@@ -34,13 +34,6 @@ export default async function RootLayout({
   return (
     <html lang={lang} className={`${inter.variable} ${kanit.variable} ${cantataOne.variable} ${playfair.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        {/* Pierson ships in a single (Regular) weight — a thin outline in the text's own colour adds a
-            touch of weight. On gradient (background-clip: text) words the outline is transparent, so the
-            clipped gradient paints through it and the outline follows the gradient. */}
-        <style>{`
-          [style*="Pierson"] { -webkit-text-stroke: 0.8px currentColor; }
-          [style*="Pierson"][style*="background-clip"], [style*="Pierson"] [style*="background-clip"] { -webkit-text-stroke: 0.8px transparent; }
-        `}</style>
         <CtaPressEffect />
         {children}
         <FloatingContactCTA lang={lang === "en" ? "en" : "th"} />
