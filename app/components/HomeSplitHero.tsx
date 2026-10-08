@@ -608,8 +608,8 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
         .hsh-cta svg, .hsh-cta span{ transition: color .3s ease, background-color .3s ease, transform .3s ease; }
         .hsh-cta:hover, .hsh-cta:active, .hsh-cta:focus-visible{ background: #ffffff !important; transform: translateY(-2px); }
         .hsh-cta:active{ transform: translateY(0) scale(.97); }
-        .hsh-cta-brand:hover, .hsh-cta-brand:active, .hsh-cta-brand:focus-visible{ color: #5f26e5 !important; box-shadow: 0 12px 26px rgba(95,38,229,0.28), inset 0 0 0 1.5px #5f26e5 !important; }
-        .hsh-cta-inf:hover, .hsh-cta-inf:active, .hsh-cta-inf:focus-visible{ color: #ff0089 !important; box-shadow: 0 12px 26px rgba(255,0,137,0.26), inset 0 0 0 1.5px #ff0089 !important; }
+        .hsh-cta-brand:hover, .hsh-cta-brand:active, .hsh-cta-brand:focus-visible{ color: #5f26e5 !important; box-shadow: 0 12px 26px rgba(95,38,229,0.28) !important; }
+        .hsh-cta-inf:hover, .hsh-cta-inf:active, .hsh-cta-inf:focus-visible{ color: #ff0089 !important; box-shadow: 0 12px 26px rgba(255,0,137,0.26) !important; }
         .hsh-cta:hover svg{ transform: translateX(3px); }
         .hsh-cta-brand:hover > span, .hsh-cta-brand:active > span{ background: rgba(95,38,229,0.12) !important; }
         .hsh-cta-inf:hover > span, .hsh-cta-inf:active > span{ background: rgba(255,0,137,0.12) !important; }
