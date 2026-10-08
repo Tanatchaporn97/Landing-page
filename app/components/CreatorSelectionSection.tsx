@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState, type CSSProperties } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { Badge } from "@/components/ui/badge";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -160,6 +160,16 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
   const [hot, setHot] = useState<string | null>(null);
   // Influencer tab = the 6 pillars + headline audience (9 boxes); Audience tab = the full audience breakdown
   const [tab, setTab] = useState<"Influencer" | "Audience" | "Lookalikes">("Influencer");
+  // the sub-tabs cycle on their own every 5s; paused while the visitor is hovering the dashboard
+  // or a signal chip, and restarted from the chosen tab after any manual switch
+  const [paused, setPaused] = useState(false);
+  useEffect(() => {
+    if (paused || hot) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const order = ["Influencer", "Audience", "Lookalikes"] as const;
+    const id = setInterval(() => setTab((t) => order[(order.indexOf(t) + 1) % order.length]), 5000);
+    return () => clearInterval(id);
+  }, [paused, hot, tab]);
   return (
     <div className="cs-grid" style={{ display: "grid", gridTemplateColumns: "0.62fr 2fr", gap: "48px", alignItems: "center" }}>
       {/* Left — eyebrow, heading, description, filter tags */}
@@ -205,7 +215,7 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
       </div>
 
       {/* Right — KOL Discovery creator profile mockup */}
-      <div className="cs-dashboard" style={{
+      <div className="cs-dashboard" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} style={{
         position: "relative", borderRadius: "28px", padding: "22px 24px",
         background: "rgba(255,255,255,0.55)", border: "1px solid rgba(255,255,255,0.8)",
         boxShadow: "0 30px 60px -20px rgba(95,38,229,0.28), 0 10px 24px -12px rgba(255,0,137,0.12)",
@@ -371,7 +381,8 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
         .cs-chip.is-hot, .cs-chip:active{ background: #ffffff !important; color: #5f26e5 !important; border-color: #ffffff !important;
           transform: translateY(-3px); box-shadow: 0 12px 24px -10px rgba(20,6,80,.55); }
         .cs-pillar{ transition: background .35s ease; }
-        .cs-view{ grid-area: 1 / 1; transition: opacity .3s ease; }
+        .cs-view{ grid-area: 1 / 1; transition: opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1); }
+        .cs-view[style*="hidden"]{ transform: translateY(8px); }
         .cs-subtab:hover{ color: #5f26e5 !important; }
         .cs-pillar.is-hot{ background: #ffffff !important; }
         @media (prefers-reduced-motion: reduce){ .cs-chip, .cs-pillar{ transition: none; } .cs-chip.is-hot{ transform: none; } }
