@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { motion, animate, useTransform, useReducedMotion, useMotionValue, type MotionValue } from "motion/react";
+import { motion, useScroll, useTransform, useReducedMotion, useMotionValue, type MotionValue } from "motion/react";
 
 // About Us hero — dark, typography-led. Three statements; DATA / PEOPLE / RESULTS are the
 // oversized anchors. While the section is pinned, scrolling draws the three keywords toward
@@ -118,9 +118,11 @@ function Keyword({ w: base, i, p, still, mobile }: { w: (typeof WORDS)[number]; 
 
 export default function AboutKeywordHero() {
   const ref = useRef<HTMLElement>(null);
-  // A compact hero (the intro copy shows beneath it), so the sequence plays on its own instead of
-  // pinning the page: reveal → hold → keywords converge → logo, which then stays.
+  // Scroll-driven with a short pin: the hero arrives showing the three statements, then holds
+  // in place for ~70vh of scrolling while the keywords drift together, their lead lines fade
+  // and they resolve into the logo; after that the page simply carries on.
   const p = useMotionValue(0);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
 
   // read the motion preference only after mount, so server and first client render match
   const prefersReduced = useReducedMotion();
@@ -129,9 +131,12 @@ export default function AboutKeywordHero() {
   const [mobile, setMobile] = useState(false);
   useEffect(() => {
     if (!mounted || prefersReduced) return;
-    const c = animate(p, 0.75, { delay: 4.6, duration: 3.6, ease: [0.45, 0, 0.25, 1] });
-    return () => c.stop();
-  }, [mounted, prefersReduced, p]);
+    // mirror into a plain motion value (scroll-linked opacity handed to the browser's native
+    // scroll timeline mis-measures this section)
+    const sync = (v: number) => p.set(Math.min(1, Math.max(0, v)) * 0.75);
+    sync(scrollYProgress.get());
+    return scrollYProgress.on("change", sync);
+  }, [mounted, prefersReduced, p, scrollYProgress]);
   useEffect(() => {
     setMounted(true);
     const mq = window.matchMedia("(max-width: 767px)");
@@ -144,8 +149,9 @@ export default function AboutKeywordHero() {
   const lineOpacity = useTransform(p, [0.58, 0.7], [0, 1]);
 
   return (
-    <section ref={ref} data-dark-hero className="akh" style={{ position: "relative", ["--akh-h" as string]: "max(540px, min(80svh, 820px))", height: "calc(var(--akh-h) + 150px)", background: HERO_BG }}>
-      <div style={{ position: "relative", height: "100%", overflow: "hidden" }}>
+    <section ref={ref} data-dark-hero className="akh" style={{ position: "relative", ["--akh-h" as string]: "max(540px, min(80svh, 820px))",
+      height: reduce ? "calc(var(--akh-h) + 150px)" : "calc(var(--akh-h) + 150px + 70vh)" }}>
+      <div style={{ position: "sticky", top: 0, height: "calc(var(--akh-h) + 150px)", overflow: "hidden", background: HERO_BG }}>
         {/* atmosphere: pink–purple glow */}
         <div aria-hidden style={{ position: "absolute", inset: "-20%",
           background: "radial-gradient(42% 38% at 30% 32%, rgba(124,58,237,0.30) 0%, transparent 70%), radial-gradient(36% 34% at 72% 70%, rgba(255,0,137,0.20) 0%, transparent 72%), radial-gradient(60% 60% at 50% 50%, rgba(95,37,229,0.10) 0%, transparent 80%)",
