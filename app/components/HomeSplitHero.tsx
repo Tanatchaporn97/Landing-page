@@ -539,17 +539,18 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           </p>
         </div>
 
-        <div style={{ display: "flex", alignItems: "stretch", gap: "10px", padding: "20px 12px 32px" }}>
+        {/* the two cards share one subgrid, so art / label / tagline / description / CTA sit on the same rows */}
+        <div className="hsm-grid" style={{ padding: "20px 12px 32px" }}>
           {/* Brand mobile side */}
           <div style={{
             flex: 1, minWidth: 0, borderRadius: "20px", overflow: "hidden", position: "relative",
             background: "linear-gradient(160deg, #eef0fd 0%, #e2e2fa 45%, #d3d4f4 100%)",
-            display: "flex", flexDirection: "column", alignItems: "center", padding: "18px 12px 22px",
-          }}>
+            padding: "18px 12px 22px",
+          }} className="hsm-card">
             <div style={{ position: "absolute", top: "-80px", right: "-60px", width: "220px", height: "220px", borderRadius: "50%", background: "radial-gradient(circle, rgba(95,38,229,0.18) 0%, transparent 72%)" }} />
-            <div style={{ width: "78%", position: "relative" }}>
+            <div className="hsm-art"><div style={{ width: "78%", position: "relative" }}>
               <BrandMockArt lang={lang} />
-            </div>
+            </div></div>
             <div style={{ marginTop: "12px", position: "relative" }}>
               <SideLabel side="brand" label={t.brand.label} href={`/${lang}/brand`} size="mobile" />
             </div>
@@ -563,7 +564,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
               ...KT, display: "inline-flex", alignItems: "center", gap: "6px",
               background: "#5f26e5", color: "#ffffff", borderRadius: "50px", padding: "10px 10px 10px 18px",
               fontSize: "13px", fontWeight: 600, textDecoration: "none", marginTop: "16px",
-              boxShadow: "0 8px 18px rgba(95,38,229,0.32)",
+              boxShadow: "0 8px 18px rgba(95,38,229,0.32)", justifySelf: "center", alignSelf: "start",
             }}>
               {t.brand.cta}
               <ArrowIcon />
@@ -574,11 +575,11 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           <div style={{
             flex: 1, minWidth: 0, borderRadius: "20px", overflow: "hidden", position: "relative",
             background: "linear-gradient(200deg, #fdeef6 0%, #f9dced 45%, #f2c9e2 100%)",
-            display: "flex", flexDirection: "column", alignItems: "center", padding: "18px 12px 22px",
-          }}>
-            <div style={{ width: "70%" }}>
+            padding: "18px 12px 22px",
+          }} className="hsm-card">
+            <div className="hsm-art"><div style={{ width: "70%" }}>
               <InfluencerMockArt lang={lang} />
-            </div>
+            </div></div>
             <div style={{ marginTop: "12px" }}>
               <SideLabel side="influencer" label={t.influencer.label} href={`/${lang}/influencer`} size="mobile" />
             </div>
@@ -592,7 +593,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
               ...KT, display: "inline-flex", alignItems: "center", gap: "6px",
               background: "#ff0089", color: "#ffffff", borderRadius: "50px", padding: "10px 10px 10px 18px",
               fontSize: "13px", fontWeight: 600, textDecoration: "none", marginTop: "16px",
-              boxShadow: "0 8px 18px rgba(255,0,137,0.3)",
+              boxShadow: "0 8px 18px rgba(255,0,137,0.3)", justifySelf: "center", alignSelf: "start",
             }}>
               {t.influencer.cta}
               <ArrowIcon />
@@ -602,6 +603,9 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
       </div>
 
       <style>{`
+        .hsm-grid{ display: grid; grid-template-columns: 1fr 1fr; column-gap: 10px; }
+        .hsm-card{ display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; justify-items: center; align-items: start; }
+        .hsm-art{ width: 100%; display: flex; align-items: center; justify-content: center; align-self: center; }
         @keyframes hsh-float { 0%,100% { transform: translateY(0) rotate(var(--rot, 0deg)); } 50% { transform: translateY(-1.2cqw) rotate(var(--rot, 0deg)); } }
         @keyframes hsh-wiggle { 0%,100% { transform: translateY(0) rotate(var(--rot, 0deg)); } 50% { transform: translateY(-1.8cqw) rotate(calc(var(--rot, 0deg) * -1)); } }
         @keyframes hsh-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
