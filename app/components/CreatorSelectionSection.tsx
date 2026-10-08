@@ -30,6 +30,36 @@ const AGES = [
 const CITIES = [
   { c: "Bangkok", v: 46 }, { c: "Chiang Mai", v: 7 }, { c: "Chon Buri", v: 4 },
 ];
+// Audience tab (48,600 followers)
+const AUD_GENDER = [{ k: "Female", v: "40.8K", p: 84.0, c: "#f472b6" }, { k: "Male", v: "7.8K", p: 16.0, c: "#1e1b6b" }];
+const AUD_AGES = [
+  { r: "13–17", n: "2.4K", v: 5 }, { r: "18–24", n: "15.1K", v: 31 }, { r: "25–34", n: "25.3K", v: 52 }, { r: "35–44", n: "4.9K", v: 10 }, { r: "45–64", n: "0.9K", v: 2 },
+];
+const AUD_TYPE = [
+  { k: "Real People", v: "25.3K", p: 52, c: "#2b7a8c" }, { k: "Influencers", v: "4.4K", p: 9, c: "#1e1b8b" },
+  { k: "Mass Followers", v: "15.1K", p: 31, c: "#f28c38" }, { k: "Suspicious", v: "3.8K", p: 8, c: "#e0458b" },
+];
+const AUD_COUNTRY = [
+  { c: "Thailand", n: "44.3K", v: 91.2 }, { c: "Laos", n: "0.7K", v: 1.4 }, { c: "Myanmar", n: "0.5K", v: 1.1 }, { c: "Cambodia", n: "0.4K", v: 0.9 }, { c: "Japan", n: "0.3K", v: 0.6 },
+];
+const AUD_CITY = [
+  { c: "Bangkok", n: "22.4K", v: 46.1 }, { c: "Chiang Mai Province", n: "3.4K", v: 7.0 }, { c: "Chon Buri Province", n: "1.9K", v: 4.0 }, { c: "Nonthaburi Province", n: "1.7K", v: 3.6 }, { c: "Khon Kaen Province", n: "1.0K", v: 2.1 },
+];
+const donut = (parts: { p: number; c: string }[]) => {
+  let acc = 0;
+  return `conic-gradient(${parts.map((x) => { const a = acc; acc += x.p; return `${x.c} ${a}% ${acc}%`; }).join(", ")})`;
+};
+const Bar = ({ label, num, pct, scale, color }: { label: string; num: string; pct: number; scale: number; color: string }) => (
+  <div style={{ marginBottom: "6px" }}>
+    <div style={{ display: "flex", justifyContent: "space-between", fontSize: "10.5px", color: "#374151" }}>
+      <span style={{ color: "#6b7280" }}>{label}</span><span>{num} ({pct.toFixed(pct < 10 ? 1 : 0)}%)</span>
+    </div>
+    <span style={{ display: "block", height: "5px", borderRadius: "5px", background: "rgba(95,38,229,0.1)", marginTop: "3px" }}>
+      <span style={{ display: "block", height: "100%", width: `${Math.min(100, pct * scale)}%`, borderRadius: "5px", background: color }} />
+    </span>
+  </div>
+);
+
 const TINY: CSSProperties = { ...KT, fontSize: "10px", fontWeight: 600, color: "#6b7280", letterSpacing: ".02em" };
 
 const panelStyle: CSSProperties = {
@@ -45,6 +75,8 @@ const panelStyle: CSSProperties = {
 export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" }) {
   // hovering / tapping a signal chip highlights it and pops the matching pillar box in the dashboard
   const [hot, setHot] = useState<string | null>(null);
+  // Influencer tab = the 6 pillars + headline audience (9 boxes); Audience tab = the full audience breakdown
+  const [tab, setTab] = useState<"Influencer" | "Audience">("Influencer");
   return (
     <div className="cs-grid" style={{ display: "grid", gridTemplateColumns: "0.62fr 2fr", gap: "48px", alignItems: "center" }}>
       {/* Left — eyebrow, heading, description, filter tags */}
@@ -68,9 +100,9 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
           {TAGS.map((tag) => (
             <span key={tag} role="button" tabIndex={0}
               className={`cs-chip${hot === tag ? " is-hot" : ""}`}
-              onMouseEnter={() => setHot(tag)} onMouseLeave={() => setHot(null)}
-              onFocus={() => setHot(tag)} onBlur={() => setHot(null)}
-              onClick={() => setHot((h) => (h === tag ? null : tag))}
+              onMouseEnter={() => { setHot(tag); setTab("Influencer"); }} onMouseLeave={() => setHot(null)}
+              onFocus={() => { setHot(tag); setTab("Influencer"); }} onBlur={() => setHot(null)}
+              onClick={() => { setTab("Influencer"); setHot((h) => (h === tag ? null : tag)); }}
               style={{
               ...KT, fontSize: "13px", fontWeight: 600, color: "#5f26e5",
               padding: "9px 16px", borderRadius: "50px",
@@ -150,12 +182,24 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
             ))}
           </div>
           <div style={{ display: "flex", gap: "16px" }}>
-            {["Influencer", "Audience", "Lookalikes"].map((t, i) => (
-              <span key={t} style={{ fontSize: "11.5px", fontWeight: 600, paddingBottom: "4px", color: i === 1 ? "#5f26e5" : "#4b5563", borderBottom: i === 1 ? "2px solid #5f26e5" : "2px solid transparent" }}>{t}</span>
-            ))}
+            {(["Influencer", "Audience", "Lookalikes"] as const).map((t) => {
+              const live = t !== "Lookalikes";
+              const on = t === tab;
+              return (
+                <span key={t} role={live ? "tab" : undefined} aria-selected={live ? on : undefined} tabIndex={live ? 0 : -1}
+                  className={live ? "cs-subtab" : undefined}
+                  onMouseEnter={live ? () => setTab(t) : undefined} onClick={live ? () => setTab(t) : undefined}
+                  onFocus={live ? () => setTab(t) : undefined}
+                  style={{ fontSize: "11.5px", fontWeight: 600, paddingBottom: "4px", color: on ? "#5f26e5" : "#4b5563", borderBottom: on ? "2px solid #5f26e5" : "2px solid transparent", cursor: live ? "pointer" : "default", transition: "color .25s, border-color .25s" }}>{t}</span>
+              );
+            })}
           </div>
         </div>
 
+        {/* both views share one grid cell, so switching tabs never changes the dashboard height */}
+        <div style={{ display: "grid" }}>
+          {/* Influencer view: 6 pillars + headline audience */}
+          <div className="cs-view" style={{ visibility: tab === "Influencer" ? "visible" : "hidden", opacity: tab === "Influencer" ? 1 : 0 }}>
         {/* 6 pillars */}
         <div className="cs-row3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", marginBottom: "12px" }}>
           {PILLARS.map((pl) => (
@@ -205,6 +249,53 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
             </div>
           </div>
         </div>
+          </div>
+          {/* Audience view */}
+          <div className="cs-view" style={{ visibility: tab === "Audience" ? "visible" : "hidden", opacity: tab === "Audience" ? 1 : 0 }}>
+            <div className="cs-row3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", marginBottom: "12px" }}>
+              <div style={panelStyle}>
+                <p style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 10px" }}>Gender</p>
+                <div style={{ display: "flex", justifyContent: "center", marginBottom: "10px" }}>
+                  <div style={{ width: "86px", height: "86px", borderRadius: "50%", background: donut(AUD_GENDER), display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <div style={{ width: "56px", height: "56px", borderRadius: "50%", background: "#fff" }} />
+                  </div>
+                </div>
+                {AUD_GENDER.map((g) => (
+                  <div key={g.k} style={{ display: "flex", justifyContent: "space-between", fontSize: "10.5px", color: "#374151", marginTop: "3px" }}>
+                    <span><span style={{ display: "inline-block", width: "7px", height: "7px", borderRadius: "50%", background: g.c, marginRight: "6px" }} />{g.k}</span><span>{g.v} ({g.p.toFixed(2)}%)</span>
+                  </div>
+                ))}
+              </div>
+              <div style={panelStyle}>
+                <p style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 8px" }}>Age</p>
+                {AUD_AGES.map((a) => <Bar key={a.r} label={a.r} num={a.n} pct={a.v} scale={1.25} color="#2b7a8c" />)}
+              </div>
+              <div style={panelStyle}>
+                <p style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 10px" }}>Audience Type</p>
+                <div style={{ display: "flex", justifyContent: "center", marginBottom: "10px" }}>
+                  <div style={{ width: "86px", height: "86px", borderRadius: "50%", background: donut(AUD_TYPE), display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <div style={{ width: "56px", height: "56px", borderRadius: "50%", background: "#fff" }} />
+                  </div>
+                </div>
+                {AUD_TYPE.map((x) => (
+                  <div key={x.k} style={{ display: "flex", justifyContent: "space-between", fontSize: "10.5px", color: "#374151", marginTop: "3px" }}>
+                    <span><span style={{ display: "inline-block", width: "7px", height: "7px", borderRadius: "50%", background: x.c, marginRight: "6px" }} />{x.k}</span><span>{x.v} ({x.p}%)</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="cs-row3" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "12px" }}>
+              <div style={panelStyle}>
+                <p style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 8px" }}>Location by Country (5)</p>
+                {AUD_COUNTRY.map((c) => <Bar key={c.c} label={c.c} num={c.n} pct={c.v} scale={1} color="#2b7a8c" />)}
+              </div>
+              <div style={panelStyle}>
+                <p style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 8px" }}>Location by City (5)</p>
+                {AUD_CITY.map((c) => <Bar key={c.c} label={c.c} num={c.n} pct={c.v} scale={1.8} color="#2b7a8c" />)}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <style>{`
@@ -212,6 +303,8 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
         .cs-chip.is-hot, .cs-chip:active{ background: #ffffff !important; color: #5f26e5 !important; border-color: #ffffff !important;
           transform: translateY(-3px); box-shadow: 0 12px 24px -10px rgba(20,6,80,.55); }
         .cs-pillar{ transition: background .35s ease; }
+        .cs-view{ grid-area: 1 / 1; transition: opacity .3s ease; }
+        .cs-subtab:hover{ color: #5f26e5 !important; }
         .cs-pillar.is-hot{ background: #ffffff !important; }
         @media (prefers-reduced-motion: reduce){ .cs-chip, .cs-pillar{ transition: none; } .cs-chip.is-hot{ transform: none; } }
         .cs-dashboard:hover{
