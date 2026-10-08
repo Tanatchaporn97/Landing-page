@@ -167,7 +167,7 @@ export default function AboutKeywordHero() {
       ["--akh-total" as string]: fadeStart ? `${fadeStart + FADE_LEN}px` : "calc(var(--akh-h) + 150px)",
       height: reduce ? "var(--akh-total)" : "calc(var(--akh-total) + 70vh)" }}>
       <div style={{ position: "sticky", top: 0, height: "var(--akh-total)", overflow: "hidden" }}>
-        <div aria-hidden style={{ position: "absolute", inset: 0, background: "#13046a url('/about-us/about-hero-bg.jpg') center top / cover no-repeat",
+        <div aria-hidden style={{ position: "absolute", inset: 0, background: "#3f2a88 url('/about-us/about-hero-bg-v2.jpg') center top / cover no-repeat",
           ...(fadeStart ? { WebkitMaskImage: fadeMaskAt(fadeStart), maskImage: fadeMaskAt(fadeStart) } : {}) }} />
         {/* atmosphere: pink–purple glow */}
         <div aria-hidden style={{ position: "absolute", inset: "-20%",
