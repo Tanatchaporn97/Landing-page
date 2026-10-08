@@ -8,7 +8,7 @@ const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
 
 const TAGS = ["Location", "Demographic", "Content Category", "Occupation", "Persona", "Storytelling"];
 // Mock KOL Discovery profile of a micro creator (10K–100K followers) (mirrors the real report: profile, stats strip, Insight tabs,
-// 6 Pillars, Audience and Lookalikes) for one fictional creator.
+// 6 Pillars and Audience) for one fictional creator.
 const STATS = [
   { k: "Followers", v: "48,600" },
   { k: "Avg. Likes", v: "1,850" },
@@ -20,17 +20,15 @@ const PILLARS = [
   { t: "Demographic", tags: ["ผู้หญิง", "อายุ 20–30 ปี", "คนไทย"] },
   { t: "Content Category", tags: ["ความงาม", "สกินแคร์", "Lifestyle", "ดูแลผิว"] },
   { t: "Persona", tags: ["สายบิวตี้", "ผิวขาว", "ลุคน่ารัก", "Good looking"] },
+  { t: "Location", tags: ["ประเทศไทย", "กรุงเทพมหานคร", "ภาคกลาง"] },
+  { t: "Occupation", tags: ["คอนเทนต์ครีเอเตอร์", "Beauty Blogger", "นักศึกษา"] },
+  { t: "Storytelling", tags: ["รีวิวสินค้า", "Before–After", "get ready with me"] },
 ];
 const AGES = [
   { r: "13–17", v: 5 }, { r: "18–24", v: 31 }, { r: "25–34", v: 52 }, { r: "35–44", v: 10 }, { r: "45+", v: 2 },
 ];
 const CITIES = [
   { c: "Bangkok", v: 46 }, { c: "Chiang Mai", v: 7 }, { c: "Chon Buri", v: 4 },
-];
-const LOOKALIKES = [
-  { n: "rosie.beauty", l: "3,120", f: "52,840", c: "#f472b6" },
-  { n: "nudenotes.th", l: "2,410", f: "39,120", c: "#a78bfa" },
-  { n: "glowwithpim", l: "4,870", f: "71,300", c: "#fb923c" },
 ];
 const TINY: CSSProperties = { ...KT, fontSize: "10px", fontWeight: 600, color: "#6b7280", letterSpacing: ".02em" };
 
@@ -151,7 +149,7 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
           </div>
         </div>
 
-        {/* 6 pillars (3 shown) */}
+        {/* 6 pillars */}
         <div className="cs-row3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", marginBottom: "12px" }}>
           {PILLARS.map((pl) => (
             <div key={pl.t} style={panelStyle}>
@@ -164,7 +162,7 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
         </div>
 
         {/* audience */}
-        <div className="cs-row3" style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr 1fr", gap: "12px", marginBottom: "12px" }}>
+        <div className="cs-row3" style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr 1fr", gap: "12px" }}>
           <div style={panelStyle}>
             <p style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 10px" }}>Gender</p>
             <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
@@ -199,23 +197,6 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
               <span style={TINY}>Audience Credibility</span><span style={{ fontSize: "14px", fontWeight: 700, color: "#111827" }}>78.4%</span>
             </div>
           </div>
-        </div>
-
-        {/* lookalikes */}
-        <div style={panelStyle}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 80px 80px", gap: "8px", marginBottom: "6px" }}>
-            <span style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5" }}>Lookalikes (by Audience)</span>
-            <span style={TINY}>LIKES</span><span style={TINY}>FOLLOWERS</span>
-          </div>
-          {LOOKALIKES.map((l) => (
-            <div key={l.n} style={{ display: "grid", gridTemplateColumns: "1fr 80px 80px", gap: "8px", alignItems: "center", padding: "5px 0", borderTop: "1px solid rgba(95,38,229,0.08)" }}>
-              <span style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "12px", fontWeight: 600, color: "#1e1b4b" }}>
-                <span style={{ width: "22px", height: "22px", borderRadius: "50%", background: l.c, color: "#fff", fontSize: "10px", fontWeight: 700, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{l.n[0].toUpperCase()}</span>{l.n}
-              </span>
-              <span style={{ fontSize: "11.5px", color: "#374151" }}>{l.l}</span>
-              <span style={{ fontSize: "11.5px", color: "#374151" }}>{l.f}</span>
-            </div>
-          ))}
         </div>
       </div>
 
