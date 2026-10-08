@@ -92,7 +92,7 @@ function Keyword({ w: base, i, p, still, mobile }: { w: (typeof WORDS)[number]; 
   const leadOpacity = useTransform(p, [0.04, 0.22], [1, 0]);
 
   return (
-    <motion.div className="akh-word" style={{ position: "absolute", left: "50%", top: "calc(var(--akh-h) / 2 + 34px)", x: still ? `${w.x}vw` : x, y: still ? `${w.y}vh` : y,
+    <motion.div className="akh-word" style={{ position: "absolute", left: "50%", top: "calc(var(--akh-h) / 2 + var(--akh-shift, 34px))", x: still ? `${w.x}vw` : x, y: still ? `${w.y}vh` : y,
       scale: still ? 1 : scale, opacity: still ? 1 : opacity, translateX: "-50%", translateY: "-50%",
       textAlign: w.align, willChange: "transform" }}>
       <motion.div className="akh-lead" style={{ ...SANS, opacity: still ? 1 : leadOpacity, fontSize: "clamp(15px, 1.3vw, 20px)", fontWeight: 500,
@@ -129,6 +129,21 @@ export default function AboutKeywordHero() {
     sync(scrollYProgress.get());
     return scrollYProgress.on("change", sync);
   }, [mounted, prefersReduced, p, scrollYProgress]);
+  // Line the first statement ("Better decisions start with") up with the other heroes' headings:
+  // 195px below the top on desktop, 140px on phones. Measured once laid out (and on resize).
+  const [shift, setShift] = useState(34);
+  useEffect(() => {
+    const align = () => {
+      const sec = ref.current; const lead = sec?.querySelector(".akh-lead");
+      if (!sec || !lead) return;
+      const target = window.innerWidth <= 767 ? 140 : 195;
+      const cur = lead.getBoundingClientRect().top - sec.getBoundingClientRect().top;
+      if (p.get() < 0.02) setShift((s0) => Math.round(s0 + (target - cur)));
+    };
+    const id = requestAnimationFrame(align);
+    window.addEventListener("resize", align);
+    return () => { cancelAnimationFrame(id); window.removeEventListener("resize", align); };
+  }, [p, mobile]);
   useEffect(() => {
     setMounted(true);
     const mq = window.matchMedia("(max-width: 767px)");
@@ -141,11 +156,11 @@ export default function AboutKeywordHero() {
   const lineOpacity = useTransform(p, [0.58, 0.7], [0, 1]);
 
   return (
-    <section ref={ref} data-dark-hero className="akh" style={{ position: "relative", ["--akh-h" as string]: "max(540px, min(80svh, 820px))",
+    <section ref={ref} data-dark-hero className="akh" style={{ position: "relative", ["--akh-h" as string]: "max(540px, min(80svh, 820px))", ["--akh-shift" as string]: `${shift}px`,
       height: reduce ? "calc(var(--akh-h) + 150px)" : "calc(var(--akh-h) + 150px + 70vh)" }}>
       <div style={{ position: "sticky", top: 0, height: "calc(var(--akh-h) + 150px)", overflow: "hidden" }}>
         <div aria-hidden style={{ position: "absolute", inset: 0, background: "#13046a url('/about-us/about-hero-bg.jpg') center top / cover no-repeat",
-          WebkitMaskImage: fadeMask, maskImage: fadeMask }} />
+ }} />
         {/* atmosphere: pink–purple glow */}
         <div aria-hidden style={{ position: "absolute", inset: "-20%",
           background: "radial-gradient(42% 38% at 30% 32%, rgba(124,58,237,0.30) 0%, transparent 70%), radial-gradient(36% 34% at 72% 70%, rgba(255,0,137,0.20) 0%, transparent 72%), radial-gradient(60% 60% at 50% 50%, rgba(95,37,229,0.10) 0%, transparent 80%)",
