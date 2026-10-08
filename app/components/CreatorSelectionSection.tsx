@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import type { CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
 import { Badge } from "@/components/ui/badge";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -43,6 +43,8 @@ const panelStyle: CSSProperties = {
 };
 
 export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" }) {
+  // hovering / tapping a signal chip highlights it and pops the matching pillar box in the dashboard
+  const [hot, setHot] = useState<string | null>(null);
   return (
     <div className="cs-grid" style={{ display: "grid", gridTemplateColumns: "0.62fr 2fr", gap: "48px", alignItems: "center" }}>
       {/* Left — eyebrow, heading, description, filter tags */}
@@ -64,7 +66,12 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
 
         <div className="cs-tags" style={{ display: "grid", gridTemplateColumns: "repeat(3, auto)", gap: "10px", marginTop: "4px" }}>
           {TAGS.map((tag) => (
-            <span key={tag} style={{
+            <span key={tag} role="button" tabIndex={0}
+              className={`cs-chip${hot === tag ? " is-hot" : ""}`}
+              onMouseEnter={() => setHot(tag)} onMouseLeave={() => setHot(null)}
+              onFocus={() => setHot(tag)} onBlur={() => setHot(null)}
+              onClick={() => setHot((h) => (h === tag ? null : tag))}
+              style={{
               ...KT, fontSize: "13px", fontWeight: 600, color: "#5f26e5",
               padding: "9px 16px", borderRadius: "50px",
               border: "1px solid rgba(95,38,229,0.2)", background: "rgba(255,255,255,0.6)",
@@ -152,7 +159,7 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
         {/* 6 pillars */}
         <div className="cs-row3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", marginBottom: "12px" }}>
           {PILLARS.map((pl) => (
-            <div key={pl.t} style={panelStyle}>
+            <div key={pl.t} className={`cs-pillar${hot === pl.t ? " is-hot" : ""}`} style={panelStyle}>
               <p style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 8px" }}>{pl.t}</p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
                 {pl.tags.map((t) => <span key={t} style={{ fontSize: "11px", color: "#5f26e5", padding: "4px 10px", borderRadius: "50px", border: "1px solid rgba(95,38,229,0.25)", background: "rgba(255,255,255,0.7)" }}>{t}</span>)}
@@ -201,6 +208,13 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
       </div>
 
       <style>{`
+        .cs-chip{ cursor: pointer; user-select: none; transition: background .3s ease, color .3s ease, transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease, border-color .3s ease; }
+        .cs-chip.is-hot, .cs-chip:active{ background: #ffffff !important; color: #5f26e5 !important; border-color: #ffffff !important;
+          transform: translateY(-3px); box-shadow: 0 12px 24px -10px rgba(20,6,80,.55); }
+        .cs-pillar{ transition: transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s ease, background .45s ease; }
+        .cs-pillar.is-hot{ transform: translateY(-10px) scale(1.04); background: #ffffff !important; position: relative; z-index: 2;
+          box-shadow: 0 0 0 2px #8b5cf6, 0 22px 40px -14px rgba(95,38,229,.55) !important; }
+        @media (prefers-reduced-motion: reduce){ .cs-chip, .cs-pillar{ transition: none; } .cs-chip.is-hot, .cs-pillar.is-hot{ transform: none; } }
         .cs-dashboard:hover{
           transform: translateY(-10px);
           box-shadow: 0 40px 70px -20px rgba(95,38,229,0.35), 0 14px 28px -12px rgba(255,0,137,0.18);
