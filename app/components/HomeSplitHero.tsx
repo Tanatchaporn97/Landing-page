@@ -74,7 +74,7 @@ function ArrowIcon() {
 function SideLabel({ side, label, href, size = "desktop" }: { side: "brand" | "influencer"; label: string; href: string; size?: "desktop" | "mobile" }) {
   return (
     <Link href={href} className="split-label" style={{
-      ...KT, textDecoration: "none", display: "inline-block",
+      fontFamily: "'Pierson','Noto Sans Thai',sans-serif", textDecoration: "none", display: "inline-block",
       color: side === "brand" ? "#5f26e5" : "#ff0089",
       fontWeight: 800, letterSpacing: size === "desktop" ? "0.06em" : "0.02em", lineHeight: 1,
       fontSize: size === "desktop" ? "clamp(24px, 2.4vw, 34px)" : "20px",
