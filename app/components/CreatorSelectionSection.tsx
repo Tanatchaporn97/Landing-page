@@ -79,8 +79,8 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
 
         <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#ffffff", margin: "4px 0 0", maxWidth: "340px" }}>
           {lang === "th"
-            ? "ลูกค้าเห็น Creator ที่เราแนะนำ พร้อมข้อมูลสำคัญประกอบการตัดสินใจก่อนเริ่มแคมเปญ"
-            : "Clients see our recommended Creators along with the key data behind every decision — before the campaign even starts."}
+            ? "เราไม่ได้ดู 6 Signal นี้แยกเป็นข้อ ๆ แต่นำมาประกอบกัน เพื่อให้เข้าใจว่า Creator คนนั้นเป็นใคร สื่อสารกับใคร และเล่าเรื่องแบบไหน ก่อนตัดสินว่าเหมาะกับแบรนด์และโจทย์ของแคมเปญจริงหรือไม่"
+            : "We don't read these 6 signals one by one — we put them together to understand who a Creator is, who they speak to, and how they tell stories, before deciding whether they truly fit the brand and the campaign brief."}
         </p>
       </div>
 
