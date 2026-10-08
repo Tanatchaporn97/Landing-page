@@ -170,12 +170,13 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
           </p>
           <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
             <a href="https://rank.buddyreview.co/" target="_blank" rel="noopener noreferrer"
-              className="vs-cta-line"
-              style={{ ...KT, display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none", fontSize: "16px", fontWeight: 700, color: "#ffffff", borderRadius: "50px", padding: "12px 28px 12px 16px" }}>
+              className="inf-cta"
+              style={KT}>
               <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style={{ flexShrink: 0 }} aria-hidden="true">
                 <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .348-.281.629-.629.629H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.628-.63.349 0 .63.285.63.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
               </svg>
               {lang === "th" ? "สมัครผ่านไลน์" : "Apply via LINE"}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
           </div>
         </div>
@@ -183,20 +184,12 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <VideoScrollFan videos={INFLUENCER_HEADER_VIDEOS} />
 
         <style>{`
-          /* glassmorphism LINE button: translucent LINE-green glass with a white label */
-          .vs-cta-line{
-            background: linear-gradient(135deg, rgba(6,199,85,0.78) 0%, rgba(6,199,85,0.58) 100%);
-            backdrop-filter: blur(18px) saturate(170%); -webkit-backdrop-filter: blur(18px) saturate(170%);
-            border: 1px solid rgba(255,255,255,0.55);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.55), inset 0 -10px 18px -12px rgba(0,90,40,0.35), 0 12px 28px -12px rgba(6,199,85,0.6);
-            text-shadow: 0 1px 2px rgba(0,80,35,0.25);
-            transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-          }
-          .vs-cta-line:hover{
-            background: linear-gradient(135deg, rgba(6,199,85,0.92) 0%, rgba(6,199,85,0.74) 100%);
-            transform: translateY(-2px);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.65), inset 0 -10px 18px -12px rgba(0,90,40,0.35), 0 16px 34px -12px rgba(6,199,85,0.7);
-          }
+          /* every CTA on this page matches the pre-footer "สมัครเลย!" button */
+          .inf-cta{ display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; border-radius: 999px;
+            background: #111827; color: #ffffff !important; font-size: 16px; font-weight: 600; text-decoration: none;
+            box-shadow: 0 16px 30px -12px rgba(17,24,39,0.55); transition: transform 0.2s ease, background 0.2s ease; }
+          .inf-cta:hover{ background: #5f26e5; transform: translateY(-2px); }
+          @media (max-width: 640px){ .inf-cta{ padding: 13px 26px; font-size: 15px; } }
           @media (max-width: 760px){
             .vs-line1, .vs-line2{ white-space: normal !important; }
             /* 295px top padding was tuned for desktop's fixed navbar height
@@ -281,9 +274,9 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               <>Uses AI to help analyze your followers, content, and performance<br />know who your audience is, what content works, and what to do next.</>
             )}
           </p>
-          <a href="https://rank.buddyreview.co/" target="_blank" rel="noopener noreferrer" className="btn-glass-purple"
-            style={{ ...KT, borderRadius: "50px", fontSize: "16px", fontWeight: 600, padding: "14px 32px", textDecoration: "none" }}>
-            {lang === "th" ? "วิเคราะห์ TikTok ฟรี" : "Analyze Your TikTok Free"} →
+          <a href="https://rank.buddyreview.co/" target="_blank" rel="noopener noreferrer" className="inf-cta" style={KT}>
+            {lang === "th" ? "วิเคราะห์ TikTok ฟรี" : "Analyze Your TikTok Free"}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
           </a>
         </div>
 

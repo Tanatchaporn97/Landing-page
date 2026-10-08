@@ -210,11 +210,19 @@ export default function FAQAccordion({
                 : (dict?.home?.ctaTitle || (lang === "en" ? "Still have questions?" : "มีคำถามเพิ่มเติมไหม?"))}
             </h3>
             <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              <Link href={`/${lang}/faq`}
-                className="btn-glass-purple"
-                style={{ ...KT, borderRadius: "50px", fontSize: "16px", fontWeight: 600, padding: "14px 48px", textDecoration: "none" }}>
-                {dict?.home?.faqViewMore || (lang === "en" ? "View All FAQs" : "ดูคำถามที่พบบ่อยทั้งหมด")}
-              </Link>
+              {variant === "influencer" ? (
+                // influencer page: same dark pill as its other CTAs
+                <Link href={`/${lang}/faq`} className="inf-cta" style={KT}>
+                  {dict?.home?.faqViewMore || (lang === "en" ? "View All FAQs" : "ดูคำถามที่พบบ่อยทั้งหมด")}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </Link>
+              ) : (
+                <Link href={`/${lang}/faq`}
+                  className="btn-glass-purple"
+                  style={{ ...KT, borderRadius: "50px", fontSize: "16px", fontWeight: 600, padding: "14px 48px", textDecoration: "none" }}>
+                  {dict?.home?.faqViewMore || (lang === "en" ? "View All FAQs" : "ดูคำถามที่พบบ่อยทั้งหมด")}
+                </Link>
+              )}
             </div>
           </div>
         )}
