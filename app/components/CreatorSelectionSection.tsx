@@ -18,8 +18,8 @@ const STATS = [
 ];
 const PILLARS = [
   { t: "Demographic", tags: ["ผู้หญิง", "อายุ 20–30 ปี", "คนไทย"] },
-  { t: "Content Category", tags: ["ความงาม", "สกินแคร์", "Lifestyle"] },
-  { t: "Persona", tags: ["สายบิวตี้", "Good looking", "คนเมือง"] },
+  { t: "Content Category", tags: ["ความงาม", "สกินแคร์", "Lifestyle", "ดูแลผิว"] },
+  { t: "Persona", tags: ["สายบิวตี้", "ผิวขาว", "ลุคน่ารัก", "Good looking"] },
 ];
 const AGES = [
   { r: "13–17", v: 5 }, { r: "18–24", v: 31 }, { r: "25–34", v: 52 }, { r: "35–44", v: 10 }, { r: "45+", v: 2 },
