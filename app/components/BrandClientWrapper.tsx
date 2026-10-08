@@ -381,7 +381,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
             <a href="#contact" className="btn-glass-purple" style={{ ...KT,
               fontWeight: 600, fontSize: "16px",
-              padding: "16px 36px", borderRadius: "50px", textDecoration: "none" }}>
+              padding: "14px 48px", borderRadius: "50px", textDecoration: "none" }}>
               {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
             </a>
 
