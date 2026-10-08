@@ -17,10 +17,10 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 // is masked out with many eased stops, so it fades to transparent over the page's own background
 // (the same one behind the intro section) — one continuous surface, no seam or banding.
 const GAP_BELOW_TEXT = 200; // px of solid background kept under RESULTS before the fade starts
-const FADE_LEN = 260;       // px the fade takes
+const FADE_LEN = 440;       // px the fade takes (long and gentle)
 const fadeMaskAt = (start: number) => "linear-gradient(180deg, #000 0px, #000 " + start + "px, " +
-  Array.from({ length: 18 }, (_, i) => {
-    const t = (i + 1) / 18;
+  Array.from({ length: 28 }, (_, i) => {
+    const t = (i + 1) / 28;
     const a = 1 - t * t * (3 - 2 * t);               // smoothstep
     return `rgba(0,0,0,${a.toFixed(3)}) ${Math.round(start + FADE_LEN * t)}px`;
   }).join(", ") + ")";
@@ -166,9 +166,9 @@ export default function AboutKeywordHero() {
     <section ref={ref} data-dark-hero className="akh" style={{ position: "relative", ["--akh-h" as string]: "max(540px, min(80svh, 820px))", ["--akh-shift" as string]: `${shift}px`,
       ["--akh-total" as string]: fadeStart ? `${fadeStart + FADE_LEN}px` : "calc(var(--akh-h) + 150px)",
       height: reduce ? "var(--akh-total)" : "calc(var(--akh-total) + 70vh)" }}>
-      <div style={{ position: "sticky", top: 0, height: "var(--akh-total)", overflow: "hidden" }}>
-        <div aria-hidden style={{ position: "absolute", inset: 0, background: "#3f2a88 url('/about-us/about-hero-bg-v2.jpg') center top / cover no-repeat",
-          ...(fadeStart ? { WebkitMaskImage: fadeMaskAt(fadeStart), maskImage: fadeMaskAt(fadeStart) } : {}) }} />
+      <div style={{ position: "sticky", top: 0, height: "var(--akh-total)", overflow: "hidden",
+        ...(fadeStart ? { WebkitMaskImage: fadeMaskAt(fadeStart), maskImage: fadeMaskAt(fadeStart) } : {}) }}>
+        <div aria-hidden style={{ position: "absolute", inset: 0, background: "#3f2a88 url('/about-us/about-hero-bg-v2.jpg') center top / cover no-repeat" }} />
         {/* atmosphere: pink–purple glow */}
         <div aria-hidden style={{ position: "absolute", inset: "-20%",
           background: "radial-gradient(42% 38% at 30% 32%, rgba(124,58,237,0.30) 0%, transparent 70%), radial-gradient(36% 34% at 72% 70%, rgba(255,0,137,0.20) 0%, transparent 72%), radial-gradient(60% 60% at 50% 50%, rgba(95,37,229,0.10) 0%, transparent 80%)",
