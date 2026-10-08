@@ -191,7 +191,7 @@ export default function BrandHeroVisual({ lang }: { lang: "th" | "en" }) {
         padding: "8px 14px 8px 8px", boxShadow: "0 8px 20px rgba(95,38,229,0.12)", whiteSpace: "nowrap",
       }}>
         <div style={{
-          width: "30px", height: "30px", borderRadius: "8px", flexShrink: 0,
+          width: "30px", height: "30px", borderRadius: "50%", flexShrink: 0,
           background: "rgba(95,38,229,0.10)", display: "flex", alignItems: "center", justifyContent: "center",
         }}>
           <Building2 size={16} color="#5f26e5" />
