@@ -162,12 +162,12 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
         </div>
 
         {/* audience */}
-        <div className="cs-row3" style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr 1fr", gap: "12px" }}>
+        <div className="cs-row3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px" }}>
           <div style={panelStyle}>
             <p style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 10px" }}>Gender</p>
             <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-              <div style={{ width: "62px", height: "62px", borderRadius: "50%", flexShrink: 0, background: "conic-gradient(#f472b6 0 84%, #1e1b6b 84% 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "#fff" }} />
+              <div style={{ width: "92px", height: "92px", borderRadius: "50%", flexShrink: 0, background: "conic-gradient(#f472b6 0 84%, #1e1b6b 84% 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <div style={{ width: "58px", height: "58px", borderRadius: "50%", background: "#fff" }} />
               </div>
               <div style={{ fontSize: "11px", color: "#374151", lineHeight: 1.7 }}>
                 <div><span style={{ display: "inline-block", width: "7px", height: "7px", borderRadius: "50%", background: "#f472b6", marginRight: "6px" }} />Female <b>84%</b></div>
@@ -178,9 +178,9 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
           <div style={panelStyle}>
             <p style={{ fontSize: "12px", fontWeight: 700, color: "#5f26e5", margin: "0 0 8px" }}>Age</p>
             {AGES.map((a) => (
-              <div key={a.r} style={{ display: "grid", gridTemplateColumns: "38px 1fr 30px", alignItems: "center", gap: "6px", marginBottom: "3px" }}>
+              <div key={a.r} style={{ display: "grid", gridTemplateColumns: "38px 1fr 30px", alignItems: "center", gap: "8px", marginBottom: "5px" }}>
                 <span style={{ fontSize: "10px", color: "#6b7280" }}>{a.r}</span>
-                <span style={{ height: "5px", borderRadius: "5px", background: "rgba(95,38,229,0.1)" }}><span style={{ display: "block", height: "100%", width: `${a.v * 1.8}%`, borderRadius: "5px", background: "linear-gradient(90deg,#5f25e5,#ff0089)" }} /></span>
+                <span style={{ height: "5px", borderRadius: "5px", background: "rgba(95,38,229,0.1)" }}><span style={{ display: "block", height: "100%", width: `${a.v * 1.25}%`, borderRadius: "5px", background: "linear-gradient(90deg,#5f25e5,#ff0089)" }} /></span>
                 <span style={{ fontSize: "10px", color: "#374151", textAlign: "right" }}>{a.v}%</span>
               </div>
             ))}
