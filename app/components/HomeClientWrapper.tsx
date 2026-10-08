@@ -125,7 +125,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       <NewsroomSection lang={lang} dict={dict} />
 
       {/* ── FAQs ── */}
-      <FAQAccordion faqs={dict?.homeFaqs} lang={lang} variant="home" dict={dict} />
+      <FAQAccordion faqs={dict?.brandFaqs || dict?.homeFaqs} lang={lang} variant="home" dict={dict} />
 
       <div id="contact" className="contact-bg" style={{ padding: "80px 0" }}>
         <Suspense fallback={null}>
