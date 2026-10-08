@@ -340,7 +340,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               {lang === "th" ? (
                 <>
                   <span className="bh-line">วางแผนและดูแล</span>
-                  <span className="bh-line" style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+                  <span className="bh-line" style={{ ...PIERSON, fontWeight: 800, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
                     WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                     Influencer Marketing
                   </span>
