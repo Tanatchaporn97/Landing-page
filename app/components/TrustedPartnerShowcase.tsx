@@ -48,16 +48,14 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
     <div className="py-5 sm:py-10">
       <div className="mb-8 sm:mb-12">{header}</div>
 
-      {/* B · U · D · D · Y — each principle's first letter spells BUDDY. The letter is the hero of
-          the card; the title repeats it in gradient so the word and its meaning read together. */}
+      {/* B · U · D · D · Y — each principle's first letter spells BUDDY, set as a big drop cap
+          leading straight into the rest of its title. */}
       <div className="hww-row">
         {ITEMS.map((item, i) => (
           <div key={item.title} className="hww-card" style={{ ...KT, animationDelay: `${i * 0.08}s` }}>
-            <div className="hww-top">
-              <span className="hww-letter" aria-hidden="true">{item.title[0]}</span>
-            </div>
+            {/* drop-cap title: the oversized first letter (B·U·D·D·Y) runs straight into the rest of the title */}
             <h3 className="hww-title">
-              <span className="hww-first">{item.title[0]}</span>{item.title.slice(1)}
+              <span className="hww-first">{item.title[0]}</span><span className="hww-rest">{item.title.slice(1)}</span>
             </h3>
             <p className="hww-desc">{lang === "th" ? item.desc : item.descEn}</p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -75,13 +73,12 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
           box-shadow: 0 18px 40px -22px rgba(20,6,80,0.55);
           transition: transform .35s ease, box-shadow .35s ease; }
         .hww-card:hover{ transform: translateY(-6px); box-shadow: 0 26px 50px -22px rgba(20,6,80,0.65); }
-        .hww-top{ display: flex; align-items: flex-start; }
-        .hww-letter{ font-size: 112px; font-weight: 800; line-height: 0.82; letter-spacing: -0.04em;
+        .hww-title{ margin: 0 0 14px; font-weight: 700; line-height: 1.15; color: #5f26e5; }
+        .hww-first{ display: inline-block; font-size: 84px; font-weight: 800; line-height: 0.9; letter-spacing: -0.03em; margin-right: 2px;
           background: linear-gradient(180deg, #ec3a8c 0%, #5f26e5 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
           transition: transform .45s cubic-bezier(.22,1,.36,1); transform-origin: left bottom; }
-        .hww-card:hover .hww-letter{ transform: scale(1.08) rotate(-3deg); }
-        .hww-title{ margin: 22px 0 8px; font-size: clamp(18px,1.4vw,21px); font-weight: 700; line-height: 1.25; color: #5f26e5; }
-        .hww-first{ color: #ec3a8c; }
+        .hww-card:hover .hww-first{ transform: scale(1.06) rotate(-3deg); }
+        .hww-rest{ font-size: clamp(18px,1.4vw,21px); }
         .hww-desc{ margin: 0; font-size: 14px; line-height: 1.6; color: #4b4566; max-width: 92%; }
         .hww-icon{ position: absolute; right: -14px; bottom: -14px; width: 120px; height: 120px; object-fit: contain; pointer-events: none;
           transition: transform .45s ease; }
@@ -95,15 +92,14 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
         /* phones: stacked list — big letter on the left, copy beside it, icon tucked bottom-right */
         @media (max-width: 640px){
           .hww-row{ display: grid !important; grid-template-columns: 1fr; gap: 12px; overflow: visible; margin: 0; padding: 0; }
-          .hww-card{ flex: none; min-height: 0; display: grid; grid-template-columns: 64px 1fr; column-gap: 14px; align-items: start;
-            padding: 18px 76px 18px 16px; border-radius: 20px; }
-          .hww-top{ grid-row: 1 / span 2; }
-          .hww-letter{ font-size: 64px; }
-          .hww-title{ margin: 2px 0 4px; font-size: 17px; }
+          .hww-card{ flex: none; min-height: 0; padding: 18px 88px 18px 18px; border-radius: 20px; }
+          .hww-first{ font-size: 56px; }
+          .hww-title{ margin: 0 0 6px; }
+          .hww-rest{ font-size: 17px; }
           .hww-desc{ font-size: 13.5px; max-width: none; }
           .hww-icon{ width: 72px; height: 72px; right: 6px; bottom: 6px; }
         }
-        @media (prefers-reduced-motion: reduce){ .hww-card, .hww-letter, .hww-icon{ transition: none; } }
+        @media (prefers-reduced-motion: reduce){ .hww-card, .hww-first, .hww-icon{ transition: none; } }
       `}</style>
     </div>
   );
