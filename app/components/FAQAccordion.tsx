@@ -145,7 +145,9 @@ export default function FAQAccordion({
                   </button>
                   {isOpen && (
                     <p style={{ ...KT, fontSize: "16px", color: colors.desc, lineHeight: 1.85, margin: 0, padding: "0 24px 20px" }}>
-                      {lang === "en" && item.aEn ? item.aEn : item.a}
+                      {String(lang === "en" && item.aEn ? item.aEn : item.a).split("\n").map((para, pi) => (
+                        <span key={pi} style={{ display: "block", marginTop: pi ? "10px" : 0 }}>{para}</span>
+                      ))}
                     </p>
                   )}
                 </div>
@@ -191,7 +193,9 @@ export default function FAQAccordion({
                   </button>
                   {isOpen && (
                     <p style={{ ...KT, fontSize: "16px", color: colors.desc, lineHeight: 1.85, margin: 0, padding: "0 24px 20px" }}>
-                      {lang === "en" && item.aEn ? item.aEn : item.a}
+                      {String(lang === "en" && item.aEn ? item.aEn : item.a).split("\n").map((para, pi) => (
+                        <span key={pi} style={{ display: "block", marginTop: pi ? "10px" : 0 }}>{para}</span>
+                      ))}
                     </p>
                   )}
                 </div>
