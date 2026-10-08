@@ -55,7 +55,6 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
           <div key={item.title} className="hww-card" style={{ ...KT, animationDelay: `${i * 0.08}s` }}>
             <div className="hww-top">
               <span className="hww-letter" aria-hidden="true">{item.title[0]}</span>
-              <span className="hww-num" aria-hidden="true">0{i + 1}</span>
             </div>
             <h3 className="hww-title">
               <span className="hww-first">{item.title[0]}</span>{item.title.slice(1)}
@@ -69,25 +68,24 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
 
       <style>{`
         .hww-row{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
-        .hww-card{ position: relative; overflow: hidden; min-height: 340px; padding: 26px 24px 24px; border-radius: 26px; color: #fff;
-          background: linear-gradient(160deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.08) 100%);
-          border: 1px solid rgba(255,255,255,0.32); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 18px 40px -22px rgba(10,0,60,0.6);
-          transition: transform .35s ease, border-color .35s ease, background .35s ease; }
-        .hww-card:hover{ transform: translateY(-6px); border-color: rgba(255,255,255,0.6);
-          background: linear-gradient(160deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%); }
-        .hww-top{ display: flex; align-items: flex-start; justify-content: space-between; }
+        /* light dashboard-tile style (like the KOL Discovery panel): near-white card, brand purple
+           heading, dark copy, pink→purple initial */
+        .hww-card{ position: relative; overflow: hidden; min-height: 340px; padding: 26px 24px 24px; border-radius: 28px; color: #2a2346;
+          background: rgba(244,241,252,0.94); border: 1px solid rgba(255,255,255,0.9);
+          box-shadow: 0 18px 40px -22px rgba(20,6,80,0.55);
+          transition: transform .35s ease, box-shadow .35s ease; }
+        .hww-card:hover{ transform: translateY(-6px); box-shadow: 0 26px 50px -22px rgba(20,6,80,0.65); }
+        .hww-top{ display: flex; align-items: flex-start; }
         .hww-letter{ font-size: 112px; font-weight: 800; line-height: 0.82; letter-spacing: -0.04em;
-          background: linear-gradient(160deg, #ffffff 10%, #f3e8ff 45%, #ff8fd2 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-          filter: drop-shadow(0 8px 18px rgba(255,0,137,0.25)); transition: transform .45s cubic-bezier(.22,1,.36,1); transform-origin: left bottom; }
+          background: linear-gradient(180deg, #ec3a8c 0%, #5f26e5 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+          transition: transform .45s cubic-bezier(.22,1,.36,1); transform-origin: left bottom; }
         .hww-card:hover .hww-letter{ transform: scale(1.08) rotate(-3deg); }
-        .hww-num{ font-size: 13px; font-weight: 600; letter-spacing: .12em; color: rgba(255,255,255,0.55); padding-top: 6px; }
-        .hww-title{ margin: 22px 0 8px; font-size: clamp(18px,1.4vw,21px); font-weight: 700; line-height: 1.25; }
-        .hww-first{ background: linear-gradient(45deg,#ffd1ec,#ff5fb8); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-        .hww-desc{ margin: 0; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.82); max-width: 92%; }
-        .hww-icon{ position: absolute; right: -14px; bottom: -14px; width: 120px; height: 120px; object-fit: contain; opacity: .9; pointer-events: none;
-          transition: transform .45s ease, opacity .45s ease; }
-        .hww-card:hover .hww-icon{ transform: translate(-4px,-4px) scale(1.06); opacity: 1; }
+        .hww-title{ margin: 22px 0 8px; font-size: clamp(18px,1.4vw,21px); font-weight: 700; line-height: 1.25; color: #5f26e5; }
+        .hww-first{ color: #ec3a8c; }
+        .hww-desc{ margin: 0; font-size: 14px; line-height: 1.6; color: #4b4566; max-width: 92%; }
+        .hww-icon{ position: absolute; right: -14px; bottom: -14px; width: 120px; height: 120px; object-fit: contain; pointer-events: none;
+          transition: transform .45s ease; }
+        .hww-card:hover .hww-icon{ transform: translate(-4px,-4px) scale(1.06); }
         @media (max-width: 1279px){
           .hww-row{ display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
             margin: 0 -24px; padding: 6px 24px 16px; scroll-padding-inline: 24px; }
@@ -101,7 +99,6 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
             padding: 18px 76px 18px 16px; border-radius: 20px; }
           .hww-top{ grid-row: 1 / span 2; }
           .hww-letter{ font-size: 64px; }
-          .hww-num{ display: none; }
           .hww-title{ margin: 2px 0 4px; font-size: 17px; }
           .hww-desc{ font-size: 13.5px; max-width: none; }
           .hww-icon{ width: 72px; height: 72px; right: 6px; bottom: 6px; }
