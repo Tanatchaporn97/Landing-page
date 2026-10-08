@@ -204,7 +204,7 @@ export default function FAQAccordion({
         {/* Still have a question */}
         {!hideCta && (
           <div style={{ textAlign: "center", marginTop: "64px", display: "flex", flexDirection: "column", alignItems: "center", gap: "24px" }}>
-            <h3 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, color: "#111827", margin: 0 }}>
+            <h3 className="th-head" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, color: "#111827", margin: 0 }}>
               {variant === "influencer"
                 ? (dict?.home?.ctaTitleInfluencer || (lang === "en" ? "Still have questions?" : "มีคำถามเพิ่มเติมไหม?"))
                 : (dict?.home?.ctaTitle || (lang === "en" ? "Still have questions?" : "มีคำถามเพิ่มเติมไหม?"))}

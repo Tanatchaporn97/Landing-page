@@ -296,7 +296,9 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
 
   return (
-    <div className="hero-bg min-h-screen flex flex-col overflow-x-hidden" style={{ ...KT }}>
+    <div className={`hero-bg min-h-screen flex flex-col overflow-x-hidden${lang === "th" ? " brand-th" : ""}`} style={{ ...KT }}>
+      {/* Thai main headings on this page: Kanit SemiBold (600). English/Pierson parts keep their own weight. */}
+      <style>{`.brand-th .th-head, .brand-th .th-head span:not(.th-keep){ font-weight: 600 !important; }`}</style>
 
       {/* ── Navbar ── */}
       <Navbar variant="brand" lang={lang} />
@@ -336,11 +338,11 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           {/* Left: real hero copy, playful stacked layout + underline squiggle + pill CTA.
               Top-aligned with the visual: .bh-copy padding matches the gap above its first card. */}
           <div className="bh-copy" style={{ position: "relative" }}>
-            <h2 className={`bh-title font-bold${lang === "th" ? "" : " uppercase"}`} style={{ ...KT, color: "#111827", fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.25, margin: "0 0 24px" }}>
+            <h2 className={`bh-title th-head font-bold${lang === "th" ? "" : " uppercase"}`} style={{ ...KT, color: "#111827", fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.25, margin: "0 0 24px" }}>
               {lang === "th" ? (
                 <>
                   <span className="bh-line">วางแผนและดูแล</span>
-                  <span className="bh-line" style={{ ...PIERSON, fontWeight: 800, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+                  <span className="bh-line th-keep" style={{ ...PIERSON, fontWeight: 800, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
                     WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                     Influencer Marketing
                   </span>
@@ -401,7 +403,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       {/* ── Tagline ── */}
       <section className="pt-20 px-6" style={{ paddingBottom: 0 }}>
         <div className="text-center" style={{ maxWidth: "860px", margin: "0 auto" }}>
-          <h2 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, lineHeight: 1.3, margin: "0 0 20px" }}>
+          <h2 className="th-head" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, lineHeight: 1.3, margin: "0 0 20px" }}>
             <span style={{ color: "#111827" }}>{lang === "th" ? "แคมเปญอินฟลูเอนเซอร์" : "Influencer Campaigns"}</span>{" "}
             <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
