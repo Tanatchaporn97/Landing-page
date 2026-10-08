@@ -71,7 +71,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       <ImpactStats lang={lang as "th" | "en"} />
 
       {/* ── Brand Logos Marquee — transparent bg, shares the same wrapper gradient ── */}
-      <LogoMarquee background="linear-gradient(180deg, #ffffff 0%, #ffffff 70%, #f5eefc 100%)" headingStyle={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />
+      <LogoMarquee background="#ffffff" headingStyle={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />
 
       {/* ── Your Trusted Partner → FAQ/Contact — fresh gradient wrapper that
           starts exactly where LogoMarquee's own fade left off (#f5eefc),
@@ -79,7 +79,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
           spanning the (now very tall) hero above — avoids the color drifting
           out of sync whenever the hero's height changes. ── */}
       <div style={{ background: HOME_TOP_GRADIENT }}>
-      <section style={{ paddingTop: "80px", paddingBottom: "80px", background: "transparent" }} className="px-6 trusted-section">
+      <section style={{ paddingTop: "80px", paddingBottom: "80px", background: "#ffffff" }} className="px-6 trusted-section">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           {/* Heading */}
           <div className="text-center" style={{ maxWidth: "954px", margin: "0 auto" }}>
