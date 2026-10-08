@@ -23,9 +23,9 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
         <div>
           <Badge variant="outline">How We Work</Badge>
         </div>
-        <h3 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, margin: 0, lineHeight: 1.15,
-          background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-          What Goes Into Every Campaign
+        <h3 style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, margin: 0, lineHeight: 1.15, color: "#111827" }}>
+          What Goes Into Every{" "}
+          <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Campaign</span>
         </h3>
         <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0 }}>
           {lang === "th"
@@ -80,7 +80,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
           transition: transform .45s cubic-bezier(.22,1,.36,1); transform-origin: left bottom; }
         .hww-card:hover .hww-first{ transform: scale(1.06) rotate(-3deg); }
         .hww-rest{ font-size: clamp(18px,1.4vw,21px); }
-        .hww-desc{ margin: 0; font-size: 14px; line-height: 1.6; color: #4b4566; max-width: 92%; }
+        .hww-desc{ margin: 0; font-size: 16px; line-height: 1.7; color: #111827; max-width: 92%; }
         .hww-icon{ position: absolute; right: -14px; bottom: -14px; width: 120px; height: 120px; object-fit: contain; pointer-events: none;
           transition: transform .45s ease; }
         .hww-card:hover .hww-icon{ transform: translate(-4px,-4px) scale(1.06); }
@@ -97,7 +97,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
           .hww-first{ font-size: 56px; }
           .hww-title{ margin: 0 0 6px; }
           .hww-rest{ font-size: 17px; }
-          .hww-desc{ font-size: 13.5px; max-width: none; }
+          .hww-desc{ font-size: 15px; max-width: none; }
           .hww-icon{ width: 72px; height: 72px; right: 6px; bottom: 6px; }
         }
         @media (prefers-reduced-motion: reduce){ .hww-card, .hww-first, .hww-icon{ transition: none; } }
