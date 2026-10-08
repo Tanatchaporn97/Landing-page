@@ -13,15 +13,16 @@ const DISPLAY = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const SANS = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-// Hero background: the About Us image ("About us bg.jpg"). Below RESULTS it is masked out with
-// many eased stops, so it fades to transparent over the page's own background (the same one behind
-// the intro section) — one continuous surface, no seam or banding.
-const FADE_FROM = 0.66; // fraction of the hero height where the fade begins (just under RESULTS)
-const fadeMask = "linear-gradient(180deg, #000 0%, #000 " + (FADE_FROM * 100).toFixed(1) + "%, " +
+// Hero background: the About Us image ("About us bg.jpg"). From ~200px below the RESULTS line it
+// is masked out with many eased stops, so it fades to transparent over the page's own background
+// (the same one behind the intro section) — one continuous surface, no seam or banding.
+const GAP_BELOW_TEXT = 200; // px of solid background kept under RESULTS before the fade starts
+const FADE_LEN = 260;       // px the fade takes
+const fadeMaskAt = (start: number) => "linear-gradient(180deg, #000 0px, #000 " + start + "px, " +
   Array.from({ length: 18 }, (_, i) => {
     const t = (i + 1) / 18;
     const a = 1 - t * t * (3 - 2 * t);               // smoothstep
-    return `rgba(0,0,0,${a.toFixed(3)}) ${((FADE_FROM + (1 - FADE_FROM) * t) * 100).toFixed(1)}%`;
+    return `rgba(0,0,0,${a.toFixed(3)}) ${Math.round(start + FADE_LEN * t)}px`;
   }).join(", ") + ")";
 
 
@@ -132,13 +133,19 @@ export default function AboutKeywordHero() {
   // Line the first statement ("Better decisions start with") up with the other heroes' headings:
   // 195px below the top on desktop, 140px on phones. Measured once laid out (and on resize).
   const [shift, setShift] = useState(34);
+  const [fadeStart, setFadeStart] = useState<number | null>(null);
   useEffect(() => {
     const align = () => {
       const sec = ref.current; const lead = sec?.querySelector(".akh-lead");
       if (!sec || !lead) return;
       const target = window.innerWidth <= 767 ? 140 : 195;
       const cur = lead.getBoundingClientRect().top - sec.getBoundingClientRect().top;
-      if (p.get() < 0.02) setShift((s0) => Math.round(s0 + (target - cur)));
+      if (p.get() < 0.02) {
+        const d = target - cur;
+        setShift((s0) => Math.round(s0 + d));
+        const res = sec.querySelectorAll(".akh-kw")[2];
+        if (res) setFadeStart(Math.round(res.getBoundingClientRect().bottom - sec.getBoundingClientRect().top + d + GAP_BELOW_TEXT));
+      }
     };
     const id = requestAnimationFrame(align);
     window.addEventListener("resize", align);
@@ -157,10 +164,11 @@ export default function AboutKeywordHero() {
 
   return (
     <section ref={ref} data-dark-hero className="akh" style={{ position: "relative", ["--akh-h" as string]: "max(540px, min(80svh, 820px))", ["--akh-shift" as string]: `${shift}px`,
-      height: reduce ? "calc(var(--akh-h) + 150px)" : "calc(var(--akh-h) + 150px + 70vh)" }}>
-      <div style={{ position: "sticky", top: 0, height: "calc(var(--akh-h) + 150px)", overflow: "hidden" }}>
+      ["--akh-total" as string]: fadeStart ? `${fadeStart + FADE_LEN}px` : "calc(var(--akh-h) + 150px)",
+      height: reduce ? "var(--akh-total)" : "calc(var(--akh-total) + 70vh)" }}>
+      <div style={{ position: "sticky", top: 0, height: "var(--akh-total)", overflow: "hidden" }}>
         <div aria-hidden style={{ position: "absolute", inset: 0, background: "#13046a url('/about-us/about-hero-bg.jpg') center top / cover no-repeat",
- }} />
+          ...(fadeStart ? { WebkitMaskImage: fadeMaskAt(fadeStart), maskImage: fadeMaskAt(fadeStart) } : {}) }} />
         {/* atmosphere: pink–purple glow */}
         <div aria-hidden style={{ position: "absolute", inset: "-20%",
           background: "radial-gradient(42% 38% at 30% 32%, rgba(124,58,237,0.30) 0%, transparent 70%), radial-gradient(36% 34% at 72% 70%, rgba(255,0,137,0.20) 0%, transparent 72%), radial-gradient(60% 60% at 50% 50%, rgba(95,37,229,0.10) 0%, transparent 80%)",
