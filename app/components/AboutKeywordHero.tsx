@@ -16,8 +16,9 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 // Hero background: the About Us image ("About us bg.jpg"). From ~200px below the RESULTS line it
 // is masked out with many eased stops, so it fades to transparent over the page's own background
 // (the same one behind the intro section) — one continuous surface, no seam or banding.
-const GAP_BELOW_TEXT = 200; // px of solid background kept under RESULTS before the fade starts
-const FADE_LEN = 440;       // px the fade takes (long and gentle)
+const NAV_H = 90;           // navbar band at the top of the screen
+const GAP_BELOW_TEXT = 60;  // px of solid background kept under RESULTS before the fade starts
+const FADE_LEN = 340;       // px the fade takes
 const fadeMaskAt = (start: number) => "linear-gradient(180deg, #000 0px, #000 " + start + "px, " +
   Array.from({ length: 28 }, (_, i) => {
     const t = (i + 1) / 28;
@@ -134,6 +135,16 @@ export default function AboutKeywordHero() {
   // 195px below the top on desktop, 140px on phones. Measured once laid out (and on resize).
   const [shift, setShift] = useState(34);
   const [fadeStart, setFadeStart] = useState<number | null>(null);
+  const [fadeEnd, setFadeEnd] = useState<number | null>(null); // fade position once converged (just under the logo line)
+  // the logo is centred in what's actually on screen while pinned (below the navbar), and the
+  // keywords drift to that same point
+  const [visH, setVisH] = useState<number | null>(null);
+  const [converge, setConverge] = useState(0);
+  const clusterY = useTransform(p, [0.04, 0.42], [0, converge]);
+  // the fade follows the content up: under RESULTS at first, under the logo line once converged,
+  // so there's never a big empty purple band below the logo
+  const fadeAt = useTransform(p, [0.3, 0.62], [fadeStart ?? 0, fadeEnd ?? fadeStart ?? 0]);
+  const mask = useTransform(fadeAt, (v) => fadeMaskAt(Math.round(v)));
   useEffect(() => {
     const align = () => {
       const sec = ref.current; const lead = sec?.querySelector(".akh-lead");
@@ -145,6 +156,14 @@ export default function AboutKeywordHero() {
         setShift((s0) => Math.round(s0 + d));
         const res = sec.querySelectorAll(".akh-kw")[2];
         if (res) setFadeStart(Math.round(res.getBoundingClientRect().bottom - sec.getBoundingClientRect().top + d + GAP_BELOW_TEXT));
+        const total = res ? res.getBoundingClientRect().bottom - sec.getBoundingClientRect().top + d + GAP_BELOW_TEXT + FADE_LEN : sec.offsetHeight;
+        const vis = Math.round(Math.min(window.innerHeight, total));
+        setVisH(vis);
+        const centre = NAV_H + (vis - NAV_H) / 2;                    // middle of the visible area below the navbar
+        const word = sec.querySelector(".akh-word") as HTMLElement | null;
+        if (word) setConverge(Math.round(centre - (word.offsetTop + d)));
+        // logo block ≈ centred at `centre`; its line ends roughly 150px below on desktop, 110px on phones
+        setFadeEnd(Math.round(centre + (window.innerWidth <= 767 ? 110 : 150) + GAP_BELOW_TEXT));
       }
     };
     const id = requestAnimationFrame(align);
@@ -166,8 +185,8 @@ export default function AboutKeywordHero() {
     <section ref={ref} data-dark-hero className="akh" style={{ position: "relative", ["--akh-h" as string]: "max(540px, min(80svh, 820px))", ["--akh-shift" as string]: `${shift}px`,
       ["--akh-total" as string]: fadeStart ? `${fadeStart + FADE_LEN}px` : "calc(var(--akh-h) + 150px)",
       height: reduce ? "var(--akh-total)" : "calc(var(--akh-total) + 70vh)" }}>
-      <div style={{ position: "sticky", top: 0, height: "var(--akh-total)", overflow: "hidden",
-        ...(fadeStart ? { WebkitMaskImage: fadeMaskAt(fadeStart), maskImage: fadeMaskAt(fadeStart) } : {}) }}>
+      <motion.div style={{ position: "sticky", top: 0, height: "var(--akh-total)", overflow: "hidden",
+        ...(fadeStart ? { WebkitMaskImage: mask, maskImage: mask } : {}) }}>
         <div aria-hidden style={{ position: "absolute", inset: 0, background: "#3f2a88 url('/about-us/about-hero-bg-v2.jpg') center top / cover no-repeat" }} />
         {/* atmosphere: pink–purple glow */}
         <div aria-hidden style={{ position: "absolute", inset: "-20%",
@@ -184,21 +203,23 @@ export default function AboutKeywordHero() {
         {/* subtle grain-free vignette */}
         <div aria-hidden style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 90% 70% at 50% 40%, transparent 60%, rgba(10,4,40,0.35) 100%)", WebkitMaskImage: "linear-gradient(180deg,#000 60%,transparent 80%)", maskImage: "linear-gradient(180deg,#000 60%,transparent 80%)" }} />
 
-        {WORDS.map((w, i) => <Keyword key={w.word} w={w} i={i} p={p} still={reduce} mobile={mobile} />)}
+        <motion.div style={{ position: "absolute", inset: 0, y: reduce ? 0 : clusterY }}>
+          {WORDS.map((w, i) => <Keyword key={w.word} w={w} i={i} p={p} still={reduce} mobile={mobile} />)}
+        </motion.div>
 
         {/* resolved state: centred logo + final line */}
         {!reduce && (
-          <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: "var(--akh-h)", paddingTop: "68px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", pointerEvents: "none" }}>
+          <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: visH ? `${visH}px` : "var(--akh-h)", paddingTop: `${NAV_H}px`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", pointerEvents: "none" }}>
             <motion.div style={{ opacity: logoOpacity, scale: logoScale, position: "relative", width: "min(460px, 62vw)", aspectRatio: "3608 / 1258" }}>
               <Image src="/buddy-review-logo.png" alt="Buddy Review" fill sizes="460px" style={{ objectFit: "contain" }} />
             </motion.div>
-            <motion.p style={{ ...DISPLAY, opacity: lineOpacity, margin: "28px 0 0", fontSize: "clamp(20px, 2vw, 30px)", fontWeight: 500,
+            <motion.p className="akh-final" style={{ ...DISPLAY, opacity: lineOpacity, margin: "28px 0 0", fontSize: "clamp(20px, 2vw, 30px)", fontWeight: 500,
               letterSpacing: "0.04em", color: "rgba(255,255,255,0.88)" }}>
               data, people, results.
             </motion.p>
           </div>
         )}
-      </div>
+      </motion.div>
 
       <style>{`
         .akh-band > span{ padding-right: 0.3em; }
