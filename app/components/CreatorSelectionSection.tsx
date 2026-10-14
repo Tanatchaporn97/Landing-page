@@ -251,10 +251,6 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
             <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "linear-gradient(135deg,#5f25e5,#ff0089)" }} />
             <span style={{ fontSize: "12px", fontWeight: 800, color: "#5f26e5", letterSpacing: ".06em" }}>KOL DISCOVERY</span>
           </div>
-          <div style={{ display: "flex", gap: "8px" }}>
-            <span style={{ fontSize: "11px", fontWeight: 600, color: "#111827", padding: "6px 12px", borderRadius: "8px", background: "#fff", border: "1px solid rgba(255,0,137,0.35)" }}>⤓ Download Report (.pdf)</span>
-            <span style={{ fontSize: "11px", fontWeight: 600, color: "#111827", padding: "6px 12px", borderRadius: "8px", background: "#fff", border: "1px solid rgba(95,38,229,0.35)" }}>☆ Save</span>
-          </div>
         </div>
 
         {/* profile + stats strip */}
@@ -275,12 +271,7 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
               ))}
             </div>
           </div>
-          <div style={{ borderRadius: "12px", border: "1.5px solid rgba(17,24,39,0.7)", background: "#fff", padding: "12px 14px", display: "grid", gridTemplateColumns: "1.4fr repeat(5, 1fr)", gap: "8px" }}>
-            <div>
-              <div style={TINY}>Raw Cost (THB)</div>
-              <div style={{ fontSize: "15px", fontWeight: 700, color: "#111827", marginTop: "4px" }}>15,000</div>
-              <div style={{ fontSize: "9.5px", color: "#6b7280", marginTop: "2px" }}>(8,000 – 25,000)</div>
-            </div>
+          <div style={{ borderRadius: "12px", border: "1.5px solid rgba(17,24,39,0.7)", background: "#fff", padding: "12px 14px", display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "8px" }}>
             {STATS.map((x) => (
               <div key={x.k}>
                 <div style={TINY}>{x.k}</div>
@@ -292,11 +283,6 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
 
         {/* tabs */}
         <div style={{ display: "flex", alignItems: "center", gap: "20px", marginBottom: "12px" }}>
-          <div style={{ display: "inline-flex", padding: "3px", borderRadius: "50px", background: "rgba(255,255,255,0.7)", border: "1px solid rgba(95,38,229,0.12)" }}>
-            {["Insight", "Rate Card", "Budget", "Contact"].map((t, i) => (
-              <span key={t} style={{ fontSize: "11.5px", fontWeight: 600, padding: "6px 14px", borderRadius: "50px", color: i ? "#4b5563" : "#5f26e5", background: i ? "transparent" : "#fff", boxShadow: i ? "none" : "0 2px 8px -3px rgba(95,38,229,0.35)" }}>{t}</span>
-            ))}
-          </div>
           <div style={{ display: "flex", gap: "16px" }}>
             {(["Influencer", "Audience", "Lookalikes"] as const).map((t) => {
               const live = true;

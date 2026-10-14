@@ -12,7 +12,7 @@ const ITEMS = [
   { title: "Unified by Insight",       desc: "เข้าใจเป้าหมายร่วมกัน และต่อยอดด้วย Insight",          descEn: "Shared goals, sharpened by insight.",                                src: "/how-we-work/icon-insight-v2.png" },
   { title: "Data-Driven Decisions",    desc: "ใช้ข้อมูลช่วยตัดสินใจ ตั้งแต่เลือก Creator จนถึงวัดผล",   descEn: "Data guides every call — from choosing creators to measuring results.", src: "/how-we-work/icon-data-v2.png" },
   { title: "Delivery with Discipline", desc: "บริหารและส่งมอบงานอย่างเป็นระบบ ตั้งแต่ต้นจนจบ",         descEn: "Systematic management and delivery, from start to finish.",           src: "/how-we-work/icon-delivery-v2.png" },
-  { title: "Your Goals Drive Results", desc: "มุ่งผลลัพธ์ที่เชื่อมกับเป้าหมายของแบรนด์จริง",            descEn: "Results tied to your brand's real goals.",                            src: "/how-we-work/icon-goals-v2.png" },
+  { title: "Your Success, Our Focus",  desc: "ใส่ใจทุกเป้าหมาย เพื่อให้แบรนด์ได้ผลลัพธ์ที่ต้องการ",       descEn: "Every goal gets our full attention, so your brand gets the results it wants.",                            src: "/how-we-work/icon-goals-v2.png" },
 ];
 
 
