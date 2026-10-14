@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const GRAD = "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)";
-const APPLY_URL = "https://www.buddyreview.co/app/new-campaigns";
+const APPLY_URL = "https://line.me/R/ti/p/@buddysupport";
 
 const AVATARS = ["/testimonials/king.jpg", "/testimonials/pond-peoria.jpg", "/testimonials/philipverze.jpg"];
 

@@ -175,7 +175,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             )}
           </p>
           <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
-            <a href="https://rank.buddyreview.co/" target="_blank" rel="noopener noreferrer"
+            <a href="https://line.me/R/ti/p/@buddysupport" target="_blank" rel="noopener noreferrer"
               className="inf-cta inf-cta--line"
               style={KT}>
               <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style={{ flexShrink: 0 }} aria-hidden="true">
