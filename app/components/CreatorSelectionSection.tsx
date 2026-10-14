@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Badge } from "@/components/ui/badge";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -162,6 +162,27 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
   const [tab, setTab] = useState<"Influencer" | "Audience" | "Lookalikes">("Influencer");
   // the sub-tabs cycle on their own every 5s; paused while the visitor is hovering the dashboard
   // or a signal chip, and restarted from the chosen tab after any manual switch
+  // Below 900px the dashboard keeps its desktop layout at a fixed design width and is scaled
+  // down to fit (transform + a measured wrapper height) — identical in every browser, so nothing
+  // gets cropped the way CSS zoom did on some phones.
+  const DESIGN_W = 860;
+  const fitRef = useRef<HTMLDivElement>(null);
+  const dashRef = useRef<HTMLDivElement>(null);
+  const [fit, setFit] = useState<{ s: number; h: number } | null>(null);
+  useEffect(() => {
+    const outer = fitRef.current, inner = dashRef.current;
+    if (!outer || !inner) return;
+    const update = () => {
+      if (window.innerWidth >= 900) { setFit(null); return; }
+      const s = Math.min(1, outer.clientWidth / DESIGN_W);
+      setFit({ s, h: inner.offsetHeight * s });
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(outer); ro.observe(inner);
+    window.addEventListener("resize", update);
+    return () => { ro.disconnect(); window.removeEventListener("resize", update); };
+  }, []);
   const [paused, setPaused] = useState(false);
   useEffect(() => {
     if (paused || hot) return;
@@ -215,7 +236,9 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
       </div>
 
       {/* Right — KOL Discovery creator profile mockup */}
-      <div className="cs-dashboard" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} style={{
+      <div ref={fitRef} className="cs-fit" style={{ minWidth: 0, width: "100%", height: fit ? `${fit.h}px` : undefined }}>
+      <div ref={dashRef} className="cs-dashboard" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} style={{
+        ...(fit ? { width: `${DESIGN_W}px`, transform: `scale(${fit.s})`, transformOrigin: "top left" } : {}),
         position: "relative", borderRadius: "28px", padding: "22px 24px",
         background: "rgba(255,255,255,0.55)", border: "1px solid rgba(255,255,255,0.8)",
         boxShadow: "0 30px 60px -20px rgba(95,38,229,0.28), 0 10px 24px -12px rgba(255,0,137,0.12)",
@@ -375,6 +398,7 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
           </div>
         </div>
       </div>
+      </div>
 
       <style>{`
         .cs-chip{ cursor: pointer; user-select: none; transition: background .3s ease, color .3s ease, transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease, border-color .3s ease; }
@@ -398,16 +422,6 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
         }
         @media (max-width: 640px){
           .cs-tags{ grid-template-columns: repeat(2, auto) !important; }
-          /* Keep the dashboard mockup as one compact composition (same
-             3-across charts row, same 2-across tags row as desktop) instead
-             of unstacking every row to full-width — just zoom the whole
-             card down so it fits the viewport. zoom shrinks the layout box
-             itself (unlike transform: scale), so the section's height
-             shrinks along with it instead of leaving dead space. */
-          .cs-dashboard{ zoom: 0.62; }
-        }
-        @media (max-width: 420px){
-          .cs-dashboard{ zoom: 0.5; }
         }
       `}</style>
     </div>
