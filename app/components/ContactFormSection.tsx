@@ -232,7 +232,7 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
               {
                 icon: <span style={{ display: "inline-block", width: "32px", height: "32px", backgroundColor: "#ffffff", WebkitMaskImage: "url(/icon-location.png)", WebkitMaskSize: "contain", WebkitMaskRepeat: "no-repeat", WebkitMaskPosition: "center", maskImage: "url(/icon-location.png)", maskSize: "contain", maskRepeat: "no-repeat", maskPosition: "center" }} />,
                 title: lang === "th" ? "ที่อยู่" : "Address",
-                href: "https://www.google.com/maps/search/?api=1&query=Shinawatra+Tower+3+Vibhavadi+Rangsit+Rd+Chatuchak+Bangkok+10900",
+                href: "https://maps.app.goo.gl/q1jxiJsAzfqtQpXM7",
                 lines: lang === "th"
                   ? ["1010, อาคารชินวัตรทาวเวอร์ 3,", "ห้อง 603, ชั้น 6,", "ถนนวิภาวดีรังสิต, แขวงจตุจักร กรุงเทพฯ 10900"]
                   : ["1010, Shinawatra Tower 3,", "Room 603, 6th Floor,", "Vibhavadi Rangsit Rd, Chatuchak, Bangkok 10900"],
