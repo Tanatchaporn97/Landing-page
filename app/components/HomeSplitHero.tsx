@@ -19,8 +19,8 @@ const COPY = {
     headline1: "Data-Powered",
     headline2: "Influencer Marketing",
     headline3: "For Measurable Growth",
-    sublineTop: "From Strategy To Insight,",
-    sublineBottom: "We Turn Influence Into Impact.",
+    sublineTop: "From Insights to Strategy,",
+    sublineBottom: "From Influence to Impact.",
     brand: {
       label: "Brand",
       tagline: "เปลี่ยนทุกแคมเปญให้วัดผลได้",
@@ -41,8 +41,8 @@ const COPY = {
     headline1: "Data-Powered",
     headline2: "Influencer Marketing",
     headline3: "For Measurable Growth",
-    sublineTop: "From Strategy To Insight,",
-    sublineBottom: "We Turn Influence Into Impact.",
+    sublineTop: "From Insights to Strategy,",
+    sublineBottom: "From Influence to Impact.",
     brand: {
       label: "Brand",
       tagline: "Turn Every Campaign Into Measurable Results",
