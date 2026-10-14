@@ -34,6 +34,15 @@ export default async function RootLayout({
   return (
     <html lang={lang} className={`${inter.variable} ${kanit.variable} ${cantataOne.variable} ${playfair.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
+        {/* Main Kanit headings site-wide (section + hero sizes) use SemiBold 600. The brand page keeps its own
+            weights (.brand-page). Pierson headings are untouched — only Kanit text is matched. */}
+        <style>{`
+          :is(h1,h2,h3):is([style*="clamp(28px"],[style*="clamp(32px"],[style*="clamp(34px"]):not(.brand-page *):not([style*="Pierson"]),
+          :is(h1,h2,h3):is([style*="clamp(28px"],[style*="clamp(32px"],[style*="clamp(34px"]):not(.brand-page *) :is([style*="kanit"], span:not([style*="Pierson"])),
+          :is(h1,h2,h3).section-title:not(.brand-page *),
+          :is(h1,h2,h3).section-title:not(.brand-page *) span:not([style*="Pierson"])
+          { font-weight: 600 !important; }
+        `}</style>
         <CtaPressEffect />
         {children}
         <FloatingContactCTA lang={lang === "en" ? "en" : "th"} />

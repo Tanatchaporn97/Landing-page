@@ -296,7 +296,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
 
   return (
-    <div className={`hero-bg min-h-screen flex flex-col overflow-x-hidden${lang === "th" ? " brand-th" : ""}`} style={{ ...KT }}>
+    <div className={`brand-page hero-bg min-h-screen flex flex-col overflow-x-hidden${lang === "th" ? " brand-th" : ""}`} style={{ ...KT }}>
       {/* Thai main headings on this page: Kanit SemiBold (600). English/Pierson parts keep their own weight. */}
       <style>{`.brand-th .th-head, .brand-th .th-head span:not(.th-keep){ font-weight: 600 !important; }`}</style>
 
