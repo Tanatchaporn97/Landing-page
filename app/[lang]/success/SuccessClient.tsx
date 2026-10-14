@@ -597,7 +597,7 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
 
                     {/* Category pill */}
                     <div className="sg-pill" style={{ position: "absolute", top: "28px", left: "28px", zIndex: 2 }}>
-                      <span className="cs-cat-btn" style={{ fontFamily: "sans-serif", fontSize: "9px", fontWeight: 700, color: "#ffffff", background: "#5f26e5", borderRadius: "50px", padding: "5px 12px", letterSpacing: "0.08em", display: "inline-block" }}>
+                      <span className="cs-cat-btn" style={{ ...KT, fontSize: "9px", fontWeight: 400, color: "#ffffff", background: "#5f26e5", borderRadius: "50px", padding: "5px 12px", letterSpacing: "0.08em", display: "inline-block" }}>
                         {story.industry.toUpperCase()}
                       </span>
                     </div>
