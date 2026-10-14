@@ -86,7 +86,7 @@ export default async function SuccessStoriesPage({ params }: { params: Promise<{
                   <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.18) 55%, transparent 100%)" }} />
                   {/* Content */}
                   <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "24px" }}>
-                    <span style={{ ...KT, fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", color: "rgba(255,255,255,0.7)", textTransform: "uppercase" as const }}>
+                    <span style={{ ...KT, fontSize: "11px", fontWeight: 400, letterSpacing: "0.12em", color: "rgba(255,255,255,0.7)", textTransform: "uppercase" as const }}>
                       {story.industry}
                     </span>
                     <h2 style={{ ...KT, fontSize: "22px", fontWeight: 800, color: "#ffffff", margin: "6px 0 8px", lineHeight: 1.2 }}>{story.brand}</h2>
