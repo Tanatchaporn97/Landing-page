@@ -400,31 +400,6 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       {/* ── Brand Logos Marquee ── */}
       <LogoMarquee headingStyle={{ ...PIERSON, fontWeight: 800, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />
 
-      {/* ── Tagline ── */}
-      <section className="pt-20 px-6" style={{ paddingBottom: 0 }}>
-        <div className="text-center" style={{ maxWidth: "860px", margin: "0 auto" }}>
-          <h2 className="th-head tg-head" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, lineHeight: 1.3, margin: "0 0 20px" }}>
-            {/* phones only: 3 fixed lines, a touch smaller so the longest line stays on one line; desktop wraps as before */}
-            <style>{`@media (max-width: 640px){ .tg-head{ font-size: min(28px, 6.4vw) !important; } .tg-line{ display: block; } .tg-nw{ white-space: nowrap; } .tg-grad{ background: none !important; } .tg-grad .tg-line{ background: linear-gradient(45deg,#5f25e5 0%,#ff0089 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; } }
-              .tg-grad{ background: linear-gradient(45deg,#5f25e5 0%,#ff0089 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }`}</style>
-            <span className="tg-line" style={{ color: "#111827" }}>{lang === "th" ? "แคมเปญอินฟลูเอนเซอร์" : "Influencer Campaigns"}</span>{" "}
-            {lang === "th" ? (
-              // each gradient part clips its own background so it stays visible when split into lines
-              <span className="tg-grad">
-                <span className="tg-line tg-nw">ที่เราพร้อมดูแลคุณในทุกขั้นตอน</span><span className="tg-line">อย่างเหนือระดับ</span>
-              </span>
-            ) : (
-              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Elevated at Every Step</span>
-            )}
-          </h2>
-          <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: 0 }}>
-            {lang === "th"
-              ? "ทุกกลยุทธ์ต่อยอดด้วยดาต้าและทีมงานมืออาชีพ เพื่อให้แคมเปญของคุณไปถึงผลลัพธ์ที่วางไว้"
-              : "Every strategy is powered by data and a professional team, driving your campaign to the results you set out to achieve."}
-          </p>
-        </div>
-      </section>
-
       {/* ── Start With Your Goal — Business Objectives ── */}
       <section style={{ background: "transparent" }} className="py-20 px-6">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
