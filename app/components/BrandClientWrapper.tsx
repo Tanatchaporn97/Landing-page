@@ -602,10 +602,12 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             <h2 className="font-bold section-h2-fixed" style={{ ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2,
               fontFeatureSettings: "'pnum' on,'lnum' on", color: "#111827", margin: 0 }}>
               Think Smarter,{" "}
-              <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+              <span className="tse-line2" style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
                 WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 Execute Better
               </span>
+              {/* phones: "Execute Better" always on its own second line */}
+              <style>{`@media (max-width: 640px){ .tse-line2{ display: block; } }`}</style>
             </h2>
             <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: 0, maxWidth: "640px" }}>
               {lang === "th"

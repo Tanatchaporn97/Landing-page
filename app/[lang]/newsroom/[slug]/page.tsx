@@ -227,14 +227,12 @@ function CPAllEventContent({ lang }: { lang: Locale }) {
 }
 
 const PEERPOWER_GALLERY = [
-  "/blogs/peerpower-interview-02.jpg",
-  "/blogs/peerpower-interview-03.jpg",
-  "/blogs/peerpower-interview-04.jpg",
-  "/blogs/peerpower-interview-05.jpg",
-  "/blogs/peerpower-interview-06.jpg",
-  "/blogs/peerpower-interview-07.jpg",
-  "/blogs/peerpower-interview-08.jpg",
-  "/blogs/peerpower-interview-09.jpg",
+  "/blogs/peerpower-v2-02.jpg",
+  "/blogs/peerpower-v2-03.jpg",
+  "/blogs/peerpower-v2-04.jpg",
+  "/blogs/peerpower-v2-05.jpg",
+  "/blogs/peerpower-v2-06.jpg",
+  "/blogs/peerpower-v2-07.jpg",
 ];
 
 function PeerPowerGallery() {
