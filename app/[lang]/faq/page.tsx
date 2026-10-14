@@ -53,7 +53,7 @@ export default async function FaqPage({ params }: { params: Promise<{ lang: stri
     mainEntity: allFaqs.map((faq: { q: string; a: string }) => ({
       "@type": "Question",
       name: faq.q,
-      acceptedAnswer: { "@type": "Answer", text: faq.a },
+      acceptedAnswer: { "@type": "Answer", text: faq.a.replace(/\[([^\]]+)\]\([^)]*\)/g, "$1") },
     })),
   };
 

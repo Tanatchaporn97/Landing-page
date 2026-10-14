@@ -24,6 +24,16 @@ const DEFAULT_FAQS = [
     qEn: "I forgot my email or can't log in — what should I do?", aEn: "Contact our support team on LINE: @buddysupport with your account name, and the team will verify your account and reset your password." },
 ];
 
+// "[label](/path)" inside an answer becomes an in-site link (locale prefixed)
+function withLinks(text: string, lang: string) {
+  return text.split(/(\[[^\]]+\]\(\/[^)]*\))/).map((part, i) => {
+    const m = part.match(/^\[([^\]]+)\]\((\/[^)]*)\)$/);
+    return m
+      ? <Link key={i} href={`/${lang}${m[2]}`} style={{ color: "inherit", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: "3px" }}>{m[1]}</Link>
+      : part;
+  });
+}
+
 export default function FAQAccordion({
   faqs = DEFAULT_FAQS,
   lang = "th",
@@ -146,7 +156,7 @@ export default function FAQAccordion({
                   {isOpen && (
                     <p style={{ ...KT, fontSize: "16px", color: colors.desc, lineHeight: 1.85, margin: 0, padding: "0 24px 20px" }}>
                       {String(lang === "en" && item.aEn ? item.aEn : item.a).split("\n").map((para, pi) => (
-                        <span key={pi} style={{ display: "block", marginTop: pi ? "10px" : 0 }}>{para}</span>
+                        <span key={pi} style={{ display: "block", marginTop: pi ? "10px" : 0 }}>{withLinks(para, lang)}</span>
                       ))}
                     </p>
                   )}
@@ -194,7 +204,7 @@ export default function FAQAccordion({
                   {isOpen && (
                     <p style={{ ...KT, fontSize: "16px", color: colors.desc, lineHeight: 1.85, margin: 0, padding: "0 24px 20px" }}>
                       {String(lang === "en" && item.aEn ? item.aEn : item.a).split("\n").map((para, pi) => (
-                        <span key={pi} style={{ display: "block", marginTop: pi ? "10px" : 0 }}>{para}</span>
+                        <span key={pi} style={{ display: "block", marginTop: pi ? "10px" : 0 }}>{withLinks(para, lang)}</span>
                       ))}
                     </p>
                   )}
