@@ -10,6 +10,10 @@ import { getDictionary } from "../../../../get-dictionary";
 import { type Locale } from "../../../../i18n-config";
 
 const BLOG_DESCRIPTIONS: Record<string, Record<string, string>> = {
+  "adapt-content-for-each-platform": {
+    th: "คอนเทนต์เดียวกันทำไมยอดต่างกัน? วิธีปรับวิธีเล่า Format และการนำเสนอให้เหมาะกับ TikTok, Facebook, Instagram และ YouTube โดยไม่ต้องเปลี่ยน Core Message",
+    en: "Why does the same content perform differently? How to adapt storytelling, Format, and presentation for TikTok, Facebook, Instagram, and YouTube without changing your Core Message.",
+  },
   "how-to-start-influencer-campaign": {
     th: "4 ขั้นตอนสำคัญก่อนเริ่ม Influencer Campaign ตั้งแต่การตั้ง Objective, กำหนด Target Audience, วาง Budget ไปจนถึงการคัดเลือก Influencer และทำ Brief",
     en: "4 essential steps before launching an Influencer Campaign — setting the Objective, defining the Target Audience, planning the Budget, and selecting influencers with a clear Brief.",
@@ -1500,7 +1504,89 @@ function CopywritingContent({ lang }: { lang: Locale }) {
   );
 }
 
-const SLUGS = ["how-to-start-influencer-campaign", "how-to-choose-influencer-marketing-agency", "how-to-find-the-right-influencer", "influencer-marketing-budget-by-objective", "how-to-choose-influencer-checklist", "instagram-2026-benchmark", "content-per-platform-fb-tiktok-ig", "social-media-insight-2026", "content-strategy-canvas", "best-time-to-post-2025", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas", "6-copywriting-techniques"];
+function AdaptContentPlatformContent({ lang }: { lang: Locale }) {
+  const Fit = ({ label, children }: { label: string; children: React.ReactNode }) => (
+    <P><strong style={{ color: "#5f26e5" }}>{label}</strong> {children}</P>
+  );
+  if (lang === "en") {
+    return (
+      <>
+        <P>The same content doesn&apos;t mean it should be told the same way on every Platform. TikTok, Facebook, Instagram, and YouTube each have different viewing formats and user behaviors, so posting the exact same thing everywhere without any adjustments can leave content that should have done well falling short of the results it deserves.</P>
+        <P>What you should do isn&apos;t change the brand&apos;s Core Message every time, but adapt the storytelling, Format, and presentation to suit each Platform. So how should Content be adapted for each Platform?</P>
+
+        <Divider />
+        <H3>1. TikTok: Make people want to keep watching</H3>
+        <P>TikTok is a Platform built for short-form video and storytelling that&apos;s quick to understand. The opening of the clip should immediately tell people what it&apos;s about and why they should keep watching.</P>
+        <P>Instead of opening with a long introduction, start with a problem, a question, or a topic people are already interested in — then expand on the details afterwards.</P>
+        <P>The same content that lives as a long article on your website can be reworked into Short Videos broken into bite-sized points.</P>
+        <Fit label="Best for:">Short Video, Trend-based Content, How-to, Tips, and Storytelling</Fit>
+
+        <H3>2. Facebook: Focus on substance and conversation</H3>
+        <P>Facebook still suits content with more detail — especially content that invites people to read, comment, or share.</P>
+        <P>If you have several points to cover, summarize them into an easy-to-read post with examples, or use open-ended questions to spark discussion.</P>
+        <P>The same topic you made into a TikTok can be retold on Facebook with more detail, rather than reposting the same Caption.</P>
+        <Fit label="Best for:">Educational Content, Discussion, Storytelling, Infographics, and Community Content</Fit>
+
+        <H3>3. Instagram: Let Visuals tell the story</H3>
+        <P>Instagram puts visual presentation first, so the Format you choose affects how viewers take in the message.</P>
+        <P>The same information could become a Carousel that splits the content into Slides, or a Reel that tells only the key points. Stories can then extend it with Polls, Q&amp;A, or prompts that get viewers involved.</P>
+        <P>The key is that you don&apos;t need to carry every detail from the original into the post — pick only the points that suit that Format.</P>
+        <Fit label="Best for:">Reels, Carousels, Stories, Visual Content, and UGC</Fit>
+
+        <H3>4. YouTube: Go deeper</H3>
+        <P>YouTube suits content people are willing to spend more time watching — How-tos, reviews, Tutorials, or anything that needs explaining across several steps.</P>
+        <P>If a topic was made into a 60-second TikTok, it can be expanded into a YouTube video that walks through the problem, the thinking, the steps, and examples.</P>
+        <P>Beyond the content itself, the Title and Thumbnail play a major role, because they help viewers understand what the video is about and decide whether to click.</P>
+        <Fit label="Best for:">Long-form Video, Tutorials, Reviews, How-tos, and Educational Content</Fit>
+
+        <Divider />
+        <H2>So how should Content be adapted for each Platform?</H2>
+        <P>Put simply, TikTok should focus on getting to the point and pacing the story so people want to keep watching, while Facebook suits detailed content that opens up space for conversation.</P>
+        <P>Instagram should prioritize Visuals and choosing the right Format, such as Reels, Carousels, or Stories, while YouTube suits content that needs deeper explanation, like How-tos, Reviews, and Tutorials.</P>
+        <P>That said, this is only a starting guideline — it doesn&apos;t mean each Platform can use only one Format. In the end, the right Format still depends on the type of Content and the behavior of your target audience.</P>
+      </>
+    );
+  }
+  return (
+    <>
+      <P>คอนเทนต์เดียวกันไม่ได้แปลว่าควรเล่าเหมือนกันทุก Platform เพราะ TikTok, Facebook, Instagram และ YouTube มีรูปแบบการรับชมและพฤติกรรมของผู้ใช้ที่แตกต่างกัน การนำโพสต์เดียวกันไปลงทุกช่องทางแบบไม่ปรับอะไรเลย จึงอาจทำให้คอนเทนต์ที่ควรไปได้ดี กลับไม่สร้างผลลัพธ์เท่าที่ควร</P>
+      <P>สิ่งที่ควรทำไม่ใช่การเปลี่ยน Core Message ของแบรนด์ทุกครั้ง แต่คือการปรับ วิธีเล่า Format และรูปแบบการนำเสนอ ให้เหมาะกับแต่ละ Platform แล้วแต่ละ Platform ควรปรับ Content ยังไง?</P>
+
+      <Divider />
+      <H3>1. TikTok: ต้องทำให้คนอยากดูต่อ</H3>
+      <P>TikTok เป็น Platform ที่เหมาะกับคอนเทนต์วิดีโอสั้นและการเล่าเรื่องที่เข้าใจได้เร็ว ดังนั้นช่วงต้นของคลิปจึงควรทำให้คนรู้ทันทีว่าเนื้อหานี้เกี่ยวกับอะไร และทำไมถึงควรดูต่อ</P>
+      <P>แทนที่จะเปิดด้วยการเกริ่นเรื่องยาวๆ อาจเริ่มจากปัญหา คำถาม หรือประเด็นที่คนกำลังสนใจ แล้วค่อยขยายรายละเอียดในช่วงถัดไป</P>
+      <P>คอนเทนต์เดียวกันที่เป็นบทความยาวบนเว็บไซต์ จึงอาจถูกนำมาปรับเป็น Short Video ที่แบ่งออกเป็นประเด็นสั้นๆ ได้</P>
+      <Fit label="เหมาะกับ:">Short Video, Trend-based Content, How-to, Tips และ Storytelling</Fit>
+
+      <H3>2. Facebook: เน้นเนื้อหาและการพูดคุย</H3>
+      <P>Facebook ยังเหมาะกับคอนเทนต์ที่มีรายละเอียดมากขึ้น โดยเฉพาะเนื้อหาที่เปิดโอกาสให้คนอ่าน แสดงความคิดเห็น หรือแชร์ต่อ</P>
+      <P>หากมีข้อมูลหลายประเด็น อาจสรุปเป็นโพสต์ที่อ่านง่าย พร้อมตัวอย่างประกอบ หรือใช้คำถามปลายเปิดเพื่อชวนให้เกิดการพูดคุย</P>
+      <P>คอนเทนต์เรื่องเดียวกับที่ทำเป็น TikTok จึงสามารถนำมาเล่าใหม่ใน Facebook ด้วยรายละเอียดที่มากขึ้น แทนการนำ Caption เดิมมาโพสต์ซ้ำ</P>
+      <Fit label="เหมาะกับ:">Educational Content, Discussion, Storytelling, Infographic และ Community Content</Fit>
+
+      <H3>3. Instagram: ให้ Visual ช่วยเล่าเรื่อง</H3>
+      <P>Instagram ให้ความสำคัญกับการนำเสนอด้วยภาพ ดังนั้นการเลือก Format จึงมีผลต่อวิธีรับสารของคนดู</P>
+      <P>ข้อมูลเดียวกันอาจเปลี่ยนเป็น Carousel ที่แบ่งเนื้อหาออกเป็น Slide หรือทำเป็น Reels ที่เล่าเฉพาะประเด็นสำคัญ ส่วน Stories สามารถนำมาใช้ต่อยอดด้วย Poll, Q&amp;A หรือการชวนคนดูมีส่วนร่วม</P>
+      <P>สิ่งสำคัญคือไม่จำเป็นต้องยกเนื้อหาทั้งหมดจากต้นฉบับมาใส่ในโพสต์ แต่ควรเลือกเฉพาะประเด็นที่เหมาะกับ Format นั้นๆ</P>
+      <Fit label="เหมาะกับ:">Reels, Carousel, Stories, Visual Content และ UGC</Fit>
+
+      <H3>4. YouTube: เล่าให้ลึกขึ้นได้</H3>
+      <P>YouTube เหมาะกับคอนเทนต์ที่คนต้องการใช้เวลาในการรับชมมากขึ้น ไม่ว่าจะเป็น How-to, รีวิว, Tutorial หรือเนื้อหาที่ต้องอธิบายหลายขั้นตอน</P>
+      <P>หากหัวข้อเดียวกันถูกทำเป็น TikTok 60 วินาที ก็สามารถนำมาขยายเป็นวิดีโอ YouTube ที่อธิบายตั้งแต่ปัญหา วิธีคิด ขั้นตอน และตัวอย่างได้</P>
+      <P>นอกจากตัวเนื้อหาแล้ว Title และ Thumbnail ก็มีบทบาทสำคัญ เพราะเป็นส่วนที่ช่วยให้ผู้ชมเข้าใจว่าคลิปเกี่ยวกับอะไรและตัดสินใจว่าจะคลิกเข้ามาดูหรือไม่</P>
+      <Fit label="เหมาะกับ:">Long-form Video, Tutorial, Review, How-to และ Educational Content</Fit>
+
+      <Divider />
+      <H2>สรุปแล้วแต่ละ Platform ควรปรับ Content ยังไง?</H2>
+      <P>ถ้าสรุปง่ายๆ TikTok ควรเน้นการเข้าเรื่องและจังหวะการเล่าให้คนอยากดูต่อ ส่วน Facebook เหมาะกับเนื้อหาที่มีรายละเอียดและเปิดพื้นที่ให้เกิดการพูดคุย</P>
+      <P>สำหรับ Instagram ควรให้ความสำคัญกับ Visual และการเลือก Format อย่าง Reels, Carousel หรือ Stories ขณะที่ YouTube เหมาะกับคอนเทนต์ที่ต้องการอธิบายให้ลึกขึ้น เช่น How-to, Review และ Tutorial</P>
+      <P>อย่างไรก็ตาม ข้อมูลนี้เป็นเพียงแนวทางตั้งต้น ไม่ได้หมายความว่าแต่ละ Platform จะใช้ได้แค่ Format เดียว เพราะสุดท้ายแล้ว Format ที่เหมาะสมยังขึ้นอยู่กับประเภทของ Content และพฤติกรรมของกลุ่มเป้าหมายด้วย</P>
+    </>
+  );
+}
+
+const SLUGS = ["adapt-content-for-each-platform", "how-to-start-influencer-campaign", "how-to-choose-influencer-marketing-agency", "how-to-find-the-right-influencer", "influencer-marketing-budget-by-objective", "how-to-choose-influencer-checklist", "instagram-2026-benchmark", "content-per-platform-fb-tiktok-ig", "social-media-insight-2026", "content-strategy-canvas", "best-time-to-post-2025", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas", "6-copywriting-techniques"];
 
 export function generateStaticParams() {
   return SLUGS.map((slug) => ({ slug }));
@@ -1556,7 +1642,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ lang:
           </h1>
           <div style={{ height: "1px", background: "rgba(255,255,255,0.2)", marginBottom: "32px" }} />
 
-          {post.slug === "how-to-start-influencer-campaign" ? (
+          {post.slug === "adapt-content-for-each-platform" ? (
+            <AdaptContentPlatformContent lang={lang as Locale} />
+          ) : post.slug === "how-to-start-influencer-campaign" ? (
             <StartCampaignContent lang={lang as Locale} />
           ) : post.slug === "how-to-choose-influencer-marketing-agency" ? (
             <ChooseAgencyContent lang={lang as Locale} />
