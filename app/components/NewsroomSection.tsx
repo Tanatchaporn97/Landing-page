@@ -31,6 +31,9 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
 
   const activeCat = variant === "brand" ? catBrand : variant === "influencer" ? catInf : catAll;
   const basePath = variant === "brand" || variant === "influencer" ? "blog" : "newsroom";
+  // blog thumbnails are designed at 1200×640 with the logo near the left edge — frame them at that ratio so nothing is cropped
+  const isBlog = basePath === "blog";
+  const BLOG_RATIO = "1200 / 640";
 
   // phones: posts become a swipeable carousel; track which slide is in view for the dots
   const trackRef = useRef<HTMLDivElement>(null);
@@ -78,7 +81,7 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
           <div ref={trackRef} onScroll={onTrackScroll} className="nm-track">
             {posts.map((post) => (
               <Link key={post.slug} href={`/${lang}/${basePath}/${post.slug}`} className="nm-card">
-                <div style={{ position: "relative", aspectRatio: "16 / 10" }}>
+                <div style={{ position: "relative", aspectRatio: isBlog ? BLOG_RATIO : "16 / 10" }}>
                   <Image src={post.image} alt={post.title} fill sizes="85vw" style={{ objectFit: "cover" }} />
                 </div>
                 <div style={{ padding: "18px 18px 20px", display: "flex", flexDirection: "column", gap: "10px", flex: 1 }}>
@@ -121,8 +124,13 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
           boxShadow: "0 12px 40px rgba(95,38,229,0.10)", textDecoration: "none",
           marginBottom: "28px",
         }} className="newsroom-featured">
-          <div style={{ position: "relative", minHeight: "360px" }}>
-            <Image src={featured.image} alt={featured.title} fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+          <div style={{ position: "relative", minHeight: "360px", overflow: "hidden", background: isBlog ? "#06040f" : undefined }}>
+            {isBlog ? (
+              // whole thumbnail shown; leftover space takes the thumbnails' dark backdrop colour
+              <Image src={featured.image} alt={featured.title} fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "contain" }} />
+            ) : (
+              <Image src={featured.image} alt={featured.title} fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+            )}
           </div>
           <div style={{ padding: "48px", display: "flex", flexDirection: "column", gap: "20px" }}>
             <div>
@@ -153,7 +161,7 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
               boxShadow: "0 8px 28px rgba(95,38,229,0.08)", textDecoration: "none",
               display: "flex", flexDirection: "column",
             }}>
-              <div style={{ position: "relative", height: "200px" }}>
+              <div style={{ position: "relative", ...(isBlog ? { aspectRatio: BLOG_RATIO } : { height: "200px" }) }}>
                 <Image src={post.image} alt={post.title} fill sizes="(max-width: 768px) 100vw, 400px" style={{ objectFit: "cover" }} />
                 <div style={{ position: "absolute", top: "14px", right: "14px" }}>
                   <span style={{
