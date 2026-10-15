@@ -136,7 +136,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
                   quote: "เราสร้างอนาคตของ Influencer Marketing ด้วยวิสัยทัศน์ที่ชัดเจนและผลลัพธ์ที่พิสูจน์ได้",
                   imageSrc: "/co-founder/co-founder-2.jpg", thumbnailSrc: "/co-founder/co-founder-2.jpg" },
                 { id: "nick", name: "ณัฏฐดนัย รักตประจิต (นิค)", affiliation: "Co-founder",
-                  quote: "เราสร้างการตลาดอินฟลูเอนเซอร์ที่ไม่ได้แค่ 'ดัง' แต่สร้าง 'กำไรจริง'",
+                  quote: "เราสร้างการตลาดอ\u2060ิ\u2060น\u2060ฟ\u2060ล\u2060ู\u2060เ\u2060อ\u2060น\u2060เ\u2060ซ\u2060อ\u2060ร\u2060์ที่ไม่ได้แค่ 'ดัง' แ\u2060ต\u2060่\u2060ส\u2060ร\u2060้\u2060า\u2060ง 'ก\u2060ำ\u2060ไ\u2060ร\u2060จ\u2060ร\u2060ิ\u2060ง'",
                   imageSrc: "/co-founder/co-founder-1.jpg", thumbnailSrc: "/co-founder/co-founder-1.jpg" },
                 { id: "boss", name: "เศรษฐพร ศรีวิไล (บอส)", affiliation: "Co-founder",
                   quote: "เทคโนโลยีของเราคือขุมพลังที่เปลี่ยนทุกข้อมูล สู่ผลลัพธ์ที่แม่นยำ",
