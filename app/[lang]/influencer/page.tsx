@@ -229,7 +229,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <CommunityArcSection lang={lang as "th" | "en"} />
 
       {/* ── One Creator, Many Channels ── */}
-      <section className="inf-section inf-channels-section" style={{ background: "transparent", padding: "60px 48px" }}>
+      <section className="inf-section inf-channels-section" style={{ background: "url('/backgrounds/how-we-work-bg.jpg') center / cover no-repeat", padding: "60px 48px" }}>
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <CreatorChannelsSection lang={lang as "th" | "en"} />
         </div>
