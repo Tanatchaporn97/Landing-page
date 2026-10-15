@@ -12,6 +12,10 @@ import { motion, useScroll, useTransform, useReducedMotion, useMotionValue, type
 const DISPLAY = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const SANS = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const EASE = [0.22, 1, 0.36, 1] as const;
+// pinned scroll length, and the share of it the keyword → logo animation uses; the rest is
+// the hold on the finished logo
+const PIN_VH = 140;
+const ANIM_END = 0.57;
 
 // Hero background: the About Us image ("About us bg.jpg"). From ~200px below the RESULTS line it
 // is masked out with many eased stops, so it fades to transparent over the page's own background
@@ -112,9 +116,10 @@ function Keyword({ w: base, i, p, still, mobile }: { w: (typeof WORDS)[number]; 
 
 export default function AboutKeywordHero() {
   const ref = useRef<HTMLElement>(null);
-  // Scroll-driven with a short pin: the hero arrives showing the three statements, then holds
-  // in place for ~70vh of scrolling while the keywords drift together, their lead lines fade
-  // and they resolve into the logo; after that the page simply carries on.
+  // Scroll-driven with a pin: the hero arrives showing the three statements, then holds in
+  // place while the keywords drift together, their lead lines fade and they resolve into the
+  // logo (first ~80vh of scrolling); the finished logo then stays centred and fully visible for
+  // another ~60vh before the page carries on.
   const p = useMotionValue(0);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
 
@@ -127,7 +132,7 @@ export default function AboutKeywordHero() {
     if (!mounted || prefersReduced) return;
     // mirror into a plain motion value (scroll-linked opacity handed to the browser's native
     // scroll timeline mis-measures this section)
-    const sync = (v: number) => p.set(Math.min(1, Math.max(0, v)) * 0.75);
+    const sync = (v: number) => p.set(Math.min(1, Math.max(0, v) / ANIM_END) * 0.75);
     sync(scrollYProgress.get());
     return scrollYProgress.on("change", sync);
   }, [mounted, prefersReduced, p, scrollYProgress]);
@@ -184,7 +189,7 @@ export default function AboutKeywordHero() {
   return (
     <section ref={ref} data-dark-hero className="akh" style={{ position: "relative", ["--akh-h" as string]: "max(540px, min(80svh, 820px))", ["--akh-shift" as string]: `${shift}px`,
       ["--akh-total" as string]: fadeStart ? `${fadeStart + FADE_LEN}px` : "calc(var(--akh-h) + 150px)",
-      height: reduce ? "var(--akh-total)" : "calc(var(--akh-total) + 70vh)" }}>
+      height: reduce ? "var(--akh-total)" : `calc(var(--akh-total) + ${PIN_VH}vh)` }}>
       <motion.div style={{ position: "sticky", top: 0, height: "var(--akh-total)", overflow: "hidden",
         ...(fadeStart ? { WebkitMaskImage: mask, maskImage: mask } : {}) }}>
         <div aria-hidden style={{ position: "absolute", inset: 0, background: "#3f2a88 url('/about-us/about-hero-bg-v2.jpg') center top / cover no-repeat" }} />
