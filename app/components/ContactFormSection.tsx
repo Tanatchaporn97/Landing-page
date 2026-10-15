@@ -14,6 +14,25 @@ const IconCheck = ({ color = "#5f26e5" }: { color?: string }) => (
   </svg>
 );
 
+// Budget dropdown. `value` (Thai) is what gets saved, whatever the page language.
+const BUDGET_OPTIONS = [
+  { value: "ต่ำกว่า 50,000 บาท",      en: "Under 50,000 THB",          lo: 0,      hi: 50000 },
+  { value: "50,000 - 100,000 บาท",    en: "50,000 - 100,000 THB",      lo: 50000,  hi: 100000 },
+  { value: "100,000 - 200,000 บาท",   en: "100,000 - 200,000 THB",     lo: 100000, hi: 200000 },
+  { value: "200,000 - 300,000 บาท",   en: "200,000 - 300,000 THB",     lo: 200000, hi: 300000 },
+  { value: "300,000 - 400,000 บาท",   en: "300,000 - 400,000 THB",     lo: 300000, hi: 400000 },
+  { value: "400,000 - 500,000 บาท",   en: "400,000 - 500,000 THB",     lo: 400000, hi: 500000 },
+];
+/** Map a pre-filled budget (a KOL package price like "300,000", or an option itself) onto a dropdown option. */
+const toBudgetOption = (raw: string | null | undefined) => {
+  if (!raw) return "";
+  if (BUDGET_OPTIONS.some((o) => o.value === raw)) return raw;
+  const n = Number(String(raw).replace(/[^0-9.]/g, ""));
+  if (!n) return "";
+  const hit = BUDGET_OPTIONS.find((o) => n >= o.lo && n < o.hi) ?? (n >= 500000 ? BUDGET_OPTIONS[BUDGET_OPTIONS.length - 1] : undefined);
+  return hit?.value ?? "";
+};
+
 const REQUIRED_FIELDS = ["name", "email", "phone", "company", "budget", "brief"] as const;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -21,14 +40,14 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
   const searchParams = useSearchParams();
   const [consented, setConsented] = useState(false);
   const [showConsentWarning, setShowConsentWarning] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", company: "", budget: searchParams.get("budget") || "", position: "", brief: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", company: "", budget: toBudgetOption(searchParams.get("budget")), position: "", brief: "" });
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   // fields marked * — the form won't send until all are filled (and the email looks valid)
   const [errors, setErrors] = useState<Set<string>>(new Set());
 
   const t = dict || {};
 
-  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     if (errors.has(name)) setErrors(prev => { const next = new Set(prev); next.delete(name); return next; });
@@ -36,7 +55,7 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
   // KOL package buttons on the same page send their price here without reloading
   useEffect(() => {
     const onPrefill = (e: Event) => {
-      const budget = (e as CustomEvent<{ budget?: string }>).detail?.budget;
+      const budget = toBudgetOption((e as CustomEvent<{ budget?: string }>).detail?.budget);
       if (!budget) return;
       setFormData(prev => ({ ...prev, budget }));
       setErrors(prev => { if (!prev.has("budget")) return prev; const next = new Set(prev); next.delete("budget"); return next; });
@@ -165,10 +184,21 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
               <div>
                 <label style={{ ...KT, color: "#5f26e5", fontSize: "16px", fontWeight: 600,
                   display: "block", marginBottom: "8px" }}>{t.budget}</label>
-                <input type="text" name="budget" placeholder={t.budgetPlaceholder} value={formData.budget} onChange={handleFormChange} aria-invalid={errors.has("budget")}
-                  style={{ ...KT, boxShadow: errShadow("budget"), width: "100%", background: "#f5f5f5", border: "none",
-                    borderRadius: "10px", padding: "14px 16px", fontSize: "16px", color: "#111827",
-                    outline: "none", boxSizing: "border-box" }} />
+                <div style={{ position: "relative" }}>
+                  <select name="budget" value={formData.budget} onChange={handleFormChange} aria-invalid={errors.has("budget")}
+                    style={{ ...KT, boxShadow: errShadow("budget"), width: "100%", background: "#f5f5f5", border: "none",
+                      borderRadius: "10px", padding: "14px 44px 14px 16px", fontSize: "16px", color: formData.budget ? "#111827" : "#9ca3af",
+                      outline: "none", boxSizing: "border-box", appearance: "none", WebkitAppearance: "none", cursor: "pointer" }}>
+                    <option value="" disabled>{lang === "en" ? "Select your budget" : "เลือกงบประมาณ"}</option>
+                    {BUDGET_OPTIONS.map((o) => (
+                      <option key={o.value} value={o.value} style={{ color: "#111827" }}>{lang === "en" ? o.en : o.value}</option>
+                    ))}
+                  </select>
+                  <svg aria-hidden width="14" height="14" viewBox="0 0 14 14" fill="none"
+                    style={{ position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}>
+                    <path d="M3 5l4 4 4-4" stroke="#5f26e5" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
               </div>
               <div>
                 <label style={{ ...KT, color: "#5f26e5", fontSize: "16px", fontWeight: 600,
