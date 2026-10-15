@@ -192,7 +192,7 @@ export default function AboutKeywordHero() {
       height: reduce ? "var(--akh-total)" : `calc(var(--akh-total) + ${PIN_VH}vh)` }}>
       <motion.div style={{ position: "sticky", top: 0, height: "var(--akh-total)", overflow: "hidden",
         ...(fadeStart ? { WebkitMaskImage: mask, maskImage: mask } : {}) }}>
-        <div aria-hidden style={{ position: "absolute", inset: 0, background: "#3f2a88 url('/about-us/about-hero-bg-v2.jpg') center top / cover no-repeat" }} />
+        <div aria-hidden style={{ position: "absolute", inset: 0, background: "#3f2a88 url('/about-us/about-hero-bg-v3.jpg') center top / cover no-repeat" }} />
         {/* atmosphere: pink–purple glow */}
         <div aria-hidden style={{ position: "absolute", inset: "-20%",
           background: "radial-gradient(42% 38% at 30% 32%, rgba(124,58,237,0.30) 0%, transparent 70%), radial-gradient(36% 34% at 72% 70%, rgba(255,0,137,0.20) 0%, transparent 72%), radial-gradient(60% 60% at 50% 50%, rgba(95,37,229,0.10) 0%, transparent 80%)",
