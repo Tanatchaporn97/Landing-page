@@ -390,11 +390,11 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
         .cs-chip{ cursor: pointer; user-select: none; transition: background .3s ease, color .3s ease, transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease, border-color .3s ease; }
         .cs-chip.is-hot, .cs-chip:active{ background: #ffffff !important; color: #5f26e5 !important; border-color: #ffffff !important;
           transform: translateY(-3px); box-shadow: 0 12px 24px -10px rgba(20,6,80,.55); }
-        .cs-pillar{ transition: background .35s ease; }
+        .cs-pillar{ position: relative; transition: background .35s ease, box-shadow .35s ease; }
         .cs-view{ grid-area: 1 / 1; transition: opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1); }
         .cs-view[style*="hidden"]{ transform: translateY(8px); }
         .cs-subtab:hover{ color: #5f26e5 !important; }
-        .cs-pillar.is-hot{ background: #ffffff !important; }
+        .cs-pillar.is-hot{ background: #ffffff !important; z-index: 1; box-shadow: 0 18px 36px -12px rgba(95,38,229,0.6), 0 6px 14px -6px rgba(20,6,80,0.25) !important; }
         @media (prefers-reduced-motion: reduce){ .cs-chip, .cs-pillar{ transition: none; } .cs-chip.is-hot{ transform: none; } }
         .cs-dashboard:hover{
           box-shadow: 0 40px 70px -20px rgba(95,38,229,0.35), 0 14px 28px -12px rgba(255,0,137,0.18);
