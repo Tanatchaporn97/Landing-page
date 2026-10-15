@@ -284,7 +284,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               <>Uses AI to help analyze your followers, content, and performance<br />know who your audience is, what content works, and what to do next.</>
             )}
           </p>
-          <a href="https://rank.buddyreview.co/" target="_blank" rel="noopener noreferrer" className="inf-cta" style={KT}>
+          <a href="https://line.me/R/ti/p/@buddysupport" target="_blank" rel="noopener noreferrer" className="inf-cta" style={KT}>
             {lang === "th" ? "วิเคราะห์ TikTok ฟรี" : "Analyze Your TikTok Free"}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
           </a>
