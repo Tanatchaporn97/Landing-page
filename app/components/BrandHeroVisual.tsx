@@ -130,15 +130,31 @@ export default function BrandHeroVisual({ lang }: { lang: "th" | "en" }) {
   // mobile layout). The visible artwork spans about x = -40…718 in design
   // units (rotated cards poke out on the left, platform icons on the right),
   // so scale to that span plus side padding and centre it.
+  // Desktop: same composition, shrunk only when it wouldn't fit — its bottom
+  // (ART_B below the box top) must clear the bottom of the first screen and its
+  // right edge (ART_R) the right edge of the window; left-anchored like at full size.
   const DESIGN = 640, ART_L = -40, ART_R = 718, SIDE_PAD = 12, DESIGN_H = 660;
+  const ART_B = 616, SCREEN_GAP = 40, MIN_DESKTOP_SCALE = 0.7;
   const fitRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState<number | null>(null);
+  const [mobile, setMobile] = useState(false);
   useEffect(() => {
     const el = fitRef.current;
     if (!el) return;
     const update = () => {
       const w = el.clientWidth;
-      setScale(window.innerWidth <= 900 ? Math.min(1, (w - SIDE_PAD * 2) / (ART_R - ART_L)) : null);
+      if (window.innerWidth <= 900) {
+        setMobile(true);
+        setScale(Math.min(1, (w - SIDE_PAD * 2) / (ART_R - ART_L)));
+        return;
+      }
+      setMobile(false);
+      const r = el.getBoundingClientRect();
+      const top = r.top + window.scrollY;
+      const byHeight = (window.innerHeight - SCREEN_GAP - top) / ART_B;
+      const byWidth = (window.innerWidth - 16 - r.left) / ART_R;
+      const s = Math.max(MIN_DESKTOP_SCALE, Math.min(byHeight, byWidth));
+      setScale(s < 0.995 ? s : null);
     };
     update();
     const ro = new ResizeObserver(update);
@@ -148,11 +164,13 @@ export default function BrandHeroVisual({ lang }: { lang: "th" | "en" }) {
   }, []);
 
   return (
-    <div ref={fitRef} className="bhv-fit" style={scale ? { position: "relative", width: "100%", height: `${DESIGN_H * scale}px` } : undefined}>
+    <div ref={fitRef} className="bhv-fit" style={scale ? { position: "relative", width: "100%", height: `${(mobile ? DESIGN_H : DESIGN) * scale}px` } : undefined}>
     {/* scaler is separate from .bhv-float so the float animation's transform doesn't override the scale */}
     <div style={scale
-      ? { position: "absolute", top: 0, left: "50%", width: `${DESIGN}px`,
-          marginLeft: `${-((ART_L + ART_R) / 2) * scale}px`, transform: `scale(${scale})`, transformOrigin: "top left" }
+      ? mobile
+        ? { position: "absolute", top: 0, left: "50%", width: `${DESIGN}px`,
+            marginLeft: `${-((ART_L + ART_R) / 2) * scale}px`, transform: `scale(${scale})`, transformOrigin: "top left" }
+        : { position: "absolute", top: 0, left: 0, width: `${DESIGN}px`, transform: `scale(${scale})`, transformOrigin: "top left" }
       : undefined}>
     <div className="bhv-desktop bhv-float" style={scale
       ? { position: "relative", width: `${DESIGN}px`, aspectRatio: "1 / 1" }
