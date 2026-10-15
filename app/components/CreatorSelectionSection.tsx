@@ -13,7 +13,7 @@ const STATS = [
   { k: "Followers", v: "48,600" },
   { k: "Avg. Likes", v: "1,850" },
   { k: "ER", v: "3.81%" },
-  { k: "Avg. Views", v: "-" },
+  { k: "Avg. Views", v: "24,680" },
   { k: "Total Post", v: "614" },
 ];
 const PILLARS = [
