@@ -276,7 +276,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       desc: "ให้แคมเปญของคุณดำเนินไปอย่างไม่มีสะดุด|ด้วยทีมงานมืออาชีพที่ดูแลทุกขั้นตอน",
       descEn: "Your campaign runs without a hitch,|with a professional team overseeing every step." },
     { img: "/how-we-run-campaigns/launch-v5.png", title: "เผยแพร่คอนเทนต์ตามแผน", titleEn: "Publish Content as Planned",
-      desc: "เผยแพร่คอนเทนต์ตามกำหนด พร้อมดูแลและประสานงานกับ Creator|เพื่อให้ทุกโพสต์เป็นไปตามแผน",
+      desc: "เผยแพร่คอนเทนต์ตามกำหนด พร้อมดูแลและประสานงานกับ|Creator เพื่อให้ทุกโพสต์เป็นไปตามแผน",
       descEn: "Content goes live on schedule, with our team coordinating closely with creators|so every post stays on plan." },
     { img: "/how-we-run-campaigns/report-results-v4.png", title: "รายงานผลแบบเรียลไทม์", titleEn: "Real-Time Reporting",
       desc: "ติดตามทุกความเคลื่อนไหวบนแดชบอร์ด|พร้อมรับรายงานและอินไซต์ที่นำไปใช้ต่อได้จริง",
