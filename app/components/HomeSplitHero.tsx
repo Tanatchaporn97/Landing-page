@@ -77,7 +77,7 @@ function SideLabel({ side, label, href, size = "desktop" }: { side: "brand" | "i
       fontFamily: "'Pierson','Noto Sans Thai',sans-serif", textDecoration: "none", display: "inline-block",
       color: side === "brand" ? "#5f26e5" : "#ff0089",
       fontWeight: 800, letterSpacing: size === "desktop" ? "0.06em" : "0.02em", lineHeight: 1,
-      fontSize: size === "desktop" ? "clamp(24px, 2.4vw, 34px)" : "20px",
+      fontSize: size === "desktop" ? "clamp(30px, 3vw, 44px)" : "20px",
       marginBottom: size === "desktop" ? "18px" : 0,
     }}>
       {label}
@@ -496,7 +496,8 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           width: "min(760px, 44vw)", textAlign: "center", paddingTop: "var(--hsh-center-top)",
           pointerEvents: "none",
         }}>
-          <span style={{ ...KT, fontSize: "16px", fontWeight: 800, letterSpacing: "0.01em", color: "#111827" }}>
+          {/* kept deliberately quieter than the Brand / Influencer sides so those read first */}
+          <span style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.04em", color: "#4b4560" }}>
             {t.eyebrow}
           </span>
           <AnimatedText
@@ -504,9 +505,9 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
             text={<>{t.headline1}<br />{t.headline2}<br />{t.headline3}</>}
             gradientColors={HEADLINE_SHINE}
             gradientAnimationDuration={3}
-            textStyle={{ ...KT, fontWeight: 800, fontSize: "clamp(28px, 3.3vw, 48px)", lineHeight: 1.2, margin: "14px 0" }}
+            textStyle={{ ...KT, fontWeight: 600, fontSize: "clamp(20px, 2.1vw, 30px)", lineHeight: 1.25, margin: "10px 0" }}
           />
-          <p style={{ ...KT, color: "#3a3350", fontSize: "clamp(15px,1.5vw,18px)", lineHeight: 1.6, margin: 0 }}>
+          <p style={{ ...KT, color: "#4b4560", fontSize: "clamp(13px,1.05vw,15px)", lineHeight: 1.6, margin: 0 }}>
             {t.sublineTop}<br />{t.sublineBottom}
           </p>
         </div>
@@ -650,7 +651,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
            them at these widths. */
         @media (min-width: 900px) and (max-width: 1280px) {
           .split-hero-center { width: min(460px, 34vw) !important; padding-top: 180px !important; }
-          .split-hero-center h1 { font-size: clamp(28px, 3.3vw, 48px) !important; }
+          .split-hero-center h1 { font-size: clamp(18px, 2.1vw, 28px) !important; }
           .split-art, .split-panel > div:last-child { padding-left: 8% !important; padding-right: 8% !important; }
           /* The art illustration (and the small badge icons floating on it)
              was still reaching in far enough at this width to collide with
