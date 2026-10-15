@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Eye, Rocket, Gem } from "lucide-react";
@@ -146,10 +147,10 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
             />
           </div>
 
-          <a href={`/${lang}#contact`} className="btn-glass-purple"
+          <Link href={`/${lang}/contact`} className="btn-glass-purple"
             style={{ ...KT, borderRadius: "50px", padding: "14px 40px", textDecoration: "none", fontSize: "16px", fontWeight: 600 }}>
             {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
-          </a>
+          </Link>
         </div>
 
         <style>{`
