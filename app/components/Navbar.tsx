@@ -218,28 +218,38 @@ export default function Navbar({
             />
           </Link>
 
-          {/* Desktop-only nav links — grouped and absolutely centered on the bar's own
-              midpoint, so they line up with the centered hero heading below regardless
-              of the logo/button-group's differing widths (equal-fr grid columns don't
-              work here since the button group's min-content width is much wider than
-              the logo, which breaks a symmetric 1fr/1fr split) */}
+          {/* Desktop-only nav links — sit just right of the logo; the auto right margin
+              pushes the CTA group to the far end. Hover / current page: a purple underline
+              that grows from the left. */}
           <div className="desktop-nav-links" style={{
-            display: "flex", alignItems: "center", gap: "18px",
-            position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)",
+            display: "flex", alignItems: "center", gap: "22px", marginLeft: "40px", marginRight: "auto",
           }}>
             {[
               { label: t.imBrand, href: `/${lang}/brand` },
               { label: t.ourWork, href: `/${lang}/success` },
               { label: t.aboutUs, href: `/${lang}/about` },
               { label: t.blog, href: `/${lang}/blog` },
-            ].map((link) => (
-              <Link key={link.href} href={link.href}
-                style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap",
-                  color: forceDarkText ? "#1c1140" : "#ffffff" }}>
-                {link.label}
-              </Link>
-            ))}
+            ].map((link) => {
+              const active = pathname === link.href || pathname.startsWith(link.href + "/");
+              return (
+                <Link key={link.href} href={link.href} aria-current={active ? "page" : undefined}
+                  className={`nav-ul-link${active ? " is-active" : ""}${forceDarkText ? "" : " on-dark"}`}
+                  style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap",
+                    color: forceDarkText ? "#1c1140" : "#ffffff" }}>
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
+          <style>{`
+            .nav-ul-link{ position: relative; padding: 6px 0; transition: color .25s ease; }
+            .nav-ul-link::after{ content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px;
+              background: #5f26e5; transform: scaleX(0); transform-origin: left; transition: transform .3s cubic-bezier(.22,1,.36,1); }
+            .nav-ul-link.on-dark::after{ background: #c9b3ff; }
+            .nav-ul-link:hover::after, .nav-ul-link:focus-visible::after, .nav-ul-link.is-active::after{ transform: scaleX(1); }
+            .nav-ul-link:not(.on-dark):hover, .nav-ul-link:not(.on-dark).is-active{ color: #5f26e5 !important; }
+            @media (prefers-reduced-motion: reduce){ .nav-ul-link::after{ transition: none; } }
+          `}</style>
 
           {/* Right-side group: CTA buttons + Hamburger (hamburger hidden on desktop via CSS) */}
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
