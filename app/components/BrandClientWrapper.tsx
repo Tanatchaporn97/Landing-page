@@ -253,15 +253,21 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
   }, [activeService]);
 
   // Auto-advance the Our Services row every 5s, looping back to the start;
-  // paused while the user is hovering the row.
+  // paused while the user is hovering the row (or its arrows), and stopped for
+  // good once they pick a card themselves (click or arrows) so it stays put to read.
   const [servicesAutoPaused, setServicesAutoPaused] = useState(false);
+  const [servicesUserPicked, setServicesUserPicked] = useState(false);
+  const pickService = (next: number | ((prev: number) => number)) => {
+    setServicesUserPicked(true);
+    setActiveService(next);
+  };
   useEffect(() => {
-    if (servicesAutoPaused) return;
+    if (servicesAutoPaused || servicesUserPicked) return;
     const id = setInterval(() => {
       setActiveService((prev) => (prev + 1) % OUR_SERVICES.length);
     }, 5000);
     return () => clearInterval(id);
-  }, [servicesAutoPaused]);
+  }, [servicesAutoPaused, servicesUserPicked]);
 
 
 
@@ -440,12 +446,13 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   : "From Strategy, Creator Campaigns, and Commerce to Content & Production."}
               </p>
             </div>
-            <div className="svc-desk-arrows" style={{ display: "flex", gap: "10px" }}>
-              <button className="arrow-cta-btn" onClick={() => setActiveService((prev) => Math.max(0, prev - 1))}
+            <div className="svc-desk-arrows" style={{ display: "flex", gap: "10px" }}
+              onMouseEnter={() => setServicesAutoPaused(true)} onMouseLeave={() => setServicesAutoPaused(false)}>
+              <button className="arrow-cta-btn" onClick={() => pickService((prev) => Math.max(0, prev - 1))}
                 style={{ width: "44px", height: "44px", borderRadius: "50%", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", touchAction: "manipulation" }}>
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M12 3L6 9l6 6" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </button>
-              <button className="arrow-cta-btn" onClick={() => setActiveService((prev) => Math.min(OUR_SERVICES.length - 1, prev + 1))}
+              <button className="arrow-cta-btn" onClick={() => pickService((prev) => Math.min(OUR_SERVICES.length - 1, prev + 1))}
                 style={{ width: "44px", height: "44px", borderRadius: "50%", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", touchAction: "manipulation" }}>
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M6 3l6 6-6 6" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </button>
@@ -517,7 +524,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
             {OUR_SERVICES.map((item, i) => {
               const isActive = activeService === i;
               return (
-                <div key={item.title} onClick={() => setActiveService(i)}
+                <div key={item.title} onClick={() => pickService(i)}
                   ref={(el) => { serviceCardRefs.current[i] = el; }}
                   style={{
                     width: isActive ? 380 : SERVICE_CARD_WIDTH,
