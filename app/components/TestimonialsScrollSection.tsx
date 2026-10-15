@@ -174,23 +174,20 @@ export default function TestimonialsScrollSection({
             ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800,
             color: "#111827", margin: "0 0 16px", lineHeight: 1.25,
           }}>
-            {lang === "th" ? "เสียงจากอินฟลูเอนเซอร์" : "Voices From Creators"}
-            <br />
+            What Creators{" "}
             <span style={{
               background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
               backgroundClip: "text",
             }}>
-              {lang === "th" ? "ที่เคยร่วมงานกับเรา" : "Who've Worked With Us"}
+              Say
             </span>
           </h2>
           <p style={{ ...KT, fontSize: "16px", color: "#374151", lineHeight: 1.65, margin: 0 }}>
             {lang === "th"
-              ? <>ประสบการณ์จริงจากการทำงานกับแบรนด์ <span className="tss-desc2">ผ่าน Buddy Review</span></>
-              : <>Real experiences working with brands, <span className="tss-desc2">through Buddy Review</span></>}
+              ? "มาฟังความคิดเห็นและประสบการณ์จากการร่วมงานกับ Buddy Review"
+              : "Hear what creators think about working with Buddy Review"}
           </p>
-          {/* phones: "ผ่าน Buddy Review" drops to its own second line */}
-          <style>{`@media (max-width: 640px){ .tss-desc2{ display: block; } }`}</style>
         </div>
 
         {/* ── Browser-window frame wrapping the testimonial columns ── */}
@@ -212,7 +209,7 @@ export default function TestimonialsScrollSection({
               ...KT, position: "absolute", left: "50%", transform: "translateX(-50%)",
               fontSize: "13px", fontWeight: 700, color: "#374151",
             }}>
-              {lang === "th" ? "บทสนทนาของครีเอเตอร์" : "Creator conversations"}
+              Creator Reviews
             </span>
           </div>
 
