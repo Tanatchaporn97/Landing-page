@@ -39,7 +39,7 @@ const SERVICE_CARD_WIDTH = 220; // inactive card width, px
 const SERVICE_CARD_GAP = 20; // gap between cards in the scroll row, px
 
 const OUR_SERVICES = [
-  { img: "/services/campaign-reviews.jpg", title: "Campaign Reviews",
+  { img: "/services/campaign-reviews-v2.jpg", objectPosition: "center 47%", title: "Campaign Reviews",
     desc: "รีวิวสินค้าและบริการผ่านอินฟลูเอนเซอร์ที่ใช่ พร้อมสื่อสารข้อความและจุดเด่นของแบรนด์ได้อย่างมีประสิทธิภาพ เปลี่ยนให้ทุกความสนใจเป็นยอดขาย",
     descEn: "Product and service reviews through the right influencers, communicating your brand's key messages effectively — turning every bit of interest into sales." },
   { img: "/services/influencer-campaign-management.jpg", title: "Influencer Campaign Management",
