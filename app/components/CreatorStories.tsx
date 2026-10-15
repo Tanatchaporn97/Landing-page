@@ -90,8 +90,8 @@ function StoryCard({ src, name }: { src: string; name: string }) {
     <div className="creator-story-card" style={{
       position: "relative", flex: "0 0 300px", width: "300px", aspectRatio: "9 / 16",
       borderRadius: "40px", overflow: "hidden", background: "#000000",
-      border: "3px solid #ffffff", boxSizing: "border-box",
-      boxShadow: "0 0 0 1px rgba(255,255,255,0.5), 0 0 44px 8px rgba(255,255,255,0.9), 0 22px 44px -14px rgba(95,38,229,0.4)", cursor: "pointer",
+      boxSizing: "border-box",
+      boxShadow: "0 22px 44px -16px rgba(40,12,110,0.45), 0 8px 18px -8px rgba(40,12,110,0.25)", cursor: "pointer",
       scrollSnapAlign: "start",
     }}>
       {active ? (
