@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -22,6 +22,8 @@ interface TestimonialSliderProps {
   reviews: Review[];
   /** Optional class name for the container */
   className?: string;
+  /** Auto-advance interval in ms (paused while hovered/focused); 0 turns it off */
+  autoPlayMs?: number;
 }
 
 /**
@@ -32,10 +34,22 @@ interface TestimonialSliderProps {
 export const TestimonialSlider = ({
   reviews,
   className,
+  autoPlayMs = 5000,
 }: TestimonialSliderProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   // 'direction' helps motion understand slide direction (next vs. prev)
   const [direction, setDirection] = useState<"left" | "right">("right");
+  const [paused, setPaused] = useState(false);
+
+  // auto-advance; the timer restarts whenever the slide changes (incl. manual clicks)
+  useEffect(() => {
+    if (!autoPlayMs || paused || reviews.length < 2) return;
+    const t = setTimeout(() => {
+      setDirection("right");
+      setCurrentIndex((prev) => (prev + 1) % reviews.length);
+    }, autoPlayMs);
+    return () => clearTimeout(t);
+  }, [currentIndex, paused, autoPlayMs, reviews.length]);
 
   const activeReview = reviews[currentIndex];
 
@@ -92,21 +106,14 @@ export const TestimonialSlider = ({
         "relative w-full md:min-h-[600px] overflow-hidden bg-white text-gray-900 p-5 sm:p-8 md:p-12 rounded-3xl",
         className
       )}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
     >
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 h-full">
         {/* === Left Column: Meta and Thumbnails === */}
-        <div className="md:col-span-3 flex flex-col justify-between order-3 md:order-1">
-          <div className="flex flex-row md:flex-col justify-between md:justify-start space-x-4 md:space-x-0 md:space-y-4">
-            {/* Pagination */}
-            <span className="text-sm text-gray-500 font-mono">
-              {String(currentIndex + 1).padStart(2, "0")} /{" "}
-              {String(reviews.length).padStart(2, "0")}
-            </span>
-            {/* Vertical "Co-founders" Text */}
-            <h2 className="text-sm font-medium tracking-widest uppercase [writing-mode:vertical-rl] md:rotate-180 hidden md:block text-gray-500">
-              Co-founders
-            </h2>
-          </div>
+        <div className="md:col-span-3 flex flex-col justify-end order-3 md:order-1">
 
           {/* Thumbnail Navigation */}
           <div className="flex space-x-2 mt-4 md:mt-0">
