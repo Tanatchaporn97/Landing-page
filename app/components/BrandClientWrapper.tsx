@@ -152,17 +152,22 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
   // Every "ติดต่อเรา" link on this page (hero, KOL packages, navbar) glides down
   // to the contact form instead of jumping: a slow ease-in-out tween on window
-  // scroll, stopping just under the fixed navbar. Links that also set a
-  // ?budget= query keep their normal navigation so the form gets pre-filled.
+  // scroll, stopping just under the fixed navbar. KOL package links
+  // ("?budget=…#contact") also pre-fill the form's budget with that package's price.
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
       const a = (e.target as Element | null)?.closest?.("a");
       const href = a?.getAttribute("href") || "";
-      if (href !== "#contact" && !href.endsWith("/contact#contact")) return;
+      const budgetLink = href.startsWith("?budget=") && href.endsWith("#contact");
+      if (href !== "#contact" && !href.endsWith("/contact#contact") && !budgetLink) return;
       const target = document.getElementById("contact");
       if (!target) return;
       e.preventDefault();
+      if (budgetLink) {
+        const budget = new URLSearchParams(href.slice(0, href.indexOf("#"))).get("budget") || "";
+        window.dispatchEvent(new CustomEvent("contact:prefill", { detail: { budget } }));
+      }
       const to = target.getBoundingClientRect().top + window.scrollY - 24;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { window.scrollTo(0, to); return; }
       const distance = Math.abs(to - window.scrollY);
@@ -171,7 +176,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         ease: [0.65, 0, 0.35, 1],
         onUpdate: (v) => window.scrollTo(0, v),
       });
-      history.replaceState(null, "", "#contact");
+      history.replaceState(null, "", budgetLink ? href : "#contact");
     };
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);

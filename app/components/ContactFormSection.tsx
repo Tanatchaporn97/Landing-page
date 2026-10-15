@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { type Locale } from "../../i18n-config";
 
@@ -33,6 +33,17 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
     setFormData(prev => ({ ...prev, [name]: value }));
     if (errors.has(name)) setErrors(prev => { const next = new Set(prev); next.delete(name); return next; });
   };
+  // KOL package buttons on the same page send their price here without reloading
+  useEffect(() => {
+    const onPrefill = (e: Event) => {
+      const budget = (e as CustomEvent<{ budget?: string }>).detail?.budget;
+      if (!budget) return;
+      setFormData(prev => ({ ...prev, budget }));
+      setErrors(prev => { if (!prev.has("budget")) return prev; const next = new Set(prev); next.delete("budget"); return next; });
+    };
+    window.addEventListener("contact:prefill", onPrefill);
+    return () => window.removeEventListener("contact:prefill", onPrefill);
+  }, []);
   const errShadow = (field: string) => (errors.has(field) ? "inset 0 0 0 1.5px #dc2626" : "none");
 
   const handleFormSubmit = async () => {
