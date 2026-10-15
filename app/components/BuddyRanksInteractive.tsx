@@ -28,11 +28,20 @@ export default function BuddyRanksInteractive({ lang, cards }: { lang: "th" | "e
         ))} />
 
       {/* Hoverable fan carousel — numeric order left → right, center = 3 */}
-      <div className="buddy-ranks-mockup-bleed" style={{ marginTop: "6.5rem" }}>
+      <div className="buddy-ranks-mockup-bleed" style={{ marginTop: "1.5rem" }}>
         <CardFanCarousel cards={cards} bounceIndices={bounceIndices} />
       </div>
 
       <style>{`
+        /* Desktop: phones sit right under the 3 cards and are scaled so the cards and the
+           fan fit on one screen together — hovering a card shows its phone popping up
+           without scrolling down. */
+        @media (min-width: 861px){
+          .buddy-ranks-mockup-bleed .fan-layout{ zoom: 0.8; }
+        }
+        @media (min-width: 861px) and (max-height: 820px){
+          .buddy-ranks-mockup-bleed .fan-layout{ zoom: 0.7; }
+        }
         @media (min-width: 768px) and (max-width: 1080px){
           .buddy-ranks-mockup-bleed{ margin-left: -32px; margin-right: -32px; }
         }
