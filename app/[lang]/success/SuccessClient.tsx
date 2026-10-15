@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { HistoryBackLink } from "../../components/NavHistory";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
@@ -520,7 +521,7 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
   // here to always show the most recently uploaded story first.
   const STORIES = [...(lang === "th" ? STORIES_TH : STORIES_EN)].reverse();
   const allLabel = CATS[0];
-  const backLabel = lang === "th" ? "กลับหน้าหลัก" : "Back to Home";
+  const backLabel = lang === "th" ? "ย้อนกลับ" : "Back";
 
   const [activeCat, setActiveCat] = useState(() => {
     const cat = searchParams.get("cat");
@@ -539,12 +540,12 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
 
       {/* Back button */}
       <div className="success-back-row sg-back" style={{ padding: "140px 48px 28px" }}>
-        <Link href={`/${lang}`} className="btn-glass-purple" style={{ borderRadius: "50px", padding: "10px 22px", fontSize: "15px", fontWeight: 500, textDecoration: "none" }}>
+        <HistoryBackLink fallback={`/${lang}`} className="btn-glass-purple" style={{ borderRadius: "50px", padding: "10px 22px", fontSize: "15px", fontWeight: 500, textDecoration: "none" }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M19 12H5M12 5l-7 7 7 7"/>
           </svg>
           {backLabel}
-        </Link>
+        </HistoryBackLink>
       </div>
 
       <div style={{ maxWidth: "1294px", margin: "0 auto", padding: "0 24px 100px" }}>

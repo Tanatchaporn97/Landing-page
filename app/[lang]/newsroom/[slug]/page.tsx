@@ -328,7 +328,7 @@ export default async function NewsroomPostPage({ params }: { params: Promise<{ l
 
       {/* Top-left CTA — returns to whichever page linked here */}
       <div className="blog-back-row" style={{ padding: "140px 48px 28px" }}>
-        <BackButton lang={lang as Locale} />
+        <BackButton lang={lang as Locale} fallback="newsroom" />
       </div>
 
       {/* Article */}
@@ -382,7 +382,7 @@ export default async function NewsroomPostPage({ params }: { params: Promise<{ l
 
       {/* Bottom nav — back + next */}
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "16px", padding: "48px 24px 80px" }}>
-        <BackButton lang={lang as Locale} />
+        <BackButton lang={lang as Locale} fallback="newsroom" />
         {nextPost && (
           <Link href={`/${lang}/newsroom/${nextPost.slug}`} style={{
             ...KT,

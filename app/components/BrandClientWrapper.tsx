@@ -17,6 +17,7 @@ import BrandHeroVisual from "./BrandHeroVisual";
 import CaseExplorer from "./CaseExplorer";
 import ImpactStats from "./ImpactStats";
 import { Badge } from "@/components/ui/badge";
+import { isHistoryNavigation } from "./NavHistory";
 
 // Lazy load below-the-fold components
 const LogoMarquee = dynamic(() => import("./LogoMarquee"));
@@ -136,7 +137,10 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
   // router cache restores whatever scroll position this route was left at
   // on a previous visit, making the "บริการของเรา" nav link appear to jump
   // straight to the services section instead of the page header.
+  // Browser back/forward is the exception: keep the restored position so
+  // "Back" from an article or case study returns to the section it came from.
   useEffect(() => {
+    if (isHistoryNavigation()) return;
     window.scrollTo(0, 0);
     const raf = requestAnimationFrame(() => window.scrollTo(0, 0));
     const timer = setTimeout(() => window.scrollTo(0, 0), 0);

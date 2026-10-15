@@ -1,11 +1,12 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { historyBack } from "../../../components/NavHistory";
 
-export default function BackButton({ lang = "th" }: { lang?: "th" | "en" }) {
+export default function BackButton({ lang = "th", fallback = "blog" }: { lang?: "th" | "en"; fallback?: string }) {
   const router = useRouter();
   return (
     <button
-      onClick={() => router.back()}
+      onClick={() => historyBack(router, `/${lang}/${fallback}`)}
       className="btn-glass-purple"
       style={{
         borderRadius: "50px", padding: "10px 22px",

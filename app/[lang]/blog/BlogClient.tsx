@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { historyBack } from "../../components/NavHistory";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -75,7 +76,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
       {/* Back button */}
       <div className="blog-back-row" style={{ padding: "140px 48px 28px" }}>
         <button
-          onClick={() => router.back()}
+          onClick={() => historyBack(router, `/${lang}`)}
           className="btn-glass-purple"
           style={{ ...KT, borderRadius: "50px", padding: "10px 22px", fontSize: "15px", fontWeight: 500 }}
         >
