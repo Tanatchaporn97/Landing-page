@@ -61,14 +61,6 @@ function ArcNodeCard({ node }: { node: ArcChip }) {
 export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
   return (
     <section className="community-arc-section" style={{ position: "relative", padding: "100px 48px", overflow: "hidden" }}>
-      {/* No panel/frame — the section reads as one unit because the headline
-          sits inside the arc's curve (see the arc area's negative bottom
-          margin) and a single large glow spans both. */}
-      <div aria-hidden="true" className="community-arc-glow" style={{
-        position: "absolute", left: "50%", top: "120px", width: "min(1100px, 100%)", height: "620px", transform: "translateX(-50%)",
-        borderRadius: "50%", pointerEvents: "none",
-        background: "radial-gradient(closest-side, rgba(95,38,229,0.09) 0%, rgba(255,0,137,0.045) 50%, transparent 100%)",
-      }} />
       <div style={{ position: "relative", maxWidth: "980px", margin: "0 auto" }}>
 
         {/* Arc + floating nodes — top ~30% of this area is empty sky above the
@@ -210,7 +202,6 @@ export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
           .cas-feature p:last-of-type{ font-size: 12px !important; }
           .cas-feature > span{ font-size: 15px !important; top: 10px !important; right: 10px !important; }
           .community-arc-section{ padding-left: 16px !important; padding-right: 16px !important; }
-          .community-arc-glow{ top: 0 !important; height: 100% !important; }
         }
       `}</style>
     </section>
