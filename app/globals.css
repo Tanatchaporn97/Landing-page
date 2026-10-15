@@ -1012,7 +1012,7 @@ body {
   .contact-icon-circle > span { width: 22px !important; height: 22px !important; }
 
   /* Navbar logo */
-  .nav-logo { height: 36px !important; }
+  .nav-logo { height: 30px !important; }
 
   /* Hero buttons */
   .hero-btn { min-width: unset !important; padding: 12px 24px !important; font-size: 15px !important; }

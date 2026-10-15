@@ -212,9 +212,9 @@ export default function Navbar({
               src={forceDarkText ? "/buddy-review-purple-logo.png" : "/buddy-review-logo.png"}
               alt="Buddy Review"
               className="nav-logo"
-              width={138}
-              height={48}
-              style={{ height: "48px", width: "auto", transition: "opacity 0.3s" }}
+              width={115}
+              height={40}
+              style={{ height: "40px", width: "auto", transition: "opacity 0.3s" }}
             />
           </Link>
 
