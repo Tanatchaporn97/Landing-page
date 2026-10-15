@@ -14,20 +14,32 @@ const IconCheck = ({ color = "#5f26e5" }: { color?: string }) => (
   </svg>
 );
 
+const REQUIRED_FIELDS = ["name", "email", "phone", "company", "budget", "brief"] as const;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export default function ContactFormSection({ lang = "th", dict, headingOverride, subheadingOverride }: { lang?: "th" | "en", dict: any, headingOverride?: string, subheadingOverride?: string }) {
   const searchParams = useSearchParams();
   const [consented, setConsented] = useState(false);
   const [showConsentWarning, setShowConsentWarning] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", company: "", budget: searchParams.get("budget") || "", position: "", brief: "" });
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  // fields marked * — the form won't send until all are filled (and the email looks valid)
+  const [errors, setErrors] = useState<Set<string>>(new Set());
 
   const t = dict || {};
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors.has(name)) setErrors(prev => { const next = new Set(prev); next.delete(name); return next; });
   };
+  const errShadow = (field: string) => (errors.has(field) ? "inset 0 0 0 1.5px #dc2626" : "none");
 
   const handleFormSubmit = async () => {
+    const missing = new Set(REQUIRED_FIELDS.filter((f) => !formData[f].trim()));
+    if (formData.email.trim() && !EMAIL_RE.test(formData.email.trim())) missing.add("email");
+    setErrors(missing);
+    if (missing.size) return;
     if (!consented) {
       setShowConsentWarning(true);
       return;
@@ -44,6 +56,7 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
       if (data.success) {
         setFormStatus("success");
         setFormData({ name: "", email: "", phone: "", company: "", budget: "", position: "", brief: "" });
+        setErrors(new Set());
         setConsented(false);
       } else {
         setFormStatus("error");
@@ -101,16 +114,16 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
               <div>
                 <label style={{ ...KT, color: "#5f26e5", fontSize: "16px", fontWeight: 600,
                   display: "block", marginBottom: "8px" }}>{t.fullName}</label>
-                <input type="text" name="name" placeholder={t.fullNamePlaceholder} value={formData.name} onChange={handleFormChange}
-                  style={{ ...KT, width: "100%", background: "#f5f5f5", border: "none",
+                <input type="text" name="name" placeholder={t.fullNamePlaceholder} value={formData.name} onChange={handleFormChange} aria-invalid={errors.has("name")}
+                  style={{ ...KT, boxShadow: errShadow("name"), width: "100%", background: "#f5f5f5", border: "none",
                     borderRadius: "10px", padding: "14px 16px", fontSize: "16px", color: "#111827",
                     outline: "none", boxSizing: "border-box" }} />
               </div>
               <div>
                 <label style={{ ...KT, color: "#5f26e5", fontSize: "16px", fontWeight: 600,
                   display: "block", marginBottom: "8px" }}>{t.email}</label>
-                <input type="email" name="email" placeholder={t.emailPlaceholder} value={formData.email} onChange={handleFormChange}
-                  style={{ ...KT, width: "100%", background: "#f5f5f5", border: "none",
+                <input type="email" name="email" placeholder={t.emailPlaceholder} value={formData.email} onChange={handleFormChange} aria-invalid={errors.has("email")}
+                  style={{ ...KT, boxShadow: errShadow("email"), width: "100%", background: "#f5f5f5", border: "none",
                     borderRadius: "10px", padding: "14px 16px", fontSize: "16px", color: "#111827",
                     outline: "none", boxSizing: "border-box" }} />
               </div>
@@ -121,16 +134,16 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
               <div>
                 <label style={{ ...KT, color: "#5f26e5", fontSize: "16px", fontWeight: 600,
                   display: "block", marginBottom: "8px" }}>{t.phone}</label>
-                <input type="tel" name="phone" placeholder={t.phonePlaceholder} value={formData.phone} onChange={handleFormChange}
-                  style={{ ...KT, width: "100%", background: "#f5f5f5", border: "none",
+                <input type="tel" name="phone" placeholder={t.phonePlaceholder} value={formData.phone} onChange={handleFormChange} aria-invalid={errors.has("phone")}
+                  style={{ ...KT, boxShadow: errShadow("phone"), width: "100%", background: "#f5f5f5", border: "none",
                     borderRadius: "10px", padding: "14px 16px", fontSize: "16px", color: "#111827",
                     outline: "none", boxSizing: "border-box" }} />
               </div>
               <div>
                 <label style={{ ...KT, color: "#5f26e5", fontSize: "16px", fontWeight: 600,
                   display: "block", marginBottom: "8px" }}>{t.company}</label>
-                <input type="text" name="company" placeholder={t.companyPlaceholder} value={formData.company} onChange={handleFormChange}
-                  style={{ ...KT, width: "100%", background: "#f5f5f5", border: "none",
+                <input type="text" name="company" placeholder={t.companyPlaceholder} value={formData.company} onChange={handleFormChange} aria-invalid={errors.has("company")}
+                  style={{ ...KT, boxShadow: errShadow("company"), width: "100%", background: "#f5f5f5", border: "none",
                     borderRadius: "10px", padding: "14px 16px", fontSize: "16px", color: "#111827",
                     outline: "none", boxSizing: "border-box" }} />
               </div>
@@ -141,8 +154,8 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
               <div>
                 <label style={{ ...KT, color: "#5f26e5", fontSize: "16px", fontWeight: 600,
                   display: "block", marginBottom: "8px" }}>{t.budget}</label>
-                <input type="text" name="budget" placeholder={t.budgetPlaceholder} value={formData.budget} onChange={handleFormChange}
-                  style={{ ...KT, width: "100%", background: "#f5f5f5", border: "none",
+                <input type="text" name="budget" placeholder={t.budgetPlaceholder} value={formData.budget} onChange={handleFormChange} aria-invalid={errors.has("budget")}
+                  style={{ ...KT, boxShadow: errShadow("budget"), width: "100%", background: "#f5f5f5", border: "none",
                     borderRadius: "10px", padding: "14px 16px", fontSize: "16px", color: "#111827",
                     outline: "none", boxSizing: "border-box" }} />
               </div>
@@ -160,8 +173,8 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
             <div>
               <label style={{ ...KT, color: "#5f26e5", fontSize: "16px", fontWeight: 600,
                 display: "block", marginBottom: "8px" }}>{t.brief}</label>
-              <textarea rows={5} name="brief" placeholder={t.briefPlaceholder} value={formData.brief} onChange={handleFormChange}
-                style={{ ...KT, width: "100%", background: "#f5f5f5", border: "none",
+              <textarea rows={5} name="brief" placeholder={t.briefPlaceholder} value={formData.brief} onChange={handleFormChange} aria-invalid={errors.has("brief")}
+                style={{ ...KT, boxShadow: errShadow("brief"), width: "100%", background: "#f5f5f5", border: "none",
                   borderRadius: "10px", padding: "14px 16px", fontSize: "16px", color: "#111827",
                   outline: "none", resize: "none", boxSizing: "border-box", display: "block" }} />
             </div>
@@ -191,6 +204,13 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
             </p>
 
             {/* Status messages */}
+            {errors.size > 0 && (
+              <p role="alert" style={{ ...KT, color: "#dc2626", fontSize: "14px", fontWeight: 600, margin: 0 }}>
+                {errors.has("email") && formData.email.trim() && errors.size === 1
+                  ? (lang === "en" ? "Please enter a valid email address." : "กรุณากรอกอีเมลให้ถูกต้อง")
+                  : (lang === "en" ? "Please fill in all fields marked *." : "กรุณากรอกข้อมูลในช่องที่มี * ให้ครบ")}
+              </p>
+            )}
             {showConsentWarning && !consented && (
               <p style={{ ...KT, color: "#dc2626", fontSize: "14px", fontWeight: 600, margin: 0 }}>
                 {t.consentWarning || (lang === "en" ? "Please accept the terms and privacy policy above before submitting." : "กรุณายอมรับเงื่อนไขและนโยบายความเป็นส่วนตัวก่อนส่งข้อมูล")}

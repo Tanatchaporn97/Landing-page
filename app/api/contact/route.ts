@@ -5,6 +5,9 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { name, email, phone, company, budget, brief } = body;
+    // same required fields as the form (job title is optional)
+    const missing = (["name", "email", "phone", "company", "budget", "brief"] as const).filter((k) => !String(body?.[k] ?? "").trim());
+    if (missing.length) return NextResponse.json({ success: false, error: "missing_fields", missing }, { status: 400 });
 
     const auth = new google.auth.GoogleAuth({
       credentials: {
