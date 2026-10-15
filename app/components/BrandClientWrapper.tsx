@@ -46,7 +46,7 @@ const OUR_SERVICES = [
     desc: "ดูแลแคมเปญอินฟลูเอนเซอร์แบบครบวงจร ตั้งแต่การวางแผน คัดเลือกอินฟลูเอนเซอร์ ประสานงาน ไปจนถึงติดตามและวัดผล เพื่อให้ทุกขั้นตอนของแคมเปญเดินหน้าได้อย่างมีประสิทธิภาพ",
     descEn: "End-to-end influencer campaign management — from planning and influencer selection to coordination, tracking, and reporting — keeping every stage of your campaign running smoothly." },
   { img: "/services/ugc-product-seeding.jpg", title: "Influencer Network",
-    desc: "เข้าถึงเครือข่ายอินฟลูเอนเซอร์หลากหลายหมวดหมู่ พร้อมค้นหาและคัดเลือกคนที่ตรงกับโจทย์ กลุ่มเป้าหมาย และภาพลักษณ์ของแบรนด์ได้อย่างแม่นยำ",
+    desc: "เข้าถึงเครือข่ายอินฟลูเอนเซอร์หลากหลายหมวด\u2060หมู่ พร้อมค้นหาและคัดเลือกคนที่ตรงกับโจทย์ กลุ่มเป้า\u2060หมาย และภาพลักษณ์ของแบรนด์ได้อย่างแม่นยำ",
     descEn: "Access a diverse network of influencers across every category, with precise search and selection to match your brief, target audience, and brand image." },
   { img: "/services/on-demand-fast-track.jpg", title: "On-Demand & Fast-Track Campaigns",
     desc: "ตอบโจทย์แคมเปญที่ต้องการความรวดเร็ว ด้วยการค้นหาและประสานงานอินฟลูเอนเซอร์ในเวลาจำกัด ช่วยให้แบรนด์เริ่มแคมเปญได้ทันทุกโอกาสและทุกกระแส",
