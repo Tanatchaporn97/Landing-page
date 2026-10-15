@@ -379,7 +379,6 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
         className="split-hero-desktop"
         style={{
           position: "relative",
-          minHeight: "868px",
           display: "flex",
           alignItems: "stretch",
           overflow: "visible",
@@ -408,24 +407,20 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           </div>
 
           {/* mock art — above background, never clipped */}
-          <div className="split-art" style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-start", padding: "190px 6% 0" }}>
+          <div className="split-art" style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-start", padding: "var(--hsh-top) 6% 0" }}>
             <div className="split-art-inner" style={{ position: "relative", width: "72%", maxWidth: "500px" }}>
               <BrandMockArt lang={lang} />
             </div>
           </div>
 
           {/* typography — above art */}
-          <div style={{ position: "relative", zIndex: 2, textAlign: "left", padding: "0 6% 52px", marginTop: "20px" }}>
+          <div style={{ position: "relative", zIndex: 2, textAlign: "left", padding: "0 6% var(--hsh-bottom)", marginTop: "16px" }}>
             <div><SideLabel side="brand" label={t.brand.label} href={`/${lang}/brand`} /></div>
-            <p className="split-tagline" style={{ ...KT, fontSize: "clamp(30px, 3.6vw, 46px)", fontWeight: 600, letterSpacing: "0.02em", color: "#111827", lineHeight: 1.2, margin: "0 0 14px", maxWidth: "420px" }}>
+            <p className="split-tagline" style={{ ...KT, fontSize: "clamp(28px, min(3.6vw, 5.4svh), 46px)", fontWeight: 600, letterSpacing: "0.02em", color: "#111827", lineHeight: 1.2, margin: "0 0 14px", maxWidth: "420px" }}>
               {t.brand.tagline}
             </p>
             <div className="split-reveal" style={{
               maxWidth: "420px", margin: "0",
-              opacity: active === "brand" ? 1 : 0,
-              transform: active === "brand" ? "translateY(0)" : "translateY(8px)",
-              transition: "opacity 0.4s ease 0.05s, transform 0.4s ease 0.05s",
-              pointerEvents: active === "brand" ? "auto" : "none",
             }}>
               <p style={{ ...KT, fontSize: "15px", lineHeight: 1.65, color: "#111827", margin: "0 0 18px" }}>
                 {t.brand.reveal}
@@ -461,23 +456,19 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
             <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "160px", background: "linear-gradient(180deg, transparent 0%, #ffffff 100%)" }} />
           </div>
 
-          <div className="split-art" style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", padding: "190px 6% 0" }}>
+          <div className="split-art" style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", padding: "var(--hsh-top) 6% 0" }}>
             <div className="split-art-inner" style={{ position: "relative", width: "72%", maxWidth: "480px" }}>
               <InfluencerMockArt lang={lang} />
             </div>
           </div>
 
-          <div style={{ position: "relative", zIndex: 2, textAlign: "right", padding: "0 6% 52px", marginTop: "20px" }}>
+          <div style={{ position: "relative", zIndex: 2, textAlign: "right", padding: "0 6% var(--hsh-bottom)", marginTop: "16px" }}>
             <div><SideLabel side="influencer" label={t.influencer.label} href={`/${lang}/influencer`} /></div>
-            <p className="split-tagline" style={{ ...KT, fontSize: "clamp(30px, 3.6vw, 46px)", fontWeight: 600, letterSpacing: "0.02em", color: "#111827", lineHeight: 1.2, margin: "0 0 14px", maxWidth: "420px", marginLeft: "auto" }}>
+            <p className="split-tagline" style={{ ...KT, fontSize: "clamp(28px, min(3.6vw, 5.4svh), 46px)", fontWeight: 600, letterSpacing: "0.02em", color: "#111827", lineHeight: 1.2, margin: "0 0 14px", maxWidth: "420px", marginLeft: "auto" }}>
               {t.influencer.tagline}
             </p>
             <div className="split-reveal" style={{
               maxWidth: "420px", margin: "0 0 0 auto",
-              opacity: active === "influencer" ? 1 : 0,
-              transform: active === "influencer" ? "translateY(0)" : "translateY(8px)",
-              transition: "opacity 0.4s ease 0.05s, transform 0.4s ease 0.05s",
-              pointerEvents: active === "influencer" ? "auto" : "none",
             }}>
               <p style={{ ...KT, fontSize: "15px", lineHeight: 1.65, color: "#111827", margin: "0 0 18px" }}>
                 {t.influencer.reveal}
@@ -502,7 +493,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           position: "absolute", top: 0, left: "50%", zIndex: 5,
           transform: `translateX(calc(-50% + ${active === "brand" ? "5vw" : active === "influencer" ? "-5vw" : "0px"}))`,
           transition: "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)",
-          width: "min(760px, 44vw)", textAlign: "center", paddingTop: "210px",
+          width: "min(760px, 44vw)", textAlign: "center", paddingTop: "var(--hsh-center-top)",
           pointerEvents: "none",
         }}>
           <span style={{ ...KT, fontSize: "16px", fontWeight: 800, letterSpacing: "0.01em", color: "#111827" }}>
@@ -631,6 +622,16 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
         /* Layout switch is purely a width breakpoint — never gated on hover
            capability — so the mobile static structure is guaranteed on small
            screens regardless of pointer/hover support. */
+        /* Desktop hero fills one screen: art, label, tagline, copy and CTA all fit above the fold.
+           Spacing and the art size follow the viewport height (svh) with sensible floors/caps. */
+        .split-hero-desktop {
+          --hsh-top: clamp(104px, 15svh, 190px);
+          /* bottom gap clears the floating chat button (bottom-right, ~74px tall incl. offset) */
+          --hsh-bottom: 88px;
+          --hsh-center-top: clamp(140px, 23svh, 210px);
+          height: clamp(640px, 100svh, 1000px);
+        }
+        .split-hero-desktop .split-art-inner { max-width: min(500px, calc((100svh - 506px) * 1.45)) !important; }
         @media (max-width: 899px) {
           .split-hero-desktop { display: none !important; }
           .split-hero-mobile { display: block !important; }
