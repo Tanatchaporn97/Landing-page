@@ -58,7 +58,7 @@ const OUR_SERVICES = [
     desc: "สร้างกระแสให้สินค้าผ่าน UGC คอมเมนต์ และรีวิวจากผู้ใช้งานและครีเอเตอร์อย่างเป็นธรรมชาติ ช่วยเพิ่ม Social Proof สร้างความน่าเชื่อถือ และกระตุ้นการตัดสินใจซื้อ",
     descEn: "Spark buzz for your product through natural UGC, comments, and reviews from real users and creators — boosting social proof, credibility, and purchase decisions." },
   { img: "/services/livestream-affiliate4.jpg", title: "Livestream & Affiliate",
-    desc: "คอนเทนต์ที่ออกแบบมาเพื่อสร้างผลลัพธ์ด้านยอดขายโดยตรงผ่าน Livestream และ Affiliate จากอินฟลูเอนเซอร์ เปลี่ยนความสนใจให้กลายเป็นการซื้อได้ง่ายขึ้น",
+    desc: "คอนเทนต์ที่ออกแบบมาเพื่อสร้างผลลัพธ์ด้านยอดขายโดยตรงผ่าน Livestream และ Affiliate จ\u2060า\u2060กอินฟลูเอนเซอร์ เปลี่ยนความสนใจให้กลายเป็นการซื้อได้ง่ายขึ้น",
     descEn: "Content designed to drive sales results directly through influencer livestreams and affiliate links, turning interest into purchases more easily." },
   { img: "/services/influencer-event-activation.jpg", title: "Influencer & Event Activation",
     desc: "ตั้งแต่อินฟลูเอนเซอร์ร่วมงาน Presenter และ Speaker ไปจนถึงทีมประสานงานหน้างาน เราช่วยให้อีเวนต์สร้างคอนเทนต์ กระแส และการพูดถึงได้อย่างต่อเนื่องทั้ง Online และ On-site",
