@@ -24,13 +24,16 @@ const DEFAULT_FAQS = [
     qEn: "I forgot my email or can't log in — what should I do?", aEn: "Contact our support team on LINE: @buddysupport with your account name, and the team will verify your account and reset your password." },
 ];
 
-// "[label](/path)" inside an answer becomes an in-site link (locale prefixed)
+// "[label](/path)" inside an answer becomes an in-site link (locale prefixed);
+// "[label](https://…)" opens the external page in a new tab
 function withLinks(text: string, lang: string) {
-  return text.split(/(\[[^\]]+\]\(\/[^)]*\))/).map((part, i) => {
-    const m = part.match(/^\[([^\]]+)\]\((\/[^)]*)\)$/);
-    return m
-      ? <Link key={i} href={`/${lang}${m[2]}`} style={{ color: "inherit", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: "3px" }}>{m[1]}</Link>
-      : part;
+  const linkStyle = { color: "inherit", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: "3px" };
+  return text.split(/(\[[^\]]+\]\((?:\/|https:\/\/)[^)]*\))/).map((part, i) => {
+    const m = part.match(/^\[([^\]]+)\]\(((?:\/|https:\/\/)[^)]*)\)$/);
+    if (!m) return part;
+    return m[2].startsWith("/")
+      ? <Link key={i} href={`/${lang}${m[2]}`} style={linkStyle}>{m[1]}</Link>
+      : <a key={i} href={m[2]} target="_blank" rel="noopener noreferrer" style={linkStyle}>{m[1]}</a>;
   });
 }
 

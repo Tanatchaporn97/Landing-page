@@ -311,7 +311,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <div style={{ background: "transparent" }}>
 
         {/* ── FAQs ── */}
-        <FAQAccordion faqs={dict?.faqPage?.faqsInfluencer} lang={lang as Locale} variant="influencer" dict={dict} />
+        <FAQAccordion faqs={dict?.faqPage?.faqsInfluencer?.slice(0, 8)} lang={lang as Locale} variant="influencer" dict={dict} />
 
         {/* ── Pre-footer CTA ── */}
         <section className="inf-precta-section inf-precta-full" style={{ padding: 0 }}>
