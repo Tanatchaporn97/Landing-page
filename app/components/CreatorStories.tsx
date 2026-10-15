@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -67,15 +67,25 @@ function TikTokCreateButton() {
   );
 }
 
+// Each card starts as a still cover image (posters/<name>.jpg) — no <video> and no video bytes
+// until someone taps play. Then the real player mounts and starts; starting one pauses any other.
+const posterOf = (src: string) => src.replace(/\/([^/]+)\.mp4$/, "/posters/$1.jpg");
+
 function StoryCard({ src, name }: { src: string; name: string }) {
+  const [active, setActive] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [buffering, setBuffering] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Playback is handled by the browser's own <video controls>, not by our
-  // click handlers: clicking anywhere on the card reaches the video (every
-  // overlay below is pointer-events: none), so it plays even if the page's
-  // JavaScript never attaches (extensions, page translation, hydration
-  // errors). Our React state only drives the decorative ▶ / loading ring.
+  useEffect(() => {
+    if (!active) return;
+    const onOther = (e: Event) => {
+      if ((e as CustomEvent<string>).detail !== src) videoRef.current?.pause();
+    };
+    window.addEventListener("creator-story:play", onOther);
+    return () => window.removeEventListener("creator-story:play", onOther);
+  }, [active, src]);
+
   return (
     <div className="creator-story-card" style={{
       position: "relative", flex: "0 0 300px", width: "300px", aspectRatio: "9 / 16",
@@ -84,27 +94,39 @@ function StoryCard({ src, name }: { src: string; name: string }) {
       boxShadow: "0 0 0 1px rgba(255,255,255,0.5), 0 0 44px 8px rgba(255,255,255,0.9), 0 22px 44px -14px rgba(95,38,229,0.4)", cursor: "pointer",
       scrollSnapAlign: "start",
     }}>
-      <video
-        className="cs-video"
-        src={`${src}#t=0.1`}
-        controls
-        controlsList="nodownload noplaybackrate"
-        disablePictureInPicture
-        playsInline
-        loop
-        preload="metadata"
-        aria-label={name}
-        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
-        onPlay={() => setPlaying(true)}
-        onPause={() => { setPlaying(false); setBuffering(false); }}
-        onEnded={() => setPlaying(false)}
-        onWaiting={() => setBuffering(true)}
-        onPlaying={() => setBuffering(false)}
-        onCanPlay={() => setBuffering(false)}
-      />
+      {active ? (
+        <video
+          ref={videoRef}
+          className="cs-video"
+          src={src}
+          poster={posterOf(src)}
+          autoPlay
+          controls
+          controlsList="nodownload noplaybackrate"
+          disablePictureInPicture
+          playsInline
+          loop
+          preload="auto"
+          aria-label={name}
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+          onPlay={() => { setPlaying(true); window.dispatchEvent(new CustomEvent("creator-story:play", { detail: src })); }}
+          onPause={() => { setPlaying(false); setBuffering(false); }}
+          onEnded={() => setPlaying(false)}
+          onWaiting={() => setBuffering(true)}
+          onPlaying={() => setBuffering(false)}
+          onCanPlay={() => setBuffering(false)}
+        />
+      ) : (
+        <button type="button" aria-label={`Play ${name}`} onClick={() => { setActive(true); setBuffering(true); }}
+          style={{ position: "absolute", inset: 0, padding: 0, border: 0, background: "none", cursor: "pointer" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={posterOf(src)} alt="" loading="lazy" decoding="async" width={320} height={568}
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+        </button>
+      )}
 
-      {/* decorative play badge (clicks pass through to the video) */}
-      {!playing && (
+      {/* decorative play badge */}
+      {!playing && !buffering && (
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(0,0,0,0.25)", pointerEvents: "none" }}>
           <div style={{ width: "56px", height: "56px", borderRadius: "50%", background: "rgba(255,255,255,0.9)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="#111827" style={{ marginLeft: "3px" }}><path d="M8 5v14l11-7z" /></svg>
@@ -127,8 +149,8 @@ function StoryCard({ src, name }: { src: string; name: string }) {
       </div>
 
       <TikTokRail />
-      {/* hidden while playing so it doesn't sit over the native control bar */}
-      {!playing && <TikTokCreateButton />}
+      {/* hidden once the player is up so it doesn't sit over the native control bar */}
+      {!active && <TikTokCreateButton />}
     </div>
   );
 }
