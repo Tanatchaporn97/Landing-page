@@ -247,7 +247,6 @@ export default function Navbar({
               background: #5f26e5; transform: scaleX(0); transform-origin: left; transition: transform .3s cubic-bezier(.22,1,.36,1); }
             .nav-ul-link.on-dark::after{ background: #c9b3ff; }
             .nav-ul-link:hover::after, .nav-ul-link:focus-visible::after, .nav-ul-link.is-active::after{ transform: scaleX(1); }
-            .nav-ul-link:not(.on-dark):hover, .nav-ul-link:not(.on-dark).is-active{ color: #5f26e5 !important; }
             @media (prefers-reduced-motion: reduce){ .nav-ul-link::after{ transition: none; } }
           `}</style>
 
