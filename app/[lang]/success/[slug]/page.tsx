@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { industryOf } from "../../../components/caseIndustries";
 import BackButton from "./BackButton";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -60,7 +61,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
         }}>
         {/* Industry tag */}
         <div style={{ marginBottom: "16px" }}>
-          <Link href={`/${lang}/success?cat=${encodeURIComponent(story.industry)}`} style={{
+          <Link href={`/${lang}/success?cat=${encodeURIComponent(industryOf(story.slug, story.industry))}`} style={{
             ...KT,
             background: "rgba(95,38,229,0.08)",
             border: "1px solid rgba(95,38,229,0.2)",
@@ -68,7 +69,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
             padding: "5px 16px", display: "inline-block", color: "#5f26e5",
             textDecoration: "none",
           }}>
-            {story.industry}
+            {industryOf(story.slug, story.industry)}
           </Link>
         </div>
 

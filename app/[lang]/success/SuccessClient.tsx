@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { INDUSTRIES, industryOf } from "../../components/caseIndustries";
 import { HistoryBackLink } from "../../components/NavHistory";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -9,8 +10,9 @@ import { motion, AnimatePresence } from "motion/react";
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const PINK_GRAD = "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)";
 
-const CATS_TH = ["ทั้งหมด", "Food & Beverage", "Beauty", "Healthcare", "Entertainment & Streaming", "Pet Care", "เครื่องใช้ไฟฟ้า", "อีเวนต์และไลฟ์สไตล์", "ของใช้ในบ้าน"];
-const CATS_EN = ["All", "Food & Beverage", "Beauty", "Healthcare", "Entertainment & Streaming", "Pet Care", "Home Appliances", "Events & Lifestyle", "Household"];
+// same industries (and per-case classification) as the brand page's "See the Work in Action"
+const CATS_TH = ["ทั้งหมด", ...INDUSTRIES];
+const CATS_EN = ["All", ...INDUSTRIES];
 
 const STORIES_TH = [
   {
@@ -523,17 +525,21 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
   const allLabel = CATS[0];
   const backLabel = lang === "th" ? "ย้อนกลับ" : "Back";
 
-  const [activeCat, setActiveCat] = useState(() => {
-    const cat = searchParams.get("cat");
-    return cat && CATS.includes(cat) ? cat : allLabel;
-  });
+  // ?cat= may carry an industry name or an older label (e.g. "Beauty") — map the latter via its stories
+  const catFromParam = (cat: string | null) => {
+    if (!cat) return null;
+    if (CATS.includes(cat)) return cat;
+    const s = STORIES.find((x) => x.industry === cat);
+    return s ? industryOf(s.slug, s.industry) : null;
+  };
+  const [activeCat, setActiveCat] = useState(() => catFromParam(searchParams.get("cat")) ?? allLabel);
 
   useEffect(() => {
-    const cat = searchParams.get("cat");
-    if (cat && CATS.includes(cat)) setActiveCat(cat);
+    const cat = catFromParam(searchParams.get("cat"));
+    if (cat) setActiveCat(cat);
   }, [searchParams]);
 
-  const filtered = activeCat === allLabel ? STORIES : STORIES.filter((s) => s.industry === activeCat);
+  const filtered = activeCat === allLabel ? STORIES : STORIES.filter((s) => industryOf(s.slug, s.industry) === activeCat);
 
   return (
     <div className="background" style={{ ...KT }}>
@@ -599,7 +605,7 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
                     {/* Category pill */}
                     <div className="sg-pill" style={{ position: "absolute", top: "28px", left: "28px", zIndex: 2 }}>
                       <span className="cs-cat-btn" style={{ ...KT, fontSize: "9px", fontWeight: 400, color: "#ffffff", background: "#5f26e5", borderRadius: "50px", padding: "5px 12px", letterSpacing: "0.08em", display: "inline-block" }}>
-                        {story.industry.toUpperCase()}
+                        {industryOf(story.slug, story.industry).toUpperCase()}
                       </span>
                     </div>
 
