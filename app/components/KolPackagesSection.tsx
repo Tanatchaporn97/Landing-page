@@ -8,25 +8,25 @@ const KOL_PACKAGES = [
   {
     name: "Start",
     price: "50,000",
-    cta: "Get Start",
+    cta: "Get a Proposal",
     features: ["Proposal", "KOL List", "Campaign Timeline", "Campaign Performance"],
   },
   {
     name: "Basic",
     price: "100,000",
-    cta: "Go Basic",
+    cta: "Get a Proposal",
     features: ["Proposal", "KOL Category Suggestion", "Content Idea", "KOL List", "Campaign Timeline", "Campaign Performance"],
   },
   {
     name: "Pro",
     price: "300,000",
-    cta: "Go Pro",
+    cta: "Get a Proposal",
     features: ["Proposal", "KOL Category Suggestion", "Content Idea", "KOL List", "Campaign Timeline", "Campaign Performance", "Campaign Summary & Recommend", "Sentiment Analysis on Campaign Dashboard"],
   },
   {
     name: "Premium",
     price: "500,000",
-    cta: "Go Premium",
+    cta: "Get a Proposal",
     features: ["Proposal", "KOL Category Suggestion", "Content Idea", "KOL List", "Campaign Timeline", "Market Research", "Competitor Analysis", "Audience Analysis", "Communication Strategy", "Campaign Performance", "Campaign Summary & Recommend", "Sentiment Analysis on Campaign Dashboard"],
   },
 ];
