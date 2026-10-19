@@ -39,7 +39,7 @@ const SERVICE_CARD_WIDTH = 220; // inactive card width, px
 const SERVICE_CARD_GAP = 20; // gap between cards in the scroll row, px
 
 const OUR_SERVICES = [
-  { img: "/services/campaign-reviews-v2.jpg", objectPosition: "center 47%", title: "Campaign Reviews",
+  { img: "/services/campaign-reviews-v3.jpg", objectPosition: "center 45%", title: "Campaign Reviews",
     desc: "รีวิวสินค้าและบริการผ่านอินฟลูเอนเซอร์ที่ใช่ พร้อมสื่อสารข้อความและจุดเด่นของแบรนด์ได้อย่างมีประสิทธิภาพ เปลี่ยนให้ทุกความสนใจเป็นยอดขาย",
     descEn: "Product and service reviews through the right influencers, communicating your brand's key messages effectively — turning every bit of interest into sales." },
   { img: "/services/influencer-campaign-management.jpg", title: "Influencer Campaign Management",
@@ -66,7 +66,7 @@ const OUR_SERVICES = [
   { img: "/services/paid-media-amplification-vivid.jpg", title: "Paid Media & Amplification",
     desc: "เพิ่มพลังให้แคมเปญด้วยการยิงโฆษณา บูสต์ และ Amplify คอนเทนต์จากอินฟลูเอนเซอร์ เข้าถึงกลุ่มเป้าหมายได้กว้างและแม่นยำขึ้น พร้อมผลักดันผลลัพธ์จากทุกคอนเทนต์ให้ไปได้ไกลกว่าเดิม",
     descEn: "Supercharge your campaign with paid ads, boosting, and amplification of influencer content — reaching a wider, more precise audience and pushing every piece of content further." },
-  { img: "/services/always-on-v2.jpg", title: "Always-On Influencer & Media Strategy",
+  { img: "/services/always-on-v3.jpg", objectPosition: "center 45%", title: "Always-On Influencer & Media Strategy",
     desc: "วางกลยุทธ์ Influencer และ Media อย่างต่อเนื่องตลอดทั้งปี ช่วยให้แบรนด์รักษาการมองเห็น สร้างความสัมพันธ์กับกลุ่มเป้าหมาย และต่อยอดผลลัพธ์ได้มากกว่าแคมเปญระยะสั้น",
     descEn: "Ongoing influencer and media strategy planned year-round, helping your brand maintain visibility, build relationships with its audience, and compound results beyond a single short-term campaign." },
   { img: "/services/creative-content-concept.jpg", title: "Creative Content & Concept Development",
