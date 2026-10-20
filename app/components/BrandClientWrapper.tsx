@@ -280,7 +280,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
     { img: "/how-we-run-campaigns/manage-seamlessly-v4.png", title: "วางแผนแคมเปญ", titleEn: "Plan the Campaign",
       desc: "เปลี่ยนเป้าหมายของแบรนด์เป็นกลยุทธ์ที่จับต้องได้|ให้ทุกการสื่อสารไปถึงกลุ่มเป้าหมายได้ตรงจุด",
       descEn: "We turn your brand's goals into a concrete strategy,|so every message reaches the right audience." },
-    { img: "/how-we-run-campaigns/select-influencers-v4.png", title: "คัดสรรอินฟลูเอนเซอร์ที่ใช่", titleEn: "Select the Right Influencers",
+    { img: "/how-we-run-campaigns/select-influencers-v5.png", title: "คัดสรรอินฟลูเอนเซอร์ที่ใช่", titleEn: "Select the Right Influencers",
       desc: "ผ่านระบบ KOL Discovery จับคู่อินฟลูเอนเซอร์ที่เหมาะสมที่สุด|กับแบรนด์คุณด้วยข้อมูลเชิงลึกที่แม่นยำ",
       descEn: "Our KOL Discovery system matches your brand|with the most suitable influencers using precise data insights." },
     { img: "/how-we-run-campaigns/review-drafts-v4.png", title: "จัดการแคมเปญไร้รอยต่อ", titleEn: "Manage Seamlessly",
