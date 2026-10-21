@@ -34,9 +34,9 @@ const fadeMaskAt = (start: number) => "linear-gradient(180deg, #000 0px, #000 " 
 // Each keyword sits at an asymmetric spot, expressed as an offset from the screen centre
 // (vw / vh) so it can glide back to the centre on scroll. `lead` is the supporting phrase.
 const WORDS = [
-  { lead: "Better decisions start with", word: "DATA",    x: -22, y: -19, align: "left" as const,  stack: -11 },
-  { lead: "Better ideas come from understanding", word: "PEOPLE", x: 17, y: 1, align: "right" as const, stack: 0 },
-  { lead: "Better work is proven by", word: "RESULTS", x: -9, y: 21, align: "left" as const,  stack: 11 },
+  { lead: "Better decisions start with", word: "Data",    x: -22, y: -19, align: "left" as const,  stack: -11 },
+  { lead: "Better ideas come from understanding", word: "People", x: 17, y: 1, align: "right" as const, stack: 0 },
+  { lead: "Better work is proven by", word: "Results", x: -9, y: 21, align: "left" as const,  stack: 11 },
 ];
 
 // Background: oversized outlined keyword bands drifting in opposite directions, plus a soft
