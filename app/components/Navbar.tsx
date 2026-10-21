@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { MenuVertical } from "@/components/ui/menu-vertical";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -129,15 +130,10 @@ export default function Navbar({
         }}
       >
         {/* Anchored toward the top (not vertically centered) */}
-        <ul style={{ listStyle: "none", padding: 0, margin: 0, textAlign: "center" }}>
-          {navLinks.map((link, i) => (
-            <li key={link.href} style={{ margin: "0.3rem 0" }}>
-              <a href={link.href} onClick={() => setMenuOpen(false)} className="nav-overlay-link">
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <nav aria-label="Menu">
+          <MenuVertical menuItems={navLinks} color="#5f26e5" onItemClick={() => setMenuOpen(false)}
+            className="gap-2 px-6" itemClassName="nav-menu-item" />
+        </nav>
 
         {variant === "influencer" && (
           <div style={{ textAlign: "center" }}>
@@ -242,6 +238,9 @@ export default function Navbar({
             })}
           </div>
           <style>{`
+            /* hamburger menu items (MenuVertical) — same type as the old overlay links */
+            .nav-menu-item{ font-family: var(--font-kanit),'Noto Sans Thai',sans-serif; font-size: clamp(26px, 7vw, 44px) !important;
+              font-weight: 700 !important; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.35; white-space: nowrap; }
             .nav-ul-link{ position: relative; padding: 6px 0; transition: color .25s ease; }
             .nav-ul-link::after{ content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px;
               background: #5f26e5; transform: scaleX(0); transform-origin: left; transition: transform .3s cubic-bezier(.22,1,.36,1); }
