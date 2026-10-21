@@ -36,7 +36,7 @@ const toBudgetOption = (raw: string | null | undefined) => {
 const REQUIRED_FIELDS = ["name", "email", "phone", "company", "budget", "brief"] as const;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export default function ContactFormSection({ lang = "th", dict, headingOverride, subheadingOverride }: { lang?: "th" | "en", dict: any, headingOverride?: string, subheadingOverride?: string }) {
+export default function ContactFormSection({ lang = "th", dict, headingOverride, subheadingOverride, headingFontFamily }: { lang?: "th" | "en", dict: any, headingOverride?: string, subheadingOverride?: string, headingFontFamily?: string }) {
   const searchParams = useSearchParams();
   const [consented, setConsented] = useState(false);
   const [showConsentWarning, setShowConsentWarning] = useState(false);
@@ -115,7 +115,7 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
         <div className="contact-title-wrap" style={{ display: "flex", alignItems: "flex-start", justifyContent: "center",
           gap: "40px", marginBottom: "56px" }}>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px", textAlign: "center" }}>
-            <h2 className="th-head" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 900,
+            <h2 className="th-head" style={{ ...KT, ...(headingFontFamily ? { fontFamily: headingFontFamily } : {}), fontSize: "clamp(28px,3.3vw,48px)", fontWeight: headingFontFamily ? 400 : 900,
               margin: 0, lineHeight: headingOverride ? 1.2 : "72px",
               display: "inline-block" }}>
               <span style={{ background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{headingOverride || t.contactUs || "ติดต่อเรา"}</span>

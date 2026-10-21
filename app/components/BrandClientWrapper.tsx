@@ -353,7 +353,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           {/* Left: real hero copy, playful stacked layout + underline squiggle + pill CTA.
               Top-aligned with the visual: .bh-copy padding matches the gap above its first card. */}
           <div className="bh-copy" style={{ position: "relative" }}>
-            <h2 className="bh-title th-head font-bold" style={{ ...KT, color: "#111827", fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.25, margin: "0 0 24px" }}>
+            <h2 className="bh-title th-head font-bold" style={{ ...(lang === "th" ? KT : { ...PIERSON, fontWeight: 400 }), color: "#111827", fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.25, margin: "0 0 24px" }}>
               {lang === "th" ? (
                 <>
                   <span className="bh-line">วางแผนและดูแล</span>
@@ -834,6 +834,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       <div id="contact" className="contact-bg" style={{ padding: "80px 0" }}>
         <Suspense fallback={null}>
           <ContactFormSection lang={lang} dict={dict?.contactForm}
+            headingFontFamily={lang === "th" ? undefined : PIERSON.fontFamily}
             headingOverride={lang === "th" ? "มี Brief แล้ว หรือยังไม่แน่ใจว่าควรเริ่มจากอะไร?" : "Have a brief, or not sure where to start?"}
             subheadingOverride={lang === "th"
               ? "เล่าเป้าหมายของคุณให้เราฟัง ทีม Buddy Review จะช่วยมองโจทย์ วางแนวทาง และแนะนำ campaign approach ที่เหมาะกับแบรนด์"
