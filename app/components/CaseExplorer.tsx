@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
+import { VariableFontHover } from "@/components/ui/variable-font-hover";
 import { INDUSTRIES, CLASSIFY } from "./caseIndustries";
 import Link from "next/link";
 
@@ -129,7 +130,10 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
                 border: 0, borderBottom: `2px solid ${on ? PURPLE : "transparent"}`, borderRadius: 0, background: "transparent",
                 color: on ? PURPLE : "#5E5878", fontSize: "15px", fontWeight: on ? 600 : 500, whiteSpace: "nowrap",
                 transition: "color 0.2s, border-color 0.2s" }}>
-              {v === "all" ? (th ? "ทั้งหมด" : "All") : v}
+              {/* letters ripple bolder from the centre on hover */}
+              <VariableFontHover label={v === "all" ? (th ? "ทั้งหมด" : "All") : v}
+                fromFontVariationSettings={`'wght' ${on ? 600 : 500}`} toFontVariationSettings="'wght' 700"
+                staggerDuration={0.03} staggerFrom="center" />
             </button>
           );
         })}
