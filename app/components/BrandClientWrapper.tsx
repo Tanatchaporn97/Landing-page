@@ -835,7 +835,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         <Suspense fallback={null}>
           <ContactFormSection lang={lang} dict={dict?.contactForm}
             headingFontFamily={lang === "th" ? undefined : PIERSON.fontFamily}
-            headingOverride={lang === "th" ? "มี Brief แล้ว หรือยังไม่แน่ใจว่าควรเริ่มจากอะไร?" : "Have a brief, or not sure where to start?"}
+            headingOverride={lang === "th" ? "มี Brief แล้ว หรือยังไม่แน่ใจว่าควรเริ่มจากอะไร?" : "Have a brief,|or not sure where to start?"}
             subheadingOverride={lang === "th"
               ? "เล่าเป้าหมายของคุณให้เราฟัง ทีม Buddy Review จะช่วยมองโจทย์ วางแนวทาง และแนะนำ campaign approach ที่เหมาะกับแบรนด์"
               : "Tell us your goal — the Buddy Review team will help frame the challenge, shape the direction, and recommend a campaign approach that fits your brand."}

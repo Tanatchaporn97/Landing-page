@@ -118,7 +118,13 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
             <h2 className="th-head" style={{ ...KT, ...(headingFontFamily ? { fontFamily: headingFontFamily } : {}), fontSize: "clamp(28px,3.3vw,48px)", fontWeight: headingFontFamily ? 700 : 900,
               margin: 0, lineHeight: headingOverride ? 1.2 : "72px",
               display: "inline-block" }}>
-              <span style={{ background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{headingOverride || t.contactUs || "ติดต่อเรา"}</span>
+              {/* "dark part|gradient part" — like the other section headings; no "|" = all gradient */}
+              {(() => {
+                const text = headingOverride || t.contactUs || "ติดต่อเรา";
+                const cut = text.indexOf("|");
+                const grad = <span style={{ background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{cut < 0 ? text : text.slice(cut + 1)}</span>;
+                return cut < 0 ? grad : <><span style={{ color: "#111827" }}>{text.slice(0, cut)} </span>{grad}</>;
+              })()}
             </h2>
             {subheadingOverride && (
               <p style={{ ...KT, fontSize: "16px", color: "#4b5563", lineHeight: 1.7, margin: 0, maxWidth: "560px" }}>
