@@ -131,8 +131,8 @@ export default function Navbar({
       >
         {/* Anchored toward the top (not vertically centered) */}
         <nav aria-label="Menu">
-          <MenuVertical menuItems={navLinks} color="#5f26e5" onItemClick={() => setMenuOpen(false)}
-            className="gap-2 px-6" itemClassName="nav-menu-item" />
+          <MenuVertical menuItems={navLinks} color="#5f26e5" align="center" onItemClick={() => setMenuOpen(false)}
+            className="gap-1" itemClassName="nav-menu-item" />
         </nav>
 
         {variant === "influencer" && (
@@ -158,22 +158,24 @@ export default function Navbar({
           </div>
         )}
 
-        <div style={{ marginTop: "1.75rem" }}>
+        {/* same look as the desktop navbar toggle: underlined purple text, bounce on tap */}
+        <div style={{ marginTop: "1.5rem" }}>
           <button
             onClick={toggleLang}
-            className="nav-lang-toggle"
+            className="nav-lang-toggle-inline"
             style={{
               ...KT,
-              background: "rgba(255,255,255,0.55)",
-              border: "1px solid rgba(95,38,229,0.25)",
-              borderRadius: "50px",
-              padding: "14px 40px",
+              background: "transparent",
+              border: "none",
+              textDecoration: "underline",
+              textUnderlineOffset: "4px",
+              padding: "10px 8px",
               color: "#5f26e5",
               fontSize: "16px",
-              fontWeight: 600,
+              fontWeight: 700,
               cursor: "pointer",
-              letterSpacing: "0.12em",
-              transition: "background 0.25s, border-color 0.25s, box-shadow 0.25s",
+              whiteSpace: "nowrap",
+              display: "inline-block",
             }}
           >
             {lang === "th" ? "EN" : "TH"}
@@ -239,7 +241,7 @@ export default function Navbar({
           </div>
           <style>{`
             /* hamburger menu items (MenuVertical) — same type as the old overlay links */
-            .nav-menu-item{ font-family: var(--font-kanit),'Noto Sans Thai',sans-serif; font-size: clamp(26px, 7vw, 44px) !important;
+            .nav-menu-item{ font-family: var(--font-kanit),'Noto Sans Thai',sans-serif; font-size: clamp(20px, 5.4vw, 30px) !important;
               font-weight: 700 !important; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.35; white-space: nowrap; }
             .nav-ul-link{ position: relative; padding: 6px 0; transition: color .25s ease; }
             .nav-ul-link::after{ content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px;

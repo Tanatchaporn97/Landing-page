@@ -20,6 +20,8 @@ interface MenuVerticalProps {
   className?: string;
   /** classes for each item's label (size / font / case) */
   itemClassName?: string;
+  /** "center": items centred, the arrow appears just left of the label without shifting the centre */
+  align?: "left" | "center";
 }
 
 const MotionLink = motion.create(Link);
@@ -33,13 +35,15 @@ export const MenuVertical = ({
   onItemClick,
   className,
   itemClassName,
+  align = "left",
 }: MenuVerticalProps) => {
+  const centred = align === "center";
   return (
-    <div className={cn("flex w-fit flex-col gap-4 px-10", className)}>
+    <div className={cn("flex flex-col gap-4", centred ? "w-full items-center px-6" : "w-fit px-10", className)}>
       {menuItems.map((item, index) => (
         <motion.div
           key={`${item.href}-${index}`}
-          className="group/nav flex items-center gap-2 cursor-pointer text-[#1a0a3d]"
+          className={cn("group/nav flex items-center gap-2 cursor-pointer text-[#1a0a3d]", centred && "relative")}
           initial="initial"
           whileHover="hover"
           whileTap="hover"
@@ -50,15 +54,18 @@ export const MenuVertical = ({
               hover: { x: 0, color, opacity: 1 },
             }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="z-0"
+            className={cn("z-0", centred && "absolute right-full mr-1")}
           >
-            <ArrowRight strokeWidth={3} className="size-8 sm:size-10" />
+            <ArrowRight strokeWidth={3} className={centred ? "size-6" : "size-8 sm:size-10"} />
           </motion.div>
 
           <MotionLink
             href={item.href}
             onClick={onItemClick}
-            variants={{
+            variants={centred ? {
+              initial: { x: 0, color: "inherit" },
+              hover: { x: 10, color, skewX: skew },
+            } : {
               initial: { x: -40, color: "inherit" },
               hover: { x: 0, color, skewX: skew },
             }}
