@@ -84,9 +84,10 @@ function Reveal({ children, delay, still }: { children: React.ReactNode; delay: 
 }
 
 // phones: tighter positions so the oversized words stay on screen
-const WORDS_MOBILE = [{ x: -16, y: -18 }, { x: 3, y: 0 }, { x: 0, y: 18 }];
+// RESULTS shares DATA's x so their first letters line up on phones
+const WORDS_MOBILE = [{ x: -16, y: -18 }, { x: 3, y: 0 }, { x: -16, y: 18 }];
 
-function Keyword({ w: base, i, p, still, mobile }: { w: (typeof WORDS)[number]; i: number; p: MotionValue<number>; still: boolean; mobile: boolean }) {
+function Keyword({ w: base, i, p, still, mobile, nudge = 0 }: { w: (typeof WORDS)[number]; i: number; p: MotionValue<number>; still: boolean; mobile: boolean; nudge?: number }) {
   const w = mobile ? { ...base, ...WORDS_MOBILE[i], stack: base.stack * 0.8 } : base;
   // 0.10 → 0.48: drift to the centre (stacked), shrinking a little
   const x = useTransform(p, [0, 0.04, 0.42], [`${w.x}vw`, `${w.x}vw`, "0vw"]);
@@ -98,7 +99,7 @@ function Keyword({ w: base, i, p, still, mobile }: { w: (typeof WORDS)[number]; 
   const leadOpacity = useTransform(p, [0.04, 0.22], [1, 0]);
 
   return (
-    <motion.div className="akh-word" style={{ position: "absolute", left: "50%", top: "calc(var(--akh-h) / 2 + var(--akh-shift, 34px))", x: still ? `${w.x}vw` : x, y: still ? `${w.y}vh` : y,
+    <motion.div className="akh-word" style={{ position: "absolute", left: nudge ? `calc(50% + ${nudge}px)` : "50%", top: "calc(var(--akh-h) / 2 + var(--akh-shift, 34px))", x: still ? `${w.x}vw` : x, y: still ? `${w.y}vh` : y,
       scale: still ? 1 : scale, opacity: still ? 1 : opacity, translateX: "-50%", translateY: "-50%",
       textAlign: w.align, willChange: "transform" }}>
       <motion.div className="akh-lead" style={{ ...SANS, opacity: still ? 1 : leadOpacity, fontSize: "clamp(15px, 1.3vw, 20px)", fontWeight: 500,
@@ -139,6 +140,7 @@ export default function AboutKeywordHero() {
   // Line the first statement ("Better decisions start with") up with the other heroes' headings:
   // 195px below the top on desktop, 140px on phones. Measured once laid out (and on resize).
   const [shift, setShift] = useState(34);
+  const [resultsNudge, setResultsNudge] = useState(0);
   const [fadeStart, setFadeStart] = useState<number | null>(null);
   const [fadeEnd, setFadeEnd] = useState<number | null>(null); // fade position once converged (just under the logo line)
   // the logo is centred in what's actually on screen while pinned (below the navbar), and the
@@ -152,6 +154,16 @@ export default function AboutKeywordHero() {
   const mask = useTransform(fadeAt, (v) => fadeMaskAt(Math.round(v)));
   useEffect(() => {
     const align = () => {
+      // phones: line RESULTS' first letter up exactly with DATA's (their boxes differ a little in width)
+      {
+        const kws = ref.current?.querySelectorAll(".akh-kw");
+        if (kws && kws.length === 3 && p.get() < 0.02) {
+          if (window.innerWidth <= 767) {
+            const dx = Math.round(kws[0].getBoundingClientRect().left - kws[2].getBoundingClientRect().left);
+            if (dx) setResultsNudge((n) => n + dx);
+          } else setResultsNudge(0);
+        }
+      }
       const sec = ref.current; const lead = sec?.querySelector(".akh-lead");
       if (!sec || !lead) return;
       const target = window.innerWidth <= 767 ? 140 : 195;
@@ -209,7 +221,7 @@ export default function AboutKeywordHero() {
         <div aria-hidden style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 90% 70% at 50% 40%, transparent 60%, rgba(10,4,40,0.35) 100%)", WebkitMaskImage: "linear-gradient(180deg,#000 60%,transparent 80%)", maskImage: "linear-gradient(180deg,#000 60%,transparent 80%)" }} />
 
         <motion.div style={{ position: "absolute", inset: 0, y: reduce ? 0 : clusterY }}>
-          {WORDS.map((w, i) => <Keyword key={w.word} w={w} i={i} p={p} still={reduce} mobile={mobile} />)}
+          {WORDS.map((w, i) => <Keyword key={w.word} w={w} i={i} p={p} still={reduce} mobile={mobile} nudge={i === 2 ? resultsNudge : 0} />)}
         </motion.div>
 
         {/* resolved state: centred logo + final line */}
