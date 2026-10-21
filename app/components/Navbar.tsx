@@ -235,7 +235,7 @@ export default function Navbar({
           <style>{`
             /* hamburger menu items (MenuVertical) — same type as the old overlay links */
             .nav-menu-item{ font-family: var(--font-kanit),'Noto Sans Thai',sans-serif; font-size: clamp(20px, 5.4vw, 30px) !important;
-              font-weight: 700 !important; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.35; white-space: nowrap; }
+              font-weight: 700 !important; text-transform: none !important; letter-spacing: 0.01em; line-height: 1.35; white-space: nowrap; }
             .nav-ul-link{ position: relative; padding: 6px 0; transition: color .25s ease; }
             .nav-ul-link::after{ content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px;
               background: #5f26e5; transform: scaleX(0); transform-origin: left; transition: transform .3s cubic-bezier(.22,1,.36,1); }
