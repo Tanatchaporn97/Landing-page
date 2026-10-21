@@ -23,14 +23,14 @@ const COPY = {
     sublineBottom: "From Influence to Impact.",
     brand: {
       label: "Brand",
-      tagline: "เปลี่ยนทุกแคมเปญให้วัดผลได้",
+      tagline: "เปลี่ยนทุกแคมเปญ|ให้วัดผลได้", // "|" = line break
       reveal: "วางแผนแคมเปญ เลือกอินฟลูเอนเซอร์ และดูแลทุกขั้นตอนให้ตรงกับเป้าหมายของแบรนด์",
       mobileDesc: "วางแผนแคมเปญและเลือกอินฟลูเอนเซอร์ให้ตรงเป้าหมายแบรนด์",
       cta: "สำหรับแบรนด์",
     },
     influencer: {
       label: "Influencer",
-      tagline: "สร้างงานที่ใช่ จากสิ่งที่คุณรัก",
+      tagline: "สร้างงานที่ใช่|จากสิ่งที่คุณรัก", // "|" = line break
       reveal: "ค้นหาโอกาสร่วมงานกับแบรนด์ พร้อมข้อมูลและเครื่องมือที่ช่วยให้เข้าใจและพัฒนาโปรไฟล์ของตัวเอง",
       mobileDesc: "ค้นหาโอกาสร่วมงานกับแบรนด์ พร้อมเครื่องมือพัฒนาโปรไฟล์",
       cta: "สำหรับอินฟลูเอนเซอร์",
@@ -417,7 +417,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           <div style={{ position: "relative", zIndex: 2, textAlign: "left", padding: "0 6% var(--hsh-bottom)", marginTop: "16px" }}>
             <div><SideLabel side="brand" label={t.brand.label} href={`/${lang}/brand`} /></div>
             <p className="split-tagline" style={{ ...KT, fontSize: "clamp(28px, min(3.6vw, 5.4svh), 46px)", fontWeight: 600, letterSpacing: "0.02em", color: "#111827", lineHeight: 1.2, margin: "0 0 14px", maxWidth: "420px" }}>
-              {t.brand.tagline}
+              {t.brand.tagline.split("|").map((line, i) => <span key={i} style={{ display: "block" }}>{line}</span>)}
             </p>
             <div className="split-reveal" style={{
               maxWidth: "420px", margin: "0",
@@ -465,7 +465,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           <div style={{ position: "relative", zIndex: 2, textAlign: "right", padding: "0 6% var(--hsh-bottom)", marginTop: "16px" }}>
             <div><SideLabel side="influencer" label={t.influencer.label} href={`/${lang}/influencer`} /></div>
             <p className="split-tagline" style={{ ...KT, fontSize: "clamp(28px, min(3.6vw, 5.4svh), 46px)", fontWeight: 600, letterSpacing: "0.02em", color: "#111827", lineHeight: 1.2, margin: "0 0 14px", maxWidth: "420px", marginLeft: "auto" }}>
-              {t.influencer.tagline}
+              {t.influencer.tagline.split("|").map((line, i) => <span key={i} style={{ display: "block" }}>{line}</span>)}
             </p>
             <div className="split-reveal" style={{
               maxWidth: "420px", margin: "0 0 0 auto",
@@ -547,7 +547,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
               <SideLabel side="brand" label={t.brand.label} href={`/${lang}/brand`} size="mobile" />
             </div>
             <p style={{ ...KT, fontSize: "14px", fontWeight: 600, color: "#111827", textAlign: "center", margin: "6px 0 0", position: "relative" }}>
-              {t.brand.tagline}
+              {t.brand.tagline.split("|").map((line, i) => <span key={i} style={{ display: "block" }}>{line}</span>)}
             </p>
             <p style={{ ...KT, fontSize: "12.5px", lineHeight: 1.5, color: "#111827", textAlign: "center", margin: "10px 0 0", position: "relative" }}>
               {t.brand.mobileDesc}
@@ -576,7 +576,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
               <SideLabel side="influencer" label={t.influencer.label} href={`/${lang}/influencer`} size="mobile" />
             </div>
             <p style={{ ...KT, fontSize: "14px", fontWeight: 600, color: "#111827", textAlign: "center", margin: "6px 0 0" }}>
-              {t.influencer.tagline}
+              {t.influencer.tagline.split("|").map((line, i) => <span key={i} style={{ display: "block" }}>{line}</span>)}
             </p>
             <p style={{ ...KT, fontSize: "12.5px", lineHeight: 1.5, color: "#111827", textAlign: "center", margin: "10px 0 0" }}>
               {t.influencer.mobileDesc}
