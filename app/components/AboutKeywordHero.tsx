@@ -85,7 +85,7 @@ function Reveal({ children, delay, still }: { children: React.ReactNode; delay: 
 
 // phones: tighter positions so the oversized words stay on screen
 // RESULTS shares DATA's x so their first letters line up on phones
-const WORDS_MOBILE = [{ x: -16, y: -18 }, { x: 3, y: 0 }, { x: -16, y: 18 }];
+const WORDS_MOBILE = [{ x: -24, y: -18 }, { x: 3, y: 0 }, { x: -24, y: 18 }];
 
 function Keyword({ w: base, i, p, still, mobile, nudge = 0 }: { w: (typeof WORDS)[number]; i: number; p: MotionValue<number>; still: boolean; mobile: boolean; nudge?: number }) {
   const w = mobile ? { ...base, ...WORDS_MOBILE[i], stack: base.stack * 0.8 } : base;
@@ -97,9 +97,11 @@ function Keyword({ w: base, i, p, still, mobile, nudge = 0 }: { w: (typeof WORDS
   const opacity = useTransform(p, [0.42, 0.54], [1, 0]);
   // supporting copy fades away first, as the keywords start to converge
   const leadOpacity = useTransform(p, [0.04, 0.22], [1, 0]);
+  // phones: the small alignment shift (RESULTS under DATA) eases out as the words gather in the centre
+  const nudgeX = useTransform(p, [0.04, 0.42], [nudge, 0]);
 
   return (
-    <motion.div className="akh-word" style={{ position: "absolute", left: nudge ? `calc(50% + ${nudge}px)` : "50%", top: "calc(var(--akh-h) / 2 + var(--akh-shift, 34px))", x: still ? `${w.x}vw` : x, y: still ? `${w.y}vh` : y,
+    <motion.div className="akh-word" style={{ position: "absolute", left: "50%", marginLeft: still ? nudge : nudgeX, top: "calc(var(--akh-h) / 2 + var(--akh-shift, 34px))", x: still ? `${w.x}vw` : x, y: still ? `${w.y}vh` : y,
       scale: still ? 1 : scale, opacity: still ? 1 : opacity, translateX: "-50%", translateY: "-50%",
       textAlign: w.align, willChange: "transform" }}>
       <motion.div className="akh-lead" style={{ ...SANS, opacity: still ? 1 : leadOpacity, fontSize: "clamp(15px, 1.3vw, 20px)", fontWeight: 500,
@@ -248,7 +250,11 @@ export default function AboutKeywordHero() {
         /* phones: keywords stack down the screen instead of spreading sideways */
         @media (max-width: 767px){
           .akh-kw{ font-size: min(15vw, 96px) !important; }
-          .akh-lead{ white-space: normal !important; max-width: 70vw; }
+          /* the lead line sits above its keyword without widening the word's box, so the box hugs the
+             keyword and the words gather dead-centre on scroll (left/right edge kept per word) */
+          .akh-lead{ white-space: normal !important; width: 70vw; position: absolute; bottom: 100%; margin-bottom: 0.4em !important; }
+          .akh-word[style*="text-align: left"] .akh-lead{ left: 0; }
+          .akh-word[style*="text-align: right"] .akh-lead{ right: 0; }
         }
       `}</style>
     </section>
