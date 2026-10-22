@@ -16,12 +16,13 @@ const IconCheck = ({ color = "#5f26e5" }: { color?: string }) => (
 
 // Budget dropdown. `value` (Thai) is what gets saved, whatever the page language.
 const BUDGET_OPTIONS = [
-  { value: "ต่ำกว่า 50,000 บาท",      en: "Under 50,000 THB",          lo: 0,      hi: 50000 },
-  { value: "50,000 - 100,000 บาท",    en: "50,000 - 100,000 THB",      lo: 50000,  hi: 100000 },
-  { value: "100,000 - 200,000 บาท",   en: "100,000 - 200,000 THB",     lo: 100000, hi: 200000 },
-  { value: "200,000 - 300,000 บาท",   en: "200,000 - 300,000 THB",     lo: 200000, hi: 300000 },
-  { value: "300,000 - 400,000 บาท",   en: "300,000 - 400,000 THB",     lo: 300000, hi: 400000 },
-  { value: "400,000 - 500,000 บาท",   en: "400,000 - 500,000 THB",     lo: 400000, hi: 500000 },
+  { value: "50,000 บาท",            en: "50,000 THB",             amount: 50000 },
+  { value: "100,000 บาท",           en: "100,000 THB",            amount: 100000 },
+  { value: "200,000 บาท",           en: "200,000 THB",            amount: 200000 },
+  { value: "300,000 บาท",           en: "300,000 THB",            amount: 300000 },
+  { value: "400,000 บาท",           en: "400,000 THB",            amount: 400000 },
+  { value: "500,000 บาท",           en: "500,000 THB",            amount: 500000 },
+  { value: "500,000 บาท ขึ้นไป",    en: "500,000 THB and above",  amount: Infinity },
 ];
 /** Map a pre-filled budget (a KOL package price like "300,000", or an option itself) onto a dropdown option. */
 const toBudgetOption = (raw: string | null | undefined) => {
@@ -29,8 +30,12 @@ const toBudgetOption = (raw: string | null | undefined) => {
   if (BUDGET_OPTIONS.some((o) => o.value === raw)) return raw;
   const n = Number(String(raw).replace(/[^0-9.]/g, ""));
   if (!n) return "";
-  const hit = BUDGET_OPTIONS.find((o) => n >= o.lo && n < o.hi) ?? (n >= 500000 ? BUDGET_OPTIONS[BUDGET_OPTIONS.length - 1] : undefined);
-  return hit?.value ?? "";
+  // exact package price, otherwise the closest listed amount at or below it (above 500,000 → "ขึ้นไป")
+  const exact = BUDGET_OPTIONS.find((o) => o.amount === n);
+  if (exact) return exact.value;
+  if (n > 500000) return BUDGET_OPTIONS[BUDGET_OPTIONS.length - 1].value;
+  const below = [...BUDGET_OPTIONS].reverse().find((o) => o.amount <= n);
+  return (below ?? BUDGET_OPTIONS[0]).value;
 };
 
 const REQUIRED_FIELDS = ["name", "email", "phone", "company", "budget", "brief"] as const;
