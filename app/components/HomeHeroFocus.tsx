@@ -3,6 +3,13 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { AnimatedText } from "@/components/ui/animated-shiny-text";
+import BackgroundShader from "@/components/ui/background-shader";
+
+// mesh-gradient palettes per side, matched to the pastel lilac / blush tones of the panels
+const MESH = {
+  brand: ["#f7f5ff", "#e4dafc", "#f1ecff", "#cdbef9"],
+  influencer: ["#fff4f9", "#f8cbe2", "#ffe3ef", "#f2acd0"],
+};
 import { COPY, BrandMockArt, InfluencerMockArt, ArrowIcon, HEADLINE_SHINE } from "./HomeSplitHero";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -35,18 +42,17 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
       <motion.div key={side} className="hf-panel" onMouseEnter={() => setActive(side)} onMouseLeave={() => setActive(null)}
         animate={{ width: width(side) }} transition={L}
         style={{ position: "relative", minWidth: 0, display: "flex", alignItems: "flex-start" }}>
-        {/* layered background: tinted base + soft colour spots (slowly drifting) + a light bloom,
-            fading to white at the bottom; the focused side's spots glow stronger */}
+        {/* layered background (pastel tones as on the live preview): tinted base + animated mesh gradient
+            + a soft aurora ribbon + light grain + sheen; the focused side's colours glow stronger */}
         <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: 0, overflow: "hidden",
           background: isBrand ? "linear-gradient(170deg, #f5f3ff 0%, #e8e1fd 40%, #dcd2f8 75%, #d6cbf5 100%)" : "linear-gradient(190deg, #fff4f9 0%, #fde3f0 40%, #f8d3e7 75%, #f4cbe1 100%)" }}>
-          <div className={`hf-spots ${isBrand ? "hf-spots-brand" : "hf-spots-inf"}`}
-            style={{ opacity: on ? 1 : off ? 0.45 : 0.8, transition: "opacity .6s ease" }} />
-          {/* soft aurora: one long, very blurred diagonal colour ribbon (a second hue) for gentle depth */}
+          {/* same tilted pattern on both halves, the influencer one mirrored, so the flows meet head-on at the seam */}
+          <div style={{ position: "absolute", inset: 0, opacity: (on ? 1 : off ? 0.5 : 0.8) * (isBrand ? 0.7 : 1), transition: "opacity .6s ease",
+            transform: isBrand ? "none" : "scaleX(-1)" }}>
+            <BackgroundShader colors={isBrand ? MESH.brand : MESH.influencer} distortion={0.8} swirl={0.1} speed={0.5} rotation={35} offsetX={0.22} />
+          </div>
           <div className={`hf-aurora ${isBrand ? "hf-aurora-brand" : "hf-aurora-inf"}`} style={{ opacity: on ? 0.9 : off ? 0.4 : 0.7, transition: "opacity .6s ease" }} />
-          {/* faint dot grid (a nod to the data / dashboard theme), faded out toward the centre and bottom */}
-          <div className={`hf-dots ${isBrand ? "hf-dots-brand" : "hf-dots-inf"}`} />
           <div className="hf-grain" />
-          {/* broad soft sheen across the upper middle + faint depth toward the outer edge */}
           <div style={{ position: "absolute", inset: 0, background: isBrand
             ? "radial-gradient(70% 55% at 60% 35%, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 70%), linear-gradient(90deg, rgba(70,40,170,0.07) 0%, rgba(70,40,170,0) 35%)"
             : "radial-gradient(70% 55% at 40% 35%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%), linear-gradient(270deg, rgba(190,30,120,0.06) 0%, rgba(190,30,120,0) 35%)" }} />
@@ -138,14 +144,6 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
         .hf-tagline > span{ white-space: nowrap; }
         .hf-panel .hf-reveal{ max-width: 380px; }
         @media (max-width: 1180px), (max-height: 820px){ .hf-hero .hf-reveal{ display: none; } }
-        /* two big, heavily blurred light pools per side (no small spots → no blotches) */
-        .hf-spots{ position: absolute; inset: -20%; filter: blur(60px); animation: hf-drift 26s ease-in-out infinite alternate; will-change: transform; }
-        .hf-spots-brand{ background:
-          radial-gradient(55% 45% at 22% 28%, rgba(110,70,235,0.30) 0%, rgba(110,70,235,0) 70%),
-          radial-gradient(60% 50% at 78% 85%, rgba(165,140,250,0.32) 0%, rgba(165,140,250,0) 70%); }
-        .hf-spots-inf{ animation-delay: -12s; background:
-          radial-gradient(55% 45% at 78% 28%, rgba(255,60,160,0.22) 0%, rgba(255,60,160,0) 70%),
-          radial-gradient(60% 50% at 22% 85%, rgba(255,160,210,0.34) 0%, rgba(255,160,210,0) 70%); }
         /* aurora ribbons: wide, low-contrast and heavily blurred so they stay behind the art and copy */
         .hf-aurora{ position: absolute; width: 140%; height: 46%; left: -20%; top: 30%; border-radius: 50%; filter: blur(70px);
           pointer-events: none; animation: hf-sway 30s ease-in-out infinite alternate; }
@@ -154,6 +152,7 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
         .hf-aurora-inf{ transform: rotate(16deg); animation-delay: -15s;
           background: linear-gradient(270deg, rgba(255,140,190,0) 0%, rgba(255,140,190,0.36) 30%, rgba(190,150,255,0.24) 62%, rgba(190,150,255,0) 100%); }
         @keyframes hf-sway{ 0%{ translate: 0 0; } 100%{ translate: 4% -5%; } }
+        @media (prefers-reduced-motion: reduce){ .hf-aurora{ animation: none; } }
         /* CTA: white glass at rest; on hover / press it fills with the side's colour (the old solid pill) */
         .hf-cta{ background: rgba(255,255,255,0.55); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
           border: 1px solid rgba(255,255,255,0.75); box-shadow: 0 8px 24px -10px rgba(60,30,120,0.25), inset 0 1px 0 rgba(255,255,255,0.8);
@@ -167,20 +166,11 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
         .hf-cta-inf:hover, .hf-cta-inf:focus-visible, .hf-cta-inf:active{ background: #ff0089; border-color: #ff0089; box-shadow: 0 10px 24px rgba(255,0,137,0.32); }
         .hf-cta:hover > span, .hf-cta:focus-visible > span{ background: rgba(255,255,255,0.22) !important; }
         .hf-cta:hover svg{ transform: translateX(3px); }
-        .hf-dots{ position: absolute; inset: 0; pointer-events: none; background-size: 22px 22px; }
-        .hf-dots-brand{ background-image: radial-gradient(circle, rgba(95,38,229,0.22) 1.2px, transparent 1.6px);
-          -webkit-mask-image: radial-gradient(90% 95% at 0% 0%, #000 0%, rgba(0,0,0,0.5) 50%, transparent 88%);
-                  mask-image: radial-gradient(90% 95% at 0% 0%, #000 0%, rgba(0,0,0,0.5) 50%, transparent 88%); }
-        .hf-dots-inf{ background-image: radial-gradient(circle, rgba(220,30,130,0.2) 1.2px, transparent 1.6px);
-          -webkit-mask-image: radial-gradient(90% 95% at 100% 0%, #000 0%, rgba(0,0,0,0.5) 50%, transparent 88%);
-                  mask-image: radial-gradient(90% 95% at 100% 0%, #000 0%, rgba(0,0,0,0.5) 50%, transparent 88%); }
         /* film grain (SVG noise), very light, overlay-blended so it adds texture, not dirt */
         .hf-grain{ position: absolute; inset: 0; pointer-events: none; opacity: 0.12; mix-blend-mode: overlay;
           background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
           background-size: 160px 160px; }
-        @keyframes hf-drift{ 0%{ transform: translate(0,0) scale(1); } 100%{ transform: translate(3%,-2%) scale(1.06); } }
-        @media (prefers-reduced-motion: reduce){ .hf-spots, .hf-aurora{ animation: none; } }
-      `}</style>
+              `}</style>
     </section>
   );
 }
