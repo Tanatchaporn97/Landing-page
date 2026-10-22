@@ -11,9 +11,9 @@ type Side = "brand" | "influencer" | null;
 
 // Headline shine: the original navy → purple gradient with a magenta/lavender
 // highlight that sweeps back and forth across the text (AnimatedText).
-const HEADLINE_SHINE = "linear-gradient(90deg, #14226b 0%, #5f26e5 30%, #c04ad8 50%, #5f26e5 70%, #14226b 100%)";
+export const HEADLINE_SHINE = "linear-gradient(90deg, #14226b 0%, #5f26e5 30%, #c04ad8 50%, #5f26e5 70%, #14226b 100%)";
 
-const COPY = {
+export const COPY = {
   th: {
     eyebrow: "Buddy Review",
     headline1: "Data-Powered",
@@ -24,14 +24,14 @@ const COPY = {
     brand: {
       label: "Brand",
       tagline: "เปลี่ยนทุกแคมเปญ|ให้วัดผลได้", // "|" = line break
-      reveal: "วางแผนแคมเปญ เลือกอินฟลูเอนเซอร์ และดูแลทุกขั้นตอนให้ตรงกับเป้าหมายของแบรนด์",
+      reveal: "วางแผนแคมเปญ เลือกอินฟลูเอนเซอร์|และดูแลทุกขั้นตอนให้ตรงกับเป้าหมายของแบรนด์", // "|" = line break
       mobileDesc: "วางแผนแคมเปญและเลือกอินฟลูเอนเซอร์ให้ตรงเป้าหมายแบรนด์",
       cta: "สำหรับแบรนด์",
     },
     influencer: {
       label: "Influencer",
       tagline: "สร้างงานที่ใช่|จากสิ่งที่คุณรัก", // "|" = line break
-      reveal: "ค้นหาโอกาสร่วมงานกับแบรนด์ พร้อมข้อมูลและเครื่องมือที่ช่วยให้เข้าใจและพัฒนาโปรไฟล์ของตัวเอง",
+      reveal: "ค้นหาโอกาสร่วมงานกับแบรนด์ พร้อมข้อมูล|และเครื่องมือที่ช่วยให้เข้าใจและพัฒนาโปรไฟล์ของตัวเอง", // "|" = line break
       mobileDesc: "ค้นหาโอกาสร่วมงานกับแบรนด์ พร้อมเครื่องมือพัฒนาโปรไฟล์",
       cta: "สำหรับอินฟลูเอนเซอร์",
     },
@@ -60,7 +60,7 @@ const COPY = {
   },
 } as const;
 
-function ArrowIcon() {
+export function ArrowIcon() {
   return (
     <span style={{ width: "22px", height: "22px", borderRadius: "50%", background: "rgba(255,255,255,0.3)", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
       <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
@@ -71,7 +71,7 @@ function ArrowIcon() {
 // Side heading — large colored label, so each half reads at a glance as
 // "Brand" vs "Influencer". Plain text (no filled pill) so it isn't mistaken
 // for the CTA button below it.
-function SideLabel({ side, label, href, size = "desktop" }: { side: "brand" | "influencer"; label: string; href: string; size?: "desktop" | "mobile" }) {
+export function SideLabel({ side, label, href, size = "desktop" }: { side: "brand" | "influencer"; label: string; href: string; size?: "desktop" | "mobile" }) {
   return (
     <Link href={href} className="split-label" style={{
       fontFamily: "'Pierson','Noto Sans Thai',sans-serif", textDecoration: "none", display: "inline-block",
@@ -103,7 +103,7 @@ const SCENE: React.CSSProperties = { position: "relative", width: "100%", aspect
 // gender, engagement) and a recommended-creators card with a fit score.
 const AVATARS = ["/trust-influencers/cheese.jpg", "/trust-influencers/ryoko.jpg", "/trust-influencers/puifai.jpg", "/influencers/inf-maihom.jpg", "/influencers/inf-may.jpg"];
 
-function BrandMockArt({ lang }: { lang: "th" | "en" }) {
+export function BrandMockArt({ lang }: { lang: "th" | "en" }) {
   const th = lang === "th";
   return (
     <div style={SCENE}>
@@ -243,18 +243,25 @@ const SOCIAL_BUBBLES = [
 
 // Influencer side — "find jobs that fit you": a phone showing matched brand
 // jobs, a floating creator photo, a new-jobs notification and a like bubble.
-function InfluencerMockArt({ lang }: { lang: "th" | "en" }) {
+// glass: frosted glassmorphism phone (no dark bezel) — used by the homepage preview hero
+export function InfluencerMockArt({ lang, glass = false }: { lang: "th" | "en"; glass?: boolean }) {
   return (
     <div style={SCENE}>
       {/* phone */}
       <div className="hsh-float" style={{
         position: "absolute", right: "4%", top: "0", width: "48%", height: "100%",
-        borderRadius: "7cqw", background: "#1f1447", padding: "1.6cqw",
-        boxShadow: "0 30px 60px -16px rgba(120,20,90,0.45)", "--rot": "0deg",
-      } as React.CSSProperties}>
+        borderRadius: "7cqw", padding: glass ? "0.9cqw" : "1.6cqw", "--rot": "0deg",
+        ...(glass ? {
+          background: "linear-gradient(160deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.35) 100%)",
+          backdropFilter: "blur(18px)", WebkitBackdropFilter: "blur(18px)",
+          border: "0.35cqw solid rgba(255,255,255,0.9)",
+          boxShadow: "0 30px 60px -18px rgba(180,60,130,0.35), inset 0 0.4cqw 1cqw rgba(255,255,255,0.7)",
+        } : { background: "#1f1447", boxShadow: "0 30px 60px -16px rgba(120,20,90,0.45)" }),
+      } as unknown as React.CSSProperties}>
         <div style={{
           position: "relative", width: "100%", height: "100%", borderRadius: "5.6cqw", overflow: "hidden",
-          background: "linear-gradient(180deg, #fff5fa 0%, #fde7f3 100%)", padding: "4cqw 3.2cqw", boxSizing: "border-box",
+          background: glass ? "linear-gradient(180deg, rgba(255,245,250,0.55) 0%, rgba(253,231,243,0.4) 100%)" : "linear-gradient(180deg, #fff5fa 0%, #fde7f3 100%)",
+          padding: "4cqw 3.2cqw", boxSizing: "border-box",
         }}>
           <div style={{ display: "flex", alignItems: "center", gap: "1.8cqw", marginBottom: "2.6cqw" }}>
             <div style={{ position: "relative", width: "6.4cqw", height: "6.4cqw", borderRadius: "50%", overflow: "hidden", flexShrink: 0, border: "0.4cqw solid #ffffff" }}>
@@ -270,7 +277,8 @@ function InfluencerMockArt({ lang }: { lang: "th" | "en" }) {
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: "1.8cqw" }}>
             {JOBS.map((j) => (
-              <div key={j.brand} style={{ background: "#ffffff", borderRadius: "2.8cqw", padding: "2.2cqw 2.4cqw", boxShadow: "0 4px 12px rgba(255,0,137,0.08)" }}>
+              <div key={j.brand} style={{ background: glass ? "rgba(255,255,255,0.72)" : "#ffffff", borderRadius: "2.8cqw", padding: "2.2cqw 2.4cqw",
+                boxShadow: "0 4px 12px rgba(255,0,137,0.08)", ...(glass ? { border: "0.25cqw solid rgba(255,255,255,0.95)" } : {}) }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1cqw" }}>
                   <p style={{ ...KT, margin: 0, fontSize: "2.2cqw", fontWeight: 800, color: "#111827", whiteSpace: "nowrap" }}>
                     [{lang === "th" ? "แบรนด์" : "Brand"} {j.brand}] · {lang === "th" ? j.catTh : j.catEn}
@@ -302,11 +310,20 @@ function InfluencerMockArt({ lang }: { lang: "th" | "en" }) {
 
       {/* floating creator photo, overlapping the phone's left edge */}
       <div className="hsh-wiggle" style={{
-        position: "absolute", left: "22%", top: "12%", width: "25%", aspectRatio: "3 / 4",
-        borderRadius: "4cqw", overflow: "hidden", border: "1cqw solid rgba(255,255,255,0.9)",
-        boxShadow: "0 20px 40px -12px rgba(120,20,90,0.4)", "--rot": "-6deg", zIndex: 2,
-      } as React.CSSProperties}>
-        <Image src="/trust-influencers/ryoko.jpg" alt={lang === "th" ? "ครีเอเตอร์" : "Creator"} fill sizes="(max-width: 899px) 20vw, 130px" style={{ objectFit: "cover" }} />
+        position: "absolute", left: "22%", top: "12%", width: "25%", aspectRatio: "3 / 4", "--rot": "-6deg", zIndex: 2,
+        borderRadius: "4cqw", overflow: "hidden",
+        ...(glass ? {
+          // thin frosted rim, same thickness as the glass phone — photo fills right up to it
+          padding: "1.4cqw", boxSizing: "border-box",
+          background: "linear-gradient(160deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.3) 100%)",
+          backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)",
+          border: "0.3cqw solid rgba(255,255,255,0.9)",
+          boxShadow: "0 20px 40px -14px rgba(180,60,130,0.35), inset 0 0.4cqw 1cqw rgba(255,255,255,0.7)",
+        } : { border: "1cqw solid rgba(255,255,255,0.9)", boxShadow: "0 20px 40px -12px rgba(120,20,90,0.4)" }),
+      } as unknown as React.CSSProperties}>
+        <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: glass ? "3.3cqw" : 0, overflow: "hidden" }}>
+          <Image src="/trust-influencers/ryoko.jpg" alt={lang === "th" ? "ครีเอเตอร์" : "Creator"} fill sizes="(max-width: 899px) 20vw, 130px" style={{ objectFit: "cover" }} />
+        </div>
       </div>
 
       {/* new jobs notification */}
@@ -350,9 +367,27 @@ function InfluencerMockArt({ lang }: { lang: "th" | "en" }) {
   );
 }
 
-export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
+// centerMiddle: the centre message sits at the vertical middle of the hero instead of near the top
+export default function HomeSplitHero({ lang, centerMiddle = false }: { lang: "th" | "en"; centerMiddle?: boolean }) {
   const t = COPY[lang];
   const [active, setActive] = useState<Side>(null);
+  // centerMiddle ("focus" layout): the hovered side's art + copy slide in toward the centre and grow a
+  // little, the other side shrinks back, and the centre message tucks toward the quieter side, so the
+  // middle never opens up into a big empty band.
+  const focus = centerMiddle;
+  const EASE_T = "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease";
+  const artFx = (side: "brand" | "influencer"): React.CSSProperties => {
+    if (!focus || !active) return { transition: EASE_T };
+    const inward = side === "brand" ? 1 : -1;
+    return active === side
+      ? { transform: `translateX(${inward * 4}vw) scale(1.08)`, transition: EASE_T }
+      : { transform: "scale(0.85)", opacity: 0.6, transition: EASE_T };
+  };
+  const textFx = (side: "brand" | "influencer"): React.CSSProperties => {
+    if (!focus || !active) return { transition: EASE_T };
+    const inward = side === "brand" ? 1 : -1;
+    return active === side ? { transform: `translateX(${inward * 3}vw)`, transition: EASE_T } : { opacity: 0.6, transition: EASE_T };
+  };
   const [canHover, setCanHover] = useState(false);
 
   useEffect(() => {
@@ -408,13 +443,13 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
 
           {/* mock art — above background, never clipped */}
           <div className="split-art" style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-start", padding: "var(--hsh-top) 6% 0" }}>
-            <div className="split-art-inner" style={{ position: "relative", width: "72%", maxWidth: "500px" }}>
+            <div className="split-art-inner" style={{ position: "relative", width: "72%", maxWidth: "500px", transformOrigin: "left center", ...artFx("brand") }}>
               <BrandMockArt lang={lang} />
             </div>
           </div>
 
           {/* typography — above art */}
-          <div style={{ position: "relative", zIndex: 2, textAlign: "left", padding: "0 6% var(--hsh-bottom)", marginTop: "16px" }}>
+          <div style={{ position: "relative", zIndex: 2, textAlign: "left", padding: "0 6% var(--hsh-bottom)", marginTop: "16px", ...textFx("brand") }}>
             <div><SideLabel side="brand" label={t.brand.label} href={`/${lang}/brand`} /></div>
             <p className="split-tagline" style={{ ...KT, fontSize: "clamp(28px, min(3.6vw, 5.4svh), 46px)", fontWeight: 600, letterSpacing: "0.02em", color: "#111827", lineHeight: 1.2, margin: "0 0 14px", maxWidth: "420px" }}>
               {t.brand.tagline.split("|").map((line, i) => <span key={i} style={{ display: "block" }}>{line}</span>)}
@@ -423,7 +458,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
               maxWidth: "420px", margin: "0",
             }}>
               <p style={{ ...KT, fontSize: "15px", lineHeight: 1.65, color: "#111827", margin: "0 0 18px" }}>
-                {t.brand.reveal}
+                {t.brand.reveal.split("|").map((line, i) => <span key={i} style={{ display: "block" }}>{line}</span>)}
               </p>
               <Link href={`/${lang}/brand`} className="split-cta hsh-cta hsh-cta-brand" style={{
                 ...KT, position: "relative", zIndex: 3, display: "inline-flex", alignItems: "center", gap: "10px",
@@ -457,12 +492,12 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
           </div>
 
           <div className="split-art" style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", padding: "var(--hsh-top) 6% 0" }}>
-            <div className="split-art-inner" style={{ position: "relative", width: "72%", maxWidth: "480px" }}>
+            <div className="split-art-inner" style={{ position: "relative", width: "72%", maxWidth: "480px", transformOrigin: "right center", ...artFx("influencer") }}>
               <InfluencerMockArt lang={lang} />
             </div>
           </div>
 
-          <div style={{ position: "relative", zIndex: 2, textAlign: "right", padding: "0 6% var(--hsh-bottom)", marginTop: "16px" }}>
+          <div style={{ position: "relative", zIndex: 2, textAlign: "right", padding: "0 6% var(--hsh-bottom)", marginTop: "16px", ...textFx("influencer") }}>
             <div><SideLabel side="influencer" label={t.influencer.label} href={`/${lang}/influencer`} /></div>
             <p className="split-tagline" style={{ ...KT, fontSize: "clamp(28px, min(3.6vw, 5.4svh), 46px)", fontWeight: 600, letterSpacing: "0.02em", color: "#111827", lineHeight: 1.2, margin: "0 0 14px", maxWidth: "420px", marginLeft: "auto" }}>
               {t.influencer.tagline.split("|").map((line, i) => <span key={i} style={{ display: "block" }}>{line}</span>)}
@@ -471,7 +506,7 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
               maxWidth: "420px", margin: "0 0 0 auto",
             }}>
               <p style={{ ...KT, fontSize: "15px", lineHeight: 1.65, color: "#111827", margin: "0 0 18px" }}>
-                {t.influencer.reveal}
+                {t.influencer.reveal.split("|").map((line, i) => <span key={i} style={{ display: "block" }}>{line}</span>)}
               </p>
               <Link href={`/${lang}/influencer`} className="split-cta hsh-cta hsh-cta-inf" style={{
                 ...KT, position: "relative", zIndex: 3, display: "inline-flex", alignItems: "center", gap: "10px",
@@ -489,11 +524,11 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
         {/* Center main message — stays visible while a side is hovered, and
             slides a little toward the narrowed side so the widened side's art
             never runs into it */}
-        <div className="split-hero-center" style={{
-          position: "absolute", top: 0, left: "50%", zIndex: 5,
-          transform: `translateX(calc(-50% + ${active === "brand" ? "5vw" : active === "influencer" ? "-5vw" : "0px"}))`,
+        <div className="split-hero-center" data-middle={centerMiddle || undefined} style={{
+          position: "absolute", top: centerMiddle ? "50%" : 0, left: "50%", zIndex: 5,
+          transform: `translate(calc(-50% + ${active === "brand" ? (focus ? "8vw" : "5vw") : active === "influencer" ? (focus ? "-8vw" : "-5vw") : "0px"}), ${centerMiddle ? "-50%" : "0px"}) scale(${focus && active ? 0.9 : 1})`,
           transition: "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)",
-          width: "min(760px, 44vw)", textAlign: "center", paddingTop: "var(--hsh-center-top)",
+          width: "min(760px, 44vw)", textAlign: "center", paddingTop: centerMiddle ? 0 : "var(--hsh-center-top)",
           pointerEvents: "none",
         }}>
           {/* kept deliberately quieter than the Brand / Influencer sides so those read first */}
@@ -650,7 +685,8 @@ export default function HomeSplitHero({ lang }: { lang: "th" | "en" }) {
            toward its own outer edge so there's always a clear gap between
            them at these widths. */
         @media (min-width: 900px) and (max-width: 1280px) {
-          .split-hero-center { width: min(460px, 34vw) !important; padding-top: 180px !important; }
+          .split-hero-center { width: min(460px, 34vw) !important; }
+          .split-hero-center:not([data-middle]) { padding-top: 180px !important; }
           .split-hero-center h1 { font-size: clamp(18px, 2.1vw, 28px) !important; }
           .split-art, .split-panel > div:last-child { padding-left: 8% !important; padding-right: 8% !important; }
           /* The art illustration (and the small badge icons floating on it)
