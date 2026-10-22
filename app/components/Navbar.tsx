@@ -75,7 +75,7 @@ export default function Navbar({
 
 
   const th = { contactUs: "ติดต่อเรา", imInfluencer: "สำหรับอินฟลูเอนเซอร์", imBrand: "บริการของเรา", forBrand: "สำหรับแบรนด์", applyNow: "สมัครเลย", applyLine: "สมัครผ่านไลน์", applyInf: "สมัครเป็นอินฟลูฯ", successStories: "เรื่องราวความสำเร็จ", ourWork: "ผลงานของเรา", blog: "บทความ", aboutUs: "เกี่ยวกับเรา", applyAsInfluencer: "สมัครเป็นอินฟลูเอนเซอร์", applyViaWebsite: "สมัครผ่านเว็บไซต์" };
-  const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", imBrand: "I'm a Brand", forBrand: "For Brands", applyNow: "Apply Now", applyLine: "Apply via LINE", applyInf: "Register as Influencer", successStories: "Success Stories", ourWork: "Our Work", blog: "Blog", aboutUs: "About Us", applyAsInfluencer: "Apply as an Influencer", applyViaWebsite: "Apply via Website" };
+  const en = { contactUs: "Contact Us", imInfluencer: "I'm an Influencer", imBrand: "Our Service", forBrand: "For Brands", applyNow: "Apply Now", applyLine: "Apply via LINE", applyInf: "Register as Influencer", successStories: "Success Stories", ourWork: "Our Work", blog: "Blog", aboutUs: "About Us", applyAsInfluencer: "Apply as an Influencer", applyViaWebsite: "Apply via Website" };
   const t = lang === "th" ? th : en;
   const isFaqPage = pathname?.includes("/faq");
   const forceDarkText = scrolled || (!onDark && variant === "home") || variant === "influencer" || variant === "brand" || isFaqPage;
