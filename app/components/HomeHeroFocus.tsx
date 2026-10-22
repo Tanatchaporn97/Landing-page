@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { AnimatedText } from "@/components/ui/animated-shiny-text";
@@ -23,6 +23,33 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
   const t = COPY[lang];
   const [active, setActive] = useState<Side>(null);
+  // focused: the hero shrinks to the row's height so the stats move up under it
+  const rowRef = useRef<HTMLDivElement>(null);
+  const contentRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const restH = useRef(0);
+  const [focusH, setFocusH] = useState(0);
+  const enter = (side: "brand" | "influencer") => {
+    if (active === null && rowRef.current) restH.current = rowRef.current.offsetHeight;
+    setActive(side);
+  };
+  useEffect(() => {
+    if (!active) { setFocusH(0); return; }
+    const el = contentRefs.current[active];
+    if (!el) return;
+    const ro = new ResizeObserver(() => setFocusH(el.offsetHeight + 24));
+    ro.observe(el);
+    // the hover stays on while the pointer is anywhere in the full (rest-height) hero area, so the
+    // shrinking hero doesn't slip out from under the cursor and flicker back and forth
+    const check = (e: PointerEvent) => {
+      const r = rowRef.current?.getBoundingClientRect();
+      if (!r) return;
+      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.top + Math.max(restH.current, r.height)) setActive(null);
+    };
+    const leave = () => setActive(null);
+    window.addEventListener("pointermove", check);
+    document.documentElement.addEventListener("mouseleave", leave);
+    return () => { ro.disconnect(); window.removeEventListener("pointermove", check); document.documentElement.removeEventListener("mouseleave", leave); };
+  }, [active]);
   const width = (side: "brand" | "influencer") => (active === null ? "50%" : active === side ? "64%" : "36%");
 
   // a render helper (not a nested component) so hovering never remounts the panels
@@ -39,7 +66,7 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
     // rides the seam between the two halves.
 
     return (
-      <motion.div key={side} className="hf-panel" onMouseEnter={() => setActive(side)} onMouseLeave={() => setActive(null)}
+      <motion.div key={side} className="hf-panel" onMouseEnter={() => enter(side)}
         animate={{ width: width(side) }} transition={L}
         style={{ position: "relative", minWidth: 0, display: "flex", alignItems: "flex-start" }}>
         {/* layered background (pastel tones as on the live preview): tinted base + animated mesh gradient
@@ -60,13 +87,14 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
 
         {/* rest: copy above, art below. focused: copy and art side by side on one row (the centre
             message hides, so the inner gutter can close up and nothing waits empty at the top) */}
-        <div className="hf-content" style={{ position: "relative", zIndex: 1, width: "100%", height: "100%", display: "flex",
+        <div className="hf-content" ref={(el) => { contentRefs.current[side] = el; }} style={{ position: "relative", zIndex: 1, width: "100%", height: on ? "auto" : "100%", display: "flex",
           flexDirection: on ? (isBrand ? "row" : "row-reverse") : "column",
-          alignItems: on ? "center" : "stretch", justifyContent: "center", gap: on ? "3vw" : "clamp(10px, 2svh, 22px)", boxSizing: "border-box",
-          padding: on ? "var(--hf-top) var(--hf-outer) var(--hf-bottom)"
+          alignItems: on ? "center" : "stretch", justifyContent: "center", gap: on ? "clamp(40px, calc(2.2vw + 20px), 56px)" : "clamp(10px, 2svh, 22px)", boxSizing: "border-box",
+          // focused: the row hugs its content and sits right under the navbar instead of floating mid-height
+          padding: on ? "var(--hf-focus-top) var(--hf-outer) var(--hf-bottom)"
             : isBrand ? "var(--hf-top) var(--hf-inner) var(--hf-bottom) var(--hf-outer)" : "var(--hf-top) var(--hf-outer) var(--hf-bottom) var(--hf-inner)" }}>
 
-          <motion.div layout transition={L} className="hf-text" style={{ minWidth: 0, flex: on ? "0 1 40%" : undefined, display: "flex", flexDirection: "column", alignItems: isBrand ? "flex-start" : "flex-end",
+          <motion.div layout transition={L} className="hf-text" style={{ minWidth: 0, flex: on ? "0 0 auto" : undefined, display: "flex", flexDirection: "column", alignItems: isBrand ? "flex-start" : "flex-end",
             textAlign: isBrand ? "left" : "right", opacity: off ? 0.55 : 1, transition: "opacity .45s ease" }}>
             <motion.div layout="position" transition={L}>
               <Link href={`/${lang}/${side}`} className="split-label" style={{ fontFamily: "'Pierson','Noto Sans Thai',sans-serif", textDecoration: "none",
@@ -96,7 +124,7 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
               </Link>
             </motion.div>
           </motion.div>
-          <motion.div layout transition={L} className="hf-art" style={{ minWidth: 0, flex: on ? "1 1 0" : undefined, display: "flex", justifyContent: isBrand ? "flex-end" : "flex-start", opacity: off ? 0.55 : 1, transition: "opacity .45s ease" }}>
+          <motion.div layout transition={L} className="hf-art" style={{ minWidth: 0, flex: on ? "0 0 auto" : undefined, display: "flex", justifyContent: isBrand ? "flex-end" : "flex-start", opacity: off ? 0.55 : 1, transition: "opacity .45s ease" }}>
             <motion.div layout transition={L} style={{ width: on ? "var(--hf-art-on)" : off ? "var(--hf-art-off)" : "var(--hf-art-rest)" }}>
               {isBrand ? <BrandMockArt lang={lang} /> : <InfluencerMockArt lang={lang} glass />}
             </motion.div>
@@ -109,7 +137,7 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
 
   return (
     <section className="hf-hero" style={{ position: "relative" }}>
-      <div className="hf-row" style={{ display: "flex", alignItems: "stretch" }}>
+      <div className="hf-row" ref={rowRef} style={{ display: "flex", alignItems: "stretch", height: active && focusH ? `min(${focusH}px, clamp(640px, 100svh, 1000px))` : undefined }}>
         {renderPanel("brand")}
         {renderPanel("influencer")}
       </div>
@@ -137,6 +165,7 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
         :root{ --hf-blend: linear-gradient(90deg, #ddd4f8 0%, #e7dbf6 45%, #f3d6ea 60%, #f6d0e5 100%); }
         .hf-hero{
           --hf-top: clamp(108px, 13.5svh, 140px); --hf-bottom: clamp(28px, 5svh, 64px);
+          --hf-focus-top: clamp(150px, calc(17svh + 20px), 196px);
           --hf-mid-w: clamp(250px, 22vw, 360px); --hf-inner: calc(var(--hf-mid-w) / 2 + 2vw); --hf-outer: 3vw;
           --hf-avail-h: calc(100svh - var(--hf-top) - var(--hf-bottom));
           /* mock-up widths per state, bounded by the half's free width and by the height left for the copy */
@@ -145,7 +174,7 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
           --hf-art-on: min(600px, calc((64vw - 2 * var(--hf-outer) - 3vw) * 0.6), calc((var(--hf-avail-h) - 20px) * 1.32));
           --hf-art-off: min(calc(var(--hf-art-rest) * 0.7), calc(36vw - var(--hf-inner) - var(--hf-outer)));
           --hf-word-rest: clamp(48px, min(5.2vw, 8svh), 86px); --hf-word-on: clamp(36px, min(3.6vw, 6svh), 58px); --hf-word-off: clamp(32px, min(3.4vw, 5.5svh), 54px); }
-        .hf-row{ height: clamp(640px, 100svh, 1000px); }
+        .hf-row{ height: clamp(640px, 100svh, 1000px); transition: height .55s cubic-bezier(.22,1,.36,1); }
         .hf-tagline{ font-size: clamp(26px, min(2.6vw, 4.6svh), 40px); }
         .hf-tagline > span{ white-space: nowrap; }
         .hf-panel .hf-reveal{ max-width: 380px; }
