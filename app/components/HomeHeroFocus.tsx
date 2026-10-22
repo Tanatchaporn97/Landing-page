@@ -40,7 +40,7 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
 
     return (
       <motion.div key={side} className="hf-panel" onMouseEnter={() => setActive(side)} onMouseLeave={() => setActive(null)}
-        animate={{ width: width(side) }} transition={L}
+        initial={false} animate={{ width: width(side) }} transition={L}
         style={{ position: "relative", minWidth: 0, display: "flex", alignItems: "flex-start" }}>
         {/* layered background (pastel tones as on the live preview): tinted base + animated mesh gradient
             + a soft aurora ribbon + light grain + sheen; the focused side's colours glow stronger */}
