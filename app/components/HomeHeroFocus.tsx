@@ -58,11 +58,15 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
             : "radial-gradient(70% 55% at 40% 35%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%), linear-gradient(270deg, rgba(190,30,120,0.06) 0%, rgba(190,30,120,0) 35%)" }} />
         </div>
 
-        <div className="hf-content" style={{ position: "relative", zIndex: 1, width: "100%", height: "100%", display: "flex", flexDirection: "column",
-          alignItems: "stretch", justifyContent: "center", gap: "clamp(10px, 2svh, 22px)", boxSizing: "border-box",
-          padding: isBrand ? "var(--hf-top) var(--hf-inner) var(--hf-bottom) var(--hf-outer)" : "var(--hf-top) var(--hf-outer) var(--hf-bottom) var(--hf-inner)" }}>
+        {/* rest: copy above, art below. focused: copy and art side by side on one row (the centre
+            message hides, so the inner gutter can close up and nothing waits empty at the top) */}
+        <div className="hf-content" style={{ position: "relative", zIndex: 1, width: "100%", height: "100%", display: "flex",
+          flexDirection: on ? (isBrand ? "row" : "row-reverse") : "column",
+          alignItems: on ? "center" : "stretch", justifyContent: "center", gap: on ? "3vw" : "clamp(10px, 2svh, 22px)", boxSizing: "border-box",
+          padding: on ? "var(--hf-top) var(--hf-outer) var(--hf-bottom)"
+            : isBrand ? "var(--hf-top) var(--hf-inner) var(--hf-bottom) var(--hf-outer)" : "var(--hf-top) var(--hf-outer) var(--hf-bottom) var(--hf-inner)" }}>
 
-          <motion.div layout transition={L} className="hf-text" style={{ minWidth: 0, display: "flex", flexDirection: "column", alignItems: isBrand ? "flex-start" : "flex-end",
+          <motion.div layout transition={L} className="hf-text" style={{ minWidth: 0, flex: on ? "0 1 40%" : undefined, display: "flex", flexDirection: "column", alignItems: isBrand ? "flex-start" : "flex-end",
             textAlign: isBrand ? "left" : "right", opacity: off ? 0.55 : 1, transition: "opacity .45s ease" }}>
             <motion.div layout="position" transition={L}>
               <Link href={`/${lang}/${side}`} className="split-label" style={{ fontFamily: "'Pierson','Noto Sans Thai',sans-serif", textDecoration: "none",
@@ -92,7 +96,7 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
               </Link>
             </motion.div>
           </motion.div>
-          <motion.div layout transition={L} className="hf-art" style={{ minWidth: 0, display: "flex", justifyContent: isBrand ? "flex-end" : "flex-start", opacity: off ? 0.55 : 1, transition: "opacity .45s ease" }}>
+          <motion.div layout transition={L} className="hf-art" style={{ minWidth: 0, flex: on ? "1 1 0" : undefined, display: "flex", justifyContent: isBrand ? "flex-end" : "flex-start", opacity: off ? 0.55 : 1, transition: "opacity .45s ease" }}>
             <motion.div layout transition={L} style={{ width: on ? "var(--hf-art-on)" : off ? "var(--hf-art-off)" : "var(--hf-art-rest)" }}>
               {isBrand ? <BrandMockArt lang={lang} /> : <InfluencerMockArt lang={lang} glass />}
             </motion.div>
@@ -115,7 +119,8 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
         background: "var(--hf-blend)", WebkitMaskImage: "linear-gradient(180deg, transparent 0%, #000 100%)", maskImage: "linear-gradient(180deg, transparent 0%, #000 100%)" }} />
 
       {/* Data-Powered message — vertically centred, riding the seam between the two halves */}
-      <motion.div className="hf-band" initial={false} animate={{ left: width("brand") }} transition={{ duration: 0.55, ease: EASE }}
+      <motion.div className="hf-band" initial={false} animate={{ left: width("brand"), opacity: active ? 0 : 1, scale: active ? 0.94 : 1 }}
+        transition={{ duration: 0.55, ease: EASE, opacity: { duration: active ? 0.25 : 0.45, delay: active ? 0 : 0.15 } }}
         style={{ position: "absolute", top: "calc(50% + var(--hf-top) / 2 - var(--hf-bottom) / 2)", x: "-50%", y: "-50%", zIndex: 5,
           width: "var(--hf-mid-w)", textAlign: "center", pointerEvents: "none" }}>
         <span style={{ ...KT, fontSize: "13px", fontWeight: 700, letterSpacing: "0.04em", color: "#4b4560" }}>{t.eyebrow}</span>
@@ -136,7 +141,8 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
           --hf-avail-h: calc(100svh - var(--hf-top) - var(--hf-bottom));
           /* mock-up widths per state, bounded by the half's free width and by the height left for the copy */
           --hf-art-rest: min(520px, calc(50vw - var(--hf-inner) - var(--hf-outer)), calc((var(--hf-avail-h) - 190px) * 1.32));
-          --hf-art-on: min(580px, calc(64vw - var(--hf-inner) - var(--hf-outer)), calc((var(--hf-avail-h) - 330px) * 1.32));
+          /* focused: art shares the row with the copy, so it is bounded by ~60% of the row and by the full height */
+          --hf-art-on: min(600px, calc((64vw - 2 * var(--hf-outer) - 3vw) * 0.6), calc((var(--hf-avail-h) - 20px) * 1.32));
           --hf-art-off: min(calc(var(--hf-art-rest) * 0.7), calc(36vw - var(--hf-inner) - var(--hf-outer)));
           --hf-word-rest: clamp(48px, min(5.2vw, 8svh), 86px); --hf-word-on: clamp(36px, min(3.6vw, 6svh), 58px); --hf-word-off: clamp(32px, min(3.4vw, 5.5svh), 54px); }
         .hf-row{ height: clamp(640px, 100svh, 1000px); }
