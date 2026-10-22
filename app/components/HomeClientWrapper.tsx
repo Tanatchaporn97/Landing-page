@@ -69,14 +69,17 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       <style>{`.hp-mobile .split-hero-desktop{ display: none !important; }
         @media (min-width: 900px){ .hp-mobile{ display: none; } } @media (max-width: 899px){ .hp-desktop{ display: none; } }`}</style>
 
-      {/* ── Impact Stats — continue the hero's bottom tone, then ease out to the white LogoMarquee ── */}
+      {/* ── Impact Stats + Brand Logos Marquee — one shared background: it continues the hero's bottom
+          tone and eases out to white slowly behind both sections, so there is no seam between them ── */}
       <div style={{ position: "relative", background: "var(--hf-blend)" }}>
-        <div aria-hidden style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 55%, #ffffff 100%)", pointerEvents: "none" }} />
+        <div aria-hidden className="home-stats-fade" style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
+        <style>{`.home-stats-fade{ background: linear-gradient(180deg, rgba(255,255,255,0) 0px, rgba(255,255,255,0.12) 140px, rgba(255,255,255,0.55) 340px, rgba(255,255,255,0.88) 520px, #ffffff max(680px, 100%)); }
+          /* phones: the hero above is white, so the tint also fades in from white at the top */
+          @media (max-width: 899px){ .home-stats-fade{ background: linear-gradient(180deg, #ffffff 0px, rgba(255,255,255,0) 120px, rgba(255,255,255,0) 40%, rgba(255,255,255,0.7) 78%, #ffffff 100%); } }`}</style>
         <ImpactStats lang={lang as "th" | "en"} background="transparent" style={{ position: "relative", marginTop: 0 }} />
-      </div>
 
-      {/* ── Brand Logos Marquee — transparent bg, shares the same wrapper gradient ── */}
-      <LogoMarquee background="linear-gradient(180deg, rgba(255,255,255,0) 0px, #ffffff 90px)" headingStyle={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />
+        <LogoMarquee background="transparent" headingStyle={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />
+      </div>
 
       {/* ── Your Trusted Partner → FAQ/Contact — fresh gradient wrapper that
           starts exactly where LogoMarquee's own fade left off (#f5eefc),
