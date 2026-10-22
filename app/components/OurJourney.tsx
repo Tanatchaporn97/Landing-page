@@ -140,7 +140,7 @@ export default function OurJourney({ lang }: { lang: Locale }) {
                   {lang === "th" ? s.desc : s.descEn}
                 </p>
                 {!s.wide && (
-                  <div style={{
+                  <div className="journey-img" style={{
                     position: "relative", width: s.imgWidth ?? "100%", aspectRatio: s.ratio, marginTop: "24px",
                     marginLeft: onRight ? "auto" : 0, marginRight: onRight ? 0 : "auto",
                   }}>
@@ -174,6 +174,9 @@ export default function OurJourney({ lang }: { lang: Locale }) {
           /* phones: even out the photos — 2022's file is mostly transparent margin (photo ≈ 56% of its
              width), so crop to the photo and let it fill the column; the 2024 badge fills its whole file,
              so cap it to sit at a similar visual size */
+          /* every year's picture sits centred in the column (text stays left-aligned) */
+          .journey-img, .journey-wide-img{ margin-left: auto !important; margin-right: auto !important; }
+          .journey-img img, .journey-wide-img img{ object-position: center !important; }
           .journey-wide-img[data-year="2022"]{ aspect-ratio: 1841 / 1088 !important; max-width: 100% !important; }
           .journey-wide-img[data-year="2022"] img{ object-fit: cover !important; object-position: center !important; }
           .journey-wide-img[data-year="2024"]{ max-width: 78% !important; }
