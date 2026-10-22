@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import ImpactStats from "./ImpactStats";
 import TrustedPartnerShowcase from "./TrustedPartnerShowcase";
 import HomeSplitHero from "./HomeSplitHero";
+import HomeHeroFocus from "./HomeHeroFocus";
 
 // Lazy load below-the-fold components
 const LogoMarquee = dynamic(() => import("./LogoMarquee"));
@@ -61,17 +62,21 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       {/* ── Navbar ── */}
       <Navbar variant="home" lang={lang} />
 
-      {/* ── New Split Hero — Brand ↔ Influencer — its own panels carry an
-          opaque background (with a white fade built into their own bottom
-          edge), so no wrapper gradient is needed here. ── */}
-      <HomeSplitHero lang={lang as "th" | "en"} />
+      {/* ── Hero — desktop: focus layout (hover a half to expand it); phones / tablets keep the
+          split hero's own mobile layout ── */}
+      <div className="hp-desktop"><HomeHeroFocus lang={lang as "th" | "en"} /></div>
+      <div className="hp-mobile"><HomeSplitHero lang={lang as "th" | "en"} /></div>
+      <style>{`.hp-mobile .split-hero-desktop{ display: none !important; }
+        @media (min-width: 900px){ .hp-mobile{ display: none; } } @media (max-width: 899px){ .hp-desktop{ display: none; } }`}</style>
 
-      {/* ── Impact Stats — solid white, flows straight into the equally-white
-          LogoMarquee below with no seam. ── */}
-      <ImpactStats lang={lang as "th" | "en"} />
+      {/* ── Impact Stats — continue the hero's bottom tone, then ease out to the white LogoMarquee ── */}
+      <div style={{ position: "relative", background: "var(--hf-blend)" }}>
+        <div aria-hidden style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 55%, #ffffff 100%)", pointerEvents: "none" }} />
+        <ImpactStats lang={lang as "th" | "en"} background="transparent" style={{ position: "relative", marginTop: 0 }} />
+      </div>
 
       {/* ── Brand Logos Marquee — transparent bg, shares the same wrapper gradient ── */}
-      <LogoMarquee background="#ffffff" headingStyle={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />
+      <LogoMarquee background="linear-gradient(180deg, rgba(255,255,255,0) 0px, #ffffff 90px)" headingStyle={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />
 
       {/* ── Your Trusted Partner → FAQ/Contact — fresh gradient wrapper that
           starts exactly where LogoMarquee's own fade left off (#f5eefc),
