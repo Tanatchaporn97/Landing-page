@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { AnimatedText } from "@/components/ui/animated-shiny-text";
@@ -23,6 +23,16 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
   const t = COPY[lang];
   const [active, setActive] = useState<Side>(null);
+  // the mesh gradients only animate while the hero is on screen
+  const heroRef = useRef<HTMLElement>(null);
+  const [inView, setInView] = useState(true);
+  useEffect(() => {
+    const el = heroRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { rootMargin: "100px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
   const width = (side: "brand" | "influencer") => (active === null ? "50%" : active === side ? "64%" : "36%");
 
   // a render helper (not a nested component) so hovering never remounts the panels
@@ -47,9 +57,9 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
         <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: 0, overflow: "hidden",
           background: isBrand ? "linear-gradient(170deg, #f5f3ff 0%, #e8e1fd 40%, #dcd2f8 75%, #d6cbf5 100%)" : "linear-gradient(190deg, #fff4f9 0%, #fde3f0 40%, #f8d3e7 75%, #f4cbe1 100%)" }}>
           {/* same tilted pattern on both halves, the influencer one mirrored, so the flows meet head-on at the seam */}
-          <div style={{ position: "absolute", inset: 0, opacity: (on ? 1 : off ? 0.5 : 0.8) * (isBrand ? 0.7 : 1), transition: "opacity .6s ease",
+          <div style={{ position: "absolute", top: 0, bottom: 0, width: "64vw", [isBrand ? "left" : "right"]: 0, opacity: (on ? 1 : off ? 0.5 : 0.8) * (isBrand ? 0.7 : 1), transition: "opacity .6s ease",
             transform: isBrand ? "none" : "scaleX(-1)" }}>
-            <BackgroundShader colors={isBrand ? MESH.brand : MESH.influencer} distortion={0.8} swirl={0.1} speed={0.5} rotation={35} offsetX={0.22} />
+            <BackgroundShader colors={isBrand ? MESH.brand : MESH.influencer} distortion={0.8} swirl={0.1} speed={inView ? 0.5 : 0} rotation={35} offsetX={0.22} maxPixelCount={220000} />
           </div>
           <div className={`hf-aurora ${isBrand ? "hf-aurora-brand" : "hf-aurora-inf"}`} style={{ opacity: on ? 0.9 : off ? 0.4 : 0.7, transition: "opacity .6s ease" }} />
           <div className="hf-grain" />
@@ -109,7 +119,7 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
   };
 
   return (
-    <section className="hf-hero" style={{ position: "relative" }}>
+    <section ref={heroRef} className="hf-hero" style={{ position: "relative" }}>
       <div className="hf-row" style={{ display: "flex", alignItems: "stretch" }}>
         {renderPanel("brand")}
         {renderPanel("influencer")}
@@ -156,8 +166,9 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
         .hf-panel .hf-reveal{ max-width: 380px; }
         @media (max-width: 1180px), (max-height: 820px){ .hf-hero .hf-reveal{ display: none; } }
         /* aurora ribbons: wide, low-contrast and heavily blurred so they stay behind the art and copy */
-        .hf-aurora{ position: absolute; width: 140%; height: 46%; left: -20%; top: 30%; border-radius: 50%; filter: blur(70px);
-          pointer-events: none; animation: hf-sway 30s ease-in-out infinite alternate; }
+        .hf-aurora{ position: absolute; width: 140%; height: 60%; left: -20%; top: 24%; pointer-events: none; will-change: translate;
+          -webkit-mask-image: radial-gradient(closest-side, #000 0%, rgba(0,0,0,.55) 45%, transparent 100%); mask-image: radial-gradient(closest-side, #000 0%, rgba(0,0,0,.55) 45%, transparent 100%);
+          animation: hf-sway 30s ease-in-out infinite alternate; }
         .hf-aurora-brand{ transform: rotate(-16deg);
           background: linear-gradient(90deg, rgba(150,120,255,0) 0%, rgba(150,120,255,0.38) 30%, rgba(255,150,210,0.22) 62%, rgba(255,150,210,0) 100%); }
         .hf-aurora-inf{ transform: rotate(16deg); animation-delay: -15s;
@@ -165,7 +176,8 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
         @keyframes hf-sway{ 0%{ translate: 0 0; } 100%{ translate: 4% -5%; } }
         @media (prefers-reduced-motion: reduce){ .hf-aurora{ animation: none; } }
         /* CTA: white glass at rest; on hover / press it fills with the side's colour (the old solid pill) */
-        .hf-cta{ background: rgba(255,255,255,0.55); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+        .hf-hero *{ backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+        .hf-cta{ background: rgba(255,255,255,0.72);
           border: 1px solid rgba(255,255,255,0.75); box-shadow: 0 8px 24px -10px rgba(60,30,120,0.25), inset 0 1px 0 rgba(255,255,255,0.8);
           transition: background-color .3s ease, color .3s ease, box-shadow .3s ease, border-color .3s ease, transform .3s cubic-bezier(.22,1,.36,1); }
         .hf-cta-brand{ color: #5f26e5; } .hf-cta-inf{ color: #ff0089; }
