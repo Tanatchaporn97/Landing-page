@@ -116,7 +116,7 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
       </div>
 
       {/* bottom: both halves melt into one lavender→pink band, which the stats section continues */}
-      <div aria-hidden style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "220px", zIndex: 2, pointerEvents: "none",
+      <div aria-hidden style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "min(160px, 26%)", zIndex: 0, pointerEvents: "none",
         background: "var(--hf-blend)", WebkitMaskImage: "linear-gradient(180deg, transparent 0%, #000 100%)", maskImage: "linear-gradient(180deg, transparent 0%, #000 100%)" }} />
 
       {/* Data-Powered message — vertically centred, riding the seam between the two halves */}
