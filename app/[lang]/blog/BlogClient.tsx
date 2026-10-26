@@ -96,7 +96,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
 
         {/* Topic chips (left) + audience dropdown (right) */}
         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "16px", flexWrap: "wrap", marginBottom: "48px" }}>
-          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+          <div className="blog-cats" style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             {CATS.map((cat) => (
               <button key={cat} onClick={() => setActiveCat(cat)}
                 className={activeCat === cat ? "" : "btn-glass-purple"}
@@ -200,7 +200,15 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
 
       </div>
 
-      <style>{`.blog-aud-opt:hover{ background: rgba(95,38,229,0.06) !important; }`}</style>
+      <style>{`.blog-aud-opt:hover{ background: rgba(95,38,229,0.06) !important; }
+        /* phones: topic chips stay on one line and run off the screen edge — swipe sideways for more */
+        @media (max-width: 768px){
+          .blog-cats{ flex-wrap: nowrap !important; flex: 0 0 calc(100% + 48px); width: calc(100% + 48px); margin: 0 -24px; padding: 2px 24px;
+            overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-padding-inline: 24px; }
+          .blog-cats::-webkit-scrollbar{ display: none; }
+          .blog-cats > button{ flex: 0 0 auto; white-space: nowrap; }
+          .blog-cats::after{ content: ""; flex: 0 0 14px; }
+        }`}</style>
 
       <Footer variant="home" lang={lang} dict={dict} />
     </div>
