@@ -4,6 +4,9 @@ import Image from "next/image";
 import { type Locale } from "../../i18n-config";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
+// soft purple shadow cast by each picture's own shape (same tone as the cards in the 2026 visual);
+// 2026 carries its shadows inside the artwork, so it skips this
+const OBJ_SHADOW = "drop-shadow(0 14px 22px rgba(60,30,150,0.22)) drop-shadow(0 3px 6px rgba(60,30,150,0.10))";
 
 const JOURNEY_STEPS = [
   { year: "2015 - 2017", img: "/about-us/2015-2017.png", ratio: "2084 / 1876",
@@ -22,7 +25,7 @@ const JOURNEY_STEPS = [
     subtitle: "เติบโตท่ามกลางความท้าทาย", subtitleEn: "Growing Through Challenges",
     desc: "แม้จะเป็นช่วงที่ท้าทายสำหรับหลายธุรกิจ แต่ Buddy Review ยังคงมุ่งมั่นพัฒนาบริการและแพลตฟอร์มอย่างต่อเนื่อง พร้อมยังทำแคมเปญช่วยเหลือแบรนด์ SME และร่วมมือกับอิ\u2060น\u2060ฟ\u2060ลู\u2060เ\u2060อ\u2060น\u2060เ\u2060ซ\u2060อ\u2060ร์ที่มีจิตอาสาในช่วง COVID-19 เพื่อก้าวข้ามและเติบโตผ่านเวลาที่ลำบากไปด้วยกัน",
     descEn: "Even through a challenging time for many businesses, Buddy Review kept developing our services and platform — running campaigns to support SME brands and partnering with volunteer-minded influencers through COVID-19, growing through hard times together." },
-  { year: "2022", img: "/about-us/2022.png", ratio: "3275 / 1166", wide: true, fit: "cover",
+  { year: "2022", img: "/about-us/2022.png", ratio: "3275 / 1166", wide: true,
     subtitle: "ขยายทีมครั้งใหญ่", subtitleEn: "A Major Team Expansion",
     desc: "แม้จะเป็นช่วงที่ท้าทายสำหรับหลายธุรกิจ แต่ Buddy Review ยังคงมุ่งมั่นพัฒนาบริการและแพลตฟอร์มอย่างต่อเนื่อง พร้อมยังทำแคมเปญช่วยเหลือแบรนด์ SME และร่วมมือกับอิ\u2060น\u2060ฟ\u2060ลู\u2060เ\u2060อ\u2060น\u2060เ\u2060ซ\u2060อ\u2060ร์ที่มีจิตอาสาในช่วง COVID-19 เพื่อก้าวข้ามและเติบโตผ่านเวลาที่ลำบากไปด้วยกัน",
     descEn: "Even through a challenging time for many businesses, Buddy Review kept developing our services and platform — running campaigns to support SME brands and partnering with volunteer-minded influencers through COVID-19, growing through hard times together." },
@@ -34,7 +37,7 @@ const JOURNEY_STEPS = [
     subtitle: "ตอกย้ำความสำเร็จอีกขั้น", subtitleEn: "Cementing Our Success Further",
     desc: "เราได้คว้าอันดับที่ 1 บริษัทหมวด Advertising & Marketing ที่มีอัตราการเติบโตที่เร็วที่สุดในประเทศไทยโดย Financial Times และยังได้รับรางวัล Top MarTech Providers for Growing Business 2025 โดย Content Shifu อีกด้วย",
     descEn: "We claimed No. 1 among the fastest-growing Advertising & Marketing companies in Thailand by the Financial Times, and also received the Top MarTech Providers for Growing Business 2025 award from Content Shifu." },
-  { year: "2026", img: "/about-us/2026-card.jpg", ratio: "1800 / 1100", wide: true, fit: "cover",
+  { year: "2026", img: "/about-us/2026-open.png", ratio: "1800 / 1100", wide: true, maxWidth: "440px", ownShadow: true,
     subtitle: "ฐานข้อมูล Influencer ทะลุ 1 ล้านโปรไฟล์", subtitleEn: "Our Influencer Database Passes 1 Million Profiles",
     desc: "เราขยายฐานข้อมูล Influencer จนมีมากกว่า 1 ล้านโปรไฟล์จากหลายแพลตฟอร์ม และนำข้อมูลเหล่านี้มาพัฒนา KOL Discovery ให้แบรนด์ค้นหา Influencer ได้ตรงความต้องการมากขึ้น รวมถึง Buddy Rank ที่ช่วยวิเคราะห์โปรไฟล์และแนะนำแนวทางพัฒนาช่องให้กับ Influencer",
     descEn: "We grew our influencer database to more than 1 million profiles across platforms, and used that data to build KOL Discovery — helping brands find influencers that fit exactly what they need — along with Buddy Rank, which analyzes creator profiles and recommends ways to grow their channels." },
@@ -143,20 +146,28 @@ export default function OurJourney({ lang }: { lang: Locale }) {
                 <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: "0 0 24px" }}>
                   {lang === "th" ? s.desc : s.descEn}
                 </p>
+                {!s.wide && (
+                  <div className="journey-img" style={{
+                    position: "relative", width: s.imgWidth ?? "100%", aspectRatio: s.ratio, marginTop: "24px",
+                    marginLeft: onRight ? "auto" : 0, marginRight: onRight ? 0 : "auto",
+                  }}>
+                    <Image src={s.img} alt={s.year} fill sizes="(max-width: 768px) 100vw, 460px" style={{ objectFit: "contain", objectPosition: onRight ? "right" : "left", filter: s.ownShadow ? undefined : OBJ_SHADOW }} />
+                  </div>
+                )}
               </div>
 
-              {/* every year's picture sits in the same framed card as 2026 (one size, soft purple shadow);
-                  collages are contained with breathing room, full-bleed visuals fill the card */}
-              <div className="journey-card" data-year={s.year} style={{
-                position: "relative", width: "100%", maxWidth: "440px", aspectRatio: "1800 / 1100", marginTop: "24px",
-                marginLeft: onRight ? "auto" : 0, marginRight: onRight ? 0 : "auto",
-                borderRadius: "18px", overflow: "hidden", background: "#f6f5fc",
-                boxShadow: "0 18px 40px -18px rgba(70,30,160,0.35)", border: "1px solid rgba(255,255,255,0.8)",
-              }}>
-                <div style={{ position: "absolute", inset: s.fit === "cover" ? 0 : "5%" }}>
-                  <Image src={s.img} alt={s.year} fill sizes="(max-width: 900px) 100vw, 440px" style={{ objectFit: s.fit === "cover" ? "cover" : "contain", objectPosition: "center" }} />
+              {/* Wide-format photos break out of the 44% column so they render larger without cropping,
+                  but stay aligned under the same side as their entry's text */}
+              {s.wide && (
+                <div className="journey-wide-img" data-year={s.year} style={{
+                  position: "relative", width: "100%", maxWidth: s.maxWidth ?? "820px", aspectRatio: s.ratio,
+                  marginTop: "24px",
+                  marginLeft: onRight ? "auto" : 0,
+                  marginRight: onRight ? 0 : "auto",
+                }}>
+                  <Image src={s.img} alt={s.year} fill sizes="(max-width: 900px) 100vw, 820px" style={{ objectFit: "contain", objectPosition: onRight ? "right" : "left", filter: s.ownShadow ? undefined : OBJ_SHADOW }} />
                 </div>
-              </div>
+              )}
             </div>
           );
         })}
@@ -167,7 +178,15 @@ export default function OurJourney({ lang }: { lang: Locale }) {
           .journey-center-line, .journey-dot{ display: none !important; }
         }
         @media (max-width: 640px){
-          .journey-card{ margin-left: auto !important; margin-right: auto !important; }
+          /* phones: even out the photos — 2022's file is mostly transparent margin (photo ≈ 56% of its
+             width), so crop to the photo and let it fill the column; the 2024 badge fills its whole file,
+             so cap it to sit at a similar visual size */
+          /* every year's picture sits centred in the column (text stays left-aligned) */
+          .journey-img, .journey-wide-img:not([data-year="2022"]){ margin-left: auto !important; margin-right: auto !important; }
+          .journey-img img, .journey-wide-img img{ object-position: center !important; }
+          .journey-wide-img[data-year="2022"]{ aspect-ratio: 1841 / 1088 !important; width: 112% !important; max-width: 112% !important; margin-left: -6% !important; margin-right: -6% !important; }
+          .journey-wide-img[data-year="2022"] img{ object-fit: cover !important; object-position: center !important; }
+          .journey-wide-img[data-year="2024"]{ max-width: 66% !important; }
           .journey-block{ max-width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; text-align: left !important; }
           .journey-step{ margin-top: 0 !important; }
         }
