@@ -37,7 +37,7 @@ const JOURNEY_STEPS = [
     subtitle: "ตอกย้ำความสำเร็จอีกขั้น", subtitleEn: "Cementing Our Success Further",
     desc: "เราได้คว้าอันดับที่ 1 บริษัทหมวด Advertising & Marketing ที่มีอัตราการเติบโตที่เร็วที่สุดในประเทศไทยโดย Financial Times และยังได้รับรางวัล Top MarTech Providers for Growing Business 2025 โดย Content Shifu อีกด้วย",
     descEn: "We claimed No. 1 among the fastest-growing Advertising & Marketing companies in Thailand by the Financial Times, and also received the Top MarTech Providers for Growing Business 2025 award from Content Shifu." },
-  { year: "2026", img: "/about-us/2026-open.png", ratio: "1800 / 1100", wide: true, maxWidth: "440px", ownShadow: true,
+  { year: "2026", img: "/about-us/2026-match-v2.png", ratio: "1880 / 1180", wide: true, maxWidth: "440px", ownShadow: true,
     subtitle: "ฐานข้อมูล Influencer ทะลุ 1 ล้านโปรไฟล์", subtitleEn: "Our Influencer Database Passes 1 Million Profiles",
     desc: "เราขยายฐานข้อมูล Influencer จนมีมากกว่า 1 ล้านโปรไฟล์จากหลายแพลตฟอร์ม และนำข้อมูลเหล่านี้มาพัฒนา KOL Discovery ให้แบรนด์ค้นหา Influencer ได้ตรงความต้องการมากขึ้น รวมถึง Buddy Rank ที่ช่วยวิเคราะห์โปรไฟล์และแนะนำแนวทางพัฒนาช่องให้กับ Influencer",
     descEn: "We grew our influencer database to more than 1 million profiles across platforms, and used that data to build KOL Discovery — helping brands find influencers that fit exactly what they need — along with Buddy Rank, which analyzes creator profiles and recommends ways to grow their channels." },
