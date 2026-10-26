@@ -59,7 +59,7 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
           {/* same tilted pattern on both halves, the influencer one mirrored, so the flows meet head-on at the seam */}
           <div style={{ position: "absolute", top: 0, bottom: 0, width: "64vw", [isBrand ? "left" : "right"]: 0, opacity: (on ? 1 : off ? 0.5 : 0.8) * (isBrand ? 0.7 : 1), transition: "opacity .6s ease",
             transform: isBrand ? "none" : "scaleX(-1)" }}>
-            <BackgroundShader colors={isBrand ? MESH.brand : MESH.influencer} distortion={0.8} swirl={0.1} speed={inView ? 0.5 : 0} rotation={35} offsetX={0.22} maxPixelCount={220000} />
+            <BackgroundShader colors={isBrand ? MESH.brand : MESH.influencer} distortion={0.8} swirl={0.1} speed={inView ? 0.5 : 0} rotation={35} offsetX={0.22} maxPixelCount={120000} />
           </div>
           <div className={`hf-aurora ${isBrand ? "hf-aurora-brand" : "hf-aurora-inf"}`} style={{ opacity: on ? 0.9 : off ? 0.4 : 0.7, transition: "opacity .6s ease" }} />
           <div className="hf-grain" />
