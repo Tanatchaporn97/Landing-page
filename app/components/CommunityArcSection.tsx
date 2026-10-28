@@ -3,12 +3,6 @@ import { motion } from "motion/react";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
-const FEATURES = [
-  { emoji: "🎯", labelTh: "มีงานจากหลายแบรนด์", labelEn: "Jobs from Many Brands", descTh: "เลือกงานที่สนใจและเหมาะกับตั\u2060ว\u2060เ\u2060อ\u2060ง", descEn: "Pick the jobs that interest you and suit you" },
-  { emoji: "🤝", labelTh: "รายละเอียดครบก่อนรับงาน", labelEn: "Full Details Before You Accept", descTh: "เช็กบรีฟและค่าตอบแทนก่อนตัดสินใจ", descEn: "Check the brief and pay before you decide" },
-  { emoji: "📊", labelTh: "วิเคราะห์ช่องได้ฟรี", labelEn: "Free Channel Analysis", descTh: "ดูว่าคอนเทนต์แบบไหนได้รับผ\u2060ล\u2060ต\u2060อ\u2060บ\u2060รั\u2060บดี", descEn: "See which content gets the best response" },
-  { emoji: "🌟", labelTh: "ให้แบรนด์รู้จักคุณมากขึ้น", labelEn: "Help Brands Know You Better", descTh: "แสดงตัวตนและผลงานผ่านโปรไฟล์ของคุณ", descEn: "Show who you are and your work through your profile" },
-];
 
 // Category chips loosely scattered along the 3 parallel arcs (SVG paths
 // below). x/y are chip CENTERS (placed with translate(-50%,-50%)), each
@@ -148,29 +142,9 @@ export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
           color: "#111827", margin: "0 0 40px", lineHeight: 1.7,
         }}>
           {lang === "th"
-            ? <>Buddy Review ทำให้การเป็นอินฟลูเอนเซอร์เป็นเรื่องง่ายขึ้น<br />ด้วยระบบที่เชื่อมคุณกับแบรนด์ชั้นนำและทีมงานที่ช่วยเหลือทุกขั้นตอน</>
-            : <>Buddy Review makes being an influencer easier<br />with a system that connects you to leading brands and a team that supports every step.</>}
+            ? <>ไม่ว่าคุณจะทำคอนเทนต์สายไหน ก็มีโอกาสร่วมงานกับแบรนด์หลากหลายประเภท<br />พร้อมเครื่องมือและทีมงานที่ช่วยให้คุณเติบโต</>
+            : <>Whatever kind of content you create, you can work with a wide range of brands,<br />with the tools and a team that help you grow.</>}
         </p>
-
-        {/* 4-box row */}
-        <div className="cas-features" style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "14px" }}>
-          {FEATURES.map((f) => (
-            <div key={f.labelEn} className="cas-feature" style={{
-              position: "relative", width: "220px",
-              background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
-              border: "1px solid rgba(255,255,255,0.6)", borderRadius: "18px",
-              padding: "18px 18px 16px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)",
-            }}>
-              <span style={{ fontSize: "18px", position: "absolute", top: "12px", right: "14px" }}>{f.emoji}</span>
-              <p style={{ ...KT, fontSize: "20px", fontWeight: 800, margin: "0 0 4px", lineHeight: 1.25, color: "#5f26e5", maxWidth: "150px" }}>
-                {lang === "th" ? f.labelTh : f.labelEn}
-              </p>
-              <p style={{ ...KT, fontSize: "13px", fontWeight: 600, color: "#111827", margin: 0 }}>
-                {lang === "th" ? f.descTh : f.descEn}
-              </p>
-            </div>
-          ))}
-        </div>
 
         {/* CTA */}
         <div style={{ textAlign: "center", marginTop: "36px" }}>
@@ -196,11 +170,6 @@ export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
             font-family: var(--font-kanit),'Noto Sans Thai',sans-serif; font-size: 11px; font-weight: 700; color: #111827; }
           .cam-icon{ width: 20px; height: 20px; border-radius: 50%; background: #f3f4f6; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; }
           /* 4 feature boxes → 2 columns × 2 rows */
-          .cas-features{ display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px !important; }
-          .cas-feature{ width: auto !important; padding: 14px 12px 12px !important; border-radius: 16px !important; }
-          .cas-feature p:first-of-type{ font-size: 16px !important; max-width: 82% !important; }
-          .cas-feature p:last-of-type{ font-size: 12px !important; }
-          .cas-feature > span{ font-size: 15px !important; top: 10px !important; right: 10px !important; }
           .community-arc-section{ padding-left: 16px !important; padding-right: 16px !important; }
         }
       `}</style>
