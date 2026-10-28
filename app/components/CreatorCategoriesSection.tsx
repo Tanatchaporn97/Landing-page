@@ -7,43 +7,55 @@ import { Badge } from "@/components/ui/badge";
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
 
+// Thai words the browser's line breaker splits in the wrong place (e.g. "ผ่า|นอินฟลูเอนเซอร์").
+// Word-joiners go only between whole grapheme clusters, never before a vowel/tone mark.
+const KEEP_TOGETHER = ["ผ่าน", "อินฟลูเอนเซอร์", "คอนเทนต์", "ตัวเอง", "ต่างประเทศ", "ผู้เชี่ยวชาญ", "น่าเชื่อถือ",
+  "ความงาม", "ร่วมกัน", "ประสบการณ์", "ไลฟ์สไตล์", "แฟนคลับ", "เทคโนโลยี", "ท่องเที่ยว", "เดินทาง",
+  "ดูแล", "สนใจ", "ผู้บริโภค", "แต่งหน้า"];
+const joinWord = (w: string) => {
+  const Seg = (Intl as unknown as { Segmenter?: new (l?: string, o?: { granularity: string }) => { segment: (t: string) => Iterable<{ segment: string }> } }).Segmenter;
+  const parts = Seg ? Array.from(new Seg("th", { granularity: "grapheme" }).segment(w), (x) => x.segment) : [w];
+  return parts.join("\u2060");
+};
+const thWrap = (t: string) => KEEP_TOGETHER.reduce((acc, w) => acc.split(w).join("\u200B" + joinWord(w) + "\u200B"), t);
+
 const CATEGORIES = [
   { Icon: ShieldCheck, title: "KOC & Product Reviewer", titleTh: "KOC & Product Reviewer",
-    desc: "รีวิวจากประสบการณ์จริง เพื่อสร้างความน่าเชื่อถือและ social proof",
-    descEn: "Reviews from real experience, building trust and social proof." },
+    desc: "รีวิวสินค้าจากประสบการณ์ใช้งานจริง ช่วยเพิ่มความน่าเชื่อถือและความมั่นใจก่อนตัดสินใจซื้อ",
+    descEn: "Reviews from real hands-on use that build credibility and confidence before people decide to buy." },
   { Icon: Sparkles, title: "Beauty & Skincare", titleTh: "Beauty & Skincare",
-    desc: "Creator ที่เข้าใจ routine ผลิตภัณฑ์ และการเล่าเรื่องความงาม",
-    descEn: "Creators who understand product routines and beauty storytelling." },
+    desc: "แนะนำสินค้าและแบรนด์ให้เป็นที่รู้จักในกลุ่มคนรักความงาม ผ่านรีวิว การแต่งหน้า และการดูแลผิว",
+    descEn: "Introducing products and brands to beauty lovers through reviews, makeup, and skincare content." },
   { Icon: UtensilsCrossed, title: "Food & Lifestyle", titleTh: "Food & Lifestyle",
-    desc: "เปลี่ยนสินค้าให้เข้าไปอยู่ในโมเมนต์การใช้ชีวิตประจำวัน",
-    descEn: "Weaving products into everyday lifestyle moments." },
+    desc: "เชื่อมโยงสินค้าและบริการกับเรื่องกิน เที่ยว และไลฟ์สไตล์ เพื่อให้แบรนด์เป็นส่วนหนึ่งของชีวิตประจำวัน",
+    descEn: "Linking products and services to food, travel, and lifestyle so the brand becomes part of everyday life." },
   { Icon: HeartPulse, title: "Health & Wellness", titleTh: "Health & Wellness",
-    desc: "สื่อสารหมวดสุขภาพอย่างเหมาะกับความรู้และความสนใจของคนดู",
-    descEn: "Communicating health topics with the right knowledge and audience interest." },
+    desc: "สื่อสารกับกลุ่มคนรักสุขภาพ ผ่านเรื่องการออกกำลังกาย โภชนาการ และการดูแลตัวเอง",
+    descEn: "Speaking to health-conscious audiences through exercise, nutrition, and self-care." },
   { Icon: Users, title: "Family & Parenting", titleTh: "Family & Parenting",
-    desc: "เข้าถึงพ่อแม่และครอบครัวผ่านประสบการณ์ที่ relatable",
-    descEn: "Reaching parents and families through relatable experiences." },
+    desc: "สร้างความไว้วางใจในกลุ่มพ่อแม่และครอบครัว ผ่านประสบการณ์เลี้ยงลูกและการใช้สินค้าในชีวิตจริง",
+    descEn: "Building trust with parents and families through real parenting experiences and everyday product use." },
   { Icon: PawPrint, title: "Pet & Hobby", titleTh: "Pet & Hobby",
-    desc: "หาเสียงที่มีความน่าเชื่อถือใน community ที่สนใจเฉพาะเรื่อง",
-    descEn: "Finding credible voices within niche-interest communities." },
+    desc: "เข้าถึงกลุ่มคนรักสัตว์และผู้ที่มีความสนใจเฉพาะทาง ผ่านอินฟลูเอนเซอร์ในแต่ละกลุ่ม",
+    descEn: "Reaching pet lovers and niche-interest audiences through influencers in each community." },
   { Icon: Gamepad2, title: "Gaming & Tech", titleTh: "Gaming & Tech",
-    desc: "จับกลุ่ม early adopter และ community ที่ตามเทคโนโลยีจริงจัง",
-    descEn: "Reaching early adopters and communities that closely follow tech." },
+    desc: "แนะนำสินค้าและเทคโนโลยีให้กลุ่มเกมเมอร์และคนรักไอทีรู้จัก ผ่านรีวิวและการทดลองใช้งานจริง",
+    descEn: "Introducing products and technology to gamers and tech lovers through reviews and hands-on trials." },
   { Icon: MapPin, title: "Travel & Local", titleTh: "Travel & Local",
-    desc: "เล่าเรื่องให้ตรงกับเมือง พื้นที่ และวัฒนธรรมของคนในพื้นที่",
-    descEn: "Storytelling tuned to a city, area, and local culture." },
+    desc: "โปรโมตสินค้า บริการ และสถานที่ ผ่านคอนเทนต์ท่องเที่ยว รีวิวของใช้ระหว่างเดินทาง และประสบการณ์ในแต่ละพื้นที่",
+    descEn: "Promoting products, services, and places through travel content, travel-gear reviews, and local experiences." },
   { Icon: Briefcase, title: "Business & Expert", titleTh: "Business & Expert",
-    desc: "เพิ่มน้ำหนักให้แคมเปญที่ต้องการความรู้หรือมุมมองเฉพาะทาง",
-    descEn: "Adding credibility to campaigns that need expertise or specialist perspective." },
+    desc: "เพิ่มความน่าเชื่อถือให้สินค้าและบริการ ด้วยความรู้และประสบการณ์จากผู้เชี่ยวชาญเฉพาะด้าน",
+    descEn: "Adding credibility to products and services with the knowledge and experience of specialists." },
   { Icon: Clapperboard, title: "Entertainment & Fandom", titleTh: "Entertainment & Fandom",
-    desc: "สร้างบทสนทนากับ community ที่มี passion ร่วมกัน",
-    descEn: "Sparking conversation with communities that share a passion." },
+    desc: "สร้างกระแสและการพูดถึงแบรนด์ในกลุ่มแฟนคลับ ผ่านอินฟลูเอนเซอร์สายบันเทิงและกลุ่มที่มีความสนใจร่วมกัน",
+    descEn: "Creating buzz and brand conversation among fan communities through entertainment influencers and shared-interest groups." },
   { Icon: ShoppingBag, title: "Live Seller & Affiliate", titleTh: "Live Seller & Affiliate",
-    desc: "เชื่อมจากคอนเทนต์ไปสู่การตัดสินใจซื้อและ conversion",
-    descEn: "Connecting content directly to purchase decisions and conversion." },
+    desc: "เพิ่มโอกาสในการขายผ่านไลฟ์สด รีวิวสินค้า และการแนะนำช่องทางสั่งซื้อโดยตรง",
+    descEn: "Driving sales through live selling, product reviews, and direct links to buy." },
   { Icon: Globe, title: "International Creator", titleTh: "International Creator",
-    desc: "เข้าตลาดใหม่ผ่าน Creator ที่เข้าใจภาษาและพฤติกรรมท้องถิ่น",
-    descEn: "Entering new markets through Creators who understand local language and behavior." },
+    desc: "ขยายการรับรู้แบรนด์ในต่างประเทศ ผ่านอินฟลูเอนเซอร์ที่เข้าใจภาษา วัฒนธรรม และผู้บริโภคในแต่ละตลาด",
+    descEn: "Expanding brand awareness abroad through influencers who understand each market's language, culture, and consumers." },
 ];
 
 export default function CreatorCategoriesSection({ lang }: { lang: "th" | "en" }) {
@@ -94,7 +106,7 @@ export default function CreatorCategoriesSection({ lang }: { lang: "th" | "en" }
                 {cat.title}
               </h4>
               <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, margin: 0, color: "#111827" }}>
-                {lang === "th" ? cat.desc : cat.descEn}
+                {lang === "th" ? thWrap(cat.desc) : cat.descEn}
               </p>
             </div>
           );
@@ -137,7 +149,7 @@ export default function CreatorCategoriesSection({ lang }: { lang: "th" | "en" }
           .cc-cell{ border-left: none !important; }
           .cc-cell:nth-child(odd){ border-left: none !important; }
         }
-        /* phones: compact 2-column tiles (icon beside title, 2-line description)
+        /* phones: compact 2-column tiles (icon beside title, full description below)
            instead of one tall full-width row per category — ~⅓ of the height */
         @media (max-width: 640px){
           .cc-header-row{ align-items: flex-start !important; margin-bottom: 24px !important; gap: 12px !important; }
@@ -148,7 +160,7 @@ export default function CreatorCategoriesSection({ lang }: { lang: "th" | "en" }
           .cc-cell-icon svg{ width: 17px; height: 17px; }
           .cc-cell h4{ font-size: 13.5px !important; line-height: 1.25 !important; margin: 0 !important; }
           .cc-cell p{ grid-column: 1 / -1; margin-top: 8px !important; font-size: 12.5px !important; line-height: 1.5 !important; color: #4b5563 !important;
-            display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+            }
           .cc-cell:hover{ transform: none; }
         }
       `}</style>
