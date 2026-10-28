@@ -23,7 +23,7 @@ export const COPY = {
     sublineBottom: "to build campaigns that deliver measurable results.",
     brand: {
       label: "Brand",
-      tagline: "เปลี่ยนทุกแคมเปญ|ให้วัดผลได้", // "|" = line break
+      tagline: "เข้าถึงกลุ่มเป้าหมาย|ผ่านอินฟลูเอนเซอร์ที่ใช่", // "|" = line break
       reveal: "วางแผนแคมเปญ เลือกอินฟลูเอนเซอร์|และดูแลทุกขั้นตอนให้ตรงกับเป้าหมายของแบรนด์", // "|" = line break
       mobileDesc: "วางแผนแคมเปญและเลือกอินฟลูเอนเซอร์ให้ตรงเป้าหมายแบรนด์",
       cta: "สำหรับแบรนด์",
