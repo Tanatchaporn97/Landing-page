@@ -95,10 +95,9 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
               style={{ fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px", textAlign: "center",
                 fontFeatureSettings: "'pnum' on,'lnum' on" }}>
               Your Trusted Partner<br/>
-              in Thailand&apos;s<br/>
               <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
                 WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                Influencer Marketing Landscape
+                for Influencer Marketing in Thailand
               </span>
             </h2>
             <p className="font-normal desc-text"

@@ -1,6 +1,6 @@
 // Case-study taxonomy shared by the brand page's "See the Work in Action" explorer and the
 // Success Stories pages: one industry + one content type per case (by slug).
-export const INDUSTRIES = ["Food & Beverage", "Beauty & Skincare", "Healthcare", "Pet Care", "Household", "Home Appliances", "Entertainment & Streaming", "Events & Lifestyle"];
+export const INDUSTRIES = ["Food & Beverage", "Beauty & Skincare", "Healthcare", "Pet Care", "Household", "Home Appliances", "Entertainment & Streaming", "Events & Lifestyle", "Finance & Fintech"];
 
 export const CLASSIFY: Record<string, { industry: string; value: string }> = {
   "nissin":          { industry: "Food & Beverage",          value: "Product Launch" },     // new flavour launch
@@ -12,7 +12,7 @@ export const CLASSIFY: Record<string, { industry: string; value: string }> = {
   "scotch":          { industry: "Beauty & Skincare",        value: "Product Launch" },     // new bird's-nest mask
   "ldc-dental":      { industry: "Healthcare",               value: "Product Review" },     // clear-aligner service reviews
   "siangpure":       { industry: "Healthcare",               value: "New Market Entry" },   // Indian market
-  "truemoney":       { industry: "Healthcare",               value: "Niche Community" },    // highly specific health topic
+  "truemoney":       { industry: "Finance & Fintech",        value: "Niche Community" },    // highly specific health topic
   "optimum-hi-pro":  { industry: "Pet Care",                 value: "Niche Community" },    // koi keepers
   "smart-heart":     { industry: "Pet Care",                 value: "Niche Community" },    // fandom
   "bobbi-dog":       { industry: "Pet Care",                 value: "Always-on Content" },  // year plan
