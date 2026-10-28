@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
@@ -47,6 +47,17 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
     const el = trackRef.current; const card = el?.children[i] as HTMLElement | undefined;
     if (el && card) el.scrollTo({ left: card.offsetLeft - el.offsetLeft - 20, behavior: "smooth" });
   };
+
+  // the featured card takes the same height as the cards in the grid below it
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [cardH, setCardH] = useState<number | null>(null);
+  useEffect(() => {
+    const first = gridRef.current?.firstElementChild as HTMLElement | null;
+    if (!first) return;
+    const ro = new ResizeObserver(() => setCardH(first.offsetHeight || null));
+    ro.observe(first);
+    return () => ro.disconnect();
+  }, [activeCat]);
 
   const allPosts: Post[] = dict?.blogPosts || [];
   if (allPosts.length === 0) return null;
@@ -122,9 +133,9 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
           background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
           border: "1px solid rgba(255,255,255,0.6)", borderRadius: "28px", overflow: "hidden",
           boxShadow: "0 12px 40px rgba(95,38,229,0.10)", textDecoration: "none",
-          marginBottom: "28px",
+          marginBottom: "28px", height: cardH ?? undefined,
         }} className="newsroom-featured">
-          <div style={{ position: "relative", minHeight: "360px", overflow: "hidden", background: isBlog ? "#06040f" : undefined }}>
+          <div style={{ position: "relative", minHeight: cardH ? 0 : "360px", overflow: "hidden", background: isBlog ? "#06040f" : undefined }}>
             {isBlog ? (
               // whole thumbnail shown; leftover space takes the thumbnails' dark backdrop colour
               <Image src={featured.image} alt={featured.title} fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "contain" }} />
@@ -132,7 +143,7 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
               <Image src={featured.image} alt={featured.title} fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover" }} />
             )}
           </div>
-          <div style={{ padding: "48px", display: "flex", flexDirection: "column", gap: "20px" }}>
+          <div style={{ padding: "48px", display: "flex", flexDirection: "column", gap: "20px", minHeight: 0, overflow: "hidden" }}>
             <div>
               <CategoryPill>{featured.categories[0]}</CategoryPill>
             </div>
@@ -153,7 +164,7 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
         </Link>
 
         {/* Grid of remaining posts */}
-        <div className="newsroom-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}>
+        <div ref={gridRef} className="newsroom-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}>
           {rest.map((post) => (
             <Link key={post.slug} href={`/${lang}/${basePath}/${post.slug}`} style={{
               background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",

@@ -139,8 +139,9 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
           text={<>{t.headline1}<br />{t.headline2}<br />{t.headline3}</>}
           gradientColors={HEADLINE_SHINE} gradientAnimationDuration={3}
           textStyle={{ ...KT, fontWeight: 600, fontSize: "clamp(20px, 1.9vw, 30px)", lineHeight: 1.25, margin: "8px 0" }} />
-        <p style={{ ...KT, color: "#4b4560", fontSize: "clamp(13px,1vw,15px)", lineHeight: 1.55, margin: 0 }}>
-          {t.sublineTop}<br />{t.sublineBottom}
+        {/* one sentence, wrapped by the browser into even lines (the centre band is narrow, so a fixed break left orphans) */}
+        <p style={{ ...KT, color: "#4b4560", fontSize: "clamp(13px,1vw,15px)", lineHeight: 1.55, margin: "0 auto", maxWidth: "340px", textWrap: "balance" }}>
+          {t.sublineTop} {t.sublineBottom}
         </p>
       </motion.div>
 
