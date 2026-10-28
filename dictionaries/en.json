@@ -50,56 +50,100 @@
     "faqsBrand": [
       {
         "q": "What services does Buddy Review provide?",
-        "a": "We provide end-to-end Influencer Marketing services, from strategy planning, selecting the right influencers, coordinating, monitoring work, to measuring campaign success."
+        "a": "Buddy Review handles influencer marketing end to end, across Strategy & Intelligence, Creator Campaigns, Content & Production, and Commerce & Amplification — from analysing the brief and planning the strategy, finding and selecting influencers, and managing outreach and the work, to setting the content direction, overseeing production and publishing, and on to boosting, affiliate, live commerce, and reporting results against the agreed KPIs.\nBrands can pick only the services they need, or have us run the whole campaign end to end."
       },
       {
-        "q": "How is your service better than doing it ourselves?",
-        "a": "Using our service saves you time and eliminates the hassle of finding, selecting, negotiating, and managing numerous influencers. We have precise data tools and a professional team taking care of every step from planning to measuring results, ensuring you get the most suitable influencers and highly effective campaigns."
+        "q": "How is hiring an agency different from doing it yourself?",
+        "a": "Working with an agency doesn't just save time finding and contacting influencers — it puts the whole process on a clearer system: setting the strategy, selecting creators that fit the brief, negotiating and managing the work, keeping content and timelines on track, and tracking and measuring the campaign.\nBuddy Review combines data, technology, and our team's experience at every step, so the brand team spends less time coordinating and more time on the bigger picture, while the campaign stays on its objectives."
       },
       {
-        "q": "How do you charge for your services?",
-        "a": "Service fees depend on campaign size, the number of influencers, and the services you need. Our minimum campaign budget starts at 100,000 THB per campaign."
+        "q": "How do you choose the “right” influencers?",
+        "a": "We don't start by looking for the most famous influencer. We start with who the brand needs to reach, and which creators can genuinely take the brand to those people.\nBuddy Review looks at creators across many dimensions — location, demographics, content category, occupation, persona, and storytelling — alongside our data-driven matching on engagement, unique follower overlap, content fit, and campaign history.\nWe then combine the data with our team's experience to find creators with audience fit, brand fit, and content fit — not just people in the same category or with the most followers."
       },
       {
-        "q": "What do I need to prepare before starting a campaign?",
-        "a": "Just let us know your campaign objectives, budget, target audience, and product/service details. We will take care of the rest."
+        "q": "Can you find specialist or niche creators?",
+        "a": "Yes. Buddy Review has a database of more than 1 million creator profiles, sorted into more than 100 creator categories across many dimensions, so we can search from broad creator groups right down to niche creators that match a brand's specific brief and audience in much finer detail."
       },
       {
-        "q": "What do you use to select influencers?",
-        "a": "We use a Data-Driven Matching system that analyzes Demographics, Engagement, Unique Follower Overlap, and past campaign performance. This helps us select influencers that align perfectly with your brand's goals and match the influencer's followers."
+        "q": "What kind of influencers should we use, and how many?",
+        "a": "No number or tier suits every campaign, because each group of creators plays a different role. Some campaigns need large influencers to build reach and awareness, while others suit many micro influencers or KOCs to build credibility, content volume, or reach across several smaller audiences.\nBuddy Review designs the creator mix from your objective, audience, budget, and the role you need creators to play first, then sets the right number and proportions — instead of starting from how many influencers to use."
       },
       {
-        "q": "Can I request a report at the end of the campaign?",
-        "a": "You will receive a comprehensive campaign performance report covering Reach, Engagement, ROI, top-performing influencers, and insights to improve your next campaigns."
-      },
-      {
-        "q": "Can I choose the influencers myself?",
-        "a": "If you have specific influencers in mind, we can contact them for you or recommend similar ones. We will handle all communications on your behalf."
+        "q": "Can you run a campaign aimed at sales or conversions?",
+        "a": "Yes. Influencer marketing doesn't have to stop at reach or engagement. We can design campaigns that lead on to traffic, affiliate, live commerce, conversions, or amplifying content with paid media, to match the brand's objective and customer journey.\nThe team chooses creators, content formats, platforms, and how results are measured to fit the goal from the start, rather than using the same kind of influencer for every campaign."
       },
       {
         "q": "Which platforms can campaigns run on?",
-        "a": "We support all major platforms such as Instagram, Facebook, TikTok, YouTube, X (Twitter), and Lemon8. We can recommend the best platforms based on your target audience, content, and campaign objectives."
+        "a": "Buddy Review can plan and manage campaigns on many platforms, including TikTok, Instagram, Facebook, YouTube, X (Twitter), Lemon8, and Threads, as well as other channels that suit the audience and the campaign format.\nWe choose platforms based on audience behaviour, content format, and the brand's objective — a campaign doesn't need to use every platform."
+      },
+      {
+        "q": "What can you measure after the campaign?",
+        "a": "Clients can follow campaign performance in real time through Buddy Review's system, and when the campaign ends, the team reports results against the agreed KPIs and objectives — such as reach, views, engagement, traffic, or trackable conversions.\nWe can also prepare a report file in the format you need, to summarise results, analyse performance, and build on it for the next campaign."
+      },
+      {
+        "q": "What does the campaign budget include?",
+        "a": "The budget we propose is an all-inclusive price for the scope of work and services agreed, so the brand can plan its budget clearly.\nIf you'd like to add services or change the campaign format, just talk to the Buddy Review team — we're happy to advise and suggest further options that suit the brand's goals and budget."
+      },
+      {
+        "q": "How long does it take from brief to campaign live?",
+        "a": "Generally, Buddy Review takes about 2 weeks once the brief and campaign details are confirmed. The timing can vary with the format and complexity of the campaign.\nIf the brand has a schedule or a date it wants the campaign to go live, let the Buddy Review team know in advance so we can plan the timeline together to fit."
+      },
+      {
+        "q": "Can we reuse the influencers' content?",
+        "a": "Yes, content reuse can be planned, depending on the usage rights and the agreement with each creator — for example, posting it on the brand's own channels, using it in advertising, or amplifying it with media through Spark Ads and Partnership Ads.\nBuddy Review can coordinate usage rights, duration, and how the content will be used from the planning stage, so the brand can build on the content for its goals rather than it living only on the influencer's channel."
+      },
+      {
+        "q": "What kinds of businesses has Buddy Review worked with?",
+        "a": "Buddy Review has run influencer marketing for brands across many industries, including Food & Beverage, Beauty & Personal Care, Pet Care, Finance & Insurance, Retail, Home Appliances, Entertainment & Events, and more.\nWe design the strategy and choose creators to suit consumer behaviour and each business's goal, whether that's brand awareness, a product launch, market expansion, community engagement, or sales conversion.\nSee real work and more on how we work in [Our Work](/success)."
+      },
+      {
+        "q": "How do I get started with influencer marketing with Buddy Review?",
+        "a": "You can reach Buddy Review through the [Contact Us](/contact) page on our website, or ask the team directly:\nPhone: [088-686-1676](tel:0886861676)\nEmail: [info@buddyreview.co](mailto:info@buddyreview.co)\nJust share some basic details about your brand and goals, and the Buddy Review team will get back to you to talk it through and propose a campaign approach that fits your needs and budget."
       }
     ],
     "faqsInfluencer": [
+      {
+        "q": "What is Buddy Review?",
+        "a": "Buddy Review is a platform that connects creators with brands, giving them the chance to work together on influencer marketing campaigns.\nWe've been in the industry for more than 9 years, worked with more than 1,000 brands, and run more than 4,000 campaigns. Whether you're just starting out as a creator or already experienced, you can sign up for the chance to work with brands that suit you."
+      },
+      {
+        "q": "How is the pay for each campaign decided?",
+        "a": "Pay at Buddy Review varies by campaign, based on the type of work, the type of content, and the brand's conditions, so it fits the work involved.\nCreators can check the pay and campaign conditions before deciding to join, so you can choose the jobs that suit you."
+      },
       {
         "q": "I've signed up — why haven't I received any jobs yet?",
         "a": "After signing up with Buddy Review, you may not receive a job right away, because each campaign has its own requirements and influencer selection criteria, depending on how well your profile fits and the audience the brand wants to reach.\nWe recommend completing your profile, connecting your social media channels, and keeping your information up to date, so brands can get to know you better and you have a better chance of getting jobs that suit your channel."
       },
       {
-        "q": "Do I need to link my social media accounts?",
-        "a": "We recommend linking your social media accounts so the system can pull statistics and automatically match you with suitable campaigns. If you encounter any issues linking your accounts, contact us on LINE @buddysupport."
+        "q": "I don't have many followers — can I still sign up as a reviewer?",
+        "a": "Yes, you can. Each campaign has different selection criteria, and it isn't only about follower count — your audience, content type, and fit with the brand matter too.\nWe recommend completing your profile to improve your chances of getting campaigns that match you."
       },
       {
-        "q": "When is the payment made?",
+        "q": "Is it free to sign up for Buddy Review?",
+        "a": "Signing up as a reviewer with Buddy Review is free. Just register and complete your profile to start receiving opportunities to join campaigns from different brands."
+      },
+      {
+        "q": "When is payment made?",
         "a": "Buddy Review pays on a schedule that depends on how you take on work:\n• Reviewers redeeming points in the system: paid on the 20th of the month. Redeem your points and submit all related information by the 20th.\n• Companies, juristic persons, or work taken on through a quotation: paid on the 7th of the following month. Submit the work and all documents by the 7th.\nLate information or documents may move you to a later payment round, and if a payment date falls on a holiday, payment moves to the next business day."
       },
       {
-        "q": "Why did I receive a notification but the money hasn't arrived?",
-        "a": "Before the money is actually transferred to your bank account, you might receive an advance notification from the bank about an incoming transfer. The money will be transferred according to the date and time specified in the bank's message."
+        "q": "Do I need to connect my social media accounts?",
+        "a": "We recommend connecting all your social media accounts so the system can pull your stats and match you with suitable campaigns. If you have trouble connecting an account, contact the team on [LINE: @buddysupport](https://line.me/R/ti/p/@buddysupport)."
       },
       {
-        "q": "What documents are required to receive payment?",
+        "q": "I've received a campaign notification — what should I do?",
+        "a": "When you get a campaign notification, you can check the brief, type of work, pay, and conditions for joining. We recommend reading all the details before deciding to join the campaign."
+      },
+      {
+        "q": "I've joined a campaign — what do I need to do?",
+        "a": "Reviewers need to complete the work according to each campaign's brief and conditions — such as creating content, reviewing a product, or posting on social media — and submit it following the set steps and deadlines so the team can check it."
+      },
+      {
+        "q": "I got a notification, so why hasn't the money arrived yet?",
+        "a": "Your bank may send an email or SMS about the transfer before the money shows in your account. Check the date and time stated in the message from Kasikornbank.\nIf that time has passed and you still haven't received the money, contact the team on [LINE: @buddysupport](https://line.me/R/ti/p/@buddysupport) so we can look into it."
+      },
+      {
+        "q": "What documents do I need to receive payment?",
         "a": "The documents you need depend on how you're paid:\n• Individual reviewers: a copy of your national ID card and a copy of your bank account book page.\n• Companies or juristic persons: a copy of the ID card, a copy of the VAT registration certificate (Por.Por.20), and a copy of the company's bank account book page.\nPlease check your details and send every document to avoid payment delays. Juristic persons must also send the original receipt or tax invoice within 7 days of receiving payment."
       },
       {
@@ -107,11 +151,45 @@
         "a": "Redeeming points for cash has a transfer fee of 8 THB per transaction. You can redeem from 2,000 points (200 THB) upward, at a rate of 10 points = 1 THB.\nExample: redeeming 2,500 points gives 250 THB; after the 8 THB fee, 242 THB is paid into your account."
       },
       {
-        "q": "What should I do if I forget my email or can't log in?",
-        "a": "Contact our support team via LINE: @buddysupport and provide your account name so the team can verify and reset your password."
+        "q": "I forgot my email or can't log in — what should I do?",
+        "a": "Contact the team on [LINE: @buddysupport](https://line.me/R/ti/p/@buddysupport) with your account name and details of the problem, and we'll check and help you log in."
       }
     ]
   },
+  "brandFaqs": [
+    {
+      "q": "What services does Buddy Review provide?",
+      "a": "Buddy Review handles influencer marketing end to end, across Strategy & Intelligence, Creator Campaigns, Content & Production, and Commerce & Amplification — from analysing the brief and planning the strategy, finding and selecting influencers, and managing outreach and the work, to setting the content direction, overseeing production and publishing, and on to boosting, affiliate, live commerce, and reporting results against the agreed KPIs.\nBrands can pick only the services they need, or have us run the whole campaign end to end."
+    },
+    {
+      "q": "How is hiring an agency different from doing it yourself?",
+      "a": "Working with an agency doesn't just save time finding and contacting influencers — it puts the whole process on a clearer system: setting the strategy, selecting creators that fit the brief, negotiating and managing the work, keeping content and timelines on track, and tracking and measuring the campaign.\nBuddy Review combines data, technology, and our team's experience at every step, so the brand team spends less time coordinating and more time on the bigger picture, while the campaign stays on its objectives."
+    },
+    {
+      "q": "How do you choose the “right” influencers?",
+      "a": "We don't start by looking for the most famous influencer. We start with who the brand needs to reach, and which creators can genuinely take the brand to those people.\nBuddy Review looks at creators across many dimensions — location, demographics, content category, occupation, persona, and storytelling — alongside our data-driven matching on engagement, unique follower overlap, content fit, and campaign history.\nWe then combine the data with our team's experience to find creators with audience fit, brand fit, and content fit — not just people in the same category or with the most followers."
+    },
+    {
+      "q": "Can you find specialist or niche creators?",
+      "a": "Yes. Buddy Review has a database of more than 1 million creator profiles, sorted into more than 100 creator categories across many dimensions, so we can search from broad creator groups right down to niche creators that match a brand's specific brief and audience in much finer detail."
+    },
+    {
+      "q": "What kind of influencers should we use, and how many?",
+      "a": "No number or tier suits every campaign, because each group of creators plays a different role. Some campaigns need large influencers to build reach and awareness, while others suit many micro influencers or KOCs to build credibility, content volume, or reach across several smaller audiences.\nBuddy Review designs the creator mix from your objective, audience, budget, and the role you need creators to play first, then sets the right number and proportions — instead of starting from how many influencers to use."
+    },
+    {
+      "q": "Can you run a campaign aimed at sales or conversions?",
+      "a": "Yes. Influencer marketing doesn't have to stop at reach or engagement. We can design campaigns that lead on to traffic, affiliate, live commerce, conversions, or amplifying content with paid media, to match the brand's objective and customer journey.\nThe team chooses creators, content formats, platforms, and how results are measured to fit the goal from the start, rather than using the same kind of influencer for every campaign."
+    },
+    {
+      "q": "Which platforms can campaigns run on?",
+      "a": "Buddy Review can plan and manage campaigns on many platforms, including TikTok, Instagram, Facebook, YouTube, X (Twitter), Lemon8, and Threads, as well as other channels that suit the audience and the campaign format.\nWe choose platforms based on audience behaviour, content format, and the brand's objective — a campaign doesn't need to use every platform."
+    },
+    {
+      "q": "What can you measure after the campaign?",
+      "a": "Clients can follow campaign performance in real time through Buddy Review's system, and when the campaign ends, the team reports results against the agreed KPIs and objectives — such as reach, views, engagement, traffic, or trackable conversions.\nWe can also prepare a report file in the format you need, to summarise results, analyse performance, and build on it for the next campaign."
+    }
+  ],
   "homeFaqs": [
     {
       "q": "What services does Buddy Review provide?",
