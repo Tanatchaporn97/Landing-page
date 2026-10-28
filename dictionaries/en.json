@@ -92,7 +92,7 @@
       },
       {
         "q": "When is the payment made?",
-        "a": "The system pays in points, where 10 points = 1 THB. Reviewers must initiate a withdrawal and submit required documents. Withdrawals are open at the beginning of the month, and transfers are made between the 15th–20th of the following month (after document verification)."
+        "a": "Buddy Review pays on a schedule that depends on how you take on work:\n• Reviewers redeeming points in the system: paid on the 20th of the month. Redeem your points and submit all related information by the 20th.\n• Companies, juristic persons, or work taken on through a quotation: paid on the 7th of the following month. Submit the work and all documents by the 7th.\nLate information or documents may move you to a later payment round, and if a payment date falls on a holiday, payment moves to the next business day."
       },
       {
         "q": "Why did I receive a notification but the money hasn't arrived?",
@@ -100,11 +100,11 @@
       },
       {
         "q": "What documents are required to receive payment?",
-        "a": "A copy of your ID card, bank account number, and a copy of your bank book are required for withdrawals."
+        "a": "The documents you need depend on how you're paid:\n• Individual reviewers: a copy of your national ID card and a copy of your bank account book page.\n• Companies or juristic persons: a copy of the ID card, a copy of the VAT registration certificate (Por.Por.20), and a copy of the company's bank account book page.\nPlease check your details and send every document to avoid payment delays. Juristic persons must also send the original receipt or tax invoice within 7 days of receiving payment."
       },
       {
-        "q": "Are there any withdrawal fees?",
-        "a": "There is an 8 THB transfer fee per transaction, and a minimum withdrawal of 2,000 points (200 THB) is required. Example: If you have 2,500 points (250 THB) and initiate a withdrawal, the system deducts an 8 THB fee, so you will receive 242 THB in your account."
+        "q": "Is there a fee for redeeming points?",
+        "a": "Redeeming points for cash has a transfer fee of 8 THB per transaction. You can redeem from 2,000 points (200 THB) upward, at a rate of 10 points = 1 THB.\nExample: redeeming 2,500 points gives 250 THB; after the 8 THB fee, 242 THB is paid into your account."
       },
       {
         "q": "What should I do if I forget my email or can't log in?",
