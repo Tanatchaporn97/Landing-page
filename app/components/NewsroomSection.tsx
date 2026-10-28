@@ -129,21 +129,23 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
 
         {/* Featured post */}
         <Link href={`/${lang}/${basePath}/${featured.slug}`} style={{
-          display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0",
+          display: "grid", gridTemplateColumns: isBlog && cardH ? `min(${Math.round(cardH * 1200 / 640)}px, 60%) 1fr` : "1fr 1fr", gap: "0",
           background: "rgba(255,255,255,0.55)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
           border: "1px solid rgba(255,255,255,0.6)", borderRadius: "28px", overflow: "hidden",
           boxShadow: "0 12px 40px rgba(95,38,229,0.10)", textDecoration: "none",
           marginBottom: "28px", height: cardH ?? undefined,
         }} className="newsroom-featured">
+          {/* blog thumbnails: the image column is as wide as the picture at the card's full height, so it
+              fills the frame with no dark bands (on narrow screens it's capped at 60% and trims the sides a little) */}
           <div style={{ position: "relative", minHeight: cardH ? 0 : "360px", overflow: "hidden", background: isBlog ? "#06040f" : undefined }}>
             {isBlog ? (
               // whole thumbnail shown; leftover space takes the thumbnails' dark backdrop colour
-              <Image src={featured.image} alt={featured.title} fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "contain" }} />
+              <Image src={featured.image} alt={featured.title} fill sizes="(max-width: 900px) 100vw, 60vw" style={{ objectFit: "cover", objectPosition: "center" }} />
             ) : (
               <Image src={featured.image} alt={featured.title} fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover" }} />
             )}
           </div>
-          <div style={{ padding: "48px", display: "flex", flexDirection: "column", gap: "20px", minHeight: 0, overflow: "hidden" }}>
+          <div style={{ padding: "clamp(28px, 3.2vw, 48px)", display: "flex", flexDirection: "column", gap: "clamp(14px, 1.4vw, 20px)", minHeight: 0, overflow: "hidden" }}>
             <div>
               <CategoryPill>{featured.categories[0]}</CategoryPill>
             </div>

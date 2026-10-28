@@ -25,12 +25,13 @@ const DEFAULT_FAQS = [
 ];
 
 // "[label](/path)" inside an answer becomes an in-site link (locale prefixed);
-// "[label](https://…)" opens the external page in a new tab
+// "[label](https://…)" opens the external page in a new tab; "tel:" / "mailto:" call or email directly
 function withLinks(text: string, lang: string) {
   const linkStyle = { color: "inherit", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: "3px" };
-  return text.split(/(\[[^\]]+\]\((?:\/|https:\/\/)[^)]*\))/).map((part, i) => {
-    const m = part.match(/^\[([^\]]+)\]\(((?:\/|https:\/\/)[^)]*)\)$/);
+  return text.split(/(\[[^\]]+\]\((?:\/|https:\/\/|tel:|mailto:)[^)]*\))/).map((part, i) => {
+    const m = part.match(/^\[([^\]]+)\]\(((?:\/|https:\/\/|tel:|mailto:)[^)]*)\)$/);
     if (!m) return part;
+    if (m[2].startsWith("tel:") || m[2].startsWith("mailto:")) return <a key={i} href={m[2]} style={linkStyle}>{m[1]}</a>;
     return m[2].startsWith("/")
       ? <Link key={i} href={`/${lang}${m[2]}`} style={linkStyle}>{m[1]}</Link>
       : <a key={i} href={m[2]} target="_blank" rel="noopener noreferrer" style={linkStyle}>{m[1]}</a>;
