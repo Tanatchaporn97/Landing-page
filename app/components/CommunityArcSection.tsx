@@ -4,10 +4,10 @@ import { motion } from "motion/react";
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 const FEATURES = [
-  { emoji: "🎯", labelTh: "มีงานให้เลือก", labelEn: "More Jobs to Choose From", descTh: "จากหลากหลายแบรนด์", descEn: "From a wide range of brands" },
-  { emoji: "🤝", labelTh: "รู้ก่อนรับงาน", labelEn: "Know Before You Accept", descTh: "เห็นรายละเอียดและค่าตอบแทน", descEn: "See details and pay upfront" },
-  { emoji: "📊", labelTh: "วิเคราะห์ช่องฟรี", labelEn: "Free Channel Analysis", descTh: "รู้ว่าอะไรไวรัล", descEn: "Know what's trending, for free" },
-  { emoji: "🌟", labelTh: "โปรไฟล์ชัดขึ้น", labelEn: "A Sharper Profile", descTh: "ให้แบรนด์รู้จักคุณมากขึ้น", descEn: "Help brands get to know you" },
+  { emoji: "🎯", labelTh: "มีงานจากหลายแบรนด์", labelEn: "Jobs from Many Brands", descTh: "เลือกงานที่สนใจและเหมาะกับตั\u2060ว\u2060เ\u2060อ\u2060ง", descEn: "Pick the jobs that interest you and suit you" },
+  { emoji: "🤝", labelTh: "รายละเอียดครบก่อนรับงาน", labelEn: "Full Details Before You Accept", descTh: "เช็กบรีฟและค่าตอบแทนก่อนตัดสินใจ", descEn: "Check the brief and pay before you decide" },
+  { emoji: "📊", labelTh: "วิเคราะห์ช่องได้ฟรี", labelEn: "Free Channel Analysis", descTh: "ดูว่าคอนเทนต์แบบไหนได้รับผ\u2060ล\u2060ต\u2060อ\u2060บ\u2060รั\u2060บดี", descEn: "See which content gets the best response" },
+  { emoji: "🌟", labelTh: "ให้แบรนด์รู้จักคุณมากขึ้น", labelEn: "Help Brands Know You Better", descTh: "แสดงตัวตนและผลงานผ่านโปรไฟล์ของคุณ", descEn: "Show who you are and your work through your profile" },
 ];
 
 // Category chips loosely scattered along the 3 parallel arcs (SVG paths

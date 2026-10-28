@@ -8,11 +8,11 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 // cropped from the brand page's What We Offer set): system dashboard, people/insight,
 // analytics, growth, target.
 const ITEMS = [
-  { title: "Built on Clarity",         desc: "ทำงานเป็นระบบ ชัดเจน และมีมาตรฐาน",                 descEn: "Clear, systematic work held to a consistent standard.",              src: "/how-we-work/icon-clarity-v2.png" },
-  { title: "Unified by Insight",       desc: "เข้าใจเป้าหมายร่วมกัน และต่อยอดด้วย Insight",          descEn: "Shared goals, sharpened by insight.",                                src: "/how-we-work/icon-insight-v2.png" },
-  { title: "Data-Driven Decisions",    desc: "ใช้ข้อมูลช่วยตัดสินใจ ตั้งแต่เลือก Creator จนถึงวัดผล",   descEn: "Data guides every call — from choosing creators to measuring results.", src: "/how-we-work/icon-data-v2.png" },
-  { title: "Delivery with Discipline", desc: "บริหารและส่งมอบงานอย่างเป็นระบบ ตั้งแต่ต้นจนจบ",         descEn: "Systematic management and delivery, from start to finish.",           src: "/how-we-work/icon-delivery-v2.png" },
-  { title: "Your Success, Our Focus",  desc: "ใส่ใจทุกเป้าหมาย เพื่อให้แบรนด์ได้ผลลัพธ์ที่ต้องการ",       descEn: "Every goal gets our full attention, so your brand gets the results it wants.",                            src: "/how-we-work/icon-goals-v2.png" },
+  { title: "Business Goals First",     desc: "เริ่มจากเป้าหมายของแบรนด์ เพื่อวางกลยุทธ์และแผนแคมเปญให้ตรงโจทย์",                 descEn: "We start from your brand's goals, so the strategy and campaign plan hit the brief.",   src: "/how-we-work/icon-goals-v2.png" },
+  { title: "United by Expertise",      desc: "รวมความเชี่ยวชาญของทีมกลยุทธ์ อิ\u2060น\u2060ฟ\u2060ลู\u2060เ\u2060อ\u2060น\u2060เ\u2060ซ\u2060อ\u2060ร์ และข้อมูล เพื่อดูแลแคมเปญร่วมกัน",     descEn: "Strategy, influencer, and data experts working together on every campaign.",          src: "/how-we-work/icon-insight-v2.png" },
+  { title: "Data Guides Decisions",    desc: "ใช้ข้อมูลและเทคโนโลยีช่วยวางแผน คัดเลือกอิ\u2060น\u2060ฟ\u2060ลู\u2060เ\u2060อ\u2060น\u2060เ\u2060ซ\u2060อ\u2060ร์ และตัดสินใจ",                  descEn: "Data and technology guide planning, influencer selection, and every decision.",       src: "/how-we-work/icon-data-v2.png" },
+  { title: "Delivery with Discipline", desc: "บริหารงานอย่างมีมาตรฐาน พร้อมดูแลทุกขั้นตอนจนจบแคมเปญ",                           descEn: "Work managed to a clear standard, with every step looked after until the campaign ends.", src: "/how-we-work/icon-delivery-v2.png" },
+  { title: "Your Results, Measured",   desc: "ติดตามและวัดผลแคมเปญ พร้อมนำข้อมูลมาปรับปรุงการทำงาน",                               descEn: "We track and measure every campaign, and use the data to keep improving.",            src: "/how-we-work/icon-clarity-v2.png" },
 ];
 
 
