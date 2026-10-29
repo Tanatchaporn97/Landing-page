@@ -255,20 +255,6 @@ export default function BrandHeroVisual({ lang }: { lang: "th" | "en" }) {
         </div>
       </div>
 
-      {/* Right edge: platform icon stack */}
-      <div style={{ position: "absolute", top: "18%", right: "-12%", display: "flex", flexDirection: "column", gap: "10px", zIndex: 3 }}>
-        {(["tiktok", "instagram", "youtube", "x"] as const).map((p) => (
-          <div key={p} style={{
-            width: "34px", height: "34px", borderRadius: "50%", background: "rgba(255,255,255,0.55)",
-            backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.6)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            boxShadow: "0 4px 12px rgba(95,38,229,0.12)",
-          }}>
-            <Image src={`/social-icons/${p === "x" ? "x" : p}.png`} alt={p} width={16} height={16} style={{ objectFit: "contain" }} />
-          </div>
-        ))}
-      </div>
-
       {/* Center dashboard card */}
       <div style={{
         position: "absolute", top: "33%", left: "50%", transform: "translate(-50%, 0)",
