@@ -344,29 +344,40 @@
     },
     {
       "slug": "viu",
-      "brand": "Viu",
+      "brand": "Viu — Isan Chom Viu Outdoor Cinema",
       "logo": "/success-viu.webp",
       "logoOnWhite": false,
-      "tagline": "Combining influencers and local content to elevate Viu in the hearts of the Isan people.",
-      "industry": "Entertainment & Streaming",
-      "paras": [
-        "Viu, a leading Asian streaming platform, collaborated with Buddy Review to create the 'Isan Watch Viu' campaign. This initiative brought the classic outdoor cinema experience to the Isan region while introducing popular series dubbed in the local Isan dialect. This approach effectively reached and built strong connections with the local target audience, making the campaign not just entertaining but also a powerful brand communication tool.",
-        "Buddy Review focused on utilizing local influencers to establish credibility and convey the event experience through engaging video content. We supported the creation of highly shareable content that perfectly captured the unique style of each influencer."
+      "tagline": "Inviting Isan Audiences to Watch Korean Series Dubbed in Isan Through Outdoor Cinema and Local Content",
+      "industry": "Media & Entertainment",
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": "Buddy Review helped promote Viu's “Isan Chom Viu, Muan Chill Nang Klang Plaeng” outdoor-cinema campaign in Nakhon Phanom and Sakon Nakhon through influencers on TikTok — pairing Korean series dubbed in the Isan dialect with the atmosphere of an outdoor screening, to build awareness and invite local audiences to experience entertainment from Viu."
+        },
+        {
+          "heading": "Strategy",
+          "body": "Local and travel influencers conveyed the fun of the event through 3 main approaches:\n• Hyperlocal Influencer — Choosing creators connected to the area and to Isan audiences, so the event reached the target audience in the host provinces\n• Cultural Storytelling — Linking the charm of outdoor cinema and the Isan dialect with Korean series dubbed in Isan, building familiarity and bringing Viu's content closer to local viewers\n• Experience-driven Content — Capturing the atmosphere of watching series at the outdoor screening, along with nearby places and travel activities, to spark interest and invite viewers to join the event in person"
+        }
       ],
       "stats": [
         {
-          "val": "239K",
+          "val": "624,806",
           "label": "Reach"
         },
         {
-          "val": "4.3K",
+          "val": "30",
+          "label": "Contents"
+        },
+        {
+          "val": "11.1K",
           "label": "Engagement"
         },
         {
-          "val": "956K",
-          "label": "Combined Followers"
+          "val": "3.19M",
+          "label": "Followers"
         }
-      ]
+      ],
+      "takeaway": "The campaign reached more than 624K people across 2 provinces, using content that reflected the local language, culture and lifestyle — helping Viu connect entertainment from its streaming platform with an experience audiences could come and enjoy in person."
     },
     {
       "slug": "guss-damn-good",
@@ -1312,6 +1323,43 @@
         }
       ],
       "takeaway": "The campaign presented the JBL Flip 7 and Charge 6 through 20 pieces of content, blending real use with fashion and entertainment — communicating both speakers' strengths in a range of contexts and connecting the products naturally to consumers' lifestyles."
+    },
+    {
+      "slug": "mitsubishi-heavy-duty",
+      "brand": "Mitsubishi Heavy Duty",
+      "logo": "/success-stories-2/mitsubishi-heavy-duty-logo.jpg",
+      "logoOnWhite": false,
+      "tagline": "Turning Hot Weather into Content That Reaches Many Audiences",
+      "industry": "Home Appliances",
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": "Buddy Review built awareness for Mitsubishi Heavy Duty through influencer marketing on TikTok, YouTube, Facebook and Lemon8 — linking hot weather and everyday situations to the product, and communicating the air conditioners' strengths through a wide range of content."
+        },
+        {
+          "heading": "Strategy",
+          "body": "Influencers from several fields — entertainment, lifestyle and technology — reached different consumer groups, with 3 main content approaches:\n• Localized Entertainment — Using humour and regional dialects from each part of the country to tell the hot-weather problem in a way viewers know and relate to\n• Lifestyle Integration — Linking the product to everyday situations and entertainment shows, building awareness through each influencer's own content format\n• Product Review — Tech reviewers explaining the product's functions — cooling, energy saving and smartphone control — to give information that supports the purchase decision"
+        }
+      ],
+      "stats": [
+        {
+          "val": "1,769,101",
+          "label": "Reach"
+        },
+        {
+          "val": "1.23M",
+          "label": "Engagement"
+        },
+        {
+          "val": "13.66%",
+          "label": "Engagement Rate"
+        },
+        {
+          "val": "9.02M",
+          "label": "Followers"
+        }
+      ],
+      "takeaway": "The campaign blended entertainment content with product reviews to communicate Mitsubishi Heavy Duty from both real-life use and product features, with storytelling tailored to each audience."
     }
   ],
   "blogPosts": [

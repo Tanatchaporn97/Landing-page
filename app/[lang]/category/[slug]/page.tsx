@@ -16,7 +16,7 @@ const STORIES_TH = [
   { slug: "nissin",         catSlug: "food-beverage", brand: "Nissin",           photo: "/success-stories-2/Success stories-08.jpg", tagline: "ปลุกกระแสคนหิวบนโซเชียลด้วยรสชาติใหม่ ต้มยำกุ้งแซ่บซีส",              industry: "Food & Beverage" },
   { slug: "ldc-dental",     catSlug: "dental-care",   brand: "LDC Dental",       photo: "/success-stories-2/Success stories-09.jpg", tagline: "รีวิวจัดฟันใสจากอินฟลูฯ สู่กิจกรรมสุดเอ็กซ์คลูซีฟจาก LDC Dental",  industry: "Healthcare" },
   { slug: "watsons",        catSlug: "health-beauty", brand: "Watsons",          photo: "/success-stories-2/Success stories-10.jpg", tagline: "House Brand ปังด้วยพลังอินฟลูฯ บน TikTok & Lemon8",                   industry: "Beauty" },
-  { slug: "viu",            catSlug: "entertainment", brand: "Viu",              photo: "/success-stories-2/Success stories-11.jpg", tagline: "อินฟลูเอนเซอร์พลังท้องถิ่น สร้างสีสันแคมเปญ อีสานชมวิว",             industry: "Entertainment & Streaming" },
+  { slug: "viu",            catSlug: "entertainment", brand: "Viu",              photo: "/success-stories-2/Success stories-11.jpg", tagline: "ชวนคนอีสานดูซีรีส์เกาหลีพากย์อีสาน ผ่านหนังกลางแปลงและคอนเทนต์ท้องถิ่น",             industry: "Media & Entertainment" },
   { slug: "ahc",            catSlug: "skincare",      brand: "AHC",              photo: "/success-stories-2/Success stories-12.jpg", tagline: "ปลุกกระแสแบรนด์ด้วยอีเวนต์จากซีรีส์สุดไวรัล 'AHC Skin Game'",        industry: "Beauty" },
   { slug: "guss-damn-good", catSlug: "food-beverage", brand: "Guss Damn Good",   photo: "/success-stories-2/Success stories-13.jpg", tagline: "รสชาติที่มีเรื่องเล่า เมื่อไอศครีมเจอกับผงฟู้คลายกรดลดแน่นเฟ้อ",     industry: "Food & Beverage" },
 ];
@@ -25,7 +25,7 @@ const STORIES_EN = [
   { slug: "nissin",         catSlug: "food-beverage", brand: "Nissin",           photo: "/success-stories-2/Success stories-08.jpg", tagline: "Sparking social media food cravings with a bold new flavor: spicy Tom Yum Kung cheese.", industry: "Food & Beverage" },
   { slug: "ldc-dental",     catSlug: "dental-care",   brand: "LDC Dental",       photo: "/success-stories-2/Success stories-09.jpg", tagline: "Clear-aligner reviews from influencers, leading into an exclusive event with LDC Dental.", industry: "Healthcare" },
   { slug: "watsons",        catSlug: "health-beauty", brand: "Watsons",          photo: "/success-stories-2/Success stories-10.jpg", tagline: "House-brand products taking off with influencer power on TikTok & Lemon8.", industry: "Beauty" },
-  { slug: "viu",            catSlug: "entertainment", brand: "Viu",              photo: "/success-stories-2/Success stories-11.jpg", tagline: "Local-powered influencers bringing the \"Isan Chom Wiew\" campaign to life.", industry: "Entertainment & Streaming" },
+  { slug: "viu",            catSlug: "entertainment", brand: "Viu",              photo: "/success-stories-2/Success stories-11.jpg", tagline: "Inviting Isan Audiences to Watch Korean Series Dubbed in Isan Through Outdoor Cinema and Local Content", industry: "Media & Entertainment" },
   { slug: "ahc",            catSlug: "skincare",      brand: "AHC",              photo: "/success-stories-2/Success stories-12.jpg", tagline: "Igniting brand buzz with an event inspired by the viral series \"AHC Skin Game.\"", industry: "Beauty" },
   { slug: "guss-damn-good", catSlug: "food-beverage", brand: "Guss Damn Good",   photo: "/success-stories-2/Success stories-13.jpg", tagline: "A flavor with a story: when ice cream meets antacid powder.", industry: "Food & Beverage" },
 ];
@@ -35,7 +35,7 @@ const CHIPS_TH = [
   { label: "Food & Beverage",            href: `/{lang}/category/food-beverage`,   slug: "food-beverage" },
   { label: "Beauty",                     href: `/{lang}/category/health-beauty`,   slug: "health-beauty" },
   { label: "Healthcare",                 href: `/{lang}/category/dental-care`,     slug: "dental-care" },
-  { label: "Entertainment & Streaming",  href: `/{lang}/category/entertainment`,   slug: "entertainment" },
+  { label: "Media & Entertainment",      href: `/{lang}/category/entertainment`,   slug: "entertainment" },
   { label: "Skincare",                   href: `/{lang}/category/skincare`,        slug: "skincare" },
 ];
 
@@ -44,7 +44,7 @@ const CHIPS_EN = [
   { label: "Food & Beverage",            href: `/{lang}/category/food-beverage`,   slug: "food-beverage" },
   { label: "Beauty",                     href: `/{lang}/category/health-beauty`,   slug: "health-beauty" },
   { label: "Healthcare",                 href: `/{lang}/category/dental-care`,     slug: "dental-care" },
-  { label: "Entertainment & Streaming",  href: `/{lang}/category/entertainment`,   slug: "entertainment" },
+  { label: "Media & Entertainment",      href: `/{lang}/category/entertainment`,   slug: "entertainment" },
   { label: "Skincare",                   href: `/{lang}/category/skincare`,        slug: "skincare" },
 ];
 

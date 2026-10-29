@@ -53,14 +53,15 @@ const STORIES_TH = [
   },
   {
     slug: "viu",
-    brand: "Viu",
+    brand: "Viu — อีสานชมวิว ม่วนชิวหนังกลางแปลง",
     photo: "/success-stories-2/Success stories-11.jpg",
-    tagline: `อินฟลูเอนเซอร์พลังท้องถิ่น สร้างสีสันแคมเปญ อีสานชมวิว`,
-    industry: `Entertainment & Streaming`,
+    tagline: `ชวนคนอีสานดูซีรีส์เกาหลีพากย์อีสาน ผ่านหนังกลางแปลงและคอนเทนต์ท้องถิ่น`,
+    industry: `Media & Entertainment`,
     stats: [
-      { val: "239K", label: "Reach" },
-      { val: "4.3K", label: "Engagement" },
-      { val: "956K", label: "Combined Followers" },
+      { val: "624,806", label: "Reach" },
+      { val: "30", label: "Contents" },
+      { val: "11.1K", label: "Engagement" },
+      { val: "3.19M", label: "Followers" },
     ],
   },
   {
@@ -350,6 +351,19 @@ const STORIES_TH = [
       { val: "2.16M", label: "Followers" },
     ],
   },
+  {
+    slug: "mitsubishi-heavy-duty",
+    brand: "Mitsubishi Heavy Duty",
+    photo: "/success-stories-2/mitsubishi-heavy-duty-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `เปลี่ยนเรื่องอากาศร้อนให้เป็นคอนเทนต์ที่เข้าถึงคนหลายกลุ่ม`,
+    industry: `Home Appliances`,
+    stats: [
+      { val: "1,769,101", label: "Reach" },
+      { val: "1.23M", label: "Engagement" },
+      { val: "13.66%", label: "Engagement Rate" },
+      { val: "9.02M", label: "Followers" },
+    ],
+  },
 ];
 
 const STORIES_EN = [
@@ -391,14 +405,15 @@ const STORIES_EN = [
   },
   {
     slug: "viu",
-    brand: "Viu",
+    brand: "Viu — Isan Chom Viu Outdoor Cinema",
     photo: "/success-stories-2/Success stories-11.jpg",
-    tagline: `Local influencer power brings the "Isan Charm View" campaign to life`,
-    industry: `Entertainment & Streaming`,
+    tagline: `Inviting Isan Audiences to Watch Korean Series Dubbed in Isan Through Outdoor Cinema and Local Content`,
+    industry: `Media & Entertainment`,
     stats: [
-      { val: "239K", label: "Reach" },
-      { val: "4.3K", label: "Engagement" },
-      { val: "956K", label: "Combined Followers" },
+      { val: "624,806", label: "Reach" },
+      { val: "30", label: "Contents" },
+      { val: "11.1K", label: "Engagement" },
+      { val: "3.19M", label: "Followers" },
     ],
   },
   {
@@ -686,6 +701,19 @@ const STORIES_EN = [
       { val: "2", label: "Contents" },
       { val: "1.3K", label: "Engagement" },
       { val: "2.16M", label: "Followers" },
+    ],
+  },
+  {
+    slug: "mitsubishi-heavy-duty",
+    brand: "Mitsubishi Heavy Duty",
+    photo: "/success-stories-2/mitsubishi-heavy-duty-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Turning Hot Weather into Content That Reaches Many Audiences`,
+    industry: `Home Appliances`,
+    stats: [
+      { val: "1,769,101", label: "Reach" },
+      { val: "1.23M", label: "Engagement" },
+      { val: "13.66%", label: "Engagement Rate" },
+      { val: "9.02M", label: "Followers" },
     ],
   },
 ];
