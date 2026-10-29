@@ -54,7 +54,7 @@ const OUR_SERVICES = [
   { img: "/services/social-challenges-v5.jpg", objectPosition: "center 32%", title: "Social Challenges",
     desc: "โดดเด่นเหนือใครด้วยชาเลนจ์สนุก ๆ กระตุ้นการมีส่วนร่วมแบบออร์แกนิค ช่วยให้แบรนด์เป็นที่น่าจดจำ และกลายเป็นเรื่องที่ใคร ๆ ก็อยากพูดถึง",
     descEn: "Stand out with fun challenges that spark organic engagement, making your brand memorable and giving people something to talk about." },
-  { img: "/services/ugc-product-seeding2.png", title: "UGC & Product Seeding",
+  { img: "/services/ugc-product-seeding3.jpg", objectPosition: "center 30%", title: "UGC & Product Seeding",
     desc: "สร้างกระแสให้สินค้าผ่าน UGC คอมเมนต์ และรีวิวจากผู้ใช้งานและครีเอเตอร์อย่างเป็นธรรมชาติ ช่วยเพิ่ม Social Proof สร้างความน่าเชื่อถือ และกระตุ้นการตัดสินใจซื้อ",
     descEn: "Spark buzz for your product through natural UGC, comments, and reviews from real users and creators — boosting social proof, credibility, and purchase decisions." },
   { img: "/services/livestream-affiliate4.jpg", title: "Livestream & Affiliate",
