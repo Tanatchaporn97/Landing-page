@@ -112,6 +112,8 @@ export function BrandMockArt({ lang }: { lang: "th" | "en" }) {
         position: "absolute", left: "4%", top: "13%", width: "64cqw", aspectRatio: "1", borderRadius: "50%",
         border: "0.3cqw dashed rgba(95,38,229,0.32)",
       }} />
+      {/* disc + person bob together, the same motion as the influencer side's floating photo (the orbit stays still) */}
+      <div className="hsh-wiggle" style={{ position: "absolute", inset: 0, "--rot": "0deg", animationDelay: "0.4s" } as React.CSSProperties}>
       <div aria-hidden="true" style={{
         position: "absolute", left: "10%", top: "21%", width: "52cqw", aspectRatio: "1", borderRadius: "50%",
         background: "radial-gradient(circle at 40% 35%, #cdbdf7 0%, #b39cf2 55%, #9d82ec 100%)",
@@ -125,6 +127,7 @@ export function BrandMockArt({ lang }: { lang: "th" | "en" }) {
         WebkitMaskImage: "linear-gradient(180deg, #000 74%, transparent 96%)", maskImage: "linear-gradient(180deg, #000 74%, transparent 96%)",
       }}>
         <Image src="/hero-illustrations/brand-hero.webp" alt={th ? "ทีมแบรนด์วางแผนแคมเปญ" : "Brand team planning a campaign"} fill sizes="(max-width: 899px) 34vw, 260px" style={{ objectFit: "contain", objectPosition: "bottom" }} />
+      </div>
       </div>
 
       {/* creator search bar */}
