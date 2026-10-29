@@ -8,20 +8,20 @@ const PTP_STEPS_TH = [
   { step: "01", img: "/path-to-partnership/Step-1.png", title: "สมัครเป็นอินฟลูกับเรา", desc: "สมัครบัญชีอินฟลูเอนเซอร์ง่ายๆ แค่ 5 นาที พร้อมเชื่อมต่อช่องทางโซเชียลมีเดีย ให้เรารู้จักคุณมากขึ้นและเปิดโอกาสในการร่วมงานกับแบรนด์ชั้นนำ" },
   { step: "02", img: "/path-to-partnership/Step-2.png", title: "ค้นหางานที่ใช่", desc: "เลือกดูงานรีวิวจากแบรนด์ดังที่คัดมาให้คุณโดยเฉพาะ เมื่อเจอที่ชอบก็คลิกสมัครได้เลย ไม่ต้องรอช้า!" },
   { step: "03", img: "/path-to-partnership/Step-3.png", title: "คอนเฟิร์มและรับบรีฟ", desc: "เมื่อได้รับการคัดเลือกจากแบรนด์ ทีมงานติดต่อกลับเพื่อคอนเฟิร์มการรับงานและส่งรายละเอียดบรีฟ" },
-  { step: "04", img: "/path-to-partnership/Step-4.png", title: "สร้างสรรค์ได้เลย", desc: "สร้างสรรค์คอนเทนต์สุดปังในสไตล์ของคุณได้เต็มที่ จากนั้นส่งดราฟต์ให้เราตรวจสอบผ่านแพลตฟอร์มของเราได้เลยแบบง่ายๆ" },
+  { step: "04", img: "/path-to-partnership/Step-4.png", title: "ลงมือทำคอนเทนต์", desc: "สร้างคอนเทนต์ตามบรีฟในสไตล์ของคุณ แล้วส่งดราฟต์ผ่านแพลตฟอร์มให้ทีมงานตรวจสอบ" },
   { step: "05", img: "/path-to-partnership/Step-5.png", title: "รอตรวจดราฟต์", desc: "ทีมงานจะแจ้งกลับทันทีหากมีการแก้ไข แต่ถ้าคอนเทนต์ของคุณพร้อมแล้ว ก็เตรียมตัวโพสต์ตามกำหนดการได้เลย" },
   { step: "06", img: "/path-to-partnership/Step-6.png", title: "ลงโพสต์", desc: "ได้เวลาไวรัล! โพสต์คอนเทนต์สุดปังของคุณให้กับผู้ติดตามของคุณได้เลย" },
-  { step: "07", img: "/path-to-partnership/Step-7.png", title: "รับเงินได้เลย", desc: "โดยจ่ายเป็น Buddy Points ซึ่งสามารถนำพอยท์ไปแลกเป็นเงินสดได้ทันที ไม่มีเบี้ยว" },
+  { step: "07", img: "/path-to-partnership/Step-7.png", title: "รับพอยท์ แลกเป็นเงินสด", desc: "โดยจ่ายเป็น Buddy Points ซึ่งสามารถนำพอยท์ไปแลกเป็นเงินสดได้" },
 ];
 
 const PTP_STEPS_EN = [
   { step: "01", img: "/path-to-partnership/Step-1.png", title: "Sign Up as Our Influencer", desc: "Create an influencer account in just 5 minutes and connect your social channels — so we can get to know you and open the door to work with top brands." },
   { step: "02", img: "/path-to-partnership/Step-2.png", title: "Find the Right Job", desc: "Browse review jobs from top brands curated just for you. Found one you like? Apply with one click — no need to wait!" },
   { step: "03", img: "/path-to-partnership/Step-3.png", title: "Confirm & Get Briefed", desc: "Once a brand selects you, our team will reach out to confirm the job and send over the campaign brief." },
-  { step: "04", img: "/path-to-partnership/Step-4.png", title: "Create Freely", desc: "Create standout content in your own style, then submit your draft for review through our platform — quick and simple." },
+  { step: "04", img: "/path-to-partnership/Step-4.png", title: "Create Your Content", desc: "Create content to the brief in your own style, then submit your draft through the platform for the team to review." },
   { step: "05", img: "/path-to-partnership/Step-5.png", title: "Await Draft Review", desc: "Our team will notify you right away if any edits are needed. If your content is ready, get set to post on schedule." },
   { step: "06", img: "/path-to-partnership/Step-6.png", title: "Post It Live", desc: "Time to go viral! Share your standout content with your followers." },
-  { step: "07", img: "/path-to-partnership/Step-7.png", title: "Get Paid", desc: "Earn Buddy Points, which you can redeem for cash instantly — no delays, guaranteed." },
+  { step: "07", img: "/path-to-partnership/Step-7.png", title: "Earn Points, Redeem for Cash", desc: "You're paid in Buddy Points, which you can redeem for cash." },
 ];
 
 export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" }) {
