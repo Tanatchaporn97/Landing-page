@@ -12,6 +12,8 @@ import { type Locale } from "../../../../i18n-config";
 import { SITE_URL } from "@/lib/site";
 
 const PINK_GRAD = "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)";
+// Overview / Strategy / Results / Key Takeaway — one heading style, left-aligned purple
+const SECTION_HEADING: React.CSSProperties = { ...KT, color: "#5f26e5", fontSize: "clamp(19px,1.8vw,24px)", fontWeight: 700, margin: "0 0 12px" };
 
 export async function generateStaticParams() {
   const dict = await getDictionary("th");
@@ -133,9 +135,9 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
           {story.sections ? (
             story.sections.map((sec, i) => (
               <div key={i}>
-                <h3 style={{ ...KT, color: "#5f26e5", fontSize: "clamp(19px,1.8vw,24px)", fontWeight: 700, margin: "0 0 12px" }}>
+                <h2 style={SECTION_HEADING}>
                   {sec.heading}
-                </h3>
+                </h2>
                 {sec.body.split("\n").map((line, li) => (
                   <p key={li} style={{ ...KT, color: "#111827", fontSize: "clamp(15px,1.2vw,17px)", lineHeight: 1.85, margin: li === 0 ? 0 : "12px 0 0" }}>
                     {line}
@@ -155,7 +157,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
         {/* Results */}
         {story.stats && story.stats.length > 0 && (
           <>
-            <h2 style={{ ...KT, color: "#111827", fontSize: "clamp(24px,2.5vw,36px)", fontWeight: 800, margin: "0 0 32px", textAlign: "center" }}>
+            <h2 style={{ ...SECTION_HEADING, margin: "0 0 16px" }}>
               Results
             </h2>
             <div className="success-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px", marginBottom: story.takeaway ? "56px" : 0 }}>
@@ -170,7 +172,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
                     ...KT, background: PINK_GRAD,
                     WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
-                    fontSize: "clamp(28px,3.2vw,48px)", fontWeight: 800, lineHeight: 1,
+                    fontSize: "clamp(25px,2.88vw,43px)", fontWeight: 800, lineHeight: 1,
                   }}>
                     {s.val}
                   </span>
@@ -186,7 +188,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
         {/* Key Takeaway — closing insight for richer case studies */}
         {story.takeaway && (
           <div style={{ marginTop: "56px" }}>
-            <h2 style={{ ...KT, color: "#111827", fontSize: "clamp(22px,2.2vw,32px)", fontWeight: 800, margin: "0 0 20px", textAlign: "center" }}>
+            <h2 style={SECTION_HEADING}>
               Key Takeaway
             </h2>
             {story.takeaway.split("\n").map((line, i) => (
