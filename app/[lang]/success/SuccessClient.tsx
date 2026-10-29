@@ -401,7 +401,7 @@ const STORIES_EN = [
     brand: "CP ALL Education Forum 2026",
     photo: "/success-stories-2/cp-all-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
     tagline: `KOL Planning Across the Event Journey`,
-    industry: `Events & Lifestyle`,
+    industry: `Retail`,
     stats: [],
   },
   {
@@ -446,7 +446,7 @@ const STORIES_EN = [
     brand: "Mega Halloween 2025",
     photo: "/success-stories-2/mega-bangna-logo.png", imgFit: "contain" as const, imgBg: "#ffffff",
     tagline: `Turning a Teaser into Social Buzz`,
-    industry: `Events & Lifestyle`,
+    industry: `Retail`,
     stats: [
       { val: "2.8M", label: "Reach (KOL Campaign)" },
       { val: "0.1", label: "CPR" },

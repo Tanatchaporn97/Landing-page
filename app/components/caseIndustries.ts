@@ -1,6 +1,6 @@
 // Case-study taxonomy shared by the brand page's "See the Work in Action" explorer and the
 // Success Stories pages: one industry + one content type per case (by slug).
-export const INDUSTRIES = ["Food & Beverage", "Beauty & Skincare", "Healthcare", "Pet Care", "Household", "Home Appliances", "Entertainment & Streaming", "Events & Lifestyle", "Finance & Fintech"];
+export const INDUSTRIES = ["Food & Beverage", "Beauty & Skincare", "Healthcare", "Pet Care", "Household", "Home Appliances", "Entertainment & Streaming", "Retail", "Finance & Fintech"];
 
 export const CLASSIFY: Record<string, { industry: string; value: string }> = {
   "nissin":          { industry: "Food & Beverage",          value: "Product Launch" },     // new flavour launch
@@ -22,8 +22,8 @@ export const CLASSIFY: Record<string, { industry: string; value: string }> = {
   "teepol":          { industry: "Household",                value: "Product Review" },     // single-KOL product integration
   "daikin":          { industry: "Home Appliances",          value: "Product Review" },     // explaining air-con tech
   "viu":             { industry: "Entertainment & Streaming", value: "Niche Community" },   // Isan local audience
-  "cp-all":          { industry: "Events & Lifestyle",       value: "Event Activation" },   // education forum
-  "mega-bangna":     { industry: "Events & Lifestyle",       value: "Event Activation" },   // Halloween event
+  "cp-all":          { industry: "Retail",                   value: "Event Activation" },   // education forum
+  "mega-bangna":     { industry: "Retail",                   value: "Event Activation" },   // Halloween event
 };
 
 /** A case's industry, falling back to the story's own label for slugs not classified yet. */
