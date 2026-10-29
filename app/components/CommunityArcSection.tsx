@@ -127,12 +127,12 @@ export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
           ...KT, textAlign: "center", fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700,
           color: "#111827", margin: "0 0 16px", lineHeight: 1.2,
         }}>
-          Grow as a{" "}
+          {lang === "th" ? "คอนเทนต์สายไหน " : "Grow as a "}
           <span style={{
             background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", whiteSpace: "nowrap",
           }}>
-            Creator
+            {lang === "th" ? "ก็มีโอกาสเติบโต" : "Creator"}
           </span>
         </h2>
 

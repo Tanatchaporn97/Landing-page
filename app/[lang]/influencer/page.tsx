@@ -225,7 +225,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       </section>
 
       {/* ── Brand Logos Marquee ── */}
-      <LogoMarquee bgClassName="inf-logo-bg" title={["Brands We", "Work With"]} headingStyle={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />
+      <LogoMarquee bgClassName="inf-logo-bg" title={lang === "th" ? ["แบรนด์ที่", "ร่วมงานกับเรา"] : ["Brands We", "Work With"]} headingStyle={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }} />
 
 
       {/* ── We Build The Best Communities For Influencers ── */}
@@ -243,8 +243,8 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "56px" }}>
             <h2 style={{ fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
-              <span style={{ ...KT, fontWeight: 700 }}>More Opportunities, </span>
-              <span className="mo-line2" style={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Built Around You</span>
+              <span style={{ ...KT, fontWeight: 700 }}>{lang === "th" ? "มากกว่าแค่" : "More Opportunities, "}</span>
+              <span className="mo-line2" style={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{lang === "th" ? "โอกาสรับงาน" : "Built Around You"}</span>
             </h2>
             {/* phones: "Built Around You" always on its own second line */}
             <style>{`@media (max-width: 640px){ .mo-line2{ display: block; } }`}</style>

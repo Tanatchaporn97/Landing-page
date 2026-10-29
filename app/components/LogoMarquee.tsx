@@ -68,7 +68,7 @@ export default function LogoMarquee({ bgClassName, background, headingStyle, tit
         position: "relative",
         zIndex: 3,
       }}>
-        <span style={{ ...headingStyle, background: "none", WebkitBackgroundClip: "unset", WebkitTextFillColor: "#111827", backgroundClip: "unset", color: "#111827" }}>{title[0]} </span>
+        <span style={{ ...headingStyle, background: "none", WebkitBackgroundClip: "unset", WebkitTextFillColor: "#111827", backgroundClip: "unset", color: "#111827" }}>{title[0]}{/[A-Za-z]$/.test(title[0]) ? " " : ""}</span>
         <span style={{ ...headingStyle }}>{title[1]}</span>
       </h2>
       <div style={{ WebkitMaskImage: EDGE_MASK, maskImage: EDGE_MASK }}>

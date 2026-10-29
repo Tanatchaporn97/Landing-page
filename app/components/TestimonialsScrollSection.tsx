@@ -174,13 +174,13 @@ export default function TestimonialsScrollSection({
             ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800,
             color: "#111827", margin: "0 0 16px", lineHeight: 1.25,
           }}>
-            What Creators{" "}
+            {lang === "th" ? "ประสบการณ์" : "What Creators "}
             <span style={{
               background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
               backgroundClip: "text",
             }}>
-              Say
+              {lang === "th" ? "จากครีเอเตอร์" : "Say"}
             </span>
           </h2>
           <p style={{ ...KT, fontSize: "16px", color: "#374151", lineHeight: 1.65, margin: 0 }}>
@@ -209,7 +209,7 @@ export default function TestimonialsScrollSection({
               ...KT, position: "absolute", left: "50%", transform: "translateX(-50%)",
               fontSize: "13px", fontWeight: 700, color: "#374151",
             }}>
-              Creator Reviews
+              {lang === "th" ? "รีวิวจากครีเอเตอร์" : "Creator Reviews"}
             </span>
           </div>
 

@@ -46,7 +46,7 @@ export default function InfluencerPreFooter({ lang }: { lang: "th" | "en" }) {
 
         <h3 className="ipf-title" style={{ margin: 0, fontSize: "clamp(34px,4vw,58px)", fontWeight: 700, lineHeight: 1.12, color: "#111827", letterSpacing: "-0.01em" }}>
           {th ? (
-            <>อยากเป็น <span style={{ background: GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Influencer</span><br />แต่ไม่รู้จะเริ่มตรงไหน?</>
+            <>อยากเริ่ม<span style={{ background: GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>รับงานรีวิว</span><br />แต่ไม่รู้จะเริ่มยังไง?</>
           ) : (
             <>Want to be an <span style={{ background: GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>influencer</span><br />but not sure where to start?</>
           )}

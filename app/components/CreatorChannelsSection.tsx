@@ -30,11 +30,11 @@ export default function CreatorChannelsSection({ lang }: { lang: "th" | "en" }) 
         </div>
         <h2 className="cc2-title" style={{ ...KT, fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 800, margin: "16px 0 0", lineHeight: 1.25 }}>
           <span style={{ color: "#111827" }}>
-            {lang === "th" ? "ไม่ว่าคุณจะอยู่แพลตฟอร์มไหน " : "No matter which platform you're on, "}
+            {lang === "th" ? "ไม่ว่าแพลตฟอร์มไหน " : "No matter which platform you're on, "}
           </span>
           <span className="cc2-line2" style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            {lang === "th" ? "ก็มีพื้นที่ที่นี่" : "there's a place for you here."}
+            {lang === "th" ? "ก็ร่วมงานกับเราได้" : "there's a place for you here."}
           </span>
         </h2>
       </div>

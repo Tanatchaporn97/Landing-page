@@ -109,8 +109,9 @@ export default function FAQAccordion({
                 </>
               ) : (
                 <>
-                  <span style={{ ...KT, fontWeight: 700 }}>Frequently Asked </span>
-                  <span style={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Questions</span>
+                  {/* the influencer page's Thai heading is in Thai */}
+                  <span style={{ ...KT, fontWeight: 700 }}>{variant === "influencer" && lang === "th" ? "คำถาม" : "Frequently Asked "}</span>
+                  <span style={{ ...KT, fontWeight: 700, background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{variant === "influencer" && lang === "th" ? "ที่พบบ่อย" : "Questions"}</span>
                 </>
               )}
             </h2>
