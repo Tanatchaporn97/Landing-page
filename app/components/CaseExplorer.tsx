@@ -46,6 +46,9 @@ const VISUAL: Record<string, { img: string; fit?: "contain"; bg?: string }> = {
   "lh-bank-lhb-you": { img: "/success-stories-2/lh-bank-logo.jpg", fit: "contain", bg: "#ffffff" },
   "ghbank-s-em": { img: "/success-stories-2/ghbank-logo.jpg", fit: "contain", bg: "#ffffff" },
   "ghbank-pet-lifestyle": { img: "/success-stories-2/ghbank-logo.jpg", fit: "contain", bg: "#ffffff" },
+  "oppo-find-x9-ais": { img: "/success-stories-2/oppo-logo.jpg", fit: "contain", bg: "#ffffff" },
+  "jbl-launch-event": { img: "/success-stories-2/jbl-logo.jpg", fit: "contain", bg: "#fc1908" },
+  "jbl-flip7-charge6": { img: "/success-stories-2/jbl-logo.jpg", fit: "contain", bg: "#fc1908" },
 };
 
 // The section that explains *how* Buddy Review approached the case
@@ -230,6 +233,11 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
         .cx-filter{ flex-shrink: 0; }
         .cx-detail{ animation: cx-in 0.35s ease; }
         @keyframes cx-in{ from{ opacity: 0; transform: translateY(8px); } to{ opacity: 1; transform: none; } }
+        /* desktop: all 11 industries fit on one line (phones swipe the row instead) */
+        @media (min-width: 900px){
+          .cx-filters{ gap: 12px !important; padding: 0 !important; }
+          .cx-filter{ font-size: 14px !important; }
+        }
         @media (max-width: 1100px){
           .cx-grid{ grid-template-columns: minmax(0, 1fr) !important; }
           .cx-grid > *{ min-width: 0; }

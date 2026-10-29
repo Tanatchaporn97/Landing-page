@@ -1,6 +1,6 @@
 // Case-study taxonomy shared by the brand page's "See the Work in Action" explorer and the
 // Success Stories pages: one industry + one content type per case (by slug).
-export const INDUSTRIES = ["Food & Beverage", "Beauty & Skincare", "Healthcare", "Pet Care", "Household", "Home Appliances", "Entertainment & Streaming", "Retail", "Finance & Fintech"];
+export const INDUSTRIES = ["Food & Beverage", "Beauty & Skincare", "Healthcare", "Pet Care", "Household", "Home Appliances", "Entertainment & Streaming", "Retail", "Finance & Fintech", "Technology & Electronics"];
 
 export const CLASSIFY: Record<string, { industry: string; value: string }> = {
   "nissin":          { industry: "Food & Beverage",          value: "Product Launch" },     // new flavour launch
@@ -28,6 +28,9 @@ export const CLASSIFY: Record<string, { industry: string; value: string }> = {
   "lh-bank-lhb-you": { industry: "Finance & Fintech",        value: "Product Review" },    // digital savings account explainers
   "ghbank-s-em":     { industry: "Finance & Fintech",        value: "Niche Community" },   // self-employed home buyers
   "ghbank-pet-lifestyle": { industry: "Finance & Fintech",        value: "Niche Community" },   // pet owners looking for a home
+  "oppo-find-x9-ais": { industry: "Technology & Electronics", value: "Product Launch" },  // new phone launch, camera-led TikTok content
+  "jbl-launch-event": { industry: "Technology & Electronics", value: "Event Activation" },  // launch event, creators onsite
+  "jbl-flip7-charge6": { industry: "Technology & Electronics", value: "Product Review" },  // lifestyle, fashion & music creators
 };
 
 /** A case's industry, falling back to the story's own label for slugs not classified yet. */

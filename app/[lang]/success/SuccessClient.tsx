@@ -311,6 +311,45 @@ const STORIES_TH = [
       { val: "11.6K", label: "Engagement" },
     ],
   },
+  {
+    slug: "jbl-flip7-charge6",
+    brand: "JBL Flip 7 & JBL Charge 6",
+    photo: "/success-stories-2/jbl-logo.jpg", imgFit: "contain" as const, imgBg: "#fc1908", hoverTint: "#fc1908",
+    tagline: `เปลี่ยนลำโพงพกพาให้เป็นไอเทมคู่ไลฟ์สไตล์ ผ่านคอนเทนต์ที่เข้ากับตัวตนของ Creator`,
+    industry: `Technology & Electronics`,
+    stats: [
+      { val: "93,162", label: "Reach" },
+      { val: "20", label: "Contents" },
+      { val: "626", label: "Engagement" },
+      { val: "923K", label: "Followers" },
+    ],
+  },
+  {
+    slug: "jbl-launch-event",
+    brand: "JBL — Product Launch Event",
+    photo: "/success-stories-2/jbl-logo.jpg", imgFit: "contain" as const, imgBg: "#fc1908", hoverTint: "#fc1908",
+    tagline: `ขยายกระแสงานเปิดตัว JBL ผ่านประสบการณ์จริงของ Creator บน TikTok`,
+    industry: `Technology & Electronics`,
+    stats: [
+      { val: "113,956", label: "Reach" },
+      { val: "9", label: "Contents" },
+      { val: "1.5K", label: "Engagement" },
+      { val: "2.52M", label: "Followers" },
+    ],
+  },
+  {
+    slug: "oppo-find-x9-ais",
+    brand: "OPPO Find X9 Series x AIS",
+    photo: "/success-stories-2/oppo-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `ชูจุดเด่นกล้อง Hasselblad ผ่านคอนเทนต์ TikTok เข้าถึงกว่า 1.31 ล้าน Reach`,
+    industry: `Technology & Electronics`,
+    stats: [
+      { val: "1,318,000", label: "Reach" },
+      { val: "2", label: "Contents" },
+      { val: "1.3K", label: "Engagement" },
+      { val: "2.16M", label: "Followers" },
+    ],
+  },
 ];
 
 const STORIES_EN = [
@@ -608,6 +647,45 @@ const STORIES_EN = [
       { val: "1.16M", label: "Reach" },
       { val: "47", label: "Contents" },
       { val: "11.6K", label: "Engagement" },
+    ],
+  },
+  {
+    slug: "jbl-flip7-charge6",
+    brand: "JBL Flip 7 & JBL Charge 6",
+    photo: "/success-stories-2/jbl-logo.jpg", imgFit: "contain" as const, imgBg: "#fc1908", hoverTint: "#fc1908",
+    tagline: `Turning Portable Speakers into Lifestyle Essentials Through Content That Fits Each Creator`,
+    industry: `Technology & Electronics`,
+    stats: [
+      { val: "93,162", label: "Reach" },
+      { val: "20", label: "Contents" },
+      { val: "626", label: "Engagement" },
+      { val: "923K", label: "Followers" },
+    ],
+  },
+  {
+    slug: "jbl-launch-event",
+    brand: "JBL — Product Launch Event",
+    photo: "/success-stories-2/jbl-logo.jpg", imgFit: "contain" as const, imgBg: "#fc1908", hoverTint: "#fc1908",
+    tagline: `Amplifying the JBL Launch Through Creators' Real Experiences on TikTok`,
+    industry: `Technology & Electronics`,
+    stats: [
+      { val: "113,956", label: "Reach" },
+      { val: "9", label: "Contents" },
+      { val: "1.5K", label: "Engagement" },
+      { val: "2.52M", label: "Followers" },
+    ],
+  },
+  {
+    slug: "oppo-find-x9-ais",
+    brand: "OPPO Find X9 Series x AIS",
+    photo: "/success-stories-2/oppo-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Spotlighting the Hasselblad Camera Through TikTok Content, Reaching Over 1.31 Million`,
+    industry: `Technology & Electronics`,
+    stats: [
+      { val: "1,318,000", label: "Reach" },
+      { val: "2", label: "Contents" },
+      { val: "1.3K", label: "Engagement" },
+      { val: "2.16M", label: "Followers" },
     ],
   },
 ];
