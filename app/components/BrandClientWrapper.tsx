@@ -702,10 +702,10 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                 Moving
               </span>
             </h2>
-            <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: 0 }}>
+            <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: 0, textWrap: "balance" }}>
               {lang === "th"
-                ? "ทีม Buddy Review ดูแลแคมเปญตั้งแต่ต้นจนจบ พร้อมให้ลูกค้าเห็นความคืบหน้าและสิ่งที่ต้องตัดสินใจในแต่ละขั้น"
-                : "The Buddy Review team manages your campaign from start to finish, keeping you updated on progress and every decision along the way."}
+                ? <>ตั้งแต่เริ่มวางแผนจนถึงสรุปผล ทุกขั้นตอนมีทีมงานดูแล<span style={{ whiteSpace: "nowrap" }}>อย่างเป็นระบบ</span> เพื่อให้แคมเปญดำเนินไปตามแผนและเป้าหมายที่วางไว้</>
+                : "From planning through to the final report, our team manages every step systematically, so your campaign stays on plan and on target."}
             </p>
           </div>
 

@@ -137,8 +137,8 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
         </h3>
         <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "rgba(255,255,255,0.85)", margin: 0, maxWidth: "380px" }}>
           {lang === "th"
-            ? "เราไม่ได้ดูแค่ตัวเลข แต่สรุปให้ชัดว่าอะไรได้ผล คนสนใจอะไร และรอบต่อไปควรทำอะไรต่อ"
-            : "We don't just look at the numbers — we summarize what worked, what resonated, and what to do next."}
+            ? "เราวิเคราะห์ผลลัพธ์และเสียงตอบรับจากแคมเปญ เพื่อนำไปปรับปรุงและต่อยอดกลยุทธ์ในครั้งถัดไป"
+            : "We analyse campaign results and audience feedback, then use them to refine and build on the strategy for the next campaign."}
         </p>
 
         <div
