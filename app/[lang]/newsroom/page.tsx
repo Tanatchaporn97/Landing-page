@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { getDictionary } from "../../../get-dictionary";
 import { type Locale } from "../../../i18n-config";
 import NewsroomClient from "./NewsroomClient";
+import { SITE_URL } from "@/lib/site";
 
 const META = {
   en: {
@@ -22,19 +23,19 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     title: m.title,
     description: m.description,
     alternates: {
-      canonical: `https://agency.buddyreview.co/${lang}/newsroom`,
-      languages: { en: "https://agency.buddyreview.co/en/newsroom", th: "https://agency.buddyreview.co/th/newsroom" },
+      canonical: `${SITE_URL}/${lang}/newsroom`,
+      languages: { en: `${SITE_URL}/en/newsroom`, th: `${SITE_URL}/th/newsroom` },
     },
     openGraph: {
       title: m.title,
       description: m.description,
-      url: `https://agency.buddyreview.co/${lang}/newsroom`,
+      url: `${SITE_URL}/${lang}/newsroom`,
       siteName: "Buddy Review",
-      images: [{ url: "https://agency.buddyreview.co/og-image.jpg", width: 1200, height: 630 }],
+      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
       locale: lang === "th" ? "th_TH" : "en_US",
       type: "website",
     },
-    twitter: { card: "summary_large_image", title: m.title, description: m.description, images: ["https://agency.buddyreview.co/og-image.jpg"] },
+    twitter: { card: "summary_large_image", title: m.title, description: m.description, images: [`${SITE_URL}/og-image.jpg`] },
   };
 }
 

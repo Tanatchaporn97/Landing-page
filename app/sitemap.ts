@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next';
 import { i18n } from '../i18n-config';
+import { SITE_URL } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://agency.buddyreview.co';
+  const baseUrl = `${SITE_URL}`;
 
   // ใส่ชื่อ Path หน้าย่อยทั้งหมดที่มีในโปรเจกต์ (ไม่ต้องใส่ /th หรือ /en เพราะโค้ดจะวนลูปเพิ่มให้อัตโนมัติ)
   const staticRoutes = [

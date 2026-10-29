@@ -5,6 +5,7 @@ import ContactFormSection from "../../components/ContactFormSection";
 import { getDictionary } from "../../../get-dictionary";
 import { type Locale } from "../../../i18n-config";
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site";
 
 const META = {
   en: {
@@ -24,19 +25,19 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     title: m.title,
     description: m.description,
     alternates: {
-      canonical: `https://agency.buddyreview.co/${lang}/contact`,
-      languages: { en: "https://agency.buddyreview.co/en/contact", th: "https://agency.buddyreview.co/th/contact" },
+      canonical: `${SITE_URL}/${lang}/contact`,
+      languages: { en: `${SITE_URL}/en/contact`, th: `${SITE_URL}/th/contact` },
     },
     openGraph: {
       title: m.title,
       description: m.description,
-      url: `https://agency.buddyreview.co/${lang}/contact`,
+      url: `${SITE_URL}/${lang}/contact`,
       siteName: "Buddy Review",
-      images: [{ url: "https://agency.buddyreview.co/og-image.jpg", width: 1200, height: 630 }],
+      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
       locale: lang === "th" ? "th_TH" : "en_US",
       type: "website",
     },
-    twitter: { card: "summary_large_image", title: m.title, description: m.description, images: ["https://agency.buddyreview.co/og-image.jpg"] },
+    twitter: { card: "summary_large_image", title: m.title, description: m.description, images: [`${SITE_URL}/og-image.jpg`] },
   };
 }
 

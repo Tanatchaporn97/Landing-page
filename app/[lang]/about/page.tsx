@@ -10,6 +10,7 @@ import { TestimonialSlider } from "@/components/ui/testimonial-slider-1";
 import InteractiveImageBentoGallery from "@/components/ui/bento-gallery";
 import { getDictionary } from "../../../get-dictionary";
 import { type Locale } from "../../../i18n-config";
+import { SITE_URL } from "@/lib/site";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -25,14 +26,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     title: m.title,
     description: m.description,
     alternates: {
-      canonical: `https://agency.buddyreview.co/${lang}/about`,
-      languages: { en: "https://agency.buddyreview.co/en/about", th: "https://agency.buddyreview.co/th/about" },
+      canonical: `${SITE_URL}/${lang}/about`,
+      languages: { en: `${SITE_URL}/en/about`, th: `${SITE_URL}/th/about` },
     },
     openGraph: {
       title: m.title, description: m.description,
-      url: `https://agency.buddyreview.co/${lang}/about`,
+      url: `${SITE_URL}/${lang}/about`,
       siteName: "Buddy Review",
-      images: [{ url: "https://agency.buddyreview.co/og-image.jpg", width: 1200, height: 630 }],
+      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
       locale: lang === "th" ? "th_TH" : "en_US", type: "website",
     },
   };

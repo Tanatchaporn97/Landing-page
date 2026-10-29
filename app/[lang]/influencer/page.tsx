@@ -103,19 +103,19 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     title: m.title,
     description: m.description,
     alternates: {
-      canonical: `https://agency.buddyreview.co/${lang}/influencer`,
-      languages: { en: "https://agency.buddyreview.co/en/influencer", th: "https://agency.buddyreview.co/th/influencer" },
+      canonical: `${SITE_URL}/${lang}/influencer`,
+      languages: { en: `${SITE_URL}/en/influencer`, th: `${SITE_URL}/th/influencer` },
     },
     openGraph: {
       title: m.title,
       description: m.description,
-      url: `https://agency.buddyreview.co/${lang}/influencer`,
+      url: `${SITE_URL}/${lang}/influencer`,
       siteName: "Buddy Review",
-      images: [{ url: "https://agency.buddyreview.co/og-image.jpg", width: 1200, height: 630 }],
+      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
       locale: lang === "th" ? "th_TH" : "en_US",
       type: "website",
     },
-    twitter: { card: "summary_large_image", title: m.title, description: m.description, images: ["https://agency.buddyreview.co/og-image.jpg"] },
+    twitter: { card: "summary_large_image", title: m.title, description: m.description, images: [`${SITE_URL}/og-image.jpg`] },
   };
 }
 
@@ -125,6 +125,7 @@ const LogoMarquee = dynamic(() => import("../../components/LogoMarquee"));
 const FAQAccordion = dynamic(() => import("../../components/FAQAccordion"));
 
 import { getDictionary } from "../../../get-dictionary";
+import { SITE_URL } from "@/lib/site";
 
 export default async function InfluencerPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;

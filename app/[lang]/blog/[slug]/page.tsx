@@ -8,6 +8,7 @@ import BlogFooter from "../BlogFooter";
 import ScrollProgressBar from "../../../components/ScrollProgressBar";
 import { getDictionary } from "../../../../get-dictionary";
 import { type Locale } from "../../../../i18n-config";
+import { SITE_URL } from "@/lib/site";
 
 const BLOG_DESCRIPTIONS: Record<string, Record<string, string>> = {
   "facebook-algorithm-2026": {
@@ -82,7 +83,7 @@ export async function generateMetadata(
 
   const title = `${post.title} | Buddy Review`;
   const description = BLOG_DESCRIPTIONS[slug]?.[lang] ?? post.title;
-  const canonical = `https://agency.buddyreview.co/${lang}/blog/${slug}`;
+  const canonical = `${SITE_URL}/${lang}/blog/${slug}`;
 
   return {
     title,
@@ -90,9 +91,9 @@ export async function generateMetadata(
     alternates: {
       canonical,
       languages: {
-        th: `https://agency.buddyreview.co/th/blog/${slug}`,
-        en: `https://agency.buddyreview.co/en/blog/${slug}`,
-        "x-default": `https://agency.buddyreview.co/th/blog/${slug}`,
+        th: `${SITE_URL}/th/blog/${slug}`,
+        en: `${SITE_URL}/en/blog/${slug}`,
+        "x-default": `${SITE_URL}/th/blog/${slug}`,
       },
     },
     openGraph: {
@@ -100,7 +101,7 @@ export async function generateMetadata(
       description,
       url: canonical,
       siteName: "Buddy Review",
-      images: [{ url: "https://agency.buddyreview.co/og-image.jpg", width: 1200, height: 630 }],
+      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
       type: "article",
       locale: lang === "th" ? "th_TH" : "en_US",
     },
@@ -108,7 +109,7 @@ export async function generateMetadata(
       card: "summary_large_image",
       title,
       description,
-      images: ["https://agency.buddyreview.co/og-image.jpg"],
+      images: [`${SITE_URL}/og-image.jpg`],
     },
   };
 }

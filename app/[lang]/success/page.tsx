@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { type Locale } from "../../../i18n-config";
 import SuccessClient from "./SuccessClient";
+import { SITE_URL } from "@/lib/site";
 
 export async function generateMetadata(
   { params }: { params: Promise<{ lang: string }> }
@@ -13,7 +14,7 @@ export async function generateMetadata(
   const description = isTh
     ? "ดูผลลัพธ์จริงจากแคมเปญ Influencer Marketing ที่ขับเคลื่อนด้วยข้อมูล ผ่าน Success Stories ของแบรนด์ที่ร่วมงานกับ Buddy Review"
     : "See real results from data-driven Influencer Marketing campaigns. Explore success stories from brands that partnered with Buddy Review.";
-  const canonical = `https://agency.buddyreview.co/${lang}/success`;
+  const canonical = `${SITE_URL}/${lang}/success`;
 
   return {
     title,
@@ -21,9 +22,9 @@ export async function generateMetadata(
     alternates: {
       canonical,
       languages: {
-        th: "https://agency.buddyreview.co/th/success",
-        en: "https://agency.buddyreview.co/en/success",
-        "x-default": "https://agency.buddyreview.co/th/success",
+        th: `${SITE_URL}/th/success`,
+        en: `${SITE_URL}/en/success`,
+        "x-default": `${SITE_URL}/th/success`,
       },
     },
     openGraph: {
@@ -31,7 +32,7 @@ export async function generateMetadata(
       description,
       url: canonical,
       siteName: "Buddy Review",
-      images: [{ url: "https://agency.buddyreview.co/og-image.jpg", width: 1200, height: 630 }],
+      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
       type: "website",
       locale: isTh ? "th_TH" : "en_US",
     },
@@ -39,7 +40,7 @@ export async function generateMetadata(
       card: "summary_large_image",
       title,
       description,
-      images: ["https://agency.buddyreview.co/og-image.jpg"],
+      images: [`${SITE_URL}/og-image.jpg`],
     },
   };
 }
