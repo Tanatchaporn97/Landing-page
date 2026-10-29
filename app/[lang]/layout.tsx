@@ -4,6 +4,7 @@ import { i18n, type Locale } from "../../i18n-config";
 import CtaPressEffect from "../components/CtaPressEffect";
 import FloatingContactCTA from "../components/FloatingContactCTA";
 import NavHistory from "../components/NavHistory";
+import { SiteJsonLd } from "../components/JsonLd";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -35,6 +36,7 @@ export default async function RootLayout({
   return (
     <html lang={lang} className={`${inter.variable} ${kanit.variable} ${cantataOne.variable} ${playfair.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
+        <SiteJsonLd lang={lang === "en" ? "en" : "th"} />
         <NavHistory />
         {/* Main Kanit headings site-wide (section + hero sizes) use SemiBold 600. The brand page keeps its own
             weights (.brand-page). Pierson headings are untouched — only Kanit text is matched. */}

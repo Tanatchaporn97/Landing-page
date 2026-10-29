@@ -4,6 +4,7 @@ import { getDictionary } from "../../../get-dictionary";
 import { type Locale } from "../../../i18n-config";
 import FaqClient from "./FaqClient";
 import { SITE_URL } from "@/lib/site";
+import { FaqJsonLd } from "../../components/JsonLd";
 
 const META = {
   en: {
@@ -48,22 +49,10 @@ export default async function FaqPage({ params }: { params: Promise<{ lang: stri
     ...(dict?.faqPage?.faqsInfluencer ?? []),
   ];
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: allFaqs.map((faq: { q: string; a: string }) => ({
-      "@type": "Question",
-      name: faq.q,
-      acceptedAnswer: { "@type": "Answer", text: faq.a.replace(/\[([^\]]+)\]\([^)]*\)/g, "$1") },
-    })),
-  };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
+      <FaqJsonLd faqs={allFaqs} />
       <Suspense fallback={<div style={{ minHeight: "100vh" }} />}>
         <FaqClient lang={lang as Locale} dict={dict} />
       </Suspense>

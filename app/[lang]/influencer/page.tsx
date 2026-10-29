@@ -126,6 +126,7 @@ const FAQAccordion = dynamic(() => import("../../components/FAQAccordion"));
 
 import { getDictionary } from "../../../get-dictionary";
 import { SITE_URL } from "@/lib/site";
+import { FaqJsonLd } from "../../components/JsonLd";
 
 export default async function InfluencerPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -133,6 +134,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
 
   return (
     <>
+      <FaqJsonLd faqs={(dict?.faqPage?.faqsInfluencer || []).slice(0, 8)} />
       {/* ── Navbar — outside overflow container so position:fixed works on iOS Safari ── */}
       <Navbar lang={lang as Locale} variant="influencer" />
 

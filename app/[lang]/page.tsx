@@ -3,6 +3,7 @@ import HomeClientWrapper from "../components/HomeClientWrapper";
 import { type Locale } from "../../i18n-config";
 import { getDictionary } from "../../get-dictionary";
 import { SITE_URL } from "@/lib/site";
+import { FaqJsonLd } from "../components/JsonLd";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -45,5 +46,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   const dict = await getDictionary(lang as Locale);
-  return <HomeClientWrapper lang={lang as Locale} dict={dict} />;
+  return (
+    <>
+      <FaqJsonLd faqs={(dict?.brandFaqs || []).slice(0, 8)} />
+      <HomeClientWrapper lang={lang as Locale} dict={dict} />
+    </>
+  );
 }
