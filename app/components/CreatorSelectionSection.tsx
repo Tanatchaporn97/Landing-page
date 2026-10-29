@@ -206,8 +206,8 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
         </h3>
         <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "rgba(255,255,255,0.92)", margin: 0, maxWidth: "340px" }}>
           {lang === "th"
-            ? "เราเลือก Creator จากทั้งข้อมูลและรูปแบบการสื่อสาร เพื่อหาคนที่เหมาะกับแบรนด์ กลุ่มเป้าหมาย และโจทย์ของแคมเปญ"
-            : "We select Creators using both data and communication style, to find the right fit for your brand, audience, and campaign goals."}
+            ? <>เราวิเคราะห์ Creator ผ่าน 6 Signals ทั้งข้อมูลกลุ่ม<span style={{ whiteSpace: "nowrap" }}>ผู้ติดตาม</span> ตัวตน และรูปแบบการสื่อสาร เพื่อ<span style={{ whiteSpace: "nowrap" }}>ตัดสินใจ</span>เลือกคนที่เหมาะกับแบรนด์ กลุ่มเป้าหมาย และโจทย์ของแคมเปญ</>
+            : "We analyse Creators through 6 Signals — audience data, identity, and communication style — to choose the right fit for the brand, the audience, and the campaign brief."}
         </p>
 
         <div className="cs-tags" style={{ display: "grid", gridTemplateColumns: "repeat(3, auto)", gap: "10px", marginTop: "4px" }}>
@@ -227,12 +227,6 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
             </span>
           ))}
         </div>
-
-        <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#ffffff", margin: "4px 0 0", maxWidth: "340px" }}>
-          {lang === "th"
-            ? "เราไม่ได้ดู 6 Signal นี้แยกเป็นข้อ ๆ แต่นำมาประกอบกัน เพื่อให้เข้าใจว่า Creator คนนั้นเป็นใคร สื่อสารกับใคร และเล่าเรื่องแบบไหน ก่อนตัดสินว่าเหมาะกับแบรนด์และโจทย์ของแคมเปญจริงหรือไม่"
-            : "We don't read these 6 signals one by one — we put them together to understand who a Creator is, who they speak to, and how they tell stories, before deciding whether they truly fit the brand and the campaign brief."}
-        </p>
       </div>
 
       {/* Right — KOL Discovery creator profile mockup */}
