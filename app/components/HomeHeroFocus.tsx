@@ -77,7 +77,7 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
           padding: on ? "var(--hf-focus-top) var(--hf-outer) var(--hf-bottom)"
             : isBrand ? "var(--hf-top) var(--hf-inner) var(--hf-bottom) var(--hf-outer)" : "var(--hf-top) var(--hf-outer) var(--hf-bottom) var(--hf-inner)" }}>
 
-          <motion.div layout transition={L} className="hf-text" style={{ minWidth: 0, flex: on ? "0 0 auto" : undefined, display: "flex", flexDirection: "column", alignItems: isBrand ? "flex-start" : "flex-end",
+          <motion.div layout transition={L} className="hf-text" style={{ minWidth: 0, flex: on ? "0 1 auto" : undefined, display: "flex", flexDirection: "column", alignItems: isBrand ? "flex-start" : "flex-end",
             textAlign: isBrand ? "left" : "right", opacity: off ? 0.55 : 1, transition: "opacity .45s ease" }}>
             <motion.div layout="position" transition={L}>
               <Link href={`/${lang}/${side}`} className="split-label" style={{ fontFamily: "'Pierson','Noto Sans Thai',sans-serif", textDecoration: "none",
@@ -119,7 +119,7 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
   };
 
   return (
-    <section ref={heroRef} className="hf-hero" style={{ position: "relative" }}>
+    <section ref={heroRef} className={`hf-hero hf-lang-${lang}`} style={{ position: "relative" }}>
       <div className="hf-row" style={{ display: "flex", alignItems: "stretch" }}>
         {renderPanel("brand")}
         {renderPanel("influencer")}
@@ -164,6 +164,10 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
         .hf-row{ height: var(--hf-h); }
         .hf-tagline{ font-size: clamp(26px, min(2.6vw, 4.6svh), 40px); }
         .hf-tagline > span{ white-space: nowrap; }
+        /* English lines run longer than the Thai ones: let them wrap inside the copy column (which may
+           shrink beside the art) and set the tagline a size smaller, so nothing spills past the panel */
+        .hf-lang-en .hf-tagline > span, .hf-lang-en .hf-reveal > span{ white-space: normal !important; }
+        .hf-lang-en .hf-tagline{ font-size: clamp(24px, min(2.2vw, 4.2svh), 34px); }
         .hf-panel .hf-reveal{ max-width: 380px; }
         @media (max-width: 1180px), (max-height: 820px){ .hf-hero .hf-reveal{ display: none; } }
         /* aurora ribbons: wide, low-contrast and heavily blurred so they stay behind the art and copy */
