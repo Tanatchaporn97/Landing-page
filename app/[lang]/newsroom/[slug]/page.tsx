@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { NEWSROOM_SLUGS } from "@/lib/posts";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
@@ -307,7 +308,7 @@ function PeerPowerContent({ lang }: { lang: Locale }) {
   );
 }
 
-const SLUGS = ["outing-trip-2025", "ais-infinite-smes-2026", "cp-all-influencer-trend-ep8", "peerpower-interview-buddy-review"];
+const SLUGS = NEWSROOM_SLUGS;
 
 export function generateStaticParams() {
   return SLUGS.map((slug) => ({ slug }));

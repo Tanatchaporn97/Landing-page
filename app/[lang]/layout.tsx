@@ -5,6 +5,7 @@ import CtaPressEffect from "../components/CtaPressEffect";
 import FloatingContactCTA from "../components/FloatingContactCTA";
 import NavHistory from "../components/NavHistory";
 import { SiteJsonLd } from "../components/JsonLd";
+import { SITE_URL } from "@/lib/site";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -18,7 +19,8 @@ const kanit = Kanit({
 });
 
 export const metadata: Metadata = {
-  // Title and description are dynamically generated in page.tsx
+  // Title and description are dynamically generated in page.tsx; relative metadata URLs resolve against the site address
+  metadataBase: new URL(SITE_URL),
 };
 
 export async function generateStaticParams() {

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,12 +9,49 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
 import { getDictionary } from "../../../../get-dictionary";
 import { type Locale } from "../../../../i18n-config";
+import { SITE_URL } from "@/lib/site";
 
 const PINK_GRAD = "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)";
 
 export async function generateStaticParams() {
   const dict = await getDictionary("th");
   return dict.successStories.map((s: any) => ({ slug: s.slug }));
+}
+
+export async function generateMetadata(
+  { params }: { params: Promise<{ lang: string; slug: string }> }
+): Promise<Metadata> {
+  const { lang, slug } = await params;
+  const dict = await getDictionary(lang as Locale);
+  const story = (dict?.successStories || []).find((s: any) => s.slug === slug);
+  if (!story) return {};
+
+  const title = `${story.brand} | ${lang === "th" ? "เรื่องราวความสำเร็จ" : "Success Stories"} | Buddy Review`;
+  const description = story.tagline;
+  const canonical = `${SITE_URL}/${lang}/success/${slug}`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical,
+      languages: {
+        th: `${SITE_URL}/th/success/${slug}`,
+        en: `${SITE_URL}/en/success/${slug}`,
+        "x-default": `${SITE_URL}/th/success/${slug}`,
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      siteName: "Buddy Review",
+      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+      type: "article",
+      locale: lang === "th" ? "th_TH" : "en_US",
+    },
+    twitter: { card: "summary_large_image", title, description, images: [`${SITE_URL}/og-image.jpg`] },
+  };
 }
 
 export default async function SuccessStoryPage({ params }: { params: Promise<{ lang: string; slug: string }> }) {

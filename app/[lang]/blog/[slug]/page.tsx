@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { BLOG_SLUGS } from "@/lib/posts";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
@@ -1686,7 +1687,7 @@ function AdaptContentPlatformContent({ lang }: { lang: Locale }) {
   );
 }
 
-const SLUGS = ["facebook-algorithm-2026", "adapt-content-for-each-platform", "how-to-start-influencer-campaign", "how-to-choose-influencer-marketing-agency", "how-to-find-the-right-influencer", "influencer-marketing-budget-by-objective", "how-to-choose-influencer-checklist", "instagram-2026-benchmark", "content-per-platform-fb-tiktok-ig", "social-media-insight-2026", "content-strategy-canvas", "tiktok-algorithm-9-techniques", "influencer-mapping-canvas", "6-copywriting-techniques"];
+const SLUGS = BLOG_SLUGS;
 
 export function generateStaticParams() {
   return SLUGS.map((slug) => ({ slug }));

@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 import { i18n } from '../i18n-config';
 import { SITE_URL } from "@/lib/site";
+import { BLOG_SLUGS, NEWSROOM_SLUGS } from "@/lib/posts";
+import th from "../dictionaries/th.json";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = `${SITE_URL}`;
@@ -8,31 +10,39 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ใส่ชื่อ Path หน้าย่อยทั้งหมดที่มีในโปรเจกต์ (ไม่ต้องใส่ /th หรือ /en เพราะโค้ดจะวนลูปเพิ่มให้อัตโนมัติ)
   const staticRoutes = [
     '', // หน้าแรก
+    '/brand',
+    '/influencer',
+    '/about',
+    '/contact',
+    '/success',
+    '/success-stories',
     '/blog',
     '/newsroom',
-    '/success-stories',
     '/buddy-ranks',
-    '/category',
     '/faq',
-    '/influencer',
-    '/success',
+  ];
+  // หน้ารายละเอียด: บทความ ข่าว และเคสความสำเร็จ
+  const detailRoutes = [
+    ...BLOG_SLUGS.map((s) => `/blog/${s}`),
+    ...NEWSROOM_SLUGS.map((s) => `/newsroom/${s}`),
+    ...th.successStories.map((s: { slug: string }) => `/success/${s.slug}`),
   ];
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
-  staticRoutes.forEach((route) => {
+  [...staticRoutes, ...detailRoutes].forEach((route) => {
     i18n.locales.forEach((locale) => {
       sitemapEntries.push({
         url: `${baseUrl}/${locale}${route}`,
         lastModified: new Date(),
         changeFrequency: route === '' ? 'daily' : 'weekly', // หน้าแรกมักจะอัปเดตบ่อยกว่า
-        priority: route === '' ? 1.0 : 0.8, // ให้ความสำคัญกับหน้าแรกสุด (เต็ม 1.0)
+        priority: route === '' ? 1.0 : staticRoutes.includes(route) ? 0.8 : 0.6, // ให้ความสำคัญกับหน้าแรกสุด (เต็ม 1.0)
+        alternates: {
+          languages: Object.fromEntries(i18n.locales.map((l) => [l, `${baseUrl}/${l}${route}`])),
+        },
       });
     });
   });
-
-  // ถ้าในอนาคตมีหน้ารายละเอียดแบบ Dynamic (เช่น /blog/my-post-1)
-  // สามารถ Fetch ข้อมูลบทความจาก Database มาวนลูป .push() ใส่ใน sitemapEntries ตรงนี้ได้เลยครับ
 
   return sitemapEntries;
 }

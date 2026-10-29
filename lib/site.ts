@@ -1,4 +1,5 @@
-// The site's public address, used for canonical URLs, hreflang alternates, Open Graph images,
-// the sitemap and robots.txt. Until the agency.buddyreview.co domain is connected, the site is
-// served from its Vercel address — switch this one value (or set NEXT_PUBLIC_SITE_URL) when it is.
+// The site's public address — the one source for metadataBase, canonical URLs, hreflang alternates,
+// Open Graph images, JSON-LD, the sitemap and robots.txt. Set NEXT_PUBLIC_SITE_URL (in Vercel →
+// Settings → Environment Variables) to the production domain once it is connected; until then the
+// site is served from its Vercel address.
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://landing-page-bubblely.vercel.app").replace(/\/$/, "");

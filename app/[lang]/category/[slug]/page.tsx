@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { HistoryBackLink } from "../../../components/NavHistory";
 import Image from "next/image";
@@ -6,6 +7,7 @@ import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 import { getDictionary } from "../../../../get-dictionary";
 import { type Locale } from "../../../../i18n-config";
+import { SITE_URL } from "@/lib/site";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const PINK_GRAD = "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)";
@@ -50,6 +52,43 @@ const VALID_SLUGS = ["food-beverage", "health-beauty", "dental-care", "entertain
 
 export function generateStaticParams() {
   return VALID_SLUGS.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata(
+  { params }: { params: Promise<{ lang: string; slug: string }> }
+): Promise<Metadata> {
+  const { lang, slug } = await params;
+  const chip = (lang === "th" ? CHIPS_TH : CHIPS_EN).find((c) => c.slug === slug);
+  if (!chip) return {};
+
+  const title = `${chip.label} | ${lang === "th" ? "เรื่องราวความสำเร็จ" : "Success Stories"} | Buddy Review`;
+  const description = lang === "th"
+    ? "ดูผลลัพธ์จริงจากแคมเปญ Influencer Marketing ที่ขับเคลื่อนด้วยข้อมูล ผ่าน Success Stories ของแบรนด์ที่ร่วมงานกับ Buddy Review"
+    : "See real results from data-driven Influencer Marketing campaigns. Explore success stories from brands that partnered with Buddy Review.";
+  const canonical = `${SITE_URL}/${lang}/category/${slug}`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical,
+      languages: {
+        th: `${SITE_URL}/th/category/${slug}`,
+        en: `${SITE_URL}/en/category/${slug}`,
+        "x-default": `${SITE_URL}/th/category/${slug}`,
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      siteName: "Buddy Review",
+      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+      type: "website",
+      locale: lang === "th" ? "th_TH" : "en_US",
+    },
+    twitter: { card: "summary_large_image", title, description, images: [`${SITE_URL}/og-image.jpg`] },
+  };
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ lang: string; slug: string }> }) {
