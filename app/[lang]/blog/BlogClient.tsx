@@ -2,8 +2,9 @@
 import Link from "next/link";
 import { historyBack } from "../../components/NavHistory";
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useState, useEffect, useRef, Suspense } from "react";
+import { useRouter } from "next/navigation";
+import SearchParamsSync from "../../components/SearchParamsSync";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
@@ -13,7 +14,6 @@ const PINK_GRAD = "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)";
 import { type Locale } from "../../../i18n-config";
 
 export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) {
-  const searchParams = useSearchParams();
   const router = useRouter();
   const catBrand = lang === "th" ? "สำหรับแบรนด์" : "For Brands";
   const catInf = lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Influencers";
@@ -23,14 +23,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
 
   const BLOG_POSTS = (dict?.blogPosts || []).filter((p: any) => p.categories.includes(catBrand) || p.categories.includes(catInf));
 
-  const [activeCat, setActiveCat] = useState(() => {
-    const cat = searchParams.get("cat");
-    return cat && CATS.includes(cat) ? cat : catAll;
-  });
-  useEffect(() => {
-    const cat = searchParams.get("cat");
-    if (cat && CATS.includes(cat)) setActiveCat(cat);
-  }, [searchParams]);
+  const [activeCat, setActiveCat] = useState(catAll);
 
   // Audience filter — separate from the topic chips, combined with them.
   const AUDIENCES = [
@@ -40,8 +33,13 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
   ] as const;
   type AudKey = typeof AUDIENCES[number]["key"];
   const parseAud = (v: string | null): AudKey => (v === "brand" || v === "influencer" ? v : "all");
-  const [activeAud, setActiveAud] = useState<AudKey>(() => parseAud(searchParams.get("aud")));
-  useEffect(() => { setActiveAud(parseAud(searchParams.get("aud"))); }, [searchParams]);
+  const [activeAud, setActiveAud] = useState<AudKey>("all");
+  // ?cat= and ?aud= from the URL (shared/bookmarked filters)
+  const syncParams = (p: URLSearchParams) => {
+    const cat = p.get("cat");
+    if (cat && CATS.includes(cat)) setActiveCat(cat);
+    setActiveAud(parseAud(p.get("aud")));
+  };
 
   const [audOpen, setAudOpen] = useState(false);
   const audRef = useRef<HTMLDivElement>(null);
@@ -58,7 +56,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
     setActiveAud(key);
     setAudOpen(false);
     // Keep the choice in the URL so a filtered list can be shared/bookmarked.
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(window.location.search);
     if (key === "all") params.delete("aud"); else params.set("aud", key);
     const qs = params.toString();
     router.replace(qs ? `?${qs}` : "?", { scroll: false });
@@ -70,6 +68,7 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
 
   return (
     <div className="background" style={{ ...KT }}>
+      <Suspense fallback={null}><SearchParamsSync onChange={syncParams} /></Suspense>
 
       <Navbar lang={lang} variant="home" />
 

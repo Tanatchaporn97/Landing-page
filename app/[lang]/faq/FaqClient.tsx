@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import SearchParamsSync from "../../components/SearchParamsSync";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
@@ -14,9 +14,14 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 import { type Locale } from "../../../i18n-config";
 
 export default function FaqClient({ lang, dict }: { lang: Locale, dict: any }) {
-  const searchParams = useSearchParams();
-  const fromInfluencer = searchParams.get("from") === "influencer";
-  const [activeTab, setActiveTab] = useState(fromInfluencer ? "influencer" : "brand");
+  const [activeTab, setActiveTab] = useState("brand");
+  // ?from=influencer opens the influencer tab and uses the influencer footer
+  const [fromInfluencer, setFromInfluencer] = useState(false);
+  const syncParams = (p: URLSearchParams) => {
+    if (p.get("from") !== "influencer") return;
+    setFromInfluencer(true);
+    setActiveTab("influencer");
+  };
 
   const CATEGORIES = [
     { key: "brand", label: dict?.faqPage?.tabBrand || "สำหรับแบรนด์", faqs: dict?.faqPage?.faqsBrand || [] },
@@ -27,6 +32,7 @@ export default function FaqClient({ lang, dict }: { lang: Locale, dict: any }) {
 
   return (
     <div className="background" style={{ ...KT, overflowX: "hidden" }}>
+      <Suspense fallback={null}><SearchParamsSync onChange={syncParams} /></Suspense>
       <Navbar lang={lang} variant="home" />
 
       {/* Hero */}

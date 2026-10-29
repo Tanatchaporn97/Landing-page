@@ -50,7 +50,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
       <Navbar lang={lang as Locale} variant="home" />
       <div style={{ paddingTop: "80px" }}>
         <Suspense fallback={null}>
-          <ContactFormSection lang={lang as Locale} dict={dict?.contactForm} />
+          <ContactFormSection lang={lang as Locale} dict={dict?.contactForm} headingAs="h1" />
         </Suspense>
       </div>
       <Footer variant="home" lang={lang as Locale} dict={dict} />

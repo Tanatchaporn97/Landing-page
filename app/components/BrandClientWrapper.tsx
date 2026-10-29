@@ -353,7 +353,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           {/* Left: real hero copy, playful stacked layout + underline squiggle + pill CTA.
               Top-aligned with the visual: .bh-copy padding matches the gap above its first card. */}
           <div className="bh-copy" style={{ position: "relative" }}>
-            <h2 className="bh-title th-head font-bold" style={{ ...(lang === "th" ? KT : { ...PIERSON, fontWeight: 700 }), color: "#111827", fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.25, margin: "0 0 24px" }}>
+            <h1 className="bh-title th-head font-bold" style={{ ...(lang === "th" ? KT : { ...PIERSON, fontWeight: 700 }), color: "#111827", fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.25, margin: "0 0 24px" }}>
               {lang === "th" ? (
                 <>
                   <span className="bh-line">วางแผนและดูแล</span>
@@ -372,7 +372,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                   </span>
                 </>
               )}
-            </h2>
+            </h1>
 
             <p className="bh-sub" style={{ ...KT, color: "#111827", fontSize: "clamp(16px, 1.4vw, 18px)", lineHeight: 1.75, margin: "32px 0 32px", textWrap: "pretty" }}>
               {lang === "th" ? (

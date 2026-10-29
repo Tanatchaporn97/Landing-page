@@ -537,6 +537,8 @@ export default function HomeSplitHero({ lang, centerMiddle = false }: { lang: "t
           </span>
           <AnimatedText
             className="p-0"
+            as="div"
+            textClassName="hsh-headline"
             text={<>{t.headline1}<br />{t.headline2}<br />{t.headline3}</>}
             gradientColors={HEADLINE_SHINE}
             gradientAnimationDuration={3}
@@ -556,6 +558,7 @@ export default function HomeSplitHero({ lang, centerMiddle = false }: { lang: "t
           </span>
           <AnimatedText
             className="p-0"
+            as="div"
             text={<>{t.headline1}<br />{t.headline2}<br />{t.headline3}</>}
             gradientColors={HEADLINE_SHINE}
             gradientAnimationDuration={3}
@@ -687,7 +690,7 @@ export default function HomeSplitHero({ lang, centerMiddle = false }: { lang: "t
         @media (min-width: 900px) and (max-width: 1280px) {
           .split-hero-center { width: min(460px, 34vw) !important; }
           .split-hero-center:not([data-middle]) { padding-top: 180px !important; }
-          .split-hero-center h1 { font-size: clamp(18px, 2.1vw, 28px) !important; }
+          .split-hero-center .hsh-headline { font-size: clamp(18px, 2.1vw, 28px) !important; }
           .split-art, .split-panel > div:last-child { padding-left: 8% !important; padding-right: 8% !important; }
           /* The art illustration (and the small badge icons floating on it)
              was still reaching in far enough at this width to collide with

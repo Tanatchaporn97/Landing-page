@@ -150,7 +150,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
           WebkitMaskImage: "linear-gradient(180deg, #000 0%, #000 55%, rgba(0,0,0,0.989) 57.8%, rgba(0,0,0,0.957) 60.6%, rgba(0,0,0,0.908) 63.4%, rgba(0,0,0,0.844) 66.2%, rgba(0,0,0,0.768) 69.1%, rgba(0,0,0,0.684) 71.9%, rgba(0,0,0,0.593) 74.7%, rgba(0,0,0,0.500) 77.5%, rgba(0,0,0,0.407) 80.3%, rgba(0,0,0,0.316) 83.1%, rgba(0,0,0,0.232) 85.9%, rgba(0,0,0,0.156) 88.8%, rgba(0,0,0,0.092) 91.6%, rgba(0,0,0,0.043) 94.4%, rgba(0,0,0,0.011) 97.2%, rgba(0,0,0,0.000) 100.0%)",
           maskImage: "linear-gradient(180deg, #000 0%, #000 55%, rgba(0,0,0,0.989) 57.8%, rgba(0,0,0,0.957) 60.6%, rgba(0,0,0,0.908) 63.4%, rgba(0,0,0,0.844) 66.2%, rgba(0,0,0,0.768) 69.1%, rgba(0,0,0,0.684) 71.9%, rgba(0,0,0,0.593) 74.7%, rgba(0,0,0,0.500) 77.5%, rgba(0,0,0,0.407) 80.3%, rgba(0,0,0,0.316) 83.1%, rgba(0,0,0,0.232) 85.9%, rgba(0,0,0,0.156) 88.8%, rgba(0,0,0,0.092) 91.6%, rgba(0,0,0,0.043) 94.4%, rgba(0,0,0,0.011) 97.2%, rgba(0,0,0,0.000) 100.0%)" }} />
         <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "0 16px" }}>
-          <h2 style={{ margin: "0 0 24px", lineHeight: 1.1 }}>
+          <h1 style={{ margin: "0 0 24px", lineHeight: 1.1 }}>
             {lang === "th" ? (
               <span className="vs-line1" style={{ ...KT, display: "block", fontWeight: 900, fontSize: "clamp(28px,3.3vw,48px)", whiteSpace: "nowrap" }}>
                 <span style={{ color: "#111827" }}>แมทช์งานที่ใช่ </span>
@@ -169,7 +169,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
                 </span>
               </>
             )}
-          </h2>
+          </h1>
           <p style={{ ...KT, fontWeight: 700, fontSize: "16px", color: "rgba(17,24,39,0.75)", maxWidth: "900px", lineHeight: 1.7, margin: "0 0 32px" }}>
             {lang === "th" ? (
               <>จบปัญหาความยุ่งยากในการรีวิวแบบเดิม ๆ<br />เชื่อมต่อกับแบรนด์ชั้นนำและสร้างรายได้จากสิ่งที่คุณรัก</>

@@ -1,6 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useEffect, useState, Suspense } from "react";
+import SearchParamsSync from "./SearchParamsSync";
 import { type Locale } from "../../i18n-config";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -41,11 +41,10 @@ const toBudgetOption = (raw: string | null | undefined) => {
 const REQUIRED_FIELDS = ["name", "email", "phone", "company", "budget", "brief"] as const;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export default function ContactFormSection({ lang = "th", dict, headingOverride, subheadingOverride, headingFontFamily }: { lang?: "th" | "en", dict: any, headingOverride?: string, subheadingOverride?: string, headingFontFamily?: string }) {
-  const searchParams = useSearchParams();
+export default function ContactFormSection({ lang = "th", dict, headingOverride, subheadingOverride, headingFontFamily, headingAs: Heading = "h2" }: { lang?: "th" | "en", dict: any, headingOverride?: string, subheadingOverride?: string, headingFontFamily?: string, /** "h1" where this section is the page itself (/contact) */ headingAs?: "h1" | "h2" }) {
   const [consented, setConsented] = useState(false);
   const [showConsentWarning, setShowConsentWarning] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", company: "", budget: toBudgetOption(searchParams.get("budget")), position: "", brief: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", company: "", budget: "", position: "", brief: "" });
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   // fields marked * — the form won't send until all are filled (and the email looks valid)
   const [errors, setErrors] = useState<Set<string>>(new Set());
@@ -114,13 +113,15 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
 
   return (
     <section id="contact" style={{ background: DARK_BG }} className="py-20 px-6">
+      {/* ?budget= (from a KOL package link) pre-selects the budget */}
+      <Suspense fallback={null}><SearchParamsSync onChange={(p) => { const b = toBudgetOption(p.get("budget")); if (b) setFormData(prev => ({ ...prev, budget: b })); }} /></Suspense>
       <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
 
         {/* ── Top heading row ── */}
         <div className="contact-title-wrap" style={{ display: "flex", alignItems: "flex-start", justifyContent: "center",
           gap: "40px", marginBottom: "56px" }}>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px", textAlign: "center" }}>
-            <h2 className="th-head" style={{ ...KT, ...(headingFontFamily ? { fontFamily: headingFontFamily } : {}), fontSize: "clamp(28px,3.3vw,48px)", fontWeight: headingFontFamily ? 700 : 900,
+            <Heading className="th-head" style={{ ...KT, ...(headingFontFamily ? { fontFamily: headingFontFamily } : {}), fontSize: "clamp(28px,3.3vw,48px)", fontWeight: headingFontFamily ? 700 : 900,
               margin: 0, lineHeight: headingOverride ? 1.2 : "72px",
               display: "inline-block" }}>
               {/* "dark part|gradient part" — like the other section headings; no "|" = all gradient */}
@@ -130,7 +131,7 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
                 const grad = <span style={{ background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{cut < 0 ? text : text.slice(cut + 1)}</span>;
                 return cut < 0 ? grad : <><span style={{ color: "#111827" }}>{text.slice(0, cut)} </span>{grad}</>;
               })()}
-            </h2>
+            </Heading>
             {subheadingOverride && (
               <p style={{ ...KT, fontSize: "16px", color: "#4b5563", lineHeight: 1.7, margin: 0, maxWidth: "560px" }}>
                 {subheadingOverride}

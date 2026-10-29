@@ -3,8 +3,8 @@ import Link from "next/link";
 import { INDUSTRIES, industryOf } from "../../components/caseIndustries";
 import { HistoryBackLink } from "../../components/NavHistory";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState, Suspense } from "react";
+import SearchParamsSync from "../../components/SearchParamsSync";
 import { motion, AnimatePresence } from "motion/react";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -517,7 +517,6 @@ const STORIES_EN = [
 import { type Locale } from "../../../i18n-config";
 
 export default function SuccessClient({ lang }: { lang: Locale }) {
-  const searchParams = useSearchParams();
   const CATS = lang === "th" ? CATS_TH : CATS_EN;
   // Newest-added entries are appended to the end of STORIES_TH/EN, so reverse
   // here to always show the most recently uploaded story first.
@@ -532,17 +531,14 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
     const s = STORIES.find((x) => x.industry === cat);
     return s ? industryOf(s.slug, s.industry) : null;
   };
-  const [activeCat, setActiveCat] = useState(() => catFromParam(searchParams.get("cat")) ?? allLabel);
-
-  useEffect(() => {
-    const cat = catFromParam(searchParams.get("cat"));
-    if (cat) setActiveCat(cat);
-  }, [searchParams]);
+  const [activeCat, setActiveCat] = useState(allLabel);
+  const syncParams = (p: URLSearchParams) => { const cat = catFromParam(p.get("cat")); if (cat) setActiveCat(cat); };
 
   const filtered = activeCat === allLabel ? STORIES : STORIES.filter((s) => industryOf(s.slug, s.industry) === activeCat);
 
   return (
     <div className="background" style={{ ...KT }}>
+      <Suspense fallback={null}><SearchParamsSync onChange={syncParams} /></Suspense>
 
       {/* Back button */}
       <div className="success-back-row sg-back" style={{ padding: "140px 48px 28px" }}>

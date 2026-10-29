@@ -16,6 +16,8 @@ interface AnimatedTextProps extends React.HTMLAttributes<HTMLDivElement> {
   textClassName?: string;
   /** Extra inline styles merged onto the heading (font, size, margins…). */
   textStyle?: React.CSSProperties;
+  /** Tag for the text: "h1" (default) or "div" for a copy of the page heading, so a page keeps one <h1>. */
+  as?: "h1" | "div";
 }
 
 const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
@@ -28,12 +30,14 @@ const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
       className,
       textClassName,
       textStyle,
+      as = "h1",
       ...props
     },
     ref
   ) => {
     const [isHovered, setIsHovered] = React.useState(false);
     const reduceMotion = useReducedMotion();
+    const Text = as === "div" ? motion.div : motion.h1;
 
     const textVariants: Variants = {
       initial: {
@@ -56,7 +60,7 @@ const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
         className={cn("flex justify-center items-center py-8", className)}
         {...props}
       >
-        <motion.h1
+        <Text
           className={cn("text-[2.5rem] sm:text-[3.5rem] md:text-[4rem] lg:text-[5rem] xl:text-[6rem] leading-normal", textClassName)}
           style={{
             background: gradientColors,
@@ -74,7 +78,7 @@ const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
           onHoverEnd={() => hoverEffect && setIsHovered(false)}
         >
           {text}
-        </motion.h1>
+        </Text>
       </div>
     );
   }
