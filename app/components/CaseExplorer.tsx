@@ -42,6 +42,10 @@ const VISUAL: Record<string, { img: string; fit?: "contain"; bg?: string }> = {
   "smart-heart": { img: "/success-stories-2/smart-heart-logo.png", fit: "contain", bg: "#0d3a7e" },
   "teepol": { img: "/success-stories-2/teepol-logo.png", fit: "contain", bg: "#ffffff" },
   "truemoney": { img: "/success-stories-2/truemoney-logo.png", fit: "contain", bg: "#ffffff" },
+  "lh-bank-genie-ai": { img: "/success-stories-2/lh-bank-logo.jpg", fit: "contain", bg: "#ffffff" },
+  "lh-bank-lhb-you": { img: "/success-stories-2/lh-bank-logo.jpg", fit: "contain", bg: "#ffffff" },
+  "ghbank-s-em": { img: "/success-stories-2/ghbank-logo.jpg", fit: "contain", bg: "#ffffff" },
+  "ghbank-pet-lifestyle": { img: "/success-stories-2/ghbank-logo.jpg", fit: "contain", bg: "#ffffff" },
 };
 
 // The section that explains *how* Buddy Review approached the case

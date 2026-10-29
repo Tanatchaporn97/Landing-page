@@ -262,6 +262,55 @@ const STORIES_TH = [
       { val: "3K", label: "Engagements" },
     ],
   },
+  {
+    slug: "ghbank-pet-lifestyle",
+    brand: "ธอส. — ตอบโจทย์ในทุกไลฟ์สไตล์",
+    photo: "/success-stories-2/ghbank-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `ชูสินเชื่อบ้านสำหรับคนรักสัตว์ ผ่านเพจโปรโมชันที่เข้าถึงผู้บริโภควงกว้าง`,
+    industry: `Finance & Fintech`,
+    stats: [
+      { val: "365,722", label: "Reach" },
+      { val: "1.8K", label: "Engagement" },
+      { val: "16.49M", label: "Followers" },
+    ],
+  },
+  {
+    slug: "ghbank-s-em",
+    brand: "ธอส. — สินเชื่อบ้าน S\u2060-\u2060em",
+    photo: "/success-stories-2/ghbank-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `เปิดโอกาสให้คนทำงานอิสระมีบ้าน ผ่านการสื่อสารสินเชื่อที่เข้าใจง่าย`,
+    industry: `Finance & Fintech`,
+    stats: [
+      { val: "879,435", label: "Reach" },
+      { val: "1.9K", label: "Engagement" },
+      { val: "16.49M", label: "Followers" },
+    ],
+  },
+  {
+    slug: "lh-bank-lhb-you",
+    brand: "LH Bank — LHB YOU",
+    photo: "/success-stories-2/lh-bank-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `เปลี่ยนเรื่องการออมเงินให้เป็นเรื่องง่ายและใกล้ตัว`,
+    industry: `Finance & Fintech`,
+    stats: [
+      { val: "400,434", label: "Reach" },
+      { val: "10", label: "Contents" },
+      { val: "1.54M", label: "Followers" },
+      { val: "2.9K", label: "Engagement" },
+    ],
+  },
+  {
+    slug: "lh-bank-genie-ai",
+    brand: "LH Bank",
+    photo: "/success-stories-2/lh-bank-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `สร้างกระแสเปิดตัวพรีเซนเตอร์ใหม่ พร้อมแนะนำเทคโนโลยี AI Banking`,
+    industry: `Finance & Fintech`,
+    stats: [
+      { val: "1.16M", label: "Reach" },
+      { val: "47", label: "Contents" },
+      { val: "11.6K", label: "Engagement" },
+    ],
+  },
 ];
 
 const STORIES_EN = [
@@ -510,6 +559,55 @@ const STORIES_EN = [
       { val: "6", label: "Contents" },
       { val: "370.2K", label: "Followers" },
       { val: "3K", label: "Engagements" },
+    ],
+  },
+  {
+    slug: "ghbank-pet-lifestyle",
+    brand: "GH Bank — For Every Lifestyle",
+    photo: "/success-stories-2/ghbank-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Highlighting a Home Loan for Pet Lovers Through Promotion Pages with Broad Consumer Reach`,
+    industry: `Finance & Fintech`,
+    stats: [
+      { val: "365,722", label: "Reach" },
+      { val: "1.8K", label: "Engagement" },
+      { val: "16.49M", label: "Followers" },
+    ],
+  },
+  {
+    slug: "ghbank-s-em",
+    brand: "GH Bank — S\u2060-\u2060em Home Loan",
+    photo: "/success-stories-2/ghbank-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Opening the Door to Homeownership for the Self-employed Through Clear Loan Communication`,
+    industry: `Finance & Fintech`,
+    stats: [
+      { val: "879,435", label: "Reach" },
+      { val: "1.9K", label: "Engagement" },
+      { val: "16.49M", label: "Followers" },
+    ],
+  },
+  {
+    slug: "lh-bank-lhb-you",
+    brand: "LH Bank — LHB YOU",
+    photo: "/success-stories-2/lh-bank-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Making Saving Money Simple and Relatable`,
+    industry: `Finance & Fintech`,
+    stats: [
+      { val: "400,434", label: "Reach" },
+      { val: "10", label: "Contents" },
+      { val: "1.54M", label: "Followers" },
+      { val: "2.9K", label: "Engagement" },
+    ],
+  },
+  {
+    slug: "lh-bank-genie-ai",
+    brand: "LH Bank",
+    photo: "/success-stories-2/lh-bank-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Building Buzz for a New Presenter Launch While Introducing AI Banking`,
+    industry: `Finance & Fintech`,
+    stats: [
+      { val: "1.16M", label: "Reach" },
+      { val: "47", label: "Contents" },
+      { val: "11.6K", label: "Engagement" },
     ],
   },
 ];

@@ -24,6 +24,10 @@ export const CLASSIFY: Record<string, { industry: string; value: string }> = {
   "viu":             { industry: "Entertainment & Streaming", value: "Niche Community" },   // Isan local audience
   "cp-all":          { industry: "Retail",                   value: "Event Activation" },   // education forum
   "mega-bangna":     { industry: "Retail",                   value: "Event Activation" },   // Halloween event
+  "lh-bank-genie-ai": { industry: "Finance & Fintech",        value: "Event Activation" },  // presenter launch event + GENIE AI
+  "lh-bank-lhb-you": { industry: "Finance & Fintech",        value: "Product Review" },    // digital savings account explainers
+  "ghbank-s-em":     { industry: "Finance & Fintech",        value: "Niche Community" },   // self-employed home buyers
+  "ghbank-pet-lifestyle": { industry: "Finance & Fintech",        value: "Niche Community" },   // pet owners looking for a home
 };
 
 /** A case's industry, falling back to the story's own label for slugs not classified yet. */
