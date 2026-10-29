@@ -77,7 +77,7 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
           padding: on ? "var(--hf-focus-top) var(--hf-outer) var(--hf-bottom)"
             : isBrand ? "var(--hf-top) var(--hf-inner) var(--hf-bottom) var(--hf-outer)" : "var(--hf-top) var(--hf-outer) var(--hf-bottom) var(--hf-inner)" }}>
 
-          <motion.div layout transition={L} className="hf-text" style={{ minWidth: 0, flex: on ? "0 1 auto" : undefined, display: "flex", flexDirection: "column", alignItems: isBrand ? "flex-start" : "flex-end",
+          <motion.div layout transition={L} className="hf-text" style={{ minWidth: 0, flex: on ? "0 0 auto" : undefined, display: "flex", flexDirection: "column", alignItems: isBrand ? "flex-start" : "flex-end",
             textAlign: isBrand ? "left" : "right", opacity: off ? 0.55 : 1, transition: "opacity .45s ease" }}>
             <motion.div layout="position" transition={L}>
               <Link href={`/${lang}/${side}`} className="split-label" style={{ fontFamily: "'Pierson','Noto Sans Thai',sans-serif", textDecoration: "none",
@@ -107,8 +107,8 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
               </Link>
             </motion.div>
           </motion.div>
-          <motion.div layout transition={L} className="hf-art" style={{ minWidth: 0, flex: on ? "0 0 auto" : undefined, display: "flex", justifyContent: isBrand ? "flex-end" : "flex-start", opacity: off ? 0.55 : 1, transition: "opacity .45s ease" }}>
-            <motion.div layout transition={L} style={{ width: on ? "var(--hf-art-on)" : off ? "var(--hf-art-off)" : "var(--hf-art-rest)" }}>
+          <motion.div layout transition={L} className="hf-art" style={{ minWidth: 0, flex: on ? "0 1 auto" : undefined, display: "flex", justifyContent: isBrand ? "flex-end" : "flex-start", opacity: off ? 0.55 : 1, transition: "opacity .45s ease" }}>
+            <motion.div layout transition={L} style={{ width: on ? "var(--hf-art-on)" : off ? "var(--hf-art-off)" : "var(--hf-art-rest)", maxWidth: "100%" }}>
               {isBrand ? <BrandMockArt lang={lang} /> : <InfluencerMockArt lang={lang} glass />}
             </motion.div>
           </motion.div>
@@ -168,8 +168,10 @@ export default function HomeHeroFocus({ lang }: { lang: "th" | "en" }) {
            shrink beside the art) and set the tagline a size smaller, so nothing spills past the panel */
         .hf-lang-en .hf-tagline > span, .hf-lang-en .hf-reveal > span{ white-space: normal !important; }
         .hf-lang-en .hf-tagline{ font-size: clamp(24px, min(2.2vw, 4.2svh), 34px); }
+        /* Thai lines never wrap, so the Thai copy keeps its width and the mock-up shrinks beside it; English copy wraps instead */
+        .hf-lang-en .hf-text{ flex-shrink: 1 !important; } .hf-lang-en .hf-art{ flex-shrink: 0 !important; }
         .hf-panel .hf-reveal{ max-width: 380px; }
-        @media (max-width: 1180px), (max-height: 820px){ .hf-hero .hf-reveal{ display: none; } }
+        @media (max-width: 1100px), (max-height: 640px){ .hf-hero .hf-reveal{ display: none; } }
         /* aurora ribbons: wide, low-contrast and heavily blurred so they stay behind the art and copy */
         .hf-aurora{ position: absolute; width: 140%; height: 60%; left: -20%; top: 24%; pointer-events: none; will-change: translate;
           -webkit-mask-image: radial-gradient(closest-side, #000 0%, rgba(0,0,0,.55) 45%, transparent 100%); mask-image: radial-gradient(closest-side, #000 0%, rgba(0,0,0,.55) 45%, transparent 100%);
