@@ -125,7 +125,7 @@ export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
         {/* Headline */}
         <h2 style={{
           ...KT, textAlign: "center", fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700,
-          color: "#111827", margin: "0 0 16px", lineHeight: 1.2,
+          color: "#111827", margin: "30px 0 16px", lineHeight: 1.2,
         }}>
           {lang === "th" ? "คอนเทนต์สายไหน " : "Grow as a "}
           <span style={{
