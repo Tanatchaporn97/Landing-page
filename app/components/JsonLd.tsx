@@ -1,4 +1,6 @@
 import { SITE_URL } from "@/lib/site";
+import thDict from "@/dictionaries/th.json";
+import enDict from "@/dictionaries/en.json";
 
 // Structured data (schema.org JSON-LD) for search engines.
 // SiteJsonLd: the business (ProfessionalService) + the WebSite, on every page.
@@ -27,9 +29,7 @@ export function SiteJsonLd({ lang }: { lang: Lang }) {
     "@id": `${SITE_URL}/#organization`,
     name: "Buddy Review",
     legalName: th ? "บริษัท บับเบิลลี จำกัด" : "Bubblely Co., Ltd.",
-    description: th
-      ? "เปลี่ยนงบการตลาดให้เป็นยอดขายด้วย Influencer Marketing ที่ขับเคลื่อนด้วยข้อมูล Buddy Review คัดครีเอเตอร์ที่ใช่ พร้อมรายงานผลทุกแคมเปญ"
-      : "Turn your marketing budget into sales with data-driven influencer marketing. Buddy Review selects the right creators and reports results on every campaign.",
+    description: (th ? thDict : enDict).seo.description,
     url: `${SITE_URL}/${lang}`,
     logo: `${SITE_URL}/buddy-review-purple-logo.png`,
     image: `${SITE_URL}/og-image.jpg`,
