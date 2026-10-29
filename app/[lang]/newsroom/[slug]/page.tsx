@@ -13,16 +13,16 @@ import { SITE_URL } from "@/lib/site";
 
 const NEWS_DESCRIPTIONS: Record<string, Record<string, string>> = {
   "outing-trip-2025": {
-    th: "Buddy Review พาทีมไปเอาท์ติ้ง Outing Trip 2025 แบ่งปันเสียงหัวเราะ ความสุข และการทำงานเป็นทีมที่ลงตัว",
-    en: "Buddy Review's Outing Trip 2025 — laughs, joys, and perfect teamwork as we connect and recharge together.",
+    th: "Buddy Review จัดกิจกรรม Outing Trip 2025 เพื่อเปิดโอกาสให้พนักงานได้ใช้เวลาร่วมกันนอกเหนือจากการทำงานประจำวัน เติมพลังจากการทำงาน และสร้างความสัมพันธ์ที่ดีระหว่างเพื่อนร่วมทีมในบรรยากาศที่ผ่อนคลายและเป็นกันเอง",
+    en: "Buddy Review held its Outing Trip 2025 to give employees time together outside their daily work — to recharge and build good relationships between teammates in a relaxed, friendly atmosphere.",
   },
   "ais-infinite-smes-2026": {
     th: "Buddy Review เข้าร่วมโครงการ Transformative Infinite SMEs 2026 โดย AIS Infinite SMEs แลกเปลี่ยนมุมมอง Technology, AI และการ Scale Up ธุรกิจ",
     en: "Buddy Review joined the Transformative Infinite SMEs 2026 program by AIS Infinite SMEs, exchanging perspectives on Technology, AI, and scaling up a business.",
   },
   "cp-all-influencer-trend-ep8": {
-    th: "Buddy Review ร่วมเป็น Speaker แชร์ประสบการณ์และอินไซต์ให้ครีเอเตอร์ในงาน CPALL Influencer Trend EP.8",
-    en: "Buddy Review joined CP ALL as a speaker, sharing experience and insights with creators at Influencer Trend EP.8.",
+    th: "Buddy Review ร่วมดูแลการจัดงาน CP ALL Influencer Trend EP.8 งานที่เปิดโอกาสให้เหล่าครีเอเตอร์ได้พบปะ แลกเปลี่ยนประสบการณ์ และเรียนรู้มุมมองใหม่ ๆ เกี่ยวกับการสร้างสรรค์คอนเทนต์และการเติบโตในสาย Influencer Marketing",
+    en: "Buddy Review helped run CP ALL Influencer Trend EP.8 — an event that gives creators the chance to meet, exchange experiences and learn new perspectives on content creation and growing in influencer marketing.",
   },
   "peerpower-interview-buddy-review": {
     th: "PeerPower ชวน 3 ผู้ก่อตั้ง Buddy Review พูดคุยถึงจุดเริ่มต้นของธุรกิจ แนวคิดเบื้องหลังการสร้างแพลตฟอร์ม Influencer Marketing และเส้นทางการเติบโตสู่เอเจนซี่ที่ทำงานร่วมกับแบรนด์ชั้นนำ",
@@ -126,9 +126,10 @@ function OutingTripContent({ lang }: { lang: Locale }) {
   if (lang === "en") {
     return (
       <>
-        <P>We share laughs, joys, and perfect teamwork.</P>
-        <P>It&apos;s not just an outing — it&apos;s the moment we connect, recharge, and come back stronger together.</P>
-        <P>Grateful for every smile and every memory we created.</P>
+        <P>Buddy Review held its Outing Trip 2025 to give employees time together outside their daily work — to recharge and build good relationships between teammates in a relaxed, friendly atmosphere.</P>
+        <P>The trip was full of smiles, laughter and great moments together — chatting, swapping stories and getting to know colleagues from a different side than in everyday work.</P>
+        <P>For Buddy Review, teamwork doesn&apos;t only happen during working hours; it also comes from relationships, understanding and supporting one another. The outing is another important chance to bring members of the organisation closer and working together.</P>
+        <P>Buddy Review is committed to creating a workplace where everyone can grow together, and we hope the good memories from Outing Trip 2025 give the team extra energy to come back and work together at full strength, ready for the company&apos;s next goals.</P>
         <Divider />
         <OutingGallery />
       </>
@@ -136,9 +137,10 @@ function OutingTripContent({ lang }: { lang: Locale }) {
   }
   return (
     <>
-      <P>เราแบ่งปันเสียงหัวเราะ ความสุข และการทำงานเป็นทีมที่ลงตัว</P>
-      <P>นี่ไม่ใช่แค่ทริปเอาท์ติ้ง แต่คือช่วงเวลาที่เราได้เชื่อมสัมพันธ์ ชาร์จพลัง และกลับมาแข็งแกร่งไปด้วยกัน</P>
-      <P>ขอบคุณทุกรอยยิ้มและทุกความทรงจำที่เราสร้างขึ้นด้วยกัน</P>
+      <P>Buddy Review จัดกิจกรรม Outing Trip 2025 เพื่อเปิดโอกาสให้พนักงานได้ใช้เวลาร่วมกันนอกเหนือจากการทำงานประจำวัน เติมพลังจากการทำงาน และสร้างความสัมพันธ์ที่ดีระหว่างเพื่อนร่วมทีมในบรรยากาศที่ผ่อนคลายและเป็นกันเอง</P>
+      <P>ตลอดทริปเต็มไปด้วยรอยยิ้ม เสียงหัวเราะ และช่วงเวลาดี ๆ ที่ทุกคนได้ใช้เวลาร่วมกัน ทั้งการพูดคุย แลกเปลี่ยนเรื่องราว และทำความรู้จักเพื่อนร่วมงานในมุมที่แตกต่างจากบรรยากาศการทำงานตามปกติ</P>
+      <P>สำหรับ Buddy Review การทำงานเป็นทีมไม่ได้เกิดขึ้นเฉพาะในเวลางานเท่านั้น แต่ยังรวมถึงความสัมพันธ์ ความเข้าใจ และการสนับสนุนซึ่งกันและกัน กิจกรรม Outing จึงเป็นอีกหนึ่งโอกาสสำคัญในการเสริมสร้างความใกล้ชิดและความร่วมมือระหว่างสมาชิกในองค์กร</P>
+      <P>Buddy Review ให้ความสำคัญกับการสร้างสภาพแวดล้อมการทำงานที่ทุกคนสามารถเติบโตไปด้วยกัน และหวังว่าความทรงจำดี ๆ จาก Outing Trip 2025 จะเป็นอีกหนึ่งพลังที่ช่วยให้ทีมพร้อมกลับมาทำงานร่วมกันอย่างเต็มที่ พร้อมเดินหน้าสู่เป้าหมายต่อไปของบริษัท</P>
       <Divider />
       <OutingGallery />
     </>
@@ -211,8 +213,10 @@ function CPAllEventContent({ lang }: { lang: Locale }) {
   if (lang === "en") {
     return (
       <>
-        <P>Buddy Review would like to thank CP ALL for inviting us to join as a Speaker, sharing our experience and insights with fellow creators at #CPALLInfluencerTrendEP8.</P>
-        <P>We&apos;d also like to thank every creator who stopped by our booth to say hi and exchange ideas with us. We hope everyone walked away with great tips and inspiration to bring back into their own content.</P>
+        <P>Buddy Review helped run CP ALL Influencer Trend EP.8 — an event that gives creators the chance to meet, exchange experiences and learn new perspectives on content creation and growing in influencer marketing.</P>
+        <P>At the event, the Buddy Review team was honoured to be invited by CP ALL to speak, sharing our experience of working in influencer marketing along with useful insights and ideas that creators can apply to develop their own content.</P>
+        <P>Buddy Review also opened its booth as a space to meet and talk with creators — exchanging ideas, hearing their experiences and building relationships with creators interested in working with brands through the Buddy Review platform.</P>
+        <P>Taking part reflects Buddy Review&apos;s commitment to supporting the creator community so we can grow together, and to opening new opportunities for anyone starting out as an influencer, under the belief that &quot;anyone can be an influencer.&quot;</P>
         <Divider />
         <Gallery />
       </>
@@ -220,8 +224,10 @@ function CPAllEventContent({ lang }: { lang: Locale }) {
   }
   return (
     <>
-      <P>Buddy Review ขอขอบคุณทาง CP ALL ที่ชวนพวกเรามาร่วมเป็น Speaker แชร์ประสบการณ์และอินไซต์ให้กับเพื่อนๆ ครีเอเตอร์ในงาน #CPALLInfluencerTrendEP8</P>
-      <P>รวมถึงขอบคุณครีเอเตอร์ทุกคนที่แวะมาทักทาย แลกเปลี่ยนไอเดียกันที่บูธของเรา หวังว่าทุกคนจะได้ทริคและแรงบันดาลใจดีๆ กลับไปต่อยอดการทำคอนเทนต์กันนะครับ</P>
+      <P>Buddy Review ร่วมดูแลการจัดงาน CP ALL Influencer Trend EP.8 งานที่เปิดโอกาสให้เหล่าครีเอเตอร์ได้พบปะ แลกเปลี่ยนประสบการณ์ และเรียนรู้มุมมองใหม่ ๆ เกี่ยวกับการสร้างสรรค์คอนเทนต์และการเติบโตในสาย Influencer Marketing</P>
+      <P>ภายในงาน ทีม Buddy Review ได้รับเกียรติจาก CP ALL ให้ร่วมเป็น Speaker ถ่ายทอดประสบการณ์การทำงานในวงการ Influencer Marketing พร้อมแบ่งปันอินไซต์และแนวคิดที่เป็นประโยชน์ เพื่อให้ครีเอเตอร์สามารถนำไปปรับใช้และต่อยอดการพัฒนาคอนเทนต์ของตัวเองได้</P>
+      <P>นอกจากนี้ Buddy Review ยังได้เปิดพื้นที่พบปะพูดคุยกับครีเอเตอร์ที่บูธของบริษัท แลกเปลี่ยนไอเดีย รับฟังประสบการณ์ และสร้างความสัมพันธ์กับครีเอเตอร์ที่สนใจร่วมงานกับแบรนด์ผ่านแพลตฟอร์ม Buddy Review</P>
+      <P>การมีส่วนร่วมในครั้งนี้สะท้อนถึงความตั้งใจของ Buddy Review ในการสนับสนุนคอมมูนิตี้ครีเอเตอร์ให้เติบโตไปด้วยกัน พร้อมเปิดโอกาสให้ผู้ที่สนใจเริ่มต้นเส้นทาง Influencer ได้เข้าถึงโอกาสใหม่ ๆ ภายใต้แนวคิดที่ว่า &quot;ใครก็เป็นอินฟลูเอนเซอร์ได้&quot;</P>
       <Divider />
       <Gallery />
     </>
