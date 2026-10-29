@@ -156,7 +156,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
         {story.stats && story.stats.length > 0 && (
           <>
             <h2 style={{ ...KT, color: "#111827", fontSize: "clamp(24px,2.5vw,36px)", fontWeight: 800, margin: "0 0 32px", textAlign: "center" }}>
-              {lang === "th" ? "ผลลัพธ์" : "Results"}
+              Results
             </h2>
             <div className="success-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px", marginBottom: story.takeaway ? "56px" : 0 }}>
               {story.stats.map((s) => (
@@ -183,11 +183,11 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
           </>
         )}
 
-        {/* Strategic Takeaway — closing insight for richer case studies */}
+        {/* Key Takeaway — closing insight for richer case studies */}
         {story.takeaway && (
           <div style={{ marginTop: "56px" }}>
             <h2 style={{ ...KT, color: "#111827", fontSize: "clamp(22px,2.2vw,32px)", fontWeight: 800, margin: "0 0 20px", textAlign: "center" }}>
-              {lang === "th" ? "บทสรุปเชิงกลยุทธ์" : "Strategic Takeaway"}
+              Key Takeaway
             </h2>
             {story.takeaway.split("\n").map((line, i) => (
               <p key={i} style={{ ...KT, color: "#111827", fontSize: "clamp(15px,1.2vw,17px)", lineHeight: 1.85, margin: i === 0 ? 0 : "16px 0 0" }}>
