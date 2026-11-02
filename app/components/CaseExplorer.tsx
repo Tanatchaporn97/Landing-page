@@ -27,7 +27,7 @@ const VISUAL: Record<string, { img: string; fit?: "contain"; bg?: string }> = {
   "viu": { img: "/success-stories-2/Success stories-11.jpg" },
   "guss-damn-good": { img: "/success-stories-2/Success stories-13.jpg" },
   "ahc": { img: "/success-stories-2/Success stories-12.jpg" },
-  "optimum-hi-pro": { img: "/success-stories-2/optimum-hi-pro-logo.jpg", fit: "contain", bg: "#05176e" },
+  "optimum-hi-pro": { img: "/success-stories-2/optimum-hi-pro-logo-v2.jpg", fit: "contain", bg: "#070e5e" },
   "auntie-annes": { img: "/success-stories-2/auntie-annes-logo.jpg", fit: "contain", bg: "#ffffff" },
   "siangpure": { img: "/success-stories-2/siangpure-logo.jpg", fit: "contain", bg: "#ffffff" },
   "bobbi-dog": { img: "/success-stories-2/bobbi-dog-logo.png", fit: "contain", bg: "#452b1c" },
