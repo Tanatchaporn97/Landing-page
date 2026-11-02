@@ -389,6 +389,43 @@ const STORIES_TH = [
       { val: "109.9K", label: "Engagement" },
     ],
   },
+  {
+    slug: "lpn-place-168-pinklao",
+    brand: "LPN — Place 168 Pinklao & Lumpini Ville Charan–Fai Chai",
+    photo: "/success-stories-2/lpn-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `ชูทำเลและการใช้ชีวิตรอบศิริราช ผ่าน Creator หลายสไตล์`,
+    industry: `Real Estate`,
+    stats: [
+      { val: "646,129", label: "Reach" },
+      { val: "10", label: "Contents" },
+      { val: "3.4K", label: "Engagement" },
+      { val: "340.5K", label: "Followers" },
+    ],
+  },
+  {
+    slug: "lpn-city-run",
+    brand: "LPN — City Run 4 ย่านรอบกรุงเทพ",
+    photo: "/success-stories-2/lpn-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `ใช้กิจกรรมวิ่งเชื่อมผู้คน สื่อสารความน่าอยู่ผ่าน Community`,
+    industry: `Real Estate`,
+    stats: [
+      { val: "129,871", label: "Reach" },
+      { val: "300", label: "Engagement" },
+      { val: "132.5K", label: "Followers" },
+    ],
+  },
+  {
+    slug: "scb-lets-debit-card",
+    brand: "SCB — LET’S Debit Card",
+    photo: "/success-stories-2/scb-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `จ่ายเหมือนเดิม ได้พอยท์เพิ่ม สื่อสารความคุ้มค่าผ่านทุกไลฟ์สไตล์`,
+    industry: `Finance & Fintech`,
+    stats: [
+      { val: "7.86M", label: "Reach" },
+      { val: "29", label: "Contents" },
+      { val: "93K", label: "Engagement" },
+    ],
+  },
 ];
 
 const STORIES_EN = [
@@ -766,6 +803,43 @@ const STORIES_EN = [
       { val: "109.9K", label: "Engagement" },
     ],
   },
+  {
+    slug: "lpn-place-168-pinklao",
+    brand: "LPN — Place 168 Pinklao & Lumpini Ville Charan–Fai Chai",
+    photo: "/success-stories-2/lpn-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Highlighting Location and Life Around Siriraj Through Creators of Many Styles`,
+    industry: `Real Estate`,
+    stats: [
+      { val: "646,129", label: "Reach" },
+      { val: "10", label: "Contents" },
+      { val: "3.4K", label: "Engagement" },
+      { val: "340.5K", label: "Followers" },
+    ],
+  },
+  {
+    slug: "lpn-city-run",
+    brand: "LPN — City Run Across 4 Bangkok Neighbourhoods",
+    photo: "/success-stories-2/lpn-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Bringing People Together Through Running, Communicating Livability Through Community`,
+    industry: `Real Estate`,
+    stats: [
+      { val: "129,871", label: "Reach" },
+      { val: "300", label: "Engagement" },
+      { val: "132.5K", label: "Followers" },
+    ],
+  },
+  {
+    slug: "scb-lets-debit-card",
+    brand: "SCB — LET’S Debit Card",
+    photo: "/success-stories-2/scb-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Pay as Usual, Earn More Points: Communicating Value Across Every Lifestyle`,
+    industry: `Finance & Fintech`,
+    stats: [
+      { val: "7.86M", label: "Reach" },
+      { val: "29", label: "Contents" },
+      { val: "93K", label: "Engagement" },
+    ],
+  },
 ];
 
 import { type Locale } from "../../../i18n-config";
@@ -861,7 +935,8 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
 
                     {/* Bottom info */}
                     <div className="cs-card-title" style={{ position: "absolute", bottom: "24px", left: "24px", right: "24px", zIndex: 2 }}>
-                      <h3 style={{ ...KT, fontSize: "29px", fontWeight: 600, margin: "0 0 6px", lineHeight: 1.2 }}>{story.brand}</h3>
+                      {/* long names (e.g. two projects in one case) step down a size so they stay within two lines */}
+                      <h3 style={{ ...KT, fontSize: story.brand.length > 44 ? "24px" : "29px", fontWeight: 600, margin: "0 0 6px", lineHeight: 1.2 }}>{story.brand}</h3>
                       <p className="cs-card-tagline" style={{ ...KT, fontSize: "16px", fontWeight: 400, lineHeight: 1.65, margin: 0, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{story.tagline}</p>
                     </div>
                   </div>

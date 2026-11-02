@@ -38,6 +38,9 @@ const VISUAL: Record<string, { img: string; fit?: "contain"; bg?: string }> = {
   "mitsubishi-heavy-duty": { img: "/success-stories-2/mitsubishi-heavy-duty-logo.jpg", fit: "contain", bg: "#ffffff" },
   "magic-move-series": { img: "/success-stories-2/moonlight-glow-logo.jpg", fit: "contain", bg: "#ffffff" },
   "moonlight-glow-focus-yanin": { img: "/success-stories-2/moonlight-glow-logo.jpg", fit: "contain", bg: "#ffffff" },
+  "scb-lets-debit-card": { img: "/success-stories-2/scb-logo.jpg", fit: "contain", bg: "#ffffff" },
+  "lpn-city-run": { img: "/success-stories-2/lpn-logo.jpg", fit: "contain", bg: "#ffffff" },
+  "lpn-place-168-pinklao": { img: "/success-stories-2/lpn-logo.jpg", fit: "contain", bg: "#ffffff" },
   "fineline": { img: "/success-stories-2/fineline-logo.png", fit: "contain", bg: "#ffffff" },
   "mega-bangna": { img: "/success-stories-2/mega-bangna-logo.png", fit: "contain", bg: "#ffffff" },
   "mom-choice": { img: "/success-stories-2/mom-choice-logo.png", fit: "contain", bg: "#ffffff" },
@@ -236,10 +239,10 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
         .cx-filter{ flex-shrink: 0; }
         .cx-detail{ animation: cx-in 0.35s ease; }
         @keyframes cx-in{ from{ opacity: 0; transform: translateY(8px); } to{ opacity: 1; transform: none; } }
-        /* desktop: all 11 industries fit on one line (phones swipe the row instead) */
+        /* desktop: every industry fits on one line (phones swipe the row instead) */
         @media (min-width: 900px){
-          .cx-filters{ gap: 12px !important; padding: 0 !important; }
-          .cx-filter{ font-size: 14px !important; }
+          .cx-filters{ gap: 10px !important; padding: 0 !important; }
+          .cx-filter{ font-size: 13.5px !important; }
         }
         @media (max-width: 1100px){
           .cx-grid{ grid-template-columns: minmax(0, 1fr) !important; }

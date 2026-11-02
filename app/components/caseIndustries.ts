@@ -1,6 +1,6 @@
 // Case-study taxonomy shared by the brand page's "See the Work in Action" explorer and the
 // Success Stories pages: one industry + one content type per case (by slug).
-export const INDUSTRIES = ["Food & Beverage", "Beauty & Skincare", "Healthcare", "Pet Care", "Household", "Home Appliances", "Media & Entertainment", "Retail", "Finance & Fintech", "Technology & Electronics"];
+export const INDUSTRIES = ["Food & Beverage", "Beauty & Skincare", "Healthcare", "Pet Care", "Household", "Home Appliances", "Media & Entertainment", "Retail", "Finance & Fintech", "Technology & Electronics", "Real Estate"];
 
 export const CLASSIFY: Record<string, { industry: string; value: string }> = {
   "nissin":          { industry: "Food & Beverage",          value: "Product Launch" },     // new flavour launch
@@ -25,6 +25,9 @@ export const CLASSIFY: Record<string, { industry: string; value: string }> = {
   "viu":             { industry: "Media & Entertainment",     value: "Niche Community" },   // Isan local audience
   "magic-move-series": { industry: "Media & Entertainment", value: "Niche Community" },  // Y-series fandom, launch through broadcast
   "moonlight-glow-focus-yanin": { industry: "Media & Entertainment", value: "Product Launch" },  // new single, TikTok dance challenge
+  "scb-lets-debit-card": { industry: "Finance & Fintech", value: "Product Review" },  // debit card value across lifestyles, multi-tier creators
+  "lpn-city-run": { industry: "Real Estate", value: "Event Activation" },  // running event, community
+  "lpn-place-168-pinklao": { industry: "Real Estate", value: "Product Review" },  // condo location & lifestyle around Siriraj
   "cp-all":          { industry: "Retail",                   value: "Event Activation" },   // education forum
   "mega-bangna":     { industry: "Retail",                   value: "Event Activation" },   // Halloween event
   "lh-bank-genie-ai": { industry: "Finance & Fintech",        value: "Event Activation" },  // presenter launch event + GENIE AI
