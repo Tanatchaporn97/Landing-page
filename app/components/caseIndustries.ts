@@ -23,6 +23,8 @@ export const CLASSIFY: Record<string, { industry: string; value: string }> = {
   "daikin":          { industry: "Home Appliances",          value: "Product Review" },     // explaining air-con tech
   "mitsubishi-heavy-duty": { industry: "Home Appliances", value: "Product Review" },  // entertainment + tech-reviewer content
   "viu":             { industry: "Media & Entertainment",     value: "Niche Community" },   // Isan local audience
+  "magic-move-series": { industry: "Media & Entertainment", value: "Niche Community" },  // Y-series fandom, launch through broadcast
+  "moonlight-glow-focus-yanin": { industry: "Media & Entertainment", value: "Product Launch" },  // new single, TikTok dance challenge
   "cp-all":          { industry: "Retail",                   value: "Event Activation" },   // education forum
   "mega-bangna":     { industry: "Retail",                   value: "Event Activation" },   // Halloween event
   "lh-bank-genie-ai": { industry: "Finance & Fintech",        value: "Event Activation" },  // presenter launch event + GENIE AI

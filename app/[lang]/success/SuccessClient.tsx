@@ -364,6 +364,31 @@ const STORIES_TH = [
       { val: "9.02M", label: "Followers" },
     ],
   },
+  {
+    slug: "moonlight-glow-focus-yanin",
+    brand: "Moonlight Glow — New Single (FOCUS YANIN)",
+    photo: "/success-stories-2/moonlight-glow-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `สร้างกระแสเพลงใหม่ผ่าน Dance Challenge บน TikTok เข้าถึงกว่า 1.29 ล้าน Reach`,
+    industry: `Media & Entertainment`,
+    stats: [
+      { val: "1,296,971", label: "Reach" },
+      { val: "31", label: "Contents" },
+      { val: "19.6K", label: "Engagement" },
+      { val: "8.52M", label: "Followers" },
+    ],
+  },
+  {
+    slug: "magic-move-series",
+    brand: "Magic Move — ทำ\u2060น\u2060า\u2060ย\u2060ท\u2060า\u2060ย\u2060รั\u2060ก",
+    photo: "/success-stories-2/moonlight-glow-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `สร้างกระแสซีรีส์วาย ตั้งแต่เปิดตัวจนถึงตอนสำคัญ ผ่านคอนเทนต์หลากหลายรูปแบบ`,
+    industry: `Media & Entertainment`,
+    stats: [
+      { val: "4.13M", label: "Reach" },
+      { val: "29", label: "Contents" },
+      { val: "109.9K", label: "Engagement" },
+    ],
+  },
 ];
 
 const STORIES_EN = [
@@ -714,6 +739,31 @@ const STORIES_EN = [
       { val: "1.23M", label: "Engagement" },
       { val: "13.66%", label: "Engagement Rate" },
       { val: "9.02M", label: "Followers" },
+    ],
+  },
+  {
+    slug: "moonlight-glow-focus-yanin",
+    brand: "Moonlight Glow — New Single (FOCUS YANIN)",
+    photo: "/success-stories-2/moonlight-glow-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Launching a New Song Through a TikTok Dance Challenge, Reaching Over 1.29 Million`,
+    industry: `Media & Entertainment`,
+    stats: [
+      { val: "1,296,971", label: "Reach" },
+      { val: "31", label: "Contents" },
+      { val: "19.6K", label: "Engagement" },
+      { val: "8.52M", label: "Followers" },
+    ],
+  },
+  {
+    slug: "magic-move-series",
+    brand: "Magic Move — The Love Prophecy",
+    photo: "/success-stories-2/moonlight-glow-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Building Buzz for a Y-Series from Launch to Key Episodes Through Diverse Content`,
+    industry: `Media & Entertainment`,
+    stats: [
+      { val: "4.13M", label: "Reach" },
+      { val: "29", label: "Contents" },
+      { val: "109.9K", label: "Engagement" },
     ],
   },
 ];
