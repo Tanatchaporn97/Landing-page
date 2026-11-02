@@ -23,12 +23,12 @@ const JOURNEY_STEPS = [
     descEn: "We officially founded Bubblely Co., Ltd. to support our growth and build client confidence, alongside better management systems and services to serve every customer segment." },
   { year: "2020", img: "/about-us/2020.webp", ratio: "1400 / 580",
     subtitle: "เติบโตท่ามกลางความท้าทาย", subtitleEn: "Growing Through Challenges",
-    desc: "แม้จะเป็นช่วงที่ท้าทายสำหรับหลายธุรกิจ แต่ Buddy Review ยังคงมุ่งมั่นพัฒนาบริการและแพลตฟอร์มอย่างต่อเนื่อง พร้อมยังทำแคมเปญช่วยเหลือแบรนด์ SME และร่วมมือกับอิ\u2060น\u2060ฟ\u2060ลู\u2060เ\u2060อ\u2060น\u2060เ\u2060ซ\u2060อ\u2060ร์ที่มีจิตอาสาในช่วง COVID-19 เพื่อก้าวข้ามและเติบโตผ่านเวลาที่ลำบากไปด้วยกัน",
-    descEn: "Even through a challenging time for many businesses, Buddy Review kept developing our services and platform — running campaigns to support SME brands and partnering with volunteer-minded influencers through COVID-19, growing through hard times together." },
+    desc: "ในช่วงการแพร่ระบาดของ COVID-19 Buddy Review ยังคงเดินหน้าพัฒนาบริการและแพลตฟอร์มอย่างต่อเนื่อง พร้อมจัดแคมเปญสนับสนุนธุรกิจ SME โดยร่วมมือกับอิ\u2060น\u2060ฟ\u2060ลู\u2060เ\u2060อ\u2060น\u2060เ\u2060ซ\u2060อ\u2060ร์จิ\u2060ต\u2060อ\u2060า\u2060ส\u2060า เพื่อช่วยเหลือแบรนด์ให้ก้าวผ่านช่วงเวลาที่ยากลำบากไปด้วยกัน",
+    descEn: "During the COVID-19 pandemic, Buddy Review kept developing its services and platform, and ran campaigns supporting SMEs together with volunteer influencers — helping brands get through a difficult time together." },
   { year: "2022", img: "/about-us/2022.png", ratio: "3275 / 1166", wide: true,
     subtitle: "ขยายทีมครั้งใหญ่", subtitleEn: "A Major Team Expansion",
-    desc: "แม้จะเป็นช่วงที่ท้าทายสำหรับหลายธุรกิจ แต่ Buddy Review ยังคงมุ่งมั่นพัฒนาบริการและแพลตฟอร์มอย่างต่อเนื่อง พร้อมยังทำแคมเปญช่วยเหลือแบรนด์ SME และร่วมมือกับอิ\u2060น\u2060ฟ\u2060ลู\u2060เ\u2060อ\u2060น\u2060เ\u2060ซ\u2060อ\u2060ร์ที่มีจิตอาสาในช่วง COVID-19 เพื่อก้าวข้ามและเติบโตผ่านเวลาที่ลำบากไปด้วยกัน",
-    descEn: "Even through a challenging time for many businesses, Buddy Review kept developing our services and platform — running campaigns to support SME brands and partnering with volunteer-minded influencers through COVID-19, growing through hard times together." },
+    desc: "Buddy Review เดินหน้าขยายทีมงานค\u2060รั้\u2060ง\u2060สำ\u2060คั\u2060ญ เพื่อเสริมศักยภาพในการวางแผนและบริหารแคมเปญ Influencer Marketing พร้อมยกระดับความพร้อมในการให้บริการและรองรับการขยายตัวของธุรกิจในอนาคต",
+    descEn: "Buddy Review made a major team expansion to strengthen how we plan and manage influencer marketing campaigns, raising our service readiness and preparing for the business's future growth." },
   { year: "2024", img: "/about-us/2024.png", ratio: "1328 / 600", wide: true, maxWidth: "310px",
     subtitle: "อีกก้าวความสำเร็จ", subtitleEn: "Another Milestone of Success",
     desc: "เราได้ถูกจัดอันดับเป็นอันดับ 4 บริษัทหมวด Advertising & Marketing ที่เติบโตเร็วที่สุดในเอเชียแปซิฟิกจากการจัดอันดับโดย Financial Times",
@@ -143,7 +143,7 @@ export default function OurJourney({ lang }: { lang: Locale }) {
                 <p style={{ ...KT, fontSize: "18px", fontWeight: 700, margin: "0 0 10px", lineHeight: 1.4, color: "#111827" }}>
                   {lang === "th" ? s.subtitle : s.subtitleEn}
                 </p>
-                <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: "0 0 24px" }}>
+                <p style={{ ...KT, fontSize: "16px", lineHeight: "1.7", color: "#111827", margin: "0 0 24px", textWrap: "pretty" }}>
                   {lang === "th" ? s.desc : s.descEn}
                 </p>
                 {!s.wide && (
