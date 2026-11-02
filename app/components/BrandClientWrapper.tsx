@@ -63,7 +63,7 @@ const OUR_SERVICES = [
   { img: "/services/influencer-event-activation.jpg", title: "Influencer & Event Activation",
     desc: "ตั้งแต่อินฟลูเอนเซอร์ร่วมงาน Presenter และ Speaker ไปจนถึงทีมประสานงานหน้างาน เราช่วยให้อีเวนต์สร้างคอนเทนต์ กระแส และการพูดถึงได้อย่างต่อเนื่องทั้ง Online และ On-site",
     descEn: "From influencer guests, presenters, and speakers to on-ground coordination — we help your event generate content, buzz, and conversation continuously, both online and on-site." },
-  { img: "/services/presenter-mockup.jpg", objectPosition: "center 32%", title: "Presenter",
+  { img: "/services/presenter.jpg", objectPosition: "center 22%", title: "Presenter",
     desc: "คัดเลือกและดูแล Presenter ที่มีภ\u2060า\u2060พ\u2060ลั\u2060ก\u2060ษ\u2060ณ์ตรงกับแบรนด์ ตั้งแต่การวางบทบาท ถ่ายทำ Key Visual ไปจนถึงงานเปิดตัว เพื่อให้แบรนด์มีตัวแทนที่ช่วยสร้างการจดจำและความน่าเชื่อถือ",
     descEn: "Selecting and managing a presenter whose image fits your brand — from defining their role and shooting key visuals to the launch event — giving your brand a face that builds recall and credibility." },
   { img: "/services/paid-media-amplification-vivid.jpg", title: "Paid Media & Amplification",
