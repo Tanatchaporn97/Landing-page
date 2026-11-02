@@ -41,6 +41,7 @@ const VISUAL: Record<string, { img: string; fit?: "contain"; bg?: string }> = {
   "scb-lets-debit-card": { img: "/success-stories-2/scb-logo.jpg", fit: "contain", bg: "#ffffff" },
   "lpn-city-run": { img: "/success-stories-2/lpn-logo.jpg", fit: "contain", bg: "#ffffff" },
   "lpn-place-168-pinklao": { img: "/success-stories-2/lpn-logo.jpg", fit: "contain", bg: "#ffffff" },
+  "brother-ink-tank-benz": { img: "/success-stories-2/brother-logo.jpg", fit: "contain", bg: "#ffffff" },
   "fineline": { img: "/success-stories-2/fineline-logo.png", fit: "contain", bg: "#ffffff" },
   "mega-bangna": { img: "/success-stories-2/mega-bangna-logo.png", fit: "contain", bg: "#ffffff" },
   "mom-choice": { img: "/success-stories-2/mom-choice-logo.png", fit: "contain", bg: "#ffffff" },

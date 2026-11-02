@@ -28,6 +28,7 @@ export const CLASSIFY: Record<string, { industry: string; value: string }> = {
   "scb-lets-debit-card": { industry: "Finance & Fintech", value: "Product Review" },  // debit card value across lifestyles, multi-tier creators
   "lpn-city-run": { industry: "Real Estate", value: "Event Activation" },  // running event, community
   "lpn-place-168-pinklao": { industry: "Real Estate", value: "Product Review" },  // condo location & lifestyle around Siriraj
+  "brother-ink-tank-benz": { industry: "Technology & Electronics", value: "Product Launch" },  // promotion told through entertainment content
   "cp-all":          { industry: "Retail",                   value: "Event Activation" },   // education forum
   "mega-bangna":     { industry: "Retail",                   value: "Event Activation" },   // Halloween event
   "lh-bank-genie-ai": { industry: "Finance & Fintech",        value: "Event Activation" },  // presenter launch event + GENIE AI

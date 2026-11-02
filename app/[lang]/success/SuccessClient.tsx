@@ -426,6 +426,19 @@ const STORIES_TH = [
       { val: "93K", label: "Engagement" },
     ],
   },
+  {
+    slug: "brother-ink-tank-benz",
+    brand: "Brother Ink Tank — เล่นใหญ่ แจกเบนซ์ ฟินยกกำลัง 3",
+    photo: "/success-stories-2/brother-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `เปลี่ยนโปรโมชันเครื่องพิมพ์ให้เป็นคอนเทนต์บันเทิงที่เข้าถึงผู้ชมวงกว้าง`,
+    industry: `Technology & Electronics`,
+    stats: [
+      { val: "17,680,185", label: "Reach" },
+      { val: "5", label: "Contents" },
+      { val: "109.2K", label: "Engagement" },
+      { val: "8.62M", label: "Followers" },
+    ],
+  },
 ];
 
 const STORIES_EN = [
@@ -838,6 +851,19 @@ const STORIES_EN = [
       { val: "7.86M", label: "Reach" },
       { val: "29", label: "Contents" },
       { val: "93K", label: "Engagement" },
+    ],
+  },
+  {
+    slug: "brother-ink-tank-benz",
+    brand: "Brother Ink Tank — Go Big, Win a Benz, Triple the Fun",
+    photo: "/success-stories-2/brother-logo.jpg", imgFit: "contain" as const, imgBg: "#ffffff",
+    tagline: `Turning a Printer Promotion into Entertainment Content with Broad Reach`,
+    industry: `Technology & Electronics`,
+    stats: [
+      { val: "17,680,185", label: "Reach" },
+      { val: "5", label: "Contents" },
+      { val: "109.2K", label: "Engagement" },
+      { val: "8.62M", label: "Followers" },
     ],
   },
 ];
