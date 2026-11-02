@@ -95,7 +95,7 @@ export default function Footer({ variant = "influencer", lang = "th", dict }: { 
       {/* Legal row */}
       <div className="footer-legal-row" style={{ position: "relative", zIndex: 2 }}>
         <p className="font-normal footer-text footer-legal" style={{ ...KT, fontSize: "14px", lineHeight: "140%", color: textColor }}>
-          {dict?.footer?.copyright || "© 2025 Buddy Review. All rights reserved."}
+          {dict?.footer?.copyright || "© 2026 Buddy Review. All rights reserved."}
           &nbsp;|&nbsp;
           <a href="https://docs.google.com/viewer?url=https://business.buddyreview.co/document/privacy_policy.pdf" target="_blank" rel="noopener noreferrer"
             style={{ color: textColor, textDecoration: "underline" }}>{dict?.footer?.privacyPolicy || (lang === "th" ? "นโยบายความเป็นส่วนตัว" : "Privacy Policy")}</a>
