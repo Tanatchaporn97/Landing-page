@@ -15,8 +15,8 @@ const TEXT = {
     statNetwork: "เครือข่ายอินฟลูเอนเซอร์",
   },
   en: {
-    h1Line1: "Match the Right Job,",
-    h1Line2: "Get Work You Love",
+    h1Line1: "Your Style.",
+    h1Line2: "Your Next Opportunity.",
     subhead: "No more hassle with reviewing the old way. Connect with leading brands and earn from the things you love.",
     applyNow: "Apply Now",
     applyLine: "Apply via LINE",

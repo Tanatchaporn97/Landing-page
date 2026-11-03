@@ -64,12 +64,12 @@ const UNLOCK_BENTO_ITEMS_TH: ColorfulBentoItem[] = [
 ];
 
 const UNLOCK_BENTO_ITEMS_EN: ColorfulBentoItem[] = [
-  { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", title: "Trusted Brands", desc: "No ghosting, no fake jobs. Just professionalism.", ...UNLOCK_BENTO_META[0] },
-  { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", title: "Paid on Time, Every Time", desc: "Finish the job, keep your money — withdraw anytime and get paid on a reliable schedule.", ...UNLOCK_BENTO_META[1] },
-  { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", title: "Review Anywhere", desc: "Covers every platform, giving you the chance to take on review work across multiple channels.", ...UNLOCK_BENTO_META[2] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-01.png", title: "Trusted Brands", desc: "Every opportunity comes from brands and campaigns reviewed by our team, so you can collaborate with confidence.", ...UNLOCK_BENTO_META[0] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-02.png", title: "Clear Payments. Reliable Schedules.", desc: "Track your earnings, request withdrawals, and get paid on a clear payment schedule.", ...UNLOCK_BENTO_META[1] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-05.png", title: "Review Across Platforms", desc: "Explore review opportunities across multiple social platforms, all in one place.", ...UNLOCK_BENTO_META[2] },
   { img: "/unlocked-exclusive/Unlocked Exclusive-04.png", title: "Exclusive Perks for You", desc: "Join events and win exclusive rewards.", ...UNLOCK_BENTO_META[3] },
   { img: "/unlocked-exclusive/Unlocked Exclusive-03.png", title: "Professionals By Your Side", desc: "Work with confidence, backed by a professional team and a system that makes everything easier.", ...UNLOCK_BENTO_META[4] },
-  { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", title: "The Right Match", desc: "Be first to know about new jobs with a matching system that connects you to work you'll actually love.", ...UNLOCK_BENTO_META[5] },
+  { img: "/unlocked-exclusive/Unlocked Exclusive-06.png", title: "The Right Match", desc: "Discover new opportunities through a matching system that connects you with campaigns suited to your interests and content style.", ...UNLOCK_BENTO_META[5] },
 ];
 
 import dynamic from "next/dynamic";
@@ -161,11 +161,11 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
             ) : (
               <>
                 <span className="vs-line1" style={{ ...KT, display: "block", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", color: "#111827", whiteSpace: "nowrap" }}>
-                  Match the Right Job,
+                  Your Style.
                 </span>
                 <span className="vs-line2" style={{ ...KT, display: "block", fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", whiteSpace: "nowrap",
                   background: "linear-gradient(45deg, #5f26e5 0%, #ff0089 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                  Get Work You Love
+                  Your Next Opportunity.
                 </span>
               </>
             )}
@@ -277,14 +277,14 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
               </>
             ) : (
               <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Know your channel better, grow with direction</span>
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Know Your Channel Better. Grow Smarter.</span>
             )}
           </h2>
           <p className="desc-text" style={{ ...KT, fontSize: "16px", color: "#374151", lineHeight: 1.7, margin: "0 auto 32px", maxWidth: "620px" }}>
             {lang === "th" ? (
               <>ใช้ AI ในการช่วยวิเคราะห์ผู้ติดตาม คอนเทนต์ และ Performance<br />รู้ว่าคนดูคือใคร คอนเทนต์แบบไหนเวิร์ก และควรทำอะไรต่อ</>
             ) : (
-              <>Uses AI to help analyze your followers, content, and performance<br />know who your audience is, what content works, and what to do next.</>
+              "Get AI-powered insights into your audience, content, and performance. Discover who's watching, what works, and what to do next."
             )}
           </p>
           <a href="https://line.me/R/ti/p/@buddysupport" target="_blank" rel="noopener noreferrer" className="inf-cta" style={KT}>

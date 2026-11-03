@@ -15,13 +15,13 @@ const PTP_STEPS_TH = [
 ];
 
 const PTP_STEPS_EN = [
-  { step: "01", img: "/path-to-partnership/Step-1.png", title: "Sign Up as Our Influencer", desc: "Create an influencer account in just 5 minutes and connect your social channels — so we can get to know you and open the door to work with top brands." },
-  { step: "02", img: "/path-to-partnership/Step-2.png", title: "Find the Right Job", desc: "Browse review jobs from top brands curated just for you. Found one you like? Apply with one click — no need to wait!" },
-  { step: "03", img: "/path-to-partnership/Step-3.png", title: "Confirm & Get Briefed", desc: "Once a brand selects you, our team will reach out to confirm the job and send over the campaign brief." },
-  { step: "04", img: "/path-to-partnership/Step-4.png", title: "Create Your Content", desc: "Create content to the brief in your own style, then submit your draft through the platform for the team to review." },
-  { step: "05", img: "/path-to-partnership/Step-5.png", title: "Await Draft Review", desc: "Our team will notify you right away if any edits are needed. If your content is ready, get set to post on schedule." },
-  { step: "06", img: "/path-to-partnership/Step-6.png", title: "Post It Live", desc: "Time to go viral! Share your standout content with your followers." },
-  { step: "07", img: "/path-to-partnership/Step-7.png", title: "Earn Points, Redeem for Cash", desc: "You're paid in Buddy Points, which you can redeem for cash." },
+  { step: "01", img: "/path-to-partnership/Step-1.png", title: "Join Us as a Creator", desc: "Create your influencer account in just 5 minutes and connect your social channels to unlock opportunities to collaborate with leading brands." },
+  { step: "02", img: "/path-to-partnership/Step-2.png", title: "Find the Right Opportunities", desc: "Explore review opportunities from leading brands, selected to match your profile. Find something you like? Apply in just a click!" },
+  { step: "03", img: "/path-to-partnership/Step-3.png", title: "Confirm & Get Briefed", desc: "Once a brand selects you, our team will reach out to confirm the collaboration and share your campaign brief." },
+  { step: "04", img: "/path-to-partnership/Step-4.png", title: "Create Your Content", desc: "Bring the brief to life in your own style, then submit your draft through the platform for review." },
+  { step: "05", img: "/path-to-partnership/Step-5.png", title: "Get Your Content Reviewed", desc: "Our team will let you know if any revisions are needed. Once your content is approved, you're ready to post on schedule." },
+  { step: "06", img: "/path-to-partnership/Step-6.png", title: "Go Live!", desc: "It's time to share your content with your audience. Publish your post and let it shine!" },
+  { step: "07", img: "/path-to-partnership/Step-7.png", title: "Earn Points, Redeem for Cash", desc: "Receive your earnings in Buddy Points, which you can redeem for cash." },
 ];
 
 export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" }) {

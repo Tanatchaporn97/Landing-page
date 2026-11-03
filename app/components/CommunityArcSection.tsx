@@ -143,7 +143,7 @@ export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
         }}>
           {lang === "th"
             ? <>ไม่ว่าคุณจะทำคอนเทนต์สายไหน ก็มีโอกาสร่วมงานกับแบรนด์หลากหลายประเภท<br />พร้อมเครื่องมือและทีมงานที่ช่วยให้คุณเติบโต</>
-            : <>Whatever kind of content you create, you can work with a wide range of brands,<br />with the tools and a team that help you grow.</>}
+            : "Whatever your content niche, discover opportunities to collaborate with brands across different industries, backed by tools and a dedicated team to support your growth."}
         </p>
 
         {/* CTA */}

@@ -10,9 +10,9 @@ const STEPS = {
     { title: "เห็นจุดแข็งของช่อง", desc: "วิเคราะห์สไตล์คอนเทนต์และ Performance พร้อมเทียบกับ Creator ที่ใกล้เคียง" },
   ],
   en: [
-    { title: "Know Your Audience", desc: "See who your followers are, what they're interested in, and what content they love." },
-    { title: "Plan Your Next Content Easier", desc: "Let AI help you find trends, hooks, and content directions that fit your channel." },
-    { title: "See Your Channel's Strengths", desc: "Analyze your content style and performance, benchmarked against similar creators." },
+    { title: "Know Your Audience", desc: "Discover who your followers are, what interests them, and the content they enjoy most." },
+    { title: "Plan Your Next Content with Ease", desc: "Let AI help you discover relevant trends, engaging hooks, and fresh content ideas tailored to your channel." },
+    { title: "Discover Your Channel's Strengths", desc: "Understand your content style and performance, and see how you compare with similar creators." },
   ],
 };
 
