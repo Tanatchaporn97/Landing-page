@@ -68,9 +68,9 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
               { title: "Mission", desc: "พัฒนาระบบที่ผสานเทคโนโลยีกับความเข้าใจตลาดอินฟลูเอนเซอร์ เพื่อตอบโจทย์ทุกความต้องการของแบรนด์", Icon: Rocket },
               { title: "Value", desc: "มอบแคมเปญพรีเมียมที่ปรับแต่งได้ เน้นผลลัพธ์ตรงเป้าและคุ้มค่า เพราะทุกแบรนด์ควรได้รับบริการที่ดีที่สุด", Icon: Gem },
             ] : [
-              { title: "Vision", desc: "The hub of influencer marketing powered by cutting-edge technology, helping brands reach consumers effectively.", Icon: Eye },
-              { title: "Mission", desc: "Building systems that blend technology with a deep understanding of the influencer market to meet every brand's needs.", Icon: Rocket },
-              { title: "Value", desc: "Delivering customizable premium campaigns focused on real results and value — because every brand deserves the best service.", Icon: Gem },
+              { title: "Vision", desc: "To become a leading hub for influencer marketing, powered by advanced technology that helps brands connect with consumers more effectively.", Icon: Eye },
+              { title: "Mission", desc: "To build innovative solutions that combine technology with a deep understanding of the influencer marketing landscape, delivering solutions tailored to brands' needs.", Icon: Rocket },
+              { title: "Value", desc: "To deliver premium, tailored campaigns that focus on meaningful results and lasting value, backed by the quality of service every brand deserves.", Icon: Gem },
             ]).map((item) => (
               <div key={item.title} className="group cursor-pointer transform transition-all duration-500 hover:scale-105 hover:-rotate-1">
                 <div className="group-hover:border-white/90 transition-all duration-500" style={{

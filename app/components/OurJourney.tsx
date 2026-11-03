@@ -10,37 +10,37 @@ const OBJ_SHADOW = "drop-shadow(0 14px 22px rgba(60,30,150,0.22)) drop-shadow(0 
 
 const JOURNEY_STEPS = [
   { year: "2015 - 2017", img: "/about-us/2015-2017.png", ratio: "2084 / 1876",
-    subtitle: "เราได้ทดลองและพัฒนาโปรดักต์หลากหลายโซลูชัน", subtitleEn: "We Experimented With and Built Multiple Product Solutions",
+    subtitle: "เราได้ทดลองและพัฒนาโปรดักต์หลากหลายโซลูชัน", subtitleEn: "Exploring Ideas, Building Solutions",
     desc: "เพื่อตอบโจทย์ผู้บริโภคคนไทย จากความมุ่งมั่นนี้เองที่ทำให้เราค้นพบโปรดักต์ที่สามารถแก้ปัญหาและมอบคุณค่าให้กับแบรนด์และอินฟลูเอนเซอร์ที่ต่อมาเราใช้ชื่อเรียกว่า 'Buddy Review'",
-    descEn: "To meet the needs of Thai consumers — and it was this determination that led us to a product that could solve real problems and deliver value to brands and influencers, which we later named 'Buddy Review.'" },
+    descEn: "Our journey began with experimenting and developing solutions for Thai consumers. Along the way, we discovered an opportunity to solve real challenges for brands and influencers, leading to the creation of Buddy Review." },
   { year: "2018", img: "/about-us/2018.webp", ratio: "887 / 575",
-    subtitle: "เปิดตัว Buddy Review", subtitleEn: "Buddy Review Launches",
+    subtitle: "เปิดตัว Buddy Review", subtitleEn: "The Launch of Buddy Review",
     desc: "Soft Launch อย่างเป็นทางการ ด้วยการเป็นแพลตฟอร์มที่พลิกโฉมวงการ ที่ทำให้แบรนด์และอินฟลูเอนเซอร์สามารถร่วมงานกันได้สะดวกมากขึ้น ปัญหาน้อยลง ด้วยเทคโนโลยีบนแพลตฟอร์มที่มีประสิทธิภาพ",
-    descEn: "We officially soft-launched a platform that reshaped the industry — making it easier for brands and influencers to collaborate, with fewer problems, thanks to efficient platform technology." },
+    descEn: "Buddy Review officially soft-launched its platform, connecting brands and influencers through technology that simplifies collaboration and streamlines workflows." },
   { year: "2019", img: "/about-us/2019.webp", ratio: "1400 / 1237", imgWidth: "90%",
-    subtitle: "ก้าวสำคัญสู่ความมั่นคง", subtitleEn: "A Major Step Toward Stability",
+    subtitle: "ก้าวสำคัญสู่ความมั่นคง", subtitleEn: "Building a Stronger Foundation",
     desc: "เริ่มก่อตั้งบริษัท 'บับเบิลลี จำกัด' อย่างเป็นทางการ เพื่อรองรับการเติบโตและสร้างความเชื่อมั่นให้กับลูกค้า พร้อมกับการพัฒนาระบบการจัดการและบริการที่ดียิ่งขึ้นเพื่อตอบโจทย์ลูกค้าในทุกกลุ่ม",
-    descEn: "We officially founded Bubblely Co., Ltd. to support our growth and build client confidence, alongside better management systems and services to serve every customer segment." },
+    descEn: "Bubblely Co., Ltd. was officially established to strengthen our business foundation, build client confidence, and improve our management systems and services." },
   { year: "2020", img: "/about-us/2020.webp", ratio: "1400 / 580",
     subtitle: "เติบโตท่ามกลางความท้าทาย", subtitleEn: "Growing Through Challenges",
     desc: "ท่ามกลางสถานการณ์ COVID-19 Buddy Review ยังคงพัฒนาบริการและแพลตฟอร์มอย่างต่อเนื่อง พร้อมจัดแคมเปญช่วยเหลือแบรนด์ SME โดยร่วมมือกับอิ⁠น⁠ฟ⁠ลู⁠เ⁠อ⁠น⁠เ⁠ซ⁠อ⁠ร์จิ⁠ต⁠อ⁠า⁠ส⁠า เพื่อสนับสนุนให้ธุรกิจและทุกฝ่ายก้าวผ่านช่วงเวลาที่ยากลำบากไปด้วยกัน",
-    descEn: "Amid the COVID-19 situation, Buddy Review kept developing its services and platform, and ran campaigns helping SME brands together with volunteer influencers — supporting businesses and everyone involved through a difficult time together." },
+    descEn: "During the COVID-19 pandemic, Buddy Review continued improving its platform and services while collaborating with volunteer influencers on campaigns to support SME brands through challenging times." },
   { year: "2022", img: "/about-us/2022.png", ratio: "3275 / 1166", wide: true,
     subtitle: "ขยายทีมครั้งใหญ่", subtitleEn: "A Major Team Expansion",
     desc: "Buddy Review เดินหน้าขยายทีมงานค⁠รั้⁠ง⁠สำ⁠คั⁠ญ เพื่อรองรับการเติบโตของธุรกิจและความต้องการของลูกค้าที่เพิ่มขึ้น พร้อมเสริมความแข็งแกร่งในการให้บริการและบริหารแคมเปญ Influencer Marketing ได้อย่างมีประสิทธิภาพยิ่งขึ้น",
-    descEn: "Buddy Review made a major team expansion to support the business's growth and rising client demand, strengthening our service and making influencer marketing campaign management even more effective." },
+    descEn: "Buddy Review significantly expanded its team to meet increasing client demand and strengthen its capabilities in managing influencer marketing campaigns." },
   { year: "2024", img: "/about-us/2024.png", ratio: "1328 / 600", wide: true, maxWidth: "310px",
     subtitle: "อีกก้าวความสำเร็จ", subtitleEn: "Another Milestone of Success",
     desc: "เราได้ถูกจัดอันดับเป็นอันดับ 4 บริษัทหมวด Advertising & Marketing ที่เติบโตเร็วที่สุดในเอเชียแปซิฟิกจากการจัดอันดับโดย Financial Times",
-    descEn: "We were ranked No. 4 among the fastest-growing Advertising & Marketing companies in Asia-Pacific by the Financial Times." },
+    descEn: "Buddy Review was ranked No. 4 among the fastest-growing companies in the Advertising & Marketing category in Asia-Pacific by the Financial Times." },
   { year: "2025", img: "/about-us/2025.png", ratio: "1600 / 626", wide: true, maxWidth: "530px",
-    subtitle: "ตอกย้ำความสำเร็จอีกขั้น", subtitleEn: "Cementing Our Success Further",
+    subtitle: "ตอกย้ำความสำเร็จอีกขั้น", subtitleEn: "Recognized for Excellence in Thailand",
     desc: "เราได้คว้าอันดับที่ 1 บริษัทหมวด Advertising & Marketing ที่มีอัตราการเติบโตที่เร็วที่สุดในประเทศไทยโดย Financial Times และยังได้รับรางวัล Top MarTech Providers for Growing Business 2025 โดย Content Shifu อีกด้วย",
-    descEn: "We claimed No. 1 among the fastest-growing Advertising & Marketing companies in Thailand by the Financial Times, and also received the Top MarTech Providers for Growing Business 2025 award from Content Shifu." },
+    descEn: "Buddy Review was ranked No. 1 among the fastest-growing companies in Thailand's Advertising & Marketing category by the Financial Times and received the Top MarTech Providers for Growing Business 2025 award from Content Shifu." },
   { year: "2026", img: "/about-us/2026-match-v6.png", ratio: "1880 / 1180", wide: true, maxWidth: "440px", ownShadow: true,
-    subtitle: "ฐานข้อมูล Influencer ทะลุ 1 ล้านโปรไฟล์", subtitleEn: "Our Influencer Database Passes 1 Million Profiles",
+    subtitle: "ฐานข้อมูล Influencer ทะลุ 1 ล้านโปรไฟล์", subtitleEn: "Influencer Database Surpasses 1 Million Profiles",
     desc: "เราขยายฐานข้อมูล Influencer จนมีมากกว่า 1 ล้านโปรไฟล์จากหลายแพลตฟอร์ม และนำข้อมูลเหล่านี้มาพัฒนา KOL Discovery ให้แบรนด์ค้นหา Influencer ได้ตรงความต้องการมากขึ้น รวมถึง Buddy Rank ที่ช่วยวิเคราะห์โปรไฟล์และแนะนำแนวทางพัฒนาช่องให้กับ Influencer",
-    descEn: "We grew our influencer database to more than 1 million profiles across platforms, and used that data to build KOL Discovery — helping brands find influencers that fit exactly what they need — along with Buddy Rank, which analyzes creator profiles and recommends ways to grow their channels." },
+    descEn: "Our influencer database surpassed 1 million profiles across multiple platforms, supporting the development of KOL Discovery to help brands find suitable influencers and Buddy Rank to analyze creator profiles and recommend ways to grow their channels." },
 ];
 
 export default function OurJourney({ lang }: { lang: Locale }) {
@@ -97,7 +97,7 @@ export default function OurJourney({ lang }: { lang: Locale }) {
         <p className="desc-text" style={{ ...KT, fontSize: "16px", color: "#111827", lineHeight: 1.85, margin: 0 }}>
           {lang === "th"
             ? <>จากจุดเริ่มต้นของ Influencer Marketing Platform สู่ Partner ที่ช่วยแบรนด์วางแผน บริหาร และวัดผล<br className="oj-br" /><span className="oj-sp"> </span>Influencer Marketing แบบ End-to-End ผ่านทีมผู้เชี่ยวชาญ Data และ Technology</>
-            : "From our beginnings as an influencer marketing platform to a partner that helps brands plan, manage, and measure influencer marketing end-to-end, powered by a team of data and technology experts."}
+            : "From an influencer marketing platform to a full-service strategic partner, combining industry expertise, data, and technology to help brands plan, manage, and measure campaigns from start to finish."}
         </p>
         {/* desktop: line 2 starts at "Influencer Marketing แบบ End-to-End…"; phones wrap naturally */}
         <style>{`.oj-sp{ display: none; } @media (max-width: 767px){ .oj-br{ display: none; } .oj-sp{ display: inline; } }`}</style>
