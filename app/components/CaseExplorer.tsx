@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { VariableFontHover } from "@/components/ui/variable-font-hover";
-import { INDUSTRIES, CLASSIFY } from "./caseIndustries";
+import { CLASSIFY } from "./caseIndustries";
 import Link from "next/link";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -71,34 +71,19 @@ function toCase(s: Story) {
   return { slug: s.slug, title: s.brand, ...CLASSIFY[s.slug], overview, strategy, stats, ...VISUAL[s.slug] };
 }
 
-type Mode = "industry" | "content";
-
-const IconIndustry = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 21h18" /><path d="M5 21V7l7-4 7 4v14" /><path d="M9 21v-6h6v6" /></svg>
-);
-const IconContent = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><rect x="14" y="14" width="7" height="7" rx="1.5" /></svg>
-);
-
-// "See the Work in Action" case explorer: switch between browsing by industry
-// or by content type, filter with count chips, pick a case from the list on
+// "See the Work in Action" case explorer: filter by content type, pick a case from the list on
 // the left, read its overview / strategy / results on the right.
 export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; stories: Story[] }) {
   const th = lang === "th";
   const CASES = useMemo(() => (stories ?? []).filter((s) => CLASSIFY[s.slug] && VISUAL[s.slug]).map(toCase), [stories]);
-  const [mode, setMode] = useState<Mode>("industry");
   const [filter, setFilter] = useState<string>("all");
   const [selSlug, setSelSlug] = useState<string>("siangpure");
   const listRef = useRef<HTMLDivElement>(null);
   const [listAtEnd, setListAtEnd] = useState(false);
 
-  const key = mode === "industry" ? "industry" : "value";
-  const other = mode === "industry" ? "value" : "industry";
-  const values = mode === "industry" ? INDUSTRIES : CONTENTS;
-
   const filtered = useMemo(
-    () => (filter === "all" ? CASES : CASES.filter((c) => c[key] === filter)),
-    [filter, key, CASES],
+    () => (filter === "all" ? CASES : CASES.filter((c) => c.value === filter)),
+    [filter, CASES],
   );
   const sel = filtered.find((c) => c.slug === selSlug) ?? filtered[0];
 
@@ -111,32 +96,12 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
     setListAtEnd(el.scrollHeight <= el.clientHeight + 4);
   }, [filtered]);
 
-  const switchMode = (m: Mode) => { setMode(m); setFilter("all"); };
-
   return (
     <div className="cx-root" style={{ ...KT, display: "flex", flexDirection: "column", alignItems: "center" }}>
-      {/* mode switch */}
-      <div style={{ marginTop: "32px", display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
-        <div style={{ fontSize: "14px", fontWeight: 500, color: "#5E5878" }}>{th ? "เลือกดูเคสตาม" : "Browse cases by"}</div>
-        <div role="group" className="cx-mode" style={{ display: "flex", gap: "4px", padding: "6px", background: "#F4EFFB", border: "1px solid #D3C5EF", borderRadius: "999px" }}>
-          {([["industry", th ? "อุตสาหกรรม" : "Industry", <IconIndustry key="i" />], ["content", th ? "ประเภทคอนเทนต์" : "Content Type", <IconContent key="c" />]] as const).map(([m, label, icon]) => {
-            const on = mode === m;
-            return (
-              <button key={m} type="button" onClick={() => switchMode(m)} aria-pressed={on}
-                style={{ ...KT, display: "flex", alignItems: "center", gap: "10px", minHeight: "48px", padding: "0 26px", border: 0, borderRadius: "999px",
-                  fontSize: "16px", fontWeight: 600, cursor: "pointer", background: on ? PURPLE : "transparent", color: on ? "#FFFFFF" : "#2A2540",
-                  transition: "background 0.2s, color 0.2s" }}>
-                {icon}{label}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
       {/* sub-category filters — borderless text tabs with an underline on the active one */}
-      <div className="cx-filters" role="tablist" style={{ marginTop: "28px", width: "100%", maxWidth: "100%", display: "flex", flexWrap: "nowrap", justifyContent: "safe center", gap: "24px",
+      <div className="cx-filters" role="tablist" style={{ marginTop: "32px", width: "100%", maxWidth: "100%", display: "flex", flexWrap: "nowrap", justifyContent: "safe center", gap: "24px",
         overflowX: "auto", scrollbarWidth: "none", borderBottom: "1px solid rgba(91,48,224,0.14)", padding: "0 8px", boxSizing: "border-box" }}>
-        {["all", ...values].map((v) => {
+        {["all", ...CONTENTS].map((v) => {
           const on = v === filter;
           return (
             <button key={v} type="button" role="tab" onClick={() => setFilter(v)} aria-selected={on} className="cx-filter"
@@ -181,7 +146,7 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
                   </span>
                   <span style={{ flexGrow: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: "2px" }}>
                     <span style={{ fontSize: "17px", fontWeight: 600, color: on ? "#FFFFFF" : "#1B1733", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{c.title}</span>
-                    <span style={{ fontSize: "13px", color: on ? "#E4DAFF" : "#5E5878" }}>{c[other]}</span>
+                    <span style={{ fontSize: "13px", color: on ? "#E4DAFF" : "#5E5878" }}>{c.industry}</span>
                   </span>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={on ? "#E4DAFF" : "#5E5878"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
                 </button>
@@ -240,11 +205,6 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
         .cx-filter{ flex-shrink: 0; }
         .cx-detail{ animation: cx-in 0.35s ease; }
         @keyframes cx-in{ from{ opacity: 0; transform: translateY(8px); } to{ opacity: 1; transform: none; } }
-        /* desktop: every industry fits on one line (phones swipe the row instead) */
-        @media (min-width: 900px){
-          .cx-filters{ gap: 10px !important; padding: 0 !important; }
-          .cx-filter{ font-size: 13.5px !important; }
-        }
         @media (max-width: 1100px){
           .cx-grid{ grid-template-columns: minmax(0, 1fr) !important; }
           .cx-grid > *{ min-width: 0; }
@@ -258,7 +218,6 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
           .cx-detail{ flex-direction: column !important; align-items: flex-start !important; padding: 28px 22px !important; gap: 24px !important; }
           .cx-stats{ gap: 22px !important; }
           .cx-stats > div > div:first-child{ font-size: 26px !important; }
-          .cx-mode button{ padding: 0 16px !important; font-size: 15px !important; white-space: nowrap; }
         }
         @media (prefers-reduced-motion: reduce){ .cx-detail{ animation: none; } }
       `}</style>
