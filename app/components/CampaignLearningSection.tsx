@@ -10,13 +10,13 @@ const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
 const STEPS = [
   { title: "See What Worked", titleTh: "ดูว่าอะไรได้ผล",
     desc: "ดูว่า Creator, Content และจังหวะแบบไหนทำผลงานได้ดีที่สุด",
-    descEn: "See which Creators, content, and timing performed best." },
+    descEn: "Discover your top-performing creators, content, and the most effective timing." },
   { title: "Understand the Response", titleTh: "เข้าใจการตอบรับ",
     desc: "ดู Sentiment และ Feedback เพื่อเข้าใจว่าอะไรถึงความสนใจ และอะไรมีผลต่อความรู้สึกต่อแบรนด์",
-    descEn: "Review sentiment and feedback to understand what drove interest and how people feel about the brand." },
+    descEn: "Understand what captures audience attention and shapes brand perception through sentiment analysis and feedback." },
   { title: "Choose the Next Move", titleTh: "เลือกก้าวต่อไป",
     desc: "สรุปสิ่งที่ควรต่อยอด ปรับ หรือหยุด สำหรับแคมเปญรอบถัดไป",
-    descEn: "Summarize what to build on, adjust, or stop for the next campaign." },
+    descEn: "Turn campaign insights into smarter decisions on what to continue, refine, or stop for your next campaign." },
 ];
 
 const SENTIMENT = [
@@ -138,7 +138,7 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
         <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "rgba(255,255,255,0.85)", margin: 0, maxWidth: "380px" }}>
           {lang === "th"
             ? "เราวิเคราะห์ผลลัพธ์และเสียงตอบรับจากแคมเปญ เพื่อนำไปปรับปรุงและต่อยอดกลยุทธ์ในครั้งถัดไป"
-            : "We analyse campaign results and audience feedback, then use them to refine and build on the strategy for the next campaign."}
+            : "We turn campaign results and audience feedback into actionable insights to refine strategies and drive better performance in future campaigns."}
         </p>
 
         <div

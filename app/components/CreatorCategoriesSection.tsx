@@ -22,40 +22,40 @@ const thWrap = (t: string) => KEEP_TOGETHER.reduce((acc, w) => acc.split(w).join
 const CATEGORIES = [
   { Icon: ShieldCheck, title: "KOC & Product Reviewer", titleTh: "KOC & Product Reviewer",
     desc: "รีวิวจากประสบการณ์ใช้งานจริง ช่วยให้คนมั่นใจและตัดสินใจซื้อได้ง่ายขึ้น",
-    descEn: "Reviews from real hands-on use that give people the confidence to buy." },
+    descEn: "Build consumer confidence and influence purchase decisions through authentic product reviews." },
   { Icon: Sparkles, title: "Beauty & Skincare", titleTh: "Beauty & Skincare",
     desc: "ช่วยให้คนรู้จักและเลือกสินค้าความงาม ผ่านรีวิวและเคล็ดลับการดูแลตัวเอง",
-    descEn: "Helping people discover and choose beauty products through reviews and self-care tips." },
+    descEn: "Connect with beauty enthusiasts through product reviews, makeup tutorials, and skincare tips." },
   { Icon: UtensilsCrossed, title: "Food & Lifestyle", titleTh: "Food & Lifestyle",
     desc: "เชื่อมโยงแบรนด์กับเรื่องกิน เที่ยว และการใช้ชีวิตประจำวัน",
-    descEn: "Connecting brands with food, travel, and everyday life." },
+    descEn: "Bring your brand into everyday conversations around food, travel, and lifestyle." },
   { Icon: HeartPulse, title: "Health & Wellness", titleTh: "Health & Wellness",
     desc: "สื่อสารกับคนรักสุขภาพ ผ่านเรื่องการออกกำลังกายและการดูแลตัวเอง",
-    descEn: "Speaking to health lovers through exercise and self-care." },
+    descEn: "Reach health-conscious audiences through fitness, wellness, and self-care content." },
   { Icon: Users, title: "Family & Parenting", titleTh: "Family & Parenting",
     desc: "สร้างความไว้วางใจในกลุ่มพ่อแม่ ผ่านประสบการณ์เลี้ยงลูกและชีวิตครอบครัว",
-    descEn: "Building trust with parents through real parenting and family life." },
+    descEn: "Build trust with parents through relatable parenting experiences and family-focused content." },
   { Icon: PawPrint, title: "Pet & Hobby", titleTh: "Pet & Hobby",
     desc: "เข้าถึงคนรักสัตว์และกลุ่มที่มีความสนใจเฉพาะทาง ผ่านอินฟลูเอนเซอร์ที่พวกเขาติดตาม",
-    descEn: "Reaching pet lovers and niche-interest groups through the influencers they follow." },
+    descEn: "Connect with pet lovers and niche communities through creators who share their passions." },
   { Icon: Gamepad2, title: "Gaming & Tech", titleTh: "Gaming & Tech",
     desc: "ช่วยให้เกมเมอร์และคนรักเทคโนโลยีรู้จักสินค้า ผ่านรีวิวและการทดลองใช้",
-    descEn: "Introducing products to gamers and tech lovers through reviews and hands-on trials." },
+    descEn: "Engage gamers and tech enthusiasts through product reviews, demonstrations, and hands-on experiences." },
   { Icon: MapPin, title: "Travel & Local", titleTh: "Travel & Local",
     desc: "แนะนำสินค้า บริการ และสถานที่ ผ่านประสบการณ์ท่องเที่ยวและการใช้ชีวิตในแต่ละพื้นที่",
-    descEn: "Recommending products, services, and places through travel and local-life experiences." },
+    descEn: "Showcase products, services, and destinations through authentic travel and local experiences." },
   { Icon: Briefcase, title: "Business & Expert", titleTh: "Business & Expert",
     desc: "เพิ่มความน่าเชื่อถือให้แบรนด์ ด้วยความรู้และประสบการณ์จากผู้เชี่ยวชาญ",
-    descEn: "Adding credibility to brands with the knowledge and experience of experts." },
+    descEn: "Build brand credibility through expert insights, professional knowledge, and industry perspectives." },
   { Icon: Clapperboard, title: "Entertainment & Fandom", titleTh: "Entertainment & Fandom",
     desc: "สร้างกระแสและการพูดถึงแบรนด์ ผ่านเรื่องบันเทิงและความสนใจของกลุ่มแฟนคลับ",
-    descEn: "Creating buzz and brand conversation through entertainment and fan-community interests." },
+    descEn: "Spark conversations and engagement through entertainment content and passionate fan communities." },
   { Icon: ShoppingBag, title: "Live Seller & Affiliate", titleTh: "Live Seller & Affiliate",
     desc: "เพิ่มโอกาสในการขายผ่านไลฟ์สด รีวิวสินค้า และลิงก์สั่งซื้อ",
-    descEn: "Driving sales through live selling, product reviews, and purchase links." },
+    descEn: "Drive product discovery and sales through livestream shopping, creator reviews, and affiliate marketing." },
   { Icon: Globe, title: "International Creator", titleTh: "International Creator",
     desc: "ทำให้แบรนด์เป็นที่รู้จักในต่างประเทศ ผ่านอินฟลูเอนเซอร์ที่เข้าใจคนในพื้นที่",
-    descEn: "Making brands known abroad through influencers who understand local audiences." },
+    descEn: "Expand your brand's reach into international markets through creators who understand local audiences." },
 ];
 
 export default function CreatorCategoriesSection({ lang }: { lang: "th" | "en" }) {
@@ -76,7 +76,7 @@ export default function CreatorCategoriesSection({ lang }: { lang: "th" | "en" }
         <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#111827", margin: 0, maxWidth: "420px" }}>
           {lang === "th"
             ? "Creator หลากหลายสาย สำหรับโจทย์และกลุ่มเป้าหมายที่ต่างกัน"
-            : "A wide range of Creators, matched to different goals and audiences."}
+            : "Discover creators across diverse categories to connect your brand with the right audiences."}
         </p>
       </div>
 

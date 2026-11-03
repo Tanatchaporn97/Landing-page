@@ -41,76 +41,76 @@ const SERVICE_CARD_GAP = 20; // gap between cards in the scroll row, px
 const OUR_SERVICES = [
   { img: "/services/campaign-reviews-v3.jpg", objectPosition: "center 45%", title: "Campaign Reviews",
     desc: "รีวิวสินค้าและบริการผ่านอินฟลูเอนเซอร์ที่ใช่ พร้อมสื่อสารข้อความและจุดเด่นของแบรนด์ได้อย่างมีประสิทธิภาพ เปลี่ยนให้ทุกความสนใจเป็นยอดขาย",
-    descEn: "Product and service reviews through the right influencers, communicating your brand's key messages effectively — turning every bit of interest into sales." },
+    descEn: "Connect with the right influencers to showcase your products, communicate key selling points, and encourage purchase decisions." },
   { img: "/services/influencer-campaign-management.jpg", title: "Influencer Campaign Management",
     desc: "ดูแลแคมเปญอินฟลูเอนเซอร์แบบครบวงจร ตั้งแต่การวางแผน คัดเลือกอินฟลูเอนเซอร์ ประสานงาน ไปจนถึงติดตามและวัดผล เพื่อให้ทุกขั้นตอนของแคมเปญเดินหน้าได้อย่างมีประสิทธิภาพ",
-    descEn: "End-to-end influencer campaign management — from planning and influencer selection to coordination, tracking, and reporting — keeping every stage of your campaign running smoothly." },
+    descEn: "End-to-end campaign management, from planning and influencer selection to creator coordination, execution, and performance reporting." },
   { img: "/services/ugc-product-seeding.jpg", title: "Influencer Network",
     desc: "เข้าถึงเครือข่ายอินฟลูเอนเซอร์หลากหลายหมวด\u2060หมู่ พร้อมค้นหาและคัดเลือกคนที่ตรงกับโจทย์ กลุ่มเป้า\u2060หมาย และภาพลักษณ์ของแบรนด์ได้อย่างแม่นยำ",
-    descEn: "Access a diverse network of influencers across every category, with precise search and selection to match your brief, target audience, and brand image." },
+    descEn: "Access a diverse influencer network and find creators who align with your campaign objectives, target audience, and brand identity." },
   { img: "/services/on-demand-fast-track.jpg", title: "On-Demand & Fast-Track Campaigns",
     desc: "ตอบโจทย์แคมเปญที่ต้องการความรวดเร็ว ด้วยการค้นหาและประสานงานอินฟลูเอนเซอร์ในเวลาจำกัด ช่วยให้แบรนด์เริ่มแคมเปญได้ทันทุกโอกาสและทุกกระแส",
-    descEn: "Built for campaigns that need speed — sourcing and coordinating influencers on tight timelines so your brand can jump on every opportunity and trend the moment it happens." },
+    descEn: "Move quickly with streamlined influencer sourcing and coordination, helping your brand respond to emerging trends and time-sensitive opportunities." },
   { img: "/services/social-challenges-v5.jpg", objectPosition: "center 32%", title: "Social Challenges",
     desc: "โดดเด่นเหนือใครด้วยชาเลนจ์สนุก ๆ กระตุ้นการมีส่วนร่วมแบบออร์แกนิค ช่วยให้แบรนด์เป็นที่น่าจดจำ และกลายเป็นเรื่องที่ใคร ๆ ก็อยากพูดถึง",
-    descEn: "Stand out with fun challenges that spark organic engagement, making your brand memorable and giving people something to talk about." },
+    descEn: "Spark participation and organic engagement through creative social challenges that get people involved and talking about your brand." },
   { img: "/services/ugc-product-seeding3.jpg", objectPosition: "center 30%", title: "UGC & Product Seeding",
     desc: "สร้างกระแสให้สินค้าผ่าน UGC คอมเมนต์ และรีวิวจากผู้ใช้งานและครีเอเตอร์อย่างเป็นธรรมชาติ ช่วยเพิ่ม Social Proof สร้างความน่าเชื่อถือ และกระตุ้นการตัดสินใจซื้อ",
-    descEn: "Spark buzz for your product through natural UGC, comments, and reviews from real users and creators — boosting social proof, credibility, and purchase decisions." },
+    descEn: "Build social proof and credibility through authentic user-generated content, comments, and reviews from consumers and creators." },
   { img: "/services/livestream-affiliate4.jpg", title: "Livestream & Affiliate",
     desc: "คอนเทนต์ที่ออกแบบมาเพื่อสร้างผลลัพธ์ด้านยอดขายโดยตรงผ่าน Livestream และ Affiliate จ\u2060า\u2060กอินฟลูเอนเซอร์ เปลี่ยนความสนใจให้กลายเป็นการซื้อได้ง่ายขึ้น",
-    descEn: "Content designed to drive sales results directly through influencer livestreams and affiliate links, turning interest into purchases more easily." },
+    descEn: "Connect creator-led livestreams and affiliate marketing with your sales objectives, making it easier for audiences to discover and purchase your products." },
   { img: "/services/influencer-event-activation.jpg", title: "Influencer & Event Activation",
     desc: "ตั้งแต่อินฟลูเอนเซอร์ร่วมงาน Presenter และ Speaker ไปจนถึงทีมประสานงานหน้างาน เราช่วยให้อีเวนต์สร้างคอนเทนต์ กระแส และการพูดถึงได้อย่างต่อเนื่องทั้ง Online และ On-site",
-    descEn: "From influencer guests, presenters, and speakers to on-ground coordination — we help your event generate content, buzz, and conversation continuously, both online and on-site." },
+    descEn: "Bring your events to life with influencer appearances, presenters, speakers, and on-site coordination, generating content and conversations across online and on-site experiences." },
   { img: "/services/presenter-celebrity.jpg", objectPosition: "center 24%", title: "Presenter & Celebrity Marketing",
     desc: "คัดเลือกและประสานงาน Presenter, Celebrity และ Brand Ambassador ที่เ\u2060ห\u2060ม\u2060า\u2060ะ\u2060กั\u2060บภ\u2060า\u2060พ\u2060ลั\u2060ก\u2060ษ\u2060ณ์และกลุ่มเป้าหมายของแบรนด์ ช่วยสร้างการจดจำ เพิ่มความน่าเชื่อถือ และขยายการรับรู้แบรนด์ผ่านบุคคลที่มีชื่อเสียง",
-    descEn: "Selecting and coordinating presenters, celebrities, and brand ambassadors who fit your brand image and target audience — building recall, adding credibility, and extending brand awareness through well-known personalities." },
+    descEn: "Find the right presenters, celebrities, and brand ambassadors to represent your brand, build credibility, strengthen brand recognition, and connect with your target audience." },
   { img: "/services/community-fandom.jpg", objectPosition: "center 66%", title: "Community & Fandom Marketing",
     desc: "สร้างการมีส่วนร่วมระหว่างแบรนด์กับกลุ่ม Community และ Fandom ผ่าน\u200Bอิ\u2060น\u2060ฟ\u2060ลู\u2060เ\u2060อ\u2060น\u2060เ\u2060ซ\u2060อ\u2060ร์\u200Bและคอนเทนต์ที่ตรงกับความสนใจของแต่ละกลุ่ม ช่วยสร้างกระแส กระตุ้นการ\u200Bพู\u2060ด\u2060ถึ\u2060ง\u200Bและบอกต่อ พร้อมสร้างความสัมพันธ์ที่ดีกับกลุ่มเป้าหมาย",
-    descEn: "Building engagement between your brand and communities and fandoms through influencers and content that match each group's interests — sparking buzz, driving conversation and word of mouth, and building strong relationships with your target audience." },
+    descEn: "Connect your brand with passionate communities and fandoms through relevant influencers and content, sparking engagement, conversations, and organic word-of-mouth." },
   { img: "/services/paid-media-amplification-vivid.jpg", title: "Paid Media & Amplification",
     desc: "เพิ่มพลังให้แคมเปญด้วยการยิงโฆษณา บูสต์ และ Amplify คอนเทนต์จากอินฟลูเอนเซอร์ เข้าถึงกลุ่มเป้าหมายได้กว้างและแม่นยำขึ้น พร้อมผลักดันผลลัพธ์จากทุกคอนเทนต์ให้ไปได้ไกลกว่าเดิม",
-    descEn: "Supercharge your campaign with paid ads, boosting, and amplification of influencer content — reaching a wider, more precise audience and pushing every piece of content further." },
+    descEn: "Extend the reach and impact of influencer content through targeted paid media, reaching relevant audiences and maximising content exposure." },
   { img: "/services/always-on-v3.jpg", objectPosition: "center 45%", title: "Always-On Influencer & Media Strategy",
     desc: "วางกลยุทธ์ Influencer และ Media อย่างต่อเนื่องตลอดทั้งปี ช่วยให้แบรนด์รักษาการมองเห็น สร้างความสัมพันธ์กับกลุ่มเป้าหมาย และต่อยอดผลลัพธ์ได้มากกว่าแคมเปญระยะสั้น",
-    descEn: "Ongoing influencer and media strategy planned year-round, helping your brand maintain visibility, build relationships with its audience, and compound results beyond a single short-term campaign." },
+    descEn: "Keep your brand visible and connected with audiences through ongoing influencer collaborations and a consistent, year-round media strategy." },
   { img: "/services/creative-content-concept.jpg", title: "Creative Content & Concept Development",
     desc: "พัฒนา Campaign Concept, Key Message และแนวทางคอนเทนต์ให้เหมาะกับแบรนด์และแพลตฟอร์ม ช่วยให้อินฟลูเอนเซอร์สร้างคอนเทนต์ที่น่าสนใจ พร้อมสื่อสารสิ่งที่แบรนด์ต้องการได้อย่างชัดเจน",
-    descEn: "Developing campaign concepts, key messages, and content direction tailored to your brand and platform — helping influencers create compelling content that clearly communicates what your brand needs to say." },
+    descEn: "Develop campaign concepts, key messages, and creative direction that align with your brand, audience, and platform requirements." },
   { img: "/services/photo-video-production3.jpg", objectPosition: "36% center", title: "Photo & Video Production",
     desc: "สร้างสรรค์ภาพและวิดีโอตั้งแต่การวาง Concept, Storyboard ไปจนถึงการถ่ายทำและ Post-production เพื่อให้แบรนด์มีคอนเทนต์คุณภาพพร้อมใช้บนทุกช่องทาง",
-    descEn: "Creative photo and video production from concept and storyboard through filming and post-production, giving your brand quality, ready-to-use content across every channel." },
+    descEn: "Bring creative ideas to life through professional photo and video production, from concept development and storyboarding to filming and post-production." },
   { img: "/services/publishing-advertorial-article.jpg", objectPosition: "center 30%", title: "Publishing & Advertorial",
     desc: "เพิ่มพื้นที่การมองเห็นให้แบรนด์ผ่านบทความและคอนเทนต์บนช่องทางที่เหมาะสม ถ่ายทอดเรื่องราวและข้อมูลของแบรนด์ในรูปแบบที่เข้าถึงและสร้างความน่าเชื่อถือได้มากขึ้น",
-    descEn: "Expand your brand's visibility through articles and content placed on the right channels, telling your brand's story in a way that's accessible and builds credibility.",
+    descEn: "Expand your brand's presence through strategically placed articles and advertorial content that communicate your story and build credibility.",
     },
 ];
 
 const WHAT_WE_OFFER = [
-  { icon: "/what-we-offer/What We Offer-02.png", title: "วางแผนให้ตรงเป้าหมาย", titleEn: "Plans Built Around Your Goals",
+  { icon: "/what-we-offer/What We Offer-02.png", title: "วางแผนให้ตรงเป้าหมาย", titleEn: "Strategies Built Around Your Goals",
     desc: "ออกแบบกลยุทธ์และคอนเทนต์ตามโจทย์ของแต่ละแบรนด์ เพื่อให้การสื่อสารเข้าถึงกลุ่มเป้าหมายได้ตรงจุดและตอบโจทย์",
-    descEn: "Strategy and content designed around each brand's brief, so your message reaches the right audience and hits the mark.",
+    descEn: "We tailor strategies and content to your brand's objectives, reaching the right audience with messaging designed to meet your campaign goal.",
     Icon: Target, gradient: "purple" as const, badgeText: "Data-Driven", badgeColor: "#5f26e5" },
-  { icon: "/what-we-offer/What We Offer-01.png", title: "เลือก Creator ได้แม่นยำขึ้น", titleEn: "Choose Creators More Precisely",
+  { icon: "/what-we-offer/What We Offer-01.png", title: "เลือก Creator ได้แม่นยำขึ้น", titleEn: "Smarter Creator Selection",
     desc: "ใช้ฐานข้อมูล Creator กว่า 1 ล้านโปรไฟล์ วิเคราะห์\u200Bตั\u2060ว\u2060ต\u2060น\u200B กลุ่มผู้ติดตาม และ Performance ที่ผ่านมา เพื่อเลือกคนที่เหมาะกับแบรนด์",
-    descEn: "A database of over 1 million Creator profiles, analysing identity, audience and past performance to choose the right fit for your brand.",
+    descEn: "With over 1 million creator profiles, we analyse creator identities, audience data, and past performance to find the best fit for your brand.",
     Icon: Sparkles, gradient: "purple" as const, badgeText: "AI-Powered", badgeColor: "#ff0089" },
   { icon: "/what-we-offer/ai-insight-v2.png", title: "เปลี่ยนข้อมูลเป็น Insight ด้วย AI", titleEn: "Turning Data into Actionable Insights",
     desc: "ใช้ AI วิเคราะห์ข้อมูลตลอดแคมเปญ เพื่อค้นหา Insight ที่ช่วยให้ตัดสินใจได้แม่นยำและพัฒนาผลลัพธ์อย่างต่อเนื่อง",
     descEn: "We use AI to analyse campaign data, uncover actionable insights, and support smarter decisions and ongoing performance improvements.",
     Icon: Brain, gradient: "purple" as const, badgeText: "AI Insights", badgeColor: "#9333ea" },
-  { icon: "/what-we-offer/What We Offer-05.png", title: "ทำแคมเปญได้ง่ายขึ้น", titleEn: "Campaigns Made Easier",
+  { icon: "/what-we-offer/What We Offer-05.png", title: "ทำแคมเปญได้ง่ายขึ้น", titleEn: "Campaign Management Made Simple",
     desc: "ทีมงานดูแลตั้งแต่ต้นจนจบ พร้อมระบบ Campaign Management ช่วยติดตามงานและจัดการคอนเทนต์ ลดภาระการประสานงานของแบรนด์",
-    descEn: "Our team handles everything from start to finish, with a Campaign Management system to track work and manage content — less coordination for your brand.",
+    descEn: "Our team manages your campaign from start to finish, supported by tools that streamline task tracking, content management, and coordination.",
     Icon: Layers, gradient: "purple" as const, badgeText: "End-to-End", badgeColor: "#2e1a7a" },
-  { icon: "/what-we-offer/What We Offer-03.png", title: "ใช้งบได้คุ้มค่ามากขึ้น", titleEn: "Budget That Works Harder",
+  { icon: "/what-we-offer/What We Offer-03.png", title: "ใช้งบได้คุ้มค่ามากขึ้น", titleEn: "Make Every Budget Count",
     desc: "ใช้ข้อมูลผลงานและกลุ่มผู้ติดตามช่วยเลือก Creator วางแผน Media และจัดสรรงบ เพื่อลดการใช้จ่าย\u200Bซ้ำ\u2060ซ้\u2060อ\u2060น\u200Bและเพิ่มความคุ้มค่าของแคมเปญ",
-    descEn: "Performance and audience data guide Creator selection, media planning and budget allocation — cutting duplicate spend and getting more value from every campaign.",
+    descEn: "We use performance and audience data to guide creator selection, media planning, and budget allocation, helping reduce unnecessary spending and maximise campaign value.",
     Icon: Wallet, gradient: "purple" as const, badgeText: "Cost-Efficient", badgeColor: "#b6146e" },
-  { icon: "/what-we-offer/What We Offer-04.png", title: "เห็นผลเร็ว ตัดสินใจได้ทัน", titleEn: "See Results Fast, Act in Time",
+  { icon: "/what-we-offer/What We Offer-04.png", title: "เห็นผลเร็ว ตัดสินใจได้ทัน", titleEn: "Real-Time Insights. Faster Decisions.",
     desc: "ติดตาม Performance เทียบกับ KPI ผ่าน Dashboard ช่วยให้รู้เร็วว่าอะไรได้ผล จุดไหนต้องปรับปรุง และแก้ไขได้ทันระหว่างแคมเปญ",
-    descEn: "Track performance against KPIs on a dashboard to quickly see what works and what needs improving — and fix it while the campaign is still running.",
+    descEn: "Track performance against KPIs through our dashboard, see what's working, identify areas for improvement, and make timely adjustments while your campaign is running.",
     Icon: BarChart3, gradient: "purple" as const, badgeText: "Real-Time", badgeColor: "#7c3aed" },
 ];
 
@@ -286,22 +286,22 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
   const CAMPAIGN_STEPS = [
     { img: "/how-we-run-campaigns/plan-campaign-v8.png", title: "กำหนดรายละเอียดบรีฟ", titleEn: "Define the Brief",
       desc: "ทำความเข้าใจโจทย์ของแบรนด์ตั้งแต่ต้นทาง|เพื่อวางทิศทางแคมเปญให้ตรงเป้าหมายที่สุด",
-      descEn: "We start by fully understanding your brief,|so the campaign direction is aligned with your goals from day one." },
+      descEn: "We start by understanding your brand's needs and objectives to set a clear direction for your campaign." },
     { img: "/how-we-run-campaigns/manage-seamlessly-v4.png", title: "วางแผนแคมเปญ", titleEn: "Plan the Campaign",
       desc: "เปลี่ยนเป้าหมายของแบรนด์เป็นกลยุทธ์ที่จับต้องได้|ให้ทุกการสื่อสารไปถึงกลุ่มเป้าหมายได้ตรงจุด",
-      descEn: "We turn your brand's goals into a concrete strategy,|so every message reaches the right audience." },
+      descEn: "We turn your business goals into an actionable campaign strategy designed to reach the right audience." },
     { img: "/how-we-run-campaigns/select-influencers-v5.png", title: "คัดสรรอินฟลูเอนเซอร์ที่ใช่", titleEn: "Select the Right Influencers",
       desc: "ผ่านระบบ KOL Discovery จับคู่อินฟลูเอนเซอร์ที่เหมาะสมที่สุด|กับแบรนด์คุณด้วยข้อมูลเชิงลึกที่แม่นยำ",
-      descEn: "Our KOL Discovery system matches your brand|with the most suitable influencers using precise data insights." },
+      descEn: "Our KOL Discovery system uses data-driven insights to identify influencers who align with your brand and campaign goals." },
     { img: "/how-we-run-campaigns/review-drafts-v4.png", title: "จัดการแคมเปญไร้รอยต่อ", titleEn: "Manage Seamlessly",
       desc: "ให้แคมเปญของคุณดำเนินไปอย่างไม่มีสะดุด|ด้วยทีมงานมืออาชีพที่ดูแลทุกขั้นตอน",
-      descEn: "Your campaign runs without a hitch,|with a professional team overseeing every step." },
+      descEn: "Our team handles campaign coordination and execution, keeping every stage organised and on track." },
     { img: "/how-we-run-campaigns/launch-v5.png", title: "เผยแพร่คอนเทนต์ตามแผน", titleEn: "Publish Content as Planned",
       desc: "เผยแพร่คอนเทนต์ตามกำหนด พร้อมดูแลและประสานงานกับ|Creator เพื่อให้ทุกโพสต์เป็นไปตามแผน",
-      descEn: "Content goes live on schedule, with our team coordinating closely with creators|so every post stays on plan." },
+      descEn: "We coordinate with creators to ensure content is published on schedule and aligned with the campaign plan." },
     { img: "/how-we-run-campaigns/report-results-v4.png", title: "รายงานผลแบบเรียลไทม์", titleEn: "Real-Time Reporting",
       desc: "ติดตามทุกความเคลื่อนไหวบนแดชบอร์ด|พร้อมรับรายงานและอินไซต์ที่นำไปใช้ต่อได้จริง",
-      descEn: "Track every move on the dashboard|and get reports and insights you can actually put to use." },
+      descEn: "Monitor campaign performance through our real-time dashboard, with reports and actionable insights to evaluate results and inform future campaigns." },
   ];
   const CAMPAIGN_ROW_HEIGHT = 140;
   const CAMPAIGN_ROW_GAP = 24;
@@ -375,10 +375,10 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                 </>
               ) : (
                 <>
-                  Not Just Strategies.<br/>
+                  From Influencer Strategy.<br/>
                   <span style={{ background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
                     WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                    Execution That Delivers.
+                    To Campaign Success.
                   </span>
                 </>
               )}
@@ -388,7 +388,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               {lang === "th" ? (
                 <>ทีม Buddy Review ดูแลตั้งแต่กลยุทธ์ คัด Influencer <span className="bh-nw">ไปจนถึงบริหารและวัดผล</span> พร้อมใช้ Data และ Technology <span className="bh-nw">ช่วยให้ตัดสินใจได้แม่นขึ้น</span></>
               ) : (
-                "From Strategy To Insight, We Turn Influence Into Impact."
+                "Buddy Review brings together expertise, data, and technology to make smarter decisions at every stage."
               )}
             </p>
 
@@ -846,10 +846,10 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         <Suspense fallback={null}>
           <ContactFormSection lang={lang} dict={dict?.contactForm}
             headingFontFamily={lang === "th" ? undefined : PIERSON.fontFamily}
-            headingOverride={lang === "th" ? "มี Brief แล้ว หรือยังไม่แน่ใจว่าควรเริ่มจากอะไร?" : "Have a brief,|or not sure where to start?"}
+            headingOverride={lang === "th" ? "มี Brief แล้ว หรือยังไม่แน่ใจว่าควรเริ่มจากอะไร?" : "Have a Brief?|Not Sure Where to Start?"}
             subheadingOverride={lang === "th"
               ? "เล่าเป้าหมายของคุณให้เราฟัง ทีม Buddy Review จะช่วยมองโจทย์ วางแนวทาง และแนะนำ campaign approach ที่เหมาะกับแบรนด์"
-              : "Tell us your goal — the Buddy Review team will help frame the challenge, shape the direction, and recommend a campaign approach that fits your brand."}
+              : "Tell us what you want to achieve. Our team will help you explore the possibilities, shape your strategy, and find the right campaign approach for your brand."}
           />
         </Suspense>
       </div>

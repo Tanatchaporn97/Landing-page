@@ -9,22 +9,22 @@ const PIERSON = { fontFamily: "'Pierson','Noto Sans Thai',sans-serif" };
 const GOALS = [
   { num: "01", Icon: Rocket, title: "Launch",
     desc: "สร้างกระแสและความสนใจให้สินค้า บริการ หรือแคมเปญใหม่",
-    descEn: "Build buzz and interest around a new product, service, or campaign." },
+    descEn: "Generate buzz and excitement around new products, services, or campaigns." },
   { num: "02", Icon: Eye, title: "Awareness",
     desc: "เพิ่มการเข้าถึงและสร้างการจดจำแบรนด์ในกลุ่มเป้าหมาย",
-    descEn: "Extend your reach and build brand recall with your target audience." },
+    descEn: "Expand brand reach and build awareness among your target audience." },
   { num: "03", Icon: CheckCircle2, title: "Consideration",
     desc: "ให้ข้อมูลและรีวิวสินค้า เพื่อช่วยให้ผู้บริโภคตัดสินใจได้ง่ายขึ้น",
-    descEn: "Share product information and reviews that make it easier for consumers to decide." },
+    descEn: "Build trust and influence purchase decisions through authentic content and reviews." },
   { num: "04", Icon: Store, title: "Traffic & Trial",
     desc: "กระตุ้นให้คนเข้าเว็บไซต์ เยี่ยมชมหน้าร้าน หรือทดลองสินค้า",
-    descEn: "Drive people to your website or store, or to try the product." },
+    descEn: "Drive website visits, in-store traffic, and product trials." },
   { num: "05", Icon: ShoppingCart, title: "Sales & Conversion",
     desc: "กระตุ้นการสั่งซื้อและการติดต่อสอบถาม เพื่อเพิ่มโ⁠อ⁠ก⁠า⁠ส⁠ใ⁠น⁠ก⁠า⁠ร⁠ข⁠า⁠ย",
-    descEn: "Drive orders and enquiries to create more sales opportunities." },
+    descEn: "Encourage purchases and enquiries to drive sales opportunities." },
   { num: "06", Icon: Repeat, title: "Always-on",
     desc: "ทำแคมเปญร่วมกับ Creator อย่างต่อเนื่อง เพื่อรักษาการมองเห็นและการมีส่วนร่วมกับแบรนด์",
-    descEn: "Run campaigns with Creators continuously to keep your brand visible and engaging." },
+    descEn: "Maintain brand visibility and engagement through ongoing creator collaborations." },
 ];
 
 export default function BusinessGoalsSection({ lang }: { lang: "th" | "en" }) {

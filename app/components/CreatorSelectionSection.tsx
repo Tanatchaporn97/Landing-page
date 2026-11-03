@@ -207,7 +207,7 @@ export default function CreatorSelectionSection({ lang }: { lang: "th" | "en" })
         <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "rgba(255,255,255,0.92)", margin: 0, maxWidth: "340px" }}>
           {lang === "th"
             ? <>เราคัดเลือก Creator ผ่านการวิเคราะห์ข้อมูลด้วย <span style={{ whiteSpace: "nowrap" }}>6 Pillars</span> ร่วมกับข้อมูล<span style={{ whiteSpace: "nowrap" }}>ผู้ติดตาม</span>และสถิติผลงานของ<span style={{ whiteSpace: "nowrap" }}>คอนเทนต์</span>ที่ผ่านมา เพื่อค้นหา<span style={{ whiteSpace: "nowrap" }}>อินฟลูเอนเซอร์</span>ที่เหมาะกับแบรนด์และเป้าหมายของแต่ละแคมเปญ</>
-            : "We select Creators by analysing data through 6 Pillars, together with audience data and past content performance, to find the influencers that fit the brand and the goals of each campaign."}
+            : "Find the right creators for your brand with our 6 Pillars framework, combining audience insights and past content performance to identify influencers who align with your target audience and campaign goals."}
         </p>
 
         <div className="cs-tags" style={{ display: "grid", gridTemplateColumns: "repeat(3, auto)", gap: "10px", marginTop: "4px" }}>
