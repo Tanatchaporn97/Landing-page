@@ -96,7 +96,7 @@ const WHAT_WE_OFFER = [
     desc: "ใช้ฐานข้อมูล Creator กว่า 1 ล้านโปรไฟล์ วิเคราะห์\u200Bตั\u2060ว\u2060ต\u2060น\u200B กลุ่มผู้ติดตาม และ Performance ที่ผ่านมา เพื่อเลือกคนที่เหมาะกับแบรนด์",
     descEn: "A database of over 1 million Creator profiles, analysing identity, audience and past performance to choose the right fit for your brand.",
     Icon: Sparkles, gradient: "purple" as const, badgeText: "AI-Powered", badgeColor: "#ff0089" },
-  { icon: "/what-we-offer/ai-insight.png", title: "เปลี่ยนข้อมูลเป็น Insight ด้วย AI", titleEn: "Turning Data into Actionable Insights",
+  { icon: "/what-we-offer/ai-insight-v2.png", title: "เปลี่ยนข้อมูลเป็น Insight ด้วย AI", titleEn: "Turning Data into Actionable Insights",
     desc: "ใช้ AI วิเคราะห์ข้อมูลตลอดแคมเปญ เพื่อค้นหา Insight ที่ช่วยให้ตัดสินใจได้แม่นยำและพัฒนาผลลัพธ์อย่างต่อเนื่อง",
     descEn: "We use AI to analyse campaign data, uncover actionable insights, and support smarter decisions and ongoing performance improvements.",
     Icon: Brain, gradient: "purple" as const, badgeText: "AI Insights", badgeColor: "#9333ea" },
