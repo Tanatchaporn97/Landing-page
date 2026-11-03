@@ -7,7 +7,7 @@ import dynamic from "next/dynamic";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { GradientCard } from "@/components/ui/gradient-card";
-import { Target, Sparkles, Layers, Wallet, BarChart3 } from "lucide-react";
+import { Target, Sparkles, Layers, Wallet, BarChart3, Brain } from "lucide-react";
 import BusinessGoalsSection from "./BusinessGoalsSection";
 import CreatorSelectionSection from "./CreatorSelectionSection";
 import CampaignLearningSection from "./CampaignLearningSection";
@@ -96,6 +96,10 @@ const WHAT_WE_OFFER = [
     desc: "ใช้ฐานข้อมูล Creator กว่า 1 ล้านโปรไฟล์ วิเคราะห์\u200Bตั\u2060ว\u2060ต\u2060น\u200B กลุ่มผู้ติดตาม และ Performance ที่ผ่านมา เพื่อเลือกคนที่เหมาะกับแบรนด์",
     descEn: "A database of over 1 million Creator profiles, analysing identity, audience and past performance to choose the right fit for your brand.",
     Icon: Sparkles, gradient: "purple" as const, badgeText: "AI-Powered", badgeColor: "#ff0089" },
+  { icon: "/what-we-offer/ai-insight.png", title: "เปลี่ยนข้อมูลเป็น Insight ด้วย AI", titleEn: "Turning Data into Actionable Insights",
+    desc: "ใช้ AI วิเคราะห์ข้อมูลตลอดแคมเปญ เพื่อค้นหา Insight ที่ช่วยให้ตัดสินใจได้แม่นยำและพัฒนาผลลัพธ์อย่างต่อเนื่อง",
+    descEn: "We use AI to analyse campaign data, uncover actionable insights, and support smarter decisions and ongoing performance improvements.",
+    Icon: Brain, gradient: "purple" as const, badgeText: "AI Insights", badgeColor: "#9333ea" },
   { icon: "/what-we-offer/What We Offer-05.png", title: "ทำแคมเปญได้ง่ายขึ้น", titleEn: "Campaigns Made Easier",
     desc: "ทีมงานดูแลตั้งแต่ต้นจนจบ พร้อมระบบ Campaign Management ช่วยติดตามงานและจัดการคอนเทนต์ ลดภาระการประสานงานของแบรนด์",
     descEn: "Our team handles everything from start to finish, with a Campaign Management system to track work and manage content — less coordination for your brand.",
@@ -642,7 +646,8 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           `}</style>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-10">
             {WHAT_WE_OFFER.map((item, i) => {
-              const isLast = i === WHAT_WE_OFFER.length - 1;
+              // an odd card out is centred on its own row
+              const isLast = i === WHAT_WE_OFFER.length - 1 && WHAT_WE_OFFER.length % 2 === 1;
               const card = (
                 <GradientCard
                   key={i}
