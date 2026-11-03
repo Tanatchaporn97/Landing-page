@@ -139,7 +139,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
                   imageSrc: "/co-founder/co-founder-2.jpg", thumbnailSrc: "/co-founder/co-founder-2.jpg" },
                 { id: "nick", name: "ณัฏฐดนัย รักตประจิต (นิค)", affiliation: "Co-founder",
                   quote: "เราสร้างการตลาดอิ\u2060น\u2060ฟ\u2060ลู\u2060เ\u2060อ\u2060น\u2060เ\u2060ซ\u2060อ\u2060ร์ที่ไม่ได้แค่ 'ดัง' แ\u2060ต่\u2060ส\u2060ร้\u2060า\u2060ง 'กำ\u2060ไ\u2060ร\u2060จ\u2060ริ\u2060ง'",
-                  imageSrc: "/co-founder/co-founder-1.jpg", thumbnailSrc: "/co-founder/co-founder-1.jpg" },
+                  imageSrc: "/co-founder/co-founder-nick.jpg", thumbnailSrc: "/co-founder/co-founder-nick.jpg" },
                 { id: "boss", name: "เศรษฐพร ศรีวิไล (บอส)", affiliation: "Co-founder",
                   quote: "เทคโนโลยีของเราคือขุมพลังที่เปลี่ยนทุกข้อมูล สู่ผลลัพธ์ที่แม่นยำ",
                   imageSrc: "/co-founder/co-founder-3.jpg", thumbnailSrc: "/co-founder/co-founder-3.jpg" },
