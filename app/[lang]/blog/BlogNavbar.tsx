@@ -14,7 +14,7 @@ export default function BlogNavbar({ lang = "th" }: { lang?: Locale }) {
   const router = useRouter();
   const t = lang === "th"
     ? { contactUs: "ติดต่อเรา", imInfluencer: "สำหรับอินฟลูเอนเซอร์" }
-    : { contactUs: "Contact Us", imInfluencer: "I'm an Influencer" };
+    : { contactUs: "Contact Us", imInfluencer: "For Influencers" };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
