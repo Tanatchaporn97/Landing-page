@@ -8,11 +8,11 @@ const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 // cropped from the brand page's What We Offer set): system dashboard, people/insight,
 // analytics, growth, target.
 const ITEMS = [
-  { title: "Business Goals First",     desc: "เริ่มจากเป้าหมายของแบรนด์ เพื่อวางกลยุทธ์และแผนแคมเปญให้ตรงโจทย์",                 descEn: "We start from your brand's goals, so the strategy and campaign plan hit the brief.",   src: "/how-we-work/icon-goals-v2.png" },
-  { title: "United by Expertise",      desc: "รวมความเชี่ยวชาญของทีมกลยุทธ์ อิ\u2060น\u2060ฟ\u2060ลู\u2060เ\u2060อ\u2060น\u2060เ\u2060ซ\u2060อ\u2060ร์ และข้อมูล เพื่อดูแลแคมเปญร่วมกัน",     descEn: "Strategy, influencer, and data experts working together on every campaign.",          src: "/how-we-work/icon-insight-v2.png" },
-  { title: "Data Guides Decisions",    desc: "ใช้ข้อมูลและเทคโนโลยีช่วยวางแผน คัดเลือกอิ\u2060น\u2060ฟ\u2060ลู\u2060เ\u2060อ\u2060น\u2060เ\u2060ซ\u2060อ\u2060ร์ และตัดสินใจ",                  descEn: "Data and technology guide planning, influencer selection, and every decision.",       src: "/how-we-work/icon-data-v2.png" },
-  { title: "Delivery with Discipline", desc: "บริหารงานอย่างมีมาตรฐาน พร้อมดูแลทุกขั้นตอนจนจบแคมเปญ",                           descEn: "Work managed to a clear standard, with every step looked after until the campaign ends.", src: "/how-we-work/icon-delivery-v2.png" },
-  { title: "Your Results, Measured",   desc: "ติดตามและวัดผลแคมเปญ พร้อมนำข้อมูลมาปรับปรุงการทำงาน",                               descEn: "We track and measure every campaign, and use the data to keep improving.",            src: "/how-we-work/icon-clarity-v2.png" },
+  { title: "Business Goals First",     desc: "เริ่มจากเป้าหมายของแบรนด์ เพื่อวางกลยุทธ์และแผนแคมเปญให้ตรงโจทย์",                 descEn: "We align every strategy and campaign with your brand’s business objectives.",   src: "/how-we-work/icon-goals-v2.png" },
+  { title: "United by Expertise",      desc: "รวมความเชี่ยวชาญของทีมกลยุทธ์ อิ\u2060น\u2060ฟ\u2060ลู\u2060เ\u2060อ\u2060น\u2060เ\u2060ซ\u2060อ\u2060ร์ และข้อมูล เพื่อดูแลแคมเปญร่วมกัน",     descEn: "We bring together expertise in strategy, influencer marketing, and data to deliver cohesive campaigns.",          src: "/how-we-work/icon-insight-v2.png" },
+  { title: "Data Guides Decisions",    desc: "ใช้ข้อมูลและเทคโนโลยีช่วยวางแผน คัดเลือกอิ\u2060น\u2060ฟ\u2060ลู\u2060เ\u2060อ\u2060น\u2060เ\u2060ซ\u2060อ\u2060ร์ และตัดสินใจ",                  descEn: "We use data and technology to inform campaign planning, influencer selection, and strategic decisions.",       src: "/how-we-work/icon-data-v2.png" },
+  { title: "Delivery with Discipline", desc: "บริหารงานอย่างมีมาตรฐาน พร้อมดูแลทุกขั้นตอนจนจบแคมเปญ",                           descEn: "We manage every stage of the campaign with structured processes and consistent quality standards.", src: "/how-we-work/icon-delivery-v2.png" },
+  { title: "Your Results, Measured",   desc: "ติดตามและวัดผลแคมเปญ พร้อมนำข้อมูลมาปรับปรุงการทำงาน",                               descEn: "We track campaign performance, measure results, and turn insights into continuous improvement.",            src: "/how-we-work/icon-clarity-v2.png" },
 ];
 
 
@@ -30,7 +30,7 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
         <p style={{ ...KT, fontSize: "16px", lineHeight: 1.7, color: "#374151", margin: 0 }}>
           {lang === "th"
             ? "วิธีทำงานที่ช่วยให้ทุกแคมเปญชัดเจน เป็นระบบ และเดินไปสู่เป้าหมายเดียวกัน"
-            : "The principles behind how we think, work, and deliver."}
+            : "Our approach to strategy, collaboration, execution, and measurable results."}
         </p>
       </div>
       <Link href={`/${lang}/brand`}
@@ -69,7 +69,8 @@ export default function TrustedPartnerShowcase({ lang }: { lang: "th" | "en" }) 
         .hww-row{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
         /* white glassmorphism tiles: frosted translucent white, brand purple
            heading, dark copy, pink→purple initial */
-        .hww-card{ position: relative; overflow: hidden; min-height: 340px; padding: 26px 24px 24px; border-radius: 28px; color: #2a2346;
+        /* bottom padding keeps longer copy clear of the corner illustration */
+        .hww-card{ position: relative; overflow: hidden; min-height: 340px; padding: 26px 24px 104px; border-radius: 28px; color: #2a2346;
           background: linear-gradient(160deg, rgba(255,255,255,0.62) 0%, rgba(255,255,255,0.32) 100%);
           border: 1px solid rgba(255,255,255,0.85);
           backdrop-filter: blur(22px) saturate(160%); -webkit-backdrop-filter: blur(22px) saturate(160%);
