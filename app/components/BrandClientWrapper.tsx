@@ -63,7 +63,7 @@ const OUR_SERVICES = [
   { img: "/services/influencer-event-activation.jpg", title: "Influencer & Event Activation",
     desc: "ตั้งแต่อินฟลูเอนเซอร์ร่วมงาน Presenter และ Speaker ไปจนถึงทีมประสานงานหน้างาน เราช่วยให้อีเวนต์สร้างคอนเทนต์ กระแส และการพูดถึงได้อย่างต่อเนื่องทั้ง Online และ On-site",
     descEn: "From influencer guests, presenters, and speakers to on-ground coordination — we help your event generate content, buzz, and conversation continuously, both online and on-site." },
-  { img: "/services/presenter.jpg", objectPosition: "center 22%", title: "Presenter & Celebrity Marketing",
+  { img: "/services/presenter-celebrity.jpg", objectPosition: "center 24%", title: "Presenter & Celebrity Marketing",
     desc: "คัดเลือกและประสานงาน Presenter, Celebrity และ Brand Ambassador ที่เ\u2060ห\u2060ม\u2060า\u2060ะ\u2060กั\u2060บภ\u2060า\u2060พ\u2060ลั\u2060ก\u2060ษ\u2060ณ์และกลุ่มเป้าหมายของแบรนด์ ช่วยสร้างการจดจำ เพิ่มความน่าเชื่อถือ และขยายการรับรู้แบรนด์ผ่านบุคคลที่มีชื่อเสียง",
     descEn: "Selecting and coordinating presenters, celebrities, and brand ambassadors who fit your brand image and target audience — building recall, adding credibility, and extending brand awareness through well-known personalities." },
   { img: "/services/community-fandom.jpg", objectPosition: "center 66%", title: "Community & Fandom Marketing",
