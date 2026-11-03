@@ -39,7 +39,7 @@ const COMMENTS = [
 ];
 
 const ACTIVITY_TILES = [
-  { img: "/campaign-activity/activity-v2-01.jpg" },
+  { img: "/campaign-activity/activity-v2-07.jpg" },
   { img: "/campaign-activity/activity-v2-02.jpg" },
   { img: "/campaign-activity/activity-v2-03.jpg" },
   { img: "/campaign-activity/activity-v2-04.jpg" },
