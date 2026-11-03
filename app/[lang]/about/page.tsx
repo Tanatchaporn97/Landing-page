@@ -175,7 +175,6 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
           { id: 11, title: lang === "th" ? "ทริปประจำปีบริษัท" : "Annual Company Trip", desc: lang === "th" ? "ทุกคนพร้อมหน้าริมทะเล" : "The whole team together by the sea", url: "/life-at-buddy/life-11.jpg", span: "md:col-span-2 md:row-span-1" },
           { id: 2, title: lang === "th" ? "แลกของขวัญปีใหม่" : "Gift Exchange", desc: lang === "th" ? "ลุ้นของขวัญกันสนุกสนาน" : "Surprises all around", url: "/life-at-buddy/life-02.jpg", span: "md:col-span-2 md:row-span-1" },
           { id: 1, title: lang === "th" ? "ออกบูธงานอีเวนต์" : "Event Booth", desc: lang === "th" ? "พาแบรนด์ไปพบผู้คนในงาน" : "Bringing the brand to the show", url: "/life-at-buddy/life-01.jpg", span: "md:row-span-2" },
-          { id: 5, title: lang === "th" ? "ตกปลากลางทะเล" : "Fishing Trip", desc: lang === "th" ? "กิจกรรมผ่อนคลายกลางทะเล" : "A relaxing day out on the water", url: "/life-at-buddy/life-05.jpg", span: "md:row-span-2" },
           { id: 25, title: lang === "th" ? "กิจกรรมริมสระ" : "Poolside Activity", desc: lang === "th" ? "เกมสนุกระหว่างทริปบริษัท" : "Team games on the company trip", url: "/life-at-buddy/life-25.jpg", span: "md:col-span-2 md:row-span-1" },
           { id: 26, title: lang === "th" ? "เที่ยวริมทะเลสาบ" : "Lakeside Getaway", desc: lang === "th" ? "เดินชมวิวกับเพื่อนร่วมทีม" : "Taking in the view with teammates", url: "/life-at-buddy/life-26.jpg", span: "md:col-span-2 md:row-span-1" },
           { id: 9, title: lang === "th" ? "นั่งเรือเที่ยวเกาะ" : "Island Boat Ride", desc: lang === "th" ? "ล่องเรือไปด้วยกันทั้งทีม" : "Cruising between the islands together", url: "/life-at-buddy/life-09.jpg", span: "md:row-span-1" },
@@ -195,7 +194,6 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
           { id: 17, title: lang === "th" ? "งานเลี้ยงกลางแจ้ง" : "Outdoor Gala Dinner", desc: lang === "th" ? "ค่ำคืนสังสรรค์ใต้แสงไฟ" : "An evening celebration under the lights", url: "/life-at-buddy/life-17.jpg", span: "md:row-span-1" },
           { id: 8, title: lang === "th" ? "มื้ออาหารพร้อมหน้าทีม" : "Team Meal Together", desc: lang === "th" ? "กินข้าวพร้อมหน้ากันทั้งทีม" : "Sharing a meal as one team", url: "/life-at-buddy/life-08.jpg", span: "md:row-span-1" },
           { id: 33, title: lang === "th" ? "มื้อค่ำบนแพ" : "Dinner on the Raft", desc: lang === "th" ? "ล้อมวงกินข้าวริมน้ำ" : "Gathering for a lakeside meal", url: "/life-at-buddy/life-33.jpg", span: "md:row-span-2" },
-          { id: 14, title: lang === "th" ? "วันพักผ่อนกลางทะเล" : "A Day at Sea", desc: lang === "th" ? "ผ่อนคลายไปกับสายลมและทะเล" : "Relaxing out on the open water", url: "/life-at-buddy/life-14.jpg", span: "md:row-span-2" },
           { id: 22, title: lang === "th" ? "เข้าคิวรับอาหาร" : "Buffet Time", desc: lang === "th" ? "ต่อแถวรับของอร่อยด้วยกัน" : "Lining up for the good stuff", url: "/life-at-buddy/life-22.jpg", span: "md:row-span-2" },
           { id: 34, title: lang === "th" ? "บรรยายในงานสัมมนา" : "Speaking at a Seminar", desc: lang === "th" ? "เล่าเรื่องการเลือก Influencer ที่ใช่" : "On choosing the right influencer", url: "/life-at-buddy/life-34.jpg", span: "md:row-span-1" },
           { id: 35, title: lang === "th" ? "เกมกลุ่มริมทะเล" : "Group Games by the Sea", desc: lang === "th" ? "ร่วมสนุกกันทั้งทีม" : "The whole team joining in", url: "/life-at-buddy/life-35.jpg", span: "md:row-span-1" },
@@ -208,7 +206,6 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
           { id: 21, title: lang === "th" ? "มอบของขวัญส่งท้ายปี" : "Year-End Gift Giving", desc: lang === "th" ? "ความสุขเล็กๆ ส่งท้ายปี" : "Small gifts to close out the year", url: "/life-at-buddy/life-21.jpg", span: "md:row-span-1" },
           { id: 37, title: lang === "th" ? "บูธคึกคัก" : "A Busy Booth", desc: lang === "th" ? "ผู้คนแวะมาไม่ขาดสาย" : "Visitors stopping by all day", url: "/life-at-buddy/life-37.jpg", span: "md:row-span-2" },
           { id: 15, title: lang === "th" ? "ลุ้นปลากินเบ็ด" : "Waiting for a Bite", desc: lang === "th" ? "รอจังหวะกันทั้งเรือ" : "The whole boat waiting for a catch", url: "/life-at-buddy/life-15.jpg", span: "md:row-span-2" },
-          { id: 6, title: lang === "th" ? "สนุกกับการตกปลา" : "Fishing Fun", desc: lang === "th" ? "ยิ้มรับความสนุกกลางทะเล" : "All smiles out on the boat", url: "/life-at-buddy/life-06.jpg", span: "md:row-span-2" },
         ]}
       />
 
