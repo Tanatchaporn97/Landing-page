@@ -591,6 +591,24 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         </div>
       </section>
 
+      {/* ── Influencer Categories ── */}
+      <section style={{ overflow: "hidden", background: "transparent" }} className="py-20">
+        <div style={{ maxWidth: "1294px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
+          <h2 className="section-title text-center"
+            style={{ ...PIERSON, fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 48px" }}>
+            Influencer{" "}
+            <span style={{
+              background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}>Categories</span>
+          </h2>
+        </div>
+
+        <CategoriesMarquee />
+      </section>
+
       {/* ── What We Offer ── */}
       <section style={{ background: "transparent" }} className="py-20 px-6">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
@@ -801,7 +819,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         </div>
       </section>
 
-      {/* ── Influencer Categories through Contact — one continuous, soft gradient.
+      {/* ── KOL Campaign Packages through Contact — one continuous, soft gradient.
           Starts right where "Keep Every Step Moving" (the last section before the
           Measure/Learn/Improve divider) left off, so the two feel like one gradient
           even though the dark Campaign Learning section sits between them, then settles
@@ -810,24 +828,6 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       <div style={{
         background: "linear-gradient(180deg, #dccbee 0%, #ecdef7 20%, #f2e4f9 32%, #e6d2f2 100%)",
       }}>
-      {/* ── Influencer Categories ── */}
-      <section style={{ overflow: "hidden", background: "transparent" }} className="py-20">
-        <div style={{ maxWidth: "1294px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
-          <h2 className="section-title text-center"
-            style={{ ...PIERSON, fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 48px" }}>
-            Influencer{" "}
-            <span style={{
-              background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}>Categories</span>
-          </h2>
-        </div>
-
-        <CategoriesMarquee />
-      </section>
-
       {/* ── KOL Campaign Packages ── */}
       <KolPackagesSection lang={lang} />
 
