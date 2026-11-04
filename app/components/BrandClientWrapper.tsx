@@ -60,7 +60,7 @@ const OUR_SERVICES = [
   { img: "/services/livestream-affiliate5.jpg", title: "Livestream & Affiliate",
     desc: "คอนเทนต์ที่ออกแบบมาเพื่อสร้างผลลัพธ์ด้านยอดขายโดยตรงผ่าน Livestream และ Affiliate จ\u2060า\u2060กอินฟลูเอนเซอร์ เปลี่ยนความสนใจให้กลายเป็นการซื้อได้ง่ายขึ้น",
     descEn: "Connect creator-led livestreams and affiliate marketing with your sales objectives, making it easier for audiences to discover and purchase your products." },
-  { img: "/services/influencer-event-activation.jpg", title: "Influencer & Event Activation",
+  { img: "/services/influencer-event-activation2.jpg", objectPosition: "60% center", title: "Influencer & Event Activation",
     desc: "ตั้งแต่อินฟลูเอนเซอร์ร่วมงาน Presenter และ Speaker ไปจนถึงทีมประสานงานหน้างาน เราช่วยให้อีเวนต์สร้างคอนเทนต์ กระแส และการพูดถึงได้อย่างต่อเนื่องทั้ง Online และ On-site",
     descEn: "Bring your events to life with influencer appearances, presenters, speakers, and on-site coordination, generating content and conversations across online and on-site experiences." },
   { img: "/services/presenter-celebrity.jpg", objectPosition: "center 24%", title: "Presenter & Celebrity Marketing",
