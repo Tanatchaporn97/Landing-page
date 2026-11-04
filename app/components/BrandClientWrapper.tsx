@@ -81,7 +81,7 @@ const OUR_SERVICES = [
   { img: "/services/photo-video-production3.jpg", objectPosition: "36% center", title: "Photo & Video Production",
     desc: "สร้างสรรค์ภาพและวิดีโอตั้งแต่การวาง Concept, Storyboard ไปจนถึงการถ่ายทำและ Post-production เพื่อให้แบรนด์มีคอนเทนต์คุณภาพพร้อมใช้บนทุกช่องทาง",
     descEn: "Bring creative ideas to life through professional photo and video production, from concept development and storyboarding to filming and post-production." },
-  { img: "/services/publishing-advertorial-article.jpg", objectPosition: "center 30%", title: "Publishing & Advertorial",
+  { img: "/services/publishing-advertorial-real.jpg", objectPosition: "center 38%", title: "Publishing & Advertorial",
     desc: "เพิ่มพื้นที่การมองเห็นให้แบรนด์ผ่านบทความและคอนเทนต์บนช่องทางที่เหมาะสม ถ่ายทอดเรื่องราวและข้อมูลของแบรนด์ในรูปแบบที่เข้าถึงและสร้างความน่าเชื่อถือได้มากขึ้น",
     descEn: "Expand your brand's presence through strategically placed articles and advertorial content that communicate your story and build credibility.",
     },
