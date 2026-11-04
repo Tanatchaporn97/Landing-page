@@ -595,18 +595,18 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
         </div>
       </section>
 
-      {/* ── Influencer Categories ── */}
+      {/* ── Meet Our Creators ── */}
       <section style={{ overflow: "hidden", background: "transparent" }} className="py-20">
         <div style={{ maxWidth: "1294px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
           <h2 className="section-title text-center"
             style={{ ...PIERSON, fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 48px" }}>
-            Influencer{" "}
+            Meet Our{" "}
             <span style={{
               background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
-            }}>Categories</span>
+            }}>Creators</span>
           </h2>
         </div>
 
