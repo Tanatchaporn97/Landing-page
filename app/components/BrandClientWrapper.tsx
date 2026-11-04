@@ -72,7 +72,7 @@ const OUR_SERVICES = [
   { img: "/services/paid-media-amplification-vivid.jpg", title: "Paid Media & Amplification",
     desc: "เพิ่มพลังให้แคมเปญด้วยการยิงโฆษณา บูสต์ และ Amplify คอนเทนต์จากอินฟลูเอนเซอร์ เข้าถึงกลุ่มเป้าหมายได้กว้างและแม่นยำขึ้น พร้อมผลักดันผลลัพธ์จากทุกคอนเทนต์ให้ไปได้ไกลกว่าเดิม",
     descEn: "Extend the reach and impact of influencer content through targeted paid media, reaching relevant audiences and maximising content exposure." },
-  { img: "/services/always-on-v3.jpg", objectPosition: "center 45%", title: "Always-On Influencer & Media Strategy",
+  { img: "/services/always-on-auntieannes.jpg", objectPosition: "center 41%", title: "Always-On Influencer & Media Strategy",
     desc: "วางกลยุทธ์ Influencer และ Media อย่างต่อเนื่องตลอดทั้งปี ช่วยให้แบรนด์รักษาการมองเห็น สร้างความสัมพันธ์กับกลุ่มเป้าหมาย และต่อยอดผลลัพธ์ได้มากกว่าแคมเปญระยะสั้น",
     descEn: "Keep your brand visible and connected with audiences through ongoing influencer collaborations and a consistent, year-round media strategy." },
   { img: "/services/creative-content-concept.jpg", title: "Creative Content & Concept Development",
