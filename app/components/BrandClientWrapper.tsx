@@ -66,7 +66,7 @@ const OUR_SERVICES = [
   { img: "/services/presenter-celebrity.jpg", objectPosition: "center 24%", title: "Presenter & Celebrity Marketing",
     desc: "คัดเลือกและประสานงาน Presenter, Celebrity และ Brand Ambassador ที่เ\u2060ห\u2060ม\u2060า\u2060ะ\u2060กั\u2060บภ\u2060า\u2060พ\u2060ลั\u2060ก\u2060ษ\u2060ณ์และกลุ่มเป้าหมายของแบรนด์ ช่วยสร้างการจดจำ เพิ่มความน่าเชื่อถือ และขยายการรับรู้แบรนด์ผ่านบุคคลที่มีชื่อเสียง",
     descEn: "Find the right presenters, celebrities, and brand ambassadors to represent your brand, build credibility, strengthen brand recognition, and connect with your target audience." },
-  { img: "/services/community-fandom2.jpg", objectPosition: "62% center", title: "Community & Fandom Marketing",
+  { img: "/services/community-fandom3.jpg", objectPosition: "45% center", title: "Community & Fandom Marketing",
     desc: "สร้างการมีส่วนร่วมระหว่างแบรนด์กับกลุ่ม Community และ Fandom ผ่าน\u200Bอิ\u2060น\u2060ฟ\u2060ลู\u2060เ\u2060อ\u2060น\u2060เ\u2060ซ\u2060อ\u2060ร์\u200Bและคอนเทนต์ที่ตรงกับความสนใจของแต่ละกลุ่ม ช่วยสร้างกระแส กระตุ้นการ\u200Bพู\u2060ด\u2060ถึ\u2060ง\u200Bและบอกต่อ พร้อมสร้างความสัมพันธ์ที่ดีกับกลุ่มเป้าหมาย",
     descEn: "Connect your brand with passionate communities and fandoms through relevant influencers and content, sparking engagement, conversations, and organic word-of-mouth." },
   { img: "/services/paid-media-amplification-vivid.jpg", title: "Paid Media & Amplification",
