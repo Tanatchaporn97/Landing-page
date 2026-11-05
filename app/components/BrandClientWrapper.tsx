@@ -551,8 +551,10 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
                     display: "flex", flexDirection: "column",
                   }}>
                   <div style={{ position: "relative", width: "100%", height: isActive ? "290px" : "406px", flexShrink: 0 }}>
-                    {/* imgTall: optional portrait artwork made for the narrow collapsed card */}
-                    <Image src={!isActive && item.imgTall ? item.imgTall : item.img} alt={item.title} fill sizes={isActive ? "380px" : "220px"}
+                    {/* imgTall: optional portrait artwork made for the narrow collapsed card.
+                        Without it, cover scales a landscape img to the 406px height, so it
+                        renders ~600px wide — request that size or it upscales blurry. */}
+                    <Image src={!isActive && item.imgTall ? item.imgTall : item.img} alt={item.title} fill sizes={isActive ? "380px" : item.imgTall ? "220px" : "600px"}
                       style={{ objectFit: "cover", objectPosition: !isActive && item.imgTall ? "center" : item.objectPosition || "center" }} />
                   </div>
                   <div style={{
