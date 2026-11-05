@@ -75,7 +75,7 @@ const OUR_SERVICES = [
   { img: "/services/always-on-auntieannes2.jpg", imgTall: "/services/always-on-auntieannes-tall.jpg", objectPosition: "center 39%", title: "Always-On Influencer & Media Strategy",
     desc: "วางกลยุทธ์ Influencer และ Media อย่างต่อเนื่องตลอดทั้งปี ช่วยให้แบรนด์รักษาการมองเห็น สร้างความสัมพันธ์กับกลุ่มเป้าหมาย และต่อยอดผลลัพธ์ได้มากกว่าแคมเปญระยะสั้น",
     descEn: "Keep your brand visible and connected with audiences through ongoing influencer collaborations and a consistent, year-round media strategy." },
-  { img: "/services/creative-content-concept2.jpg", objectPosition: "58% 72%", title: "Creative Content & Concept Development",
+  { img: "/services/creative-content-concept3.jpg", objectPosition: "60% 60%", title: "Creative Content & Concept Development",
     desc: "พัฒนา Campaign Concept, Key Message และแนวทางคอนเทนต์ให้เหมาะกับแบรนด์และแพลตฟอร์ม ช่วยให้อินฟลูเอนเซอร์สร้างคอนเทนต์ที่น่าสนใจ พร้อมสื่อสารสิ่งที่แบรนด์ต้องการได้อย่างชัดเจน",
     descEn: "Develop campaign concepts, key messages, and creative direction that align with your brand, audience, and platform requirements." },
   { img: "/services/photo-video-production3.jpg", objectPosition: "36% center", title: "Photo & Video Production",
