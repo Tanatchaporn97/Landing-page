@@ -45,7 +45,7 @@ const OUR_SERVICES = [
   { img: "/services/influencer-campaign-management2.jpg", objectPosition: "center 62%", title: "Influencer Campaign Management",
     desc: "ดูแลแคมเปญอินฟลูเอนเซอร์แบบครบวงจร ตั้งแต่การวางแผน คัดเลือกอินฟลูเอนเซอร์ ประสานงาน ไปจนถึงติดตามและวัดผล เพื่อให้ทุกขั้นตอนของแคมเปญเดินหน้าได้อย่างมีประสิทธิภาพ",
     descEn: "End-to-end campaign management, from planning and influencer selection to creator coordination, execution, and performance reporting." },
-  { img: "/services/influencer-network2.jpg", imgTall: "/services/influencer-network2-tall.jpg", objectPosition: "center 55%", title: "Influencer Network",
+  { img: "/services/influencer-network3.jpg", imgTall: "/services/influencer-network3-tall.jpg", objectPosition: "center 55%", title: "Influencer Network",
     desc: "เข้าถึงเครือข่ายอินฟลูเอนเซอร์หลากหลายหมวด\u2060หมู่ พร้อมค้นหาและคัดเลือกคนที่ตรงกับโจทย์ กลุ่มเป้า\u2060หมาย และภาพลักษณ์ของแบรนด์ได้อย่างแม่นยำ",
     descEn: "Access a diverse influencer network and find creators who align with your campaign objectives, target audience, and brand identity." },
   { img: "/services/on-demand-fast-track2.jpg", objectPosition: "62% center", title: "On-Demand & Fast-Track Campaigns",
