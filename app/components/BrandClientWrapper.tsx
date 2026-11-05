@@ -69,7 +69,7 @@ const OUR_SERVICES = [
   { img: "/services/community-fandom3.jpg", objectPosition: "33% center", title: "Community & Fandom Marketing",
     desc: "สร้างการมีส่วนร่วมระหว่างแบรนด์กับกลุ่ม Community และ Fandom ผ่าน\u200Bอิ\u2060น\u2060ฟ\u2060ลู\u2060เ\u2060อ\u2060น\u2060เ\u2060ซ\u2060อ\u2060ร์\u200Bและคอนเทนต์ที่ตรงกับความสนใจของแต่ละกลุ่ม ช่วยสร้างกระแส กระตุ้นการ\u200Bพู\u2060ด\u2060ถึ\u2060ง\u200Bและบอกต่อ พร้อมสร้างความสัมพันธ์ที่ดีกับกลุ่มเป้าหมาย",
     descEn: "Connect your brand with passionate communities and fandoms through relevant influencers and content, sparking engagement, conversations, and organic word-of-mouth." },
-  { img: "/services/paid-media-boost2.jpg", imgTall: "/services/paid-media-boost2-tall.jpg", title: "Paid Media & Amplification",
+  { img: "/services/paid-media-boost3.jpg", imgTall: "/services/paid-media-boost3-tall.jpg", title: "Paid Media & Amplification",
     desc: "เพิ่มพลังให้แคมเปญด้วยการยิงโฆษณา บูสต์ และ Amplify คอนเทนต์จากอินฟลูเอนเซอร์ เข้าถึงกลุ่มเป้าหมายได้กว้างและแม่นยำขึ้น พร้อมผลักดันผลลัพธ์จากทุกคอนเทนต์ให้ไปได้ไกลกว่าเดิม",
     descEn: "Extend the reach and impact of influencer content through targeted paid media, reaching relevant audiences and maximising content exposure." },
   { img: "/services/always-on-auntieannes2.jpg", imgTall: "/services/always-on-auntieannes-tall.jpg", objectPosition: "center 39%", title: "Always-On Influencer & Media Strategy",
