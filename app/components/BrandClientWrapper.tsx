@@ -42,7 +42,7 @@ const OUR_SERVICES = [
   { img: "/services/campaign-reviews-v5.jpg", objectPosition: "center 40%", title: "Campaign Reviews",
     desc: "รีวิวสินค้าและบริการผ่านอินฟลูเอนเซอร์ที่ใช่ พร้อมสื่อสารข้อความและจุดเด่นของแบรนด์ได้อย่างมีประสิทธิภาพ เปลี่ยนให้ทุกความสนใจเป็นยอดขาย",
     descEn: "Connect with the right influencers to showcase your products, communicate key selling points, and encourage purchase decisions." },
-  { img: "/services/influencer-campaign-management2.jpg", objectPosition: "center 62%", title: "Influencer Campaign Management",
+  { img: "/services/influencer-campaign-management3.jpg", imgTall: "/services/influencer-campaign-management3-tall.jpg", title: "Influencer Campaign Management",
     desc: "ดูแลแคมเปญอินฟลูเอนเซอร์แบบครบวงจร ตั้งแต่การวางแผน คัดเลือกอินฟลูเอนเซอร์ ประสานงาน ไปจนถึงติดตามและวัดผล เพื่อให้ทุกขั้นตอนของแคมเปญเดินหน้าได้อย่างมีประสิทธิภาพ",
     descEn: "End-to-end campaign management, from planning and influencer selection to creator coordination, execution, and performance reporting." },
   { img: "/services/influencer-network3.jpg", imgTall: "/services/influencer-network3-tall.jpg", objectPosition: "center 55%", title: "Influencer Network",
