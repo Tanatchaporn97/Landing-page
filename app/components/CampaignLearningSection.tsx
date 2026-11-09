@@ -201,7 +201,9 @@ export default function CampaignLearningSection({ lang }: { lang: "th" | "en" })
                 position: "relative", aspectRatio: "1 / 1", borderRadius: "14px",
                 overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center",
               }}>
-                <Image src={tile.img} alt="" fill sizes="120px" style={{ objectFit: "cover" }} />
+                {/* ~134px on screen, but the dashboard's scale/zoom hide a ~240px layout box and
+                    landscape photos cover the square at ~1.5x width — ask for enough pixels */}
+                <Image src={tile.img} alt="" fill sizes="320px" style={{ objectFit: "cover" }} />
               </div>
             ))}
           </div>
