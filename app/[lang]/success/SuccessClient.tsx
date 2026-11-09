@@ -985,9 +985,17 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
           .sg-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 12px !important; }
           .sg-grid .cs-card-link{ width: 100% !important; display: block; }
           .sg-grid .cs-card{ height: auto !important; aspect-ratio: 3 / 4; border-radius: 18px !important; }
-          .sg-grid .cs-card .cs-card-img-clip{ clip-path: inset(0px 0px 0px 0px round 17px) !important; }
-          .sg-grid .sg-img{ padding: 0 !important; }
-          .sg-grid .sg-img[style*="contain"]{ padding: 14px 14px 46px !important; }
+          /* same resting look as desktop (logo in a circle, gradient title, dark text) instead of the
+             global touch rule that keeps the hover-revealed purple state on */
+          .sg-grid .cs-card .cs-card-img-clip{ clip-path: inset(15.5% 22% 44% 22% round 50%) !important; }
+          .sg-grid .cs-card .sg-img{ top: 9.4% !important; left: 13.6% !important; width: 72.8% !important; height: 52.6% !important; transform: none !important; padding: 0 !important; }
+          .sg-grid .cs-card .sg-img[style*="contain"]{ padding: 0 !important; } /* image box ~1.3x the circle, as on desktop */
+          .sg-grid .cs-card .cs-card-overlay{ opacity: 0 !important; }
+          .sg-grid .cs-card .cs-cat-btn{ background: #5f26e5 !important; color: #ffffff !important; }
+          .sg-grid .cs-card .cs-arrow-btn{ background: #5f26e5 !important; animation: none !important; }
+          .sg-grid .cs-card .cs-arrow-path{ stroke: #ffffff !important; }
+          .sg-grid .cs-card .cs-card-title h3{ background: linear-gradient(45deg, #5f25e5 0%, #ff0089 100%) !important; -webkit-background-clip: text !important; background-clip: text !important; -webkit-text-fill-color: transparent !important; }
+          .sg-grid .cs-card .cs-card-tagline{ color: #000000 !important; }
           .sg-grid .sg-arrow{ top: 10px !important; right: 10px !important; }
           .sg-grid .sg-arrow .cs-arrow-btn{ width: 24px !important; height: 24px !important; }
           .sg-grid .sg-arrow svg{ width: 10px; height: 10px; }
