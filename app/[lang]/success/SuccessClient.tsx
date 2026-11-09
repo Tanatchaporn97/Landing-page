@@ -987,9 +987,9 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
           .sg-grid .cs-card{ height: auto !important; aspect-ratio: 3 / 4; border-radius: 18px !important; }
           /* same resting look as desktop (logo in a circle, gradient title, dark text) instead of the
              global touch rule that keeps the hover-revealed purple state on */
-          .sg-grid .cs-card .cs-card-img-clip{ clip-path: inset(15.5% 22% 44% 22% round 50%) !important; }
-          .sg-grid .cs-card .sg-img{ top: 9.4% !important; left: 13.6% !important; width: 72.8% !important; height: 52.6% !important; transform: none !important; padding: 0 !important; }
-          .sg-grid .cs-card .sg-img[style*="contain"]{ padding: 0 !important; } /* image box ~1.3x the circle, as on desktop */
+          /* a real 1:1 box with border-radius, so it stays a true circle whatever the card size */
+          .sg-grid .cs-card .cs-card-img-clip{ clip-path: none !important; top: 15% !important; left: 22% !important; width: 56% !important; height: auto !important; aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; }
+          .sg-grid .cs-card .sg-img{ top: -15% !important; left: -15% !important; width: 130% !important; max-width: none !important; height: 130% !important; transform: none !important; padding: 0 !important; } /* image box ~1.3x the circle, as on desktop */
           .sg-grid .cs-card .cs-card-overlay{ opacity: 0 !important; }
           .sg-grid .cs-card .cs-cat-btn{ background: #5f26e5 !important; color: #ffffff !important; }
           .sg-grid .cs-card .cs-arrow-btn{ background: #5f26e5 !important; animation: none !important; }
