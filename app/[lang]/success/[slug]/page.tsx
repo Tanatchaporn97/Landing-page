@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { industryOf } from "../../../components/caseIndustries";
 import BackButton from "./BackButton";
+import { STORIES_TH } from "../stories";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
@@ -63,7 +64,11 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
   const idx = SUCCESS_STORIES.findIndex((s: any) => s.slug === slug);
   if (idx === -1) notFound();
   const story = SUCCESS_STORIES[idx];
-  const nextStory = SUCCESS_STORIES[idx + 1] ?? null;
+  // "Next" follows the /success listing order (newest first), i.e. the story listed
+  // right after this one there.
+  const listed = STORIES_TH.map((s) => s.slug).reverse();
+  const nextSlug = listed[listed.indexOf(slug) + 1];
+  const nextStory = SUCCESS_STORIES.find((s: any) => s.slug === nextSlug) ?? null;
 
   return (
     <div className="background" style={{ ...KT }}>
