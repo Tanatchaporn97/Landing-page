@@ -142,7 +142,7 @@ export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
           color: "#111827", margin: "0 0 40px", lineHeight: 1.7,
         }}>
           {lang === "th"
-            ? <>ไม่ว่าคุณจะทำคอนเทนต์สายไหน ก็มีโอกาสร่วมงานกับแบรนด์หลากหลายประเภท<br />พร้อมเครื่องมือและทีมงานที่ช่วยให้คุณเติบโต</>
+            ? <>ไม่ว่าคุณจะทำคอนเทนต์สายไหน ก็มีโอกาส<br className="cam-br" />ร่วมงานกับแบรนด์หลากหลายประเภท<br />พร้อมเครื่องมือและทีมงานที่ช่วยให้คุณเติบโต</>
             : "Whatever your content niche, discover opportunities to collaborate with brands across different industries, backed by tools and a dedicated team to support your growth."}
         </p>
 
@@ -162,15 +162,18 @@ export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
           .arc-chip{ zoom: 0.86; }
         }
         .community-arc-mobile{ display: none; }
+        .cam-br{ display: none; }
         @media (max-width: 760px){
           .community-arc-area{ display: none; }
+          .cam-br{ display: inline; }
           .community-arc-mobile{ display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 6px; margin: 0 0 28px; }
           .cam-chip{ display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px 4px 4px; border-radius: 999px; white-space: nowrap;
             background: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.7); box-shadow: 0 6px 14px rgba(95,38,229,0.12);
             font-family: var(--font-kanit),'Noto Sans Thai',sans-serif; font-size: 11px; font-weight: 700; color: #111827; }
           .cam-icon{ width: 20px; height: 20px; border-radius: 50%; background: #f3f4f6; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; }
           /* 4 feature boxes → 2 columns × 2 rows */
-          .community-arc-section{ padding-left: 16px !important; padding-right: 16px !important; }
+          /* top 36px + the logo section's 60px bottom = ~96px, same as the other section gaps */
+          .community-arc-section{ padding-left: 16px !important; padding-right: 16px !important; padding-top: 36px !important; }
         }
       `}</style>
     </section>
