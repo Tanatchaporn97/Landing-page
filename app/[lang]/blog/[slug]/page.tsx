@@ -5,7 +5,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import BackButton from "./BackButton";
 import Navbar from "../../../components/Navbar";
-import BlogFooter from "../BlogFooter";
+import Footer from "../../../components/Footer";
 import ScrollProgressBar from "../../../components/ScrollProgressBar";
 import { getDictionary } from "../../../../get-dictionary";
 import { type Locale } from "../../../../i18n-config";
@@ -1804,7 +1804,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ lang:
         )}
       </div>
 
-      <BlogFooter lang={lang as Locale} />
+      <Footer variant="home" lang={lang as Locale} dict={dict} />
     </div>
   );
 }
