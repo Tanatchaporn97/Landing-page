@@ -84,10 +84,11 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
           </span>
         </div>
 
-        {/* Hero image */}
+        {/* Hero image — the desktop landscape frame (852×420 in the content column) at every width (capped at 420px tall);
+            a fixed 420px height turned it into a tall portrait crop on phones */}
         <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", marginBottom: "40px" }}>
           <Image src={story.logo} alt={story.brand} width={1200} height={420}
-            style={{ width: "100%", height: "420px", objectFit: "cover", display: "block" }} />
+            style={{ width: "100%", height: "auto", aspectRatio: "852 / 420", maxHeight: "420px", objectFit: "cover", display: "block" }} />
         </div>
 
         {/* Content card — white background, matching the blog article page */}
