@@ -48,7 +48,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
       <Navbar lang={lang as Locale} variant="home" onDark />
       <AboutKeywordHero />
 
-      <section style={{ padding: "0 0 120px", textAlign: "center" }}>
+      <section className="about-main" style={{ padding: "0 0 120px", textAlign: "center" }}>
         {/* intro copy (the company photo was removed; the keyword hero above opens the page) */}
         <div className="about-hero">
         <div style={{ flex: "0 0 auto", maxWidth: "960px", width: "100%", margin: "0 auto", padding: "0 48px 40px", boxSizing: "border-box" }}>
@@ -158,6 +158,8 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
           @media (max-width: 760px){
             .cofounder-grid{ grid-template-columns: 1fr !important; max-width: 320px !important; }
             .about-hero > div:last-child{ padding: 0 24px 28px !important; }
+            /* Life at Buddy below already has its own top padding — without this the gap is ~214px vs ~96px elsewhere */
+            .about-main{ padding-bottom: 0 !important; }
           }
         `}</style>
       </section>
