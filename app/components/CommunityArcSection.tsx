@@ -128,6 +128,8 @@ export default function CommunityArcSection({ lang }: { lang: "th" | "en" }) {
           color: "#111827", margin: "30px 0 16px", lineHeight: 1.2,
         }}>
           {lang === "th" ? "คอนเทนต์สายไหน " : "Grow as a "}
+          {/* phones: always 2 lines (wide phones ~430px otherwise fit it on one) */}
+          {lang === "th" && <br className="cam-br" />}
           <span style={{
             background: "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", whiteSpace: "nowrap",
