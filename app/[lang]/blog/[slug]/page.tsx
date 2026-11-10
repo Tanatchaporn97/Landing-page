@@ -117,8 +117,14 @@ export async function generateMetadata(
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 
+// The blog list filters audience with ?aud= (its ?cat= only takes topics like "Insight"),
+// so the audience tags must link there or the list opens unfiltered.
+const AUDIENCE_PARAM: Record<string, string> = {
+  "สำหรับแบรนด์": "brand", "For Brands": "brand",
+  "สำหรับอินฟลูเอนเซอร์": "influencer", "For Influencers": "influencer",
+};
 const Tag = ({ label, lang }: { label: string; lang: string }) => (
-  <Link href={`/${lang}/blog?cat=${encodeURIComponent(label)}`} style={{ ...KT, background: "#5f26e5", color: "#ffffff",
+  <Link href={AUDIENCE_PARAM[label] ? `/${lang}/blog?aud=${AUDIENCE_PARAM[label]}` : `/${lang}/blog?cat=${encodeURIComponent(label)}`} style={{ ...KT, background: "#5f26e5", color: "#ffffff",
     borderRadius: "50px",
     fontSize: "14px", fontWeight: 600, padding: "8px 24px",
     display: "inline-block", width: "fit-content", textDecoration: "none", cursor: "pointer" }}>
