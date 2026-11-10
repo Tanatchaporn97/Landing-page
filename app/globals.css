@@ -785,6 +785,7 @@ body {
   max-width: 1294px;
   margin: 0 auto;
 }
+.footer-legal-br { display: none; }
 .footer-legal-row {
   max-width: 1294px;
   margin: 48px auto 0;
@@ -983,6 +984,7 @@ body {
   .footer-social-row { justify-content: center !important; }
   .footer-award-row { align-items: center !important; }
   .footer-legal { text-align: center !important; }
+  .footer-legal-br { display: inline; }
 
   /* Photo card height */
   .photo-card-h { height: 403px !important; }

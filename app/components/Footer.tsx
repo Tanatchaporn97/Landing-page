@@ -97,6 +97,8 @@ export default function Footer({ variant = "influencer", lang = "th", dict }: { 
         <p className="font-normal footer-text footer-legal" style={{ ...KT, fontSize: "14px", lineHeight: "140%", color: textColor }}>
           {dict?.footer?.copyright || "© 2026 Buddy Review. All rights reserved."}
           &nbsp;|&nbsp;
+          {/* phones: copyright on line 1, the two policy links together on line 2 */}
+          <br className="footer-legal-br" />
           <a href="https://docs.google.com/viewer?url=https://business.buddyreview.co/document/privacy_policy.pdf" target="_blank" rel="noopener noreferrer"
             style={{ color: textColor, textDecoration: "underline" }}>{dict?.footer?.privacyPolicy || (lang === "th" ? "นโยบายความเป็นส่วนตัว" : "Privacy Policy")}</a>
           &nbsp;|&nbsp;
