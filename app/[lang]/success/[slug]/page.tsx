@@ -74,8 +74,8 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
       </div>
 
       <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 24px 0" }}>
-        {/* Section title */}
-        <div style={{ paddingTop: "48px", marginBottom: "28px" }}>
+        {/* Section title — no extra top padding, same gap under the back button as the blog article page */}
+        <div style={{ paddingTop: "0", marginBottom: "28px" }}>
           <span style={{
             ...KT, color: "#5f26e5", fontSize: "20px", fontWeight: 700,
             letterSpacing: "0.5px",
@@ -173,7 +173,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
                     ...KT, background: PINK_GRAD,
                     WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
-                    fontSize: "clamp(25px,2.88vw,43px)", fontWeight: 800, lineHeight: 1,
+                    fontSize: "clamp(22px,2.2vw,32px)", fontWeight: 800, lineHeight: 1, // sized so 10-char values like 17,680,185 fit the box
                   }}>
                     {s.val}
                   </span>
