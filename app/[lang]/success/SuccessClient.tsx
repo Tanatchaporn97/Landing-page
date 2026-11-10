@@ -987,8 +987,10 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
           .sg-grid .cs-card{ height: auto !important; aspect-ratio: 3 / 4; border-radius: 18px !important; }
           /* same resting look as desktop (logo in a circle, gradient title, dark text) instead of the
              global touch rule that keeps the hover-revealed purple state on */
-          /* a real 1:1 box with border-radius, so it stays a true circle whatever the card size */
-          .sg-grid .cs-card .cs-card-img-clip{ clip-path: none !important; top: 15% !important; left: 22% !important; width: 56% !important; height: auto !important; aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; }
+          /* a real 1:1 circle sized and placed with width-based units only (padding/margin %):
+             Safari can't resolve top:% against a card whose height comes from aspect-ratio.
+             margin-top 20% of width = 15% of the 3:4 card's height */
+          .sg-grid .cs-card .cs-card-img-clip{ clip-path: none !important; top: 0 !important; left: 22% !important; margin-top: 20%; width: 56% !important; height: 0 !important; padding-bottom: 56%; border-radius: 50%; overflow: hidden; }
           .sg-grid .cs-card .sg-img{ top: -15% !important; left: -15% !important; width: 130% !important; max-width: none !important; height: 130% !important; transform: none !important; padding: 0 !important; } /* image box ~1.3x the circle, as on desktop */
           .sg-grid .cs-card .cs-card-overlay{ opacity: 0 !important; }
           .sg-grid .cs-card .cs-cat-btn{ background: #5f26e5 !important; color: #ffffff !important; }
