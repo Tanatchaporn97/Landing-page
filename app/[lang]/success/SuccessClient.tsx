@@ -119,7 +119,27 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
           </AnimatePresence>
         </div>
 
+        {/* Closing CTA */}
+        <div className="sg-cta" style={{ textAlign: "center", marginTop: "100px" }}>
+          <h2 className="sg-cta-title" style={{ ...KT, fontSize: "clamp(28px,3.2vw,44px)", fontWeight: 800, color: "#111827", margin: "0 0 28px", lineHeight: 1.25 }}>
+            {lang === "th" ? "อยากได้ผลลัพธ์" : "Want Results "}
+            <span style={{ background: PINK_GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              {lang === "th" ? "แบบนี้?" : "Like These?"}
+            </span>
+          </h2>
+          <Link href={`/${lang}/contact`} className="sg-cta-btn" style={{
+            ...KT,
+            display: "inline-flex", alignItems: "center", justifyContent: "center",
+            borderRadius: "50px", fontSize: "16px", fontWeight: 600,
+            padding: "14px 48px", textDecoration: "none", whiteSpace: "nowrap",
+            background: "#5f26e5", color: "#ffffff", border: "1.5px solid #5f26e5",
+          }}>
+            {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
+          </Link>
+        </div>
+
       </div>
+      <style>{`.sg-cta-btn{ transition: background .25s, border-color .25s, box-shadow .25s; } .sg-cta-btn:hover{ background: #4a1bc4 !important; border-color: #4a1bc4 !important; box-shadow: 0 8px 24px rgba(95,38,229,.28); }`}</style>
 
       {/* phones: one-row swipeable category chips and a compact 2-column card grid */}
       <style>{`
@@ -153,6 +173,8 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
           .sg-grid .cs-card-title{ left: 12px !important; right: 12px !important; bottom: 12px !important; }
           .sg-grid .cs-card-title h3{ font-size: 15px !important; margin-bottom: 3px !important; line-height: 1.25 !important; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
           .sg-grid .cs-card-tagline{ font-size: 11.5px !important; line-height: 1.5 !important; }
+          .sg-cta{ margin-top: 56px !important; }
+          .sg-cta-title{ font-size: 26px !important; margin-bottom: 20px !important; }
         }
       `}</style>
     </div>
