@@ -127,20 +127,16 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
               {lang === "th" ? "แบบนี้?" : "Like These?"}
             </span>
           </h2>
-          <Link href={`/${lang}/contact`} className="sg-cta-btn" style={{
+          <Link href={`/${lang}/contact`} className="btn-glass-purple" style={{
             ...KT,
-            display: "inline-flex", alignItems: "center", justifyContent: "center",
             borderRadius: "50px", fontSize: "16px", fontWeight: 600,
-            padding: "14px 48px", textDecoration: "none", whiteSpace: "nowrap",
-            background: "#5f26e5", color: "#ffffff", border: "1.5px solid #5f26e5",
+            padding: "14px 48px", textDecoration: "none",
           }}>
             {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
           </Link>
         </div>
 
       </div>
-      <style>{`.sg-cta-btn{ transition: background .25s, border-color .25s, box-shadow .25s; } .sg-cta-btn:hover{ background: #4a1bc4 !important; border-color: #4a1bc4 !important; box-shadow: 0 8px 24px rgba(95,38,229,.28); }`}</style>
-
       {/* phones: one-row swipeable category chips and a compact 2-column card grid */}
       <style>{`
         @media (max-width: 640px){
