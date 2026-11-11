@@ -724,7 +724,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
               color: "#ffffff",
               border: "1.5px solid #5f26e5",
             }}>
-              {lang === "th" ? "ขอ Proposal ฟรี" : "Get a Free Proposal"}
+              {lang === "th" ? "ติดต่อเรา" : "Contact Us"}
             </a>
             <style>{`.see-work-proposal{ transition: background .25s, border-color .25s, box-shadow .25s; } .see-work-proposal:hover{ background: #4a1bc4 !important; border-color: #4a1bc4 !important; box-shadow: 0 8px 24px rgba(95,38,229,.28); }`}</style>
             <Link href={`/${lang}/success`} className="btn-glass-purple" style={{
