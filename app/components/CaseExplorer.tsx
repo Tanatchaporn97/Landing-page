@@ -185,9 +185,15 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
                   </div>
                 ))}
               </div>}
-              <Link href={`/${lang}/success/${sel.slug}`} style={{ marginTop: "6px", fontSize: "17px", fontWeight: 700, textDecoration: "none", color: "#1B1733", width: "fit-content" }} className="cx-more">
-                {th ? "อ่านเพิ่มเติม" : "Read More"} →
-              </Link>
+              {/* read the full case, or jump straight to the brief form (#contact is smooth-scrolled by the brand page) */}
+              <div className="cx-actions" style={{ marginTop: "6px", paddingTop: "18px", borderTop: "1px solid #DCD0F2", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "12px 40px" }}>
+                <Link href={`/${lang}/success/${sel.slug}`} style={{ fontSize: "17px", fontWeight: 700, textDecoration: "none", color: "#1B1733", width: "fit-content" }} className="cx-more">
+                  {th ? "อ่านเพิ่มเติม" : "Read More"} →
+                </Link>
+                <a href="#contact" style={{ fontSize: "17px", fontWeight: 700, textDecoration: "none", color: PURPLE, width: "fit-content" }} className="cx-talk">
+                  {th ? "อยากได้แคมเปญแบบนี้? คุยกับเรา" : "Want a campaign like this? Talk to us"} →
+                </a>
+              </div>
             </div>
           </div>
         )}
@@ -195,6 +201,7 @@ export default function CaseExplorer({ lang, stories }: { lang: "th" | "en"; sto
 
       <style>{`
         .cx-more:hover{ color: ${PURPLE} !important; }
+        .cx-talk:hover{ color: #3f17b8 !important; text-decoration: underline !important; text-underline-offset: 4px; }
         .cx-filter:hover{ color: ${PURPLE} !important; }
         /* overview / strategy: at most 3 lines, full text on the case page via อ่านเพิ่มเติม */
         .cx-clamp{ display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }

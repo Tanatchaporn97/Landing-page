@@ -706,8 +706,27 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
           <CaseExplorer lang={lang as "th" | "en"} stories={dict?.successStories ?? []} />
 
-          {/* ดูเพิ่มเติม CTA */}
-          <div style={{ display: "flex", justifyContent: "center", marginTop: "48px" }}>
+          {/* CTA — ask for a proposal (scrolls to the brief form) or browse every case */}
+          <p style={{ ...KT, fontSize: "18px", fontWeight: 500, color: "#2A2540", textAlign: "center", margin: "48px 0 0" }}>
+            {lang === "th" ? "อยากได้ผลลัพธ์แบบนี้ให้แบรนด์คุณ?" : "Want results like this for your brand?"}
+          </p>
+          <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "16px", marginTop: "20px" }}>
+            <a href="#contact" className="see-work-proposal" style={{
+              ...KT,
+              display: "inline-flex", alignItems: "center", justifyContent: "center",
+              borderRadius: "50px",
+              fontSize: "16px",
+              fontWeight: 600,
+              padding: "14px 48px",
+              textDecoration: "none",
+              whiteSpace: "nowrap",
+              background: "#5f26e5",
+              color: "#ffffff",
+              border: "1.5px solid #5f26e5",
+            }}>
+              {lang === "th" ? "ขอ Proposal ฟรี" : "Get a Free Proposal"}
+            </a>
+            <style>{`.see-work-proposal{ transition: background .25s, border-color .25s, box-shadow .25s; } .see-work-proposal:hover{ background: #4a1bc4 !important; border-color: #4a1bc4 !important; box-shadow: 0 8px 24px rgba(95,38,229,.28); }`}</style>
             <Link href={`/${lang}/success`} className="btn-glass-purple" style={{
               ...KT,
               borderRadius: "50px",
