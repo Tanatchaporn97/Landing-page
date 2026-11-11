@@ -19,9 +19,11 @@ export default function BlogClient({ lang, dict }: { lang: Locale, dict: any }) 
   const catInf = lang === "th" ? "สำหรับอินฟลูเอนเซอร์" : "For Influencers";
   const catAll = lang === "th" ? "ทั้งหมด" : "All";
   const TOPICS = ["Knowledge", "How-to", "Insight", "Update", "Case", "Other"];
-  const CATS = [catAll, ...TOPICS];
 
   const BLOG_POSTS = (dict?.blogPosts || []).filter((p: any) => p.categories.includes(catBrand) || p.categories.includes(catInf));
+
+  // Only show topic chips that have at least one post; empty topics appear once content is added.
+  const CATS = [catAll, ...TOPICS.filter((t) => BLOG_POSTS.some((p: any) => (p.topics || []).includes(t)))];
 
   const [activeCat, setActiveCat] = useState(catAll);
 
