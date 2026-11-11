@@ -242,6 +242,11 @@ export default function Navbar({
             .nav-ul-link.on-dark::after{ background: #c9b3ff; }
             .nav-ul-link:hover::after, .nav-ul-link:focus-visible::after, .nav-ul-link.is-active::after{ transform: scaleX(1); }
             @media (prefers-reduced-motion: reduce){ .nav-ul-link::after{ transition: none; } }
+            /* audience buttons (For Brands / For Influencers): plain outline, fills on hover */
+            .nav-outline-btn{ display: inline-flex; align-items: center; justify-content: center; background: transparent; color: #5f26e5; border: 1.5px solid #5f26e5; transition: background .25s, color .25s, border-color .25s; touch-action: manipulation; }
+            .nav-outline-btn:hover{ background: #5f26e5; color: #ffffff; }
+            .nav-outline-btn.on-dark{ color: #ffffff; border-color: rgba(255,255,255,0.85); }
+            .nav-outline-btn.on-dark:hover{ background: #ffffff; color: #5f26e5; border-color: #ffffff; }
           `}</style>
 
           {/* Right-side group: CTA buttons + Hamburger (hamburger hidden on desktop via CSS) */}
@@ -249,15 +254,15 @@ export default function Navbar({
             <div className="desktop-nav-btns flex items-center gap-2">
               {variant !== "brand" && (
                 <Link href={`/${lang}/brand`}
-                  className="btn-hero px-4 py-3 rounded-full whitespace-nowrap"
-                  style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
+                  className={`nav-outline-btn${forceDarkText ? "" : " on-dark"} px-4 py-3 rounded-full whitespace-nowrap`}
+                  style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none" }}>
                   {t.forBrand}
                 </Link>
               )}
               {variant !== "influencer" && (
                 <Link href={`/${lang}/influencer`}
-                  className="btn-hero px-4 py-3 rounded-full whitespace-nowrap"
-                  style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none", color: forceDarkText ? "#5f26e5" : undefined }}>
+                  className={`nav-outline-btn${forceDarkText ? "" : " on-dark"} px-4 py-3 rounded-full whitespace-nowrap`}
+                  style={{ ...KT, fontSize: "15px", fontWeight: 600, textDecoration: "none" }}>
                   {t.imInfluencer}
                 </Link>
               )}
