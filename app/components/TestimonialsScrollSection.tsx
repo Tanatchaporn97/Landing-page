@@ -14,7 +14,7 @@ const HeartIcon = () => (
   </svg>
 );
 
-function Card({ t }: { t: { photo: string; name: string; text: string; time?: string } }) {
+function Card({ t }: { t: { photo: string; name: string; text: string } }) {
   return (
     <div style={{
       background: "rgba(255,255,255,0.55)",
@@ -33,7 +33,6 @@ function Card({ t }: { t: { photo: string; name: string; text: string; time?: st
             style={{ objectFit: "cover", objectPosition: "center top" }} />
         </div>
         <span style={{ ...KT, fontWeight: 700, fontSize: "15px", color: "#5f26e5" }}>{t.name}</span>
-        <span style={{ ...KT, fontSize: "13px", color: "#9ca3af" }}>· {t.time ?? "2d"}</span>
       </div>
       <p style={{ ...KT, fontSize: "16px", color: "#111827", lineHeight: "1.75", margin: 0 }}>
         {t.text}
