@@ -42,7 +42,7 @@ export default function KolPackagesSection({ lang = "th" }: { lang?: "th" | "en"
   const t = lang === "th" ? { contactUs: "ติดต่อเรา", showLess: "ดูน้อยลง", viewMore: "ดูเพิ่มเติม" } : { contactUs: "Contact Us", showLess: "Show Less", viewMore: "View More" };
 
   return (
-    <section className="py-20 px-6 package-bg">
+    <section className="py-20 px-6 package-bg sp-pack">
       <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
         <h2 className="section-title text-center font-bold mb-14 section-h2-fixed"
           style={{ ...PIERSON, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: "72px",

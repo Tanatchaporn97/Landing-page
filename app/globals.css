@@ -1206,3 +1206,74 @@ body {
 /* Success stories card hover */
 .ss-card { transition: transform 0.25s, box-shadow 0.25s; }
 .ss-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(95,38,229,0.18) !important; }
+
+/* ── Section rhythm ───────────────────────────────────────────────────────
+   Every section keeps its visible content 80px (desktop) / 48px (phones)
+   from its top and bottom edge, so the space between any two sections reads
+   the same (~160px / ~96px). Values below are padding = target − the extra
+   space a section's own inner margins already add. `html body` outranks the
+   per-page <style> blocks and inline paddings. Tablets use the desktop 80px. */
+@media (min-width: 1081px) {
+  html body .brand-logos-section { padding-bottom: 80px !important; }
+  html body .community-arc-section { padding-top: 29px !important; padding-bottom: 80px !important; }
+  html body .sp-hww { padding-top: 37px !important; padding-bottom: 40px !important; }
+  html body .sp-news { padding-top: 89px !important; }
+  html body .brand-page .sp-news { padding-top: 83px !important; }
+  html body .sp-faq { padding-top: 80px !important; padding-bottom: 80px !important; }
+  html body .brand-page .sp-faq { padding-top: 73px !important; }
+  html body .sp-contact { padding-bottom: 36px !important; }
+  html body .brand-page .sp-contact { padding-top: 87px !important; }
+  html body .sp-services { padding-bottom: 58px !important; }
+  html body .sp-flow { padding-bottom: 29px !important; }
+  html body .sp-pack { padding-top: 74px !important; }
+  html body .inf-channels-section { padding-top: 80px !important; padding-bottom: 80px !important; }
+  html body .sp-more { padding-top: 87px !important; padding-bottom: 80px !important; }
+  html body .sp-know { padding-top: 87px !important; padding-bottom: 91px !important; }
+  html body .sp-path { padding-top: 87px !important; padding-bottom: 23px !important; }
+  html body .tss-outer { padding-top: 86px !important; padding-bottom: 79px !important; }
+  html body .sp-creators { padding-top: 32px !important; padding-bottom: 25px !important; }
+  html body .about-main { padding-bottom: 80px !important; }
+  html body .about-main + section { padding-top: 50px !important; padding-bottom: 93px !important; }
+}
+@media (max-width: 767px) {
+  html body .brand-logos-section { padding-bottom: 48px !important; }
+  html body .trusted-section { padding-top: 51px !important; padding-bottom: 46px !important; }
+  html body .sp-hww { padding-top: 25px !important; padding-bottom: 29px !important; }
+  html body .sp-news { padding-top: 52px !important; }
+  html body .sp-faq { padding-top: 51px !important; }
+  html body .sp-contact { padding-top: 33px !important; padding-bottom: 5px !important; }
+  html body .brand-page .sp-contact { padding-top: 53px !important; }
+  html body .sp-flow { padding-bottom: 32px !important; }
+  html body .sp-learn { padding-top: 45px !important; padding-bottom: 27px !important; }
+  html body .community-arc-section { padding-top: 49px !important; padding-bottom: 48px !important; }
+  html body .sp-more, html body .sp-know, html body .sp-path { padding-top: 53px !important; }
+  html body .sp-path { padding-bottom: 18px !important; }
+  html body .tss-outer { padding-top: 52px !important; padding-bottom: 48px !important; }
+  html body .sp-creators { padding-top: 0 !important; padding-bottom: 0 !important; }
+  html body .inf-precta-full { padding-top: 4px !important; padding-bottom: 12px !important; }
+  html body .about-main { padding-bottom: 48px !important; }
+  html body .about-main + section { padding-top: 21px !important; padding-bottom: 62px !important; }
+}
+@media (min-width: 768px) and (max-width: 1080px) {
+  html body .brand-logos-section { margin-top: 0 !important; padding-top: 80px !important; padding-bottom: 80px !important; }
+  html body .brand-logos-section.inf-logo-bg { padding-top: 0 !important; } /* hero above already ends with ~108px of air */
+  html body .trusted-section { padding-top: 84px !important; padding-bottom: 77px !important; }
+  html body .sp-hww { padding-top: 37px !important; padding-bottom: 24px !important; }
+  html body .sp-news { padding-top: 84px !important; }
+  html body .sp-faq { padding-top: 82px !important; padding-bottom: 80px !important; }
+  html body .sp-contact { padding-top: 67px !important; padding-bottom: 35px !important; }
+  html body .brand-page .sp-contact { padding-top: 85px !important; }
+  html body .sp-services { padding-top: 77px !important; padding-bottom: 45px !important; }
+  html body .sp-flow { padding-bottom: 28px !important; }
+  html body .sp-learn { padding-top: 77px !important; padding-bottom: 24px !important; }
+  html body .community-arc-section { padding-top: 25px !important; padding-bottom: 80px !important; }
+  html body .inf-channels-section { padding-top: 80px !important; padding-bottom: 80px !important; }
+  html body .sp-more { padding-top: 85px !important; padding-bottom: 80px !important; }
+  html body .sp-know { padding-top: 85px !important; padding-bottom: 106px !important; }
+  html body .sp-path { padding-top: 85px !important; padding-bottom: 49px !important; }
+  html body .tss-outer { padding-top: 84px !important; padding-bottom: 80px !important; }
+  html body .sp-creators { padding-top: 32px !important; padding-bottom: 24px !important; }
+  html body .inf-precta-full { padding-top: 32px !important; padding-bottom: 55px !important; }
+  html body .about-main { padding-bottom: 80px !important; }
+  html body .about-main + section { padding-top: 54px !important; padding-bottom: 93px !important; }
+}

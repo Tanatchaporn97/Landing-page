@@ -112,7 +112,7 @@ export default function ContactFormSection({ lang = "th", dict, headingOverride,
   };
 
   return (
-    <section id="contact" style={{ background: DARK_BG }} className="py-20 px-6">
+    <section id="contact" style={{ background: DARK_BG }} className="py-20 px-6 sp-contact">
       {/* ?budget= (from a KOL package link) pre-selects the budget */}
       <Suspense fallback={null}><SearchParamsSync onChange={(p) => { const b = toBudgetOption(p.get("budget")); if (b) setFormData(prev => ({ ...prev, budget: b })); }} /></Suspense>
       <div style={{ maxWidth: "1294px", margin: "0 auto" }}>

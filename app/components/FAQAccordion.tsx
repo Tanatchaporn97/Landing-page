@@ -95,7 +95,7 @@ export default function FAQAccordion({
   };
 
   return (
-    <section className="inf-section" style={{ background: "transparent", padding: "100px 48px" }}>
+    <section className="inf-section sp-faq" style={{ background: "transparent", padding: "100px 48px" }}>
       <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
 
         {/* Centered title */}

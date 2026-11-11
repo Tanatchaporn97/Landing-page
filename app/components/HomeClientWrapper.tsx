@@ -123,7 +123,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         paddingTop: "80px", paddingBottom: "80px",
-      }} className="px-6">
+      }} className="px-6 sp-hww">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <TrustedPartnerShowcase lang={lang as "th" | "en"} />
         </div>
@@ -135,7 +135,7 @@ export default function HomeClientWrapper({ lang, dict }: { lang: Locale; dict: 
       {/* ── FAQs ── */}
       <FAQAccordion faqs={dict?.brandFaqs || dict?.homeFaqs} lang={lang} variant="home" dict={dict} />
 
-      <div id="contact" className="contact-bg" style={{ padding: "80px 0" }}>
+      <div id="contact" className="contact-bg">
         <Suspense fallback={null}>
           <ContactFormSection lang={lang} dict={dict?.contactForm} />
         </Suspense>

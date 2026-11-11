@@ -239,7 +239,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       </section>
 
       {/* ── More Opportunities, Built Around You — Bento grid ── */}
-      <section className="inf-section" style={{ background: "transparent", padding: "100px 48px" }}>
+      <section className="inf-section sp-more" style={{ background: "transparent", padding: "100px 48px" }}>
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "56px" }}>
             <h2 style={{ fontSize: "clamp(28px,3.3vw,48px)", fontWeight: 700, margin: 0, lineHeight: 1.2, color: "#111827" }}>
@@ -265,7 +265,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       </section>
 
       {/* ── Our Work / Buddy Ranks ── */}
-      <section className="inf-section" style={{ background: "transparent", padding: "100px 48px", overflow: "hidden" }}>
+      <section className="inf-section sp-know" style={{ background: "transparent", padding: "100px 48px", overflow: "hidden" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
           <h2 style={{ ...KT, fontWeight: 700, fontSize: "clamp(28px,3.3vw,48px)", lineHeight: 1.2, margin: "0 0 24px" }}>
             {lang === "th" ? (
@@ -306,7 +306,7 @@ export default async function InfluencerPage({ params }: { params: Promise<{ lan
       <TestimonialsScrollSection dict={dict} lang={lang} />
 
       {/* ── Creator Stories (videos only, no heading) — full width ── */}
-      <section style={{ background: "transparent", padding: "100px 0", width: "100%" }}>
+      <section className="sp-creators" style={{ background: "transparent", padding: "100px 0", width: "100%" }}>
         <CreatorStories />
       </section>
 

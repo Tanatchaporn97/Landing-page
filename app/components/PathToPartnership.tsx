@@ -30,7 +30,7 @@ export default function PathToPartnership({ lang = "th" }: { lang?: "th" | "en" 
   const current = PTP_STEPS[active];
 
   return (
-    <section className="inf-section" style={{ background: "transparent", padding: "100px 48px" }}>
+    <section className="inf-section sp-path" style={{ background: "transparent", padding: "100px 48px" }}>
       <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
 
         {/* Centered title */}

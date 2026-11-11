@@ -434,7 +434,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
 
       {/* ── Our Services (expanded first card + scrollable strip, same scroll-arrow
            mechanism as Success Stories) ── */}
-      <section id="our-services" className="py-20 px-6">
+      <section id="our-services" className="py-20 px-6 sp-services">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "32px", flexWrap: "wrap", gap: "16px" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "16px", maxWidth: "620px" }}>
@@ -681,7 +681,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       </section>
 
       {/* ── Success Stories — tabbed layout adapted from shadcnblocks Feature108 ── */}
-      <section id="success-stories" className="py-20 px-6 success-bg">
+      <section id="success-stories" className="py-20 px-6 success-bg sp-success">
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
 
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", textAlign: "center", marginBottom: "8px" }}>
@@ -723,7 +723,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       </section>
 
       {/* ── How We Run Campaigns ── */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6 sp-flow">
         <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
           <div className="text-center" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", maxWidth: "760px", margin: "0 auto 56px" }}>
             <Badge variant="outline">Campaign Flow</Badge>
@@ -821,7 +821,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       <section style={{
         background: "url('/backgrounds/dark-blue-bg2.jpg') center / cover no-repeat",
         position: "relative", overflow: "hidden",
-      }} className="py-20 px-6">
+      }} className="py-20 px-6 sp-learn">
         <div style={{ maxWidth: "1294px", margin: "0 auto", position: "relative", zIndex: 1 }}>
           <CampaignLearningSection lang={lang as "th" | "en"} />
         </div>
@@ -845,7 +845,7 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
       {/* ── FAQs ── */}
       <FAQAccordion faqs={dict?.brandFaqs || dict?.homeFaqs} lang={lang} variant="brand" dict={dict} />
 
-      <div id="contact" className="contact-bg" style={{ padding: "80px 0" }}>
+      <div id="contact" className="contact-bg">
         <Suspense fallback={null}>
           <ContactFormSection lang={lang} dict={dict?.contactForm}
             headingFontFamily={lang === "th" ? undefined : PIERSON.fontFamily}

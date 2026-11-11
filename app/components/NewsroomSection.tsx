@@ -65,7 +65,7 @@ export default function NewsroomSection({ lang = "th", dict, variant = "home" }:
   const [featured, ...rest] = posts;
 
   return (
-    <section className="py-20 px-6">
+    <section className="py-20 px-6 sp-news">
       <div style={{ maxWidth: "1294px", margin: "0 auto" }}>
         {/* Heading row */}
         <div className="newsroom-header-row" style={{ marginBottom: "56px" }}>
