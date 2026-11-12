@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { VariableFontHover } from "@/components/ui/variable-font-hover";
-import { CLASSIFY } from "./caseIndustries";
+import { CLASSIFY, CONTENTS } from "./caseIndustries";
 import Link from "next/link";
 
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
@@ -17,8 +17,6 @@ type Story = {
   paras?: string[]; sections?: { heading: string; body: string }[];
   stats?: { val: string; label: string }[]; heroStats?: { val: string; label: string }[];
 };
-
-const CONTENTS = ["Product Launch", "Product Review", "Niche Community", "Always-on Content", "Event Activation", "New Market Entry"];
 
 const VISUAL: Record<string, { img: string; fit?: "contain"; bg?: string }> = {
   "nissin": { img: "/success-stories-2/Success stories-08.jpg" },

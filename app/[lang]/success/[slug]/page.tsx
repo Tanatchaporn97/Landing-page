@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { industryOf } from "../../../components/caseIndustries";
+import { industryOf, contentOf } from "../../../components/caseIndustries";
 import BackButton from "./BackButton";
 import { STORIES_TH } from "../stories";
 
@@ -105,18 +105,29 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
           wordBreak: "break-word", overflowWrap: "break-word",
           boxSizing: "border-box", width: "100%",
         }}>
-        {/* Industry tag */}
-        <div style={{ marginBottom: "16px" }}>
-          <Link href={`/${lang}/success?cat=${encodeURIComponent(industryOf(story.slug, story.industry))}`} style={{
+        {/* Industry tag + content-type tag (the latter links to that filter on /success) */}
+        <div style={{ marginBottom: "16px", display: "flex", gap: "8px", flexWrap: "wrap" }}>
+          <span style={{
             ...KT,
             background: "rgba(95,38,229,0.08)",
             border: "1px solid rgba(95,38,229,0.2)",
             borderRadius: "50px", fontSize: "13px", fontWeight: 600,
             padding: "5px 16px", display: "inline-block", color: "#5f26e5",
-            textDecoration: "none",
           }}>
             {industryOf(story.slug, story.industry)}
-          </Link>
+          </span>
+          {contentOf(story.slug) && (
+            <Link href={`/${lang}/success?cat=${encodeURIComponent(contentOf(story.slug))}`} style={{
+              ...KT,
+              background: "#5f26e5",
+              border: "1px solid #5f26e5",
+              borderRadius: "50px", fontSize: "13px", fontWeight: 600,
+              padding: "5px 16px", display: "inline-block", color: "#ffffff",
+              textDecoration: "none",
+            }}>
+              {contentOf(story.slug)}
+            </Link>
+          )}
         </div>
 
         {/* Brand name */}

@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { INDUSTRIES, industryOf } from "../../components/caseIndustries";
+import { CONTENTS, industryOf, contentOf } from "../../components/caseIndustries";
 import { HistoryBackLink } from "../../components/NavHistory";
 import Image from "next/image";
 import { useState, Suspense } from "react";
@@ -11,9 +11,9 @@ import { motion, AnimatePresence } from "motion/react";
 const KT = { fontFamily: "var(--font-kanit),'Noto Sans Thai',sans-serif" };
 const PINK_GRAD = "linear-gradient(45deg, #5f25e5 0%, #ff0089 100%)";
 
-// same industries (and per-case classification) as the brand page's "See the Work in Action"
-const CATS_TH = ["ทั้งหมด", ...INDUSTRIES];
-const CATS_EN = ["All", ...INDUSTRIES];
+// same content-type tabs (and per-case classification) as the brand page's "See the Work in Action"
+const CATS_TH = ["ทั้งหมด", ...CONTENTS];
+const CATS_EN = ["All", ...CONTENTS];
 
 import { type Locale } from "../../../i18n-config";
 
@@ -25,17 +25,12 @@ export default function SuccessClient({ lang }: { lang: Locale }) {
   const allLabel = CATS[0];
   const backLabel = lang === "th" ? "ย้อนกลับ" : "Back";
 
-  // ?cat= may carry an industry name or an older label (e.g. "Beauty") — map the latter via its stories
-  const catFromParam = (cat: string | null) => {
-    if (!cat) return null;
-    if (CATS.includes(cat)) return cat;
-    const s = STORIES.find((x) => x.industry === cat);
-    return s ? industryOf(s.slug, s.industry) : null;
-  };
+  // ?cat= carries a content type (e.g. "Product Launch"), as linked from each case page
+  const catFromParam = (cat: string | null) => (cat && CATS.includes(cat) ? cat : null);
   const [activeCat, setActiveCat] = useState(allLabel);
   const syncParams = (p: URLSearchParams) => { const cat = catFromParam(p.get("cat")); if (cat) setActiveCat(cat); };
 
-  const filtered = activeCat === allLabel ? STORIES : STORIES.filter((s) => industryOf(s.slug, s.industry) === activeCat);
+  const filtered = activeCat === allLabel ? STORIES : STORIES.filter((s) => contentOf(s.slug) === activeCat);
 
   return (
     <div className="background" style={{ ...KT }}>

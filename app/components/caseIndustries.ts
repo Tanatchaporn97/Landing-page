@@ -2,6 +2,9 @@
 // Success Stories pages: one industry + one content type per case (by slug).
 export const INDUSTRIES = ["Food & Beverage", "Beauty & Skincare", "Healthcare", "Pet Care", "Household", "Home Appliances", "Media & Entertainment", "Retail", "Finance & Fintech", "Technology & Electronics", "Real Estate"];
 
+// Content types — the filter tabs of "See the Work in Action" and the chips on /success.
+export const CONTENTS = ["Product Launch", "Product Review", "Niche Community", "Always-on Content", "Event Activation", "New Market Entry"];
+
 export const CLASSIFY: Record<string, { industry: string; value: string }> = {
   "nissin":          { industry: "Food & Beverage",          value: "Product Launch" },     // new flavour launch
   "guss-damn-good":  { industry: "Food & Beverage",          value: "Product Launch" },     // new co-created flavour
@@ -42,3 +45,6 @@ export const CLASSIFY: Record<string, { industry: string; value: string }> = {
 
 /** A case's industry, falling back to the story's own label for slugs not classified yet. */
 export const industryOf = (slug: string, fallback = "") => CLASSIFY[slug]?.industry ?? fallback;
+
+/** A case's content type (e.g. "Product Launch"); empty for slugs not classified yet. */
+export const contentOf = (slug: string) => CLASSIFY[slug]?.value ?? "";
