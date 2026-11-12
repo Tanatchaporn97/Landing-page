@@ -8,25 +8,21 @@ const KOL_PACKAGES = [
   {
     name: "Start",
     price: "50,000",
-    cta: "Get a Proposal",
     features: ["Proposal", "KOL List", "Campaign Timeline", "Campaign Performance"],
   },
   {
     name: "Basic",
     price: "100,000",
-    cta: "Get a Proposal",
     features: ["Proposal", "KOL Category Suggestion", "Content Idea", "KOL List", "Campaign Timeline", "Campaign Performance"],
   },
   {
     name: "Pro",
     price: "300,000",
-    cta: "Get a Proposal",
     features: ["Proposal", "KOL Category Suggestion", "Content Idea", "KOL List", "Campaign Timeline", "Campaign Performance", "Campaign Summary & Recommend", "Sentiment Analysis on Campaign Dashboard"],
   },
   {
     name: "Premium",
     price: "500,000",
-    cta: "Get a Proposal",
     features: ["Proposal", "KOL Category Suggestion", "Content Idea", "KOL List", "Campaign Timeline", "Market Research", "Competitor Analysis", "Audience Analysis", "Communication Strategy", "Campaign Performance", "Campaign Summary & Recommend", "Sentiment Analysis on Campaign Dashboard"],
   },
 ];
@@ -39,7 +35,7 @@ const IconCheck = ({ color = "#5f26e5" }: { color?: string }) => (
 
 export default function KolPackagesSection({ lang = "th" }: { lang?: "th" | "en" }) {
   const [expandedKol, setExpandedKol] = useState<Set<string>>(new Set());
-  const t = lang === "th" ? { contactUs: "ติดต่อเรา", showLess: "ดูน้อยลง", viewMore: "ดูเพิ่มเติม" } : { contactUs: "Contact Us", showLess: "Show Less", viewMore: "View More" };
+  const t = lang === "th" ? { contactUs: "ติดต่อเรา", showLess: "ดูน้อยลง", viewMore: "ดูเพิ่มเติม", getProposal: "ขอ Proposal" } : { contactUs: "Contact Us", showLess: "Show Less", viewMore: "View More", getProposal: "Get a Proposal" };
 
   return (
     <section className="py-20 px-6 package-bg sp-pack">
@@ -101,7 +97,7 @@ export default function KolPackagesSection({ lang = "th" }: { lang?: "th" | "en"
                   padding: "10px 28px", cursor: "pointer",
                   textDecoration: "none",
                 }}>
-                  {pkg.cta}
+                  {t.getProposal}
                 </a>
               </div>
 
