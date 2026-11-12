@@ -35,7 +35,7 @@ const IconCheck = ({ color = "#5f26e5" }: { color?: string }) => (
 
 export default function KolPackagesSection({ lang = "th" }: { lang?: "th" | "en" }) {
   const [expandedKol, setExpandedKol] = useState<Set<string>>(new Set());
-  const t = lang === "th" ? { contactUs: "ติดต่อเรา", showLess: "ดูน้อยลง", viewMore: "ดูเพิ่มเติม", getProposal: "ขอ Proposal" } : { contactUs: "Contact Us", showLess: "Show Less", viewMore: "View More", getProposal: "Get a Proposal" };
+  const t = lang === "th" ? { contactUs: "ติดต่อเรา", showLess: "ดูน้อยลง", viewMore: "ดูเพิ่มเติม", getProposal: "Get a Proposal" } : { contactUs: "Contact Us", showLess: "Show Less", viewMore: "View More", getProposal: "Get a Proposal" };
 
   return (
     <section className="py-20 px-6 package-bg sp-pack">
