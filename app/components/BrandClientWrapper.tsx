@@ -707,10 +707,11 @@ export default function BrandClientWrapper({ lang, dict }: { lang: Locale; dict:
           <CaseExplorer lang={lang as "th" | "en"} stories={dict?.successStories ?? []} />
 
           {/* CTA — ask for a proposal (scrolls to the brief form) or browse every case */}
-          <p style={{ ...KT, fontSize: "18px", fontWeight: 500, color: "#2A2540", textAlign: "center", margin: "48px 0 0" }}>
+          {/* same type as the FAQ's "มีคำถามเพิ่มเติมไหม?" */}
+          <h3 className="th-head" style={{ ...KT, fontSize: "clamp(22px,2.2vw,32px)", fontWeight: 600, color: "#111827", textAlign: "center", margin: "48px 0 0" }}>
             {lang === "th" ? "อยากได้ผลลัพธ์แบบนี้ให้แบรนด์คุณ?" : "Want results like this for your brand?"}
-          </p>
-          <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "16px", marginTop: "20px" }}>
+          </h3>
+          <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "16px", marginTop: "24px" }}>
             <a href="#contact" className="see-work-proposal" style={{
               ...KT,
               display: "inline-flex", alignItems: "center", justifyContent: "center",
